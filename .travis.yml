@@ -1,0 +1,65 @@
+sudo: required
+language: c++
+
+matrix:
+  include:
+
+    # Linux GCC
+    - os: linux
+      name: "GCC"
+      dist: xenial
+      compiler: g++
+      cache: apt
+
+      addons:
+        apt:
+          update: true
+          sources:
+            - ubuntu-toolchain-r-test
+            - sourceline: 'ppa:jonathonf/development-tools'
+          packages:
+            - gcc-8
+            - g++-8
+            - libtbb-dev
+            - libtbb-dev
+            - libharfbuzz-bin
+            - libharfbuzz-dev
+            - libxrandr-dev
+            - libxi-dev
+            - libxinerama-dev
+            - libxcursor-dev
+            - libgl1-mesa-dev
+            - cppcheck
+            - python3
+      env:
+        - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+      script:
+        - ./run-clang-format.py -r Source
+        - /usr/bin/cppcheck --quiet --enable=all --std=c++14 --language=c++ --error-exitcode=1 --inline-suppr main.cpp Source/*
+        - cmake --build .
+
+    - os: osx
+      name: "Clang"
+      osx_image: xcode10
+      compiler: clang
+      env:
+        - HOMEBREW_NO_AUTO_UPDATE=1
+        - MATRIX_EVAL="brew tap oclint/formulae &&  brew install git-lfs oclint"
+      script:
+        - cmake --build .
+        - oclint-json-compilation-database
+
+before_install:
+  - eval "${MATRIX_EVAL}"
+
+before_script:
+  - git lfs install && git lfs pull && git lfs fetch --all
+  - wget https://raw.githubusercontent.com/Sarcasm/run-clang-format/master/run-clang-format.py
+  - chmod +x run-clang-format.py
+  - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON CMakeLists.txt
+
+branches:
+    only:
+    - master
+    - /^develop.*$/
+    - /^release.*$/

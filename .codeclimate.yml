@@ -1,0 +1,40 @@
+version: "2"
+checks:
+  argument-count:
+    enabled: true
+    config:
+      threshold: 5
+  file-lines:
+    enabled: true
+    config:
+      threshold: 250
+plugins:
+  cppcheck:
+    enabled: true
+    config:
+      check: warning,style,information
+      stds:
+        - "c++11"
+      platform: unix64
+      defines:
+      - "DEBUG=1"
+      - "__cplusplus"
+      undefines:
+      - "DEBUG"
+      max_configs: 42
+      inconclusive: false
+  fixme:
+    enabled: true
+    config:
+      strings:
+      - TODO
+      - HACK
+      - FIXME
+exclude_patterns:
+- ".idea/"
+- "config/"
+- "Libs/"
+- "Data/"
+- "**/*.cmake"
+- ".*"
+- "Tools/"

@@ -1,0 +1,25 @@
+﻿---
+BasedOnStyle: Mozilla
+AccessModifierOffset: '0'
+AlignTrailingComments: 'true'
+AllowAllParametersOfDeclarationOnNextLine: 'true'
+AllowShortCaseLabelsOnASingleLine: 'false'
+AllowShortFunctionsOnASingleLine: Inline
+AlwaysBreakTemplateDeclarations: 'true'
+BreakAfterJavaFieldAnnotations: 'true'
+BreakBeforeBraces: Allman
+BreakBeforeInheritanceComma: 'true'
+BreakBeforeTernaryOperators: 'true'
+BreakConstructorInitializers: AfterColon
+ColumnLimit: '100'
+DerivePointerAlignment: 'false'
+IndentCaseLabels: 'true'
+IndentPPDirectives: AfterHash
+KeepEmptyLinesAtTheStartOfBlocks: 'false'
+MaxEmptyLinesToKeep: '1'
+PointerAlignment: Left
+SpaceBeforeAssignmentOperators: 'true'
+SpacesInContainerLiterals: 'false'
+AlwaysBreakAfterDefinitionReturnType: 'None'
+AlwaysBreakAfterReturnType: 'None'
+...
