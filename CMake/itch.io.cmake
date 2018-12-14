@@ -27,7 +27,6 @@ if(GAMEDATA_FOLDER)
         ## creates a compressed version of the game data ready for publishing ##
         add_custom_target(
                 ${PROJECT_NAME}+GameData
-                EXCLUDE_FROM_ALL
                 COMMAND "${CMAKE_SOURCE_DIR}/Tools/7zip/${PLATFORM}/7za" -tzip a
                         "$<TARGET_FILE_DIR:${PROJECT_NAME}>/game.dat" "${CMAKE_SOURCE_DIR}/${GAMEDATA_FOLDER}/*"
                 WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
@@ -36,7 +35,6 @@ if(GAMEDATA_FOLDER)
         ## creates a compressed version of the game data for nix ready for publishing ##
         add_custom_target(
                 ${PROJECT_NAME}+GameData
-                EXCLUDE_FROM_ALL
                 COMMAND ${CMAKE_COMMAND} -E tar cfv "$<TARGET_FILE_DIR:${PROJECT_NAME}>/game.dat" --format=7zip -- *
                 WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/${GAMEDATA_FOLDER}"
                 COMMENT "creating data archive")
