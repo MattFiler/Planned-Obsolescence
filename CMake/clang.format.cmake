@@ -1,6 +1,7 @@
 find_program(
         GCF NAMES git-clang-format
-        PATHS ${CMAKE_SOURCE_DIR}/Tools/*/${PLATFORM}/)
+        PATHS ${CMAKE_SOURCE_DIR}/Tools/*/
+        NO_DEFAULT_PATH)
 
 if(GCF)
     execute_process(COMMAND git config hooks.gitClangFormatExe ${GCF})
