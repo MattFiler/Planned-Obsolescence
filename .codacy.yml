@@ -21,6 +21,9 @@ engines:
    exclude_paths:
      - config/engines.yml
 exclude_paths:
+  - '.*'
+  - '**.md'
+  - '**.MD'
   - '.*releases?/.*'
   - '.*builds'
   - '.idea/*'
@@ -28,4 +31,3 @@ exclude_paths:
   - 'Libs/**'
   - 'Data/**'
   - 'Tools/**'
-  - '.*'
