@@ -21,7 +21,6 @@ matrix:
             - gcc-8
             - g++-8
             - libtbb-dev
-            - libglu1-mesa
             - libharfbuzz-bin
             - libharfbuzz-dev
             - libxrandr-dev
@@ -29,6 +28,7 @@ matrix:
             - libxinerama-dev
             - libxcursor-dev
             - libgl1-mesa-dev
+            - libglu1-mesa-dev
             - cppcheck
             - python3
       env:
