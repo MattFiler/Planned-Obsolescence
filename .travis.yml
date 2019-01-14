@@ -21,7 +21,7 @@ matrix:
             - gcc-8
             - g++-8
             - libtbb-dev
-            - libtbb-dev
+            - libglu1-mesa
             - libharfbuzz-bin
             - libharfbuzz-dev
             - libxrandr-dev
