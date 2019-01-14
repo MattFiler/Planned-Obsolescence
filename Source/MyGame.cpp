@@ -1,7 +1,3 @@
-//
-// Created by Huxy on 03/10/2018.
-//
-
 #include <iostream>
 
 #include <Engine/DebugPrinter.h>
@@ -15,7 +11,7 @@
 
 bool MyGame::init()
 {
-  game_name = "Ex Machina: Attack of the Clones";
+  game_name = "Planned Obsolescence";
 
   if (!initAPI())
   {
@@ -26,13 +22,13 @@ bool MyGame::init()
   return true;
 }
 
-// cppcheck-suppress unusedFunction
+//Update
 void MyGame::update(const ASGE::GameTime& game_time)
 {
   return;
 }
 
-// cppcheck-suppress unusedFunction
+//Render
 void MyGame::render(const ASGE::GameTime& game_time)
 {
   return;
