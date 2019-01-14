@@ -1,7 +1,3 @@
-//
-// Created by Huxy on 03/10/2018.
-//
-
 #ifndef HELLOASGE_MYGAME_H
 #define HELLOASGE_MYGAME_H
 

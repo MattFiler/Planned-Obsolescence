@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9.2)
-project(ExMachina)
+project(PlannedObsolescence)
 
 if(UNIX AND APPLE)
     set(PLATFORM "osx" )
@@ -92,7 +92,7 @@ if (WIN32 AND NOT BUILD_SHARED_LIBS AND NOT MSVC)
 endif()
 
 ## utility scripts
-include(CMake/clang.format.cmake)
+##include(CMake/clang.format.cmake)
 include(CMake/githooks.cmake)
 include(CMake/itch.io.cmake)
 
