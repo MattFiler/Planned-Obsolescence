@@ -1,4 +1,4 @@
-#Planned Obsolescence
+# Planned Obsolescence
 
 **Team:**
 
