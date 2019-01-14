@@ -22,13 +22,13 @@ bool MyGame::init()
   return true;
 }
 
-//Update
+// Update
 void MyGame::update(const ASGE::GameTime& game_time)
 {
   return;
 }
 
-//Render
+// Render
 void MyGame::render(const ASGE::GameTime& game_time)
 {
   return;
