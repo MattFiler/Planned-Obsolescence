@@ -22,13 +22,13 @@ bool MyGame::init()
   return true;
 }
 
-// Update
+// cppcheck-suppress unusedFunction
 void MyGame::update(const ASGE::GameTime& game_time)
 {
   return;
 }
 
-// Render
+// cppcheck-suppress unusedFunction
 void MyGame::render(const ASGE::GameTime& game_time)
 {
   return;
