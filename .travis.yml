@@ -57,9 +57,3 @@ before_script:
   - wget https://raw.githubusercontent.com/Sarcasm/run-clang-format/master/run-clang-format.py
   - chmod +x run-clang-format.py
   - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON CMakeLists.txt
-
-branches:
-    only:
-    - master
-    - /^develop.*$/
-    - /^release.*$/
