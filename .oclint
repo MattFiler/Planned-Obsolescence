@@ -26,8 +26,9 @@ rule-configurations:
     value: 150
   - key: NCSS_METHOD
     value: 100
-
+  - key: SHORT_VARIABLE_NAME
+    value: 2
 max-priority-1: 0
 max-priority-2: 10
-max-priority-3: 20
+max-priority-3: 30
 enable-clang-static-analyzer: true
