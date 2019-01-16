@@ -46,7 +46,7 @@ add_executable(
         ${PROJECT_NAME}
         main.cpp
         Source/MyGame.cpp
-        Source/MyGame.h)
+        Source/MyGame.h Source/GameObject.h Source/Geometry.h Source/Geometry.cpp Source/GameObject.cpp Source/AnimatedSprite.h Source/AnimatedSprite.cpp Source/SceneManager.h Source/SceneManager.cpp Source/TitleScene.h Source/Scene.h Source/TitleScene.cpp Source/Constants.h)
 
 ## library includes
 target_include_directories(
