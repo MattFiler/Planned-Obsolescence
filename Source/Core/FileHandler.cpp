@@ -7,7 +7,9 @@ json FileHandler::openAsJSON(string filename)
   auto file = ASGE::FILEIO::File();
   file.open("data/" + filename);
   auto buffer = file.read();
-  stringstream(string(buffer.as_char(), buffer.length)) >> json_file;
+  if (buffer.length > 0) {
+    stringstream(string(buffer.as_char(), buffer.length)) >> json_file;
+  }
   return json_file;
 }
 
@@ -17,5 +19,9 @@ string FileHandler::openAsString(string filename)
   auto file = ASGE::FILEIO::File();
   file.open("data/" + filename);
   auto buffer = file.read();
-  return string(buffer.as_char(), buffer.length);
+  if (buffer.length > 0)
+  {
+    return string(buffer.as_char(), buffer.length);
+  }
+  return "";
 }

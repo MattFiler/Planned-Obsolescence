@@ -20,7 +20,4 @@ class PauseMenu : public Scene
   void render(double delta_time) override;
   void keyHandler(const ASGE::SharedEventData data) override;
   void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) override;
-
-  private:
-
 };
