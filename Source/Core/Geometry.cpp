@@ -1,7 +1,3 @@
-//
-// Created by tobyj on 15/01/2019.
-//
-
 #include "Geometry.h"
 #include <math.h>
 

@@ -1,7 +1,3 @@
-//
-// Created by tobyj on 15/01/2019.
-//
-
 #include "SceneManager.h"
 #include "../Scenes/TitleScene.h"
 
@@ -29,9 +25,9 @@ SceneManager::~SceneManager()
  *   @details Calls loadScene() on scene that is currently active
  *   @param   renderer is a pointer to the renderer
  */
-bool SceneManager::loadCurrentScene(ASGE::Renderer* renderer, ASGE::Input* input)
+bool SceneManager::loadCurrentScene(ASGE::Renderer* renderer, ASGE::Input* input, json core_config)
 {
-  return current_scene->load(renderer, input);
+  return current_scene->load(renderer, input, core_config);
 }
 
 /**

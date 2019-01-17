@@ -1,9 +1,6 @@
-//
-// Created by tobyj on 15/01/2019.
-//
+#ifndef PO_ANIMSPRITE
+#define PO_ANIMSPRITE
 
-#ifndef PLANNEDOBSOLESCENCE_ANIMATEDSPRITE_H
-#define PLANNEDOBSOLESCENCE_ANIMATEDSPRITE_H
 #include "Geometry.h"
 #include <Engine/Sprite.h>
 
@@ -23,37 +20,39 @@
 class AnimatedSprite
 {
   public:
-  AnimatedSprite(int num_of_sprites, bool auto_animate = true);
-  ~AnimatedSprite();
+    AnimatedSprite(int num_of_sprites, bool auto_animate = true);
+    ~AnimatedSprite();
 
-  void xPos(float new_x);
-  float xPos();
-  void yPos(float new_y);
-  float yPos();
-  float scale();
-  void scale(float new_scale);
-  float width();
-  float height();
+    void xPos(float new_x);
+    float xPos();
+    void yPos(float new_y);
+    float yPos();
+    float scale();
+    void scale(float new_scale);
+    float width();
+    float height();
 
-  void setFadeColour(ASGE::Colour col);
+    void setFadeColour(ASGE::Colour col);
 
-  void addSprite(ASGE::Sprite& new_sprite);
-  bool fadeToColour(double time_to_fade, double delta_time, bool inverse_fade = false);
-  ASGE::Sprite& returnNextSprite(double delta_time);
+    void addSprite(ASGE::Sprite& new_sprite);
+    bool fadeToColour(double time_to_fade, double delta_time, bool inverse_fade = false);
+    ASGE::Sprite& returnNextSprite(double delta_time);
 
-  static float width_scale; /**< The scale difference between actual and base width */
+    static float width_scale; /**< The scale difference between actual and base width */
+
   private:
-  float sprite_width = 50;
-  float sprite_height = 50;
-  float scale_factor = 1;
-  float fade_percent = 0;
-  double time_passed = 0;
-  double time_between_frames = 0;
-  bool auto_anim = false;
-  int number_of_sprites = 0;
-  int current_sprite = 0;
-  ASGE::Colour fade_colour = ASGE::COLOURS::WHITE;
+    float sprite_width = 50;
+    float sprite_height = 50;
+    float scale_factor = 1;
+    float fade_percent = 0;
+    double time_passed = 0;
+    double time_between_frames = 0;
+    bool auto_anim = false;
+    int number_of_sprites = 0;
+    int current_sprite = 0;
+    ASGE::Colour fade_colour = ASGE::COLOURS::WHITE;
 
-  ASGE::Sprite** my_sprites = nullptr;
+    ASGE::Sprite** my_sprites = nullptr;
 };
-#endif // PLANNEDOBSOLESCENCE_ANIMATEDSPRITE_H
+
+#endif

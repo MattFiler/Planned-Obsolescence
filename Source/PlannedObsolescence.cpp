@@ -54,7 +54,7 @@ bool PlannedObsolescence::init()
 
   // Start out on the splashscreen scene
   scene_manager->current_scene = new TitleScene();
-  return scene_manager->loadCurrentScene(renderer.get(), inputs.get());
+  return scene_manager->loadCurrentScene(renderer.get(), inputs.get(), core_config);
 }
 
 /**
@@ -116,7 +116,7 @@ void PlannedObsolescence::update(const ASGE::GameTime& game_time)
   int num = scene_manager->updateCurrentScene(game_time.delta_time.count());
   if (num == 1)
   {
-    if (!scene_manager->loadCurrentScene(renderer.get(), inputs.get()))
+    if (!scene_manager->loadCurrentScene(renderer.get(), inputs.get(), core_config))
     {
       signalExit();
     }

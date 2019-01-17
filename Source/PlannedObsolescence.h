@@ -1,6 +1,3 @@
-#ifndef HELLOASGE_MYGAME_H
-#define HELLOASGE_MYGAME_H
-
 #include "Core/AnimatedSprite.h"
 #include "Core/FileHandler.h"
 #include "Core/SceneManager.h"
@@ -31,5 +28,3 @@ class PlannedObsolescence : public ASGE::OGLGame
 
   json core_config;
 };
-
-#endif // HELLOASGE_MYGAME_H

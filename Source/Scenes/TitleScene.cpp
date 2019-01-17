@@ -1,7 +1,3 @@
-//
-// Created by tobyj on 15/01/2019.
-//
-
 #include "TitleScene.h"
 #include "../Core/AnimatedSprite.h"
 #include "../Constants.h"
@@ -14,7 +10,7 @@
  *   @details Initialises all variables and creates all the new
                          sprites for the scene
  */
-bool TitleScene::load(ASGE::Renderer* renderer, ASGE::Input* input)
+bool TitleScene::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config)
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
@@ -32,8 +28,8 @@ bool TitleScene::load(ASGE::Renderer* renderer, ASGE::Input* input)
 
   anim_sprite->setFadeColour(ASGE::COLOURS::WHITE);
   asge_logo->setAnimatedSprite(anim_sprite);
-  asge_logo->scaleToHeight(BASE_HEIGHT / 2);
-  asge_logo->CenterSpriteOnPoint(BASE_WIDTH / 2, (BASE_HEIGHT / 2));
+  asge_logo->scaleToHeight(core_config["resolution"]["height"].get<float>() / 2);
+  asge_logo->CenterSpriteOnPoint(core_config["resolution"]["width"].get<float>() / 2, (core_config["resolution"]["height"].get<float>() / 2));
 
   new_sprite = renderer->createRawSprite();
   if (!new_sprite->loadTexture("data/SPLASHSCREENS/UWELogo.png"))
@@ -45,8 +41,8 @@ bool TitleScene::load(ASGE::Renderer* renderer, ASGE::Input* input)
 
   anim_sprite->setFadeColour(ASGE::COLOURS::WHITE);
   uwe_logo->setAnimatedSprite(anim_sprite);
-  uwe_logo->scaleToHeight(BASE_HEIGHT / 2);
-  uwe_logo->CenterSpriteOnPoint(BASE_WIDTH / 2, (BASE_HEIGHT / 2));
+  uwe_logo->scaleToHeight(core_config["resolution"]["height"].get<float>() / 2);
+  uwe_logo->CenterSpriteOnPoint(core_config["resolution"]["width"].get<float>() / 2, (core_config["resolution"]["height"].get<float>() / 2));
 
   return true;
 }

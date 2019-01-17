@@ -176,7 +176,7 @@ void GameObject::scaleToWidth(float target_width)
 {
   if (sprite != nullptr)
   {
-    // Calcualte the new scale factor
+    // Calculate the new scale factor
     float scale_difference = target_width / width;
     setScale(scale_difference);
   }
@@ -193,7 +193,7 @@ void GameObject::scaleToHeight(float target_height)
 {
   if (sprite != nullptr)
   {
-    // Calcualte the new scale factor
+    // Calculate the new scale factor
     float scale_difference = target_height / height;
     setScale(scale_difference);
   }
