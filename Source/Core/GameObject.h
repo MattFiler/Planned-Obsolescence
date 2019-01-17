@@ -13,7 +13,7 @@ class GameObject
   GameObject();
   ~GameObject();
 
-  std::string getName();              /**< Get the objects name*/
+  std::string getName();               /**< Get the objects name*/
   void setName(std::string& new_name); /**< Set the objects name*/
 
   bool shouldDestroy();
