@@ -17,6 +17,8 @@ if(CFE)
             --style=file
             ${CMAKE_SOURCE_DIR}/Source/*.cpp
             ${CMAKE_SOURCE_DIR}/Source/*.h
+            ${CMAKE_SOURCE_DIR}/Source/*/*.cpp
+            ${CMAKE_SOURCE_DIR}/Source/*/*.h
             )
 
     add_custom_target(

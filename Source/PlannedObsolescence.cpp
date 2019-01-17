@@ -23,7 +23,8 @@ PlannedObsolescence::~PlannedObsolescence()
 bool PlannedObsolescence::init()
 {
   // Load core configurations
-  core_config = file_handler.openAsJSON("CONFIGS/game_core.json");
+  std::string config_file("CONFIGS/game_core.json");
+  core_config = file_handler.openAsJSON(config_file);
 
   // Configure resolution and game title
   setupResolution();
