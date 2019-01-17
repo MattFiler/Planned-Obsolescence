@@ -2,5 +2,5 @@
 
 class Goon : Characters
 {
-
+  // Unused at the moment
 };

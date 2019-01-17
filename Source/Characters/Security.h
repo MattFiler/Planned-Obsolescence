@@ -2,5 +2,5 @@
 
 class Security : Characters
 {
-
+  // Unused at the moment
 };

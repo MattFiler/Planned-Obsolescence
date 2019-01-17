@@ -4,7 +4,7 @@
 
 namespace ASGE
 {
-  class Renderer;
+class Renderer;
 }
 
 /**

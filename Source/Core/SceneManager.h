@@ -2,16 +2,16 @@
 #include <Engine/InputEvents.h>
 #include <memory>
 
-#include "Geometry.h"
 #include "../Scenes/Scene.h"
+#include "Geometry.h"
 
 #include <json.hpp>
 using json = nlohmann::json;
 
 namespace ASGE
 {
-  class Renderer;
-  struct EventData;
+class Renderer;
+struct EventData;
 }
 
 /**

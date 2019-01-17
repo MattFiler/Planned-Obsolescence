@@ -5,7 +5,7 @@ json FileHandler::openAsJSON(string filename)
 {
   json json_file;
   auto file = ASGE::FILEIO::File();
-  file.open("data/"+filename);
+  file.open("data/" + filename);
   auto buffer = file.read();
   stringstream(string(buffer.as_char(), buffer.length)) >> json_file;
   return json_file;
@@ -15,7 +15,7 @@ json FileHandler::openAsJSON(string filename)
 string FileHandler::openAsString(string filename)
 {
   auto file = ASGE::FILEIO::File();
-  file.open("data/"+filename);
+  file.open("data/" + filename);
   auto buffer = file.read();
   return string(buffer.as_char(), buffer.length);
 }

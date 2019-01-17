@@ -2,5 +2,5 @@
 
 class LabTechnician : Characters
 {
-
+  // Unused at the moment
 };

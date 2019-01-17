@@ -1,9 +1,9 @@
 #include "SceneManager.h"
-#include "../Scenes/Splashscreen.h"
 #include "../Scenes/GameCore.h"
 #include "../Scenes/GameOver.h"
 #include "../Scenes/MainMenu.h"
 #include "../Scenes/PauseMenu.h"
+#include "../Scenes/Splashscreen.h"
 
 /**
  *   @brief   Constructor

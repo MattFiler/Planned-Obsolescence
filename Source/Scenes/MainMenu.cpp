@@ -28,7 +28,7 @@ void MainMenu::keyHandler(const ASGE::SharedEventData data)
   auto key = static_cast<const ASGE::KeyEvent*>(data.get());
   if (key->key)
   {
-    next_scene=2;
+    next_scene = 2;
   }
 }
 

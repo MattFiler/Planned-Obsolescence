@@ -4,7 +4,7 @@
 
 namespace ASGE
 {
-  class Renderer;
+class Renderer;
 }
 
 /**
@@ -13,13 +13,13 @@ namespace ASGE
 class PauseMenu : public Scene
 {
   public:
-    PauseMenu() = default;
-    ~PauseMenu() = default;
-    bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) override;
-    int update(double delta_time) override;
-    void render(double delta_time) override;
-    void keyHandler(const ASGE::SharedEventData data) override;
-    void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) override;
+  PauseMenu() = default;
+  ~PauseMenu() = default;
+  bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) override;
+  int update(double delta_time) override;
+  void render(double delta_time) override;
+  void keyHandler(const ASGE::SharedEventData data) override;
+  void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) override;
 
   private:
 

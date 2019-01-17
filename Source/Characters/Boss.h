@@ -2,5 +2,5 @@
 
 class Boss : Characters
 {
-
+  // Unused at the moment
 };
