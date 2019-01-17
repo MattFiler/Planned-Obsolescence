@@ -1,5 +1,6 @@
 #include "Characters.h"
 
-class LabTechnician : Characters {
+class LabTechnician : Characters
+{
 
 };

@@ -20,39 +20,39 @@
 class DynamicSprite
 {
   public:
-    DynamicSprite(int num_of_sprites = 1, bool should_flipbook = true);
-    ~DynamicSprite();
+  DynamicSprite(int num_of_sprites = 1, bool should_flipbook = true);
+  ~DynamicSprite();
 
-    void xPos(float new_x);
-    float xPos();
-    void yPos(float new_y);
-    float yPos();
-    float scale();
-    void scale(float new_scale);
-    float width();
-    float height();
+  void xPos(float new_x);
+  float xPos();
+  void yPos(float new_y);
+  float yPos();
+  float scale();
+  void scale(float new_scale);
+  float width();
+  float height();
 
-    void setFadeColour(ASGE::Colour col);
+  void setFadeColour(ASGE::Colour col);
 
-    void addSprite(ASGE::Sprite& new_sprite);
-    bool fadeToColour(double time_to_fade, double delta_time, bool inverse_fade = false);
-    ASGE::Sprite& returnNextSprite(double delta_time);
+  void addSprite(ASGE::Sprite& new_sprite);
+  bool fadeToColour(double time_to_fade, double delta_time, bool inverse_fade = false);
+  ASGE::Sprite& returnNextSprite(double delta_time);
 
-    static float width_scale; /**< The scale difference between actual and base width */
+  static float width_scale; /**< The scale difference between actual and base width */
 
   private:
-    float sprite_width = 50;
-    float sprite_height = 50;
-    float scale_factor = 1;
-    float fade_percent = 0;
-    double time_passed = 0;
-    double time_between_frames = 0;
-    bool auto_anim = false;
-    int number_of_sprites = 0;
-    int current_sprite = 0;
+  float sprite_width = 50;
+  float sprite_height = 50;
+  float scale_factor = 1;
+  float fade_percent = 0;
+  double time_passed = 0;
+  double time_between_frames = 0;
+  bool auto_anim = false;
+  int number_of_sprites = 0;
+  int current_sprite = 0;
 
-    ASGE::Colour fade_colour = ASGE::COLOURS::WHITE;
-    ASGE::Sprite** my_sprites = nullptr;
+  ASGE::Colour fade_colour = ASGE::COLOURS::WHITE;
+  ASGE::Sprite** my_sprites = nullptr;
 };
 
 #endif

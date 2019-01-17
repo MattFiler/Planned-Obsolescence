@@ -13,13 +13,13 @@ namespace ASGE
 class GameCore : public Scene
 {
   public:
-    GameCore() = default;
-    ~GameCore() = default;
-    bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) override;
-    int update(double delta_time) override;
-    void render(double delta_time) override;
-    void keyHandler(const ASGE::SharedEventData data) override;
-    void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) override;
+  GameCore() = default;
+  ~GameCore() = default;
+  bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) override;
+  int update(double delta_time) override;
+  void render(double delta_time) override;
+  void keyHandler(const ASGE::SharedEventData data) override;
+  void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) override;
 
   private:
 

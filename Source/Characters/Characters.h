@@ -1,3 +1,4 @@
-class Characters {
+class Characters
+{
 
 };

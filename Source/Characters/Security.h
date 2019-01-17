@@ -1,5 +1,6 @@
 #include "Characters.h"
 
-class Security : Characters {
+class Security : Characters
+{
 
 };

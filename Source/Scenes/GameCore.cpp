@@ -1,6 +1,6 @@
 #include "GameCore.h"
-#include "../Core/DynamicSprite.h"
 #include "../Constants.h"
+#include "../Core/DynamicSprite.h"
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
@@ -25,7 +25,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
  */
 void GameCore::keyHandler(const ASGE::SharedEventData data)
 {
-  //auto key = static_cast<const ASGE::KeyEvent*>(data.get());
+  // auto key = static_cast<const ASGE::KeyEvent*>(data.get());
 
 }
 
@@ -37,7 +37,7 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
  */
 void GameCore::mouseHandler(const ASGE::SharedEventData data, Vector mouse_position)
 {
-  //auto click = static_cast<const ASGE::ClickEvent*>(data.get());
+  // auto click = static_cast<const ASGE::ClickEvent*>(data.get());
 
 }
 

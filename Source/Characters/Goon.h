@@ -1,5 +1,6 @@
 #include "Characters.h"
 
-class Goon : Characters {
+class Goon : Characters
+{
 
 };

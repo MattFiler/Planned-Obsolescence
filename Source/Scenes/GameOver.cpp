@@ -1,6 +1,6 @@
 #include "GameOver.h"
-#include "../Core/DynamicSprite.h"
 #include "../Constants.h"
+#include "../Core/DynamicSprite.h"
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
@@ -25,7 +25,7 @@ bool GameOver::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
  */
 void GameOver::keyHandler(const ASGE::SharedEventData data)
 {
-  //auto key = static_cast<const ASGE::KeyEvent*>(data.get());
+  // auto key = static_cast<const ASGE::KeyEvent*>(data.get());
 
 }
 
@@ -37,7 +37,7 @@ void GameOver::keyHandler(const ASGE::SharedEventData data)
  */
 void GameOver::mouseHandler(const ASGE::SharedEventData data, Vector mouse_position)
 {
-  //auto click = static_cast<const ASGE::ClickEvent*>(data.get());
+  // auto click = static_cast<const ASGE::ClickEvent*>(data.get());
 
 }
 
@@ -60,5 +60,5 @@ int GameOver::update(double delta_time)
  */
 void GameOver::render(double delta_time)
 {
-
+  // Nothing here yet
 }

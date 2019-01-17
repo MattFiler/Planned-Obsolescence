@@ -7,7 +7,7 @@ using namespace std;
 using json = nlohmann::json;
 
 class FileHandler {
- public:
+  public:
   json openAsJSON(string filename);
   string openAsString(string filename);
 };

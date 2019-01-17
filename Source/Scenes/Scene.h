@@ -13,8 +13,8 @@ using json = nlohmann::json;
 
 namespace ASGE
 {
-  class Renderer;
-  struct EventData;
+class Renderer;
+struct EventData;
 }
 
 /**
@@ -23,18 +23,18 @@ namespace ASGE
 class Scene
 {
   public:
-    Scene() = default;
-    virtual ~Scene() = default;
-    virtual bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) = 0;
-    virtual int update(double delta_time) = 0;
-    virtual void render(double delta_time) = 0;
-    virtual void keyHandler(const ASGE::SharedEventData data) = 0;
-    virtual void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) = 0;
+  Scene() = default;
+  virtual ~Scene() = default;
+  virtual bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) = 0;
+  virtual int update(double delta_time) = 0;
+  virtual void render(double delta_time) = 0;
+  virtual void keyHandler(const ASGE::SharedEventData data) = 0;
+  virtual void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) = 0;
 
   protected:
-    int next_scene = -1;
-    ASGE::Colour clear_colour = ASGE::COLOURS::BLACK;
-    ASGE::Renderer* rend = nullptr;
+  int next_scene = -1;
+  ASGE::Colour clear_colour = ASGE::COLOURS::BLACK;
+  ASGE::Renderer* rend = nullptr;
 };
 
 #endif

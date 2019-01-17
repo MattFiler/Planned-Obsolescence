@@ -1,6 +1,6 @@
 #include "PauseMenu.h"
-#include "../Core/DynamicSprite.h"
 #include "../Constants.h"
+#include "../Core/DynamicSprite.h"
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
@@ -25,7 +25,7 @@ bool PauseMenu::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_con
  */
 void PauseMenu::keyHandler(const ASGE::SharedEventData data)
 {
-  //auto key = static_cast<const ASGE::KeyEvent*>(data.get());
+  // auto key = static_cast<const ASGE::KeyEvent*>(data.get());
 
 }
 
@@ -37,7 +37,7 @@ void PauseMenu::keyHandler(const ASGE::SharedEventData data)
  */
 void PauseMenu::mouseHandler(const ASGE::SharedEventData data, Vector mouse_position)
 {
-  //auto click = static_cast<const ASGE::ClickEvent*>(data.get());
+  // auto click = static_cast<const ASGE::ClickEvent*>(data.get());
 
 }
 
@@ -60,5 +60,5 @@ int PauseMenu::update(double delta_time)
  */
 void PauseMenu::render(double delta_time)
 {
-
+  // Nothing here yet
 }
