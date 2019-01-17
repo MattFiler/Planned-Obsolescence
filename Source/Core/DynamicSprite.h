@@ -1,9 +1,6 @@
-//
-// Created by tobyj on 15/01/2019.
-//
+#ifndef PO_ANIMSPRITE
+#define PO_ANIMSPRITE
 
-#ifndef PLANNEDOBSOLESCENCE_ANIMATEDSPRITE_H
-#define PLANNEDOBSOLESCENCE_ANIMATEDSPRITE_H
 #include "Geometry.h"
 #include <Engine/Sprite.h>
 
@@ -20,11 +17,15 @@
  *  Position is automatically updated with the GameObjects position that
  *  this is attached to.
  */
-class AnimatedSprite
+class DynamicSprite
 {
   public:
-  AnimatedSprite(int num_of_sprites, bool auto_animate = true);
-  ~AnimatedSprite();
+  DynamicSprite(int num_of_sprites = 1, bool should_flipbook = true);
+  ~DynamicSprite();
+
+  // TODO: Does your memory shallow copy correctly?
+  DynamicSprite(const DynamicSprite&) = delete;
+  DynamicSprite& operator=(const DynamicSprite&) = delete;
 
   void xPos(float new_x);
   float xPos();
@@ -42,6 +43,7 @@ class AnimatedSprite
   ASGE::Sprite& returnNextSprite(double delta_time);
 
   static float width_scale; /**< The scale difference between actual and base width */
+
   private:
   float sprite_width = 50;
   float sprite_height = 50;
@@ -52,8 +54,9 @@ class AnimatedSprite
   bool auto_anim = false;
   int number_of_sprites = 0;
   int current_sprite = 0;
-  ASGE::Colour fade_colour = ASGE::COLOURS::WHITE;
 
+  ASGE::Colour fade_colour = ASGE::COLOURS::WHITE;
   ASGE::Sprite** my_sprites = nullptr;
 };
-#endif // PLANNEDOBSOLESCENCE_ANIMATEDSPRITE_H
+
+#endif

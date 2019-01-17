@@ -1,9 +1,9 @@
-//
-// Created by tobyj on 15/01/2019.
-//
-
 #include "SceneManager.h"
-#include "TitleScene.h"
+#include "../Scenes/GameCore.h"
+#include "../Scenes/GameOver.h"
+#include "../Scenes/MainMenu.h"
+#include "../Scenes/PauseMenu.h"
+#include "../Scenes/Splashscreen.h"
 
 /**
  *   @brief   Constructor
@@ -29,9 +29,9 @@ SceneManager::~SceneManager()
  *   @details Calls loadScene() on scene that is currently active
  *   @param   renderer is a pointer to the renderer
  */
-bool SceneManager::loadCurrentScene(ASGE::Renderer* renderer, ASGE::Input* input)
+bool SceneManager::loadCurrentScene(ASGE::Renderer* renderer, ASGE::Input* input, json core_config)
 {
-  return current_scene->load(renderer, input);
+  return current_scene->load(renderer, input, core_config);
 }
 
 /**
@@ -62,18 +62,21 @@ int SceneManager::updateCurrentScene(double delta_time)
 {
   switch (current_scene->update(delta_time))
   {
-    // If the scene returns -2, then signal to exit
-    case -2:
-      return -1;
-      break;
-      // If the scene returns -1, then no change
+    // Scene -1 signifies no change
     case -1:
       return 0;
-      break;
     case 0:
-      delete current_scene;
-      current_scene = new TitleScene;
+      swapScene(new Splashscreen);
       break;
+    case 1:
+      swapScene(new MainMenu);
+      break;
+    case 2:
+      swapScene(new GameCore);
+      break;
+    // Anything else is unhandled, and we will signal to exit.
+    default:
+      return -1;
   }
   return 1;
 }
@@ -87,4 +90,11 @@ int SceneManager::updateCurrentScene(double delta_time)
 void SceneManager::renderCurrentScene(double delta_time)
 {
   current_scene->render(delta_time);
+}
+
+// Swap the current scene
+void SceneManager::swapScene(Scene* new_scene)
+{
+  delete current_scene;
+  current_scene = new_scene;
 }

@@ -1,10 +1,7 @@
-//
-// Created by tobyj on 15/01/2019.
-//
+#ifndef PO_GAMEOBJECT
+#define PO_GAMEOBJECT
 
-#ifndef PLANNEDOBSOLESCENCE_GAMEOBJECT_H
-#define PLANNEDOBSOLESCENCE_GAMEOBJECT_H
-#include "AnimatedSprite.h"
+#include "DynamicSprite.h"
 #include "Geometry.h"
 
 /**
@@ -16,8 +13,8 @@ class GameObject
   GameObject();
   ~GameObject();
 
-  std::string getName();              /**< Get the objects name*/
-  void setName(std::string new_name); /**< Set the objects name*/
+  std::string getName();               /**< Get the objects name*/
+  void setName(std::string& new_name); /**< Set the objects name*/
 
   bool shouldDestroy();
   void shouldDestroy(bool flag);
@@ -34,8 +31,8 @@ class GameObject
   void scaleToWidth(float target_width);
   void scaleToHeight(float target_height);
 
-  void setAnimatedSprite(AnimatedSprite* new_sprite);
-  AnimatedSprite* getAnimatedSprite();
+  void setAnimatedSprite(DynamicSprite* new_sprite);
+  DynamicSprite* getAnimatedSprite();
 
   protected:
   bool should_destroy = false; /**<  Flag to see if the main scene should destroy this object */
@@ -47,6 +44,7 @@ class GameObject
   float height = 0;
   float scale = 0;
 
-  AnimatedSprite* sprite = nullptr;
+  DynamicSprite* sprite = nullptr;
 };
-#endif // PLANNEDOBSOLESCENCE_GAMEOBJECT_H
+
+#endif

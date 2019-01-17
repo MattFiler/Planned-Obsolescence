@@ -1,9 +1,6 @@
-//
-// Created by tobyj on 15/01/2019.
-//
+#ifndef PO_GEOMETRY
+#define PO_GEOMETRY
 
-#ifndef PLANNEDOBSOLESCENCE_GEOMETRY_H
-#define PLANNEDOBSOLESCENCE_GEOMETRY_H
 /**
  **   Represents a point in 2d space
  */
@@ -57,4 +54,5 @@ struct Line
   bool verticle_line = false;
   float y = 0;
 };
-#endif // PLANNEDOBSOLESCENCE_GEOMETRY_H
+
+#endif

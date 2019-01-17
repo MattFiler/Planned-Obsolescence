@@ -44,7 +44,7 @@ bool GameObject::shouldDestroy()
  *   @brief   Setter for name
  *   @param   New name for this object
  */
-void GameObject::setName(std::string new_name)
+void GameObject::setName(std::string& new_name)
 {
   name = new_name;
 }
@@ -80,7 +80,7 @@ void GameObject::xPos(float new_x)
   // If there is a sprite component, update its position too
   if (sprite != nullptr)
   {
-    sprite->xPos(new_x * AnimatedSprite::width_scale);
+    sprite->xPos(new_x * DynamicSprite::width_scale);
   }
 }
 
@@ -106,7 +106,7 @@ void GameObject::yPos(float new_y)
   // If there is a sprite component, update its position too
   if (sprite != nullptr)
   {
-    sprite->yPos(new_y * AnimatedSprite::width_scale);
+    sprite->yPos(new_y * DynamicSprite::width_scale);
   }
 }
 
@@ -152,7 +152,7 @@ void GameObject::setScale(float new_scale)
   scale = new_scale;
   if (sprite != nullptr)
   {
-    sprite->scale(scale * AnimatedSprite::width_scale);
+    sprite->scale(scale * DynamicSprite::width_scale);
   }
 }
 
@@ -176,7 +176,7 @@ void GameObject::scaleToWidth(float target_width)
 {
   if (sprite != nullptr)
   {
-    // Calcualte the new scale factor
+    // Calculate the new scale factor
     float scale_difference = target_width / width;
     setScale(scale_difference);
   }
@@ -193,7 +193,7 @@ void GameObject::scaleToHeight(float target_height)
 {
   if (sprite != nullptr)
   {
-    // Calcualte the new scale factor
+    // Calculate the new scale factor
     float scale_difference = target_height / height;
     setScale(scale_difference);
   }
@@ -205,7 +205,7 @@ void GameObject::scaleToHeight(float target_height)
  *            sprite
  *   @param   Pointer to the new sprite
  */
-void GameObject::setAnimatedSprite(AnimatedSprite* new_sprite)
+void GameObject::setAnimatedSprite(DynamicSprite* new_sprite)
 {
   delete (sprite);
   sprite = new_sprite;
@@ -214,16 +214,16 @@ void GameObject::setAnimatedSprite(AnimatedSprite* new_sprite)
   height = sprite->height();
   scale = sprite->scale();
   // Modify the ASGE::Sprites scale and position with width_scale
-  sprite->scale(scale * AnimatedSprite::width_scale);
-  sprite->xPos(position.x * AnimatedSprite::width_scale);
-  sprite->yPos(position.y * AnimatedSprite::width_scale);
+  sprite->scale(scale * DynamicSprite::width_scale);
+  sprite->xPos(position.x * DynamicSprite::width_scale);
+  sprite->yPos(position.y * DynamicSprite::width_scale);
 }
 
 /**
  *   @brief   Getter for the AnimatedSprite
  *   @return  The AnimatedSprite attached to this object
  */
-AnimatedSprite* GameObject::getAnimatedSprite()
+DynamicSprite* GameObject::getAnimatedSprite()
 {
   return sprite;
 }

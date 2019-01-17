@@ -22,22 +22,55 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(BUILD_SHARED_LIBS false)
 
 ## itch.io and gamedata settings ##
-set(GAMEDATA_FOLDER "Data")
+set(GAMEDATA_FOLDER "data")
 set(ITCHIO_USER     "")
 
 ## files used to build this game
 add_executable(
         ${PROJECT_NAME}
         main.cpp
-        Source/MyGame.cpp
-        Source/MyGame.h Source/GameObject.h Source/Geometry.h Source/Geometry.cpp Source/GameObject.cpp Source/AnimatedSprite.h Source/AnimatedSprite.cpp Source/SceneManager.h Source/SceneManager.cpp Source/TitleScene.h Source/Scene.h Source/TitleScene.cpp Source/Constants.h)
+        Source/PlannedObsolescence.cpp
+        Source/PlannedObsolescence.h
+        Source/Core/GameObject.h
+        Source/Core/Geometry.h
+        Source/Core/Geometry.cpp
+        Source/Core/GameObject.cpp
+        Source/Core/DynamicSprite.h
+        Source/Core/DynamicSprite.cpp
+        Source/Core/SceneManager.h
+        Source/Core/SceneManager.cpp
+        Source/Core/FileHandler.h
+        Source/Core/FileHandler.cpp
+        Source/Scenes/Scene.h
+        Source/Scenes/Splashscreen.h
+        Source/Scenes/Splashscreen.cpp
+        Source/Scenes/GameCore.h
+        Source/Scenes/GameCore.cpp
+        Source/Scenes/GameOver.h
+        Source/Scenes/GameOver.cpp
+        Source/Scenes/MainMenu.h
+        Source/Scenes/MainMenu.cpp
+        Source/Scenes/PauseMenu.h
+        Source/Scenes/PauseMenu.cpp
+        Source/Characters/Characters.h
+        Source/Characters/Characters.cpp
+        Source/Characters/Boss.h
+        Source/Characters/Boss.cpp
+        Source/Characters/Goon.h
+        Source/Characters/Goon.cpp
+        Source/Characters/LabTechnician.h
+        Source/Characters/LabTechnician.cpp
+        Source/Characters/Security.h
+        Source/Characters/Security.cpp
+        Source/Constants.h)
 
 ## library includes
 target_include_directories(
         ${PROJECT_NAME}
         SYSTEM
         PRIVATE
-        "${CMAKE_SOURCE_DIR}/Libs/ASGE/include")
+        "${CMAKE_SOURCE_DIR}/Libs/ASGE/include"
+        "${CMAKE_SOURCE_DIR}/Libs/nlohmann")
 
 ## compile language settings
 target_compile_features(

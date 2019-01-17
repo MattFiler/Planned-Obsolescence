@@ -1,23 +1,19 @@
-//
-// Created by tobyj on 15/01/2019.
-//
-
-#include "AnimatedSprite.h"
+#include "DynamicSprite.h"
 
 /**
  *   @brief   Creates an animated sprite with set size
  *   @details num_of_sprites is the number of contained ASGE::Sprite's
  */
-AnimatedSprite::AnimatedSprite(int num_of_sprites, bool auto_animate)
+DynamicSprite::DynamicSprite(int num_of_sprites, bool should_flipbook)
 {
   my_sprites = new ASGE::Sprite*[num_of_sprites];
-  auto_anim = auto_animate;
+  auto_anim = should_flipbook;
 }
 
 /**
  *   @brief   Default Deconstructor.
  */
-AnimatedSprite::~AnimatedSprite()
+DynamicSprite::~DynamicSprite()
 {
   if (my_sprites)
   {
@@ -40,7 +36,7 @@ AnimatedSprite::~AnimatedSprite()
  *            if this is the first sprite to be added
  *   @param	 Adress of new sprite
  */
-void AnimatedSprite::addSprite(ASGE::Sprite& new_sprite)
+void DynamicSprite::addSprite(ASGE::Sprite& new_sprite)
 {
   my_sprites[number_of_sprites] = &new_sprite;
   if (number_of_sprites == 0)
@@ -58,7 +54,7 @@ void AnimatedSprite::addSprite(ASGE::Sprite& new_sprite)
  *			 this should be in the displayed world position
  *   @return  The x position of sprite
  */
-float AnimatedSprite::xPos()
+float DynamicSprite::xPos()
 {
   return my_sprites[0]->xPos();
 }
@@ -69,7 +65,7 @@ float AnimatedSprite::xPos()
  *			 this should be in the displayed world position
  *   @return  The y position of sprite
  */
-float AnimatedSprite::yPos()
+float DynamicSprite::yPos()
 {
   return my_sprites[0]->yPos();
 }
@@ -79,7 +75,7 @@ float AnimatedSprite::yPos()
  *   @details Sets the x position of all attached sprites
  *   @param   The new x position for the sprite(s)
  */
-void AnimatedSprite::xPos(float new_x)
+void DynamicSprite::xPos(float new_x)
 {
   for (int i = 0; i < number_of_sprites; i++)
   {
@@ -92,7 +88,7 @@ void AnimatedSprite::xPos(float new_x)
  *   @details Sets the y position of all attached sprites
  *   @param  The new y position for the sprite(s)
  */
-void AnimatedSprite::yPos(float new_y)
+void DynamicSprite::yPos(float new_y)
 {
   for (int i = 0; i < number_of_sprites; i++)
   {
@@ -106,7 +102,7 @@ void AnimatedSprite::yPos(float new_y)
  *            of the displayed world
  *   @return  The sprites scale
  */
-float AnimatedSprite::scale()
+float DynamicSprite::scale()
 {
   return scale_factor;
 }
@@ -117,7 +113,7 @@ float AnimatedSprite::scale()
  *			 read only - use scale to alter size
  *   @return  The width of sprite
  */
-float AnimatedSprite::width()
+float DynamicSprite::width()
 {
   return sprite_width * scale_factor;
 }
@@ -128,7 +124,7 @@ float AnimatedSprite::width()
  *			 read only - use scale to alter size
  *   @return  The height of sprite
  */
-float AnimatedSprite::height()
+float DynamicSprite::height()
 {
   return sprite_height * scale_factor;
 }
@@ -140,7 +136,7 @@ float AnimatedSprite::height()
  *			 scaled to the scale of all contained sprites
  *   @param   The new scale for the sprite(s)
  */
-void AnimatedSprite::scale(float scale_amount)
+void DynamicSprite::scale(float scale_amount)
 {
   scale_factor = scale_amount;
   for (int i = 0; i < number_of_sprites; i++)
@@ -155,7 +151,7 @@ void AnimatedSprite::scale(float scale_amount)
  *			 this is the colour of tint applied when using fadeToColour
  *   @param   The new fade colour
  */
-void AnimatedSprite::setFadeColour(ASGE::Colour col)
+void DynamicSprite::setFadeColour(ASGE::Colour col)
 {
   fade_colour = col;
 }
@@ -168,7 +164,7 @@ void AnimatedSprite::setFadeColour(ASGE::Colour col)
  *   @param   delta_time is the time since last tick
  *   @param   inverse_fade will remove tint instead
  */
-bool AnimatedSprite::fadeToColour(double time_to_fade, double delta_time, bool inverse_fade)
+bool DynamicSprite::fadeToColour(double time_to_fade, double delta_time, bool inverse_fade)
 {
   if (inverse_fade)
   {
@@ -215,7 +211,7 @@ bool AnimatedSprite::fadeToColour(double time_to_fade, double delta_time, bool i
  *   @param   delta_time is time since last call
  *   @return  The next sprite of the animation
  */
-ASGE::Sprite& AnimatedSprite::returnNextSprite(double delta_time)
+ASGE::Sprite& DynamicSprite::returnNextSprite(double delta_time)
 {
   if (auto_anim)
   {
@@ -234,4 +230,4 @@ ASGE::Sprite& AnimatedSprite::returnNextSprite(double delta_time)
   return *my_sprites[current_sprite];
 }
 
-float AnimatedSprite::width_scale = 1;
+float DynamicSprite::width_scale = 1;

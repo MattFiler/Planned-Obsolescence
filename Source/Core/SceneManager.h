@@ -1,15 +1,12 @@
-//
-// Created by tobyj on 15/01/2019.
-//
-
-#ifndef PLANNEDOBSOLESCENCE_SCENEMANAGER_H
-#define PLANNEDOBSOLESCENCE_SCENEMANAGER_H
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <memory>
 
+#include "../Scenes/Scene.h"
 #include "Geometry.h"
-#include "Scene.h"
+
+#include <json.hpp>
+using json = nlohmann::json;
 
 namespace ASGE
 {
@@ -27,13 +24,14 @@ class SceneManager
   ~SceneManager();
 
   // Changes the active scene to the passed scene
-  bool loadCurrentScene(ASGE::Renderer* renderer, ASGE::Input* input);
+  bool loadCurrentScene(ASGE::Renderer* renderer, ASGE::Input* input, json core_config);
   int updateCurrentScene(double delta_time);
   void renderCurrentScene(double delta_time);
   void sceneKeyHandler(const ASGE::SharedEventData data);
   void sceneMouseHandler(const ASGE::SharedEventData data, Vector mouse_position);
 
   Scene* current_scene = nullptr;
-};
 
-#endif // PLANNEDOBSOLESCENCE_SCENEMANAGER_H
+  private:
+  void swapScene(Scene* new_scene);
+};

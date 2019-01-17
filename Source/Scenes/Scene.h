@@ -1,14 +1,15 @@
-//
-// Created by tobyj on 15/01/2019.
-//
+#ifndef PO_SCENE
+#define PO_SCENE
 
-#ifndef PLANNEDOBSOLESCENCE_SCENE_H
-#define PLANNEDOBSOLESCENCE_SCENE_H
-#include "Geometry.h"
-#include <Engine/Colours.h>
-#include <Engine/Input.h>
-#include <Engine/InputEvents.h>
+#include "../Core/Geometry.h"
+
+#include "../../Libs/ASGE/include/Engine/Colours.h"
+#include "../../Libs/ASGE/include/Engine/Input.h"
+#include "../../Libs/ASGE/include/Engine/InputEvents.h"
 #include <memory>
+
+#include "../../Libs/nlohmann/json.hpp"
+using json = nlohmann::json;
 
 namespace ASGE
 {
@@ -24,7 +25,7 @@ class Scene
   public:
   Scene() = default;
   virtual ~Scene() = default;
-  virtual bool load(ASGE::Renderer* renderer, ASGE::Input* input) = 0;
+  virtual bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) = 0;
   virtual int update(double delta_time) = 0;
   virtual void render(double delta_time) = 0;
   virtual void keyHandler(const ASGE::SharedEventData data) = 0;
@@ -35,4 +36,5 @@ class Scene
   ASGE::Colour clear_colour = ASGE::COLOURS::BLACK;
   ASGE::Renderer* rend = nullptr;
 };
-#endif // PLANNEDOBSOLESCENCE_SCENE_H
+
+#endif
