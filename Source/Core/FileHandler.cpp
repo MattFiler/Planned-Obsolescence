@@ -7,7 +7,8 @@ json FileHandler::openAsJSON(string filename)
   auto file = ASGE::FILEIO::File();
   file.open("data/" + filename);
   auto buffer = file.read();
-  if (buffer.length > 0) {
+  if (buffer.length > 0)
+  {
     stringstream(string(buffer.as_char(), buffer.length)) >> json_file;
   }
   return json_file;
