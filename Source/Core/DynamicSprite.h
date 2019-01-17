@@ -24,8 +24,8 @@ class DynamicSprite
   ~DynamicSprite();
 
   // TODO: Does your memory shallow copy correctly?
-  DynamicSprite(const DynamicSprite&){};
-  DynamicSprite& operator=(const DynamicSprite&) { return *this; }
+  DynamicSprite(const DynamicSprite&) = delete;
+  DynamicSprite& operator=(const DynamicSprite&) = delete;
 
   void xPos(float new_x);
   float xPos();
