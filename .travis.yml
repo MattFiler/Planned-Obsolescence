@@ -35,7 +35,7 @@ matrix:
         - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
       script:
         - ./run-clang-format.py -r Source
-        - /usr/bin/cppcheck --quiet --enable=all --std=c++14 --language=c++ --error-exitcode=1 --inline-suppr --force --suppressions-list=./Tools/Cppcheck/suppress.conf main.cpp Source/*
+        - /usr/bin/cppcheck --quiet --enable=all --std=c++14 --language=c++ --error-exitcode=1 --inline-suppr --suppressions-list=./Tools/Cppcheck/suppress.conf main.cpp Source/*
         - cmake --build .
 
     - os: osx
