@@ -50,15 +50,6 @@ void GameOver::mouseHandler(const ASGE::SharedEventData data, Vector mouse_posit
  */
 int GameOver::update(double delta_time)
 {
-  switch (switch_fade)
-  {
-    case 0:
-    {
-      break;
-    }
-    default:
-      break;
-  }
   return next_scene;
 }
 

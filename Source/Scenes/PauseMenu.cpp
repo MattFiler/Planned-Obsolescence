@@ -50,15 +50,6 @@ void PauseMenu::mouseHandler(const ASGE::SharedEventData data, Vector mouse_posi
  */
 int PauseMenu::update(double delta_time)
 {
-  switch (switch_fade)
-  {
-    case 0:
-    {
-      break;
-    }
-    default:
-      break;
-  }
   return next_scene;
 }
 

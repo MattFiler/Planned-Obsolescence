@@ -50,15 +50,6 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Vector mouse_posit
  */
 int GameCore::update(double delta_time)
 {
-  switch (switch_fade)
-  {
-    case 0:
-    {
-      break;
-    }
-    default:
-      break;
-  }
   return next_scene;
 }
 
@@ -69,5 +60,5 @@ int GameCore::update(double delta_time)
  */
 void GameCore::render(double delta_time)
 {
-
+  rend->renderText("THE GAME", 100, 100, ASGE::COLOURS::RED);
 }

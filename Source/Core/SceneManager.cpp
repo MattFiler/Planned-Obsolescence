@@ -62,18 +62,21 @@ int SceneManager::updateCurrentScene(double delta_time)
 {
   switch (current_scene->update(delta_time))
   {
-    // If the scene returns -2, then signal to exit
-    case -2:
-      return -1;
-      break;
-      // If the scene returns -1, then no change
+    // Scene -1 signifies no change
     case -1:
       return 0;
-      break;
     case 0:
-      delete current_scene;
-      current_scene = new Splashscreen;
+      swapScene(new Splashscreen);
       break;
+    case 1:
+      swapScene(new MainMenu);
+      break;
+    case 2:
+      swapScene(new GameCore);
+      break;
+    // Anything else is unhandled, and we will signal to exit.
+    default:
+      return -1;
   }
   return 1;
 }
@@ -87,4 +90,11 @@ int SceneManager::updateCurrentScene(double delta_time)
 void SceneManager::renderCurrentScene(double delta_time)
 {
   current_scene->render(delta_time);
+}
+
+// Swap the current scene
+void SceneManager::swapScene(Scene* new_scene)
+{
+  delete current_scene;
+  current_scene = new_scene;
 }

@@ -25,8 +25,10 @@ bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
  */
 void MainMenu::keyHandler(const ASGE::SharedEventData data)
 {
-  //auto key = static_cast<const ASGE::KeyEvent*>(data.get());
-
+  auto key = static_cast<const ASGE::KeyEvent*>(data.get());
+  if (key->key) {
+    next_scene=2;
+  }
 }
 
 /**
@@ -50,15 +52,6 @@ void MainMenu::mouseHandler(const ASGE::SharedEventData data, Vector mouse_posit
  */
 int MainMenu::update(double delta_time)
 {
-  switch (switch_fade)
-  {
-    case 0:
-    {
-      break;
-    }
-    default:
-      break;
-  }
   return next_scene;
 }
 
@@ -69,5 +62,5 @@ int MainMenu::update(double delta_time)
  */
 void MainMenu::render(double delta_time)
 {
-
+  rend->renderText("PRESS ENTER TO CONTINUE TO GAME", 100, 100, ASGE::COLOURS::RED);
 }

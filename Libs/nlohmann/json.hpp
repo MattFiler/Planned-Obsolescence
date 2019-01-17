@@ -6998,7 +6998,7 @@ class binary_reader
             case 0x9B: // array (eight-byte uint64_t for n follow)
             {
                 uint64_t len;
-                return get_number(input_format_t::cbor, len) and get_cbor_array(static_cast<std::size_t>(len));
+                return get_number(input_format_t::cbor, len) and get_cbor_array(len); // MFILER-170119 - swapped from static_cast<std::size_t>(len)
             }
 
             case 0x9F: // array (indefinite length)
@@ -7052,7 +7052,7 @@ class binary_reader
             case 0xBB: // map (eight-byte uint64_t for n follow)
             {
                 uint64_t len;
-                return get_number(input_format_t::cbor, len) and get_cbor_object(static_cast<std::size_t>(len));
+                return get_number(input_format_t::cbor, len) and get_cbor_object(len); // MFILER-170119 - swapped from static_cast<std::size_t>(len)
             }
 
             case 0xBF: // map (indefinite length)

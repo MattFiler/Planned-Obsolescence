@@ -1,14 +1,14 @@
 #ifndef PO_SCENE
 #define PO_SCENE
 
-#include "Geometry.h"
+#include "../Core/Geometry.h"
 
-#include <Engine/Colours.h>
-#include <Engine/Input.h>
-#include <Engine/InputEvents.h>
+#include "../../Libs/ASGE/include/Engine/Colours.h"
+#include "../../Libs/ASGE/include/Engine/Input.h"
+#include "../../Libs/ASGE/include/Engine/InputEvents.h"
 #include <memory>
 
-#include <json.hpp>
+#include "../../Libs/nlohmann/json.hpp"
 using json = nlohmann::json;
 
 namespace ASGE

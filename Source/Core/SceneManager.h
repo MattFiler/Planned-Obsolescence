@@ -3,7 +3,7 @@
 #include <memory>
 
 #include "Geometry.h"
-#include "Scene.h"
+#include "../Scenes/Scene.h"
 
 #include <json.hpp>
 using json = nlohmann::json;
@@ -31,4 +31,7 @@ class SceneManager
     void sceneMouseHandler(const ASGE::SharedEventData data, Vector mouse_position);
 
     Scene* current_scene = nullptr;
+
+ private:
+  void swapScene(Scene* new_scene);
 };

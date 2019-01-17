@@ -45,8 +45,7 @@ void Splashscreen::keyHandler(const ASGE::SharedEventData data)
   auto key = static_cast<const ASGE::KeyEvent*>(data.get());
   if (key->key)
   {
-    // use any keypress to skip title scene
-    // next_scene = 1;
+    next_scene = 1;
   }
 }
 
@@ -87,8 +86,7 @@ int Splashscreen::update(double delta_time)
         // Fades the logo out
         if (po_logo_fg->getAnimatedSprite()->fadeToColour(500, delta_time, true))
         {
-          // setting next_scene here will switch to the scene when returning
-          // next_scene = 1;
+          next_scene = 1;
         }
       }
       break;

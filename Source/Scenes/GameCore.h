@@ -1,6 +1,6 @@
 #include "../Core/DynamicSprite.h"
 #include "../Core/GameObject.h"
-#include "../Core/Scene.h"
+#include "Scene.h"
 
 namespace ASGE
 {
@@ -22,5 +22,5 @@ class GameCore : public Scene
     void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) override;
 
   private:
-    int switch_fade = 0;
+
 };
