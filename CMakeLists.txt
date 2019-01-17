@@ -38,22 +38,37 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(BUILD_SHARED_LIBS false)
 
 ## itch.io and gamedata settings ##
-set(GAMEDATA_FOLDER "Data")
+set(GAMEDATA_FOLDER "data")
 set(ITCHIO_USER     "")
 
 ## files used to build this game
 add_executable(
         ${PROJECT_NAME}
         main.cpp
-        Source/MyGame.cpp
-        Source/MyGame.h Source/GameObject.h Source/Geometry.h Source/Geometry.cpp Source/GameObject.cpp Source/AnimatedSprite.h Source/AnimatedSprite.cpp Source/SceneManager.h Source/SceneManager.cpp Source/TitleScene.h Source/Scene.h Source/TitleScene.cpp Source/Constants.h)
+        Source/PlannedObsolescence.cpp
+        Source/PlannedObsolescence.h
+        Source/Core/GameObject.h
+        Source/Core/Geometry.h
+        Source/Core/Geometry.cpp
+        Source/Core/GameObject.cpp
+        Source/Core/AnimatedSprite.h
+        Source/Core/AnimatedSprite.cpp
+        Source/Core/SceneManager.h
+        Source/Core/SceneManager.cpp
+        Source/Core/FileHandler.h
+        Source/Core/FileHandler.cpp
+        Source/Core/Scene.h
+        Source/Scenes/TitleScene.h
+        Source/Scenes/TitleScene.cpp
+        Source/Constants.h)
 
 ## library includes
 target_include_directories(
         ${PROJECT_NAME}
         SYSTEM
         PRIVATE
-        "${CMAKE_SOURCE_DIR}/Libs/ASGE/include")
+        "${CMAKE_SOURCE_DIR}/Libs/ASGE/include"
+        "${CMAKE_SOURCE_DIR}/Libs/nlohmann")
 
 ## compile language settings
 target_compile_features(

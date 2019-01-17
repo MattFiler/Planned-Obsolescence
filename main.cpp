@@ -1,8 +1,8 @@
-#include "Source/MyGame.h"
+#include "Source/PlannedObsolescence.h"
 #include <iostream>
 int main()
 {
-  MyGame game;
+  PlannedObsolescence game;
   if (!game.init())
   {
     return -1;

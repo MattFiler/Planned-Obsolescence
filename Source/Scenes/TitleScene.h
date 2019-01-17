@@ -4,9 +4,9 @@
 
 #ifndef PLANNEDOBSOLESCENCE_TITLESCENE_H
 #define PLANNEDOBSOLESCENCE_TITLESCENE_H
-#include "AnimatedSprite.h"
-#include "GameObject.h"
-#include "Scene.h"
+#include "../Core/AnimatedSprite.h"
+#include "../Core/GameObject.h"
+#include "../Core/Scene.h"
 
 namespace ASGE
 {

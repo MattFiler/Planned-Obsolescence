@@ -5,9 +5,9 @@
 #ifndef PLANNEDOBSOLESCENCE_SCENE_H
 #define PLANNEDOBSOLESCENCE_SCENE_H
 #include "Geometry.h"
-#include <Engine/Colours.h>
-#include <Engine/Input.h>
-#include <Engine/InputEvents.h>
+#include "../../Libs/ASGE/include/Engine/Colours.h"
+#include "../../Libs/ASGE/include/Engine/Input.h"
+#include "../../Libs/ASGE/include/Engine/InputEvents.h"
 #include <memory>
 
 namespace ASGE

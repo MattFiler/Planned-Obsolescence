@@ -3,8 +3,8 @@
 //
 
 #include "TitleScene.h"
-#include "AnimatedSprite.h"
-#include "Constants.h"
+#include "../Core/AnimatedSprite.h"
+#include "../Constants.h"
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
@@ -22,7 +22,7 @@ bool TitleScene::load(ASGE::Renderer* renderer, ASGE::Input* input)
   asge_logo = new GameObject();
   uwe_logo = new GameObject();
   ASGE::Sprite* new_sprite = renderer->createRawSprite();
-  if (!new_sprite->loadTexture("ASGELogo.png"))
+  if (!new_sprite->loadTexture("data/SPLASHSCREENS/ASGELogo.png"))
   {
     return false;
   }
@@ -36,7 +36,7 @@ bool TitleScene::load(ASGE::Renderer* renderer, ASGE::Input* input)
   asge_logo->CenterSpriteOnPoint(BASE_WIDTH / 2, (BASE_HEIGHT / 2));
 
   new_sprite = renderer->createRawSprite();
-  if (!new_sprite->loadTexture("UWELogo.png"))
+  if (!new_sprite->loadTexture("data/SPLASHSCREENS/UWELogo.png"))
   {
     return false;
   }

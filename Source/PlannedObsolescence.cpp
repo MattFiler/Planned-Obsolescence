@@ -8,10 +8,10 @@
 #include <Engine/Sprite.h>
 
 #include "Constants.h"
-#include "MyGame.h"
-#include "TitleScene.h"
+#include "PlannedObsolescence.h"
+#include "Scenes/TitleScene.h"
 
-MyGame::~MyGame()
+PlannedObsolescence::~PlannedObsolescence()
 {
   if (scene_manager)
   {
@@ -20,27 +20,39 @@ MyGame::~MyGame()
   }
 }
 
-bool MyGame::init()
+bool PlannedObsolescence::init()
 {
+  // Load core configurations
+  core_config = file_handler.openAsJSON("CONFIGS/game_core.json");
+
+  // Configure resolution and game title
   setupResolution();
   game_name = "Planned Obsolescence";
 
+  // Initialise the engine
   if (!initAPI())
   {
     return false;
   }
 
-  toggleFPS();
+  // Display debug data if requested
+  if (core_config["debug_enabled"])
+  {
+    toggleFPS();
+  }
 
-  // input handling functions
+  // Disable input threading
   inputs->use_threads = false;
 
-  key_callback_id = inputs->addCallbackFnc(ASGE::E_KEY, &MyGame::keyHandler, this);
+  // Assign input callbacks
+  key_callback_id = inputs->addCallbackFnc(ASGE::E_KEY, &PlannedObsolescence::keyHandler, this);
+  mouse_callback_id =
+    inputs->addCallbackFnc(ASGE::E_MOUSE_CLICK, &PlannedObsolescence::clickHandler, this);
 
-  mouse_callback_id = inputs->addCallbackFnc(ASGE::E_MOUSE_CLICK, &MyGame::clickHandler, this);
-
+  // Initialise the scene manager
   scene_manager = new SceneManager();
 
+  // Start out on the splashscreen scene
   scene_manager->current_scene = new TitleScene();
   return scene_manager->loadCurrentScene(renderer.get(), inputs.get());
 }
@@ -51,16 +63,12 @@ bool MyGame::init()
  *            factor for AnimatedSprite
  *   @return  void
  */
-void MyGame::setupResolution()
+void PlannedObsolescence::setupResolution()
 {
-  // Here you could load the resolution from file, but since it used the old
-  // file system I haven't copied across what I did for angry birds,
-  // so im just going to put it as a set resolution for now
-
   AnimatedSprite::width_scale = 1;
 
-  game_width = BASE_WIDTH;
-  game_height = BASE_HEIGHT;
+  game_width = core_config["resolution"]["width"];
+  game_height = core_config["resolution"]["height"];
 }
 
 /**
@@ -73,7 +81,7 @@ void MyGame::setupResolution()
  *   @see     KeyEvent
  *   @return  void
  */
-void MyGame::keyHandler(const ASGE::SharedEventData data)
+void PlannedObsolescence::keyHandler(const ASGE::SharedEventData data)
 {
   scene_manager->sceneKeyHandler(data);
 }
@@ -88,7 +96,7 @@ void MyGame::keyHandler(const ASGE::SharedEventData data)
  *   @see     ClickEvent
  *   @return  void
  */
-void MyGame::clickHandler(const ASGE::SharedEventData data)
+void PlannedObsolescence::clickHandler(const ASGE::SharedEventData data)
 {
   double x_pos, y_pos;
   inputs->getCursorPos(x_pos, y_pos);
@@ -103,7 +111,7 @@ void MyGame::clickHandler(const ASGE::SharedEventData data)
  *            the buffers are swapped accordingly and the image shown.
  *   @return  void
  */
-void MyGame::update(const ASGE::GameTime& game_time)
+void PlannedObsolescence::update(const ASGE::GameTime& game_time)
 {
   int num = scene_manager->updateCurrentScene(game_time.delta_time.count());
   if (num == 1)
@@ -126,7 +134,7 @@ void MyGame::update(const ASGE::GameTime& game_time)
  *            swapped accordingly and the image shown.
  *   @return  void
  */
-void MyGame::render(const ASGE::GameTime& game_time)
+void PlannedObsolescence::render(const ASGE::GameTime& game_time)
 {
   scene_manager->renderCurrentScene(game_time.delta_time.count());
 }
