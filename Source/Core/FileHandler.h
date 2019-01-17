@@ -2,13 +2,11 @@
 #include <json.hpp>
 #include <sstream>
 #include <string>
-
-using namespace std;
 using json = nlohmann::json;
 
 class FileHandler
 {
   public:
-  json openAsJSON(string filename);
-  string openAsString(string filename);
+  json openAsJSON(std::string& filename);
+  std::string openAsString(std::string& filename);
 };

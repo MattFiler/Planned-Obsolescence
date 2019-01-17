@@ -44,7 +44,7 @@ bool GameObject::shouldDestroy()
  *   @brief   Setter for name
  *   @param   New name for this object
  */
-void GameObject::setName(std::string new_name)
+void GameObject::setName(std::string& new_name)
 {
   name = new_name;
 }

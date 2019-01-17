@@ -23,6 +23,10 @@ class DynamicSprite
   DynamicSprite(int num_of_sprites = 1, bool should_flipbook = true);
   ~DynamicSprite();
 
+  // TODO: Does your memory shallow copy correctly?
+  DynamicSprite(const DynamicSprite&){};
+  DynamicSprite& operator=(const DynamicSprite&) { return *this; }
+
   void xPos(float new_x);
   float xPos();
   void yPos(float new_y);
