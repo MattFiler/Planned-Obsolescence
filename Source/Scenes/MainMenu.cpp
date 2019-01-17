@@ -38,11 +38,7 @@ void MainMenu::keyHandler(const ASGE::SharedEventData data)
  *            the game state / variables etc depending
  *   @param   data is the event, mouse_position the position of the cursor
  */
-void MainMenu::mouseHandler(const ASGE::SharedEventData data, Vector mouse_position)
-{
-  // auto click = static_cast<const ASGE::ClickEvent*>(data.get());
-
-}
+void MainMenu::mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) {}
 
 /**
  *   @brief   Updates all variables for this scene

@@ -23,11 +23,7 @@ bool PauseMenu::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_con
  *   @details the game state / variables etc depending
  *   @param   data is the event
  */
-void PauseMenu::keyHandler(const ASGE::SharedEventData data)
-{
-  // auto key = static_cast<const ASGE::KeyEvent*>(data.get());
-
-}
+void PauseMenu::keyHandler(const ASGE::SharedEventData data) {}
 
 /**
  *   @brief   Changes game state based on mouse inputs
@@ -35,11 +31,7 @@ void PauseMenu::keyHandler(const ASGE::SharedEventData data)
  *            the game state / variables etc depending
  *   @param   data is the event, mouse_position the position of the cursor
  */
-void PauseMenu::mouseHandler(const ASGE::SharedEventData data, Vector mouse_position)
-{
-  // auto click = static_cast<const ASGE::ClickEvent*>(data.get());
-
-}
+void PauseMenu::mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) {}
 
 /**
  *   @brief   Updates all variables for this scene

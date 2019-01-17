@@ -30,7 +30,7 @@ bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_
   po_logo_fg->setAnimatedSprite(anim_sprite);
   po_logo_fg->scaleToHeight(core_config["resolution"]["height"].get<float>() / 2);
   po_logo_fg->CenterSpriteOnPoint(core_config["resolution"]["width"].get<float>() / 2,
-                                 (core_config["resolution"]["height"].get<float>() / 2));
+                                  (core_config["resolution"]["height"].get<float>() / 2));
 
   return true;
 }
