@@ -44,4 +44,4 @@ namespace ASGE
 		constexpr int MOUSE_BTN4 = 3;       /**< Mouse Button 4. */
 		constexpr int MOUSE_BTN5 = 4;       /**< Mouse Button 5. */
 	}
-};
+}
