@@ -1,4 +1,4 @@
-#include "../Core/AnimatedSprite.h"
+#include "../Core/DynamicSprite.h"
 #include "../Core/GameObject.h"
 #include "../Core/Scene.h"
 

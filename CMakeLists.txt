@@ -51,8 +51,8 @@ add_executable(
         Source/Core/Geometry.h
         Source/Core/Geometry.cpp
         Source/Core/GameObject.cpp
-        Source/Core/AnimatedSprite.h
-        Source/Core/AnimatedSprite.cpp
+        Source/Core/DynamicSprite.h
+        Source/Core/DynamicSprite.cpp
         Source/Core/SceneManager.h
         Source/Core/SceneManager.cpp
         Source/Core/FileHandler.h
@@ -68,6 +68,16 @@ add_executable(
         Source/Scenes/MainMenu.cpp
         Source/Scenes/PauseMenu.h
         Source/Scenes/PauseMenu.cpp
+        Source/Characters/Characters.h
+        Source/Characters/Characters.cpp
+        Source/Characters/Boss.h
+        Source/Characters/Boss.cpp
+        Source/Characters/Goon.h
+        Source/Characters/Goon.cpp
+        Source/Characters/LabTechnician.h
+        Source/Characters/LabTechnician.cpp
+        Source/Characters/Security.h
+        Source/Characters/Security.cpp
         Source/Constants.h)
 
 ## library includes

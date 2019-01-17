@@ -65,7 +65,7 @@ bool PlannedObsolescence::init()
  */
 void PlannedObsolescence::setupResolution()
 {
-  AnimatedSprite::width_scale = 1;
+  DynamicSprite::width_scale = 1;
 
   game_width = core_config["resolution"]["width"];
   game_height = core_config["resolution"]["height"];

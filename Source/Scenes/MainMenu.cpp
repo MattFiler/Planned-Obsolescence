@@ -1,5 +1,5 @@
 #include "MainMenu.h"
-#include "../Core/AnimatedSprite.h"
+#include "../Core/DynamicSprite.h"
 #include "../Constants.h"
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>

@@ -1,5 +1,5 @@
 #include "Splashscreen.h"
-#include "../Core/AnimatedSprite.h"
+#include "../Core/DynamicSprite.h"
 #include "../Constants.h"
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
@@ -23,7 +23,7 @@ bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_
   }
   pos_logo_fg_sprite->colour(ASGE::COLOURS::BLACK);
 
-  auto* anim_sprite = new AnimatedSprite(2);
+  auto* anim_sprite = new DynamicSprite(2);
   anim_sprite->addSprite(*pos_logo_fg_sprite);
 
   anim_sprite->setFadeColour(ASGE::COLOURS::WHITE);

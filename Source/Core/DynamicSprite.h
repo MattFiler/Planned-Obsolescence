@@ -17,11 +17,11 @@
  *  Position is automatically updated with the GameObjects position that
  *  this is attached to.
  */
-class AnimatedSprite
+class DynamicSprite
 {
   public:
-    AnimatedSprite(int num_of_sprites, bool auto_animate = true);
-    ~AnimatedSprite();
+    DynamicSprite(int num_of_sprites = 1, bool should_flipbook = true);
+    ~DynamicSprite();
 
     void xPos(float new_x);
     float xPos();

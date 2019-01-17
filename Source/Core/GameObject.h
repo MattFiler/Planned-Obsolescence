@@ -1,7 +1,7 @@
 #ifndef PO_GAMEOBJECT
 #define PO_GAMEOBJECT
 
-#include "AnimatedSprite.h"
+#include "DynamicSprite.h"
 #include "Geometry.h"
 
 /**
@@ -31,8 +31,8 @@ class GameObject
     void scaleToWidth(float target_width);
     void scaleToHeight(float target_height);
 
-    void setAnimatedSprite(AnimatedSprite* new_sprite);
-    AnimatedSprite* getAnimatedSprite();
+    void setAnimatedSprite(DynamicSprite* new_sprite);
+    DynamicSprite* getAnimatedSprite();
 
   protected:
     bool should_destroy = false; /**<  Flag to see if the main scene should destroy this object */
@@ -44,7 +44,7 @@ class GameObject
     float height = 0;
     float scale = 0;
 
-    AnimatedSprite* sprite = nullptr;
+    DynamicSprite* sprite = nullptr;
 };
 
 #endif

@@ -1,4 +1,4 @@
-#include "Core/AnimatedSprite.h"
+#include "Core/DynamicSprite.h"
 #include "Core/FileHandler.h"
 #include "Core/SceneManager.h"
 #include <Engine/OGLGame.h>
