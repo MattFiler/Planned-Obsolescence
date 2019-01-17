@@ -1,3 +1,6 @@
+#ifndef PO_GAMEOBJECT
+#define PO_GAMEOBJECT
+
 #include "AnimatedSprite.h"
 #include "Geometry.h"
 
@@ -43,3 +46,5 @@ class GameObject
 
     AnimatedSprite* sprite = nullptr;
 };
+
+#endif

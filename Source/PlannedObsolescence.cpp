@@ -9,7 +9,7 @@
 
 #include "Constants.h"
 #include "PlannedObsolescence.h"
-#include "Scenes/TitleScene.h"
+#include "Scenes/Splashscreen.h"
 
 PlannedObsolescence::~PlannedObsolescence()
 {
@@ -53,7 +53,7 @@ bool PlannedObsolescence::init()
   scene_manager = new SceneManager();
 
   // Start out on the splashscreen scene
-  scene_manager->current_scene = new TitleScene();
+  scene_manager->current_scene = new Splashscreen();
   return scene_manager->loadCurrentScene(renderer.get(), inputs.get(), core_config);
 }
 

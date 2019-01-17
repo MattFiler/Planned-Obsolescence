@@ -1,5 +1,9 @@
 #include "SceneManager.h"
-#include "../Scenes/TitleScene.h"
+#include "../Scenes/Splashscreen.h"
+#include "../Scenes/GameCore.h"
+#include "../Scenes/GameOver.h"
+#include "../Scenes/MainMenu.h"
+#include "../Scenes/PauseMenu.h"
 
 /**
  *   @brief   Constructor
@@ -68,7 +72,7 @@ int SceneManager::updateCurrentScene(double delta_time)
       break;
     case 0:
       delete current_scene;
-      current_scene = new TitleScene;
+      current_scene = new Splashscreen;
       break;
   }
   return 1;

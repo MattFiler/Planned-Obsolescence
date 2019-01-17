@@ -58,8 +58,16 @@ add_executable(
         Source/Core/FileHandler.h
         Source/Core/FileHandler.cpp
         Source/Core/Scene.h
-        Source/Scenes/TitleScene.h
-        Source/Scenes/TitleScene.cpp
+        Source/Scenes/Splashscreen.h
+        Source/Scenes/Splashscreen.cpp
+        Source/Scenes/GameCore.h
+        Source/Scenes/GameCore.cpp
+        Source/Scenes/GameOver.h
+        Source/Scenes/GameOver.cpp
+        Source/Scenes/MainMenu.h
+        Source/Scenes/MainMenu.cpp
+        Source/Scenes/PauseMenu.h
+        Source/Scenes/PauseMenu.cpp
         Source/Constants.h)
 
 ## library includes

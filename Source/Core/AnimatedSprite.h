@@ -50,8 +50,8 @@ class AnimatedSprite
     bool auto_anim = false;
     int number_of_sprites = 0;
     int current_sprite = 0;
-    ASGE::Colour fade_colour = ASGE::COLOURS::WHITE;
 
+    ASGE::Colour fade_colour = ASGE::COLOURS::WHITE;
     ASGE::Sprite** my_sprites = nullptr;
 };
 
