@@ -1,23 +1,19 @@
 #include "CharacterManager.h"
 
+/* Deallocate memory */
 CharacterManager::~CharacterManager()
 {
-  if (bosses)
-  {
-    delete bosses;
-  }
-  if (goons)
-  {
-    delete goons;
-  }
-  if (techies)
-  {
-    delete techies;
-  }
-  if (guards)
-  {
-    delete guards;
-  }
+  delete bosses;
+  bosses = nullptr;
+
+  delete goons;
+  goons = nullptr;
+
+  delete techies;
+  techies = nullptr;
+
+  delete guards;
+  guards = nullptr;
 }
 
 /* Spawn a boss */
