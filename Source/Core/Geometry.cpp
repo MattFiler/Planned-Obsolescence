@@ -157,17 +157,11 @@ bool Line::intersects(Line line, Point& point)
         return true;
       }
       // And don't if they're parallel
-      else
-      {
-        return false;
-      }
+      return false;
     }
-    else
-    {
-      point.x = y;
-      point.y = (line.m * y) + line.c;
-      return true;
-    }
+    point.x = y;
+    point.y = (line.m * y) + line.c;
+    return true;
   }
   else if (line.verticle_line)
   {

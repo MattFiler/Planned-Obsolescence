@@ -1,6 +1,8 @@
-#include "Characters.h"
+#include "Character.h"
 
-class LabTechnician : Characters
+class LabTechnician : public Character
 {
-  // Unused at the moment
+  public:
+  LabTechnician();
+  ~LabTechnician() = default;
 };

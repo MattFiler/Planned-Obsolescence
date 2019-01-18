@@ -41,6 +41,8 @@ add_executable(
         Source/Core/SceneManager.cpp
         Source/Core/FileHandler.h
         Source/Core/FileHandler.cpp
+        Source/Core/CharacterManager.h
+        Source/Core/CharacterManager.cpp
         Source/Scenes/Scene.h
         Source/Scenes/Splashscreen.h
         Source/Scenes/Splashscreen.cpp
@@ -52,8 +54,8 @@ add_executable(
         Source/Scenes/MainMenu.cpp
         Source/Scenes/PauseMenu.h
         Source/Scenes/PauseMenu.cpp
-        Source/Characters/Characters.h
-        Source/Characters/Characters.cpp
+        Source/Characters/Character.h
+        Source/Characters/Character.cpp
         Source/Characters/Boss.h
         Source/Characters/Boss.cpp
         Source/Characters/Goon.h

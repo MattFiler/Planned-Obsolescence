@@ -15,11 +15,8 @@ GameObject::GameObject() {}
  */
 GameObject::~GameObject()
 {
-  if (sprite)
-  {
-    delete sprite;
-    sprite = nullptr;
-  }
+  delete sprite;
+  sprite = nullptr;
 }
 
 /**

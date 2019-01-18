@@ -1,6 +1,8 @@
-#include "Characters.h"
+#include "Character.h"
 
-class Boss : Characters
+class Boss : public Character
 {
-  // Unused at the moment
+  public:
+  Boss();
+  ~Boss() = default;
 };

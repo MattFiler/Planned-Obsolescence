@@ -14,6 +14,11 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
+
+  Boss new_boss;
+  new_boss.wake(renderer);
+  character_manager.spawnBoss(new_boss);
+
   return true;
 }
 
@@ -53,4 +58,6 @@ int GameCore::update(double delta_time)
 void GameCore::render(double delta_time)
 {
   rend->renderText("THE GAME", 100, 100, ASGE::COLOURS::RED);
+
+  character_manager.renderAll(delta_time, rend);
 }

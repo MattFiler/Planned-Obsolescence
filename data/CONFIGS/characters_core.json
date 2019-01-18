@@ -1,0 +1,31 @@
+{
+	"DEFAULT": {
+		"sprite": "data/CHARACTERS/DEFAULT/placeholder.png",
+		"width": 50,
+		"height": 50,
+		"is_visible": true,
+		
+		"spawn_pos": [0,0],
+		"spawn_cap": 10,
+		
+		"movement_speed": 5,
+		"max_health": 100,
+		
+		"suspicion": 0,
+		"stress": 0,
+		"productivity": 100,
+		"faith": 100
+	},
+	"GUARD": {
+		"sprite": "data/CHARACTERS/GUARD/placeholder.png"
+	},
+	"GOON": {
+		"sprite": "data/CHARACTERS/GOON/placeholder.png"
+	},
+	"BOSS": {
+		"sprite": "data/CHARACTERS/BOSS/placeholder.png"
+	},
+	"TECH": {
+		"sprite": "data/CHARACTERS/TECH/placeholder.png"
+	}
+}
