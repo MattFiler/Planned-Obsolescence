@@ -31,8 +31,10 @@ void Character::updateCoreConfig(std::string character_type)
 
   // If not, continue to override the selected character's details.
   temp_config = temp_config[character_type];
-  for (json::iterator i = temp_config.begin(); i != temp_config.end(); ++i) {
-    if (!temp_config[i.key()].is_null()) {
+  for (json::iterator i = temp_config.begin(); i != temp_config.end(); ++i)
+  {
+    if (!temp_config[i.key()].is_null())
+    {
       character_config[i.key()] = i.value();
     }
   }

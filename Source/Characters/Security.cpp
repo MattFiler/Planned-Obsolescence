@@ -1,5 +1,6 @@
 #include "Security.h"
 
-Security::Security() {
+Security::Security()
+{
   updateCoreConfig("GUARD");
 }

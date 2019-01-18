@@ -1,5 +1,6 @@
 #include "Goon.h"
 
-Goon::Goon() {
+Goon::Goon()
+{
   updateCoreConfig("GOON");
 }

@@ -2,7 +2,7 @@
 
 class Security : public Character
 {
- public:
+  public:
   Security();
   ~Security() = default;
 };

@@ -3,19 +3,20 @@
 #include "../Characters/LabTechnician.h"
 #include "../Characters/Security.h"
 
-class CharacterManager {
- public:
-  CharacterManager();
-  ~CharacterManager() = default;
+class CharacterManager
+{
+  public:
+  CharacterManager() = default;
+  ~CharacterManager();
 
-  bool spawnBoss(Boss &new_boss);
-  bool spawnGoon(Goon &new_goon);
-  bool spawnTechnician(LabTechnician &new_techie);
-  bool spawnGuard(Security &new_guard);
+  bool spawnBoss(Boss& new_boss);
+  bool spawnGoon(Goon& new_goon);
+  bool spawnTechnician(LabTechnician& new_techie);
+  bool spawnGuard(Security& new_guard);
 
   void renderAll(double delta_time, ASGE::Renderer* renderer);
 
- private:
+  private:
   void renderBosses(double delta_time, ASGE::Renderer* renderer);
   void renderGoons(double delta_time, ASGE::Renderer* renderer);
   void renderTechnicians(double delta_time, ASGE::Renderer* renderer);

@@ -1,12 +1,27 @@
 #include "CharacterManager.h"
 
-CharacterManager::CharacterManager()
+CharacterManager::~CharacterManager()
 {
-
+  if (bosses)
+  {
+    delete bosses;
+  }
+  if (goons)
+  {
+    delete goons;
+  }
+  if (techies)
+  {
+    delete techies;
+  }
+  if (guards)
+  {
+    delete guards;
+  }
 }
 
 /* Spawn a boss */
-bool CharacterManager::spawnBoss(Boss &new_boss)
+bool CharacterManager::spawnBoss(Boss& new_boss)
 {
   // Set up our array length
   if (bosses == nullptr)
@@ -27,7 +42,7 @@ bool CharacterManager::spawnBoss(Boss &new_boss)
 }
 
 /* Spawn a goon */
-bool CharacterManager::spawnGoon(Goon &new_goon)
+bool CharacterManager::spawnGoon(Goon& new_goon)
 {
   // Set up our array length
   if (goons == nullptr)
@@ -48,7 +63,7 @@ bool CharacterManager::spawnGoon(Goon &new_goon)
 }
 
 /* Spawn a technician */
-bool CharacterManager::spawnTechnician(LabTechnician &new_techie)
+bool CharacterManager::spawnTechnician(LabTechnician& new_techie)
 {
   // Set up our array length
   if (techies == nullptr)
@@ -69,7 +84,7 @@ bool CharacterManager::spawnTechnician(LabTechnician &new_techie)
 }
 
 /* Spawn a security guard */
-bool CharacterManager::spawnGuard(Security &new_guard)
+bool CharacterManager::spawnGuard(Security& new_guard)
 {
   // Set up our array length
   if (guards == nullptr)
@@ -105,8 +120,7 @@ void CharacterManager::renderBosses(double delta_time, ASGE::Renderer* renderer)
   {
     if (bosses[i].isVisible())
     {
-      renderer->renderSprite(bosses[i].getSprite()
-                                      ->returnNextSprite(delta_time));
+      renderer->renderSprite(bosses[i].getSprite()->returnNextSprite(delta_time));
     }
   }
 }
@@ -118,8 +132,7 @@ void CharacterManager::renderGoons(double delta_time, ASGE::Renderer* renderer)
   {
     if (goons[i].isVisible())
     {
-      renderer->renderSprite(goons[i].getSprite()
-                                     ->returnNextSprite(delta_time));
+      renderer->renderSprite(goons[i].getSprite()->returnNextSprite(delta_time));
     }
   }
 }
@@ -131,8 +144,7 @@ void CharacterManager::renderTechnicians(double delta_time, ASGE::Renderer* rend
   {
     if (techies[i].isVisible())
     {
-      renderer->renderSprite(techies[i].getSprite()
-                                       ->returnNextSprite(delta_time));
+      renderer->renderSprite(techies[i].getSprite()->returnNextSprite(delta_time));
     }
   }
 }
@@ -144,8 +156,7 @@ void CharacterManager::renderSecurity(double delta_time, ASGE::Renderer* rendere
   {
     if (guards[i].isVisible())
     {
-      renderer->renderSprite(guards[i].getSprite()
-                                      ->returnNextSprite(delta_time));
+      renderer->renderSprite(guards[i].getSprite()->returnNextSprite(delta_time));
     }
   }
 }

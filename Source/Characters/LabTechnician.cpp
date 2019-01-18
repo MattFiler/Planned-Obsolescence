@@ -1,5 +1,6 @@
 #include "LabTechnician.h"
 
-LabTechnician::LabTechnician() {
+LabTechnician::LabTechnician()
+{
   updateCoreConfig("TECH");
 }
