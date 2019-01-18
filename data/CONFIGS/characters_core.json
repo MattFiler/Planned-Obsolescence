@@ -1,6 +1,6 @@
 {
 	"DEFAULT": {
-		"sprite": "DEFAULT/placeholder.png",
+		"sprite": "data/CHARACTERS/DEFAULT/placeholder.png",
 		"width": 50,
 		"height": 50,
 		"is_visible": true,
@@ -22,15 +22,15 @@
 		"faith": -1
 	},
 	"GUARD": {
-		"sprite": "GUARD/placeholder.png"
+		"sprite": "data/CHARACTERS/GUARD/placeholder.png"
 	},
 	"GOON": {
-		"sprite": "GOON/placeholder.png"
+		"sprite": "data/CHARACTERS/GOON/placeholder.png"
 	},
 	"BOSS": {
-		"sprite": "BOSS/placeholder.png"
+		"sprite": "data/CHARACTERS/BOSS/placeholder.png"
 	},
 	"TECH": {
-		"sprite": "TECH/placeholder.png"
+		"sprite": "data/CHARACTERS/TECH/placeholder.png"
 	}
 }

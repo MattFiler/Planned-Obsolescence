@@ -1,5 +1,4 @@
 #include "Character.h"
-#include <Engine/DebugPrinter.h>
 using namespace std;
 
 /* Load config on instantiation */
@@ -57,6 +56,12 @@ void Character::setSpeed(int speed)
   core_config["movement_speed"] = speed;
 }
 
+/* Assign sprite */
+void Character::setSprite(DynamicSprite &new_sprite)
+{
+  my_sprite = &new_sprite;
+}
+
 /* Return the spawn limit for this character class */
 int Character::getSpawnCap()
 {
@@ -67,4 +72,16 @@ int Character::getSpawnCap()
 bool Character::isVisible()
 {
   return core_config["is_visible"];
+}
+
+/* Return the path to our character's sprite */
+string Character::getSpritePath()
+{
+  return core_config["sprite"];
+}
+
+/* Return sprite */
+DynamicSprite* Character::getSprite()
+{
+  return my_sprite;
 }

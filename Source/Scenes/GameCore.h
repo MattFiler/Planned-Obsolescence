@@ -1,5 +1,6 @@
 #include "../Core/DynamicSprite.h"
 #include "../Core/GameObject.h"
+#include "../Core/CharacterManager.h"
 #include "Scene.h"
 
 namespace ASGE
@@ -12,7 +13,7 @@ class Renderer;
  */
 class GameCore : public Scene
 {
-  public:
+ public:
   GameCore() = default;
   ~GameCore() = default;
   bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) override;
@@ -20,4 +21,7 @@ class GameCore : public Scene
   void render(double delta_time) override;
   void keyHandler(const ASGE::SharedEventData data) override;
   void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) override;
+
+ private:
+  CharacterManager character_manager;
 };
