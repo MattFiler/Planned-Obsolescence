@@ -53,6 +53,11 @@ bool PlannedObsolescence::init()
   // Initialise the scene manager
   scene_manager = new SceneManager();
 
+  if (boss_character_1.isVisible())
+  {
+    // do nothing
+  }
+
   // Start out on the splashscreen scene
   scene_manager->current_scene = new Splashscreen();
   return scene_manager->loadCurrentScene(renderer.get(), inputs.get(), core_config);

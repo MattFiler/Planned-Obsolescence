@@ -1,6 +1,8 @@
-#include "Characters.h"
+#include "Character.h"
 
-class Goon : Characters
+class Goon : public Character
 {
-  // Unused at the moment
+ public:
+  Goon() = default;
+  ~Goon() = default;
 };

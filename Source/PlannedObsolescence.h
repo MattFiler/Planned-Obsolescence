@@ -3,6 +3,9 @@
 #include "Core/SceneManager.h"
 #include <Engine/OGLGame.h>
 
+#include "Characters/Boss.h" // For testing only
+#include "Characters/Character.h"
+
 #include <json.hpp>
 using json = nlohmann::json;
 
@@ -27,4 +30,6 @@ class PlannedObsolescence : public ASGE::OGLGame
   FileHandler file_handler;
 
   json core_config;
+
+  Boss boss_character_1; // For testing only
 };

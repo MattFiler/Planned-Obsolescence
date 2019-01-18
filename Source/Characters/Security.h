@@ -1,6 +1,8 @@
-#include "Characters.h"
+#include "Character.h"
 
-class Security : Characters
+class Security : public Character
 {
-  // Unused at the moment
+ public:
+  Security() = default;
+  ~Security() = default;
 };

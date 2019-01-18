@@ -1,0 +1,35 @@
+{
+	"DEFAULT": {
+		"sprite": "DEFAULT/placeholder.png",
+		"width": 50,
+		"height": 50,
+		"is_visible": true,
+		
+		"movement_speed": 5,
+		"max_health": 100,
+		"spawn_cap": 10,
+		"active_cap": 10,
+		
+		"suspicion": 0,
+		"stress": 0,
+		"productivity": 100,
+		"faith": 100,
+		
+		"suspicion": 1,
+		"stress": 1,
+		"productivity": -1,
+		"faith": -1
+	},
+	"GUARD": {
+		"sprite": "GUARD/placeholder.png"
+	},
+	"GOON": {
+		"sprite": "GOON/placeholder.png"
+	},
+	"BOSS": {
+		"sprite": "BOSS/placeholder.png"
+	},
+	"TECH": {
+		"sprite": "TECH/placeholder.png"
+	}
+}
