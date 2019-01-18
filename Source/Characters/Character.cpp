@@ -21,12 +21,11 @@ void Character::updateCoreConfig(std::string character_type)
   // Load our config and assign default values.
   string config_file("CONFIGS/characters_core.json");
   json temp_config = file_handler.openAsJSON(config_file);
-  json json_config = temp_config["DEFAULT"];
+  character_config = temp_config["DEFAULT"];
 
   // If we're requesting default, we can stop here.
   if (character_type == "DEFAULT")
   {
-    importConfig(json_config);
     return;
   }
 
@@ -34,27 +33,9 @@ void Character::updateCoreConfig(std::string character_type)
   temp_config = temp_config[character_type];
   for (json::iterator i = temp_config.begin(); i != temp_config.end(); ++i) {
     if (!temp_config[i.key()].is_null()) {
-      json_config[i.key()] = i.value();
+      character_config[i.key()] = i.value();
     }
   }
-  importConfig(json_config);
-}
-
-void Character::importConfig(json json_config)
-{
-  config.my_sprite = "data/CHARACTERS/DEFAULT/placeholder.png";
-  config.width = json_config["width"];
-  config.height = json_config["height"];
-  config.is_visible = json_config["is_visible"];
-  config.spawn_pos[0] = json_config["spawn_pos"][0];
-  config.spawn_pos[1] = json_config["spawn_pos"][1];
-  config.spawn_cap = json_config["spawn_cap"];
-  config.movement_speed = json_config["movement_speed"];
-  config.max_health = json_config["max_health"];
-  config.suspicion_gauge = json_config["suspicion"];
-  config.stress_gauge = json_config["stress"];
-  config.productivity_gauge = json_config["productivity"];
-  config.faith_gauge = json_config["faith"];
 }
 
 /* Update our sprite */
@@ -70,45 +51,45 @@ void Character::updateSprite()
 /* Adjust spawn position */
 void Character::setSpawnPosition(int x, int y)
 {
-  config.spawn_pos[0] = x;
-  config.spawn_pos[1] = y;
+  character_config["spawn_pos"][0] = x;
+  character_config["spawn_pos"][1] = y;
 }
 
 /* Toggle visibility */
 void Character::setVisible(bool isVisible)
 {
-  config.is_visible = isVisible;
+  character_config["is_visible"] = isVisible;
 }
 
 /* Adjust dimensions */
 void Character::setDimensions(int w, int h)
 {
-  config.width = w;
-  config.height = h;
+  character_config["width"] = w;
+  character_config["height"] = h;
 }
 
 /* Adjust movement speed */
 void Character::setSpeed(int speed)
 {
-  config.movement_speed = speed;
+  character_config["movement_speed"] = speed;
 }
 
 /* Return the spawn limit for this character class */
 int Character::getSpawnCap()
 {
-  return config.spawn_cap;
+  return character_config["spawn_cap"];
 }
 
 /* Check that we are visible for rendering */
 bool Character::isVisible()
 {
-  return config.is_visible;
+  return character_config["is_visible"];
 }
 
 /* Return the path to our character's sprite */
 string Character::getSpritePath()
 {
-  return config.my_sprite;
+  return character_config["sprite"];
 }
 
 /* Return sprite */

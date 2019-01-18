@@ -4,7 +4,6 @@
 #include <json.hpp>
 #include "../Core/DynamicSprite.h"
 #include "../Core/FileHandler.h"
-#include "CharacterData.h"
 #include <Engine/Renderer.h>
 using json = nlohmann::json;
 
@@ -38,9 +37,10 @@ class Character
 
  private:
   void importConfig(json json_config);
-  CharacterData config;
 
   FileHandler file_handler;
+  json character_config;
+
   DynamicSprite* my_sprite = nullptr;
   ASGE::Renderer* renderer = nullptr;
 };
