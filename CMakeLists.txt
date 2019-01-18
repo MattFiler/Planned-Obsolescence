@@ -41,6 +41,8 @@ add_executable(
         Source/Core/SceneManager.cpp
         Source/Core/FileHandler.h
         Source/Core/FileHandler.cpp
+        Source/Core/CharacterManager.h
+        Source/Core/CharacterManager.cpp
         Source/Scenes/Scene.h
         Source/Scenes/Splashscreen.h
         Source/Scenes/Splashscreen.cpp

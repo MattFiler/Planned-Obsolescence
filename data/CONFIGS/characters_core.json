@@ -5,10 +5,11 @@
 		"height": 50,
 		"is_visible": true,
 		
+		"spawn_pos": [0,0],
+		"spawn_cap": 10,
+		
 		"movement_speed": 5,
 		"max_health": 100,
-		"spawn_cap": 10,
-		"active_cap": 10,
 		
 		"suspicion": 0,
 		"stress": 0,

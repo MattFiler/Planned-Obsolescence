@@ -24,15 +24,47 @@ void Character::updateCoreConfig(std::string character_type)
 
   // If not, continue to override the selected character's details.
   temp_config = temp_config[character_type];
-  for (json::iterator it = temp_config.begin(); it != temp_config.end(); ++it) {
-    if (!temp_config[it.key()].is_null()) {
-      core_config[it.key()] = it.value();
+  for (json::iterator i = temp_config.begin(); i != temp_config.end(); ++i) {
+    if (!temp_config[i.key()].is_null()) {
+      core_config[i.key()] = i.value();
     }
   }
+}
+
+/* Adjust spawn position */
+void Character::setPosition(int x, int y)
+{
+  core_config["spawn_pos"][0] = x;
+  core_config["spawn_pos"][1] = y;
+}
+
+/* Toggle visibility */
+void Character::setVisible(bool isVisible)
+{
+  core_config["is_visible"] = isVisible;
+}
+
+/* Adjust dimensions */
+void Character::setDimensions(int w, int h)
+{
+  core_config["width"] = w;
+  core_config["height"] = h;
+}
+
+/* Adjust movement speed */
+void Character::setSpeed(int speed)
+{
+  core_config["movement_speed"] = speed;
+}
+
+/* Return the spawn limit for this character class */
+int Character::getSpawnCap()
+{
+  return core_config["spawn_cap"];
 }
 
 /* Check that we are visible for rendering */
 bool Character::isVisible()
 {
-  return true;
+  return core_config["is_visible"];
 }
