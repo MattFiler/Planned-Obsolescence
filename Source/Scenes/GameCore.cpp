@@ -16,11 +16,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
   rend = renderer;
 
   Boss new_boss;
-  DynamicSprite boss_sprite;
-  ASGE::Sprite* new_sprite;
-  new_sprite->loadTexture(new_boss.getSpritePath());
-  boss_sprite.addSprite(*new_sprite);
-  new_boss.setSprite(boss_sprite);
+  new_boss.wake(renderer);
   character_manager.spawnBoss(new_boss);
 
   return true;
@@ -62,4 +58,6 @@ int GameCore::update(double delta_time)
 void GameCore::render(double delta_time)
 {
   rend->renderText("THE GAME", 100, 100, ASGE::COLOURS::RED);
+
+  character_manager.renderAll(delta_time, rend);
 }

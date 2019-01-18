@@ -64,6 +64,7 @@ add_executable(
         Source/Characters/LabTechnician.cpp
         Source/Characters/Security.h
         Source/Characters/Security.cpp
+        Source/Characters/CharacterData.h
         Source/Constants.h)
 
 ## library includes

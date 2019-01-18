@@ -14,12 +14,7 @@
 		"suspicion": 0,
 		"stress": 0,
 		"productivity": 100,
-		"faith": 100,
-		
-		"suspicion": 1,
-		"stress": 1,
-		"productivity": -1,
-		"faith": -1
+		"faith": 100
 	},
 	"GUARD": {
 		"sprite": "data/CHARACTERS/GUARD/placeholder.png"
