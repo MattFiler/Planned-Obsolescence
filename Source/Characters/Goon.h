@@ -3,6 +3,6 @@
 class Goon : public Character
 {
  public:
-  Goon() = default;
+  Goon();
   ~Goon() = default;
 };

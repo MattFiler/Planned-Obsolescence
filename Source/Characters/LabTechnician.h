@@ -3,6 +3,6 @@
 class LabTechnician : public Character
 {
  public:
-  LabTechnician() = default;
+  LabTechnician();
   ~LabTechnician() = default;
 };

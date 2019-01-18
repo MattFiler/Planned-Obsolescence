@@ -3,6 +3,6 @@
 class Security : public Character
 {
  public:
-  Security() = default;
+  Security();
   ~Security() = default;
 };
