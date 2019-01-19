@@ -10,5 +10,4 @@ class LabMap
 
 };
 
-
-#endif //PLANNEDOBSOLESCENCE_LABMAP_H
+#endif // PLANNEDOBSOLESCENCE_LABMAP_H

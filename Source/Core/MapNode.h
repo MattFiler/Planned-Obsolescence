@@ -11,5 +11,4 @@ struct MapNode
 
 };
 
-
-#endif //PLANNEDOBSOLESCENCE_MAPNODE_H
+#endif // PLANNEDOBSOLESCENCE_MAPNODE_H
