@@ -66,10 +66,10 @@ bool PlannedObsolescence::init()
  */
 void PlannedObsolescence::setupResolution()
 {
-  DynamicSprite::width_scale = 1;
-
   game_width = core_config["resolution"]["width"];
   game_height = core_config["resolution"]["height"];
+
+  DynamicSprite::width_scale = static_cast<float>(game_width) / SCREEN_WIDTH;
 }
 
 /**

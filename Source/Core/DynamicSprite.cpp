@@ -1,7 +1,7 @@
 #include "DynamicSprite.h"
 
 /**
- *   @brief   Creates an animated sprite with set size
+ *   @brief   Creates an DynamicSprite with set size
  *   @details num_of_sprites is the number of contained ASGE::Sprite's
  */
 DynamicSprite::DynamicSprite(int num_of_sprites, bool should_flipbook)
@@ -31,7 +31,7 @@ DynamicSprite::~DynamicSprite()
 
 /**
  *   @brief   Adds a sprite to the object
- *   @details Adds a new ASGE::Sprite to this AnimatedSprite,
+ *   @details Adds a new ASGE::Sprite to this DynamicSprite,
  *            also intializes the position, height and width
  *            if this is the first sprite to be added
  *   @param	 Adress of new sprite
@@ -79,7 +79,7 @@ void DynamicSprite::xPos(float new_x)
 {
   for (int i = 0; i < number_of_sprites; i++)
   {
-    my_sprites[i]->xPos(new_x);
+    my_sprites[i]->xPos(new_x * width_scale);
   }
 }
 
@@ -92,13 +92,13 @@ void DynamicSprite::yPos(float new_y)
 {
   for (int i = 0; i < number_of_sprites; i++)
   {
-    my_sprites[i]->yPos(new_y);
+    my_sprites[i]->yPos(new_y * width_scale);
   }
 }
 
 /**
  *   @brief   Gets the scale of sprite(s)
- *   @details Gets the scale of the AnimatedSprite, this is the scale
+ *   @details Gets the scale of the DynamicSprite, this is the scale
  *            of the displayed world
  *   @return  The sprites scale
  */
@@ -109,7 +109,7 @@ float DynamicSprite::scale()
 
 /**
  *   @brief   Get the width of sprite
- *   @details Gets the width of the animated sprite,
+ *   @details Gets the width of the DynamicSprite,
  *			 read only - use scale to alter size
  *   @return  The width of sprite
  */
@@ -120,7 +120,7 @@ float DynamicSprite::width()
 
 /**
  *   @brief   Get the height of sprite
- *   @details Gets the height of the animated sprite,
+ *   @details Gets the height of the DynamicSprite,
  *			 read only - use scale to alter size
  *   @return  The height of sprite
  */
@@ -131,14 +131,14 @@ float DynamicSprite::height()
 
 /**
  *   @brief   Sets the scale of sprite(s)
- *   @details Sets the scale of AnimatedSprite,
+ *   @details Sets the scale of DynamicSprite,
  *			 this scale is automatically applied and
  *			 scaled to the scale of all contained sprites
  *   @param   The new scale for the sprite(s)
  */
 void DynamicSprite::scale(float scale_amount)
 {
-  scale_factor = scale_amount;
+  scale_factor = scale_amount*width_scale;
   for (int i = 0; i < number_of_sprites; i++)
   {
     my_sprites[i]->scale(scale_factor);
@@ -147,7 +147,7 @@ void DynamicSprite::scale(float scale_amount)
 
 /**
  *   @brief   Sets the fade colour
- *   @details Sets the fade colour of AnimatedSprite,
+ *   @details Sets the fade colour of DynamicSprite,
  *			 this is the colour of tint applied when using fadeToColour
  *   @param   The new fade colour
  */

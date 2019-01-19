@@ -41,7 +41,7 @@ struct Vector
  */
 struct Line
 {
-  Line(float gradient, float y_intersect, bool verticle = false, float x_intersect = 0);
+  Line(float gradient, float y_intersect, bool vertical = false, float x_intersect = 0);
   Line(){};
 
   bool intersects(Line line, Point& point);
@@ -51,7 +51,7 @@ struct Line
 
   float m = 0;
   float c = 0;
-  bool verticle_line = false;
+  bool vertical_line = false;
   float y = 0;
 };
 

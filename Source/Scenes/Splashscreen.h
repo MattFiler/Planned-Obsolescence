@@ -23,7 +23,8 @@ class Splashscreen : public Scene
 
   private:
   // All sprites for this scene
-  GameObject* po_logo_fg = nullptr;
+  DynamicSprite* po_logo_fg = nullptr;
+  DynamicSprite* po_logo_bg = nullptr;
   int switch_fade = 0;
   double time_waited = 0;
 };

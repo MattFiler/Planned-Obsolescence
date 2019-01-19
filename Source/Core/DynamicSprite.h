@@ -9,13 +9,11 @@
  *  methods. Also contains other useful functionality such as scaling
  *  Animated sprites have their position and scale set to the base game
  *  resolution, this is referred to as the simulated world
- *  When retrieving the ASGE::Sprite from the AnimatedSprite it will give the
+ *  When retrieving the ASGE::Sprite from the DynamicSprite it will give the
  *  position and scale based on what the set screen resolution is, this is
  *  referred to as the displayed world. No manual conversion is necessary,
  *  just set the static field width_scale at run time and only use
- *  ASGE::Sprites through an AnimatedSprite component
- *  Position is automatically updated with the GameObjects position that
- *  this is attached to.
+ *  ASGE::Sprites through an DynamicSprite component
  */
 class DynamicSprite
 {

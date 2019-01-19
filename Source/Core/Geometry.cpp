@@ -39,11 +39,11 @@ Vector::Vector(float px, float py)
  *   @param   the line has infinite gradient, x_intersect is where the line
  *   @param   intersects the x axis for infinite gradient lines
  */
-Line::Line(float gradient, float y_intersect, bool verticle, float x_intersect)
+Line::Line(float gradient, float y_intersect, bool vertical, float x_intersect)
 {
   m = gradient;
   c = y_intersect;
-  verticle_line = verticle;
+  vertical_line = vertical;
   y = x_intersect;
 }
 
@@ -145,10 +145,10 @@ float Vector::dotProduct(Vector a, Vector b)
 bool Line::intersects(Line line, Point& point)
 {
   // If either line is verticle, can't use the standard formula
-  if (verticle_line)
+  if (vertical_line)
   {
     // If both lines are verticle
-    if (line.verticle_line)
+    if (line.vertical_line)
     {
       // Then they collide if they're the same
       // account for rounding errors with a 0.1 margin
@@ -163,7 +163,7 @@ bool Line::intersects(Line line, Point& point)
     point.y = (line.m * y) + line.c;
     return true;
   }
-  else if (line.verticle_line)
+  else if (line.vertical_line)
   {
     point.x = line.y;
     point.y = (m * line.y) + c;
@@ -218,7 +218,7 @@ bool Line::pointBetweenPoints(Point a, Point b, Point c)
 Vector Line::vector()
 {
   Vector new_vector;
-  if (verticle_line)
+  if (vertical_line)
   {
     new_vector = Vector(0, 1);
   }
