@@ -138,7 +138,7 @@ float DynamicSprite::height()
  */
 void DynamicSprite::scale(float scale_amount)
 {
-  scale_factor = scale_amount*width_scale;
+  scale_factor = scale_amount * width_scale;
   for (int i = 0; i < number_of_sprites; i++)
   {
     my_sprites[i]->scale(scale_factor);
