@@ -23,5 +23,6 @@ class GameCore : public Scene
   void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) override;
 
   private:
+  void spawnCharacters(ASGE::Renderer* renderer);
   CharacterManager character_manager;
 };

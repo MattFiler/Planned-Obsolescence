@@ -1,6 +1,5 @@
 {
-	"DEFAULT": {
-		"sprite": "data/CHARACTERS/DEFAULT/placeholder.png",
+	"DEFAULT": {		
 		"width": 50,
 		"height": 50,
 		"is_visible": true,
@@ -11,21 +10,28 @@
 		"movement_speed": 5,
 		"max_health": 100,
 		
-		"suspicion": 0,
-		"stress": 0,
-		"productivity": 100,
-		"faith": 100
+		"gauge": {
+			"suspicion": 0,
+			"stress": 0,
+			"productivity": 100,
+			"faith": 100
+		},
+		
+		"sprites": {
+			"walking": ["data/CHARACTERS/DEFAULT/placeholder.png"],
+			"idle": ["data/CHARACTERS/DEFAULT/placeholder.png"]
+		}
 	},
 	"GUARD": {
-		"sprite": "data/CHARACTERS/GUARD/placeholder.png"
+		"sprites": ["data/CHARACTERS/GUARD/placeholder.png"]
 	},
 	"GOON": {
-		"sprite": "data/CHARACTERS/GOON/placeholder.png"
+		"sprites": ["data/CHARACTERS/GOON/placeholder.png"]
 	},
 	"BOSS": {
-		"sprite": "data/CHARACTERS/BOSS/placeholder.png"
+		"sprites": ["data/CHARACTERS/BOSS/placeholder.png"]
 	},
 	"TECH": {
-		"sprite": "data/CHARACTERS/TECH/placeholder.png"
+		"sprites": ["data/CHARACTERS/TECH/placeholder.png"]
 	}
 }

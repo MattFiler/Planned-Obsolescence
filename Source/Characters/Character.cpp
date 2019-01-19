@@ -91,7 +91,7 @@ bool Character::isVisible()
 /* Return the path to our character's sprite */
 string Character::getSpritePath()
 {
-  return character_config["sprite"];
+  return character_config["sprites"]["walking"][0];
 }
 
 /* Return sprite */
