@@ -23,15 +23,32 @@
 		}
 	},
 	"GUARD": {
-		"sprites": ["data/CHARACTERS/GUARD/placeholder.png"]
+		"sprites": {
+			"walking": ["data/CHARACTERS/GUARD/placeholder.png"],
+			"idle": ["data/CHARACTERS/GUARD/placeholder.png"],
+			"patrol": ["data/CHARACTERS/GUARD/placeholder.png"]
+		}
 	},
 	"GOON": {
-		"sprites": ["data/CHARACTERS/GOON/placeholder.png"]
+		"sprites": {
+			"walking": ["data/CHARACTERS/GOON/placeholder.png"],
+			"idle": ["data/CHARACTERS/GOON/placeholder.png"],
+			"working": ["data/CHARACTERS/GUARD/placeholder.png"]
+		}
 	},
 	"BOSS": {
-		"sprites": ["data/CHARACTERS/BOSS/placeholder.png"]
+		"sprites": {
+			"walking": ["data/CHARACTERS/BOSS/placeholder.png"],
+			"idle": ["data/CHARACTERS/BOSS/placeholder.png"],
+			"working": ["data/CHARACTERS/GUARD/placeholder.png"],
+			"angry": ["data/CHARACTERS/GUARD/placeholder.png"]
+		}
 	},
 	"TECH": {
-		"sprites": ["data/CHARACTERS/TECH/placeholder.png"]
+		"sprites": {
+			"walking": ["data/CHARACTERS/TECH/placeholder.png"],
+			"idle": ["data/CHARACTERS/TECH/placeholder.png"],
+			"working": ["data/CHARACTERS/GUARD/placeholder.png"]
+		}
 	}
 }
