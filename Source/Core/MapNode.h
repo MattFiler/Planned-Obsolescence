@@ -8,7 +8,6 @@ struct MapNode
 {
   Vector position;
   std::vector<MapNode> connected_nodes;
-
 };
 
 #endif // PLANNEDOBSOLESCENCE_MAPNODE_H
