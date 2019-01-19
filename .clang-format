@@ -1,6 +1,6 @@
 ﻿---
 BasedOnStyle: Mozilla
-AccessModifierOffset: '0'
+AccessModifierOffset: '-1'
 AlignTrailingComments: 'true'
 AllowAllParametersOfDeclarationOnNextLine: 'true'
 AllowShortCaseLabelsOnASingleLine: 'false'

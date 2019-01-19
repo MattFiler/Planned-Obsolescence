@@ -97,6 +97,23 @@ elseif( MSVC )
     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W4 /WX")
 endif()
 
+if ( CMAKE_COMPILER_IS_GNUCC )
+    list(APPEND BUILD_FLAGS_FOR_CXX
+            "-Wall" "-Wextra" "-Wshadow" "-Wnon-virtual-dtor"
+            "-Wold-style-cast" "-Wunused" "-pedantic"
+            "-Woverloaded-virtual" "-Wpedantic" "-Wconversion"
+            "-Wduplicated-cond" "-Wduplicated-branches" "-Wlogical-op"
+            "-Wnull-dereference" "-Wuseless-cast"
+            "-Wno-unused-parameter" "-Werror")
+
+    target_compile_options(${PROJECT_NAME} PRIVATE
+            $<$<COMPILE_LANGUAGE:CXX>:${BUILD_FLAGS_FOR_CXX}>)
+
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0" )
+elseif( MSVC )
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W4 /WX")
+endif()
+
 ## build the game libs folder
 add_library(ASGE UNKNOWN IMPORTED)
 add_subdirectory(Libs)
@@ -128,9 +145,7 @@ if (WIN32 AND NOT BUILD_SHARED_LIBS AND NOT MSVC)
 endif()
 
 ## utility scripts
-include(CMake/clang.format.cmake)
-include(CMake/githooks.cmake)
-include(CMake/itch.io.cmake)
+include(CMake/datapak.cmake)
 
 ## build types
 set(CMAKE_CONFIGURATION_TYPES Debug;Release)
