@@ -17,7 +17,7 @@ CharacterManager::~CharacterManager()
 }
 
 /* Spawn a boss */
-bool CharacterManager::spawnBoss(Boss& new_boss)
+bool CharacterManager::spawn(Boss& new_boss)
 {
   // Set up our array length
   if (bosses == nullptr)
@@ -38,7 +38,7 @@ bool CharacterManager::spawnBoss(Boss& new_boss)
 }
 
 /* Spawn a goon */
-bool CharacterManager::spawnGoon(Goon& new_goon)
+bool CharacterManager::spawn(Goon& new_goon)
 {
   // Set up our array length
   if (goons == nullptr)
@@ -59,7 +59,7 @@ bool CharacterManager::spawnGoon(Goon& new_goon)
 }
 
 /* Spawn a technician */
-bool CharacterManager::spawnTechnician(LabTechnician& new_techie)
+bool CharacterManager::spawn(LabTechnician& new_techie)
 {
   // Set up our array length
   if (techies == nullptr)
@@ -80,7 +80,7 @@ bool CharacterManager::spawnTechnician(LabTechnician& new_techie)
 }
 
 /* Spawn a security guard */
-bool CharacterManager::spawnGuard(Security& new_guard)
+bool CharacterManager::spawn(Security& new_guard)
 {
   // Set up our array length
   if (guards == nullptr)
@@ -101,7 +101,7 @@ bool CharacterManager::spawnGuard(Security& new_guard)
 }
 
 /* Render all visible characters */
-void CharacterManager::renderAll(double delta_time, ASGE::Renderer* renderer)
+void CharacterManager::render(double delta_time, ASGE::Renderer* renderer)
 {
   renderBosses(delta_time, renderer);
   renderGoons(delta_time, renderer);

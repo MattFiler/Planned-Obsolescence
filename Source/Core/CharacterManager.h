@@ -9,12 +9,12 @@ class CharacterManager
   CharacterManager() = default;
   ~CharacterManager();
 
-  bool spawnBoss(Boss& new_boss);
-  bool spawnGoon(Goon& new_goon);
-  bool spawnTechnician(LabTechnician& new_techie);
-  bool spawnGuard(Security& new_guard);
+  bool spawn(Boss& new_boss);
+  bool spawn(Goon& new_goon);
+  bool spawn(LabTechnician& new_techie);
+  bool spawn(Security& new_guard);
 
-  void renderAll(double delta_time, ASGE::Renderer* renderer);
+  void render(double delta_time, ASGE::Renderer* renderer);
 
   private:
   void renderBosses(double delta_time, ASGE::Renderer* renderer);

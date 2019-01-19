@@ -15,11 +15,18 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
 
-  Boss new_boss;
-  new_boss.wake(renderer);
-  character_manager.spawnBoss(new_boss);
+  spawnCharacters(renderer);
 
   return true;
+}
+
+/* Spawn all characters */
+void GameCore::spawnCharacters(ASGE::Renderer* renderer)
+{
+  Boss boss_demo;
+  boss_demo.wake(renderer);
+  boss_demo.setSpawnPosition(100, 100);
+  character_manager.spawn(boss_demo);
 }
 
 /**
@@ -59,5 +66,5 @@ void GameCore::render(double delta_time)
 {
   rend->renderText("THE GAME", 100, 100, ASGE::COLOURS::RED);
 
-  character_manager.renderAll(delta_time, rend);
+  character_manager.render(delta_time, rend);
 }
