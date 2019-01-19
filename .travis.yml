@@ -21,7 +21,6 @@ matrix:
             - gcc-8
             - g++-8
             - libtbb-dev
-            - libtbb-dev
             - libharfbuzz-bin
             - libharfbuzz-dev
             - libxrandr-dev
@@ -29,13 +28,14 @@ matrix:
             - libxinerama-dev
             - libxcursor-dev
             - libgl1-mesa-dev
+            - libglu1-mesa-dev
             - cppcheck
             - python3
       env:
         - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
       script:
         - ./run-clang-format.py -r Source
-        - /usr/bin/cppcheck --quiet --enable=all --std=c++14 --language=c++ --error-exitcode=1 --inline-suppr main.cpp Source/*
+        - /usr/bin/cppcheck --quiet --enable=all --std=c++14 --language=c++ --error-exitcode=1 --inline-suppr --force --suppressions-list=./CI/datpak/Tools/Cppcheck/suppress.conf main.cpp Source/*
         - cmake --build .
 
     - os: osx
@@ -57,9 +57,3 @@ before_script:
   - wget https://raw.githubusercontent.com/Sarcasm/run-clang-format/master/run-clang-format.py
   - chmod +x run-clang-format.py
   - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON CMakeLists.txt
-
-branches:
-    only:
-    - master
-    - /^develop.*$/
-    - /^release.*$/
