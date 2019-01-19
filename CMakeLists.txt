@@ -64,7 +64,7 @@ add_executable(
         Source/Characters/LabTechnician.cpp
         Source/Characters/Security.h
         Source/Characters/Security.cpp
-        Source/Constants.h)
+        Source/Constants.h Source/Core/LabMap.h Source/Core/MapNode.h)
 
 ## library includes
 target_include_directories(

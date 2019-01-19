@@ -15,22 +15,34 @@ bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
 
-  po_logo_fg = new GameObject();
-  ASGE::Sprite* pos_logo_fg_sprite = renderer->createRawSprite();
-  if (!pos_logo_fg_sprite->loadTexture("data/SPLASHSCREENS/PO_LogoFG.png"))
+  ASGE::Sprite* po_logo_fg_sprite = renderer->createRawSprite();
+  if (!po_logo_fg_sprite->loadTexture("data/SPLASHSCREENS/PO_LogoFG.png"))
   {
     return false;
   }
-  pos_logo_fg_sprite->colour(ASGE::COLOURS::BLACK);
+  po_logo_fg_sprite->colour(ASGE::COLOURS::BLACK);
 
-  auto* anim_sprite = new DynamicSprite(2);
-  anim_sprite->addSprite(*pos_logo_fg_sprite);
+  po_logo_fg = new DynamicSprite(2);
+  po_logo_fg->addSprite(*po_logo_fg_sprite);
 
-  anim_sprite->setFadeColour(ASGE::COLOURS::WHITE);
-  po_logo_fg->setAnimatedSprite(anim_sprite);
-  po_logo_fg->scaleToHeight(core_config["resolution"]["height"].get<float>() / 2);
-  po_logo_fg->CenterSpriteOnPoint(core_config["resolution"]["width"].get<float>() / 2,
-                                  (core_config["resolution"]["height"].get<float>() / 2));
+  po_logo_fg->setFadeColour(ASGE::COLOURS::WHITE);
+
+  po_logo_fg->scale(0.6666f);
+  po_logo_fg->xPos(307);
+  po_logo_fg->yPos(27);
+
+  ASGE::Sprite* po_logo_bg_sprite = renderer->createRawSprite();
+  if (!po_logo_bg_sprite->loadTexture("data/SPLASHSCREENS/PO_LogoBG.png"))
+  {
+    return false;
+  }
+
+  po_logo_bg = new DynamicSprite(2);
+  po_logo_bg->addSprite(*po_logo_bg_sprite);
+
+  po_logo_bg->scale(0.6666f);
+  po_logo_bg->xPos(0);
+  po_logo_bg->yPos(0);
 
   return true;
 }
@@ -72,7 +84,7 @@ int Splashscreen::update(double delta_time)
     case 0:
     {
       // Fades the logo in
-      if (po_logo_fg->getAnimatedSprite()->fadeToColour(1500, delta_time, false))
+      if (po_logo_fg->fadeToColour(1500, delta_time, false))
       {
         switch_fade = 1;
       }
@@ -85,7 +97,7 @@ int Splashscreen::update(double delta_time)
       if (time_waited > 1500)
       {
         // Fades the logo out
-        if (po_logo_fg->getAnimatedSprite()->fadeToColour(500, delta_time, true))
+        if (po_logo_fg->fadeToColour(500, delta_time, true))
         {
           next_scene = 1;
         }
@@ -105,5 +117,6 @@ int Splashscreen::update(double delta_time)
  */
 void Splashscreen::render(double delta_time)
 {
-  rend->renderSprite(po_logo_fg->getAnimatedSprite()->returnNextSprite(delta_time));
+  rend->renderSprite(po_logo_bg->returnNextSprite(delta_time));
+  rend->renderSprite(po_logo_fg->returnNextSprite(delta_time));
 }
