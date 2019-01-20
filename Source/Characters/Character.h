@@ -35,7 +35,7 @@ class Character
   void updateCoreConfig(std::string character_type = "DEFAULT");
   void updateSprite();
 
-  private:
+ private:
   void importConfig(json json_config);
 
   FileHandler file_handler;
