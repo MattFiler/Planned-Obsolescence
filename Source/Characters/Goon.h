@@ -2,7 +2,7 @@
 
 class Goon : public Character
 {
-  public:
+ public:
   Goon();
   ~Goon() = default;
 };

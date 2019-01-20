@@ -9,7 +9,7 @@ using json = nlohmann::json;
 
 class Character
 {
-  public:
+ public:
   Character();
   ~Character() = default;
 
@@ -31,11 +31,11 @@ class Character
   DynamicSprite* getSprite();
   ASGE::Renderer* getRenderer();
 
-  protected:
+ protected:
   void updateCoreConfig(std::string character_type = "DEFAULT");
   void updateSprite();
 
-  private:
+ private:
   void importConfig(json json_config);
 
   FileHandler file_handler;

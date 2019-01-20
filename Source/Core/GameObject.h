@@ -9,7 +9,7 @@
  */
 class GameObject
 {
-  public:
+ public:
   GameObject();
   ~GameObject();
 
@@ -34,7 +34,7 @@ class GameObject
   void setAnimatedSprite(DynamicSprite* new_sprite);
   DynamicSprite* getAnimatedSprite();
 
-  protected:
+ protected:
   bool should_destroy = false; /**<  Flag to see if the main scene should destroy this object */
   std::string name = "Default";
   Point position;

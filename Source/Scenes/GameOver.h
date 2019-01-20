@@ -12,7 +12,7 @@ class Renderer;
  */
 class GameOver : public Scene
 {
-  public:
+ public:
   GameOver() = default;
   ~GameOver() = default;
   bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) override;

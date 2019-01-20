@@ -12,7 +12,7 @@ class Renderer;
  */
 class PauseMenu : public Scene
 {
-  public:
+ public:
   PauseMenu() = default;
   ~PauseMenu() = default;
   bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) override;

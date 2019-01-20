@@ -12,7 +12,7 @@ class Renderer;
  */
 class MainMenu : public Scene
 {
-  public:
+ public:
   MainMenu() = default;
   ~MainMenu() = default;
   bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) override;
