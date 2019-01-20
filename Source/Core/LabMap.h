@@ -5,6 +5,8 @@
 #ifndef PLANNEDOBSOLESCENCE_LABMAP_H
 #define PLANNEDOBSOLESCENCE_LABMAP_H
 
-class LabMap {};
+class LabMap
+{
+};
 
 #endif // PLANNEDOBSOLESCENCE_LABMAP_H
