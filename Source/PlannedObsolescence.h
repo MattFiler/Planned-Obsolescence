@@ -8,14 +8,14 @@ using json = nlohmann::json;
 
 class PlannedObsolescence : public ASGE::OGLGame
 {
-  public:
+ public:
   ~PlannedObsolescence();
 
   bool init() override;
   void update(const ASGE::GameTime& game_time) override;
   void render(const ASGE::GameTime& game_time) override;
 
-  private:
+ private:
   void keyHandler(const ASGE::SharedEventData data);
   void clickHandler(const ASGE::SharedEventData data);
   void setupResolution();

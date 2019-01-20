@@ -12,7 +12,7 @@ class Renderer;
  */
 class Splashscreen : public Scene
 {
-  public:
+ public:
   Splashscreen() = default;
   ~Splashscreen() = default;
   bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) override;
@@ -21,7 +21,7 @@ class Splashscreen : public Scene
   void keyHandler(const ASGE::SharedEventData data) override;
   void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) override;
 
-  private:
+ private:
   // All sprites for this scene
   DynamicSprite* po_logo_fg = nullptr;
   DynamicSprite* po_logo_bg = nullptr;

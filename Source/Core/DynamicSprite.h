@@ -17,7 +17,7 @@
  */
 class DynamicSprite
 {
-  public:
+ public:
   DynamicSprite(int num_of_sprites = 1, bool should_flipbook = true);
   ~DynamicSprite();
 
@@ -42,7 +42,7 @@ class DynamicSprite
 
   static float width_scale; /**< The scale difference between actual and base width */
 
-  private:
+ private:
   float sprite_width = 50;
   float sprite_height = 50;
   float scale_factor = 1;

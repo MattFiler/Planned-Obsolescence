@@ -5,7 +5,7 @@
 
 class CharacterManager
 {
-  public:
+ public:
   CharacterManager() = default;
   ~CharacterManager();
 
@@ -16,7 +16,7 @@ class CharacterManager
 
   void render(double delta_time, ASGE::Renderer* renderer);
 
-  private:
+ private:
   void renderBosses(double delta_time, ASGE::Renderer* renderer);
   void renderGoons(double delta_time, ASGE::Renderer* renderer);
   void renderTechnicians(double delta_time, ASGE::Renderer* renderer);

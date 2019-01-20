@@ -22,7 +22,7 @@ struct EventData;
  */
 class Scene
 {
-  public:
+ public:
   Scene() = default;
   virtual ~Scene() = default;
   virtual bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) = 0;
@@ -31,7 +31,7 @@ class Scene
   virtual void keyHandler(const ASGE::SharedEventData data) = 0;
   virtual void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) = 0;
 
-  protected:
+ protected:
   int next_scene = -1;
   ASGE::Colour clear_colour = ASGE::COLOURS::BLACK;
   ASGE::Renderer* rend = nullptr;

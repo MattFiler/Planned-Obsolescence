@@ -19,7 +19,7 @@ struct EventData;
  */
 class SceneManager
 {
-  public:
+ public:
   SceneManager();
   ~SceneManager();
 
@@ -32,6 +32,6 @@ class SceneManager
 
   Scene* current_scene = nullptr;
 
-  private:
+ private:
   void swapScene(Scene* new_scene);
 };

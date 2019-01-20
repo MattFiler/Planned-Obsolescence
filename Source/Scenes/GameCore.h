@@ -13,7 +13,7 @@ class Renderer;
  */
 class GameCore : public Scene
 {
-  public:
+ public:
   GameCore() = default;
   ~GameCore() = default;
   bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) override;
@@ -22,7 +22,7 @@ class GameCore : public Scene
   void keyHandler(const ASGE::SharedEventData data) override;
   void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) override;
 
-  private:
+ private:
   void spawnCharacters(ASGE::Renderer* renderer);
   CharacterManager character_manager;
 };

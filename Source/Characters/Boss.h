@@ -2,7 +2,7 @@
 
 class Boss : public Character
 {
-  public:
+ public:
   Boss();
   ~Boss() = default;
 };
