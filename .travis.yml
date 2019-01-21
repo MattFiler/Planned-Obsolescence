@@ -53,7 +53,7 @@ before_install:
   - eval "${MATRIX_EVAL}"
 
 before_script:
-  - git lfs install && git lfs pull && git lfs fetch --all
+  - git lfs install && git lfs pull && git lfs fetch
   - wget https://raw.githubusercontent.com/Sarcasm/run-clang-format/master/run-clang-format.py
   - chmod +x run-clang-format.py
   - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON CMakeLists.txt
