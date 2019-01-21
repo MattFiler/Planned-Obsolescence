@@ -6,7 +6,8 @@ json FileHandler::openAsJSON(string& filename)
 {
   json json_file;
   auto file = ASGE::FILEIO::File();
-  if (file.open("data/" + filename)) {
+  if (file.open("data/" + filename))
+  {
     auto buffer = file.read();
     if (buffer.length > 0)
     {
@@ -20,7 +21,8 @@ json FileHandler::openAsJSON(string& filename)
 string FileHandler::openAsString(string& filename)
 {
   auto file = ASGE::FILEIO::File();
-  if (file.open("data/" + filename)) {
+  if (file.open("data/" + filename))
+  {
     auto buffer = file.read();
     if (buffer.length > 0)
     {
@@ -31,13 +33,15 @@ string FileHandler::openAsString(string& filename)
 }
 
 /* Load a sound into a SoLoud WavStream */
-WavStream FileHandler::loadSound(std::string &filename) {
+WavStream FileHandler::loadSound(std::string &filename)
+{
   WavStream sound;
   auto file = ASGE::FILEIO::File();
   if (file.open("/data/" + filename))
   {
     auto buffer = file.read();
-    if (buffer.length > 0) {
+    if (buffer.length > 0)
+    {
       sound.loadMem(buffer.as_unsigned_char(), static_cast<unsigned int>(buffer.length), false, false);
     }
   }
