@@ -145,7 +145,9 @@ if (WIN32 AND NOT BUILD_SHARED_LIBS AND NOT MSVC)
 endif()
 
 ## utility scripts
+set(ENABLE_SOUND cached "Adds SoLoud to the Project" ON)
 include(CMake/datapak.cmake)
+target_link_libraries(${PROJECT_NAME} soloud)
 
 ## build types
 set(CMAKE_CONFIGURATION_TYPES Debug;Release)
