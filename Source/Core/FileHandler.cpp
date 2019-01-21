@@ -33,7 +33,7 @@ string FileHandler::openAsString(string& filename)
 }
 
 /* Load a sound into a SoLoud WavStream */
-WavStream FileHandler::loadSound(std::string &filename)
+WavStream FileHandler::loadSound(std::string& filename)
 {
   WavStream sound;
   auto file = ASGE::FILEIO::File();
@@ -42,7 +42,8 @@ WavStream FileHandler::loadSound(std::string &filename)
     auto buffer = file.read();
     if (buffer.length > 0)
     {
-      sound.loadMem(buffer.as_unsigned_char(), static_cast<unsigned int>(buffer.length), false, false);
+      sound.loadMem(
+        buffer.as_unsigned_char(), static_cast<unsigned int>(buffer.length), false, false);
     }
   }
   return sound;
