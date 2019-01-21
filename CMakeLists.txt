@@ -145,7 +145,7 @@ if (WIN32 AND NOT BUILD_SHARED_LIBS AND NOT MSVC)
 endif()
 
 ## utility scripts
-set(ENABLE_SOUND cached "Adds SoLoud to the Project" ON)
+SET(ENABLE_SOUND ON CACHE BOOL "Adds SoLoud to the Project" FORCE)
 include(CMake/datapak.cmake)
 target_link_libraries(${PROJECT_NAME} soloud)
 
