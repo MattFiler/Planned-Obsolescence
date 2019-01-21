@@ -115,11 +115,21 @@ else()
 
     # mac specific libraries
     if(PLATFORM STREQUAL "osx")
-        set(CMAKE_CXX_FLAGS
-                "${CMAKE_CXX_FLAGS} \
-                -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo" PARENT_SCOPE)
+        find_library(IOKIT IOKit)
+        find_library(COCOA Cocoa)
+        find_library(COREVIDEO CoreVideo)
 
-        list(APPEND LINK_LIBS -lz -lbz2 )
+        message("IOKit:        " ${IOKIT})
+        message("Cocoa:        " ${COCOA})
+        message("CoreVideo:    " ${COREVIDEO})
+
+        list(APPEND LINK_LIBS
+                -lz -lbz2
+                ${AUDIO_UNIT}
+                ${AUDIO_TBOX}
+                ${COCOA}
+                ${COREVIDEO}
+                ${IOKIT})
     endif()
 
     # linux specific libraries
