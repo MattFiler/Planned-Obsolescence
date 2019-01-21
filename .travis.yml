@@ -47,7 +47,7 @@ matrix:
         - MATRIX_EVAL="brew tap oclint/formulae &&  brew install git-lfs oclint"
       script:
         - cmake --build .
-        - oclint-json-compilation-database
+    #    - oclint-json-compilation-database
 
 before_install:
   - eval "${MATRIX_EVAL}"
