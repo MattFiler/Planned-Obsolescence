@@ -1,7 +1,7 @@
 {
 	"DEFAULT": {
-		"width": 10,
-		"height": 10,
+		"width": 35,
+		"height": 35,
 		
 		"sprite": "data/TILES/tile_grey_placeholder.png",
 		
@@ -165,7 +165,7 @@
 			"computer": true
 		}
 	},
-	"LAB_DESK": {
+	"LAB_BENCH": {
 		"sprite": "data/TILES/LAB/tile_pink_placeholder.png"
 	},
 	"LAB_DOOR_L_R_U_D": {
