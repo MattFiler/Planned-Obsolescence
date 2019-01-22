@@ -5,6 +5,8 @@
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
 
+#include "../Map/Room.h"
+
 /**
  *   @brief   Loads all variables and sprites for this scene
  *   @details Initialises all variables and creates all the new
@@ -17,6 +19,8 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
 
   spawnCharacters(renderer);
 
+  game_map.load(renderer);
+
   return true;
 }
 
@@ -26,7 +30,7 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   Boss boss_demo;
   boss_demo.wake(renderer);
   boss_demo.setSpawnPosition(100, 100);
-  character_manager.spawn(boss_demo);
+  // character_manager.spawn(boss_demo);
 }
 
 /**
@@ -66,5 +70,9 @@ void GameCore::render(double delta_time)
 {
   rend->renderText("THE GAME", 100, 100, ASGE::COLOURS::RED);
 
+  // Render Map
+  game_map.render(delta_time, rend);
+
+  // Render Characters
   character_manager.render(delta_time, rend);
 }

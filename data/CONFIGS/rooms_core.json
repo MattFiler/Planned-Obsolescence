@@ -1,0 +1,27 @@
+{
+	"DEFAULT": {	
+		"tiles": [
+			"DEFAULT"
+		],
+		"available_exits": {
+			"left": false,
+			"right": false,
+			"up": false,
+			"down": false
+		}
+	},
+	"DEMO_RIGHT_UP": {
+		"tiles": [
+			"LAB_R_D",   "LAB_L_R_D",   "LAB_DOOR_L_R_U_D",   "LAB_L_R_D",   "LAB_L_D",
+			"LAB_R_U_D", "LAB_L_R_U_D", "LAB_COMPUTER_L_R_U", "LAB_L_R_U_D", "LAB_L_U_D",
+			"LAB_R_U_D", "LAB_L_U_D",   "LAB_BENCH",          "LAB_R_U_D",   "LAB_DOOR_L_R_U_D",
+			"LAB_R_U_D", "LAB_L_R_U_D", "LAB_COMPUTER_L_R_D", "LAB_L_R_U_D", "LAB_L_U_D",
+			"LAB_R_U",   "LAB_L_R_U",   "LAB_L_R_U",          "LAB_L_R_U",   "LAB_L_U"
+		],
+		
+		"available_exits": {
+			"right": true,
+			"up": true
+		}
+	}
+}

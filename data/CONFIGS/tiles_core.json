@@ -1,0 +1,185 @@
+{
+	"DEFAULT": {
+		"width": 10,
+		"height": 10,
+		
+		"sprite": "data/TILES/tile_grey_placeholder.png",
+		
+		"available_exits": {
+			"left": false,
+			"right": false,
+			"up": false,
+			"down": false
+		},
+		
+		"has_point_of_interest": {
+			"door": false,
+			"computer": false
+		}
+	},
+	"LAB_L": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"left": true
+		}
+	},
+	"LAB_L_R": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"left": true,
+			"right": true
+		}
+	},
+	"LAB_L_R_U": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"left": true,
+			"right": true,
+			"up": true
+		}
+	},
+	"LAB_L_R_U_D": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"left": true,
+			"right": true,
+			"up": true,
+			"down": true
+		}
+	},
+	"LAB_L_R_D": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"left": true,
+			"right": true,
+			"down": true
+		}
+	},
+	"LAB_L_U": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"left": true,
+			"up": true
+		}
+	},
+	"LAB_L_U_D": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"left": true,
+			"up": true,
+			"down": true
+		}
+	},
+	"LAB_L_D": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"left": true,
+			"down": true
+		}
+	},
+	"LAB_R": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"right": true
+		}
+	},
+	"LAB_R_U": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"right": true,
+			"up": true
+		}
+	},
+	"LAB_R_U_D": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"right": true,
+			"up": true,
+			"down": true
+		}
+	},
+	"LAB_R_D": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"right": true,
+			"down": true
+		}
+	},
+	"LAB_U": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"up": true
+		}
+	},
+	"LAB_U_D": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"up": true,
+			"down": true
+		}
+	},
+	"LAB_D": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"down": true
+		}
+	},
+	"LAB_COMPUTER_L_R_U": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"left": true,
+			"right": true,
+			"up": true
+		},
+		
+		"has_point_of_interest": {
+			"computer": true
+		}
+	},
+	"LAB_COMPUTER_L_R_D": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"left": true,
+			"right": true,
+			"up": true
+		},
+		
+		"has_point_of_interest": {
+			"computer": true
+		}
+	},
+	"LAB_DESK": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png"
+	},
+	"LAB_DOOR_L_R_U_D": {
+		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"left": true,
+			"right": true,
+			"up": true,
+			"down": true
+		},
+		
+		"has_point_of_interest": {
+			"door": true
+		}
+	}
+}

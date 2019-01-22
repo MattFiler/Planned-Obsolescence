@@ -24,7 +24,8 @@ class Character
 
   // Get character config data
   bool isVisible();
-  int getSpawnCap();
+  unsigned long long getSpawnCap();
+  int getSpawnCapAsInt();
   std::string getSpritePath();
 
   // Get character components

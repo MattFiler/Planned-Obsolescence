@@ -1,6 +1,7 @@
 #include "../Core/CharacterManager.h"
 #include "../Core/DynamicSprite.h"
 #include "../Core/GameObject.h"
+#include "../Map/GameMap.h"
 #include "Scene.h"
 
 namespace ASGE
@@ -9,7 +10,7 @@ class Renderer;
 }
 
 /**
- **   The first scene of the game, displays logos
+ **   The core game scene
  */
 class GameCore : public Scene
 {
@@ -25,4 +26,5 @@ class GameCore : public Scene
  private:
   void spawnCharacters(ASGE::Renderer* renderer);
   CharacterManager character_manager;
+  GameMap game_map;
 };
