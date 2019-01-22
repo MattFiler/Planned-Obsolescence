@@ -71,7 +71,7 @@ void GameCore::render(double delta_time)
   rend->renderText("THE GAME", 100, 100, ASGE::COLOURS::RED);
 
   // Render Map
-  game_map.render(delta_time, rend);
+  game_map.render();
 
   // Render Characters
   character_manager.render(delta_time, rend);

@@ -5,13 +5,14 @@
 #include "../Core/DynamicSprite.h"
 #include "../Core/FileHandler.h"
 #include <Engine/Renderer.h>
+#include <Engine/Sprite.h>
 #include <json.hpp>
 using json = nlohmann::json;
 
 class Tile
 {
  public:
-  Tile(std::string tile_type = "DEFAULT", ASGE::Renderer* renderer = nullptr);
+  explicit Tile(std::string tile_type = "DEFAULT");
   ~Tile() = default;
 
   Tile(const Tile&) = delete;
@@ -20,12 +21,19 @@ class Tile
   bool entryIsValid(room_exits exit);
   bool hasPointOfInterest(point_of_interest poi);
 
-  DynamicSprite* getSprite();
+  void configure(float x_pos, float y_pos, ASGE::Renderer* renderer);
+  float getPositionX();
+  float getPositionY();
+
+  ASGE::Sprite* getSprite();
+
+  float getWidth();
+  float getHeight();
 
  private:
   json tile_data;
   FileHandler file_handler;
-  DynamicSprite* my_sprite = nullptr;
+  ASGE::Sprite* sprite = nullptr;
 };
 
 #endif

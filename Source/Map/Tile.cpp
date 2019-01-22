@@ -2,20 +2,11 @@
 using namespace std;
 
 /* Load our config on instantiation */
-Tile::Tile(string tile_type, ASGE::Renderer* renderer)
+Tile::Tile(string tile_type)
 {
   // Load tile config
   string config_file = "tiles_core.json";
   tile_data = file_handler.loadConfig(config_file, tile_type);
-
-  // Set tile sprite if we've been given a renderer
-  if (renderer != nullptr)
-  {
-    my_sprite = new DynamicSprite(1);
-    ASGE::Sprite* new_sprite = renderer->createRawSprite();
-    new_sprite->loadTexture(tile_data["sprite"]);
-    my_sprite->addSprite(*new_sprite);
-  }
 }
 
 /* Work out if we have the requested exit on this tile */
@@ -72,8 +63,48 @@ bool Tile::hasPointOfInterest(point_of_interest poi)
   }
 }
 
-/* Return our sprite */
-DynamicSprite* Tile::getSprite()
+/* Configure our sprite and set position */
+void Tile::configure(float x_pos, float y_pos, ASGE::Renderer* renderer)
 {
-  return my_sprite;
+  // Set tile sprite
+  sprite = renderer->createRawSprite();
+  sprite->loadTexture(tile_data["sprite"]);
+
+  // Set position
+  sprite->xPos(x_pos);
+  sprite->yPos(y_pos);
+
+  // Set dimensions
+  sprite->width(getWidth());
+  sprite->height(getHeight());
+}
+
+/* Return the X position of the tile */
+float Tile::getPositionX()
+{
+  return sprite->xPos();
+}
+
+/* Get the Y position of the tile */
+float Tile::getPositionY()
+{
+  return sprite->yPos();
+}
+
+/* Return our sprite */
+ASGE::Sprite* Tile::getSprite()
+{
+  return sprite;
+}
+
+/* Get the width of the tile */
+float Tile::getWidth()
+{
+  return tile_data["width"];
+}
+
+/* Get the height of the tile */
+float Tile::getHeight()
+{
+  return tile_data["height"];
 }

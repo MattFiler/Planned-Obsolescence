@@ -33,10 +33,10 @@ void Character::updateSprite()
 }
 
 /* Adjust spawn position */
-void Character::setSpawnPosition(int x, int y)
+void Character::setSpawnPosition(int x_pos, int y_pos)
 {
-  character_config["spawn_pos"][0] = x;
-  character_config["spawn_pos"][1] = y;
+  character_config["spawn_pos"][0] = x_pos;
+  character_config["spawn_pos"][1] = y_pos;
 }
 
 /* Toggle visibility */
@@ -46,10 +46,10 @@ void Character::setVisible(bool isVisible)
 }
 
 /* Adjust dimensions */
-void Character::setDimensions(int w, int h)
+void Character::setDimensions(int new_width, int new_height)
 {
-  character_config["width"] = w;
-  character_config["height"] = h;
+  character_config["width"] = new_width;
+  character_config["height"] = new_height;
 }
 
 /* Adjust movement speed */

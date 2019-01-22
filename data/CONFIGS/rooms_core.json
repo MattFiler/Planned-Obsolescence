@@ -1,8 +1,16 @@
 {
 	"DEFAULT": {	
+		"tile_w": 5,
+		"tile_h": 5,
+		
 		"tiles": [
-			"DEFAULT"
+			"DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT",
+			"DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT",
+			"DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT",
+			"DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT",
+			"DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT"
 		],
+		
 		"available_exits": {
 			"left": false,
 			"right": false,

@@ -10,14 +10,18 @@ class GameMap
   GameMap() = default;
   ~GameMap() = default;
 
-  void load(ASGE::Renderer* renderer);
-  void render(double delta_time, ASGE::Renderer* renderer);
+  void load(ASGE::Renderer* renderer_instance);
+  void render();
+
+  Room* getRooms();
+  int getRoomCount();
 
  private:
   json map_config;
   FileHandler file_handler;
   Room* rooms = nullptr;
   int room_count = 0;
+  ASGE::Renderer* renderer;
 };
 
 #endif
