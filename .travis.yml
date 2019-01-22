@@ -38,6 +38,7 @@ matrix:
         - /usr/bin/cppcheck --quiet --enable=all --std=c++14 --language=c++ --error-exitcode=1 --inline-suppr --force --suppressions-list=./CI/datpak/Tools/Cppcheck/suppress.conf main.cpp Source/*
         - cmake --build .
 
+    # OSX Clang
     - os: osx
       name: "Clang"
       osx_image: xcode10
@@ -47,7 +48,7 @@ matrix:
         - MATRIX_EVAL="brew tap oclint/formulae &&  brew install git-lfs oclint"
       script:
         - cmake --build .
-    #    - oclint-json-compilation-database
+        - oclint-json-compilation-database -e Libs -e _deps
 
 before_install:
   - eval "${MATRIX_EVAL}"
