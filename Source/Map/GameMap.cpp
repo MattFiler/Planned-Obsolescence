@@ -5,6 +5,7 @@ void GameMap::load(ASGE::Renderer* renderer)
 {
   // Load config
   map_config = file_handler.loadConfig("map_core.json", "EXAMPLE");
+  // Using "EXAMPLE" map config for now, but later will expand this to be randomly selected.
 
   // Load all rooms into the map
   rooms = new Room[map_config["rooms"].size()];
