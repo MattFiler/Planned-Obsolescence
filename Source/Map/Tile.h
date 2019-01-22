@@ -14,6 +14,8 @@ class Tile
   Tile(std::string tile_type = "DEFAULT", ASGE::Renderer* renderer = nullptr);
   ~Tile() = default;
 
+  Tile(const Tile&) = delete;
+
   bool exitIsValid(room_exits exit);
   bool entryIsValid(room_exits exit);
   bool hasPointOfInterest(point_of_interest poi);

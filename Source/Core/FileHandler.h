@@ -14,7 +14,7 @@ class FileHandler
 {
  public:
   json openAsJSON(std::string& filename);
-  json loadConfig(std::string config, std::string request = "DEFAULT");
+  json loadConfig(std::string& config, std::string request = "DEFAULT");
   std::string openAsString(std::string& filename);
   WavStream loadSound(std::string& filename);
 };

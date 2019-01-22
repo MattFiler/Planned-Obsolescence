@@ -1,10 +1,12 @@
 #include "GameMap.h"
+using namespace std;
 
 /* Load our map */
 void GameMap::load(ASGE::Renderer* renderer)
 {
   // Load config
-  map_config = file_handler.loadConfig("map_core.json", "EXAMPLE");
+  string config_file = "map_core.json";
+  map_config = file_handler.loadConfig(config_file, "EXAMPLE");
   // Using "EXAMPLE" map config for now, but later will expand this to be randomly selected.
 
   // Load all rooms into the map

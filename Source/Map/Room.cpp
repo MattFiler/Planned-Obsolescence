@@ -5,7 +5,8 @@ using namespace std;
 Room::Room(string room_name, ASGE::Renderer* renderer)
 {
   // Load config
-  room_config = file_handler.loadConfig("rooms_core.json", room_name);
+  string config_file = "rooms_core.json";
+  room_config = file_handler.loadConfig(config_file, room_name);
 
   // Load all tiles into room
   tiles = new Tile[room_config["tiles"].size()];

@@ -5,7 +5,8 @@ using namespace std;
 Tile::Tile(string tile_type, ASGE::Renderer* renderer)
 {
   // Load tile config
-  tile_data = file_handler.loadConfig("tiles_core.json", tile_type);
+  string config_file = "tiles_core.json";
+  tile_data = file_handler.loadConfig(config_file, tile_type);
 
   // Set tile sprite if we've been given a renderer
   if (renderer != nullptr)

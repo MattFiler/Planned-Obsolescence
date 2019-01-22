@@ -9,6 +9,8 @@ class Room
   Room(std::string room_name = "DEFAULT", ASGE::Renderer* renderer = nullptr);
   ~Room() = default;
 
+  Room(const Room&) = delete;
+
   Tile* getTiles();
   int getTileCount();
 

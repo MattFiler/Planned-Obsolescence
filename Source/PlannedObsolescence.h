@@ -2,6 +2,7 @@
 #include "Core/FileHandler.h"
 #include "Core/SceneManager.h"
 #include <Engine/OGLGame.h>
+#include <string>
 
 #include <json.hpp>
 using json = nlohmann::json;

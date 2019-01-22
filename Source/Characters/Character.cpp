@@ -18,7 +18,8 @@ void Character::wake(ASGE::Renderer* passed_renderer)
 /* Allow character variations to update the config to suit their needs */
 void Character::updateCoreConfig(std::string character_type)
 {
-  character_config = file_handler.loadConfig("characters_core.json", character_type);
+  string config_file = "characters_core.json";
+  character_config = file_handler.loadConfig(config_file, character_type);
 }
 
 /* Update our sprite */
