@@ -10,6 +10,8 @@ class Tile
   ~Tile() = default;
 
   bool exitIsValid(room_exits exit);
+  bool entryIsValid(room_exits exit);
+  bool hasPointOfInterest(point_of_interest poi);
 
  private:
   json tile_data;
