@@ -77,7 +77,7 @@ target_compile_features(
         ${PROJECT_NAME}
         PRIVATE
         cxx_std_17)
-        
+
 if ( CMAKE_COMPILER_IS_GNUCC )
     list(APPEND BUILD_FLAGS_FOR_CXX
         "-Wall" "-Wextra" "-Wshadow" "-Wnon-virtual-dtor"
@@ -143,7 +143,9 @@ if (WIN32 AND NOT BUILD_SHARED_LIBS AND NOT MSVC)
 endif()
 
 ## utility scripts
+SET(ENABLE_SOUND ON CACHE BOOL "Adds SoLoud to the Project" FORCE)
 include(CMake/datapak.cmake)
+target_link_libraries(${PROJECT_NAME} soloud)
 
 ## build types
 set(CMAKE_CONFIGURATION_TYPES Debug;Release)
