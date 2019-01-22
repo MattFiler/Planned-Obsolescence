@@ -17,9 +17,9 @@ class Character
   void wake(ASGE::Renderer* passed_renderer);
 
   // Modify character config on-the-fly
-  void setSpawnPosition(int x, int y);
+  void setSpawnPosition(int x_pos, int y_pos);
   void setVisible(bool isVisible);
-  void setDimensions(int w, int h);
+  void setDimensions(int new_width, int new_height);
   void setSpeed(int speed);
 
   // Get character config data

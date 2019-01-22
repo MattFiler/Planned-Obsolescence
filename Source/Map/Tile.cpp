@@ -64,15 +64,15 @@ bool Tile::hasPointOfInterest(point_of_interest poi)
 }
 
 /* Configure our sprite and set position */
-void Tile::configure(float x, float y, ASGE::Renderer* renderer)
+void Tile::configure(float x_pos, float y_pos, ASGE::Renderer* renderer)
 {
   // Set tile sprite
   sprite = renderer->createRawSprite();
   sprite->loadTexture(tile_data["sprite"]);
 
   // Set position
-  sprite->xPos(x);
-  sprite->yPos(y);
+  sprite->xPos(x_pos);
+  sprite->yPos(y_pos);
 
   // Set dimensions
   sprite->width(getWidth());

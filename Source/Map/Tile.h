@@ -21,7 +21,7 @@ class Tile
   bool entryIsValid(room_exits exit);
   bool hasPointOfInterest(point_of_interest poi);
 
-  void configure(float x, float y, ASGE::Renderer* renderer);
+  void configure(float x_pos, float y_pos, ASGE::Renderer* renderer);
   float getPositionX();
   float getPositionY();
 

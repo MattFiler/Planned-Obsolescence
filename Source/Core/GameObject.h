@@ -24,7 +24,7 @@ class GameObject
   float yPos();
   void yPos(float new_y);
   void move(float x, float y);
-  void CenterSpriteOnPoint(float x, float y);
+  void CenterSpriteOnPoint(float x_pos, float y_pos);
 
   void setScale(float new_scale);
   float getScale();
