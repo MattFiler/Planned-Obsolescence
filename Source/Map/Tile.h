@@ -12,7 +12,7 @@ using json = nlohmann::json;
 class Tile
 {
  public:
-  Tile(std::string tile_type = "DEFAULT");
+  explicit Tile(std::string tile_type = "DEFAULT");
   ~Tile() = default;
 
   Tile(const Tile&) = delete;
