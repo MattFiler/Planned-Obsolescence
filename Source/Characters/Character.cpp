@@ -18,26 +18,7 @@ void Character::wake(ASGE::Renderer* passed_renderer)
 /* Allow character variations to update the config to suit their needs */
 void Character::updateCoreConfig(std::string character_type)
 {
-  // Load our config and assign default values.
-  string config_file("CONFIGS/characters_core.json");
-  json temp_config = file_handler.openAsJSON(config_file);
-  character_config = temp_config["DEFAULT"];
-
-  // If we're requesting default, we can stop here.
-  if (character_type == "DEFAULT")
-  {
-    return;
-  }
-
-  // If not, continue to override the selected character's details.
-  temp_config = temp_config[character_type];
-  for (json::iterator i = temp_config.begin(); i != temp_config.end(); ++i)
-  {
-    if (!temp_config[i.key()].is_null())
-    {
-      character_config[i.key()] = i.value();
-    }
-  }
+  character_config = file_handler.loadConfig("characters_core.json", character_type);
 }
 
 /* Update our sprite */

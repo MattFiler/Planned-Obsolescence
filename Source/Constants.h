@@ -11,5 +11,13 @@ enum character_type
   SECURITY
 };
 
+enum room_exits
+{
+  LEFT,
+  RIGHT,
+  UP,
+  DOWN
+};
+
 const float SCREEN_WIDTH = 1280;
 const float SCREEN_HEIGHT = 720;

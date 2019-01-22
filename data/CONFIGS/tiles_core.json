@@ -1,0 +1,31 @@
+{
+	"DEFAULT": {
+		"width": 10,
+		"height": 10,
+		
+		"sprite": "data/TILES/tile_grey_placeholder.png",
+		
+		"available_exits": {
+			"left": false,
+			"right": false,
+			"up": false,
+			"down": false
+		}
+	},
+	"DEMO_LEFT_RIGHT": {
+		"sprite": "data/TILES/tile_black_placeholder.png",
+		
+		"available_exits": {
+			"left": true,
+			"right": true
+		}
+	},
+	"DEMO_UP_LEFT": {
+		"sprite": "data/TILES/tile_pink_placeholder.png",
+		
+		"available_exits": {
+			"up": true,
+			"left": true
+		}
+	}
+}

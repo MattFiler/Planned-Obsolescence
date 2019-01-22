@@ -17,6 +17,32 @@ json FileHandler::openAsJSON(string& filename)
   return json_file;
 }
 
+/* Load a requested portion of a game config */
+json FileHandler::loadConfig(std::string config, std::string request)
+{
+  // Load our config and assign default values.
+  string config_file("CONFIGS/" + config);
+  json temp_config = openAsJSON(config_file);
+  json final_config = temp_config["DEFAULT"];
+
+  // If we're requesting default, we can stop here.
+  if (request == "DEFAULT")
+  {
+    return final_config;
+  }
+
+  // If not, continue to override the selected character's details.
+  temp_config = temp_config[request];
+  for (json::iterator i = temp_config.begin(); i != temp_config.end(); ++i)
+  {
+    if (!temp_config[i.key()].is_null())
+    {
+      final_config[i.key()] = i.value();
+    }
+  }
+  return final_config;
+}
+
 /* Open the file as a buffer */
 string FileHandler::openAsString(string& filename)
 {
