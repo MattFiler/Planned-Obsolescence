@@ -1,5 +1,8 @@
 {
-	"DEFAULT": {		
+	"DEFAULT": {	
+		"tiles": [
+			"DEFAULT"
+		],
 		"available_exits": {
 			"left": false,
 			"right": false,

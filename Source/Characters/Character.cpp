@@ -58,7 +58,11 @@ void Character::setSpeed(int speed)
 }
 
 /* Return the spawn limit for this character class */
-int Character::getSpawnCap()
+unsigned long long Character::getSpawnCap()
+{
+  return character_config["spawn_cap"];
+}
+int Character::getSpawnCapAsInt()
 {
   return character_config["spawn_cap"];
 }

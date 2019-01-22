@@ -1,0 +1,12 @@
+{
+	"DEFAULT": {	
+		"rooms": [
+			"DEFAULT"
+		]
+	},
+	"EXAMPLE": {
+		"rooms": [
+			"DEMO_RIGHT_UP"
+		]
+	}
+}
