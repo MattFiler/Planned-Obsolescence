@@ -5,10 +5,10 @@ AlignTrailingComments: 'true'
 AllowAllParametersOfDeclarationOnNextLine: 'true'
 AllowShortCaseLabelsOnASingleLine: 'false'
 AllowShortFunctionsOnASingleLine: Inline
-AlwaysBreakTemplateDeclarations: 'true'
+AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakAfterReturnType: None
 BreakAfterJavaFieldAnnotations: 'true'
 BreakBeforeBraces: Allman
-BreakBeforeInheritanceComma: 'true'
 BreakBeforeTernaryOperators: 'true'
 BreakConstructorInitializers: AfterColon
 ColumnLimit: '100'
@@ -17,9 +17,17 @@ IndentCaseLabels: 'true'
 IndentPPDirectives: AfterHash
 KeepEmptyLinesAtTheStartOfBlocks: 'false'
 MaxEmptyLinesToKeep: '1'
+PenaltyBreakAssignment: '5'
+PenaltyBreakComment: '5'
+PenaltyBreakString: '5'
+PenaltyExcessCharacter: '100'
+PenaltyReturnTypeOnItsOwnLine: '10'
 PointerAlignment: Left
+ReflowComments: 'true'
 SpaceBeforeAssignmentOperators: 'true'
+SpacesBeforeTrailingComments: '1'
+SpacesInAngles: 'false'
 SpacesInContainerLiterals: 'false'
-AlwaysBreakAfterDefinitionReturnType: 'None'
-AlwaysBreakAfterReturnType: 'None'
+Standard: Cpp11
+CommentPragmas:  '^\\.+'
 ...
