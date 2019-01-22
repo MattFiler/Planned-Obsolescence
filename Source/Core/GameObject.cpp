@@ -120,18 +120,18 @@ void GameObject::move(float x, float y)
 /**
  *   @brief   Moves this object so that its center is at (x,y)
  *   @details Requires a sprite component to function
- *   @param   x is the x position in cartesian co-ordinates
+ *   @param   x_pos is the x position in cartesian co-ordinates
  *            y is the y position in cartesian co-ordinates
  */
-void GameObject::CenterSpriteOnPoint(float x, float y)
+void GameObject::CenterSpriteOnPoint(float x_pos, float y_pos)
 {
   if (sprite != nullptr)
   {
     center.x_pos = x;
     center.y_pos = y;
 
-    float new_x = x - ((width * scale) / 2);
-    float new_y = y - ((height * scale) / 2);
+    float new_x = x_pos - ((width * scale) / 2);
+    float new_y = y_pos - ((height * scale) / 2);
 
     xPos(new_x);
     yPos(new_y);

@@ -5,6 +5,8 @@
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
 
+#include "../Map/Room.h"
+
 /**
  *   @brief   Loads all variables and sprites for this scene
  *   @details Initialises all variables and creates all the new
@@ -16,6 +18,8 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
   rend = renderer;
 
   spawnCharacters(renderer);
+
+  game_map.load(renderer);
 
   return true;
 }
@@ -68,5 +72,9 @@ void GameCore::render(double delta_time)
 {
   rend->renderText("THE GAME", 100, 100, ASGE::COLOURS::RED);
 
+  // Render Map
+  game_map.render();
+
+  // Render Characters
   character_manager.render(delta_time, rend);
 }

@@ -1,7 +1,9 @@
 {
-	"resolution": {
-		"width": 1920,
-		"height": 1080
-	},
-	"debug_enabled": false
+	"DEFAULT": {
+		"resolution": {
+			"width": 1920,
+			"height": 1080
+		},
+		"debug_enabled": false
+	}
 }

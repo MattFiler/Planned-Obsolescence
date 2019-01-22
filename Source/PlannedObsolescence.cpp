@@ -11,6 +11,8 @@
 #include "PlannedObsolescence.h"
 #include "Scenes/Splashscreen.h"
 
+using namespace std;
+
 PlannedObsolescence::~PlannedObsolescence()
 {
   if (scene_manager)
@@ -23,8 +25,8 @@ PlannedObsolescence::~PlannedObsolescence()
 bool PlannedObsolescence::init()
 {
   // Load core configurations
-  std::string config_file("CONFIGS/game_core.json");
-  core_config = file_handler.openAsJSON(config_file);
+  string config_file = "game_core.json";
+  core_config = file_handler.loadConfig(config_file);
 
   // Configure resolution and game title
   setupResolution();

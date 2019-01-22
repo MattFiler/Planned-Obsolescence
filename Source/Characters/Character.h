@@ -20,9 +20,9 @@ class Character
   void wake(ASGE::Renderer* passed_renderer);
 
   // Modify character config on-the-fly
-  void setSpawnPosition(int x, int y);
+  void setSpawnPosition(int x_pos, int y_pos);
   void setVisible(bool isVisible);
-  void setDimensions(int w, int h);
+  void setDimensions(int new_width, int new_height);
   void setSpeed(int speed);
 
   void generatePathfindingMap();
@@ -30,7 +30,8 @@ class Character
 
   // Get character config data
   bool isVisible();
-  int getSpawnCap();
+  unsigned long long getSpawnCap();
+  int getSpawnCapAsInt();
   std::string getSpritePath();
 
   // Get character components

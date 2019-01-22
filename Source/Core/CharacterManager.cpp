@@ -26,7 +26,7 @@ bool CharacterManager::spawn(Boss& new_boss)
   }
 
   // Spawn a boss if we haven't exceeded our limits
-  if (boss_count < new_boss.getSpawnCap())
+  if (boss_count < new_boss.getSpawnCapAsInt())
   {
     bosses[boss_count] = new_boss;
     boss_count++;
@@ -47,7 +47,7 @@ bool CharacterManager::spawn(Goon& new_goon)
   }
 
   // Spawn a goon if we haven't exceeded our limits
-  if (goon_count < new_goon.getSpawnCap())
+  if (goon_count < new_goon.getSpawnCapAsInt())
   {
     goons[goon_count] = new_goon;
     goon_count++;
@@ -68,7 +68,7 @@ bool CharacterManager::spawn(LabTechnician& new_techie)
   }
 
   // Spawn a technician if we haven't exceeded our limits
-  if (techie_count < new_techie.getSpawnCap())
+  if (techie_count < new_techie.getSpawnCapAsInt())
   {
     techies[techie_count] = new_techie;
     techie_count++;
@@ -89,7 +89,7 @@ bool CharacterManager::spawn(Security& new_guard)
   }
 
   // Spawn a guard if we haven't exceeded our limits
-  if (guard_count < new_guard.getSpawnCap())
+  if (guard_count < new_guard.getSpawnCapAsInt())
   {
     guards[guard_count] = new_guard;
     guard_count++;
