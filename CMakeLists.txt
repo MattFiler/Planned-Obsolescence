@@ -32,8 +32,6 @@ add_executable(
         Source/PlannedObsolescence.cpp
         Source/PlannedObsolescence.h
         Source/Core/GameObject.h
-        Source/Core/Geometry.h
-        Source/Core/Geometry.cpp
         Source/Core/GameObject.cpp
         Source/Core/DynamicSprite.h
         Source/Core/DynamicSprite.cpp
@@ -64,7 +62,7 @@ add_executable(
         Source/Characters/LabTechnician.cpp
         Source/Characters/Security.h
         Source/Characters/Security.cpp
-        Source/Constants.h Source/Core/LabMap.h Source/Core/MapNode.h)
+        Source/Constants.h Source/Core/PathfindingMap.h Source/Core/PathNode.h Source/Core/NodeConnection.h Source/Core/Point.h Source/Core/Point.cpp Source/Core/Vector.h Source/Core/Vector.cpp)
 
 ## library includes
 target_include_directories(

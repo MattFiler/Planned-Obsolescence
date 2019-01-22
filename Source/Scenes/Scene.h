@@ -1,7 +1,7 @@
 #ifndef PO_SCENE
 #define PO_SCENE
 
-#include "../Core/Geometry.h"
+#include "../Core/Vector.h"
 
 #include "../../Libs/ASGE/include/Engine/Colours.h"
 #include "../../Libs/ASGE/include/Engine/Input.h"

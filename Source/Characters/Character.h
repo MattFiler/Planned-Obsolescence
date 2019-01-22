@@ -3,15 +3,18 @@
 
 #include "../Core/DynamicSprite.h"
 #include "../Core/FileHandler.h"
+#include "../Core/PathfindingMap.h"
+#include "../Core/Vector.h"
 #include <Engine/Renderer.h>
 #include <json.hpp>
+#include <vector>
 using json = nlohmann::json;
 
 class Character
 {
  public:
   Character();
-  ~Character() = default;
+  ~Character();
 
   // Assign the renderer for working with sprites
   void wake(ASGE::Renderer* passed_renderer);
@@ -21,6 +24,9 @@ class Character
   void setVisible(bool isVisible);
   void setDimensions(int w, int h);
   void setSpeed(int speed);
+
+  void generatePathfindingMap();
+  bool calculateRouteToPoint(Point point);
 
   // Get character config data
   bool isVisible();
@@ -34,6 +40,19 @@ class Character
  protected:
   void updateCoreConfig(std::string character_type = "DEFAULT");
   void updateSprite();
+  void updatePosition(double delta_time);
+  float calculateScoresOfNextDepth(PathNode* node,
+                                   unsigned long long int depth,
+                                   float best_score,
+                                   Point point);
+
+  Point position = Point(0, 0);
+  Vector direction = Vector(0, 0);
+
+  PathfindingMap* internal_map = nullptr;
+  std::vector<PathNode*> current_route;
+  unsigned long long route_index = 0;
+  float distance_to_next_node = 0;
 
  private:
   void importConfig(json json_config);

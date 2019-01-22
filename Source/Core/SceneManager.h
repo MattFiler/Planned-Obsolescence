@@ -3,7 +3,7 @@
 #include <memory>
 
 #include "../Scenes/Scene.h"
-#include "Geometry.h"
+#include "Vector.h"
 
 #include <json.hpp>
 using json = nlohmann::json;
