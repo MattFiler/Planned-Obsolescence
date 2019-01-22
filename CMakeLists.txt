@@ -62,7 +62,20 @@ add_executable(
         Source/Characters/LabTechnician.cpp
         Source/Characters/Security.h
         Source/Characters/Security.cpp
-        Source/Constants.h Source/Core/PathfindingMap.h Source/Core/PathNode.h Source/Core/NodeConnection.h Source/Core/Point.h Source/Core/Point.cpp Source/Core/Vector.h Source/Core/Vector.cpp)
+        Source/Constants.h
+        Source/Core/PathfindingMap.h
+        Source/Core/PathNode.h
+        Source/Core/NodeConnection.h
+        Source/Core/Point.h
+        Source/Core/Point.cpp
+        Source/Core/Vector.h
+        Source/Core/Vector.cpp
+        Source/Map/GameMap.cpp
+        Source/Map/GameMap.h
+        Source/Map/Room.cpp
+        Source/Map/Room.h
+        Source/Map/Tile.cpp
+        Source/Map/Tile.h)
 
 ## library includes
 target_include_directories(

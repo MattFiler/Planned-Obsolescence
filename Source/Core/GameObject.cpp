@@ -127,8 +127,8 @@ void GameObject::CenterSpriteOnPoint(float x_pos, float y_pos)
 {
   if (sprite != nullptr)
   {
-    center.x_pos = x;
-    center.y_pos = y;
+    center.x_pos = x_pos;
+    center.y_pos = y_pos;
 
     float new_x = x_pos - ((width * scale) / 2);
     float new_y = y_pos - ((height * scale) / 2);
