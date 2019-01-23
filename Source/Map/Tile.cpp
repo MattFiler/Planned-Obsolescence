@@ -64,37 +64,42 @@ bool Tile::hasPointOfInterest(point_of_interest poi)
 }
 
 /* Configure our sprite and set position */
-void Tile::configure(float x_pos, float y_pos, ASGE::Renderer* renderer)
+void Tile::configure(float x_position, float y_position, ASGE::Renderer* renderer)
 {
+  x_pos = x_position;
+  y_pos = y_position;
   // Set tile sprite
-  sprite = renderer->createRawSprite();
-  sprite->loadTexture(tile_data["sprite"]);
+  ASGE::Sprite* new_sprite = renderer->createRawSprite();
+  new_sprite->loadTexture(tile_data["sprite"]);
+
+  sprite = new DynamicSprite(1);
+  sprite->addSprite(*new_sprite);
 
   // Set position
-  sprite->xPos(x_pos);
-  sprite->yPos(y_pos);
+  sprite->xPos(x_position);
+  sprite->yPos(y_position);
 
-  // Set dimensions
-  sprite->width(getWidth());
-  sprite->height(getHeight());
+  // Set dimensions // Commented out for now as DynamicSprite doesn't can't alter w/h
+  // sprite->width(getWidth());
+  // sprite->height(getHeight());
 }
 
 /* Return the X position of the tile */
 float Tile::getPositionX()
 {
-  return sprite->xPos();
+  return x_pos;
 }
 
 /* Get the Y position of the tile */
 float Tile::getPositionY()
 {
-  return sprite->yPos();
+  return y_pos;
 }
 
 /* Return our sprite */
 ASGE::Sprite* Tile::getSprite()
 {
-  return sprite;
+  return &sprite->returnNextSprite(0);
 }
 
 /* Get the width of the tile */

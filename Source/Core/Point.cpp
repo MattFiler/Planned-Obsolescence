@@ -28,6 +28,22 @@ bool Point::operator==(Point& point)
   return (x_dif < 0.01f && y_dif < 0.01f);
 }
 
+Point Point::operator+(const Point& point)
+{
+  Point return_point;
+  return_point.x_pos = this->x_pos + point.x_pos;
+  return_point.y_pos = this->y_pos + point.y_pos;
+  return return_point;
+}
+
+Point Point::operator-(const Point& point)
+{
+  Point return_point;
+  return_point.x_pos = this->x_pos - point.x_pos;
+  return_point.y_pos = this->y_pos - point.y_pos;
+  return return_point;
+}
+
 /**
  *   @brief   Finds the distance from a->b
  *   @return  The straight line distance between a and b

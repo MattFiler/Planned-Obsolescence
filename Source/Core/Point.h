@@ -18,6 +18,8 @@ struct Point
   void set(float new_x, float new_y);
 
   bool operator==(Point& point);
+  Point operator-(const Point& point);
+  Point operator+(const Point& point);
 
   static float distanceBetween(Point a, Point b);
 };

@@ -14,6 +14,7 @@
  */
 struct PathfindingMap
 {
+  // TODO: Add deep copy overload for assignment operator
   PathNode* nodes = nullptr;
   int number_of_nodes = 0;
 };

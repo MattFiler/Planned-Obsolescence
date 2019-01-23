@@ -25,6 +25,10 @@ class GameCore : public Scene
 
  private:
   void spawnCharacters(ASGE::Renderer* renderer);
+  void generatePathfindingMap();
+  PathNode* findNodeAtPoint(Point point);
+
   CharacterManager character_manager;
   GameMap game_map;
+  PathfindingMap pathfinding_map;
 };
