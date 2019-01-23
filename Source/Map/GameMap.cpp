@@ -15,11 +15,23 @@ void GameMap::load(ASGE::Renderer* renderer_instance)
   // Load all rooms into the map
   rooms = new Room[map_config["rooms"].size()];
   room_count = static_cast<int>(map_config["rooms"].size());
+  float room_x = 0.0f; // TODO: Update base position
+  float room_y = 0.0f; // TODO: Update base position
   for (int i = 0; i < room_count; i++)
   {
     Room new_room = Room(map_config["rooms"][i]);
-    new_room.build(0, 0, renderer); // TODO: UPDATE POSITION
+    new_room.build(room_x, room_y, renderer);
     rooms[i] = new_room;
+
+    if ((i + 1) % static_cast<int>(map_config["rooms_w"]) == 0)
+    {
+      room_x = 0.0f; // TODO: Update base position
+      room_y += new_room.getHeight();
+    }
+    else
+    {
+      room_x += new_room.getWidth();
+    }
   }
 }
 

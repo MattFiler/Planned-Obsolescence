@@ -3,17 +3,26 @@
 /* Deallocate memory */
 CharacterManager::~CharacterManager()
 {
-  delete bosses;
-  bosses = nullptr;
-
-  delete goons;
-  goons = nullptr;
-
-  delete techies;
-  techies = nullptr;
-
-  delete guards;
-  guards = nullptr;
+  if (boss_count > 0)
+  {
+    delete bosses;
+    bosses = nullptr;
+  }
+  if (goon_count > 0)
+  {
+    delete goons;
+    goons = nullptr;
+  }
+  if (techie_count > 0)
+  {
+    delete techies;
+    techies = nullptr;
+  }
+  if (guard_count > 0)
+  {
+    delete guards;
+    guards = nullptr;
+  }
 }
 
 /* Spawn a boss */

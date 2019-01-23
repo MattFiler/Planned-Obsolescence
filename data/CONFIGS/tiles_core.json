@@ -166,7 +166,9 @@
 		}
 	},
 	"LAB_BENCH": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png"
+		"height": 50,
+		"width": 50,
+		"sprite": "data/TILES/tile_black_placeholder.png"
 	},
 	"LAB_DOOR_L_R_U_D": {
 		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
