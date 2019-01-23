@@ -19,7 +19,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
 
   game_map.load(renderer);
 
-  generatePathfindingMap();
+  // generatePathfindingMap();
 
   spawnCharacters(renderer);
 
@@ -100,7 +100,7 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   Boss boss_demo;
   boss_demo.wake(renderer);
   boss_demo.setSpawnPosition(0, 0);
-  boss_demo.calculateRouteToPoint(Point(300, 300));
+  // boss_demo.calculateRouteToPoint(Point(300, 300));
   character_manager.spawn(boss_demo);
 }
 
