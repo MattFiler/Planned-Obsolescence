@@ -40,8 +40,10 @@ json FileHandler::loadConfig(std::string& config, std::string request)
     {
       final_config[i.key()] = i.value();
     }
-    else if (temp_config[i.key()].is_object()) {
-      for (json::iterator x = temp_config[i.key()].begin(); x != temp_config[i.key()].end(); ++x) {
+    else if (temp_config[i.key()].is_object())
+    {
+      for (json::iterator x = temp_config[i.key()].begin(); x != temp_config[i.key()].end(); ++x)
+      {
         if (!temp_config[i.key()][x.key()].is_null())
         {
           final_config[i.key()][x.key()] = x.value();
