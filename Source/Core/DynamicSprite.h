@@ -1,7 +1,6 @@
 #ifndef PO_ANIMSPRITE
 #define PO_ANIMSPRITE
 
-#include "Geometry.h"
 #include <Engine/Sprite.h>
 
 /**

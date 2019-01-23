@@ -61,7 +61,7 @@ std::string GameObject::getName()
  */
 float GameObject::xPos()
 {
-  return position.x;
+  return position.x_pos;
 }
 
 /**
@@ -72,8 +72,8 @@ float GameObject::xPos()
  */
 void GameObject::xPos(float new_x)
 {
-  position.x = new_x;
-  center.x = new_x - ((width * scale) / 2);
+  position.x_pos = new_x;
+  center.x_pos = new_x - ((width * scale) / 2);
   // If there is a sprite component, update its position too
   if (sprite != nullptr)
   {
@@ -87,7 +87,7 @@ void GameObject::xPos(float new_x)
  */
 float GameObject::yPos()
 {
-  return position.y;
+  return position.y_pos;
 }
 
 /**
@@ -98,8 +98,8 @@ float GameObject::yPos()
  */
 void GameObject::yPos(float new_y)
 {
-  position.y = new_y;
-  center.y = new_y - ((height * scale) / 2);
+  position.y_pos = new_y;
+  center.y_pos = new_y - ((height * scale) / 2);
   // If there is a sprite component, update its position too
   if (sprite != nullptr)
   {
@@ -113,8 +113,8 @@ void GameObject::yPos(float new_y)
  */
 void GameObject::move(float x, float y)
 {
-  xPos(position.x + x);
-  yPos(position.y + y);
+  xPos(position.x_pos + x);
+  yPos(position.y_pos + y);
 }
 
 /**
@@ -127,8 +127,8 @@ void GameObject::CenterSpriteOnPoint(float x_pos, float y_pos)
 {
   if (sprite != nullptr)
   {
-    center.x = x_pos;
-    center.y = y_pos;
+    center.x_pos = x_pos;
+    center.y_pos = y_pos;
 
     float new_x = x_pos - ((width * scale) / 2);
     float new_y = y_pos - ((height * scale) / 2);
@@ -212,8 +212,8 @@ void GameObject::setAnimatedSprite(DynamicSprite* new_sprite)
   scale = sprite->scale();
   // Modify the ASGE::Sprites scale and position with width_scale
   sprite->scale(scale * DynamicSprite::width_scale);
-  sprite->xPos(position.x * DynamicSprite::width_scale);
-  sprite->yPos(position.y * DynamicSprite::width_scale);
+  sprite->xPos(position.x_pos * DynamicSprite::width_scale);
+  sprite->yPos(position.y_pos * DynamicSprite::width_scale);
 }
 
 /**

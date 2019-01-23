@@ -2,7 +2,7 @@
 #define PO_GAMEOBJECT
 
 #include "DynamicSprite.h"
-#include "Geometry.h"
+#include "Point.h"
 
 /**
  *  Standard game object, usually for objects with sprites

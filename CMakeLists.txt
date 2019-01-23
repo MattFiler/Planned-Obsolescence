@@ -32,8 +32,6 @@ add_executable(
         Source/PlannedObsolescence.cpp
         Source/PlannedObsolescence.h
         Source/Core/GameObject.h
-        Source/Core/Geometry.h
-        Source/Core/Geometry.cpp
         Source/Core/GameObject.cpp
         Source/Core/DynamicSprite.h
         Source/Core/DynamicSprite.cpp
@@ -64,7 +62,20 @@ add_executable(
         Source/Characters/LabTechnician.cpp
         Source/Characters/Security.h
         Source/Characters/Security.cpp
-        Source/Constants.h Source/Core/LabMap.h Source/Core/MapNode.h Source/Map/GameMap.cpp Source/Map/GameMap.h Source/Map/Room.cpp Source/Map/Room.h Source/Map/Tile.cpp Source/Map/Tile.h)
+        Source/Constants.h
+        Source/Core/PathfindingMap.h
+        Source/Core/PathNode.h
+        Source/Core/NodeConnection.h
+        Source/Core/Point.h
+        Source/Core/Point.cpp
+        Source/Core/Vector.h
+        Source/Core/Vector.cpp
+        Source/Map/GameMap.cpp
+        Source/Map/GameMap.h
+        Source/Map/Room.cpp
+        Source/Map/Room.h
+        Source/Map/Tile.cpp
+        Source/Map/Tile.h)
 
 ## library includes
 target_include_directories(
@@ -79,7 +90,7 @@ target_compile_features(
         ${PROJECT_NAME}
         PRIVATE
         cxx_std_17)
-        
+
 if ( CMAKE_COMPILER_IS_GNUCC )
     list(APPEND BUILD_FLAGS_FOR_CXX
         "-Wall" "-Wextra" "-Wshadow" "-Wnon-virtual-dtor"
