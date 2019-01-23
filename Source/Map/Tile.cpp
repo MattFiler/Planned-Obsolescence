@@ -10,23 +10,23 @@ Tile::Tile(string tile_type)
 }
 
 /* Work out if we have the requested exit on this tile */
-bool Tile::exitIsValid(room_exits exit)
+bool Tile::exitIsValid(direction exit)
 {
   switch (exit)
   {
-    case room_exits::LEFT:
+    case direction::LEFT:
     {
       return tile_data["available_exits"]["left"];
     }
-    case room_exits::RIGHT:
+    case direction::RIGHT:
     {
       return tile_data["available_exits"]["right"];
     }
-    case room_exits::UP:
+    case direction::UP:
     {
       return tile_data["available_exits"]["up"];
     }
-    case room_exits::DOWN:
+    case direction::DOWN:
     {
       return tile_data["available_exits"]["down"];
     }
@@ -38,7 +38,7 @@ bool Tile::exitIsValid(room_exits exit)
 }
 
 /* Duplicate of exitIsValid */
-bool Tile::entryIsValid(room_exits exit)
+bool Tile::entryIsValid(direction exit)
 {
   return exitIsValid(exit);
 }
@@ -64,37 +64,42 @@ bool Tile::hasPointOfInterest(point_of_interest poi)
 }
 
 /* Configure our sprite and set position */
-void Tile::configure(float x_pos, float y_pos, ASGE::Renderer* renderer)
+void Tile::configure(float x_position, float y_position, ASGE::Renderer* renderer)
 {
+  x_pos = x_position;
+  y_pos = y_position;
   // Set tile sprite
-  sprite = renderer->createRawSprite();
-  sprite->loadTexture(tile_data["sprite"]);
+  ASGE::Sprite* new_sprite = renderer->createRawSprite();
+  new_sprite->loadTexture(tile_data["sprite"]);
+
+  sprite = new DynamicSprite(1);
+  sprite->addSprite(*new_sprite);
 
   // Set position
-  sprite->xPos(x_pos);
-  sprite->yPos(y_pos);
+  sprite->xPos(x_position);
+  sprite->yPos(y_position);
 
-  // Set dimensions
-  sprite->width(getWidth());
-  sprite->height(getHeight());
+  // Set dimensions // Commented out for now as DynamicSprite doesn't can't alter w/h
+  // sprite->width(getWidth());
+  // sprite->height(getHeight());
 }
 
 /* Return the X position of the tile */
 float Tile::getPositionX()
 {
-  return sprite->xPos();
+  return x_pos;
 }
 
 /* Get the Y position of the tile */
 float Tile::getPositionY()
 {
-  return sprite->yPos();
+  return y_pos;
 }
 
 /* Return our sprite */
 ASGE::Sprite* Tile::getSprite()
 {
-  return sprite;
+  return &sprite->returnNextSprite(0);
 }
 
 /* Get the width of the tile */

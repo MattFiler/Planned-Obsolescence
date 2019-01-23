@@ -14,7 +14,7 @@ enum character_type
   SECURITY
 };
 
-enum room_exits
+enum direction
 {
   LEFT,
   RIGHT,

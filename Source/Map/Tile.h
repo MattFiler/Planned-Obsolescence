@@ -17,11 +17,11 @@ class Tile
 
   Tile(const Tile&) = delete;
 
-  bool exitIsValid(room_exits exit);
-  bool entryIsValid(room_exits exit);
+  bool exitIsValid(direction exit);
+  bool entryIsValid(direction exit);
   bool hasPointOfInterest(point_of_interest poi);
 
-  void configure(float x_pos, float y_pos, ASGE::Renderer* renderer);
+  void configure(float x_position, float y_position, ASGE::Renderer* renderer);
   float getPositionX();
   float getPositionY();
 
@@ -33,7 +33,9 @@ class Tile
  private:
   json tile_data;
   FileHandler file_handler;
-  ASGE::Sprite* sprite = nullptr;
+  DynamicSprite* sprite = nullptr;
+  float x_pos = 0;
+  float y_pos = 0;
 };
 
 #endif
