@@ -32,12 +32,21 @@ json FileHandler::loadConfig(std::string& config, std::string request)
   }
 
   // If not, continue to override the selected character's details.
+  // Please note: only supports ONE layer of recursion into objects.
   temp_config = temp_config[request];
   for (json::iterator i = temp_config.begin(); i != temp_config.end(); ++i)
   {
-    if (!temp_config[i.key()].is_null())
+    if (!temp_config[i.key()].is_null() && !temp_config[i.key()].is_object())
     {
       final_config[i.key()] = i.value();
+    }
+    else if (temp_config[i.key()].is_object()) {
+      for (json::iterator x = temp_config[i.key()].begin(); x != temp_config[i.key()].end(); ++x) {
+        if (!temp_config[i.key()][x.key()].is_null())
+        {
+          final_config[i.key()][x.key()] = x.value();
+        }
+      }
     }
   }
   return final_config;

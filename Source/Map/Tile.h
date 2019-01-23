@@ -17,8 +17,8 @@ class Tile
 
   Tile(const Tile&) = delete;
 
-  bool exitIsValid(room_exits exit);
-  bool entryIsValid(room_exits exit);
+  bool exitIsValid(direction exit);
+  bool entryIsValid(direction exit);
   bool hasPointOfInterest(point_of_interest poi);
 
   void configure(float x_position, float y_position, ASGE::Renderer* renderer);

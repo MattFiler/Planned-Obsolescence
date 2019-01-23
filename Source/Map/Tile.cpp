@@ -10,23 +10,23 @@ Tile::Tile(string tile_type)
 }
 
 /* Work out if we have the requested exit on this tile */
-bool Tile::exitIsValid(room_exits exit)
+bool Tile::exitIsValid(direction exit)
 {
   switch (exit)
   {
-    case room_exits::LEFT:
+    case direction::LEFT:
     {
       return tile_data["available_exits"]["left"];
     }
-    case room_exits::RIGHT:
+    case direction::RIGHT:
     {
       return tile_data["available_exits"]["right"];
     }
-    case room_exits::UP:
+    case direction::UP:
     {
       return tile_data["available_exits"]["up"];
     }
-    case room_exits::DOWN:
+    case direction::DOWN:
     {
       return tile_data["available_exits"]["down"];
     }
@@ -38,7 +38,7 @@ bool Tile::exitIsValid(room_exits exit)
 }
 
 /* Duplicate of exitIsValid */
-bool Tile::entryIsValid(room_exits exit)
+bool Tile::entryIsValid(direction exit)
 {
   return exitIsValid(exit);
 }

@@ -56,22 +56,22 @@ void GameCore::generatePathfindingMap()
   {
     for (int j = 0; j < game_map.getRooms()[i].getTileCount(); j++)
     {
-      if (game_map.getRooms()[i].getTiles()[j].exitIsValid(room_exits::LEFT))
+      if (game_map.getRooms()[i].getTiles()[j].exitIsValid(direction::LEFT))
       {
         pathfinding_map.nodes[tile_count].connections[0].node =
           findNodeAtPoint(pathfinding_map.nodes[tile_count].position - Point(tile_size, 0));
       }
-      else if (game_map.getRooms()[i].getTiles()[j].exitIsValid(room_exits::RIGHT))
+      else if (game_map.getRooms()[i].getTiles()[j].exitIsValid(direction::RIGHT))
       {
         pathfinding_map.nodes[tile_count].connections[0].node =
           findNodeAtPoint(pathfinding_map.nodes[tile_count].position + Point(tile_size, 0));
       }
-      else if (game_map.getRooms()[i].getTiles()[j].exitIsValid(room_exits::UP))
+      else if (game_map.getRooms()[i].getTiles()[j].exitIsValid(direction::UP))
       {
         pathfinding_map.nodes[tile_count].connections[0].node =
           findNodeAtPoint(pathfinding_map.nodes[tile_count].position - Point(0, tile_size));
       }
-      else if (game_map.getRooms()[i].getTiles()[j].exitIsValid(room_exits::DOWN))
+      else if (game_map.getRooms()[i].getTiles()[j].exitIsValid(direction::DOWN))
       {
         pathfinding_map.nodes[tile_count].connections[0].node =
           findNodeAtPoint(pathfinding_map.nodes[tile_count].position + Point(0, tile_size));
