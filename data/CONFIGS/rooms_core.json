@@ -20,16 +20,18 @@
 	},
 	"DEMO_RIGHT_UP": {
 		"tiles": [
-			"LAB_R_D",   "LAB_L_R_D",   "LAB_DOOR_L_R_U_D",   "LAB_L_R_D",   "LAB_L_D",
-			"LAB_R_U_D", "LAB_L_R_U_D", "LAB_COMPUTER_L_R_U", "LAB_L_R_U_D", "LAB_L_U_D",
-			"LAB_R_U_D", "LAB_L_U_D",   "LAB_BENCH",          "LAB_R_U_D",   "LAB_DOOR_L_R_U_D",
-			"LAB_R_U_D", "LAB_L_R_U_D", "LAB_COMPUTER_L_R_D", "LAB_L_R_U_D", "LAB_L_U_D",
-			"LAB_R_U",   "LAB_L_R_U",   "LAB_L_R_U",          "LAB_L_R_U",   "LAB_L_U"
+			"LAB_R_D",          "LAB_L_R_D",   "LAB_DOOR_L_R_U_D",   "LAB_L_R_D",   "LAB_L_D",
+			"LAB_R_U_D",        "LAB_L_R_U_D", "LAB_COMPUTER_L_R_U", "LAB_L_R_U_D", "LAB_L_U_D",
+			"LAB_DOOR_L_R_U_D", "LAB_L_U_D",   "LAB_BENCH",          "LAB_R_U_D",   "LAB_DOOR_L_R_U_D",
+			"LAB_R_U_D",        "LAB_L_R_U_D", "LAB_COMPUTER_L_R_D", "LAB_L_R_U_D", "LAB_L_U_D",
+			"LAB_R_U",          "LAB_L_R_U",   "LAB_DOOR_L_R_U_D",   "LAB_L_R_U",   "LAB_L_U"
 		],
 		
 		"available_exits": {
+			"left": true,
 			"right": true,
-			"up": true
+			"up": true,
+			"down": true
 		}
 	}
 }

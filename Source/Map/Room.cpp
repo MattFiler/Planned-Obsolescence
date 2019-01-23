@@ -21,6 +21,7 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer)
   tile_count = static_cast<int>(room_config["tiles"].size());
   float tile_x = base_x;
   float tile_y = base_y;
+  float y_modifier = 0.0f;
   for (int i = 0; i < tile_count; i++)
   {
     Tile new_tile = Tile(room_config["tiles"][i]);
@@ -29,18 +30,30 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer)
 
     if ((i + 1) % static_cast<int>(room_config["tile_w"]) == 0)
     {
+      float new_room_w = tile_x - base_x + new_tile.getWidth();
+
       tile_x = base_x;
-      tile_y += new_tile.getHeight();
+      tile_y += y_modifier;
+      y_modifier = 0.0f;
+
+      if (room_w < new_room_w)
+      {
+        room_w = new_room_w;
+      }
+      if (room_h < tile_y - base_y)
+      {
+        room_h = tile_y - base_y;
+      }
     }
     else
     {
       tile_x += new_tile.getWidth();
+      if (new_tile.getHeight() > y_modifier)
+      {
+        y_modifier = new_tile.getHeight();
+      }
     }
   }
-
-  // Store size data
-  room_w = tile_x;
-  room_h = tile_y;
 }
 
 /* Return room width */

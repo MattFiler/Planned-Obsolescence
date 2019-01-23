@@ -16,10 +16,8 @@ class Character
   Character();
   ~Character();
 
-  // Assign the renderer for working with sprites
   void wake(ASGE::Renderer* passed_renderer);
 
-  // Modify character config on-the-fly
   void setSpawnPosition(int x_pos, int y_pos);
   void setVisible(bool isVisible);
   void setDimensions(int new_width, int new_height);
@@ -28,13 +26,11 @@ class Character
   void generatePathfindingMap();
   bool calculateRouteToPoint(Point point);
 
-  // Get character config data
   bool isVisible();
   unsigned long long getSpawnCap();
   int getSpawnCapAsInt();
   std::string getSpritePath();
 
-  // Get character components
   DynamicSprite* getSprite();
   ASGE::Renderer* getRenderer();
 
