@@ -15,6 +15,7 @@ class CharacterManager
   bool spawn(Security& new_guard);
 
   void render(double delta_time, ASGE::Renderer* renderer);
+  void update(double delta_time);
 
  private:
   void renderBosses(double delta_time, ASGE::Renderer* renderer);

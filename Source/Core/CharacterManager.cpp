@@ -38,6 +38,7 @@ bool CharacterManager::spawn(Boss& new_boss)
   if (boss_count < new_boss.getSpawnCapAsInt())
   {
     bosses[boss_count] = new_boss;
+      bosses[boss_count].linkPathfindingMap();
     boss_count++;
     return true;
   }
@@ -116,6 +117,13 @@ void CharacterManager::render(double delta_time, ASGE::Renderer* renderer)
   renderGoons(delta_time, renderer);
   renderTechnicians(delta_time, renderer);
   renderSecurity(delta_time, renderer);
+}
+
+/* Update all characters */
+void CharacterManager::update(double delta_time)
+{
+  // TODO: Add all update ticks, much like for render, just adding this one here to test
+  bosses[0].updatePosition(delta_time);
 }
 
 /* Render our bosses */

@@ -75,7 +75,7 @@ add_executable(
         Source/Map/Room.cpp
         Source/Map/Room.h
         Source/Map/Tile.cpp
-        Source/Map/Tile.h)
+        Source/Map/Tile.h Source/Core/PathfindingMap.cpp)
 
 ## library includes
 target_include_directories(

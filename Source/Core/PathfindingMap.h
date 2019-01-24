@@ -5,6 +5,7 @@
 #ifndef PLANNEDOBSOLESCENCE_LABMAP_H
 #define PLANNEDOBSOLESCENCE_LABMAP_H
 
+#include "../Map/GameMap.h"
 #include "PathNode.h"
 
 /**
@@ -14,9 +15,19 @@
  */
 struct PathfindingMap
 {
-  // TODO: Add deep copy overload for assignment operator
+ public:
+  PathfindingMap() = default;
+  PathfindingMap(GameMap* current_map);
+  ~PathfindingMap();
+
+  void linkNodes();
+
   PathNode* nodes = nullptr;
   int number_of_nodes = 0;
+
+ private:
+  PathNode* findNodeAtPoint(Point point);
+  GameMap * game_map = nullptr;
 };
 
 #endif // PLANNEDOBSOLESCENCE_LABMAP_H

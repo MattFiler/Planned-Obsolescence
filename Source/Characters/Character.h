@@ -5,6 +5,7 @@
 #include "../Core/FileHandler.h"
 #include "../Core/PathfindingMap.h"
 #include "../Core/Vector.h"
+
 #include <Engine/Renderer.h>
 #include <json.hpp>
 #include <vector>
@@ -17,13 +18,15 @@ class Character
   ~Character();
 
   void wake(ASGE::Renderer* passed_renderer);
+  void updatePosition(double delta_time);
 
   void setSpawnPosition(int x_pos, int y_pos);
   void setVisible(bool isVisible);
   void setDimensions(int new_width, int new_height);
   void setSpeed(int speed);
 
-  void generatePathfindingMap();
+  void generatePathfindingMap(GameMap* game_map);
+  void linkPathfindingMap();
   bool calculateRouteToPoint(Point point);
 
   bool isVisible();
@@ -37,7 +40,6 @@ class Character
  protected:
   void updateCoreConfig(std::string character_type = "DEFAULT");
   void updateSprite();
-  void updatePosition(double delta_time);
   float calculateScoresOfNextDepth(PathNode* node,
                                    unsigned long long int depth,
                                    float best_score,
