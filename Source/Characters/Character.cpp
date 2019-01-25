@@ -20,6 +20,7 @@ void Character::wake(ASGE::Renderer* passed_renderer)
 {
   renderer = passed_renderer;
   updateSprite();
+  debug_text.print(("PO_DEBUG: SPAWNED NEW " + character_variant));
 }
 
 /* Allow character variations to update the config to suit their needs */
@@ -49,9 +50,9 @@ void Character::updatePosition(double delta_time)
     // Store the current distance to the next node
     float previous_distance = distance_to_next_node;
     // Add to the current position based on speed and delta_time
-    position.x_pos += direction.x_mag * static_cast<float>(delta_time) * 0.001f *
+    position.x_pos += direction.x_mag * static_cast<float>(delta_time) * 0.01f *
                       static_cast<float>(character_config["movement_speed"]);
-    position.y_pos += direction.y_mag * static_cast<float>(delta_time) * 0.001f *
+    position.y_pos += direction.y_mag * static_cast<float>(delta_time) * 0.01f *
                       static_cast<float>(character_config["movement_speed"]);
 
     my_sprite->xPos(position.x_pos);

@@ -28,6 +28,11 @@ enum point_of_interest
   DOOR
 };
 
+struct debug
+{
+  static bool enabled;
+};
+
 const float SCREEN_WIDTH = 1280;
 const float SCREEN_HEIGHT = 720;
 

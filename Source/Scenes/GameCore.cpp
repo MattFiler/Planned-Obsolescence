@@ -33,6 +33,11 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   boss_demo.wake(renderer);
   boss_demo.setSpawnPosition(0, 0);
   character_manager.spawn(boss_demo);
+
+  Boss boss_demo2;
+  boss_demo2.wake(renderer);
+  boss_demo2.setSpawnPosition(100, 100);
+  character_manager.spawn(boss_demo2);
 }
 
 /**
