@@ -20,7 +20,7 @@ void Character::wake(ASGE::Renderer* passed_renderer)
 {
   renderer = passed_renderer;
   updateSprite();
-  debug_text.print(("PO_DEBUG: SPAWNED NEW " + character_variant));
+  debug_text.print(("SPAWNED NEW " + character_variant));
 }
 
 /* Allow character variations to update the config to suit their needs */

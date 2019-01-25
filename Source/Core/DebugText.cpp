@@ -7,10 +7,6 @@ void DebugText::print(string debug_string)
 {
   if (debug::enabled)
   {
-    ASGE::DebugPrinter{} << debug_string << endl;
-  }
-  else
-  {
-    ASGE::DebugPrinter{} << "debug disabled" << endl;
+    ASGE::DebugPrinter{} << "PO_DEBUG: " << debug_string << endl;
   }
 }
