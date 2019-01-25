@@ -113,3 +113,27 @@ float Tile::getHeight()
 {
   return tile_data["height"];
 }
+
+/* Set tile index in its room */
+void Tile::setIndexInRoom(int index)
+{
+  tile_index_in_room = index;
+}
+
+/* Set tile index in the whole map */
+void Tile::setIndexInMap(int index)
+{
+  tile_index_in_map = index;
+}
+
+/* Get tile index in its room */
+int Tile::getIndexInRoom()
+{
+  return tile_index_in_room;
+}
+
+/* Get tile index in the whole map */
+int Tile::getIndexInMap()
+{
+  return tile_index_in_map;
+}
