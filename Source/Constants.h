@@ -30,6 +30,7 @@ enum point_of_interest
 
 struct debug
 {
+  // cppcheck-suppress unreadVariable
   static bool enabled;
 };
 
