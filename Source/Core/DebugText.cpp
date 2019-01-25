@@ -3,7 +3,7 @@
 using namespace std;
 
 /* Print a string if debug outputs are enabled */
-void DebugText::print(string debug_string)
+void DebugText::print(string& debug_string)
 {
   if (debug::enabled)
   {
