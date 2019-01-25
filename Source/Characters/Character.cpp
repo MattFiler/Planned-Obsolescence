@@ -6,7 +6,7 @@ Character::Character()
 {
   // Load default config
   updateCoreConfig();
-  current_route.resize(10);
+  current_route.resize(1);
 }
 
 Character::~Character()
@@ -42,96 +42,65 @@ void Character::updateSprite()
 /* Update the position of the character based on current route and speed */
 void Character::updatePosition(double delta_time)
 {
-  // Store the current distance to the next node
-  float previous_distance = distance_to_next_node;
-  // Add to the current position based on speed and delta_time
-  position.x_pos += direction.x_mag * static_cast<float>(delta_time) *
-                    static_cast<float>(character_config["character_speed"]);
-  position.y_pos += direction.x_mag * static_cast<float>(delta_time) *
-                    static_cast<float>(character_config["character_speed"]);
-
-  // Calculate the new distance to the next node
-  distance_to_next_node = Point::distanceBetween(position, current_route[route_index]->position);
-  // If the distance increased, then we have over-shot
-  if (previous_distance < distance_to_next_node)
+  // Check if at the end of a route, if so there is no point checking for movement
+  if (route_index != current_route.size() - 1)
   {
-    route_index++;
-    // Set the position to that of the current node being pathed to
-    position = current_route[route_index]->position;
-    // If this was the last node
-    if (current_route.size() == route_index - 1)
+    // Store the current distance to the next node
+    float previous_distance = distance_to_next_node;
+    // Add to the current position based on speed and delta_time
+    position.x_pos += direction.x_mag * static_cast<float>(delta_time) * 0.001f *
+                      static_cast<float>(character_config["movement_speed"]);
+    position.y_pos += direction.y_mag * static_cast<float>(delta_time) * 0.001f *
+                      static_cast<float>(character_config["movement_speed"]);
+
+    my_sprite->xPos(position.x_pos);
+    my_sprite->yPos(position.y_pos);
+
+    // Calculate the new distance to the next node
+    distance_to_next_node =
+      Point::distanceBetween(position, current_route[route_index + 1]->position);
+    // If the distance increased, then we have over-shot
+    if (previous_distance < distance_to_next_node)
     {
-      direction.set(0, 0);
-    }
-    else
-    {
-      // Calculate the new direction
-      float x_diff = current_route[route_index + 1]->position.x_pos - position.x_pos;
-      float y_diff = current_route[route_index + 1]->position.y_pos - position.y_pos;
-      direction.set(x_diff, y_diff);
+      route_index++;
+      // Set the position to that of the node just reached
+      position = current_route[route_index]->position;
+      // If this was the last node
+      if (current_route.size() - 1 == route_index)
+      {
+        direction.set(0, 0);
+      }
+      else
+      {
+        // Calculate the new direction
+        float x_diff = current_route[route_index + 1]->position.x_pos - position.x_pos;
+        float y_diff = current_route[route_index + 1]->position.y_pos - position.y_pos;
+        direction.set(x_diff, y_diff);
+        direction.normalise();
+        distance_to_next_node =
+          Point::distanceBetween(position, current_route[route_index + 1]->position);
+      }
     }
   }
 }
 
 /* Generate the internal map that this character will use to pathfind */
-void Character::generatePathfindingMap()
+void Character::generatePathfindingMap(GameMap* game_map)
 {
-  // Need tile info to make this function properly, for now, here is a sample
-  internal_map = new PathfindingMap;
-  internal_map->nodes = new PathNode[11];
-  internal_map->number_of_nodes = 11;
-  internal_map->nodes[0].position.set(0, 0);
-  internal_map->nodes[1].position.set(0, 100);
-  internal_map->nodes[2].position.set(100, 100);
-  internal_map->nodes[3].position.set(100, 0);
-  internal_map->nodes[4].position.set(100, 200);
-  internal_map->nodes[5].position.set(200, 100);
-  internal_map->nodes[6].position.set(200, 0);
-  internal_map->nodes[7].position.set(300, 0);
-  internal_map->nodes[8].position.set(300, 100);
-  internal_map->nodes[9].position.set(300, 200);
-  internal_map->nodes[10].position.set(200, 200);
-
-  internal_map->nodes[0].connections[3].node = &internal_map->nodes[1];
-
-  internal_map->nodes[1].connections[1].node = &internal_map->nodes[2];
-  internal_map->nodes[1].connections[2].node = &internal_map->nodes[0];
-
-  internal_map->nodes[2].connections[0].node = &internal_map->nodes[1];
-  internal_map->nodes[2].connections[1].node = &internal_map->nodes[5];
-  internal_map->nodes[2].connections[2].node = &internal_map->nodes[3];
-  internal_map->nodes[2].connections[3].node = &internal_map->nodes[4];
-
-  internal_map->nodes[3].connections[3].node = &internal_map->nodes[2];
-
-  internal_map->nodes[4].connections[2].node = &internal_map->nodes[2];
-
-  internal_map->nodes[5].connections[0].node = &internal_map->nodes[2];
-  internal_map->nodes[5].connections[1].node = &internal_map->nodes[8];
-  internal_map->nodes[5].connections[2].node = &internal_map->nodes[6];
-
-  internal_map->nodes[6].connections[1].node = &internal_map->nodes[7];
-  internal_map->nodes[6].connections[3].node = &internal_map->nodes[5];
-
-  internal_map->nodes[7].connections[0].node = &internal_map->nodes[6];
-  internal_map->nodes[7].connections[3].node = &internal_map->nodes[8];
-
-  internal_map->nodes[8].connections[0].node = &internal_map->nodes[5];
-  internal_map->nodes[8].connections[2].node = &internal_map->nodes[7];
-  internal_map->nodes[8].connections[3].node = &internal_map->nodes[9];
-
-  internal_map->nodes[9].connections[0].node = &internal_map->nodes[10];
-  internal_map->nodes[9].connections[2].node = &internal_map->nodes[8];
-
-  internal_map->nodes[10].connections[1].node = &internal_map->nodes[9];
-
+  internal_map = new PathfindingMap(game_map);
   // Find the node that this character is currently at
   for (int i = 0; i < internal_map->number_of_nodes; i++)
   {
     if (position == internal_map->nodes[i].position)
     {
       current_route[0] = &internal_map->nodes[i];
+      return;
     }
+  }
+  // If no node was found, then assign to the first node to avoid errors
+  if (current_route[0] == nullptr)
+  {
+    current_route[0] = &internal_map->nodes[0];
   }
 }
 
@@ -150,6 +119,7 @@ bool Character::calculateRouteToPoint(Point point)
     best_score = calculateScoresOfNextDepth(current_route[0], 1, best_score, point);
     if (best_score == 100000)
     {
+      current_route.resize(1);
       return false;
     }
   }
@@ -181,11 +151,15 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
   {
     if (node->connections[i].node != nullptr && !node->connections[i].node->visited)
     {
-      // Calculate a score based on the distance between this node and the
-      // target point
-      node->connections[i].score =
-        Point::distanceBetween(node->connections[i].node->position, point);
-      if (node->connections[i].score < best_score)
+      // If this node has not been scored yet
+      if (node->connections[i].score == -1)
+      {
+        // Calculate a score based on the distance between this node and the
+        // target point
+        node->connections[i].score =
+          Point::distanceBetween(node->connections[i].node->position, point);
+      }
+      if (node->connections[i].score <= best_score)
       {
         best_score = node->connections[i].score;
         best_score_index = i;
@@ -206,18 +180,32 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
       current_route.resize(depth + 5);
     }
     current_route[depth] = node->connections[best_score_index].node;
+
+    // Score is 0 when the node is found
+    if (best_score_at_depth < 0.01f)
+    {
+      current_route.push_back(node->connections[best_score_index].node);
+      return 0;
+    }
+
     // Setting visited to true before recurring the algorithm will prevent
     // this node from being visited again until the next iteration.
     node->visited = true;
-    float return_score = calculateScoresOfNextDepth(
+    best_score_at_depth = calculateScoresOfNextDepth(
       node->connections[best_score_index].node, depth + 1, best_score, point);
     // Update the score to this connection to indicate the lowest score this
     // path currently finds
-    node->connections[best_score_index].score = return_score;
+    node->connections[best_score_index].score = best_score_at_depth;
     node->visited = false;
-    if (return_score < best_score_at_depth)
+
+    // Check through all score again with the new updated one
+    for (int i = 0; i < 4; i++)
     {
-      return return_score;
+      if (node->connections[i].score < best_score_at_depth && node->connections[i].score != -1 &&
+          node->connections[i].node != nullptr)
+      {
+        best_score_at_depth = node->connections[i].score;
+      }
     }
   }
   return best_score_at_depth;
