@@ -61,7 +61,7 @@
 		}
 	},
 	"LAB_L_U": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_blocked_right_down.png",
 		
 		"available_exits": {
 			"left": true,
@@ -78,7 +78,7 @@
 		}
 	},
 	"LAB_L_D": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_blocked_up_right.png",
 		
 		"available_exits": {
 			"left": true,
@@ -93,7 +93,7 @@
 		}
 	},
 	"LAB_R_U": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_blocked_left_down.png",
 		
 		"available_exits": {
 			"right": true,
@@ -110,7 +110,7 @@
 		}
 	},
 	"LAB_R_D": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_blocked_left_up.png",
 		
 		"available_exits": {
 			"right": true,
@@ -169,7 +169,7 @@
 		"sprite": "data/TILES/tile_black_placeholder.png"
 	},
 	"LAB_DOOR_L_R_U_D": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_door.png",
 		
 		"available_exits": {
 			"left": true,
