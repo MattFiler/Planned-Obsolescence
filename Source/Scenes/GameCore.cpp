@@ -6,6 +6,7 @@
 #include <Engine/Renderer.h>
 
 #include "../Map/Room.h"
+using namespace std;
 
 /**
  *   @brief   Loads all variables and sprites for this scene
@@ -33,11 +34,6 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   boss_demo.wake(renderer);
   boss_demo.setSpawnPosition(0, 0);
   character_manager.spawn(boss_demo);
-
-  Boss boss_demo2;
-  boss_demo2.wake(renderer);
-  boss_demo2.setSpawnPosition(100, 100);
-  character_manager.spawn(boss_demo2);
 }
 
 /**
@@ -46,7 +42,16 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
  *   @details the game state / variables etc depending
  *   @param   data is the event
  */
-void GameCore::keyHandler(const ASGE::SharedEventData data) {}
+void GameCore::keyHandler(const ASGE::SharedEventData data)
+{
+  auto key = static_cast<const ASGE::KeyEvent*>(data.get());
+  if (key->key == ASGE::KEYS::KEY_ESCAPE && key->action == ASGE::KEYS::KEY_RELEASED)
+  {
+    next_scene = 1;
+    string debug_string = "RETURNING TO MAIN MENU";
+    debug_text.print(debug_string);
+  }
+}
 
 /**
  *   @brief   Changes game state based on mouse inputs

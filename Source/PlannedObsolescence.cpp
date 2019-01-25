@@ -51,6 +51,9 @@ bool PlannedObsolescence::init()
     toggleFPS();
   }
 
+  // Seed srand
+  srand(static_cast<unsigned int>(time(NULL)));
+
   // Disable input threading
   inputs->use_threads = false;
 

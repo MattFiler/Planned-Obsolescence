@@ -20,9 +20,6 @@ void Character::wake(ASGE::Renderer* passed_renderer)
 {
   renderer = passed_renderer;
   updateSprite();
-
-  string debug_string = "SPAWNED NEW " + character_variant;
-  debug_text.print(debug_string);
 }
 
 /* Allow character variations to update the config to suit their needs */
@@ -124,6 +121,8 @@ bool Character::calculateRouteToPoint(Point point)
     if (best_score == 100000)
     {
       current_route.resize(1);
+      string debug_string = character_id + " COULD NOT ROUTE TO TARGET!";
+      debug_text.print(debug_string);
       return false;
     }
   }
@@ -134,9 +133,13 @@ bool Character::calculateRouteToPoint(Point point)
     if (current_route[i]->position == point)
     {
       current_route.resize(i + 1);
+      string debug_string =
+        character_id + " CALCULATED PATH TO TARGET ACROSS " + to_string(i) + " TILES";
+      debug_text.print(debug_string);
       return true;
     }
   }
+
   // Should never reach here, problems with the recursive algorithm if it does
   return false;
 }
@@ -278,8 +281,11 @@ ASGE::Renderer* Character::getRenderer()
 /* Set the character ID */
 void Character::setCharacterID(int index)
 {
-  character_id = character_variant + to_string(index);
+  character_id = character_variant + "_" + to_string(index);
   character_index = index;
+
+  string debug_string = "SPAWNED NEW " + character_variant + " WITH ID " + character_id;
+  debug_text.print(debug_string);
 }
 
 /* Get the character ID */

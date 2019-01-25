@@ -1,5 +1,6 @@
 #include "FileHandler.h"
 using namespace std;
+using namespace SoLoud;
 
 /* Open the file as a JSON data structure */
 json FileHandler::openAsJSON(string& filename)

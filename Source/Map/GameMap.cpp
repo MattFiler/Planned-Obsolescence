@@ -9,9 +9,10 @@ void GameMap::load(ASGE::Renderer* renderer_instance)
 
   // Load config
   string config_file = "map_core.json";
-  map_config = file_handler.loadConfig(config_file, "EXAMPLE");
+  string map_name = "TEST" + to_string((rand() % 5) + 1); // TODO: Vary this by number of configs.
+  map_config = file_handler.loadConfig(config_file, map_name);
 
-  string debug_string = "LOADING EXAMPLE MAP CONFIGURATION";
+  string debug_string = "LOADING MAP " + map_name;
   debug_text.print(debug_string);
 
   // Load all rooms into the map
