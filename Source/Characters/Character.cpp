@@ -27,6 +27,7 @@ void Character::updateCoreConfig(std::string character_type)
 {
   string config_file = "characters_core.json";
   character_config = file_handler.loadConfig(config_file, character_type);
+  character_variant = character_type;
 }
 
 /* Update our sprite */
@@ -269,4 +270,23 @@ DynamicSprite* Character::getSprite()
 ASGE::Renderer* Character::getRenderer()
 {
   return renderer;
+}
+
+/* Set the character ID */
+void Character::setCharacterID(int index)
+{
+  character_id = character_variant + to_string(index);
+  character_index = index;
+}
+
+/* Get the character ID */
+string Character::getCharacterID()
+{
+  return character_id;
+}
+
+/* Return the character index */
+int Character::getIndex()
+{
+  return character_index;
 }

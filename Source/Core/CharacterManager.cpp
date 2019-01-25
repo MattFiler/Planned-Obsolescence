@@ -37,6 +37,7 @@ bool CharacterManager::spawn(Boss& new_boss)
   // Spawn a boss if we haven't exceeded our limits
   if (boss_count < new_boss.getSpawnCapAsInt())
   {
+    new_boss.setCharacterID(boss_count);
     bosses[boss_count] = new_boss;
     bosses[boss_count].generatePathfindingMap(game_map);
     bosses[boss_count].calculateRouteToPoint(Point(300, 300)); // TEMP CODE FOR TESTING
@@ -60,6 +61,7 @@ bool CharacterManager::spawn(Goon& new_goon)
   // Spawn a goon if we haven't exceeded our limits
   if (goon_count < new_goon.getSpawnCapAsInt())
   {
+    new_goon.setCharacterID(goon_count);
     goons[goon_count] = new_goon;
     goon_count++;
     return true;
@@ -81,6 +83,7 @@ bool CharacterManager::spawn(LabTechnician& new_techie)
   // Spawn a technician if we haven't exceeded our limits
   if (techie_count < new_techie.getSpawnCapAsInt())
   {
+    new_techie.setCharacterID(techie_count);
     techies[techie_count] = new_techie;
     techie_count++;
     return true;
@@ -102,6 +105,7 @@ bool CharacterManager::spawn(Security& new_guard)
   // Spawn a guard if we haven't exceeded our limits
   if (guard_count < new_guard.getSpawnCapAsInt())
   {
+    new_guard.setCharacterID(guard_count);
     guards[guard_count] = new_guard;
     guard_count++;
     return true;
@@ -175,6 +179,7 @@ void CharacterManager::update(double delta_time)
   bosses[0].updatePosition(delta_time);
 }
 
+/* Set the character's internal map */
 void CharacterManager::setMap(GameMap* current_map)
 {
   game_map = current_map;
