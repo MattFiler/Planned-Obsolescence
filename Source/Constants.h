@@ -30,7 +30,7 @@ enum point_of_interest
 
 struct debug
 {
-  // cppcheck-suppress unusedVariable
+  // cppcheck-suppress unusedStructMember
   static bool enabled;
 };
 
