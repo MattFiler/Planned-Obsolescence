@@ -4,7 +4,7 @@
  *   @brief   Creates an DynamicSprite with set size
  *   @details num_of_sprites is the number of contained ASGE::Sprite's
  */
-DynamicSprite::DynamicSprite(int num_of_sprites, bool should_flipbook)
+DynamicSprite::DynamicSprite(unsigned int num_of_sprites, bool should_flipbook)
 {
   my_sprites = new ASGE::Sprite*[num_of_sprites];
   auto_anim = should_flipbook;
@@ -168,40 +168,125 @@ bool DynamicSprite::fadeToColour(double time_to_fade, double delta_time, bool in
 {
   if (inverse_fade)
   {
-    if (fade_percent == 0)
+    if (colour_fade_percent == 0)
     {
       return true;
     }
-    // Calculate the amount of fade to be applied based on time passed
-    fade_percent -= static_cast<float>(delta_time) / static_cast<float>(time_to_fade);
-    if (fade_percent <= 0)
+    if (time_to_fade == 0)
     {
-      fade_percent = 0;
+      colour_fade_percent = 0;
+    }
+    else
+    {
+      // Calculate the amount of fade to be applied based on time passed
+      colour_fade_percent -= static_cast<float>(delta_time) / static_cast<float>(time_to_fade);
+    }
+    if (colour_fade_percent <= 0)
+    {
+      colour_fade_percent = 0;
     }
   }
   else
   {
-    if (fade_percent == 1)
+    if (colour_fade_percent == 1)
     {
       return true;
     }
-    // Calculate the amount of fade to be applied based on time passed
-    fade_percent += static_cast<float>(delta_time) / static_cast<float>(time_to_fade);
-    if (fade_percent >= 1)
+    if (time_to_fade == 0)
     {
-      fade_percent = 1;
+      colour_fade_percent = 0;
+    }
+    else
+    {
+      // Calculate the amount of fade to be applied based on time passed
+      colour_fade_percent += static_cast<float>(delta_time) / static_cast<float>(time_to_fade);
+    }
+    if (colour_fade_percent >= 1)
+    {
+      colour_fade_percent = 1;
     }
   }
 
   ASGE::Colour new_col = ASGE::COLOURS::WHITE;
-  new_col.r = (fade_colour.r) * fade_percent;
-  new_col.g = (fade_colour.g) * fade_percent;
-  new_col.b = (fade_colour.b) * fade_percent;
+  new_col.r = (fade_colour.r) * colour_fade_percent;
+  new_col.g = (fade_colour.g) * colour_fade_percent;
+  new_col.b = (fade_colour.b) * colour_fade_percent;
   for (int i = 0; i < number_of_sprites; i++)
   {
     my_sprites[i]->colour(new_col);
   }
   return false;
+}
+
+/**
+ *   @brief   Fades sprite's opacity
+ *   @details This function applies a tint to the sprite each time it is called
+ *            making it fully translucent after time_to_fade ms
+ *   @param   time_to_fade is the time it will take to become fully translucent
+ *   @param   delta_time is the time since last tick
+ *   @param   inverse_fade will remove opacity instead
+ */
+bool DynamicSprite::fadeToOpacity(double time_to_fade, double delta_time, bool inverse_fade)
+{
+  if (inverse_fade)
+  {
+    if (opacity_fade_percent == 1)
+    {
+      return true;
+    }
+    if (time_to_fade == 0)
+    {
+      opacity_fade_percent = 1;
+    }
+    else
+    {
+      // Calculate the amount of fade to be applied based on time passed
+      opacity_fade_percent += static_cast<float>(delta_time) / static_cast<float>(time_to_fade);
+    }
+    if (opacity_fade_percent >= 1)
+    {
+      opacity_fade_percent = 1;
+    }
+  }
+  else
+  {
+    if (opacity_fade_percent == 0)
+    {
+      return true;
+    }
+    if (time_to_fade == 0)
+    {
+      opacity_fade_percent = 1;
+    }
+    else
+    {
+      // Calculate the amount of fade to be applied based on time passed
+      opacity_fade_percent -= static_cast<float>(delta_time) / static_cast<float>(time_to_fade);
+    }
+    if (opacity_fade_percent <= 0)
+    {
+      opacity_fade_percent = 0;
+    }
+  }
+
+  for (int i = 0; i < number_of_sprites; i++)
+  {
+    my_sprites[i]->opacity(opacity_fade_percent);
+  }
+
+  return false;
+}
+
+/**
+ *   @brief   Sets the speed at which the sprite is animated
+ *   @details Sets the time between animation frames used in returnNextSprite
+ *           to calculate when to switch to the next frame
+ *   @param   new_time_between_frames how quickly you want
+ *           the sprite to animate
+ */
+void DynamicSprite::timeBetweenFrames(double new_time_between_frames)
+{
+    time_between_frames = new_time_between_frames;
 }
 
 /**

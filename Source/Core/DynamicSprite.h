@@ -17,7 +17,7 @@
 class DynamicSprite
 {
  public:
-  DynamicSprite(int num_of_sprites = 1, bool should_flipbook = true);
+  explicit DynamicSprite(unsigned int num_of_sprites = 1, bool should_flipbook = true);
   ~DynamicSprite();
 
   // TODO: Does your memory shallow copy correctly?
@@ -32,11 +32,12 @@ class DynamicSprite
   void scale(float new_scale);
   float width();
   float height();
-
+  void timeBetweenFrames(double new_time_between_frames);
   void setFadeColour(ASGE::Colour col);
 
   void addSprite(ASGE::Sprite& new_sprite);
   bool fadeToColour(double time_to_fade, double delta_time, bool inverse_fade = false);
+  bool fadeToOpacity(double time_to_fade, double delta_time, bool inverse_fade = false);
   ASGE::Sprite& returnNextSprite(double delta_time);
 
   static float width_scale; /**< The scale difference between actual and base width */
@@ -45,7 +46,8 @@ class DynamicSprite
   float sprite_width = 50;
   float sprite_height = 50;
   float scale_factor = 1;
-  float fade_percent = 0;
+  float colour_fade_percent = 0;
+  float opacity_fade_percent = 1;
   double time_passed = 0;
   double time_between_frames = 0;
   bool auto_anim = false;
