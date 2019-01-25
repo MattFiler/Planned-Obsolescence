@@ -17,11 +17,15 @@ class CharacterManager
   void render(double delta_time, ASGE::Renderer* renderer);
   void update(double delta_time);
 
+  void setMap(GameMap* current_map);
+
  private:
   void renderBosses(double delta_time, ASGE::Renderer* renderer);
   void renderGoons(double delta_time, ASGE::Renderer* renderer);
   void renderTechnicians(double delta_time, ASGE::Renderer* renderer);
   void renderSecurity(double delta_time, ASGE::Renderer* renderer);
+
+  GameMap* game_map = nullptr;
 
   Boss* bosses = nullptr;
   int boss_count = 0;

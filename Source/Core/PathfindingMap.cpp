@@ -1,9 +1,11 @@
 #include "PathfindingMap.h"
 
-PathfindingMap::PathfindingMap(GameMap* current_map) {
+PathfindingMap::PathfindingMap(GameMap* current_map)
+{
   int total_tiles = 0;
   game_map = current_map;
-  for (int i = 0; i < current_map->getRoomCount(); i++) {
+  for (int i = 0; i < current_map->getRoomCount(); i++)
+  {
     total_tiles += current_map->getRooms()[i].getTileCount();
   }
 
@@ -12,8 +14,10 @@ PathfindingMap::PathfindingMap(GameMap* current_map) {
 
   // First populate the map with the positions of each node
   int tile_count = 0;
-  for (int i = 0; i < current_map->getRoomCount(); i++) {
-    for (int j = 0; j < current_map->getRooms()[i].getTileCount(); j++) {
+  for (int i = 0; i < current_map->getRoomCount(); i++)
+  {
+    for (int j = 0; j < current_map->getRooms()[i].getTileCount(); j++)
+    {
       nodes[tile_count].position = Point(current_map->getRooms()[i].getTiles()[j].getPositionX(),
                                          current_map->getRooms()[i].getTiles()[j].getPositionY());
       tile_count++;
@@ -35,22 +39,22 @@ void PathfindingMap::linkNodes()
       if (game_map->getRooms()[i].getTiles()[j].exitIsValid(direction::LEFT))
       {
         nodes[tile_count].connections[0].node =
-                findNodeAtPoint(nodes[tile_count].position - Point(tile_size, 0));
+          findNodeAtPoint(nodes[tile_count].position - Point(tile_size, 0));
       }
       if (game_map->getRooms()[i].getTiles()[j].exitIsValid(direction::RIGHT))
       {
         nodes[tile_count].connections[1].node =
-                findNodeAtPoint(nodes[tile_count].position + Point(tile_size, 0));
+          findNodeAtPoint(nodes[tile_count].position + Point(tile_size, 0));
       }
       if (game_map->getRooms()[i].getTiles()[j].exitIsValid(direction::UP))
       {
         nodes[tile_count].connections[2].node =
-                findNodeAtPoint(nodes[tile_count].position - Point(0, tile_size));
+          findNodeAtPoint(nodes[tile_count].position - Point(0, tile_size));
       }
       if (game_map->getRooms()[i].getTiles()[j].exitIsValid(direction::DOWN))
       {
         nodes[tile_count].connections[3].node =
-                findNodeAtPoint(nodes[tile_count].position + Point(0, tile_size));
+          findNodeAtPoint(nodes[tile_count].position + Point(0, tile_size));
       }
       tile_count++;
     }

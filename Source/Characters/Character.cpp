@@ -43,14 +43,14 @@ void Character::updateSprite()
 void Character::updatePosition(double delta_time)
 {
   // Check if at the end of a route, if so there is no point checking for movement
-  if (route_index != current_route.max_size() - 1)
+  if (route_index != current_route.size() - 1)
   {
     // Store the current distance to the next node
     float previous_distance = distance_to_next_node;
     // Add to the current position based on speed and delta_time
-    position.x_pos += direction.x_mag * static_cast<float>(delta_time) *
+    position.x_pos += direction.x_mag * static_cast<float>(delta_time) * 0.001f *
                       static_cast<float>(character_config["movement_speed"]);
-    position.y_pos += direction.x_mag * static_cast<float>(delta_time) *
+    position.y_pos += direction.y_mag * static_cast<float>(delta_time) * 0.001f *
                       static_cast<float>(character_config["movement_speed"]);
 
     my_sprite->xPos(position.x_pos);
@@ -77,6 +77,8 @@ void Character::updatePosition(double delta_time)
         float y_diff = current_route[route_index + 1]->position.y_pos - position.y_pos;
         direction.set(x_diff, y_diff);
         direction.normalise();
+        distance_to_next_node =
+          Point::distanceBetween(position, current_route[route_index + 1]->position);
       }
     }
   }
@@ -100,12 +102,6 @@ void Character::generatePathfindingMap(GameMap* game_map)
   {
     current_route[0] = &internal_map->nodes[0];
   }
-}
-
-/* Links the nodes together in the currently existing PathfindingMap */
-void Character::linkPathfindingMap()
-{
-
 }
 
 /* Find the quickest route from current position to target point, return false
@@ -205,8 +201,7 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
     // Check through all score again with the new updated one
     for (int i = 0; i < 4; i++)
     {
-      if (node->connections[i].score < best_score_at_depth &&
-          node->connections[i].score != -1 &&
+      if (node->connections[i].score < best_score_at_depth && node->connections[i].score != -1 &&
           node->connections[i].node != nullptr)
       {
         best_score_at_depth = node->connections[i].score;

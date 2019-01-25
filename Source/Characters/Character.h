@@ -26,7 +26,6 @@ class Character
   void setSpeed(int speed);
 
   void generatePathfindingMap(GameMap* game_map);
-  void linkPathfindingMap();
   bool calculateRouteToPoint(Point point);
 
   bool isVisible();

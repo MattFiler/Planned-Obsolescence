@@ -5,7 +5,7 @@ CharacterManager::~CharacterManager()
 {
   if (boss_count > 0)
   {
-    delete bosses;
+    delete[] bosses;
     bosses = nullptr;
   }
   if (goon_count > 0)
@@ -38,7 +38,8 @@ bool CharacterManager::spawn(Boss& new_boss)
   if (boss_count < new_boss.getSpawnCapAsInt())
   {
     bosses[boss_count] = new_boss;
-      bosses[boss_count].linkPathfindingMap();
+    bosses[boss_count].generatePathfindingMap(game_map);
+    bosses[boss_count].calculateRouteToPoint(Point(300, 300)); // TEMP CODE FOR TESTING
     boss_count++;
     return true;
   }
@@ -119,13 +120,6 @@ void CharacterManager::render(double delta_time, ASGE::Renderer* renderer)
   renderSecurity(delta_time, renderer);
 }
 
-/* Update all characters */
-void CharacterManager::update(double delta_time)
-{
-  // TODO: Add all update ticks, much like for render, just adding this one here to test
-  bosses[0].updatePosition(delta_time);
-}
-
 /* Render our bosses */
 void CharacterManager::renderBosses(double delta_time, ASGE::Renderer* renderer)
 {
@@ -172,4 +166,16 @@ void CharacterManager::renderSecurity(double delta_time, ASGE::Renderer* rendere
       renderer->renderSprite(guards[i].getSprite()->returnNextSprite(delta_time));
     }
   }
+}
+
+/* Update all characters */
+void CharacterManager::update(double delta_time)
+{
+  // TODO: Add all update ticks, much like for render, just adding this one here to test
+  bosses[0].updatePosition(delta_time);
+}
+
+void CharacterManager::setMap(GameMap* current_map)
+{
+  game_map = current_map;
 }

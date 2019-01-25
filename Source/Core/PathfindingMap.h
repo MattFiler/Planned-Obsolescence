@@ -27,7 +27,7 @@ struct PathfindingMap
 
  private:
   PathNode* findNodeAtPoint(Point point);
-  GameMap * game_map = nullptr;
+  GameMap* game_map = nullptr;
 };
 
 #endif // PLANNEDOBSOLESCENCE_LABMAP_H
