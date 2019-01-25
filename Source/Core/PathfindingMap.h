@@ -17,8 +17,11 @@ struct PathfindingMap
 {
  public:
   PathfindingMap() = default;
-  PathfindingMap(GameMap* current_map);
+  explicit PathfindingMap(GameMap* current_map);
   ~PathfindingMap();
+
+  PathfindingMap(const PathfindingMap&) = delete;
+  PathfindingMap& operator=(const PathfindingMap&) = delete;
 
   void linkNodes();
 
