@@ -49,11 +49,13 @@
             this.tileHeight = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.defaultSizes = new System.Windows.Forms.CheckBox();
+            this.tilePreview = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.tilePreview)).BeginInit();
             this.SuspendLayout();
             // 
             // addTile
             // 
-            this.addTile.Location = new System.Drawing.Point(12, 241);
+            this.addTile.Location = new System.Drawing.Point(12, 264);
             this.addTile.Name = "addTile";
             this.addTile.Size = new System.Drawing.Size(249, 26);
             this.addTile.TabIndex = 0;
@@ -161,7 +163,7 @@
             // EXIT_Up
             // 
             this.EXIT_Up.AutoSize = true;
-            this.EXIT_Up.Location = new System.Drawing.Point(119, 218);
+            this.EXIT_Up.Location = new System.Drawing.Point(12, 241);
             this.EXIT_Up.Name = "EXIT_Up";
             this.EXIT_Up.Size = new System.Drawing.Size(40, 17);
             this.EXIT_Up.TabIndex = 14;
@@ -171,7 +173,7 @@
             // EXIT_Down
             // 
             this.EXIT_Down.AutoSize = true;
-            this.EXIT_Down.Location = new System.Drawing.Point(165, 218);
+            this.EXIT_Down.Location = new System.Drawing.Point(62, 241);
             this.EXIT_Down.Name = "EXIT_Down";
             this.EXIT_Down.Size = new System.Drawing.Size(54, 17);
             this.EXIT_Down.TabIndex = 15;
@@ -250,11 +252,21 @@
             this.defaultSizes.UseVisualStyleBackColor = true;
             this.defaultSizes.CheckedChanged += new System.EventHandler(this.defaultSizes_CheckedChanged);
             // 
+            // tilePreview
+            // 
+            this.tilePreview.Location = new System.Drawing.Point(186, 183);
+            this.tilePreview.Name = "tilePreview";
+            this.tilePreview.Size = new System.Drawing.Size(75, 75);
+            this.tilePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.tilePreview.TabIndex = 24;
+            this.tilePreview.TabStop = false;
+            // 
             // TileEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 276);
+            this.ClientSize = new System.Drawing.Size(273, 301);
+            this.Controls.Add(this.tilePreview);
             this.Controls.Add(this.defaultSizes);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tileHeight);
@@ -281,6 +293,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add New Tile...";
             this.Load += new System.EventHandler(this.TileEditor_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.tilePreview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,5 +322,6 @@
         private System.Windows.Forms.TextBox tileHeight;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox defaultSizes;
+        private System.Windows.Forms.PictureBox tilePreview;
     }
 }

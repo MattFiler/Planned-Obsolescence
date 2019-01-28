@@ -117,17 +117,24 @@ namespace PO_MapMaker
             tileList.Show();
         }
 
-        /* Compile Config */
-        private void startCompile_Click(object sender, EventArgs e)
-        {
-
-        }
-
         /* Open Game Editor */
         private void openGameEditor_Click(object sender, EventArgs e)
         {
             GameEditor gameEditor = new GameEditor();
             gameEditor.Show();
+        }
+
+        /* Open Character Editor */
+        private void openCharacterEditor_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Coming soon.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        }
+
+        /* Compile Config */
+        private void startCompile_Click(object sender, EventArgs e)
+        {
+            Compiler compilerProcess = new Compiler();
+            compilerProcess.Show();
         }
     }
 }

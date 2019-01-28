@@ -62,7 +62,8 @@ namespace PO_MapMaker
         /* Refresh All */
         void refreshAllLists(object sender, FormClosedEventArgs e)
         {
-            loadTiles(getSelectedTile());
+            configXML = XDocument.Load("data/config.xml");
+            loadTiles(getSelectedTileSet());
             loadTileSets();
         }
 
@@ -119,7 +120,7 @@ namespace PO_MapMaker
         /* Open Tile Editor */
         private void newTile_Click(object sender, EventArgs e)
         {
-            TileEditor tileEditor = new TileEditor();
+            TileEditor tileEditor = new TileEditor(null, getSelectedTileSet());
             tileEditor.Show();
             tileEditor.FormClosed += new FormClosedEventHandler(refreshAllLists);
         }
@@ -172,6 +173,35 @@ namespace PO_MapMaker
 
                     loadTiles();
                     loadTileSets();
+                }
+            }
+        }
+
+        /* Edit Selected Tile */
+        private void editTile_Click(object sender, EventArgs e)
+        {
+            if (getTileNodeByName(getSelectedTile()).Attribute("mandatory").Value != "true")
+            {
+                TileEditor tileEditor = new TileEditor(getTileNodeByName(getSelectedTile()));
+                tileEditor.Show();
+                tileEditor.FormClosed += new FormClosedEventHandler(refreshAllLists);
+            }
+            else
+            {
+                MessageBox.Show("Can't edit the default tile!", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /* Preview Tile When Selected */
+        private void listTile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string new_image = getTileNodeByName(getSelectedTile()).Attribute("sprite").Value;
+            if (File.Exists(new_image))
+            {
+                using (var tempPreviewImg = new Bitmap(new_image))
+                {
+                    //Fixing file lock issue, cheers: https://stackoverflow.com/a/8701772
+                    tilePreview.Image = new Bitmap(tempPreviewImg);
                 }
             }
         }
