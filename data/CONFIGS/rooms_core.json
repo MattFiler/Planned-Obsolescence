@@ -18,7 +18,7 @@
 			"down": false
 		}
 	},
-	"DEMO_RIGHT_UP": {
+	"DEMO_1": {
 		"tiles": [
 			"LAB_R_D",          "LAB_L_R_D",   "LAB_DOOR_L_R_U_D",   "LAB_L_R_D",   "LAB_L_D",
 			"LAB_R_U_D",        "LAB_L_R_U_D", "LAB_COMPUTER_L_R_U", "LAB_L_R_U_D", "LAB_L_U_D",
@@ -33,5 +33,42 @@
 			"up": true,
 			"down": true
 		}
+	},
+	"DEMO_2": {
+		"tiles": [
+			"LAB_R_D",          "LAB_L_R_D",   "LAB_DOOR_L_R_U_D",   "LAB_L_R_D",   "LAB_L_D",
+			"LAB_R_U_D",        "LAB_L_R_U_D", "LAB_COMPUTER_L_R_U", "LAB_L_R_U_D", "LAB_L_U_D",
+			"LAB_DOOR_L_R_U_D", "LAB_L_U_D",   "LAB_BENCH",          "LAB_R_U_D",   "LAB_L_U_D",
+			"LAB_R_U_D",        "LAB_L_R_U_D", "LAB_COMPUTER_L_R_D", "LAB_L_R_U_D", "LAB_L_U_D",
+			"LAB_R_U",          "LAB_L_R_U",   "LAB_DOOR_L_R_U_D",   "LAB_L_R_U",   "LAB_L_U"
+		],
+		
+		"available_exits": {
+			"left": true,
+			"up": true,
+			"down": true
+		}
+	},
+	"DEMO_3": {
+		"tiles": [
+			"LAB_R_D",          "LAB_L_R_D",   "LAB_L_R_D",          "LAB_L_R_D",   "LAB_L_D",
+			"LAB_R_U_D",        "LAB_L_R_U_D", "LAB_COMPUTER_L_R_U", "LAB_L_R_U_D", "LAB_L_U_D",
+			"LAB_DOOR_L_R_U_D", "LAB_L_U_D",   "LAB_BENCH",          "LAB_R_U_D",   "LAB_L_U_D",
+			"LAB_R_U_D",        "LAB_L_R_U_D", "LAB_COMPUTER_L_R_D", "LAB_L_R_U_D", "LAB_L_U_D",
+			"LAB_R_U",          "LAB_L_R_U",   "LAB_L_R_U",          "LAB_L_R_U",   "LAB_L_U"
+		],
+		
+		"available_exits": {
+			"left": true
+		}
+	},
+	"DEMO_4": {
+		"tiles": [
+			"LAB_R_D",          "LAB_L_R_D",   "LAB_L_R_D",          "LAB_L_R_D",   "LAB_L_D",
+			"LAB_R_U_D",        "LAB_L_R_U_D", "LAB_COMPUTER_L_R_U", "LAB_L_R_U_D", "LAB_L_U_D",
+			"LAB_R_U_D",        "LAB_L_U_D",   "LAB_BENCH",          "LAB_R_U_D",   "LAB_L_U_D",
+			"LAB_R_U_D",        "LAB_L_R_U_D", "LAB_COMPUTER_L_R_D", "LAB_L_R_U_D", "LAB_L_U_D",
+			"LAB_R_U",          "LAB_L_R_U",   "LAB_L_R_U",          "LAB_L_R_U",   "LAB_L_U"
+		]
 	}
 }

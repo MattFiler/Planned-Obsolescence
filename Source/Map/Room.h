@@ -11,7 +11,7 @@ class Room
 
   Room(const Room&) = delete;
 
-  void build(float room_x, float room_y, ASGE::Renderer* renderer);
+  void build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_offset);
 
   Tile* getTiles();
   int getTileCount();

@@ -10,7 +10,7 @@ Room::Room(string room_name)
 }
 
 /* Build our room */
-void Room::build(float room_x, float room_y, ASGE::Renderer* renderer)
+void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_offset)
 {
   // Store position data
   base_x = room_x;
@@ -26,6 +26,8 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer)
   {
     Tile new_tile = Tile(room_config["tiles"][i]);
     new_tile.configure(tile_x, tile_y, renderer);
+    new_tile.setIndexInRoom(i);
+    new_tile.setIndexInMap(tile_offset + i);
     tiles[i] = new_tile;
 
     if ((i + 1) % static_cast<int>(room_config["tile_w"]) == 0)

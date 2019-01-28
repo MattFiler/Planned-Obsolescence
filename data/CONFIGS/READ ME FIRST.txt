@@ -12,6 +12,9 @@ Children should then contain bespoke values for their intended purpose.
 Every config must start with a default branch.
 Worth noting some configs, such as game_core may not require any children branches.
 
+The game will ONLY PARSE ONE OBJECT DEEP. It will not recurse any further.
+Make sure to only go one object deep within each branch, do not make extra children objects.
+
 Config-specific notes:
 	- tile_w and tile_h define the size of a room in rooms_core
 	- width and height define the size of a tile relative to the game window in tiles_core

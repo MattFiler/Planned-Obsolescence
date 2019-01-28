@@ -11,13 +11,49 @@
 			"DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT"
 		]
 	},
-	"EXAMPLE": {
+	"TEST1": {
 		"rooms": [
-			"DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP",
-			"DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP",
-			"DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP",
-			"DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP",
-			"DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP", "DEMO_RIGHT_UP"
+			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
+			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
+			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
+			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
+			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1"
+		]
+	},
+	"TEST2": {
+		"rooms": [
+			"DEMO_2", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
+			"DEMO_2", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
+			"DEMO_1", "DEMO_3", "DEMO_1", "DEMO_1", "DEMO_1",
+			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
+			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1"
+		]
+	},
+	"TEST3": {
+		"rooms_h": 3,
+		
+		"rooms": [
+			"DEMO_1", "DEMO_3", "DEMO_1", "DEMO_1", "DEMO_1",
+			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
+			"DEMO_1", "DEMO_3", "DEMO_1", "DEMO_1", "DEMO_1"
+		]
+	},
+	"TEST4": {
+		"rooms_h": 3,
+		
+		"rooms": [
+			"DEMO_2", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
+			"DEMO_2", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
+			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1"
+		]
+	},
+	"TEST5": {
+		"rooms_h": 3,
+		
+		"rooms": [
+			"DEMO_3", "DEMO_3", "DEMO_3", "DEMO_3", "DEMO_3",
+			"DEMO_3", "DEMO_3", "DEMO_3", "DEMO_3", "DEMO_3",
+			"DEMO_3", "DEMO_3", "DEMO_3", "DEMO_3", "DEMO_3"
 		]
 	}
 }
