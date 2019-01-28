@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace PO_MapMaker
 {
@@ -32,7 +34,8 @@ namespace PO_MapMaker
             statusText.Text = "Compiling Game Configurations";
             XElement game_config = configXML.Element("config").Element("game_config");
             string game_coreJson = "{\"DEFAULT\":{\"resolution\":{\"width\": " + game_config.Element("resolution").Attribute("width").Value + ",\"height\": " + game_config.Element("resolution").Attribute("height").Value + "},\"debug_enabled\": " + game_config.Element("debug").Attribute("enabled").Value + "}}";
-            File.WriteAllText("data/CONFIGS/game_core.json", game_coreJson);
+            JToken game_coreJsonParsed = JToken.Parse(game_coreJson);
+            File.WriteAllText("data/CONFIGS/game_core.json", game_coreJsonParsed.ToString(Formatting.Indented));
             progressBar.PerformStep();
 
             /* map_core.json */
@@ -97,7 +100,11 @@ namespace PO_MapMaker
                 }
             }
             tiles_coreJson = tiles_coreJson.Substring(0, tiles_coreJson.Length - 1) + "}";
-            File.WriteAllText("data/CONFIGS/tiles_core.json", tiles_coreJson);
+
+            //I'm giving in and using a library for a little of this process.
+            //Minified files don't work nice with git!
+            JToken tiles_coreJsonParsed = JToken.Parse(tiles_coreJson); 
+            File.WriteAllText("data/CONFIGS/tiles_core.json", tiles_coreJsonParsed.ToString(Formatting.Indented));
             progressBar.PerformStep();
 
             /* Copy Everything */

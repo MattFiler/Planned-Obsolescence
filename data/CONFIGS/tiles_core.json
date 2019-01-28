@@ -1,1 +1,161 @@
-{"DEFAULT":{"width":50,"height":50,"sprite":"data/TILES/placeholder.png","available_exits":{"left":false,"right":false,"up":false,"down":false},"has_point_of_interest":{"door":false,"computer":false}},"LAB_L":{ "sprite":"data/TILES/TEST/tile_pink_placeholder101053.png","available_exits":{"left":true}},"LAB_L_R":{ "sprite":"data/TILES/TEST/tile_pink_placeholder101116.png","available_exits":{"left":true,"right":true}},"LAB_L_R_U":{ "sprite":"data/TILES/TEST/tile_pink_placeholder_blocked_down101138.png","available_exits":{"left":true,"right":true,"up":true}},"LAB_L_R_U_D":{ "sprite":"data/TILES/TEST/tile_pink_placeholder_unblocked101202.png","available_exits":{"left":true,"right":true,"up":true,"down":true}},"LAB_L_R_D":{ "sprite":"data/TILES/TEST/tile_pink_placeholder_blocked_up101220.png","available_exits":{"left":true,"right":true,"down":true}},"LAB_L_U":{ "sprite":"data/TILES/TEST/tile_pink_placeholder_blocked_right_down101237.png","available_exits":{"left":true,"up":true}},"LAB_L_U_D":{ "sprite":"data/TILES/TEST/tile_pink_placeholder_blocked_right101258.png","available_exits":{"left":true,"up":true,"down":true}},"LAB_L_D":{ "sprite":"data/TILES/TEST/tile_pink_placeholder_blocked_up_right101317.png","available_exits":{"left":true,"down":true}},"LAB_R":{ "sprite":"data/TILES/TEST/tile_pink_placeholder101334.png","available_exits":{"right":true}},"LAB_R_U":{ "sprite":"data/TILES/TEST/tile_pink_placeholder_blocked_left_down101352.png","available_exits":{"right":true,"up":true}},"LAB_R_U_D":{ "sprite":"data/TILES/TEST/tile_pink_placeholder_blocked_left101410.png","available_exits":{"right":true,"up":true,"down":true}},"LAB_R_D":{ "sprite":"data/TILES/TEST/tile_pink_placeholder_blocked_left_up101426.png","available_exits":{"right":true,"down":true}},"LAB_U":{ "sprite":"data/TILES/TEST/tile_pink_placeholder101448.png","available_exits":{"up":true}},"LAB_U_D":{ "sprite":"data/TILES/TEST/tile_pink_placeholder101504.png","available_exits":{"up":true,"down":true}},"LAB_D":{ "sprite":"data/TILES/TEST/tile_pink_placeholder101522.png","available_exits":{"down":true}},"LAB_COMPUTER_L_R_U":{ "sprite":"data/TILES/TEST/tile_pink_placeholder_poi_blocked_down101541.png","available_exits":{"left":true,"right":true,"up":true},"has_point_of_interest":{"computer":true}},"LAB_COMPUTER_L_R_D":{ "sprite":"data/TILES/TEST/tile_pink_placeholder_poi_blocked_up101601.png","available_exits":{"left":true,"right":true,"down":true},"has_point_of_interest":{"computer":true}},"LAB_BENCH":{ "sprite":"data/TILES/TEST/tile_pink_placeholder_blocked101627.png"},"LAB_DOOR_L_R_U_D":{ "sprite":"data/TILES/TEST/tile_pink_placeholder_door101653.png","available_exits":{"left":true,"right":true,"up":true,"down":true},"has_point_of_interest":{"door":true}}}
+{
+  "DEFAULT": {
+    "width": 50,
+    "height": 50,
+    "sprite": "data/TILES/placeholder.png",
+    "available_exits": {
+      "left": false,
+      "right": false,
+      "up": false,
+      "down": false
+    },
+    "has_point_of_interest": {
+      "door": false,
+      "computer": false
+    }
+  },
+  "LAB_L": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder101053.png",
+    "available_exits": {
+      "left": true
+    }
+  },
+  "LAB_L_R": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder101116.png",
+    "available_exits": {
+      "left": true,
+      "right": true
+    }
+  },
+  "LAB_L_R_U": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_blocked_down101138.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true
+    }
+  },
+  "LAB_L_R_U_D": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_unblocked101202.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LAB_L_R_D": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_blocked_up101220.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "down": true
+    }
+  },
+  "LAB_L_U": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_blocked_right_down101237.png",
+    "available_exits": {
+      "left": true,
+      "up": true
+    }
+  },
+  "LAB_L_U_D": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_blocked_right101258.png",
+    "available_exits": {
+      "left": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LAB_L_D": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_blocked_up_right101317.png",
+    "available_exits": {
+      "left": true,
+      "down": true
+    }
+  },
+  "LAB_R": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder101334.png",
+    "available_exits": {
+      "right": true
+    }
+  },
+  "LAB_R_U": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_blocked_left_down101352.png",
+    "available_exits": {
+      "right": true,
+      "up": true
+    }
+  },
+  "LAB_R_U_D": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_blocked_left101410.png",
+    "available_exits": {
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LAB_R_D": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_blocked_left_up101426.png",
+    "available_exits": {
+      "right": true,
+      "down": true
+    }
+  },
+  "LAB_U": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder101448.png",
+    "available_exits": {
+      "up": true
+    }
+  },
+  "LAB_U_D": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder101504.png",
+    "available_exits": {
+      "up": true,
+      "down": true
+    }
+  },
+  "LAB_D": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder101522.png",
+    "available_exits": {
+      "down": true
+    }
+  },
+  "LAB_COMPUTER_L_R_U": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_poi_blocked_down101541.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true
+    },
+    "has_point_of_interest": {
+      "computer": true
+    }
+  },
+  "LAB_COMPUTER_L_R_D": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_poi_blocked_up101601.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "down": true
+    },
+    "has_point_of_interest": {
+      "computer": true
+    }
+  },
+  "LAB_BENCH": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_blocked101627.png"
+  },
+  "LAB_DOOR_L_R_U_D": {
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_door101653.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true,
+      "down": true
+    },
+    "has_point_of_interest": {
+      "door": true
+    }
+  }
+}
