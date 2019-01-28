@@ -147,7 +147,7 @@
     "sprite": "data/TILES/TEST/tile_pink_placeholder_blocked101627.png"
   },
   "LAB_DOOR_L_R_U_D": {
-    "sprite": "data/TILES/TEST/tile_pink_placeholder_door101653.png",
+    "sprite": "data/TILES/TEST/tile_pink_placeholder_door_110535.png",
     "available_exits": {
       "left": true,
       "right": true,

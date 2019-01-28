@@ -57,7 +57,11 @@ namespace PO_MapMaker
                 modifyCheckboxByInputData(importedTileNode.Element("valid_exits").Attribute("down").Value, EXIT_Down);
                 modifyCheckboxByInputData(importedTileNode.Element("points_of_interest").Attribute("computer").Value, POI_Computer);
                 modifyCheckboxByInputData(importedTileNode.Element("points_of_interest").Attribute("door").Value, POI_Door);
-                tilePreview.Image = Image.FromFile(importedTileNode.Attribute("sprite").Value);
+                using (var tempPreviewImg = new Bitmap(importedTileNode.Attribute("sprite").Value))
+                {
+                    //Fixing file lock issue, cheers: https://stackoverflow.com/a/8701772
+                    tilePreview.Image = new Bitmap(tempPreviewImg);
+                }
                 allowOverwrite = true; //Dangerous!
             }
             else
@@ -107,31 +111,37 @@ namespace PO_MapMaker
                     if (allowOverwrite && tileSprite.Text.Substring(0,10) == "data/TILES")
                     {
                         //Editing existing tile and sprite is already copied
-                        newSpritePath = tileSet.Text;
+                        newSpritePath = tileSprite.Text;
                     }
                     else
                     {
                         //Creating new tile (or importing new sprite for existing) - generate a path
-                        newSpritePath = "data/TILES/" + tileSet.Text + "/" + Path.GetFileNameWithoutExtension(tileSprite.Text) + DateTime.Now.ToString("hhmmss") + Path.GetExtension(tileSprite.Text);
+                        newSpritePath = "data/TILES/" + tileSet.Text + "/" + Path.GetFileNameWithoutExtension(tileSprite.Text) + "_" + DateTime.Now.ToString("hhmmss") + Path.GetExtension(tileSprite.Text);
                         if (File.Exists(newSpritePath))
                         {
-                            newSpritePath = "data/TILES/" + tileSet.Text + "/" + Path.GetFileNameWithoutExtension(tileSprite.Text) + DateTime.Now.ToString("hhmmssdddmmyy") + Path.GetExtension(tileSprite.Text);
+                            newSpritePath = "data/TILES/" + tileSet.Text + "/" + Path.GetFileNameWithoutExtension(tileSprite.Text) + "_" + DateTime.Now.ToString("hhmmssdddmmyy") + Path.GetExtension(tileSprite.Text);
                             if (File.Exists(newSpritePath))
                             {
                                 hasPathError = true;
                             }
                         }
-                        //Worth noting we don't tidy up the old sprites here.
-                        //Should really, but don't. What you gonna do about it?
+                        if (allowOverwrite)
+                        {
+                            //Tidy up old file
+                            File.Delete(importedTileNode.Attribute("sprite").Value);
+                        }
                     }
 
                     //Check for conflicts in name
                     bool hasNameConflict = false;
-                    foreach (XElement element in configXML.Element("config").Element("tile_config").Element("tiles").Descendants("tile"))
+                    if (!allowOverwrite)
                     {
-                        if (element.Attribute("name").Value == tileName.Text)
+                        foreach (XElement element in configXML.Element("config").Element("tile_config").Element("tiles").Descendants("tile"))
                         {
-                            hasNameConflict = true;
+                            if (element.Attribute("name").Value == tileName.Text)
+                            {
+                                hasNameConflict = true;
+                            }
                         }
                     }
 
@@ -140,6 +150,19 @@ namespace PO_MapMaker
                     {
                         //Load
                         XDocument configXML = XDocument.Load("data/config.xml");
+
+                        //Delete old node if we're editing
+                        if (allowOverwrite)
+                        {
+                            foreach (XElement node in configXML.Element("config").Element("tile_config").Element("tiles").Elements())
+                            {
+                                if (node.Attribute("name").Value == importedTileNode.Attribute("name").Value)
+                                {
+                                    node.Remove();
+                                    break;
+                                }
+                            }
+                        }
 
                         //Make new tile element
                         XElement newTileParent = new XElement("tile",
@@ -174,7 +197,14 @@ namespace PO_MapMaker
 
                         //Save
                         configXML.Save("data/config.xml");
-                        MessageBox.Show("Tile created!", "Created.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (allowOverwrite)
+                        {
+                            MessageBox.Show("Tile edited!", "Updated.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tile created!", "Created.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                         this.Close();
                     }
                     else

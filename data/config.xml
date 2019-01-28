@@ -101,7 +101,7 @@
         <valid_exits left="false" right="false" up="false" down="false" />
         <points_of_interest computer="false" door="false" />
       </tile>
-      <tile name="LAB_DOOR_L_R_U_D" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_door101653.png" mandatory="false">
+      <tile name="LAB_DOOR_L_R_U_D" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_door_110535.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="true" right="true" up="true" down="true" />
         <points_of_interest computer="false" door="true" />

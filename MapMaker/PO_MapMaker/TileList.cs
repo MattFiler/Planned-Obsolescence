@@ -195,7 +195,15 @@ namespace PO_MapMaker
         /* Preview Tile When Selected */
         private void listTile_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tilePreview.Image = Image.FromFile(getTileNodeByName(getSelectedTile()).Attribute("sprite").Value);
+            string new_image = getTileNodeByName(getSelectedTile()).Attribute("sprite").Value;
+            if (File.Exists(new_image))
+            {
+                using (var tempPreviewImg = new Bitmap(new_image))
+                {
+                    //Fixing file lock issue, cheers: https://stackoverflow.com/a/8701772
+                    tilePreview.Image = new Bitmap(tempPreviewImg);
+                }
+            }
         }
     }
 }
