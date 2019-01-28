@@ -16,9 +16,11 @@ namespace PO_MapMaker
     {
         XElement importedTileNode;
         bool allowOverwrite = false;
-        public TileEditor(XElement tileNode = null)
+        string currentSet = "";
+        public TileEditor(XElement tileNode = null, string currentlySelectedSet = "")
         {
             importedTileNode = tileNode;
+            currentSet = currentlySelectedSet;
             InitializeComponent();
         }
 
@@ -55,6 +57,10 @@ namespace PO_MapMaker
                 modifyCheckboxByInputData(importedTileNode.Element("points_of_interest").Attribute("computer").Value, POI_Computer);
                 modifyCheckboxByInputData(importedTileNode.Element("points_of_interest").Attribute("door").Value, POI_Door);
                 allowOverwrite = true; //Dangerous!
+            }
+            else
+            {
+                tileSet.SelectedItem = currentSet;
             }
         }
         void modifyCheckboxByInputData(string inputData, CheckBox checkBox)

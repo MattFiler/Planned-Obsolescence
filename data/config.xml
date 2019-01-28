@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <tile_config>
+    <sets>
+      <set name="DEFAULT" />
+      <set name="TEST" />
+    </sets>
+    <tiles>
+      <tile name="Default Tile" set="DEFAULT" sprite="data/TILES/placeholder.png" mandatory="true">
+        <dimensions width="50" height="50" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_L" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder101053.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_L_R" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder101116.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="true" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_L_R_U" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_blocked_down101138.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="true" up="true" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_L_R_U_D" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_unblocked101202.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="true" up="true" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_L_R_D" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_blocked_up101220.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="true" up="false" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_L_U" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_blocked_right_down101237.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="false" up="true" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_L_U_D" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_blocked_right101258.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="false" up="true" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_L_D" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_blocked_up_right101317.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="false" up="false" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_R" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder101334.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="true" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_R_U" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_blocked_left_down101352.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="true" up="true" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_R_U_D" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_blocked_left101410.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="true" up="true" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_R_D" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_blocked_left_up101426.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="true" up="false" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_U" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder101448.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="true" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_U_D" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder101504.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="true" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_D" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder101522.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_COMPUTER_L_R_U" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_poi_blocked_down101541.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="true" up="true" down="false" />
+        <points_of_interest computer="true" door="false" />
+      </tile>
+      <tile name="LAB_COMPUTER_L_R_D" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_poi_blocked_up101601.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="true" up="false" down="true" />
+        <points_of_interest computer="true" door="false" />
+      </tile>
+      <tile name="LAB_BENCH" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_blocked101627.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="LAB_DOOR_L_R_U_D" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder_door101653.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="true" up="true" down="true" />
+        <points_of_interest computer="false" door="true" />
+      </tile>
+    </tiles>
+  </tile_config>
+  <room_config>
+    <rooms />
+  </room_config>
+  <map_config rooms_w="1" rooms_h="1">
+    <rooms>
+      <room name="DEFAULT" />
+    </rooms>
+  </map_config>
+  <character_config>
+    <character type="DEFAULT">
+      <misc movement_speed="5" max_health="100" spawn_cap="10" is_visible="true" />
+      <sprites default="data/CHARACTERS/DEFAULT/placeholder.png" />
+      <gauges suspicion="0" stress="0" productivity="100" faith="100" />
+      <spawn_pos x="0" y="0" />
+      <dimensions width="50" height="50" />
+    </character>
+    <character type="GUARD" />
+    <character type="GOON" />
+    <character type="BOSS" />
+    <character type="TECH" />
+  </character_config>
+  <game_config>
+    <resolution width="1920" height="1080" />
+    <debug enabled="true" />
+  </game_config>
+</config>

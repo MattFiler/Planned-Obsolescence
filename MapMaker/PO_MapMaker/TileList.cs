@@ -63,7 +63,7 @@ namespace PO_MapMaker
         void refreshAllLists(object sender, FormClosedEventArgs e)
         {
             configXML = XDocument.Load("data/config.xml");
-            loadTiles(getSelectedTile());
+            loadTiles(getSelectedTileSet());
             loadTileSets();
         }
 
@@ -120,7 +120,7 @@ namespace PO_MapMaker
         /* Open Tile Editor */
         private void newTile_Click(object sender, EventArgs e)
         {
-            TileEditor tileEditor = new TileEditor();
+            TileEditor tileEditor = new TileEditor(null, getSelectedTileSet());
             tileEditor.Show();
             tileEditor.FormClosed += new FormClosedEventHandler(refreshAllLists);
         }
