@@ -180,9 +180,16 @@ namespace PO_MapMaker
         /* Edit Selected Tile */
         private void editTile_Click(object sender, EventArgs e)
         {
-            TileEditor tileEditor = new TileEditor(getTileNodeByName(getSelectedTile()));
-            tileEditor.Show();
-            tileEditor.FormClosed += new FormClosedEventHandler(refreshAllLists);
+            if (getTileNodeByName(getSelectedTile()).Attribute("mandatory").Value != "true")
+            {
+                TileEditor tileEditor = new TileEditor(getTileNodeByName(getSelectedTile()));
+                tileEditor.Show();
+                tileEditor.FormClosed += new FormClosedEventHandler(refreshAllLists);
+            }
+            else
+            {
+                MessageBox.Show("Can't edit the default tile!", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
