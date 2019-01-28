@@ -28,6 +28,7 @@ namespace PO_MapMaker
         private void TileEditor_Load(object sender, EventArgs e)
         {
             configXML = XDocument.Load("data/config.xml");
+            defaultSizes.Checked = true;
             foreach (XElement element in configXML.Element("config").Element("tile_config").Element("sets").Descendants("set"))
             {
                 tileSet.Items.Add(element.Attribute("name").Value);
@@ -43,12 +44,12 @@ namespace PO_MapMaker
                 {
                     tileWidth.Enabled = false;
                     tileHeight.Enabled = false;
-                    defaultSizes.Checked = true;
                 }
                 else
                 {
                     tileWidth.Text = importedTileNode.Element("dimensions").Attribute("width").Value;
                     tileHeight.Text = importedTileNode.Element("dimensions").Attribute("height").Value;
+                    defaultSizes.Checked = false;
                 }
                 modifyCheckboxByInputData(importedTileNode.Element("valid_exits").Attribute("left").Value, EXIT_Left);
                 modifyCheckboxByInputData(importedTileNode.Element("valid_exits").Attribute("right").Value, EXIT_Right);
@@ -56,6 +57,7 @@ namespace PO_MapMaker
                 modifyCheckboxByInputData(importedTileNode.Element("valid_exits").Attribute("down").Value, EXIT_Down);
                 modifyCheckboxByInputData(importedTileNode.Element("points_of_interest").Attribute("computer").Value, POI_Computer);
                 modifyCheckboxByInputData(importedTileNode.Element("points_of_interest").Attribute("door").Value, POI_Door);
+                tilePreview.Image = Image.FromFile(importedTileNode.Attribute("sprite").Value);
                 allowOverwrite = true; //Dangerous!
             }
             else
@@ -207,6 +209,7 @@ namespace PO_MapMaker
             if (filePicker.ShowDialog() == DialogResult.OK)
             {
                 tileSprite.Text = filePicker.FileName;
+                tilePreview.Image = Image.FromFile(filePicker.FileName);
             }
         }
 

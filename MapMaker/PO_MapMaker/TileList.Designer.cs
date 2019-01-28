@@ -38,6 +38,8 @@
             this.editTile = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.tilePreview = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.tilePreview)).BeginInit();
             this.SuspendLayout();
             // 
             // listTileSet
@@ -45,30 +47,31 @@
             this.listTileSet.FormattingEnabled = true;
             this.listTileSet.Location = new System.Drawing.Point(12, 26);
             this.listTileSet.Name = "listTileSet";
-            this.listTileSet.Size = new System.Drawing.Size(156, 225);
+            this.listTileSet.Size = new System.Drawing.Size(186, 238);
             this.listTileSet.TabIndex = 0;
             // 
             // listTile
             // 
             this.listTile.FormattingEnabled = true;
-            this.listTile.Location = new System.Drawing.Point(255, 26);
+            this.listTile.Location = new System.Drawing.Point(285, 26);
             this.listTile.Name = "listTile";
-            this.listTile.Size = new System.Drawing.Size(237, 225);
+            this.listTile.Size = new System.Drawing.Size(186, 238);
             this.listTile.TabIndex = 1;
+            this.listTile.SelectedIndexChanged += new System.EventHandler(this.listTile_SelectedIndexChanged);
             // 
             // loadSpriteSet
             // 
-            this.loadSpriteSet.Location = new System.Drawing.Point(174, 107);
+            this.loadSpriteSet.Location = new System.Drawing.Point(204, 241);
             this.loadSpriteSet.Name = "loadSpriteSet";
-            this.loadSpriteSet.Size = new System.Drawing.Size(75, 65);
+            this.loadSpriteSet.Size = new System.Drawing.Size(75, 23);
             this.loadSpriteSet.TabIndex = 2;
-            this.loadSpriteSet.Text = "OPEN >>";
+            this.loadSpriteSet.Text = "OPEN ";
             this.loadSpriteSet.UseVisualStyleBackColor = true;
             this.loadSpriteSet.Click += new System.EventHandler(this.loadSpriteSet_Click);
             // 
             // newTileSet
             // 
-            this.newTileSet.Location = new System.Drawing.Point(12, 257);
+            this.newTileSet.Location = new System.Drawing.Point(204, 183);
             this.newTileSet.Name = "newTileSet";
             this.newTileSet.Size = new System.Drawing.Size(75, 23);
             this.newTileSet.TabIndex = 3;
@@ -78,7 +81,7 @@
             // 
             // deleteTileSet
             // 
-            this.deleteTileSet.Location = new System.Drawing.Point(93, 257);
+            this.deleteTileSet.Location = new System.Drawing.Point(204, 212);
             this.deleteTileSet.Name = "deleteTileSet";
             this.deleteTileSet.Size = new System.Drawing.Size(75, 23);
             this.deleteTileSet.TabIndex = 4;
@@ -88,7 +91,7 @@
             // 
             // deleteTile
             // 
-            this.deleteTile.Location = new System.Drawing.Point(336, 257);
+            this.deleteTile.Location = new System.Drawing.Point(477, 212);
             this.deleteTile.Name = "deleteTile";
             this.deleteTile.Size = new System.Drawing.Size(75, 23);
             this.deleteTile.TabIndex = 6;
@@ -98,7 +101,7 @@
             // 
             // newTile
             // 
-            this.newTile.Location = new System.Drawing.Point(255, 257);
+            this.newTile.Location = new System.Drawing.Point(477, 183);
             this.newTile.Name = "newTile";
             this.newTile.Size = new System.Drawing.Size(75, 23);
             this.newTile.TabIndex = 5;
@@ -108,7 +111,7 @@
             // 
             // editTile
             // 
-            this.editTile.Location = new System.Drawing.Point(417, 257);
+            this.editTile.Location = new System.Drawing.Point(477, 241);
             this.editTile.Name = "editTile";
             this.editTile.Size = new System.Drawing.Size(75, 23);
             this.editTile.TabIndex = 7;
@@ -130,17 +133,27 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(252, 10);
+            this.label2.Location = new System.Drawing.Point(282, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Tiles in Open Set";
             // 
+            // tilePreview
+            // 
+            this.tilePreview.Location = new System.Drawing.Point(477, 102);
+            this.tilePreview.Name = "tilePreview";
+            this.tilePreview.Size = new System.Drawing.Size(75, 75);
+            this.tilePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.tilePreview.TabIndex = 10;
+            this.tilePreview.TabStop = false;
+            // 
             // TileList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 289);
+            this.ClientSize = new System.Drawing.Size(561, 274);
+            this.Controls.Add(this.tilePreview);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.editTile);
@@ -156,6 +169,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tile Editor";
             this.Load += new System.EventHandler(this.TileList_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.tilePreview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +187,6 @@
         private System.Windows.Forms.Button editTile;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox tilePreview;
     }
 }

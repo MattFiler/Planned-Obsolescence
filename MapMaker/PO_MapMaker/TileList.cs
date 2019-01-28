@@ -191,5 +191,11 @@ namespace PO_MapMaker
                 MessageBox.Show("Can't edit the default tile!", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /* Preview Tile When Selected */
+        private void listTile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tilePreview.Image = Image.FromFile(getTileNodeByName(getSelectedTile()).Attribute("sprite").Value);
+        }
     }
 }
