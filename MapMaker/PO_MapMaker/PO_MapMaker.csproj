@@ -46,6 +46,12 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compiler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compiler.Designer.cs">
+      <DependentUpon>Compiler.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     <Compile Include="TileSetEditor.Designer.cs">
       <DependentUpon>TileSetEditor.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Compiler.resx">
+      <DependentUpon>Compiler.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameEditor.resx">
       <DependentUpon>GameEditor.cs</DependentUpon>
     </EmbeddedResource>

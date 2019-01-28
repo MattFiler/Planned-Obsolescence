@@ -114,6 +114,7 @@
             this.editTile.TabIndex = 7;
             this.editTile.Text = "EDIT";
             this.editTile.UseVisualStyleBackColor = true;
+            this.editTile.Click += new System.EventHandler(this.editTile_Click);
             // 
             // label1
             // 

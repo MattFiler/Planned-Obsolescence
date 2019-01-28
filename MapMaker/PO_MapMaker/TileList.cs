@@ -62,6 +62,7 @@ namespace PO_MapMaker
         /* Refresh All */
         void refreshAllLists(object sender, FormClosedEventArgs e)
         {
+            configXML = XDocument.Load("data/config.xml");
             loadTiles(getSelectedTile());
             loadTileSets();
         }
@@ -174,6 +175,14 @@ namespace PO_MapMaker
                     loadTileSets();
                 }
             }
+        }
+
+        /* Edit Selected Tile */
+        private void editTile_Click(object sender, EventArgs e)
+        {
+            TileEditor tileEditor = new TileEditor(getTileNodeByName(getSelectedTile()));
+            tileEditor.Show();
+            tileEditor.FormClosed += new FormClosedEventHandler(refreshAllLists);
         }
     }
 }

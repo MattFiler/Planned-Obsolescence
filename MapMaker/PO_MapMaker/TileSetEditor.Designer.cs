@@ -55,6 +55,7 @@
             // 
             // tileSetName
             // 
+            this.tileSetName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tileSetName.Location = new System.Drawing.Point(15, 25);
             this.tileSetName.Name = "tileSetName";
             this.tileSetName.Size = new System.Drawing.Size(249, 20);

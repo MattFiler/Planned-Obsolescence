@@ -14,17 +14,58 @@ namespace PO_MapMaker
 {
     public partial class TileEditor : Form
     {
-        public TileEditor()
+        XElement importedTileNode;
+        bool allowOverwrite = false;
+        public TileEditor(XElement tileNode = null)
         {
+            importedTileNode = tileNode;
             InitializeComponent();
         }
 
+        XDocument configXML;
         private void TileEditor_Load(object sender, EventArgs e)
         {
-            XDocument configXML = XDocument.Load("data/config.xml");
+            configXML = XDocument.Load("data/config.xml");
             foreach (XElement element in configXML.Element("config").Element("tile_config").Element("sets").Descendants("set"))
             {
                 tileSet.Items.Add(element.Attribute("name").Value);
+            }
+            if (importedTileNode != null)
+            {
+                //We're editing - not creating a new tile... load existing data.
+                tileName.Text = importedTileNode.Attribute("name").Value;
+                tileSet.Text = importedTileNode.Attribute("set").Value;
+                tileSprite.Text = importedTileNode.Attribute("sprite").Value;
+                if (importedTileNode.Element("dimensions").Attribute("width").Value == "DEFAULT" &&
+                    importedTileNode.Element("dimensions").Attribute("height").Value == "DEFAULT")
+                {
+                    tileWidth.Enabled = false;
+                    tileHeight.Enabled = false;
+                    defaultSizes.Checked = true;
+                }
+                else
+                {
+                    tileWidth.Text = importedTileNode.Element("dimensions").Attribute("width").Value;
+                    tileHeight.Text = importedTileNode.Element("dimensions").Attribute("height").Value;
+                }
+                modifyCheckboxByInputData(importedTileNode.Element("valid_exits").Attribute("left").Value, EXIT_Left);
+                modifyCheckboxByInputData(importedTileNode.Element("valid_exits").Attribute("right").Value, EXIT_Right);
+                modifyCheckboxByInputData(importedTileNode.Element("valid_exits").Attribute("up").Value, EXIT_Up);
+                modifyCheckboxByInputData(importedTileNode.Element("valid_exits").Attribute("down").Value, EXIT_Down);
+                modifyCheckboxByInputData(importedTileNode.Element("points_of_interest").Attribute("computer").Value, POI_Computer);
+                modifyCheckboxByInputData(importedTileNode.Element("points_of_interest").Attribute("door").Value, POI_Door);
+                allowOverwrite = true; //Dangerous!
+            }
+        }
+        void modifyCheckboxByInputData(string inputData, CheckBox checkBox)
+        {
+            if (inputData == "true")
+            {
+                checkBox.Checked = true;
+            }
+            else
+            {
+                checkBox.Checked = false;
             }
         }
 
@@ -52,17 +93,42 @@ namespace PO_MapMaker
                         tileHeightString = "DEFAULT";
                     }
 
-                    string newSpritePath = "data/TILES/" + tileSet.Text + "/" + Path.GetFileNameWithoutExtension(tileSprite.Text) + DateTime.Now.ToString("hhmmss") + Path.GetExtension(tileSprite.Text);
+                    //Try and generate sprite path
+                    string newSpritePath = "";
                     bool hasPathError = false;
-                    if (File.Exists(newSpritePath))
+                    if (allowOverwrite && tileSprite.Text.Substring(0,10) == "data/TILES")
                     {
-                        newSpritePath = "data/TILES/" + tileSet.Text + "/" + Path.GetFileNameWithoutExtension(tileSprite.Text) + DateTime.Now.ToString("hhmmssdddmmyy") + Path.GetExtension(tileSprite.Text);
+                        //Editing existing tile and sprite is already copied
+                        newSpritePath = tileSet.Text;
+                    }
+                    else
+                    {
+                        //Creating new tile (or importing new sprite for existing) - generate a path
+                        newSpritePath = "data/TILES/" + tileSet.Text + "/" + Path.GetFileNameWithoutExtension(tileSprite.Text) + DateTime.Now.ToString("hhmmss") + Path.GetExtension(tileSprite.Text);
                         if (File.Exists(newSpritePath))
                         {
-                            hasPathError = true;
+                            newSpritePath = "data/TILES/" + tileSet.Text + "/" + Path.GetFileNameWithoutExtension(tileSprite.Text) + DateTime.Now.ToString("hhmmssdddmmyy") + Path.GetExtension(tileSprite.Text);
+                            if (File.Exists(newSpritePath))
+                            {
+                                hasPathError = true;
+                            }
+                        }
+                        //Worth noting we don't tidy up the old sprites here.
+                        //Should really, but don't. What you gonna do about it?
+                    }
+
+                    //Check for conflicts in name
+                    bool hasNameConflict = false;
+                    foreach (XElement element in configXML.Element("config").Element("tile_config").Element("tiles").Descendants("tile"))
+                    {
+                        if (element.Attribute("name").Value == tileName.Text)
+                        {
+                            hasNameConflict = true;
                         }
                     }
-                    if (!hasPathError)
+
+                    //Continue if no issues
+                    if (!hasPathError && !hasNameConflict)
                     {
                         //Load
                         XDocument configXML = XDocument.Load("data/config.xml");
@@ -76,7 +142,7 @@ namespace PO_MapMaker
 
                             new XElement("dimensions",
                                 new XAttribute("width", tileWidthString),
-                                new XAttribute("heigth", tileHeightString)
+                                new XAttribute("height", tileHeightString)
                             ),
                             new XElement("valid_exits",
                                 new XAttribute("left", EXIT_Left.Checked),
@@ -91,14 +157,28 @@ namespace PO_MapMaker
                         );
                         configXML.Element("config").Element("tile_config").Element("tiles").Add(newTileParent);
 
-                        //Copy Sprite
-                        Directory.CreateDirectory(Path.GetDirectoryName(newSpritePath));
-                        File.Copy(tileSprite.Text, newSpritePath);
+                        //Copy sprite if new (might edit and not change sprite - no point copying if so)
+                        if (tileSprite.Text != newSpritePath)
+                        {
+                            Directory.CreateDirectory(Path.GetDirectoryName(newSpritePath));
+                            File.Copy(tileSprite.Text, newSpritePath);
+                        }
 
                         //Save
                         configXML.Save("data/config.xml");
                         MessageBox.Show("Tile created!", "Created.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
+                    }
+                    else
+                    {
+                        if (hasPathError)
+                        {
+                            MessageBox.Show("An error occured while saving. Please try again.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show("A tile with this name already exists - please enter another.", "Conflict.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
