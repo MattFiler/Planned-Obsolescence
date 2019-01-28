@@ -25,6 +25,11 @@ class Tile
   float getPositionX();
   float getPositionY();
 
+  void setIndexInRoom(int index);
+  void setIndexInMap(int index);
+  int getIndexInRoom();
+  int getIndexInMap();
+
   ASGE::Sprite* getSprite();
 
   float getWidth();
@@ -34,8 +39,12 @@ class Tile
   json tile_data;
   FileHandler file_handler;
   DynamicSprite* sprite = nullptr;
+
   float x_pos = 0;
   float y_pos = 0;
+
+  int tile_index_in_room = 0;
+  int tile_index_in_map = 0;
 };
 
 #endif

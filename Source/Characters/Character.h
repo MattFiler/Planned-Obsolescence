@@ -1,6 +1,7 @@
 #ifndef PO_CHARACTER
 #define PO_CHARACTER
 
+#include "../Core/DebugText.h"
 #include "../Core/DynamicSprite.h"
 #include "../Core/FileHandler.h"
 #include "../Core/PathfindingMap.h"
@@ -33,6 +34,10 @@ class Character
   int getSpawnCapAsInt();
   std::string getSpritePath();
 
+  void setCharacterID(int index);
+  std::string getCharacterID();
+  int getIndex();
+
   DynamicSprite* getSprite();
   ASGE::Renderer* getRenderer();
 
@@ -60,6 +65,12 @@ class Character
 
   DynamicSprite* my_sprite = nullptr;
   ASGE::Renderer* renderer = nullptr;
+
+  std::string character_variant = "DEFAULT";
+  std::string character_id = "";
+  int character_index = -1;
+
+  DebugText debug_text;
 };
 
 #endif

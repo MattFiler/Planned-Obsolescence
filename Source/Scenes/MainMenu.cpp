@@ -4,6 +4,7 @@
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
+using namespace std;
 
 /**
  *   @brief   Loads all variables and sprites for this scene
@@ -26,9 +27,11 @@ bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
 void MainMenu::keyHandler(const ASGE::SharedEventData data)
 {
   auto key = static_cast<const ASGE::KeyEvent*>(data.get());
-  if (key->key)
+  if (key->key == ASGE::KEYS::KEY_ENTER && key->action == ASGE::KEYS::KEY_RELEASED)
   {
     next_scene = 2;
+    string debug_string = "ENTERING GAME";
+    debug_text.print(debug_string);
   }
 }
 

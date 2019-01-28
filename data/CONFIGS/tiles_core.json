@@ -33,7 +33,7 @@
 		}
 	},
 	"LAB_L_R_U": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_blocked_down.png",
 		
 		"available_exits": {
 			"left": true,
@@ -42,7 +42,7 @@
 		}
 	},
 	"LAB_L_R_U_D": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_unblocked.png",
 		
 		"available_exits": {
 			"left": true,
@@ -52,7 +52,7 @@
 		}
 	},
 	"LAB_L_R_D": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_blocked_up.png",
 		
 		"available_exits": {
 			"left": true,
@@ -61,7 +61,7 @@
 		}
 	},
 	"LAB_L_U": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_blocked_right_down.png",
 		
 		"available_exits": {
 			"left": true,
@@ -69,7 +69,7 @@
 		}
 	},
 	"LAB_L_U_D": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_blocked_right.png",
 		
 		"available_exits": {
 			"left": true,
@@ -78,7 +78,7 @@
 		}
 	},
 	"LAB_L_D": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_blocked_up_right.png",
 		
 		"available_exits": {
 			"left": true,
@@ -93,7 +93,7 @@
 		}
 	},
 	"LAB_R_U": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_blocked_left_down.png",
 		
 		"available_exits": {
 			"right": true,
@@ -101,7 +101,7 @@
 		}
 	},
 	"LAB_R_U_D": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_blocked_left.png",
 		
 		"available_exits": {
 			"right": true,
@@ -110,7 +110,7 @@
 		}
 	},
 	"LAB_R_D": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_blocked_left_up.png",
 		
 		"available_exits": {
 			"right": true,
@@ -140,7 +140,7 @@
 		}
 	},
 	"LAB_COMPUTER_L_R_U": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_poi_blocked_down.png",
 		
 		"available_exits": {
 			"left": true,
@@ -153,12 +153,12 @@
 		}
 	},
 	"LAB_COMPUTER_L_R_D": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_poi_blocked_up.png",
 		
 		"available_exits": {
 			"left": true,
 			"right": true,
-			"up": true
+			"down": true
 		},
 		
 		"has_point_of_interest": {
@@ -166,10 +166,10 @@
 		}
 	},
 	"LAB_BENCH": {
-		"sprite": "data/TILES/tile_black_placeholder.png"
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_blocked.png"
 	},
 	"LAB_DOOR_L_R_U_D": {
-		"sprite": "data/TILES/LAB/tile_pink_placeholder.png",
+		"sprite": "data/TILES/LAB/tile_pink_placeholder_door.png",
 		
 		"available_exits": {
 			"left": true,

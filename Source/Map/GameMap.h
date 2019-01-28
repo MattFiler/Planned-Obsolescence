@@ -1,6 +1,7 @@
 #ifndef PO_MAP
 #define PO_MAP
 
+#include "../Core/DebugText.h"
 #include "Room.h"
 #include <Engine/Renderer.h>
 
@@ -15,13 +16,17 @@ class GameMap
 
   Room* getRooms();
   int getRoomCount();
+  int getTileCount();
 
  private:
   json map_config;
   FileHandler file_handler;
+  ASGE::Renderer* renderer;
+  DebugText debug_text;
+
   Room* rooms = nullptr;
   int room_count = 0;
-  ASGE::Renderer* renderer;
+  int tile_count = 0;
 };
 
 #endif

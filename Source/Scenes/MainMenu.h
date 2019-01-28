@@ -1,3 +1,4 @@
+#include "../Core/DebugText.h"
 #include "../Core/DynamicSprite.h"
 #include "../Core/GameObject.h"
 #include "Scene.h"
@@ -20,4 +21,7 @@ class MainMenu : public Scene
   void render(double delta_time) override;
   void keyHandler(const ASGE::SharedEventData data) override;
   void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) override;
+
+ private:
+  DebugText debug_text;
 };

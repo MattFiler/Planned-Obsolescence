@@ -1,3 +1,4 @@
+#include "../Core/DebugText.h"
 #include "../Core/DynamicSprite.h"
 #include "../Core/GameObject.h"
 #include "Scene.h"
@@ -27,4 +28,6 @@ class Splashscreen : public Scene
   DynamicSprite* po_logo_bg = nullptr;
   int switch_fade = 0;
   double time_waited = 0;
+
+  DebugText debug_text;
 };

@@ -27,6 +27,7 @@ void Character::updateCoreConfig(std::string character_type)
 {
   string config_file = "characters_core.json";
   character_config = file_handler.loadConfig(config_file, character_type);
+  character_variant = character_type;
 }
 
 /* Update our sprite */
@@ -48,9 +49,9 @@ void Character::updatePosition(double delta_time)
     // Store the current distance to the next node
     float previous_distance = distance_to_next_node;
     // Add to the current position based on speed and delta_time
-    position.x_pos += direction.x_mag * static_cast<float>(delta_time) * 0.001f *
+    position.x_pos += direction.x_mag * static_cast<float>(delta_time) * 0.01f *
                       static_cast<float>(character_config["movement_speed"]);
-    position.y_pos += direction.y_mag * static_cast<float>(delta_time) * 0.001f *
+    position.y_pos += direction.y_mag * static_cast<float>(delta_time) * 0.01f *
                       static_cast<float>(character_config["movement_speed"]);
 
     my_sprite->xPos(position.x_pos);
@@ -120,6 +121,8 @@ bool Character::calculateRouteToPoint(Point point)
     if (best_score == 100000)
     {
       current_route.resize(1);
+      string debug_string = character_id + " COULD NOT ROUTE TO TARGET!";
+      debug_text.print(debug_string);
       return false;
     }
   }
@@ -130,9 +133,13 @@ bool Character::calculateRouteToPoint(Point point)
     if (current_route[i]->position == point)
     {
       current_route.resize(i + 1);
+      string debug_string =
+        character_id + " CALCULATED PATH TO TARGET ACROSS " + to_string(i) + " TILES";
+      debug_text.print(debug_string);
       return true;
     }
   }
+
   // Should never reach here, problems with the recursive algorithm if it does
   return false;
 }
@@ -269,4 +276,26 @@ DynamicSprite* Character::getSprite()
 ASGE::Renderer* Character::getRenderer()
 {
   return renderer;
+}
+
+/* Set the character ID */
+void Character::setCharacterID(int index)
+{
+  character_id = character_variant + "_" + to_string(index);
+  character_index = index;
+
+  string debug_string = "SPAWNED NEW " + character_variant + " WITH ID " + character_id;
+  debug_text.print(debug_string);
+}
+
+/* Get the character ID */
+string Character::getCharacterID()
+{
+  return character_id;
+}
+
+/* Return the character index */
+int Character::getIndex()
+{
+  return character_index;
 }

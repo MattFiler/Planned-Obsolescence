@@ -28,6 +28,13 @@ bool PlannedObsolescence::init()
   string config_file = "game_core.json";
   core_config = file_handler.loadConfig(config_file);
 
+  // Remember debug toggle (exit if not set, config issue)
+  if (core_config["debug_enabled"].is_null())
+  {
+    return false;
+  }
+  debug::enabled = core_config["debug_enabled"];
+
   // Configure resolution and game title
   setupResolution();
   game_name = "Planned Obsolescence";
@@ -43,6 +50,9 @@ bool PlannedObsolescence::init()
   {
     toggleFPS();
   }
+
+  // Seed srand
+  srand(static_cast<unsigned int>(time(NULL)));
 
   // Disable input threading
   inputs->use_threads = false;

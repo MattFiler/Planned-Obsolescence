@@ -1,4 +1,5 @@
 #include "../Core/CharacterManager.h"
+#include "../Core/DebugText.h"
 #include "../Core/DynamicSprite.h"
 #include "../Core/GameObject.h"
 #include "../Map/GameMap.h"
@@ -28,4 +29,5 @@ class GameCore : public Scene
 
   CharacterManager character_manager;
   GameMap game_map;
+  DebugText debug_text;
 };
