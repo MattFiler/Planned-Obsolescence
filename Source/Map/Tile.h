@@ -4,6 +4,7 @@
 #include "../Constants.h"
 #include "../Core/DynamicSprite.h"
 #include "../Core/FileHandler.h"
+#include "../Core/Camera.h"
 #include <Engine/Renderer.h>
 #include <Engine/Sprite.h>
 #include <json.hpp>
@@ -21,7 +22,7 @@ class Tile
   bool entryIsValid(direction exit);
   bool hasPointOfInterest(point_of_interest poi);
 
-  void configure(float x_position, float y_position, ASGE::Renderer* renderer);
+  void configure(float x_position, float y_position, ASGE::Renderer* renderer, Camera* camera);
   float getPositionX();
   float getPositionY();
 

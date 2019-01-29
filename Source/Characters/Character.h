@@ -12,6 +12,10 @@
 #include <vector>
 using json = nlohmann::json;
 
+/**
+ **   The parent class for all characters in the game, defines all their shared functionality, most importantly
+ *    their pathfinding algorithm.
+ */
 class Character
 {
  public:
@@ -28,6 +32,7 @@ class Character
 
   void generatePathfindingMap(GameMap* game_map);
   bool calculateRouteToPoint(Point point);
+  void resetPathfindingMap();
 
   bool isVisible();
   unsigned long long getSpawnCap();
@@ -40,7 +45,7 @@ class Character
 
   DynamicSprite* getSprite();
   ASGE::Renderer* getRenderer();
-
+    std::vector<PathNode*> current_route;
  protected:
   void updateCoreConfig(std::string character_type = "DEFAULT");
   void updateSprite();
@@ -48,12 +53,13 @@ class Character
                                    unsigned long long int depth,
                                    float best_score,
                                    Point point);
+  void clearPathfindingMapScores();
 
   Point position = Point(0, 0);
   Vector direction = Vector(0, 0);
 
   PathfindingMap* internal_map = nullptr;
-  std::vector<PathNode*> current_route;
+
   unsigned long long route_index = 0;
   float distance_to_next_node = 0;
 

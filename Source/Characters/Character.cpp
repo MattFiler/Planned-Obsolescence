@@ -111,6 +111,9 @@ bool Character::calculateRouteToPoint(Point point)
 {
   current_route[0] = current_route[route_index];
 
+  // Reset the current scores on the map
+  clearPathfindingMapScores();
+
   // Loop until the node is found, or all nodes have been visited
   float best_score = 100000;
 
@@ -205,7 +208,7 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
     node->connections[best_score_index].score = best_score_at_depth;
     node->visited = false;
 
-    // Check through all score again with the new updated one
+    // Check through all scores again with the new updated one
     for (int i = 0; i < 4; i++)
     {
       if (node->connections[i].score < best_score_at_depth && node->connections[i].score != -1 &&
@@ -216,6 +219,33 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
     }
   }
   return best_score_at_depth;
+}
+
+/* Loops through and resets the scores on every connection */
+void Character::clearPathfindingMapScores()
+{
+  for(int i = 0; i < internal_map->number_of_nodes; i++)
+  {
+    internal_map->nodes[i].visited = false;
+    for(int j = 0; j < 4; j++)
+    {
+      internal_map->nodes->connections[j].score = -1;
+    }
+  }
+}
+
+/* Resets the pathfinding map to have all connections open, and no nodes scored */
+void Character::resetPathfindingMap()
+{
+  for(int i = 0; i < internal_map->number_of_nodes; i++)
+  {
+    internal_map->nodes[i].visited = false;
+    for(int j = 0; j < 4; j++)
+    {
+      internal_map->nodes->connections[j].score = -1;
+      internal_map->nodes->connections[j].open = true;
+    }
+  }
 }
 
 /* Adjust spawn position */
