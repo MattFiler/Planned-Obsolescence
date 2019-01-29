@@ -1,3 +1,4 @@
+#include "../Core/Camera.h"
 #include "../Core/CharacterManager.h"
 #include "../Core/DebugText.h"
 #include "../Core/DynamicSprite.h"
@@ -30,4 +31,8 @@ class GameCore : public Scene
   CharacterManager character_manager;
   GameMap game_map;
   DebugText debug_text;
+
+  Camera camera;
+  float x_axis_input = 0;
+  float y_axis_input = 0;
 };

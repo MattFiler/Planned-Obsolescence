@@ -2,6 +2,7 @@
 #define PO_TILE
 
 #include "../Constants.h"
+#include "../Core/Camera.h"
 #include "../Core/DynamicSprite.h"
 #include "../Core/FileHandler.h"
 #include <Engine/Renderer.h>
@@ -21,7 +22,7 @@ class Tile
   bool entryIsValid(direction exit);
   bool hasPointOfInterest(point_of_interest poi);
 
-  void configure(float x_position, float y_position, ASGE::Renderer* renderer);
+  void configure(float x_position, float y_position, ASGE::Renderer* renderer, Camera* camera);
   float getPositionX();
   float getPositionY();
 

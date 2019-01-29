@@ -26,8 +26,10 @@ class DynamicSprite
 
   void xPos(float new_x);
   float xPos();
+  void addX(float x_amount);
   void yPos(float new_y);
   float yPos();
+  void addY(float y_amount);
   float scale();
   void scale(float new_scale);
   float width();

@@ -2,7 +2,7 @@
 using namespace std;
 
 /* Load our map */
-void GameMap::load(ASGE::Renderer* renderer_instance)
+void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
 {
   // Save renderer location
   renderer = renderer_instance;
@@ -28,7 +28,7 @@ void GameMap::load(ASGE::Renderer* renderer_instance)
     }
 
     Room new_room = Room(map_config["rooms"][i]);
-    new_room.build(room_x, room_y, renderer, tile_count);
+    new_room.build(room_x, room_y, renderer, tile_count, camera);
     rooms[i] = new_room;
 
     if ((i + 1) % static_cast<int>(map_config["rooms_w"]) == 0)

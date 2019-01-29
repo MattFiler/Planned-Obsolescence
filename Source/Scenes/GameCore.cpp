@@ -17,10 +17,12 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
+  camera.setRenderer(rend);
 
-  game_map.load(renderer);
+  game_map.load(renderer, &camera);
 
   character_manager.setMap(&game_map);
+  character_manager.setCamera(&camera);
 
   spawnCharacters(renderer);
 
@@ -51,6 +53,51 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
     string debug_string = "RETURNING TO MAIN MENU";
     debug_text.print(debug_string);
   }
+
+  if (key->key == ASGE::KEYS::KEY_W)
+  {
+    if (key->action == ASGE::KEYS::KEY_PRESSED)
+    {
+      y_axis_input = 1;
+    }
+    else if (key->action == ASGE::KEYS::KEY_RELEASED)
+    {
+      y_axis_input = 0;
+    }
+  }
+  else if (key->key == ASGE::KEYS::KEY_S)
+  {
+    if (key->action == ASGE::KEYS::KEY_PRESSED)
+    {
+      y_axis_input = -1;
+    }
+    else if (key->action == ASGE::KEYS::KEY_RELEASED)
+    {
+      y_axis_input = 0;
+    }
+  }
+  else if (key->key == ASGE::KEYS::KEY_A)
+  {
+    if (key->action == ASGE::KEYS::KEY_PRESSED)
+    {
+      x_axis_input = 1;
+    }
+    else if (key->action == ASGE::KEYS::KEY_RELEASED)
+    {
+      x_axis_input = 0;
+    }
+  }
+  else if (key->key == ASGE::KEYS::KEY_D)
+  {
+    if (key->action == ASGE::KEYS::KEY_PRESSED)
+    {
+      x_axis_input = -1;
+    }
+    else if (key->action == ASGE::KEYS::KEY_RELEASED)
+    {
+      x_axis_input = 0;
+    }
+  }
 }
 
 /**
@@ -71,6 +118,8 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Vector mouse_posit
 int GameCore::update(double delta_time)
 {
   character_manager.update(delta_time);
+  camera.moveCamera(x_axis_input * static_cast<float>(delta_time),
+                    y_axis_input * static_cast<float>(delta_time));
   return next_scene;
 }
 
@@ -84,8 +133,10 @@ void GameCore::render(double delta_time)
   rend->renderText("THE GAME", 100, 100, ASGE::COLOURS::RED);
 
   // Render Map
-  game_map.render();
+  // game_map.render();
 
   // Render Characters
-  character_manager.render(delta_time, rend);
+  // character_manager.render(delta_time, rend);
+
+  camera.renderSprites(delta_time);
 }
