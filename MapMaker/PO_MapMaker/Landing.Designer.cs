@@ -62,6 +62,7 @@
             this.openRoomEditor.TabIndex = 1;
             this.openRoomEditor.Text = "Room Editor";
             this.openRoomEditor.UseVisualStyleBackColor = true;
+            this.openRoomEditor.Click += new System.EventHandler(this.openRoomEditor_Click);
             // 
             // openMapEditor
             // 

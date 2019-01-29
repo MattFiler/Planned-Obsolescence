@@ -65,7 +65,7 @@
             this.loadSpriteSet.Name = "loadSpriteSet";
             this.loadSpriteSet.Size = new System.Drawing.Size(75, 23);
             this.loadSpriteSet.TabIndex = 2;
-            this.loadSpriteSet.Text = "OPEN ";
+            this.loadSpriteSet.Text = "OPEN";
             this.loadSpriteSet.UseVisualStyleBackColor = true;
             this.loadSpriteSet.Click += new System.EventHandler(this.loadSpriteSet_Click);
             // 
