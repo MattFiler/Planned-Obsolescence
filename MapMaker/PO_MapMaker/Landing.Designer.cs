@@ -104,6 +104,7 @@
             this.openCharacterEditor.TabIndex = 5;
             this.openCharacterEditor.Text = "Character Editor";
             this.openCharacterEditor.UseVisualStyleBackColor = true;
+            this.openCharacterEditor.Click += new System.EventHandler(this.openCharacterEditor_Click);
             // 
             // groupBox1
             // 
