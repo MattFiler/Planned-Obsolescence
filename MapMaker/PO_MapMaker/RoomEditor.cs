@@ -136,6 +136,12 @@ namespace PO_MapMaker
 
             //Resize window
             Size = new Size(positional_x + 100, positional_y + 190);
+
+            //Resize and reposition inputs
+            roomName.Size = new Size(positional_x + 60, roomName.Size.Height);
+            tileSet.Size = new Size(positional_x + 60, tileSet.Size.Height);
+            refreshRoom.Size = new Size(positional_x + 60, refreshRoom.Size.Height);
+            saveRoom.Size = new Size(positional_x + 60, saveRoom.Size.Height);
             saveRoom.Location = new Point(12, positional_y + 110);
         }
         void populateInputs(int width_index, int height_index, int index, List<string> tileList)
