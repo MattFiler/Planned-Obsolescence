@@ -6,7 +6,7 @@
       <set name="TEST" />
     </sets>
     <tiles>
-      <tile name="Default Tile" set="DEFAULT" sprite="data/TILES/placeholder.png" mandatory="true">
+      <tile name="DEFAULT" set="DEFAULT" sprite="data/TILES/placeholder.png" mandatory="true">
         <dimensions width="50" height="50" />
         <valid_exits left="false" right="false" up="false" down="false" />
         <points_of_interest computer="false" door="false" />
@@ -109,12 +109,43 @@
     </tiles>
   </tile_config>
   <room_config>
-    <rooms />
-  </room_config>
-  <map_config rooms_w="1" rooms_h="1">
     <rooms>
-      <room name="DEFAULT" />
+      <room name="DEFAULT">
+        <tiles width="5" height="5">
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+          <tile name="DEFAULT" />
+        </tiles>
+        <available_exits left="false" right="false" up="false" down="false" />
+      </room>
     </rooms>
+  </room_config>
+  <map_config>
+    <map name="DEFAULT" width="1" height="1">
+      <room name="DEFAULT" />
+    </map>
   </map_config>
   <character_config>
     <character type="DEFAULT">

@@ -34,9 +34,12 @@ namespace PO_MapMaker
             //Get default sprite
             foreach (XElement element in configXML.Element("config").Element("tile_config").Element("tiles").Descendants("tile"))
             {
-                using (var tempPreviewImg = new Bitmap(element.Attribute("sprite").Value))
+                if (element.Attribute("name").Value == "DEFAULT")
                 {
-                    defaultImage = new Bitmap(tempPreviewImg);
+                    using (var tempPreviewImg = new Bitmap(element.Attribute("sprite").Value))
+                    {
+                        defaultImage = new Bitmap(tempPreviewImg);
+                    }
                 }
             }
 
@@ -59,6 +62,7 @@ namespace PO_MapMaker
         /* Make the Editor GUI */
         List<ComboBox> comboBoxes = new List<ComboBox>();
         List<PictureBox> previewBoxes = new List<PictureBox>();
+        string[] selectedTiles = null;
         int positional_x = 0;
         int positional_y = 0;
         void refreshGUI()
@@ -108,17 +112,22 @@ namespace PO_MapMaker
             //Create inputs
             positional_x = 0;
             positional_y = 0;
-            for (int i=0; i<(width*height); i++)
+            for (int i = 0; i < (width * height); i++)
             {
                 int height_index = Convert.ToInt32(i / width);
                 int width_index = Convert.ToInt32(i - (width * height_index));
                 populateInputs(width_index, height_index, i, tileList);
             }
 
-            //Add new inputs to form
+            //Add new inputs to form and store selections
+            selectedTiles = new string[width*height];
             foreach (ComboBox dropdown in comboBoxes)
             {
                 Controls.Add(dropdown);
+                if (dropdown.SelectedIndex != -1)
+                {
+                    selectedTiles[Convert.ToInt32(dropdown.Name.Split('_')[1])] = dropdown.Items[dropdown.SelectedIndex].ToString();
+                }
             }
             foreach (PictureBox preview in previewBoxes)
             {
@@ -132,7 +141,7 @@ namespace PO_MapMaker
         void populateInputs(int width_index, int height_index, int index, List<string> tileList)
         {
             //Update sizes/positions
-            positional_x = (width_index * 100) + 10;
+            positional_x = (width_index * 80) + 10;
             positional_y = (height_index * 100) + 180;
 
             //Dropdown
@@ -150,6 +159,7 @@ namespace PO_MapMaker
             {
                 dropdown.SelectedIndex = 0; //Should really never fail this, but it's possible.
             }
+            dropdown.SelectedIndexChanged += new EventHandler(updateTilePreview);
             comboBoxes.Add(dropdown);
 
             //Preview box
@@ -169,6 +179,31 @@ namespace PO_MapMaker
             previewBoxes.Add(preview);
         }
 
+        /* Update Preview & Remember Selection */
+        private void updateTilePreview(object sender, EventArgs e)
+        {
+            ComboBox dropdown = (ComboBox)sender;
+            string object_id = dropdown.Name.Split('_')[1];
+
+            foreach (XElement element in configXML.Element("config").Element("tile_config").Element("tiles").Descendants("tile"))
+            {
+                if (element.Attribute("name").Value == dropdown.Items[dropdown.SelectedIndex].ToString())
+                {
+                    foreach (PictureBox preview in previewBoxes)
+                    {
+                        if (preview.Name == "tilePreview_" + object_id)
+                        {
+                            using (var tempPreviewImg = new Bitmap(element.Attribute("sprite").Value))
+                            {
+                                preview.Image = new Bitmap(tempPreviewImg);
+                                selectedTiles[Convert.ToInt32(object_id)] = dropdown.Items[dropdown.SelectedIndex].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         /* Reload GUI */
         private void refreshRoom_Click(object sender, EventArgs e)
         {
@@ -181,6 +216,54 @@ namespace PO_MapMaker
             roomWidth.Enabled = !defaultSizes.Checked;
             roomHeight.Enabled = !defaultSizes.Checked;
         }
+
+        /* Save */
+        private void saveRoom_Click(object sender, EventArgs e)
+        {
+            if (roomName.Text != "" && (roomWidth.Text != "0" || roomWidth.Text != "") && (roomHeight.Text != "0" || roomHeight.Text != ""))
+            {
+                //Check for name conflicts
+                bool hasNameConflict = false;
+                foreach (XElement element in configXML.Element("config").Element("room_config").Element("rooms").Descendants("room"))
+                {
+                    if (element.Attribute("name").Value == roomName.Text)
+                    {
+                        hasNameConflict = true;
+                    }
+                }
+
+                if (!hasNameConflict)
+                {
+                    //Save
+                    XElement roomTileList = new XElement("room", new XAttribute("name", roomName.Text), new XElement("tiles", new XAttribute("width", roomWidth.Text), new XAttribute("height", roomHeight.Text)));
+                    foreach (string tile in selectedTiles)
+                    {
+                        roomTileList.Element("tiles").Add(new XElement("tile", new XAttribute("name", tile)));
+                    }
+                    configXML.Element("config").Element("room_config").Element("rooms").Add(roomTileList);
+                    configXML.Save("data/config.xml");
+
+                    MessageBox.Show("Room created!", "Created.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("A room with this description already exists.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                if (roomName.Text != "")
+                {
+                    MessageBox.Show("Please enter a room description.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Room width/height must be bigger than zero.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
 
         private void tileSet_SelectedIndexChanged(object sender, EventArgs e)
         {

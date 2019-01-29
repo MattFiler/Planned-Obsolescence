@@ -32,7 +32,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.tileName = new System.Windows.Forms.TextBox();
+            this.roomName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tileSet = new System.Windows.Forms.ComboBox();
             this.roomWidth = new System.Windows.Forms.NumericUpDown();
@@ -48,7 +48,7 @@
             this.defaultSizes.AutoSize = true;
             this.defaultSizes.Checked = true;
             this.defaultSizes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.defaultSizes.Location = new System.Drawing.Point(165, 111);
+            this.defaultSizes.Location = new System.Drawing.Point(165, 110);
             this.defaultSizes.Name = "defaultSizes";
             this.defaultSizes.Size = new System.Drawing.Size(106, 17);
             this.defaultSizes.TabIndex = 32;
@@ -60,21 +60,21 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(83, 93);
+            this.label7.Location = new System.Drawing.Point(85, 92);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 13);
+            this.label7.Size = new System.Drawing.Size(44, 13);
             this.label7.TabIndex = 31;
-            this.label7.Text = "Tile Height";
+            this.label7.Text = "Height";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(9, 93);
+            this.label6.Location = new System.Drawing.Point(10, 92);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 13);
+            this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 29;
-            this.label6.Text = "Tile Width";
+            this.label6.Text = "Width";
             // 
             // label5
             // 
@@ -82,16 +82,16 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(9, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 13);
+            this.label5.Size = new System.Drawing.Size(107, 13);
             this.label5.TabIndex = 27;
-            this.label5.Text = "Tile Description";
+            this.label5.Text = "Room Description";
             // 
-            // tileName
+            // roomName
             // 
-            this.tileName.Location = new System.Drawing.Point(12, 25);
-            this.tileName.Name = "tileName";
-            this.tileName.Size = new System.Drawing.Size(249, 20);
-            this.tileName.TabIndex = 26;
+            this.roomName.Location = new System.Drawing.Point(12, 25);
+            this.roomName.Name = "roomName";
+            this.roomName.Size = new System.Drawing.Size(249, 20);
+            this.roomName.TabIndex = 26;
             // 
             // label2
             // 
@@ -115,7 +115,7 @@
             // 
             // roomWidth
             // 
-            this.roomWidth.Location = new System.Drawing.Point(12, 109);
+            this.roomWidth.Location = new System.Drawing.Point(12, 108);
             this.roomWidth.Name = "roomWidth";
             this.roomWidth.Size = new System.Drawing.Size(71, 20);
             this.roomWidth.TabIndex = 34;
@@ -123,7 +123,7 @@
             // 
             // roomHeight
             // 
-            this.roomHeight.Location = new System.Drawing.Point(89, 109);
+            this.roomHeight.Location = new System.Drawing.Point(89, 108);
             this.roomHeight.Name = "roomHeight";
             this.roomHeight.Size = new System.Drawing.Size(71, 20);
             this.roomHeight.TabIndex = 35;
@@ -137,10 +137,11 @@
             this.saveRoom.TabIndex = 36;
             this.saveRoom.Text = "Save Room";
             this.saveRoom.UseVisualStyleBackColor = true;
+            this.saveRoom.Click += new System.EventHandler(this.saveRoom_Click);
             // 
             // refreshRoom
             // 
-            this.refreshRoom.Location = new System.Drawing.Point(12, 135);
+            this.refreshRoom.Location = new System.Drawing.Point(12, 134);
             this.refreshRoom.Name = "refreshRoom";
             this.refreshRoom.Size = new System.Drawing.Size(249, 26);
             this.refreshRoom.TabIndex = 37;
@@ -161,7 +162,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.tileName);
+            this.Controls.Add(this.roomName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tileSet);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -182,7 +183,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tileName;
+        private System.Windows.Forms.TextBox roomName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox tileSet;
         private System.Windows.Forms.NumericUpDown roomWidth;

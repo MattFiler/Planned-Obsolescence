@@ -66,13 +66,12 @@ namespace PO_MapMaker
                                     new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")),
                                     new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")),
                                     new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT"))
-                                ),
-                                new XElement("available_exits", new XAttribute("left", "false"), new XAttribute("right", "false"), new XAttribute("up", "false"), new XAttribute("down", "false"))
+                                )
                             )
                         )
                     ),
-                    new XElement("map_config", new XAttribute("rooms_w", "1"), new XAttribute("rooms_h", "1"),
-                        new XElement("rooms",
+                    new XElement("map_config",
+                        new XElement("map", new XAttribute("name", "DEFAULT"), new XAttribute("width", "1"), new XAttribute("height", "1"),
                             new XElement("room", new XAttribute("name", "DEFAULT"))
                         )
                     ),

@@ -29,6 +29,7 @@ namespace PO_MapMaker
         /* Refresh List */
         void refreshMapList()
         {
+            configXML = XDocument.Load("data/config.xml");
             clearMaps();
             foreach (XElement element in configXML.Element("config").Element("room_config").Element("rooms").Descendants("room"))
             {
@@ -38,6 +39,12 @@ namespace PO_MapMaker
         void clearMaps()
         {
             listRooms.Items.Clear();
+        }
+
+        /* Refresh On Editor Close */
+        private void editorCloseRefresh(object sender, EventArgs e)
+        {
+            refreshMapList();
         }
 
         /* Edit Selected Room */
@@ -57,6 +64,7 @@ namespace PO_MapMaker
         {
             RoomEditor roomEditor = new RoomEditor();
             roomEditor.Show();
+            roomEditor.FormClosed += new FormClosedEventHandler(editorCloseRefresh);
         }
     }
 }
