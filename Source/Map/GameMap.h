@@ -11,7 +11,7 @@ class GameMap
   GameMap() = default;
   ~GameMap() = default;
 
-  void load(ASGE::Renderer* renderer_instance);
+  void load(ASGE::Renderer* renderer_instance, Camera* camera);
   void render();
 
   Room* getRooms();
@@ -21,7 +21,7 @@ class GameMap
  private:
   json map_config;
   FileHandler file_handler;
-  ASGE::Renderer* renderer;
+  ASGE::Renderer* renderer = nullptr;
   DebugText debug_text;
 
   Room* rooms = nullptr;

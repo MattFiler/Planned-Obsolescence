@@ -40,6 +40,7 @@ bool CharacterManager::spawn(Boss& new_boss)
     new_boss.setCharacterID(boss_count);
     bosses[boss_count] = new_boss;
     bosses[boss_count].generatePathfindingMap(game_map);
+    camera->registerGameSprite(bosses[boss_count].getSprite());
     bosses[boss_count].calculateRouteToPoint(Point(300, 300)); // TEMP CODE FOR TESTING
     boss_count++;
     return true;
@@ -179,8 +180,14 @@ void CharacterManager::update(double delta_time)
   bosses[0].updatePosition(delta_time);
 }
 
-/* Set the character's internal map */
+/* Save a reference to the games current map */
 void CharacterManager::setMap(GameMap* current_map)
 {
   game_map = current_map;
+}
+
+/* Save a reference to the games camera */
+void CharacterManager::setCamera(Camera* scene_camera)
+{
+  camera = scene_camera;
 }

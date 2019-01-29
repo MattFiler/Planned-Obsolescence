@@ -18,6 +18,7 @@ class CharacterManager
   void update(double delta_time);
 
   void setMap(GameMap* current_map);
+  void setCamera(Camera* scene_camera);
 
  private:
   void renderBosses(double delta_time, ASGE::Renderer* renderer);
@@ -26,6 +27,7 @@ class CharacterManager
   void renderSecurity(double delta_time, ASGE::Renderer* renderer);
 
   GameMap* game_map = nullptr;
+  Camera* camera = nullptr;
 
   Boss* bosses = nullptr;
   int boss_count = 0;
