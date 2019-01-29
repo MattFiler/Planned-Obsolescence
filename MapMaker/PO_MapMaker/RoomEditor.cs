@@ -19,14 +19,41 @@ namespace PO_MapMaker
         }
 
         XDocument configXML;
+        Bitmap defaultImage;
         private void RoomEditor_Load(object sender, EventArgs e)
         {
             configXML = XDocument.Load("data/config.xml");
+
+            //Load sets
             foreach (XElement element in configXML.Element("config").Element("tile_config").Element("sets").Descendants("set"))
             {
                 tileSet.Items.Add(element.Attribute("name").Value);
             }
             tileSet.SelectedIndex = 0;
+
+            //Get default sprite
+            foreach (XElement element in configXML.Element("config").Element("tile_config").Element("tiles").Descendants("tile"))
+            {
+                using (var tempPreviewImg = new Bitmap(element.Attribute("sprite").Value))
+                {
+                    defaultImage = new Bitmap(tempPreviewImg);
+                }
+            }
+
+            //Get default width/height
+            foreach (XElement element in configXML.Element("config").Element("room_config").Element("rooms").Descendants("room"))
+            {
+                if (element.Attribute("name").Value == "DEFAULT")
+                {
+                    roomWidth.Text = element.Element("tiles").Attribute("width").Value;
+                    roomHeight.Text = element.Element("tiles").Attribute("height").Value;
+                }
+            }
+            roomWidth.Enabled = false;
+            roomHeight.Enabled = false;
+            defaultSizes.Checked = true;
+
+            refreshGUI();
         }
 
         /* Make the Editor GUI */
@@ -99,47 +126,51 @@ namespace PO_MapMaker
             }
 
             //Resize window
-            Size = new Size(positional_x + 100, positional_y + 180);
+            Size = new Size(positional_x + 100, positional_y + 190);
+            saveRoom.Location = new Point(12, positional_y + 110);
         }
         void populateInputs(int width_index, int height_index, int index, List<string> tileList)
         {
             //Update sizes/positions
             positional_x = (width_index * 100) + 10;
-            positional_y = (height_index * 100) + 10;
+            positional_y = (height_index * 100) + 180;
 
             //Dropdown
             ComboBox dropdown = new ComboBox();
             dropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             dropdown.FormattingEnabled = true;
             dropdown.Location = new Point(positional_x, positional_y);
-            dropdown.Name = "tileNameSelect" + index.ToString();
+            dropdown.Name = "tileNameSelect_" + index.ToString();
             dropdown.Size = new Size(75, 21);
             foreach (string tile in tileList)
             {
                 dropdown.Items.Add(tile);
+            }
+            if (dropdown.Items.Count > 0)
+            {
+                dropdown.SelectedIndex = 0; //Should really never fail this, but it's possible.
             }
             comboBoxes.Add(dropdown);
 
             //Preview box
             PictureBox preview = new PictureBox();
             preview.Location = new Point(positional_x, positional_y + 21);
-            preview.Name = "tilePreview" + index.ToString();
+            preview.Name = "tilePreview_" + index.ToString();
             preview.Size = new Size(75, 75);
             preview.SizeMode = PictureBoxSizeMode.StretchImage;
-            preview.Image = Image.FromFile("D:/Pictures/783.png");
+            if (dropdown.Items.Count > 0)
+            {
+                preview.Image = defaultImage;
+            }
+            else
+            {
+                preview.Image = null; //Again, nice if we couldn't get here - but we can.
+            }
             previewBoxes.Add(preview);
         }
 
-        /* Reload GUI for new input data */
-        private void tileSet_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            refreshGUI();
-        }
-        private void roomWidth_TextChanged(object sender, EventArgs e)
-        {
-            refreshGUI();
-        }
-        private void roomHeight_TextChanged(object sender, EventArgs e)
+        /* Reload GUI */
+        private void refreshRoom_Click(object sender, EventArgs e)
         {
             refreshGUI();
         }
@@ -149,6 +180,27 @@ namespace PO_MapMaker
         {
             roomWidth.Enabled = !defaultSizes.Checked;
             roomHeight.Enabled = !defaultSizes.Checked;
+        }
+
+        private void tileSet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Depreciated
+        }
+        private void roomHeight_ValueChanged(object sender, EventArgs e)
+        {
+            //Depreciated
+        }
+        private void roomWidth_ValueChanged(object sender, EventArgs e)
+        {
+            //Depreciated
+        }
+        private void roomWidth_TextChanged(object sender, EventArgs e)
+        {
+            //Depreciated
+        }
+        private void roomHeight_TextChanged(object sender, EventArgs e)
+        {
+            //Depreciated
         }
     }
 }
