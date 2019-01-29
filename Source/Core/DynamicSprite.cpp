@@ -86,19 +86,19 @@ void DynamicSprite::xPos(float new_x)
 /* Adds an amount to the current x_position contained sprites */
 void DynamicSprite::addX(float x_amount)
 {
-    for (int i = 0; i < number_of_sprites; i++)
-    {
-        my_sprites[i]->xPos(my_sprites[i]->xPos() + x_amount);
-    }
+  for (int i = 0; i < number_of_sprites; i++)
+  {
+    my_sprites[i]->xPos(my_sprites[i]->xPos() + x_amount);
+  }
 }
 
 /* Adds an amount to the current y_position contained sprites */
 void DynamicSprite::addY(float y_amount)
 {
-    for (int i = 0; i < number_of_sprites; i++)
-    {
-        my_sprites[i]->yPos(my_sprites[i]->yPos() + y_amount);
-    }
+  for (int i = 0; i < number_of_sprites; i++)
+  {
+    my_sprites[i]->yPos(my_sprites[i]->yPos() + y_amount);
+  }
 }
 
 /**

@@ -10,7 +10,8 @@ Room::Room(string room_name)
 }
 
 /* Build our room */
-void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_offset, Camera* camera)
+void Room::build(
+  float room_x, float room_y, ASGE::Renderer* renderer, int tile_offset, Camera* camera)
 {
   // Store position data
   base_x = room_x;

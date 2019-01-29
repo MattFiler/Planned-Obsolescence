@@ -13,8 +13,8 @@
 using json = nlohmann::json;
 
 /**
- **   The parent class for all characters in the game, defines all their shared functionality, most importantly
- *    their pathfinding algorithm.
+ **   The parent class for all characters in the game, defines all their shared functionality, most
+ *importantly their pathfinding algorithm.
  */
 class Character
 {
@@ -45,7 +45,8 @@ class Character
 
   DynamicSprite* getSprite();
   ASGE::Renderer* getRenderer();
-    std::vector<PathNode*> current_route;
+  std::vector<PathNode*> current_route;
+
  protected:
   void updateCoreConfig(std::string character_type = "DEFAULT");
   void updateSprite();

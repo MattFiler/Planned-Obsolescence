@@ -184,11 +184,10 @@ void CharacterManager::update(double delta_time)
 void CharacterManager::setMap(GameMap* current_map)
 {
   game_map = current_map;
-
 }
 
 /* Save a reference to the games camera */
-void CharacterManager::setCamera(Camera *scene_camera)
+void CharacterManager::setCamera(Camera* scene_camera)
 {
   camera = scene_camera;
 }

@@ -1,8 +1,8 @@
+#include "../Core/Camera.h"
 #include "../Core/CharacterManager.h"
 #include "../Core/DebugText.h"
 #include "../Core/DynamicSprite.h"
 #include "../Core/GameObject.h"
-#include "../Core/Camera.h"
 #include "../Map/GameMap.h"
 #include "Scene.h"
 

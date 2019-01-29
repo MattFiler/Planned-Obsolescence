@@ -12,20 +12,21 @@
  */
 class Camera
 {
-public:
-    Camera();
+ public:
+  Camera();
 
-    void setRenderer(ASGE::Renderer* rend);
-    void registerGameSprite(DynamicSprite * sprite);
-    void registerUiSprite(DynamicSprite * sprite);
-    void renderSprites(double delta_time);
-    Point getCameraPosition();
-    void moveCamera(float x_amount, float y_amount);
-private:
-    std::vector<DynamicSprite*> game_sprites;
-    std::vector<DynamicSprite*> ui_sprites;
-    Point position = Point(0,0);
-    ASGE::Renderer* renderer = nullptr;
+  void setRenderer(ASGE::Renderer* rend);
+  void registerGameSprite(DynamicSprite* sprite);
+  void registerUiSprite(DynamicSprite* sprite);
+  void renderSprites(double delta_time);
+  Point getCameraPosition();
+  void moveCamera(float x_amount, float y_amount);
+
+ private:
+  std::vector<DynamicSprite*> game_sprites;
+  std::vector<DynamicSprite*> ui_sprites;
+  Point position = Point(0, 0);
+  ASGE::Renderer* renderer = nullptr;
 };
 
-#endif //PLANNEDOBSOLESCENCE_CAMERA_H
+#endif // PLANNEDOBSOLESCENCE_CAMERA_H

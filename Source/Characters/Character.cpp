@@ -224,10 +224,10 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
 /* Loops through and resets the scores on every connection */
 void Character::clearPathfindingMapScores()
 {
-  for(int i = 0; i < internal_map->number_of_nodes; i++)
+  for (int i = 0; i < internal_map->number_of_nodes; i++)
   {
     internal_map->nodes[i].visited = false;
-    for(int j = 0; j < 4; j++)
+    for (int j = 0; j < 4; j++)
     {
       internal_map->nodes->connections[j].score = -1;
     }
@@ -237,10 +237,10 @@ void Character::clearPathfindingMapScores()
 /* Resets the pathfinding map to have all connections open, and no nodes scored */
 void Character::resetPathfindingMap()
 {
-  for(int i = 0; i < internal_map->number_of_nodes; i++)
+  for (int i = 0; i < internal_map->number_of_nodes; i++)
   {
     internal_map->nodes[i].visited = false;
-    for(int j = 0; j < 4; j++)
+    for (int j = 0; j < 4; j++)
     {
       internal_map->nodes->connections[j].score = -1;
       internal_map->nodes->connections[j].open = true;
