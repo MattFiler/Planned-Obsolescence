@@ -32,6 +32,8 @@ class DynamicSprite
   void scale(float new_scale);
   float width();
   float height();
+  void scaleWidth(float new_scale_width);
+  void scaleHeight(float new_scale_height);
   void timeBetweenFrames(double new_time_between_frames);
   void setFadeColour(ASGE::Colour col);
 
@@ -46,6 +48,8 @@ class DynamicSprite
   float sprite_width = 50;
   float sprite_height = 50;
   float scale_factor = 1;
+  float scale_sprite_width = 1;
+  float scale_sprite_height = 1;
   float colour_fade_percent = 0;
   float opacity_fade_percent = 1;
   double time_passed = 0;

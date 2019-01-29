@@ -146,6 +146,35 @@ void DynamicSprite::scale(float scale_amount)
 }
 
 /**
+ *   @brief   Sets the width of sprite(s)
+ *   @details Sets the width of DynamicSprite,
+ *			 this width is automatically applied
+ *			 to the width of all contained sprites
+ *   @param   The new width for the sprite(s)
+ */
+void DynamicSprite::scaleWidth(float new_scale_width){
+  scale_sprite_width = new_scale_width;
+  for (int i = 0; i < number_of_sprites; ++i) {
+    my_sprites[i]->width(sprite_width * scale_sprite_width);
+  }
+}
+
+/**
+ *   @brief   Sets the height of sprite(s)
+ *   @details Sets the height of DynamicSprite,
+ *			 this height is automatically applied
+ *			 to the height of all contained sprites
+ *   @param   The new height for the sprite(s)
+ */
+void DynamicSprite::scaleHeight(float new_scale_height)
+{
+  scale_sprite_height = new_scale_height;
+  for (int i = 0; i < number_of_sprites; ++i) {
+    my_sprites[i]->height(sprite_height * scale_sprite_height);
+  }
+}
+
+/**
  *   @brief   Sets the fade colour
  *   @details Sets the fade colour of DynamicSprite,
  *			 this is the colour of tint applied when using fadeToColour
