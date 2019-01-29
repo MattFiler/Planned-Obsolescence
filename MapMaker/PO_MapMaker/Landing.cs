@@ -59,7 +59,7 @@ namespace PO_MapMaker
                     ),
                     new XElement("room_config",
                         new XElement("rooms",
-                            new XElement("room", new XAttribute("name", "DEFAULT"),
+                            new XElement("room", new XAttribute("name", "DEFAULT"), new XAttribute("mandatory", "true"),
                                 new XElement("tiles", new XAttribute("width", "5"), new XAttribute("height", "5"),
                                     new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")),
                                     new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")),

@@ -235,7 +235,7 @@ namespace PO_MapMaker
                 if (!hasNameConflict)
                 {
                     //Save
-                    XElement roomTileList = new XElement("room", new XAttribute("name", roomName.Text), new XElement("tiles", new XAttribute("width", roomWidth.Text), new XAttribute("height", roomHeight.Text)));
+                    XElement roomTileList = new XElement("room", new XAttribute("name", roomName.Text), new XAttribute("mandatory", "false"), new XElement("tiles", new XAttribute("width", roomWidth.Text), new XAttribute("height", roomHeight.Text)));
                     foreach (string tile in selectedTiles)
                     {
                         roomTileList.Element("tiles").Add(new XElement("tile", new XAttribute("name", tile)));
