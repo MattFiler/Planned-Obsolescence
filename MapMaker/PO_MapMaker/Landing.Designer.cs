@@ -37,6 +37,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.openKeybindEditor = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -49,7 +50,7 @@
             this.openTileEditor.Name = "openTileEditor";
             this.openTileEditor.Size = new System.Drawing.Size(262, 36);
             this.openTileEditor.TabIndex = 0;
-            this.openTileEditor.Text = "Tile Editor";
+            this.openTileEditor.Text = "Tiles";
             this.openTileEditor.UseVisualStyleBackColor = true;
             this.openTileEditor.Click += new System.EventHandler(this.openTileEditor_Click);
             // 
@@ -60,7 +61,7 @@
             this.openRoomEditor.Name = "openRoomEditor";
             this.openRoomEditor.Size = new System.Drawing.Size(262, 36);
             this.openRoomEditor.TabIndex = 1;
-            this.openRoomEditor.Text = "Room Editor";
+            this.openRoomEditor.Text = "Rooms";
             this.openRoomEditor.UseVisualStyleBackColor = true;
             this.openRoomEditor.Click += new System.EventHandler(this.openRoomEditor_Click);
             // 
@@ -71,17 +72,18 @@
             this.openMapEditor.Name = "openMapEditor";
             this.openMapEditor.Size = new System.Drawing.Size(262, 36);
             this.openMapEditor.TabIndex = 2;
-            this.openMapEditor.Text = "Map Editor";
+            this.openMapEditor.Text = "Maps";
             this.openMapEditor.UseVisualStyleBackColor = true;
+            this.openMapEditor.Click += new System.EventHandler(this.openMapEditor_Click);
             // 
             // startCompile
             // 
             this.startCompile.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startCompile.Location = new System.Drawing.Point(12, 295);
+            this.startCompile.Location = new System.Drawing.Point(12, 338);
             this.startCompile.Name = "startCompile";
             this.startCompile.Size = new System.Drawing.Size(274, 49);
             this.startCompile.TabIndex = 3;
-            this.startCompile.Text = "Compile Changes";
+            this.startCompile.Text = "Compile";
             this.startCompile.UseVisualStyleBackColor = true;
             this.startCompile.Click += new System.EventHandler(this.startCompile_Click);
             // 
@@ -92,7 +94,7 @@
             this.openGameEditor.Name = "openGameEditor";
             this.openGameEditor.Size = new System.Drawing.Size(262, 36);
             this.openGameEditor.TabIndex = 4;
-            this.openGameEditor.Text = "Game Editor";
+            this.openGameEditor.Text = "Resolution and Debug";
             this.openGameEditor.UseVisualStyleBackColor = true;
             this.openGameEditor.Click += new System.EventHandler(this.openGameEditor_Click);
             // 
@@ -103,7 +105,7 @@
             this.openCharacterEditor.Name = "openCharacterEditor";
             this.openCharacterEditor.Size = new System.Drawing.Size(262, 36);
             this.openCharacterEditor.TabIndex = 5;
-            this.openCharacterEditor.Text = "Character Editor";
+            this.openCharacterEditor.Text = "Characters";
             this.openCharacterEditor.UseVisualStyleBackColor = true;
             this.openCharacterEditor.Click += new System.EventHandler(this.openCharacterEditor_Click);
             // 
@@ -121,10 +123,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.openKeybindEditor);
             this.groupBox2.Controls.Add(this.openGameEditor);
             this.groupBox2.Location = new System.Drawing.Point(12, 229);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(274, 60);
+            this.groupBox2.Size = new System.Drawing.Size(274, 103);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Misc Game Configurations";
@@ -139,11 +142,22 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Character Editor";
             // 
+            // openKeybindEditor
+            // 
+            this.openKeybindEditor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openKeybindEditor.Location = new System.Drawing.Point(6, 61);
+            this.openKeybindEditor.Name = "openKeybindEditor";
+            this.openKeybindEditor.Size = new System.Drawing.Size(262, 36);
+            this.openKeybindEditor.TabIndex = 5;
+            this.openKeybindEditor.Text = "Keybinds";
+            this.openKeybindEditor.UseVisualStyleBackColor = true;
+            this.openKeybindEditor.Click += new System.EventHandler(this.openKeybindEditor_Click);
+            // 
             // Landing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 353);
+            this.ClientSize = new System.Drawing.Size(298, 397);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -171,6 +185,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button openKeybindEditor;
     }
 }
 

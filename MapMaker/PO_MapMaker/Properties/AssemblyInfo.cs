@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PO_MapMaker")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Planned Obsolescence Editor")]
+[assembly: AssemblyDescription("Editor tools for Planned Obsolescence.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PO_MapMaker")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCompany("Matt Filer")]
+[assembly: AssemblyProduct("PO Editor")]
+[assembly: AssemblyCopyright("Copyright © Matt Filer 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

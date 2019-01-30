@@ -278,5 +278,9 @@
   <game_config>
     <resolution width="1920" height="1080" />
     <debug enabled="true" />
+    <keybinds>
+      <bind key="KEY_ENTER" action="Activate" />
+      <bind key="KEY_ESCAPE" action="Back" />
+    </keybinds>
   </game_config>
 </config>

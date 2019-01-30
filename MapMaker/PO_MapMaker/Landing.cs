@@ -113,6 +113,10 @@ namespace PO_MapMaker
                         ),
                         new XElement("debug", 
                             new XAttribute("enabled", "false")
+                        ),
+                        new XElement("keybinds",
+                            new XElement("bind", new XAttribute("key", "KEY_ENTER"), new XAttribute("action", "Activate")),
+                            new XElement("bind", new XAttribute("key", "KEY_ESCAPE"), new XAttribute("action", "Back"))
                         )
                     )
                 );
@@ -152,6 +156,19 @@ namespace PO_MapMaker
         {
             RoomList roomEditor = new RoomList();
             roomEditor.Show();
+        }
+
+        /* Open Keybind Editor */
+        private void openKeybindEditor_Click(object sender, EventArgs e)
+        {
+            KeybindEditor keyEditor = new KeybindEditor();
+            keyEditor.Show();
+        }
+        
+        /* Open Map Editor */
+        private void openMapEditor_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Coming soon.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
     }
 }

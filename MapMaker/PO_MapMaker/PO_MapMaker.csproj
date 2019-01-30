@@ -61,6 +61,12 @@
     <Compile Include="GameEditor.Designer.cs">
       <DependentUpon>GameEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="KeybindEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeybindEditor.Designer.cs">
+      <DependentUpon>KeybindEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="RoomEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GameEditor.resx">
       <DependentUpon>GameEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeybindEditor.resx">
+      <DependentUpon>KeybindEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RoomEditor.resx">
       <DependentUpon>RoomEditor.cs</DependentUpon>

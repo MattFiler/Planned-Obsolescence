@@ -33,7 +33,12 @@ namespace PO_MapMaker
             /* game_core.json */
             statusText.Text = "Compiling Game Configurations";
             XElement game_config = configXML.Element("config").Element("game_config");
-            string game_coreJson = "{\"DEFAULT\":{\"resolution\":{\"width\": " + game_config.Element("resolution").Attribute("width").Value + ",\"height\": " + game_config.Element("resolution").Attribute("height").Value + "},\"debug_enabled\": " + game_config.Element("debug").Attribute("enabled").Value + "}}";
+            string game_coreJson = "{\"DEFAULT\":{\"resolution\":{\"width\": " + game_config.Element("resolution").Attribute("width").Value + ",\"height\": " + game_config.Element("resolution").Attribute("height").Value + "},\"debug_enabled\": " + game_config.Element("debug").Attribute("enabled").Value + ",\"keybinds\":{";
+            foreach (XElement binds in game_config.Element("keybinds").Descendants("bind"))
+            {
+                game_coreJson += "\"" + binds.Attribute("action").Value + "\":\"" + binds.Attribute("key").Value + "\",";
+            }
+            game_coreJson = game_coreJson.Substring(0, game_coreJson.Length - 1) + "}}}";
             JToken game_coreJsonParsed = JToken.Parse(game_coreJson);
             File.WriteAllText("data/CONFIGS/game_core.json", game_coreJsonParsed.ToString(Formatting.Indented));
             progressBar.PerformStep();
