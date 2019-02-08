@@ -49,6 +49,11 @@ enum point_of_interest
   DOOR
 };
 
+enum Event
+{
+  Defult
+};
+
 /* --- Game --- */
 
 // Enable debug output if required - this option is set at runtime, do not modify!
