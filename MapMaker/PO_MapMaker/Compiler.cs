@@ -33,7 +33,12 @@ namespace PO_MapMaker
             /* game_core.json */
             statusText.Text = "Compiling Game Configurations";
             XElement game_config = configXML.Element("config").Element("game_config");
-            string game_coreJson = "{\"DEFAULT\":{\"resolution\":{\"width\": " + game_config.Element("resolution").Attribute("width").Value + ",\"height\": " + game_config.Element("resolution").Attribute("height").Value + "},\"debug_enabled\": " + game_config.Element("debug").Attribute("enabled").Value + "}}";
+            string game_coreJson = "{\"DEFAULT\":{\"resolution\":{\"width\": " + game_config.Element("resolution").Attribute("width").Value + ",\"height\": " + game_config.Element("resolution").Attribute("height").Value + "},\"debug_enabled\": " + game_config.Element("debug").Attribute("enabled").Value + ",\"keybinds\":{";
+            foreach (XElement binds in game_config.Element("keybinds").Descendants("bind"))
+            {
+                game_coreJson += "\"" + binds.Attribute("action").Value + "\":\"" + binds.Attribute("key").Value + "\",";
+            }
+            game_coreJson = game_coreJson.Substring(0, game_coreJson.Length - 1) + "}}}";
             JToken game_coreJsonParsed = JToken.Parse(game_coreJson);
             File.WriteAllText("data/CONFIGS/game_core.json", game_coreJsonParsed.ToString(Formatting.Indented));
             progressBar.PerformStep();
@@ -44,6 +49,45 @@ namespace PO_MapMaker
 
             /* rooms_core.json */
             statusText.Text = "Compiling Room Data";
+            XElement room_config = configXML.Element("config").Element("room_config").Element("rooms");
+            XElement default_room = null;
+            foreach (XElement room in room_config.Descendants("room"))
+            {
+                if (room.Attribute("name").Value == "DEFAULT")
+                {
+                    //Get default room
+                    default_room = room;
+                    break;
+                }
+            }
+            string rooms_coreJson = "{";
+            foreach (XElement room in room_config.Descendants("room"))
+            {
+                if (room.Attribute("name").Value == "DEFAULT")
+                {
+                    rooms_coreJson += "\"DEFAULT\":{\"tile_w\":" + room.Element("tiles").Attribute("width").Value + ",\"tile_h\":" + room.Element("tiles").Attribute("height").Value + ",\"tiles\":[ ";
+                    foreach (XElement tile in room.Element("tiles").Descendants("tile"))
+                    {
+                        rooms_coreJson += "\"" + tile.Attribute("name").Value + "\",";
+                    }
+                    rooms_coreJson = rooms_coreJson.Substring(0, rooms_coreJson.Length - 1) + "]},";
+                }
+                else
+                {
+                    rooms_coreJson += "\"" + room.Attribute("name").Value + "\":{ ";
+                    rooms_coreJson += addElementIfNotDefault("width", default_room.Element("tiles").Attribute("width"), room.Element("tiles").Attribute("width"), false);
+                    rooms_coreJson += addElementIfNotDefault("height", default_room.Element("tiles").Attribute("height"), room.Element("tiles").Attribute("height"), false);
+                    rooms_coreJson += "\"tiles\":[ ";
+                    foreach (XElement tile in room.Element("tiles").Descendants("tile"))
+                    {
+                        rooms_coreJson += "\"" + tile.Attribute("name").Value + "\",";
+                    }
+                    rooms_coreJson = rooms_coreJson.Substring(0, rooms_coreJson.Length - 1) + "]},";
+                }
+            }
+            rooms_coreJson = rooms_coreJson.Substring(0, rooms_coreJson.Length - 1) + "}";
+            JToken rooms_coreJsonParsed = JToken.Parse(rooms_coreJson);
+            File.WriteAllText("data/CONFIGS/rooms_core.json", rooms_coreJsonParsed.ToString(Formatting.Indented));
             progressBar.PerformStep();
             
             /* tiles_core.json */
@@ -54,6 +98,7 @@ namespace PO_MapMaker
             {
                 if (tile.Attribute("set").Value == "DEFAULT")
                 {
+                    //Get default tile
                     default_tile = tile;
                     break;
                 }
