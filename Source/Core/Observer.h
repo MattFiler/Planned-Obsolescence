@@ -6,6 +6,7 @@
 #define PLANNEDOBSOLESCENCE_OBSERVER_H
 
 #include "../Constants.h"
+#include "../Entity.h"
 
 class Subject;
 
@@ -17,7 +18,7 @@ class Observer
   Observer() : next_(nullptr) {}
 
   virtual ~Observer();
-  virtual void onNotify(Subject& entity, Event event) = 0;
+  virtual void onNotify(Entity& entity, Event event) = 0;
 
  private:
   Observer* next_;

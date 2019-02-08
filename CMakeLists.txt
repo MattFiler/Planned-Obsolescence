@@ -85,7 +85,8 @@ add_executable(
         Source/Core/DebugText.cpp
         Source/Constants.cpp
         Source/Core/Camera.h
-        Source/Core/Camera.cpp)
+        Source/Core/Camera.cpp
+        Source/Entity.h)
 
 ## library includes
 target_include_directories(

@@ -170,9 +170,11 @@ void DynamicSprite::scale(float scale_amount)
  *			 to the width of all contained sprites
  *   @param   The new width for the sprite(s)
  */
-void DynamicSprite::scaleWidth(float new_scale_width){
+void DynamicSprite::scaleWidth(float new_scale_width)
+{
   scale_sprite_width = new_scale_width;
-  for (int i = 0; i < number_of_sprites; ++i) {
+  for (int i = 0; i < number_of_sprites; ++i)
+  {
     my_sprites[i]->width(sprite_width * scale_sprite_width);
   }
 }
@@ -187,7 +189,8 @@ void DynamicSprite::scaleWidth(float new_scale_width){
 void DynamicSprite::scaleHeight(float new_scale_height)
 {
   scale_sprite_height = new_scale_height;
-  for (int i = 0; i < number_of_sprites; ++i) {
+  for (int i = 0; i < number_of_sprites; ++i)
+  {
     my_sprites[i]->height(sprite_height * scale_sprite_height);
   }
 }
@@ -333,7 +336,7 @@ bool DynamicSprite::fadeToOpacity(double time_to_fade, double delta_time, bool i
  */
 void DynamicSprite::timeBetweenFrames(double new_time_between_frames)
 {
-    time_between_frames = new_time_between_frames;
+  time_between_frames = new_time_between_frames;
 }
 
 /**
@@ -362,21 +365,17 @@ ASGE::Sprite& DynamicSprite::returnNextSprite(double delta_time)
   return *my_sprites[current_sprite];
 }
 
-void DynamicSprite::setSpriteSheet(float sprite_sheet_width, float sprite_sheet_height,
-                                   float start_x_pos, float start_y_pos)
+void DynamicSprite::setSpriteSheet(float sprite_sheet_width,
+                                   float sprite_sheet_height,
+                                   float start_x_pos,
+                                   float start_y_pos)
 {
   src_rect[0] = start_x_pos;
   src_rect[1] = start_y_pos;
-  src_rect[2] =  sprite_sheet_width;
-  src_rect[3] =  sprite_sheet_height;
+  src_rect[2] = sprite_sheet_width;
+  src_rect[3] = sprite_sheet_height;
 
-  float *source_rect = my_sprites[0]->srcRect();
-
-    float thing = *source_rect;
-    if (thing > 0)
-    {
-
-    }
+  float* source_rect = my_sprites[0]->srcRect();
 }
 
 float DynamicSprite::width_scale = 1;

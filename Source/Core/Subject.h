@@ -6,6 +6,7 @@
 #define PLANNEDOBSOLESCENCE_SUBJECT_H
 
 #include "../Constants.h"
+#include "../Entity.h"
 #include "Observer.h"
 
 class Subject
@@ -16,7 +17,7 @@ class Subject
   void addObserver(Observer* observer);
   void removeObserver(Observer* observer);
 
-  void notify(Subject& entity, Event event);
+  void notify(Entity& entity, Event event);
 
  private:
   Observer* head_;

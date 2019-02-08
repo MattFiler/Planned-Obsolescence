@@ -4,48 +4,47 @@
 
 #include "Subject.h"
 
-
 Subject::~Subject()
 {
-    notify(*this, Defult);
+  notify(*this, DEFAULT);
 }
 
-
-void Subject::addObserver(Observer *observer)
+// cppcheck-suppress unusedFunction
+void Subject::addObserver(Observer* observer)
 {
-    observer->next_= head_;
-    head_ = observer;
+  observer->next_ = head_;
+  head_ = observer;
 }
 
-void Subject::removeObserver(Observer *observer)
+// cppcheck-suppress unusedFunction
+void Subject::removeObserver(Observer* observer)
 {
-    if (observer == head_)
-    {
-        head_ = observer->next_;
-        observer->next_= nullptr;
-        return;
-    }
+  if (observer == head_)
+  {
+    head_ = observer->next_;
+    observer->next_ = nullptr;
+    return;
+  }
 
-    Observer* current = head_;
-    while (current != nullptr)
+  Observer* current = head_;
+  while (current != nullptr)
+  {
+    if (current->next_ == observer)
     {
-        if (current->next_ == observer)
-        {
-            current->next_ = observer->next_;
-            observer->next_ = nullptr;
-            return;
-        }
-
-        current = current->next_;
+      current->next_ = observer->next_;
+      observer->next_ = nullptr;
+      return;
     }
+    current = current->next_;
+  }
 }
 
-void Subject::notify(Subject &entity, Event event)
+void Subject::notify(Entity& entity, Event event)
 {
-    Observer* observer = head_;
-    while (observer != nullptr)
-    {
-        observer->onNotify(entity, event);
-        observer = observer->next_;
-    }
+  Observer* observer = head_;
+  while (observer != nullptr)
+  {
+    observer->onNotify(entity, event);
+    observer = observer->next_;
+  }
 }
