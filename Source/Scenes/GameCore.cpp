@@ -6,6 +6,7 @@
 #include <Engine/Renderer.h>
 
 #include "../Map/Room.h"
+using namespace std;
 
 /**
  *   @brief   Loads all variables and sprites for this scene
@@ -16,82 +17,16 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
+  camera.setRenderer(rend);
 
-  game_map.load(renderer);
+  game_map.load(renderer, &camera);
 
-  // generatePathfindingMap();
+  character_manager.setMap(&game_map);
+  character_manager.setCamera(&camera);
 
   spawnCharacters(renderer);
 
   return true;
-}
-
-void GameCore::generatePathfindingMap()
-{
-  int total_tiles = 0;
-  for (int i = 0; i < game_map.getRoomCount(); i++)
-  {
-    total_tiles += game_map.getRooms()[i].getTileCount();
-  }
-
-  pathfinding_map.nodes = new PathNode[total_tiles];
-
-  // First populate the map with the positions of each node
-  int tile_count = 0;
-  for (int i = 0; i < game_map.getRoomCount(); i++)
-  {
-    for (int j = 0; j < game_map.getRooms()[i].getTileCount(); j++)
-    {
-      pathfinding_map.nodes[tile_count].position =
-        Point(game_map.getRooms()[i].getTiles()[j].getPositionX(),
-              game_map.getRooms()[i].getTiles()[j].getPositionY());
-      tile_count++;
-    }
-  }
-
-  // Then loop through a second time to add the connections between nodes
-  tile_count = 0;
-  float tile_size = game_map.getRooms()[0].getTiles()[0].getWidth();
-  for (int i = 0; i < game_map.getRoomCount(); i++)
-  {
-    for (int j = 0; j < game_map.getRooms()[i].getTileCount(); j++)
-    {
-      if (game_map.getRooms()[i].getTiles()[j].exitIsValid(direction::LEFT))
-      {
-        pathfinding_map.nodes[tile_count].connections[0].node =
-          findNodeAtPoint(pathfinding_map.nodes[tile_count].position - Point(tile_size, 0));
-      }
-      else if (game_map.getRooms()[i].getTiles()[j].exitIsValid(direction::RIGHT))
-      {
-        pathfinding_map.nodes[tile_count].connections[0].node =
-          findNodeAtPoint(pathfinding_map.nodes[tile_count].position + Point(tile_size, 0));
-      }
-      else if (game_map.getRooms()[i].getTiles()[j].exitIsValid(direction::UP))
-      {
-        pathfinding_map.nodes[tile_count].connections[0].node =
-          findNodeAtPoint(pathfinding_map.nodes[tile_count].position - Point(0, tile_size));
-      }
-      else if (game_map.getRooms()[i].getTiles()[j].exitIsValid(direction::DOWN))
-      {
-        pathfinding_map.nodes[tile_count].connections[0].node =
-          findNodeAtPoint(pathfinding_map.nodes[tile_count].position + Point(0, tile_size));
-      }
-      tile_count++;
-    }
-  }
-}
-
-/* Returns the node in the PathfindingMap that is at the given point */
-PathNode* GameCore::findNodeAtPoint(Point point)
-{
-  for (int i = 0; i < pathfinding_map.number_of_nodes; i++)
-  {
-    if (pathfinding_map.nodes[i].position == point)
-    {
-      return &pathfinding_map.nodes[i];
-    }
-  }
-  return nullptr;
 }
 
 /* Spawn all characters */
@@ -100,7 +35,6 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   Boss boss_demo;
   boss_demo.wake(renderer);
   boss_demo.setSpawnPosition(0, 0);
-  // boss_demo.calculateRouteToPoint(Point(300, 300));
   character_manager.spawn(boss_demo);
 }
 
@@ -110,7 +44,61 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
  *   @details the game state / variables etc depending
  *   @param   data is the event
  */
-void GameCore::keyHandler(const ASGE::SharedEventData data) {}
+void GameCore::keyHandler(const ASGE::SharedEventData data)
+{
+  auto key = static_cast<const ASGE::KeyEvent*>(data.get());
+  if (key->key == ASGE::KEYS::KEY_ESCAPE && key->action == ASGE::KEYS::KEY_RELEASED)
+  {
+    next_scene = 1;
+    string debug_string = "RETURNING TO MAIN MENU";
+    debug_text.print(debug_string);
+  }
+
+  if (key->key == ASGE::KEYS::KEY_W)
+  {
+    if (key->action == ASGE::KEYS::KEY_PRESSED)
+    {
+      y_axis_input = 1;
+    }
+    else if (key->action == ASGE::KEYS::KEY_RELEASED)
+    {
+      y_axis_input = 0;
+    }
+  }
+  else if (key->key == ASGE::KEYS::KEY_S)
+  {
+    if (key->action == ASGE::KEYS::KEY_PRESSED)
+    {
+      y_axis_input = -1;
+    }
+    else if (key->action == ASGE::KEYS::KEY_RELEASED)
+    {
+      y_axis_input = 0;
+    }
+  }
+  else if (key->key == ASGE::KEYS::KEY_A)
+  {
+    if (key->action == ASGE::KEYS::KEY_PRESSED)
+    {
+      x_axis_input = 1;
+    }
+    else if (key->action == ASGE::KEYS::KEY_RELEASED)
+    {
+      x_axis_input = 0;
+    }
+  }
+  else if (key->key == ASGE::KEYS::KEY_D)
+  {
+    if (key->action == ASGE::KEYS::KEY_PRESSED)
+    {
+      x_axis_input = -1;
+    }
+    else if (key->action == ASGE::KEYS::KEY_RELEASED)
+    {
+      x_axis_input = 0;
+    }
+  }
+}
 
 /**
  *   @brief   Changes game state based on mouse inputs
@@ -129,6 +117,9 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Vector mouse_posit
  */
 int GameCore::update(double delta_time)
 {
+  character_manager.update(delta_time);
+  camera.moveCamera(x_axis_input * static_cast<float>(delta_time),
+                    y_axis_input * static_cast<float>(delta_time));
   return next_scene;
 }
 
@@ -142,8 +133,10 @@ void GameCore::render(double delta_time)
   rend->renderText("THE GAME", 100, 100, ASGE::COLOURS::RED);
 
   // Render Map
-  game_map.render();
+  // game_map.render();
 
   // Render Characters
-  character_manager.render(delta_time, rend);
+  // character_manager.render(delta_time, rend);
+
+  camera.renderSprites(delta_time);
 }

@@ -15,7 +15,7 @@ struct NodeConnection
 {
   PathNode* node = nullptr;
   bool open = true;
-  float score = 0;
+  float score = -1;
 };
 
 #endif // PLANNEDOBSOLESCENCE_NODECONNECTION_H

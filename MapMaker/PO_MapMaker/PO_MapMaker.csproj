@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +49,18 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compiler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compiler.Designer.cs">
+      <DependentUpon>Compiler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameEditor.Designer.cs">
+      <DependentUpon>GameEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Landing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,27 +69,53 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TileEditor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TileEditor.Designer.cs">
       <DependentUpon>TileEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="TileList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TileList.Designer.cs">
+      <DependentUpon>TileList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TileSetEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TileSetEditor.Designer.cs">
+      <DependentUpon>TileSetEditor.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Compiler.resx">
+      <DependentUpon>Compiler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameEditor.resx">
+      <DependentUpon>GameEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Landing.resx">
       <DependentUpon>Landing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="TileEditor.resx">
       <DependentUpon>TileEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TileList.resx">
+      <DependentUpon>TileList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TileSetEditor.resx">
+      <DependentUpon>TileSetEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -87,6 +128,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\placeholder_tile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\placeholder_character.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

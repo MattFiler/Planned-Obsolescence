@@ -1,15 +1,21 @@
 #ifndef PO_CHARACTER
 #define PO_CHARACTER
 
+#include "../Core/DebugText.h"
 #include "../Core/DynamicSprite.h"
 #include "../Core/FileHandler.h"
 #include "../Core/PathfindingMap.h"
 #include "../Core/Vector.h"
+
 #include <Engine/Renderer.h>
 #include <json.hpp>
 #include <vector>
 using json = nlohmann::json;
 
+/**
+ **   The parent class for all characters in the game, defines all their shared functionality, most
+ *importantly their pathfinding algorithm.
+ */
 class Character
 {
  public:
@@ -17,37 +23,44 @@ class Character
   ~Character();
 
   void wake(ASGE::Renderer* passed_renderer);
+  void updatePosition(double delta_time);
 
   void setSpawnPosition(int x_pos, int y_pos);
   void setVisible(bool isVisible);
   void setDimensions(int new_width, int new_height);
   void setSpeed(int speed);
 
-  void generatePathfindingMap();
+  void generatePathfindingMap(GameMap* game_map);
   bool calculateRouteToPoint(Point point);
+  void resetPathfindingMap();
 
   bool isVisible();
   unsigned long long getSpawnCap();
   int getSpawnCapAsInt();
   std::string getSpritePath();
 
+  void setCharacterID(int index);
+  std::string getCharacterID();
+  int getIndex();
+
   DynamicSprite* getSprite();
   ASGE::Renderer* getRenderer();
+  std::vector<PathNode*> current_route;
 
  protected:
   void updateCoreConfig(std::string character_type = "DEFAULT");
   void updateSprite();
-  void updatePosition(double delta_time);
   float calculateScoresOfNextDepth(PathNode* node,
                                    unsigned long long int depth,
                                    float best_score,
                                    Point point);
+  void clearPathfindingMapScores();
 
   Point position = Point(0, 0);
   Vector direction = Vector(0, 0);
 
   PathfindingMap* internal_map = nullptr;
-  std::vector<PathNode*> current_route;
+
   unsigned long long route_index = 0;
   float distance_to_next_node = 0;
 
@@ -59,6 +72,12 @@ class Character
 
   DynamicSprite* my_sprite = nullptr;
   ASGE::Renderer* renderer = nullptr;
+
+  std::string character_variant = "DEFAULT";
+  std::string character_id = "";
+  int character_index = -1;
+
+  DebugText debug_text;
 };
 
 #endif

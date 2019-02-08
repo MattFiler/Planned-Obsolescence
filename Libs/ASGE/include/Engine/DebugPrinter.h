@@ -18,7 +18,7 @@ namespace ASGE {
     *  Used to render text to the console. Ensures that only one instance
     *  of cout is accessed throughout all threads.
     *  
-    *  Usage: PrintThread{} << "Hello World!" << std::endl;
+    *  Usage: ASGE::DebugPrinter{} << "dsgfdsf" << std::endl;
     */
     class DebugPrinter :
             public std::ostringstream

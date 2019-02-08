@@ -8,7 +8,6 @@
 #include <sstream>
 #include <string>
 using json = nlohmann::json;
-using namespace SoLoud;
 
 class FileHandler
 {
@@ -16,7 +15,7 @@ class FileHandler
   json openAsJSON(std::string& filename);
   json loadConfig(std::string& config, std::string request = "DEFAULT");
   std::string openAsString(std::string& filename);
-  WavStream loadSound(std::string& filename);
+  SoLoud::WavStream loadSound(std::string& filename);
 };
 
 #endif
