@@ -50,7 +50,7 @@ namespace PO_MapMaker
                             new XElement("set", new XAttribute("name", "DEFAULT"))
                         ),
                         new XElement("tiles",
-                            new XElement("tile", new XAttribute("name", "Default Tile"), new XAttribute("set", "DEFAULT"), new XAttribute("sprite", "data/TILES/placeholder.png"), new XAttribute("mandatory", "true"),
+                            new XElement("tile", new XAttribute("name", "DEFAULT"), new XAttribute("set", "DEFAULT"), new XAttribute("sprite", "data/TILES/placeholder.png"), new XAttribute("mandatory", "true"),
                                 new XElement("dimensions", new XAttribute("width", "50"), new XAttribute("height", "50")),
                                 new XElement("valid_exits", new XAttribute("left", "false"), new XAttribute("right", "false"), new XAttribute("up", "false"), new XAttribute("down", "false")),
                                 new XElement("points_of_interest", new XAttribute("computer", "false"), new XAttribute("door", "false"))
@@ -58,10 +58,20 @@ namespace PO_MapMaker
                         )
                     ),
                     new XElement("room_config",
-                        new XElement("rooms")
-                    ),
-                    new XElement("map_config", new XAttribute("rooms_w", "1"), new XAttribute("rooms_h", "1"),
                         new XElement("rooms",
+                            new XElement("room", new XAttribute("name", "DEFAULT"), new XAttribute("mandatory", "true"),
+                                new XElement("tiles", new XAttribute("width", "5"), new XAttribute("height", "5"),
+                                    new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")),
+                                    new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")),
+                                    new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")),
+                                    new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")),
+                                    new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT")), new XElement("tile", new XAttribute("name", "DEFAULT"))
+                                )
+                            )
+                        )
+                    ),
+                    new XElement("map_config",
+                        new XElement("map", new XAttribute("name", "DEFAULT"), new XAttribute("width", "1"), new XAttribute("height", "1"),
                             new XElement("room", new XAttribute("name", "DEFAULT"))
                         )
                     ),
@@ -103,6 +113,10 @@ namespace PO_MapMaker
                         ),
                         new XElement("debug", 
                             new XAttribute("enabled", "false")
+                        ),
+                        new XElement("keybinds",
+                            new XElement("bind", new XAttribute("key", "KEY_ENTER"), new XAttribute("action", "Activate")),
+                            new XElement("bind", new XAttribute("key", "KEY_ESCAPE"), new XAttribute("action", "Back"))
                         )
                     )
                 );
@@ -135,6 +149,26 @@ namespace PO_MapMaker
         {
             Compiler compilerProcess = new Compiler();
             compilerProcess.Show();
+        }
+
+        /* Open Room Editor */
+        private void openRoomEditor_Click(object sender, EventArgs e)
+        {
+            RoomList roomEditor = new RoomList();
+            roomEditor.Show();
+        }
+
+        /* Open Keybind Editor */
+        private void openKeybindEditor_Click(object sender, EventArgs e)
+        {
+            KeybindEditor keyEditor = new KeybindEditor();
+            keyEditor.Show();
+        }
+        
+        /* Open Map Editor */
+        private void openMapEditor_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Coming soon.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
     }
 }

@@ -4,6 +4,10 @@
       "width": 1920,
       "height": 1080
     },
-    "debug_enabled": true
+    "debug_enabled": false,
+    "keybinds": {
+      "Activate": "KEY_ENTER",
+      "Back": "KEY_ESCAPE"
+    }
   }
 }
