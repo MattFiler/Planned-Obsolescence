@@ -12,7 +12,6 @@
 class Subject
 {
   Subject() : head_(nullptr) {}
-  ~Subject();
 
   void addObserver(Observer* observer);
   void removeObserver(Observer* observer);

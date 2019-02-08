@@ -375,7 +375,7 @@ void DynamicSprite::setSpriteSheet(float sprite_sheet_width,
   src_rect[2] = sprite_sheet_width;
   src_rect[3] = sprite_sheet_height;
 
-  float* source_rect = my_sprites[0]->srcRect();
+  //float* source_rect = my_sprites[0]->srcRect();
 }
 
 float DynamicSprite::width_scale = 1;

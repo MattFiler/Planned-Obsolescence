@@ -4,10 +4,6 @@
 
 #include "Subject.h"
 
-Subject::~Subject()
-{
-  notify(*this, DEFAULT);
-}
 
 // cppcheck-suppress unusedFunction
 void Subject::addObserver(Observer* observer)
@@ -39,6 +35,7 @@ void Subject::removeObserver(Observer* observer)
   }
 }
 
+// cppcheck-suppress unusedFunction
 void Subject::notify(Entity& entity, Event event)
 {
   Observer* observer = head_;
