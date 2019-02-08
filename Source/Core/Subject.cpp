@@ -45,7 +45,7 @@ void Subject::notify(Subject &entity, Event event)
     Observer* observer = head_;
     while (observer != nullptr)
     {
-        observer->onNotify(nullptr);
+        observer->onNotify(entity, event);
         observer = observer->next_;
     }
 }

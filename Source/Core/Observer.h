@@ -17,7 +17,7 @@ class Observer
   Observer() : next_(nullptr) {}
 
   virtual ~Observer();
-  virtual void onNotify(Event event) = 0;
+  virtual void onNotify(Subject& entity, Event event) = 0;
 
  private:
   Observer* next_;
