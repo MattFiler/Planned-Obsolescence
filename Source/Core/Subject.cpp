@@ -4,7 +4,6 @@
 
 #include "Subject.h"
 
-
 // cppcheck-suppress unusedFunction
 void Subject::addObserver(Observer* observer)
 {
