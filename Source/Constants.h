@@ -28,6 +28,11 @@ enum point_of_interest
   DOOR
 };
 
+enum Event
+{
+  Defult
+};
+
 const float SCREEN_WIDTH = 1280;
 const float SCREEN_HEIGHT = 720;
 

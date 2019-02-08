@@ -37,6 +37,11 @@ class DynamicSprite
   void timeBetweenFrames(double new_time_between_frames);
   void setFadeColour(ASGE::Colour col);
 
+  void setSpriteSheet(float sprite_sheet_width,
+                      float sprite_sheet_height,
+                      float start_x_pos = 0,
+                      float start_y_pos = 0);
+
   void addSprite(ASGE::Sprite& new_sprite);
   bool fadeToColour(double time_to_fade, double delta_time, bool inverse_fade = false);
   bool fadeToOpacity(double time_to_fade, double delta_time, bool inverse_fade = false);
@@ -57,6 +62,7 @@ class DynamicSprite
   bool auto_anim = false;
   int number_of_sprites = 0;
   int current_sprite = 0;
+  float src_rect[4]{ 0, 0, 0, 0 };
 
   ASGE::Colour fade_colour = ASGE::COLOURS::WHITE;
   ASGE::Sprite** my_sprites = nullptr;

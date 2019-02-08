@@ -344,4 +344,21 @@ ASGE::Sprite& DynamicSprite::returnNextSprite(double delta_time)
   return *my_sprites[current_sprite];
 }
 
+void DynamicSprite::setSpriteSheet(float sprite_sheet_width, float sprite_sheet_height,
+                                   float start_x_pos, float start_y_pos)
+{
+  src_rect[0] = start_x_pos;
+  src_rect[1] = start_y_pos;
+  src_rect[2] =  sprite_sheet_width;
+  src_rect[3] =  sprite_sheet_height;
+
+  float *source_rect = my_sprites[0]->srcRect();
+
+    float thing = *source_rect;
+    if (thing > 0)
+    {
+
+    }
+}
+
 float DynamicSprite::width_scale = 1;
