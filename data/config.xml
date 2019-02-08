@@ -4,6 +4,7 @@
     <sets>
       <set name="DEFAULT" />
       <set name="TEST" />
+      <set name="SZYMON" />
     </sets>
     <tiles>
       <tile name="DEFAULT" set="DEFAULT" sprite="data/TILES/placeholder.png" mandatory="true">
@@ -277,7 +278,7 @@
   </character_config>
   <game_config>
     <resolution width="1920" height="1080" />
-    <debug enabled="true" />
+    <debug enabled="false" />
     <keybinds>
       <bind key="KEY_ENTER" action="Activate" />
       <bind key="KEY_ESCAPE" action="Back" />

@@ -96,7 +96,12 @@ namespace PO_MapMaker
                 }
                 else
                 {
-                    if (importedTileNode.Attribute("mandatory").Value == "true" && tileSet.Text != "DEFAULT")
+                    bool importedIsMandatory = false;
+                    if (importedTileNode != null && importedTileNode.Attribute("mandatory").Value == "true")
+                    {
+                        importedIsMandatory = true;
+                    }
+                    if (importedIsMandatory && tileSet.Text != "DEFAULT")
                     {
                         MessageBox.Show("The default tile's set must be 'DEFAULT'!", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
