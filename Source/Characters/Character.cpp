@@ -9,10 +9,14 @@ Character::Character()
   current_route.resize(1);
 }
 
+/* Delete all dynamic data when destroyed */
 Character::~Character()
 {
   delete internal_map;
   internal_map = nullptr;
+
+  delete my_sprite;
+  my_sprite = nullptr;
 }
 
 /* Catch the renderer, then we can load our sprite */

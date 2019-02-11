@@ -9,7 +9,7 @@ class GameMap
 {
  public:
   GameMap() = default;
-  ~GameMap() = default;
+  ~GameMap();
 
   void load(ASGE::Renderer* renderer_instance, Camera* camera);
   void render();

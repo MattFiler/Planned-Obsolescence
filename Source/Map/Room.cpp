@@ -9,6 +9,13 @@ Room::Room(string room_name)
   room_config = file_handler.loadConfig(config_file, room_name);
 }
 
+/* Delete all tiles when we're destroyed */
+Room::~Room()
+{
+  delete[] tiles;
+  tiles = nullptr;
+}
+
 /* Build our room */
 void Room::build(
   float room_x, float room_y, ASGE::Renderer* renderer, int tile_offset, Camera* camera)

@@ -14,7 +14,7 @@ class Tile
 {
  public:
   explicit Tile(std::string tile_type = "DEFAULT");
-  ~Tile() = default;
+  ~Tile();
 
   Tile(const Tile&) = delete;
 

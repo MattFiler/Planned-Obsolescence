@@ -9,6 +9,13 @@ Tile::Tile(string tile_type)
   tile_data = file_handler.loadConfig(config_file, tile_type);
 }
 
+/* Delete our sprite when we're destroyed */
+Tile::~Tile()
+{
+  delete sprite;
+  sprite = nullptr;
+}
+
 /* Work out if we have the requested exit on this tile */
 bool Tile::exitIsValid(direction exit)
 {

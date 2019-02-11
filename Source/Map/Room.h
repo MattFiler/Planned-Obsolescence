@@ -7,7 +7,7 @@ class Room
 {
  public:
   explicit Room(std::string room_name = "DEFAULT");
-  ~Room() = default;
+  ~Room();
 
   Room(const Room&) = delete;
 

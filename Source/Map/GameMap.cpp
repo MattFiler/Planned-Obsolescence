@@ -1,6 +1,13 @@
 #include "GameMap.h"
 using namespace std;
 
+/* Delete all rooms when we're destroyed */
+GameMap::~GameMap()
+{
+  delete[] rooms;
+  rooms = nullptr;
+}
+
 /* Load our map */
 void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
 {
