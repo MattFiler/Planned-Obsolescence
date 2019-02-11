@@ -6,8 +6,8 @@
     },
     "debug_enabled": false,
     "keybinds": {
-      "Activate": "KEY_ENTER",
-      "Back": "KEY_ESCAPE"
+      "Activate": 257,
+      "Back": 256
     }
   }
 }
