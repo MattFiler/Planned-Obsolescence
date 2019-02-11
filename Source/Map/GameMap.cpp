@@ -6,6 +6,7 @@ void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
 {
   // Save renderer location
   renderer = renderer_instance;
+  game_camera = camera;
 
   // Load config
   string config_file = "map_core.json";
@@ -28,7 +29,7 @@ void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
     }
 
     Room new_room = Room(map_config["rooms"][i]);
-    new_room.build(room_x, room_y, renderer, tile_count, camera);
+    new_room.build(room_x, room_y, renderer, tile_count);
     rooms[i] = new_room;
 
     if ((i + 1) % static_cast<int>(map_config["rooms_w"]) == 0)
@@ -47,7 +48,7 @@ void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
 }
 
 /* Render our map */
-void GameMap::render()
+void GameMap::render(double delta_time)
 {
   for (int i = 0; i < room_count; i++)
   {
@@ -56,7 +57,7 @@ void GameMap::render()
       Tile* tiles_to_render = rooms[i].getTiles();
       if (tiles_to_render[x].getSprite() != nullptr)
       {
-        renderer->renderSprite(*tiles_to_render[x].getSprite());
+         game_camera->renderSprite(tiles_to_render[x].getSprite(), delta_time);
       }
     }
   }

@@ -14,17 +14,17 @@ class CharacterManager
   bool spawn(LabTechnician& new_techie);
   bool spawn(Security& new_guard);
 
-  void render(double delta_time, ASGE::Renderer* renderer);
+  void render(double delta_time);
   void update(double delta_time);
 
   void setMap(GameMap* current_map);
   void setCamera(Camera* scene_camera);
 
  private:
-  void renderBosses(double delta_time, ASGE::Renderer* renderer);
-  void renderGoons(double delta_time, ASGE::Renderer* renderer);
-  void renderTechnicians(double delta_time, ASGE::Renderer* renderer);
-  void renderSecurity(double delta_time, ASGE::Renderer* renderer);
+  void renderBosses(double delta_time);
+  void renderGoons(double delta_time);
+  void renderTechnicians(double delta_time);
+  void renderSecurity(double delta_time);
 
   GameMap* game_map = nullptr;
   Camera* camera = nullptr;

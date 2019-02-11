@@ -64,7 +64,7 @@ bool Tile::hasPointOfInterest(point_of_interest poi)
 }
 
 /* Configure our sprite and set position */
-void Tile::configure(float x_position, float y_position, ASGE::Renderer* renderer, Camera* camera)
+void Tile::configure(float x_position, float y_position, ASGE::Renderer* renderer)
 {
   x_pos = x_position;
   y_pos = y_position;
@@ -83,7 +83,6 @@ void Tile::configure(float x_position, float y_position, ASGE::Renderer* rendere
   // sprite->width(getWidth());
   // sprite->height(getHeight());
 
-  camera->registerGameSprite(sprite);
 }
 
 /* Return the X position of the tile */
@@ -99,9 +98,9 @@ float Tile::getPositionY()
 }
 
 /* Return our sprite */
-ASGE::Sprite* Tile::getSprite()
+DynamicSprite* Tile::getSprite()
 {
-  return &sprite->returnNextSprite(0);
+  return sprite;
 }
 
 /* Get the width of the tile */

@@ -12,7 +12,7 @@ class GameMap
   ~GameMap() = default;
 
   void load(ASGE::Renderer* renderer_instance, Camera* camera);
-  void render();
+  void render(double delta_time);
 
   Room* getRooms();
   int getRoomCount();
@@ -22,6 +22,7 @@ class GameMap
   json map_config;
   FileHandler file_handler;
   ASGE::Renderer* renderer = nullptr;
+  Camera* game_camera = nullptr;
   DebugText debug_text;
 
   Room* rooms = nullptr;
