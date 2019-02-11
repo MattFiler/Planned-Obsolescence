@@ -17,7 +17,8 @@ class Subject
   // cppcheck-suppress unusedFunction
   void removeObserver(Observer* observer);
   // cppcheck-suppress unusedFunction
-  void notify(Entity& entity, Event event);
+  void notify(Event event);
+  // void notify(Entity& entity, Event event);
 
  private:
   Observer* head_;

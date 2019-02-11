@@ -35,12 +35,12 @@ void Subject::removeObserver(Observer* observer)
 }
 
 // cppcheck-suppress unusedFunction
-void Subject::notify(Entity& entity, Event event)
+void Subject::notify(Event event)
 {
   Observer* observer = head_;
   while (observer != nullptr)
   {
-    observer->onNotify(entity, event);
+    observer->onNotify(event);
     observer = observer->next_;
   }
 }
