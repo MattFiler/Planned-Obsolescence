@@ -8,13 +8,6 @@ Tile::Tile(string tile_type, json* tile_big_config)
   tile_config = file_handler.loadConfigFromExisting(*tile_big_config, tile_type);
 }
 
-/* Delete our sprite when we're destroyed */
-Tile::~Tile()
-{
-  // delete sprite;
-  // sprite = nullptr;
-}
-
 /* Work out if we have the requested exit on this tile */
 bool Tile::exitIsValid(direction exit)
 {
@@ -78,7 +71,7 @@ void Tile::configure(float x_position, float y_position, ASGE::Renderer* rendere
   ASGE::Sprite* new_sprite = renderer->createRawSprite();
   new_sprite->loadTexture(tile_config["sprite"]);
 
-  sprite = new DynamicSprite(1);
+  sprite = make_unique<DynamicSprite>(1);
   sprite->addSprite(*new_sprite);
 
   // Set position
@@ -103,7 +96,7 @@ float Tile::getPositionY()
 }
 
 /* Return our sprite */
-DynamicSprite* Tile::getSprite()
+shared_ptr<DynamicSprite> Tile::getSprite()
 {
   return sprite;
 }

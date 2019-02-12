@@ -9,7 +9,7 @@ class GameMap
 {
  public:
   GameMap();
-  ~GameMap();
+  ~GameMap() = default;
 
   void load(ASGE::Renderer* renderer_instance, Camera* camera);
   void render(double delta_time);

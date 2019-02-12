@@ -14,7 +14,7 @@ class Tile
 {
  public:
   Tile(std::string tile_type, json* tile_big_config);
-  ~Tile();
+  ~Tile() = default;
 
   bool exitIsValid(direction exit);
   bool entryIsValid(direction exit);
@@ -29,7 +29,7 @@ class Tile
   int getIndexInRoom();
   int getIndexInMap();
 
-  DynamicSprite* getSprite();
+  std::shared_ptr<DynamicSprite> getSprite();
 
   float getWidth();
   float getHeight();
@@ -37,7 +37,7 @@ class Tile
  private:
   json tile_config;
   FileHandler file_handler;
-  DynamicSprite* sprite = nullptr;
+  std::shared_ptr<DynamicSprite> sprite = nullptr;
 
   float x_pos = 0;
   float y_pos = 0;

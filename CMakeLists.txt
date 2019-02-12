@@ -79,7 +79,6 @@ add_executable(
         Source/Core/PathfindingMap.cpp
         Source/Core/DebugText.h
         Source/Core/DebugText.cpp
-        Source/Constants.cpp
         Source/Core/Camera.h
         Source/Core/Camera.cpp
         Source/ConfigParsers/CharacterData.h

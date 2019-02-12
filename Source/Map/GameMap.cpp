@@ -6,13 +6,6 @@ GameMap::GameMap()
   importJSON();
 }
 
-/* Delete all rooms when we're destroyed */
-GameMap::~GameMap()
-{
-  // delete[] rooms;
-  // rooms = nullptr;
-}
-
 /* Import map JSON data */
 void GameMap::importJSON()
 {
@@ -76,7 +69,7 @@ void GameMap::render(double delta_time)
   {
     for (Tile& tile_to_render : rooms[i].getTiles())
     {
-      game_camera->renderSprite(tile_to_render.getSprite(), delta_time);
+      game_camera->renderSprite(tile_to_render.getSprite().get(), delta_time);
     }
   }
 }
