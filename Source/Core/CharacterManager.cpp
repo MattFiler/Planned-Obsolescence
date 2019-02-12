@@ -10,17 +10,17 @@ CharacterManager::~CharacterManager()
   }
   if (goon_count > 0)
   {
-    delete goons;
+    delete[] goons;
     goons = nullptr;
   }
   if (techie_count > 0)
   {
-    delete techies;
+    delete[] techies;
     techies = nullptr;
   }
   if (guard_count > 0)
   {
-    delete guards;
+    delete[] guards;
     guards = nullptr;
   }
 }
