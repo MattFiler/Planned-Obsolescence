@@ -82,7 +82,6 @@ void Tile::configure(float x_position, float y_position, ASGE::Renderer* rendere
   // Set dimensions // Commented out for now as DynamicSprite doesn't can't alter w/h
   // sprite->width(getWidth());
   // sprite->height(getHeight());
-
 }
 
 /* Return the X position of the tile */

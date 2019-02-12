@@ -5,7 +5,6 @@ void Camera::setRenderer(ASGE::Renderer* rend)
   renderer = rend;
 }
 
-
 /* Renders the passed sprite with the camera offset applied */
 void Camera::renderSprite(DynamicSprite* sprite, double delta_time)
 {
@@ -25,12 +24,13 @@ Point Camera::getCameraPosition()
   return position;
 }
 
-/* Converts a point in screen space to simulated world space, applying both camera offset and scaling */
+/* Converts a point in screen space to simulated world space, applying both camera offset and
+ * scaling */
 Point Camera::displayedToSimulatedWorld(Point point)
 {
   point = point - position;
   point = point / DynamicSprite::width_scale;
-  return  point;
+  return point;
 }
 
 /* Move the camera by the passed amount*/

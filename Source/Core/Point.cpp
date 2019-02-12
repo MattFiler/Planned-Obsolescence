@@ -49,8 +49,7 @@ Point Point::Point::operator/(const float multiplier)
   Point return_point;
   return_point.x_pos = this->x_pos / multiplier;
   return_point.y_pos = this->y_pos / multiplier;
-  return  return_point;
-
+  return return_point;
 }
 
 /**

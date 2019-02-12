@@ -110,7 +110,7 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
 {
   auto click = static_cast<const ASGE::ClickEvent*>(data.get());
 
-  if(click->action == ASGE::E_MOUSE_CLICK)
+  if (click->action == ASGE::E_MOUSE_CLICK)
   {
     Goon test;
     test.wake(rend);
