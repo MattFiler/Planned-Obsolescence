@@ -75,13 +75,9 @@ void GameMap::render(double delta_time)
 {
   for (int i = 0; i < room_count; i++)
   {
-    for (int x = 0; x < rooms[i].getTileCount(); x++)
+    for (Tile& tile_to_render : rooms[i].getTiles())
     {
-      vector<Tile> tiles_to_render = rooms[i].getTiles();
-      if (tiles_to_render[x].getSprite() != nullptr)
-      {
-        game_camera->renderSprite(tiles_to_render[x].getSprite(), delta_time);
-      }
+      game_camera->renderSprite(tile_to_render.getSprite(), delta_time);
     }
   }
 }

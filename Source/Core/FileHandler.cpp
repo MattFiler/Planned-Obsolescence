@@ -29,6 +29,7 @@ json FileHandler::loadConfig(std::string& config, std::string request)
   return loadConfigFromExisting(temp_config, request, config);
 }
 
+/* Load required JSON from an existing JSON object */
 json FileHandler::loadConfigFromExisting(json temp_config,
                                          std::string& request,
                                          const std::string& original_filename)
