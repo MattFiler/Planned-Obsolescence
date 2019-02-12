@@ -10,17 +10,17 @@ CharacterManager::~CharacterManager()
   }
   if (goon_count > 0)
   {
-    delete goons;
+    delete[] goons;
     goons = nullptr;
   }
   if (techie_count > 0)
   {
-    delete techies;
+    delete[] techies;
     techies = nullptr;
   }
   if (guard_count > 0)
   {
-    delete guards;
+    delete[] guards;
     guards = nullptr;
   }
 }
@@ -40,7 +40,6 @@ bool CharacterManager::spawn(Boss& new_boss)
     new_boss.setCharacterID(boss_count);
     bosses[boss_count] = new_boss;
     bosses[boss_count].generatePathfindingMap(game_map);
-    camera->registerGameSprite(bosses[boss_count].getSprite());
     bosses[boss_count].calculateRouteToPoint(Point(300, 300)); // TEMP CODE FOR TESTING
     boss_count++;
     return true;
@@ -117,58 +116,58 @@ bool CharacterManager::spawn(Security& new_guard)
 }
 
 /* Render all visible characters */
-void CharacterManager::render(double delta_time, ASGE::Renderer* renderer)
+void CharacterManager::render(double delta_time)
 {
-  renderBosses(delta_time, renderer);
-  renderGoons(delta_time, renderer);
-  renderTechnicians(delta_time, renderer);
-  renderSecurity(delta_time, renderer);
+  renderBosses(delta_time);
+  renderGoons(delta_time);
+  renderTechnicians(delta_time);
+  renderSecurity(delta_time);
 }
 
 /* Render our bosses */
-void CharacterManager::renderBosses(double delta_time, ASGE::Renderer* renderer)
+void CharacterManager::renderBosses(double delta_time)
 {
   for (int i = 0; i < boss_count; i++)
   {
     if (bosses[i].isVisible())
     {
-      renderer->renderSprite(bosses[i].getSprite()->returnNextSprite(delta_time));
+      camera->renderSprite(bosses[i].getSprite(), delta_time);
     }
   }
 }
 
 /* Render our goons */
-void CharacterManager::renderGoons(double delta_time, ASGE::Renderer* renderer)
+void CharacterManager::renderGoons(double delta_time)
 {
   for (int i = 0; i < goon_count; i++)
   {
     if (goons[i].isVisible())
     {
-      renderer->renderSprite(goons[i].getSprite()->returnNextSprite(delta_time));
+      camera->renderSprite(goons[i].getSprite(), delta_time);
     }
   }
 }
 
 /* Render our technicians */
-void CharacterManager::renderTechnicians(double delta_time, ASGE::Renderer* renderer)
+void CharacterManager::renderTechnicians(double delta_time)
 {
   for (int i = 0; i < techie_count; i++)
   {
     if (techies[i].isVisible())
     {
-      renderer->renderSprite(techies[i].getSprite()->returnNextSprite(delta_time));
+      camera->renderSprite(techies[i].getSprite(), delta_time);
     }
   }
 }
 
 /* Render our security guards */
-void CharacterManager::renderSecurity(double delta_time, ASGE::Renderer* renderer)
+void CharacterManager::renderSecurity(double delta_time)
 {
   for (int i = 0; i < guard_count; i++)
   {
     if (guards[i].isVisible())
     {
-      renderer->renderSprite(guards[i].getSprite()->returnNextSprite(delta_time));
+      camera->renderSprite(guards[i].getSprite(), delta_time);
     }
   }
 }

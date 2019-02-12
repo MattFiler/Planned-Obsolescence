@@ -22,7 +22,7 @@ class Tile
   bool entryIsValid(direction exit);
   bool hasPointOfInterest(point_of_interest poi);
 
-  void configure(float x_position, float y_position, ASGE::Renderer* renderer, Camera* camera);
+  void configure(float x_position, float y_position, ASGE::Renderer* renderer);
   float getPositionX();
   float getPositionY();
 
@@ -31,7 +31,7 @@ class Tile
   int getIndexInRoom();
   int getIndexInMap();
 
-  ASGE::Sprite* getSprite();
+  DynamicSprite* getSprite();
 
   float getWidth();
   float getHeight();

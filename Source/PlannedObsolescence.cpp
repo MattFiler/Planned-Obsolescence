@@ -114,7 +114,7 @@ void PlannedObsolescence::clickHandler(const ASGE::SharedEventData data)
   double x_pos, y_pos;
   inputs->getCursorPos(x_pos, y_pos);
   scene_manager->sceneMouseHandler(data,
-                                   Vector(static_cast<float>(x_pos), static_cast<float>(y_pos)));
+                                   Point(static_cast<float>(x_pos), static_cast<float>(y_pos)));
 }
 
 /**
