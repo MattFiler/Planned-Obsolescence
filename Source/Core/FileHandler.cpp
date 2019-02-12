@@ -5,6 +5,12 @@ using namespace SoLoud;
 /* Open the file as a JSON data structure */
 json FileHandler::openAsJSON(string& filename)
 {
+  // Printing an ugly debug log to force less usage of this function.
+  std::string debug_log = "LOADING AND STORING " + filename +
+                          "! - MINIGAME: SEE THIS MESSAGE AS FEW TIMES AS POSSIBLE :)";
+  debug_text.print(debug_log);
+
+  // Load file into json structure and return
   json json_file;
   auto file = ASGE::FILEIO::File();
   if (file.open("data/" + filename))
@@ -24,10 +30,17 @@ json FileHandler::loadConfig(std::string& config, std::string request)
   // Load our config and assign default values.
   string config_file("CONFIGS/" + config);
   json temp_config = openAsJSON(config_file);
-  json final_config = temp_config["DEFAULT"];
+
+  // TODO: This is an ugly temp fix for DEFAULT enum. Improve!
+  std::string default_text = "DEFAULT";
+  if (config == "characters_core.json")
+  {
+    default_text = "0";
+  }
+  json final_config = temp_config[default_text];
 
   // If we're requesting default, we can stop here.
-  if (request == "DEFAULT")
+  if (request == default_text)
   {
     return final_config;
   }

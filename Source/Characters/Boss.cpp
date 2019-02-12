@@ -2,5 +2,5 @@
 
 Boss::Boss()
 {
-  updateCoreConfig("BOSS");
+  updateCoreConfig(character_type::BOSS);
 }

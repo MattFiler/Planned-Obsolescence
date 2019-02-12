@@ -4,8 +4,6 @@ using namespace std;
 /* Load config on instantiation */
 Character::Character()
 {
-  // Load default config
-  updateCoreConfig();
   current_route.resize(1);
 }
 
@@ -15,8 +13,8 @@ Character::~Character()
   delete internal_map;
   internal_map = nullptr;
 
-  delete my_sprite;
-  my_sprite = nullptr;
+  // delete sprite;
+  // sprite = nullptr;
 }
 
 /* Catch the renderer, then we can load our sprite */
@@ -27,21 +25,19 @@ void Character::wake(ASGE::Renderer* passed_renderer)
 }
 
 /* Allow character variations to update the config to suit their needs */
-void Character::updateCoreConfig(std::string character_type)
+void Character::updateCoreConfig(character_type type)
 {
-  string config_file = "characters_core.json";
-  character_config = file_handler.loadConfig(config_file, character_type);
-  character_variant = character_type;
+  config.load(type);
 }
 
 /* Update our sprite */
 void Character::updateSprite()
 {
-  delete my_sprite;
-  my_sprite = new DynamicSprite(1);
+  delete sprite;
+  sprite = new DynamicSprite(1);
   ASGE::Sprite* new_sprite = renderer->createRawSprite();
   new_sprite->loadTexture(getSpritePath());
-  my_sprite->addSprite(*new_sprite);
+  sprite->addSprite(*new_sprite);
 }
 
 /* Update the position of the character based on current route and speed */
@@ -54,12 +50,12 @@ void Character::updatePosition(double delta_time)
     float previous_distance = distance_to_next_node;
     // Add to the current position based on speed and delta_time
     position.x_pos += direction.x_mag * static_cast<float>(delta_time) * 0.01f *
-                      static_cast<float>(character_config["movement_speed"]);
+                      static_cast<float>(config.movement_speed);
     position.y_pos += direction.y_mag * static_cast<float>(delta_time) * 0.01f *
-                      static_cast<float>(character_config["movement_speed"]);
+                      static_cast<float>(config.movement_speed);
 
-    my_sprite->xPos(position.x_pos);
-    my_sprite->yPos(position.y_pos);
+    sprite->xPos(position.x_pos);
+    sprite->yPos(position.y_pos);
 
     // Calculate the new distance to the next node
     distance_to_next_node =
@@ -128,7 +124,7 @@ bool Character::calculateRouteToPoint(Point point)
     if (best_score == 100000)
     {
       current_route.resize(1);
-      string debug_string = character_id + " COULD NOT ROUTE TO TARGET!";
+      string debug_string = config.id + " COULD NOT ROUTE TO TARGET!";
       debug_text.print(debug_string);
       return false;
     }
@@ -141,7 +137,7 @@ bool Character::calculateRouteToPoint(Point point)
     {
       current_route.resize(i + 1);
       string debug_string =
-        character_id + " CALCULATED PATH TO TARGET ACROSS " + to_string(i) + " TILES";
+        config.id + " CALCULATED PATH TO TARGET ACROSS " + to_string(i) + " TILES";
       debug_text.print(debug_string);
       return true;
     }
@@ -253,57 +249,60 @@ void Character::resetPathfindingMap()
 }
 
 /* Adjust spawn position */
+void Character::setSpawnPositionX(int x_pos)
+{
+  config.spawn_pos.x = x_pos;
+}
+void Character::setSpawnPositionY(int y_pos)
+{
+  config.spawn_pos.y = y_pos;
+}
 void Character::setSpawnPosition(int x_pos, int y_pos)
 {
-  character_config["spawn_pos"][0] = x_pos;
-  character_config["spawn_pos"][1] = y_pos;
+  config.spawn_pos = SimpleVector(x_pos, y_pos);
 }
 
 /* Toggle visibility */
-void Character::setVisible(bool isVisible)
+void Character::setVisible(bool is_visible)
 {
-  character_config["is_visible"] = isVisible;
+  config.is_visible = is_visible;
 }
 
 /* Adjust dimensions */
 void Character::setDimensions(int new_width, int new_height)
 {
-  character_config["width"] = new_width;
-  character_config["height"] = new_height;
+  config.width = new_width;
+  config.height = new_height;
 }
 
 /* Adjust movement speed */
 void Character::setSpeed(int speed)
 {
-  character_config["movement_speed"] = speed;
+  config.movement_speed = speed;
 }
 
 /* Return the spawn limit for this character class */
-unsigned long long Character::getSpawnCap()
+int Character::getSpawnCap()
 {
-  return character_config["spawn_cap"];
-}
-int Character::getSpawnCapAsInt()
-{
-  return character_config["spawn_cap"];
+  return config.spawn_cap;
 }
 
 /* Check that we are visible for rendering */
 bool Character::isVisible()
 {
-  return character_config["is_visible"];
+  return config.is_visible;
 }
 
 /* Return the path to our character's sprite */
 string Character::getSpritePath()
 {
-  return character_config["sprites"]["walking"][0];
+  return config.sprite_walking;
 }
 
 /* Return sprite */
 DynamicSprite* Character::getSprite()
 {
-  return my_sprite;
+  return sprite;
 }
 
 /* Return renderer */
@@ -315,21 +314,21 @@ ASGE::Renderer* Character::getRenderer()
 /* Set the character ID */
 void Character::setCharacterID(int index)
 {
-  character_id = character_variant + "_" + to_string(index);
-  character_index = index;
+  config.id = to_string(config.variant) + "_" + to_string(index);
+  config.index = index;
 
-  string debug_string = "SPAWNED NEW " + character_variant + " WITH ID " + character_id;
+  string debug_string = "SPAWNED NEW CHARACTER WITH ID " + config.id;
   debug_text.print(debug_string);
 }
 
 /* Get the character ID */
 string Character::getCharacterID()
 {
-  return character_id;
+  return config.id;
 }
 
 /* Return the character index */
 int Character::getIndex()
 {
-  return character_index;
+  return config.index;
 }

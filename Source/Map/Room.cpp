@@ -12,8 +12,8 @@ Room::Room(string room_name)
 /* Delete all tiles when we're destroyed */
 Room::~Room()
 {
-  delete[] tiles;
-  tiles = nullptr;
+  // delete[] tiles;
+  // tiles = nullptr;
 }
 
 /* Build our room */

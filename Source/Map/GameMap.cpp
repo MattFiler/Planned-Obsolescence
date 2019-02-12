@@ -4,8 +4,8 @@ using namespace std;
 /* Delete all rooms when we're destroyed */
 GameMap::~GameMap()
 {
-  delete[] rooms;
-  rooms = nullptr;
+  // delete[] rooms;
+  // rooms = nullptr;
 }
 
 /* Load our map */

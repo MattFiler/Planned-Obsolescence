@@ -1,5 +1,5 @@
 {
-	"DEFAULT": {		
+	"0": {		
 		"width": 50,
 		"height": 50,
 		"is_visible": true,
@@ -22,21 +22,21 @@
 			"idle": ["data/CHARACTERS/DEFAULT/placeholder.png"]
 		}
 	},
-	"GUARD": {
+	"1": {
 		"sprites": {
 			"walking": ["data/CHARACTERS/GUARD/placeholder.png"],
 			"idle": ["data/CHARACTERS/GUARD/placeholder.png"],
 			"patrol": ["data/CHARACTERS/GUARD/placeholder.png"]
 		}
 	},
-	"GOON": {
+	"2": {
 		"sprites": {
 			"walking": ["data/CHARACTERS/GOON/placeholder.png"],
 			"idle": ["data/CHARACTERS/GOON/placeholder.png"],
 			"working": ["data/CHARACTERS/GUARD/placeholder.png"]
 		}
 	},
-	"BOSS": {
+	"3": {
 		"sprites": {
 			"walking": ["data/CHARACTERS/BOSS/placeholder.png"],
 			"idle": ["data/CHARACTERS/BOSS/placeholder.png"],
@@ -44,7 +44,7 @@
 			"angry": ["data/CHARACTERS/GUARD/placeholder.png"]
 		}
 	},
-	"TECH": {
+	"4": {
 		"sprites": {
 			"walking": ["data/CHARACTERS/TECH/placeholder.png"],
 			"idle": ["data/CHARACTERS/TECH/placeholder.png"],

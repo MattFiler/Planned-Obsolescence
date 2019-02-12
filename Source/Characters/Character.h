@@ -1,16 +1,14 @@
 #ifndef PO_CHARACTER
 #define PO_CHARACTER
 
+#include "../ConfigParsers/CharacterData.h"
 #include "../Core/DebugText.h"
 #include "../Core/DynamicSprite.h"
-#include "../Core/FileHandler.h"
 #include "../Core/PathfindingMap.h"
 #include "../Core/Vector.h"
 
 #include <Engine/Renderer.h>
-#include <json.hpp>
 #include <vector>
-using json = nlohmann::json;
 
 /**
  **   The parent class for all characters in the game, defines all their shared functionality, most
@@ -25,8 +23,10 @@ class Character
   void wake(ASGE::Renderer* passed_renderer);
   void updatePosition(double delta_time);
 
+  void setSpawnPositionX(int x_pos);
+  void setSpawnPositionY(int y_pos);
   void setSpawnPosition(int x_pos, int y_pos);
-  void setVisible(bool isVisible);
+  void setVisible(bool is_visible);
   void setDimensions(int new_width, int new_height);
   void setSpeed(int speed);
 
@@ -35,7 +35,7 @@ class Character
   void resetPathfindingMap();
 
   bool isVisible();
-  unsigned long long getSpawnCap();
+  int getSpawnCap();
   int getSpawnCapAsInt();
   std::string getSpritePath();
 
@@ -48,7 +48,7 @@ class Character
   std::vector<PathNode*> current_route;
 
  protected:
-  void updateCoreConfig(std::string character_type = "DEFAULT");
+  void updateCoreConfig(character_type type = character_type::DEFAULT);
   void updateSprite();
   float calculateScoresOfNextDepth(PathNode* node,
                                    unsigned long long int depth,
@@ -67,15 +67,10 @@ class Character
  private:
   void importConfig(json json_config);
 
-  FileHandler file_handler;
-  json character_config;
+  CharacterData config;
 
-  DynamicSprite* my_sprite = nullptr;
+  DynamicSprite* sprite = nullptr;
   ASGE::Renderer* renderer = nullptr;
-
-  std::string character_variant = "DEFAULT";
-  std::string character_id = "";
-  int character_index = -1;
 
   DebugText debug_text;
 };

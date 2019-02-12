@@ -12,8 +12,8 @@ Tile::Tile(string tile_type)
 /* Delete our sprite when we're destroyed */
 Tile::~Tile()
 {
-  delete sprite;
-  sprite = nullptr;
+  // delete sprite;
+  // sprite = nullptr;
 }
 
 /* Work out if we have the requested exit on this tile */

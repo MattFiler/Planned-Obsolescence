@@ -3,6 +3,7 @@
 /* Deallocate memory */
 CharacterManager::~CharacterManager()
 {
+  /*
   if (boss_count > 0)
   {
     delete[] bosses;
@@ -23,6 +24,7 @@ CharacterManager::~CharacterManager()
     delete guards;
     guards = nullptr;
   }
+   */
 }
 
 /* Spawn a boss */
@@ -35,7 +37,7 @@ bool CharacterManager::spawn(Boss& new_boss)
   }
 
   // Spawn a boss if we haven't exceeded our limits
-  if (boss_count < new_boss.getSpawnCapAsInt())
+  if (boss_count < new_boss.getSpawnCap())
   {
     new_boss.setCharacterID(boss_count);
     bosses[boss_count] = new_boss;
@@ -60,7 +62,7 @@ bool CharacterManager::spawn(Goon& new_goon)
   }
 
   // Spawn a goon if we haven't exceeded our limits
-  if (goon_count < new_goon.getSpawnCapAsInt())
+  if (goon_count < new_goon.getSpawnCap())
   {
     new_goon.setCharacterID(goon_count);
     goons[goon_count] = new_goon;
@@ -82,7 +84,7 @@ bool CharacterManager::spawn(LabTechnician& new_techie)
   }
 
   // Spawn a technician if we haven't exceeded our limits
-  if (techie_count < new_techie.getSpawnCapAsInt())
+  if (techie_count < new_techie.getSpawnCap())
   {
     new_techie.setCharacterID(techie_count);
     techies[techie_count] = new_techie;
@@ -104,7 +106,7 @@ bool CharacterManager::spawn(Security& new_guard)
   }
 
   // Spawn a guard if we haven't exceeded our limits
-  if (guard_count < new_guard.getSpawnCapAsInt())
+  if (guard_count < new_guard.getSpawnCap())
   {
     new_guard.setCharacterID(guard_count);
     guards[guard_count] = new_guard;

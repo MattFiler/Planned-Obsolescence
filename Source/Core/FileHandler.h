@@ -1,6 +1,7 @@
 #ifndef PO_FILEHANDLER
 #define PO_FILEHANDLER
 
+#include "DebugText.h"
 #include <Engine/FileIO.h>
 #include <json.hpp>
 #include <soloud.h>
@@ -16,6 +17,9 @@ class FileHandler
   json loadConfig(std::string& config, std::string request = "DEFAULT");
   std::string openAsString(std::string& filename);
   SoLoud::WavStream loadSound(std::string& filename);
+
+ private:
+  DebugText debug_text;
 };
 
 #endif

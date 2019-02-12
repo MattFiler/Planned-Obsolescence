@@ -13,10 +13,11 @@
 // Character types are hard-coded into everything. Do not modify this list!
 enum character_type
 {
-  BOSS,
+  DEFAULT,
+  SECURITY, // Also referred to as "GUARD" sometimes... trying to depreciate that!
   GOON,
+  BOSS,
   TECHNICIAN,
-  SECURITY
 };
 
 // The character's currently active job.
