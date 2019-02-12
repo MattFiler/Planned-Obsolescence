@@ -71,7 +71,7 @@ void Tile::configure(float x_position, float y_position, ASGE::Renderer* rendere
   ASGE::Sprite* new_sprite = renderer->createRawSprite();
   new_sprite->loadTexture(tile_config["sprite"]);
 
-  sprite = make_unique<DynamicSprite>(1);
+  sprite = make_shared<DynamicSprite>(1);
   sprite->addSprite(*new_sprite);
 
   // Set position

@@ -35,13 +35,18 @@ class Tile
   float getHeight();
 
  private:
+  // Config (to be refactored)
   json tile_config;
-  FileHandler file_handler;
-  std::shared_ptr<DynamicSprite> sprite = nullptr;
 
+  // Engine features
+  FileHandler file_handler;
+
+  // Tile sprite and position
+  std::shared_ptr<DynamicSprite> sprite = nullptr;
   float x_pos = 0;
   float y_pos = 0;
 
+  // Tile ID data
   int tile_index_in_room = 0;
   int tile_index_in_map = 0;
 };

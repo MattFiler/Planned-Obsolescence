@@ -21,20 +21,18 @@ class GameMap
  private:
   void importJSON();
 
-  // JSON Configs
+  // JSON configs
   json map_config;
   json room_config;
   json tile_config;
 
-  // Engine Scripts
+  // Engine features
   FileHandler file_handler;
   DebugText debug_text;
-
-  // Engine Functions
   Camera* game_camera = nullptr;
   ASGE::Renderer* renderer = nullptr;
 
-  // Map Data
+  // Map data
   std::vector<Room> rooms;
   int room_count = 0;
   int tile_count = 0;

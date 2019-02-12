@@ -10,8 +10,6 @@ class Room
   Room(std::string room_name, json* room_big_config, json* tile_big_config);
   ~Room();
 
-  // Room(const Room&) = delete;
-
   void build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_offset);
 
   std::vector<Tile> getTiles();
@@ -24,15 +22,19 @@ class Room
   float getPositionY();
 
  private:
-  DebugText debug_text;
-
+  // Tiles in room
   std::vector<Tile> tiles;
   int tile_count = 0;
 
+  // Configs (to be refactored)
   json room_config;
   json* tile_config;
-  FileHandler file_handler;
 
+  // Engine functionality
+  FileHandler file_handler;
+  DebugText debug_text;
+
+  // Positions
   float base_x = 0.0f;
   float base_y = 0.0f;
   float room_h = 0.0f;
