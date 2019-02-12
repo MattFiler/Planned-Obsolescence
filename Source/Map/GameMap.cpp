@@ -4,10 +4,6 @@ using namespace std;
 GameMap::GameMap()
 {
   importJSON();
-  
-  // Save renderer location
-  renderer = renderer_instance;
-  game_camera = camera;
 }
 
 /* Delete all rooms when we're destroyed */
@@ -30,8 +26,6 @@ void GameMap::importJSON()
   // -- BASIC ROOM CONFIG --
   config_file = "CONFIGS/rooms_core.json";
   room_config = file_handler.openAsJSON(config_file);
-  string dfsdfds = to_string(room_config.size());
-  debug_text.print(dfsdfds);
 
   // -- BASIC TILE CONFIG --
   config_file = "CONFIGS/tiles_core.json";
@@ -43,6 +37,7 @@ void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
 {
   // Save renderer location
   renderer = renderer_instance;
+  game_camera = camera;
 
   // Load all rooms into the map
   room_count = static_cast<int>(map_config["rooms"].size());
