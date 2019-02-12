@@ -31,7 +31,7 @@ void GameOver::keyHandler(const ASGE::SharedEventData data) {}
  *            the game state / variables etc depending
  *   @param   data is the event, mouse_position the position of the cursor
  */
-void GameOver::mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) {}
+void GameOver::mouseHandler(const ASGE::SharedEventData data, Point mouse_position) {}
 
 /**
  *   @brief   Updates all variables for this scene

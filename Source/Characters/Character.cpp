@@ -249,10 +249,14 @@ void Character::resetPathfindingMap()
 }
 
 /* Adjust spawn position */
-void Character::setSpawnPosition(int x_pos, int y_pos)
+void Character::setSpawnPosition(float x_pos, float y_pos)
 {
   character_config["spawn_pos"][0] = x_pos;
   character_config["spawn_pos"][1] = y_pos;
+  position.x_pos = x_pos;
+  position.y_pos = y_pos;
+  my_sprite->xPos(position.x_pos);
+  my_sprite->yPos(position.y_pos);
 }
 
 /* Toggle visibility */

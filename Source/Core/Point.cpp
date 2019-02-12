@@ -44,6 +44,15 @@ Point Point::operator-(const Point& point)
   return return_point;
 }
 
+Point Point::Point::operator/(const float multiplier)
+{
+  Point return_point;
+  return_point.x_pos = this->x_pos / multiplier;
+  return_point.y_pos = this->y_pos / multiplier;
+  return  return_point;
+
+}
+
 /**
  *   @brief   Finds the distance from a->b
  *   @return  The straight line distance between a and b

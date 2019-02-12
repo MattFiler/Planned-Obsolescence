@@ -3,7 +3,7 @@
 #include <memory>
 
 #include "../Scenes/Scene.h"
-#include "Vector.h"
+#include "Point.h"
 
 #include <json.hpp>
 using json = nlohmann::json;
@@ -28,7 +28,7 @@ class SceneManager
   int updateCurrentScene(double delta_time);
   void renderCurrentScene(double delta_time);
   void sceneKeyHandler(const ASGE::SharedEventData data);
-  void sceneMouseHandler(const ASGE::SharedEventData data, Vector mouse_position);
+  void sceneMouseHandler(const ASGE::SharedEventData data, Point mouse_position);
 
   Scene* current_scene = nullptr;
 

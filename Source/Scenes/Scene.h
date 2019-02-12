@@ -1,7 +1,7 @@
 #ifndef PO_SCENE
 #define PO_SCENE
 
-#include "../Core/Vector.h"
+#include "../Core/Point.h"
 
 #include "../../Libs/ASGE/include/Engine/Colours.h"
 #include "../../Libs/ASGE/include/Engine/Input.h"
@@ -29,7 +29,7 @@ class Scene
   virtual int update(double delta_time) = 0;
   virtual void render(double delta_time) = 0;
   virtual void keyHandler(const ASGE::SharedEventData data) = 0;
-  virtual void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) = 0;
+  virtual void mouseHandler(const ASGE::SharedEventData data, Point mouse_position) = 0;
 
  protected:
   int next_scene = -1;

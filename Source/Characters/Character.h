@@ -25,7 +25,7 @@ class Character
   void wake(ASGE::Renderer* passed_renderer);
   void updatePosition(double delta_time);
 
-  void setSpawnPosition(int x_pos, int y_pos);
+  void setSpawnPosition(float x_pos, float y_pos);
   void setVisible(bool isVisible);
   void setDimensions(int new_width, int new_height);
   void setSpeed(int speed);
