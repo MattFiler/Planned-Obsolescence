@@ -47,7 +47,7 @@ void SceneManager::sceneKeyHandler(const ASGE::SharedEventData data)
  *   @brief   Handles mouse clicks and movement of the active scene
  *   @param   data is the eventm mouse_position is the position of the cursor on screen
  */
-void SceneManager::sceneMouseHandler(const ASGE::SharedEventData data, Vector mouse_position)
+void SceneManager::sceneMouseHandler(const ASGE::SharedEventData data, Point mouse_position)
 {
   current_scene->mouseHandler(data, mouse_position);
 }

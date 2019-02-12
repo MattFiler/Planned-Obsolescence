@@ -12,7 +12,7 @@ class GameMap
   ~GameMap();
 
   void load(ASGE::Renderer* renderer_instance, Camera* camera);
-  void render();
+  void render(double delta_time);
 
   std::vector<Room> getRooms();
   int getRoomCount();
@@ -31,6 +31,7 @@ class GameMap
   DebugText debug_text;
 
   // Engine Functions
+  Camera* game_camera = nullptr;
   ASGE::Renderer* renderer = nullptr;
 
   // Map Data

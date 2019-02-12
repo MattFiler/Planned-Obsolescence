@@ -12,7 +12,7 @@ class Room
 
   // Room(const Room&) = delete;
 
-  void build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_offset, Camera* camera);
+  void build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_offset);
 
   std::vector<Tile> getTiles();
   int getTileCount();

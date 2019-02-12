@@ -83,7 +83,9 @@ add_executable(
         Source/Core/Camera.h
         Source/Core/Camera.cpp
         Source/ConfigParsers/CharacterData.h
-        Source/ConfigParsers/TileData.h)
+        Source/ConfigParsers/TileData.h
+        Source/Core/ClickArea.cpp
+        Source/Core/ClickArea.h)
 
 ## library includes
 target_include_directories(

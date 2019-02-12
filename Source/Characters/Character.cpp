@@ -252,14 +252,22 @@ void Character::resetPathfindingMap()
 void Character::setSpawnPositionX(float x_pos)
 {
   config.spawn_pos.x_pos = x_pos;
+  position.x_pos = x_pos;
+  my_sprite->xPos(position.x_pos);
 }
 void Character::setSpawnPositionY(float y_pos)
 {
   config.spawn_pos.y_pos = y_pos;
+  position.y_pos = y_pos;
+  my_sprite->yPos(position.y_pos);
 }
 void Character::setSpawnPosition(float x_pos, float y_pos)
 {
   config.spawn_pos = Point(x_pos, y_pos);
+  position.x_pos = x_pos;
+  position.y_pos = y_pos;
+  my_sprite->xPos(position.x_pos);
+  my_sprite->yPos(position.y_pos);
 }
 
 /* Toggle visibility */

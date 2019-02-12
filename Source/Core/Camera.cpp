@@ -1,60 +1,36 @@
 #include "Camera.h"
 
-Camera::Camera()
-{
-  game_sprites.reserve(10);
-  ui_sprites.reserve(10);
-}
-
 void Camera::setRenderer(ASGE::Renderer* rend)
 {
   renderer = rend;
 }
 
-/* Registers a sprite that will be rendered by the camera and will move as the camera does */
-void Camera::registerGameSprite(DynamicSprite* sprite)
+/* Renders the passed sprite with the camera offset applied */
+void Camera::renderSprite(DynamicSprite* sprite, double delta_time)
 {
-  game_sprites.push_back(sprite);
-  if (game_sprites.size() == game_sprites.capacity())
-  {
-    game_sprites.reserve(10);
-  }
-}
-
-/* Registers a sprite that will be rendered by the camera and not move with the camera*/
-void Camera::registerUiSprite(DynamicSprite* sprite)
-{
-  ui_sprites.push_back(sprite);
-  if (ui_sprites.size() == ui_sprites.capacity())
-  {
-    ui_sprites.reserve(10);
-  }
-}
-
-/* Renders all sprites registered with the camera */
-void Camera::renderSprites(double delta_time)
-{
-  for (auto i : game_sprites)
-  {
-    // Add the camera offset to the sprite
-    i->addX(position.x_pos);
-    i->addY(position.y_pos);
-    // Render ths sprite
-    renderer->renderSprite(i->returnNextSprite(delta_time));
-    // Restore the sprite to the previous position
-    i->addX(-position.x_pos);
-    i->addY(-position.y_pos);
-  }
-  for (auto i : ui_sprites)
-  {
-    renderer->renderSprite(i->returnNextSprite(delta_time));
-  }
+  // Add the camera offset to the sprite
+  sprite->addX(position.x_pos);
+  sprite->addY(position.y_pos);
+  // Render ths sprite
+  renderer->renderSprite(sprite->returnNextSprite(delta_time));
+  // Restore the sprite to the previous position
+  sprite->addX(-position.x_pos);
+  sprite->addY(-position.y_pos);
 }
 
 /* Returns the current position of the camera */
 Point Camera::getCameraPosition()
 {
   return position;
+}
+
+/* Converts a point in screen space to simulated world space, applying both camera offset and
+ * scaling */
+Point Camera::displayedToSimulatedWorld(Point point)
+{
+  point = point - position;
+  point = point / DynamicSprite::width_scale;
+  return point;
 }
 
 /* Move the camera by the passed amount*/
