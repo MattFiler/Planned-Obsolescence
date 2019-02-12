@@ -4,6 +4,7 @@ using namespace std;
 /* Load config on instantiation */
 Character::Character()
 {
+  updateCoreConfig();
   current_route.resize(1);
 }
 
