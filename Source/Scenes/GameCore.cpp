@@ -106,7 +106,19 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
  *            the game state / variables etc depending
  *   @param   data is the event, mouse_position the position of the cursor
  */
-void GameCore::mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) {}
+void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_position)
+{
+  auto click = static_cast<const ASGE::ClickEvent*>(data.get());
+
+  if(click->action == ASGE::E_MOUSE_CLICK)
+  {
+    Goon test;
+    test.wake(rend);
+    mouse_position = camera.displayedToSimulatedWorld(mouse_position);
+    test.setSpawnPosition(mouse_position.x_pos, mouse_position.y_pos);
+    character_manager.spawn(test);
+  }
+}
 
 /**
  *   @brief   Updates all variables for this scene

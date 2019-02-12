@@ -18,6 +18,7 @@ class Camera
   void setRenderer(ASGE::Renderer* rend);
   void renderSprite(DynamicSprite* sprite, double delta_time);
   Point getCameraPosition();
+  Point displayedToSimulatedWorld(Point point);
   void moveCamera(float x_amount, float y_amount);
 
  private:

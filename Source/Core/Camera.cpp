@@ -25,6 +25,14 @@ Point Camera::getCameraPosition()
   return position;
 }
 
+/* Converts a point in screen space to simulated world space, applying both camera offset and scaling */
+Point Camera::displayedToSimulatedWorld(Point point)
+{
+  point = point - position;
+  point = point / DynamicSprite::width_scale;
+  return  point;
+}
+
 /* Move the camera by the passed amount*/
 void Camera::moveCamera(float x_amount, float y_amount)
 {

@@ -23,7 +23,7 @@ class GameCore : public Scene
   int update(double delta_time) override;
   void render(double delta_time) override;
   void keyHandler(const ASGE::SharedEventData data) override;
-  void mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) override;
+  void mouseHandler(const ASGE::SharedEventData data, Point mouse_position) override;
 
  private:
   void spawnCharacters(ASGE::Renderer* renderer);
