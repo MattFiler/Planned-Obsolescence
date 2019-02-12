@@ -15,18 +15,8 @@ DynamicSprite::DynamicSprite(int num_of_sprites, bool should_flipbook)
  */
 DynamicSprite::~DynamicSprite()
 {
-  if (my_sprites)
-  {
-    for (int i = 0; i < number_of_sprites; i++)
-    {
-      if (my_sprites[i])
-      {
-        delete my_sprites[i];
-        my_sprites[i] = nullptr;
-      }
-    }
-    my_sprites = nullptr;
-  }
+  delete[] my_sprites;
+  my_sprites = nullptr;
 }
 
 /**
@@ -249,3 +239,9 @@ ASGE::Sprite& DynamicSprite::returnNextSprite(double delta_time)
 }
 
 float DynamicSprite::width_scale = 1;
+
+/* Return number of sprites in object */
+int DynamicSprite::numberOfSprites()
+{
+  return number_of_sprites;
+}

@@ -13,10 +13,8 @@ using json = nlohmann::json;
 class Tile
 {
  public:
-  explicit Tile(std::string tile_type = "DEFAULT");
+  Tile(std::string tile_type, json* tile_big_config);
   ~Tile() = default;
-
-  Tile(const Tile&) = delete;
 
   bool exitIsValid(direction exit);
   bool entryIsValid(direction exit);
@@ -31,19 +29,24 @@ class Tile
   int getIndexInRoom();
   int getIndexInMap();
 
-  DynamicSprite* getSprite();
+  std::shared_ptr<DynamicSprite> getSprite();
 
   float getWidth();
   float getHeight();
 
  private:
-  json tile_data;
-  FileHandler file_handler;
-  DynamicSprite* sprite = nullptr;
+  // Config (to be refactored)
+  json tile_config;
 
+  // Engine features
+  FileHandler file_handler;
+
+  // Tile sprite and position
+  std::shared_ptr<DynamicSprite> sprite = nullptr;
   float x_pos = 0;
   float y_pos = 0;
 
+  // Tile ID data
   int tile_index_in_room = 0;
   int tile_index_in_map = 0;
 };

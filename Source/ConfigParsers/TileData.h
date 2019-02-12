@@ -1,0 +1,9 @@
+#ifndef PLANNEDOBSOLESCENCE_TILEDATA_H
+#define PLANNEDOBSOLESCENCE_TILEDATA_H
+
+struct TileData
+{
+  void load() {}
+};
+
+#endif // PLANNEDOBSOLESCENCE_TILEDATA_H

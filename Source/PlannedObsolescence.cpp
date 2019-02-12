@@ -33,7 +33,7 @@ bool PlannedObsolescence::init()
   {
     return false;
   }
-  debug::enabled = core_config["debug_enabled"];
+  debug_text.enabled = core_config["debug_enabled"];
 
   // Configure resolution and game title
   setupResolution();

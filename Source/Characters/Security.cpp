@@ -2,5 +2,5 @@
 
 Security::Security()
 {
-  updateCoreConfig("GUARD");
+  updateCoreConfig(character_type::SECURITY);
 }

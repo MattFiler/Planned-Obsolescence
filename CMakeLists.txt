@@ -75,12 +75,14 @@ add_executable(
         Source/Map/Room.cpp
         Source/Map/Room.h
         Source/Map/Tile.cpp
-        Source/Map/Tile.h Source/Core/PathfindingMap.cpp
+        Source/Map/Tile.h
+        Source/Core/PathfindingMap.cpp
         Source/Core/DebugText.h
         Source/Core/DebugText.cpp
-        Source/Constants.cpp
         Source/Core/Camera.h
         Source/Core/Camera.cpp
+        Source/ConfigParsers/CharacterData.h
+        Source/ConfigParsers/TileData.h
         Source/Core/ClickArea.cpp
         Source/Core/ClickArea.h)
 
