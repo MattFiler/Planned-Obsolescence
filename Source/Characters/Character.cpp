@@ -249,17 +249,17 @@ void Character::resetPathfindingMap()
 }
 
 /* Adjust spawn position */
-void Character::setSpawnPositionX(int x_pos)
+void Character::setSpawnPositionX(float x_pos)
 {
-  config.spawn_pos.x = x_pos;
+  config.spawn_pos.x_pos = x_pos;
 }
-void Character::setSpawnPositionY(int y_pos)
+void Character::setSpawnPositionY(float y_pos)
 {
-  config.spawn_pos.y = y_pos;
+  config.spawn_pos.y_pos = y_pos;
 }
-void Character::setSpawnPosition(int x_pos, int y_pos)
+void Character::setSpawnPosition(float x_pos, float y_pos)
 {
-  config.spawn_pos = SimpleVector(x_pos, y_pos);
+  config.spawn_pos = Point(x_pos, y_pos);
 }
 
 /* Toggle visibility */
@@ -314,7 +314,7 @@ ASGE::Renderer* Character::getRenderer()
 /* Set the character ID */
 void Character::setCharacterID(int index)
 {
-  config.id = to_string(config.variant) + "_" + to_string(index);
+  config.id = "CV" + to_string(config.variant) + "I" + to_string(index);
   config.index = index;
 
   string debug_string = "SPAWNED NEW CHARACTER WITH ID " + config.id;

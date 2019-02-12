@@ -3,7 +3,7 @@
 
 #include "../Constants.h"
 #include "../Core/FileHandler.h"
-#include "SimpleVector.h"
+#include "../Core/Point.h"
 #include <json.hpp>
 using json = nlohmann::json;
 
@@ -31,7 +31,7 @@ struct CharacterData
     is_visible = character_config["is_visible"];
 
     // Spawning configs
-    spawn_pos = SimpleVector(character_config["spawn_pos"][0], character_config["spawn_pos"][1]);
+    spawn_pos = Point(character_config["spawn_pos"][0], character_config["spawn_pos"][1]);
     spawn_cap = character_config["spawn_cap"];
 
     // Speed and health
@@ -57,7 +57,7 @@ struct CharacterData
   int height = 0;
   bool is_visible = false;
 
-  SimpleVector spawn_pos = SimpleVector(0, 0);
+  Point spawn_pos = Point(0, 0);
   int spawn_cap = 0;
 
   int movement_speed = 0;
