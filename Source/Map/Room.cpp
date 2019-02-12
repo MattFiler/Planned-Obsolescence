@@ -12,7 +12,7 @@ Room::Room(string room_name, json* room_big_config, json* tile_big_config)
 /* Delete all tiles when we're destroyed */
 Room::~Room()
 {
-  // Nothing here just yet
+  // only temp for now
 }
 
 /* Build our room */
@@ -30,15 +30,14 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_
   float y_modifier = 0.0f;
   for (int i = 0; i < tile_count; i++)
   {
-    Tile new_tile = Tile(room_config["tiles"][i], tile_config);
-    new_tile.configure(tile_x, tile_y, renderer);
-    new_tile.setIndexInRoom(i);
-    new_tile.setIndexInMap(tile_offset + i);
-    tiles.push_back(new_tile);
+    tiles.emplace_back(room_config["tiles"][i], tile_config);
+    tiles[i].configure(tile_x, tile_y, renderer);
+    tiles[i].setIndexInRoom(i);
+    tiles[i].setIndexInMap(tile_offset + i);
 
     if ((i + 1) % static_cast<int>(room_config["tile_w"]) == 0)
     {
-      float new_room_w = tile_x - base_x + new_tile.getWidth();
+      float new_room_w = tile_x - base_x + tiles[i].getWidth();
 
       tile_x = base_x;
       tile_y += y_modifier;
@@ -55,10 +54,10 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_
     }
     else
     {
-      tile_x += new_tile.getWidth();
-      if (new_tile.getHeight() > y_modifier)
+      tile_x += tiles[i].getWidth();
+      if (tiles[i].getHeight() > y_modifier)
       {
-        y_modifier = new_tile.getHeight();
+        y_modifier = tiles[i].getHeight();
       }
     }
   }

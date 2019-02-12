@@ -15,15 +15,8 @@ DynamicSprite::DynamicSprite(int num_of_sprites, bool should_flipbook)
  */
 DynamicSprite::~DynamicSprite()
 {
-  if (my_sprites)
-  {
-    for (int i = 0; i < number_of_sprites; i++)
-    {
-      delete my_sprites[i];
-      my_sprites[i] = nullptr;
-    }
-    my_sprites = nullptr;
-  }
+  delete[] my_sprites;
+  my_sprites = nullptr;
 }
 
 /**

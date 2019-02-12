@@ -51,18 +51,17 @@ void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
       tile_count += rooms[i - 1].getTileCount();
     }
 
-    Room new_room = Room(map_config["rooms"][i], &room_config, &tile_config);
-    new_room.build(room_x, room_y, renderer, tile_count);
-    rooms.push_back(new_room);
+    rooms.emplace_back(map_config["rooms"][i], &room_config, &tile_config);
+    rooms[i].build(room_x, room_y, renderer, tile_count);
 
     if ((i + 1) % static_cast<int>(map_config["rooms_w"]) == 0)
     {
       room_x = 0.0f; // TODO: Update base position
-      room_y += new_room.getHeight();
+      room_y += rooms[i].getHeight();
     }
     else
     {
-      room_x += new_room.getWidth();
+      room_x += rooms[i].getWidth();
     }
   }
 
