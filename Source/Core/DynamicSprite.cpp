@@ -19,11 +19,8 @@ DynamicSprite::~DynamicSprite()
   {
     for (int i = 0; i < number_of_sprites; i++)
     {
-      if (my_sprites[i])
-      {
-        delete my_sprites[i];
-        my_sprites[i] = nullptr;
-      }
+      delete my_sprites[i];
+      my_sprites[i] = nullptr;
     }
     my_sprites = nullptr;
   }
@@ -249,3 +246,9 @@ ASGE::Sprite& DynamicSprite::returnNextSprite(double delta_time)
 }
 
 float DynamicSprite::width_scale = 1;
+
+/* Return number of sprites in object */
+int DynamicSprite::numberOfSprites()
+{
+  return number_of_sprites;
+}

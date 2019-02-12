@@ -30,8 +30,8 @@ json FileHandler::loadConfig(std::string& config, std::string request)
 }
 
 json FileHandler::loadConfigFromExisting(json temp_config,
-                                         std::string request,
-                                         std::string original_filename)
+                                         std::string& request,
+                                         const std::string& original_filename)
 {
   // TODO: This is an ugly temp fix for DEFAULT enum. Improve!
   std::string default_text = "DEFAULT";

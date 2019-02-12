@@ -12,8 +12,7 @@ Room::Room(string room_name, json* room_big_config, json* tile_big_config)
 /* Delete all tiles when we're destroyed */
 Room::~Room()
 {
-  // delete[] tiles;
-  // tiles = nullptr;
+  // Nothing here just yet
 }
 
 /* Build our room */

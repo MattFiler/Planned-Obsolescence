@@ -16,8 +16,6 @@ class Tile
   Tile(std::string tile_type, json* tile_big_config);
   ~Tile();
 
-  // Tile(const Tile&) = delete;
-
   bool exitIsValid(direction exit);
   bool entryIsValid(direction exit);
   bool hasPointOfInterest(point_of_interest poi);
