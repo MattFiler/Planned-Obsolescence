@@ -31,9 +31,19 @@ json FileHandler::loadConfig(std::string& config, std::string request)
   string config_file("CONFIGS/" + config);
   json temp_config = openAsJSON(config_file);
 
+  return loadConfigFromExisting(temp_config, request, config);
+}
+
+json FileHandler::loadConfigFromExisting(json temp_config,
+                                         std::string request,
+                                         std::string original_filename)
+{
+  string dfsdfds = to_string(temp_config.size());
+  debug_text.print(dfsdfds);
+
   // TODO: This is an ugly temp fix for DEFAULT enum. Improve!
   std::string default_text = "DEFAULT";
-  if (config == "characters_core.json")
+  if (original_filename == "characters_core.json")
   {
     default_text = "0";
   }
@@ -65,6 +75,8 @@ json FileHandler::loadConfig(std::string& config, std::string request)
       }
     }
   }
+  std::string debug_log = "REQUESTED: " + request;
+  debug_text.print(debug_log);
   return final_config;
 }
 

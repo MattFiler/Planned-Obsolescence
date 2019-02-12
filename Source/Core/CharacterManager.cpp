@@ -179,7 +179,7 @@ void CharacterManager::renderSecurity(double delta_time, ASGE::Renderer* rendere
 void CharacterManager::update(double delta_time)
 {
   // TODO: Add all update ticks, much like for render, just adding this one here to test
-  bosses[0].updatePosition(delta_time);
+  // bosses[0].updatePosition(delta_time);
 }
 
 /* Save a reference to the games current map */

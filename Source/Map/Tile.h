@@ -13,10 +13,10 @@ using json = nlohmann::json;
 class Tile
 {
  public:
-  explicit Tile(std::string tile_type = "DEFAULT");
+  Tile(std::string tile_type, json* tile_big_config);
   ~Tile();
 
-  Tile(const Tile&) = delete;
+  // Tile(const Tile&) = delete;
 
   bool exitIsValid(direction exit);
   bool entryIsValid(direction exit);
@@ -37,7 +37,7 @@ class Tile
   float getHeight();
 
  private:
-  json tile_data;
+  json tile_config;
   FileHandler file_handler;
   DynamicSprite* sprite = nullptr;
 

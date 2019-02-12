@@ -83,7 +83,7 @@ add_executable(
         Source/Core/Camera.h
         Source/Core/Camera.cpp
         Source/ConfigParsers/CharacterData.h
-)
+        Source/ConfigParsers/TileData.h)
 
 ## library includes
 target_include_directories(
