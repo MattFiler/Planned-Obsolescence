@@ -84,7 +84,7 @@ add_executable(
         Source/ConfigParsers/CharacterData.h
         Source/ConfigParsers/TileData.h
         Source/Core/ClickArea.cpp
-        Source/Core/ClickArea.h)
+        Source/Core/ClickArea.h Source/Core/Keybinds.h Source/Core/Keybinds.cpp)
 
 ## library includes
 target_include_directories(

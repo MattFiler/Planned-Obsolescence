@@ -29,9 +29,9 @@ SceneManager::~SceneManager()
  *   @details Calls loadScene() on scene that is currently active
  *   @param   renderer is a pointer to the renderer
  */
-bool SceneManager::loadCurrentScene(ASGE::Renderer* renderer, ASGE::Input* input, json core_config)
+bool SceneManager::loadCurrentScene(ASGE::Renderer* renderer, ASGE::Input* input)
 {
-  return current_scene->load(renderer, input, core_config);
+  return current_scene->load(renderer, input);
 }
 
 /**

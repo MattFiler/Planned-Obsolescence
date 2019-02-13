@@ -10,7 +10,7 @@
  *   @details Initialises all variables and creates all the new
                          sprites for the scene
  */
-bool PauseMenu::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config)
+bool PauseMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
@@ -40,7 +40,7 @@ void PauseMenu::mouseHandler(const ASGE::SharedEventData data, Point mouse_posit
  *   @param  delta_time is time since last update
  *   @return  number of the scene to switch to, -1 no change, -2 exit game
  */
-int PauseMenu::update(double delta_time)
+scenes PauseMenu::update(double delta_time)
 {
   return next_scene;
 }

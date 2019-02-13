@@ -52,6 +52,15 @@ enum point_of_interest
 
 /* --- Game --- */
 
+// Scenes
+enum scenes
+{
+  NO_CHANGE = -1,
+  SPLASHSCREEN = 0,
+  MAIN_MENU = 1,
+  GAME_CORE = 2
+};
+
 // Our native resolution which we will scale from to the resolution specified in the game config.
 const float SCREEN_WIDTH = 1280;
 const float SCREEN_HEIGHT = 720;

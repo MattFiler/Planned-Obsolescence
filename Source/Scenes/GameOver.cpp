@@ -10,7 +10,7 @@
  *   @details Initialises all variables and creates all the new
                          sprites for the scene
  */
-bool GameOver::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config)
+bool GameOver::load(ASGE::Renderer* renderer, ASGE::Input* input)
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
@@ -40,7 +40,7 @@ void GameOver::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
  *   @param  delta_time is time since last update
  *   @return  number of the scene to switch to, -1 no change, -2 exit game
  */
-int GameOver::update(double delta_time)
+scenes GameOver::update(double delta_time)
 {
   return next_scene;
 }
