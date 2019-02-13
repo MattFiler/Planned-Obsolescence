@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.IO.Compression;
 
 namespace PO_MapMaker
 {
@@ -154,17 +155,10 @@ namespace PO_MapMaker
 
             /* Copy Everything */
             statusText.Text = "Finishing up...";
-            if (File.Exists("cmake-build-debug/bin/PlannedObsolescence.exe"))
+            if (File.Exists("cmake-build-debug/bin/game.dat"))
             {
-                //Only copy if the game has been compiled already
-                string outputDirectory = "cmake-build-debug/bin/data";
-                if (Directory.Exists(outputDirectory))
-                {
-                    Directory.Delete(outputDirectory, true);
-                }
-                Directory.CreateDirectory(outputDirectory);
-                directoryCopy("data", outputDirectory, true);
-
+                File.Delete("cmake-build-debug/bin/game.dat");
+                ZipFile.CreateFromDirectory("data", "cmake-build-debug/bin/game.dat");
                 MessageBox.Show("Finished compiling!\nRelaunch the game to try out the changes.", "Completed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
