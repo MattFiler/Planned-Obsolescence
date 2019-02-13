@@ -11,5 +11,5 @@ void DebugText::print(string& debug_string)
   }
 }
 
-// This value is actually set on game load!
+/* This value is modified to config definition at runtime */
 bool DebugText::enabled = false;

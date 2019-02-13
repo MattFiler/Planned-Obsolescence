@@ -11,7 +11,7 @@ using namespace std;
  *   @details Initialises all variables and creates all the new
                          sprites for the scene
  */
-bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config)
+bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input)
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
@@ -56,10 +56,10 @@ bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_
  */
 void Splashscreen::keyHandler(const ASGE::SharedEventData data)
 {
-  auto key = static_cast<const ASGE::KeyEvent*>(data.get());
-  if (key->key == ASGE::KEYS::KEY_ENTER && key->action == ASGE::KEYS::KEY_RELEASED)
+  user_input.registerEvent(static_cast<const ASGE::KeyEvent*>(data.get()));
+  if (user_input.keyReleased("Activate"))
   {
-    next_scene = 1;
+    next_scene = scenes::MAIN_MENU;
     string debug_string = "SKIPPING SPLASHSCREEN";
     debug_text.print(debug_string);
   }
@@ -80,7 +80,7 @@ void Splashscreen::mouseHandler(const ASGE::SharedEventData data, Point mouse_po
  *   @param  delta_time is time since last update
  *   @return  number of the scene to switch to, -1 no change, -2 exit game
  */
-int Splashscreen::update(double delta_time)
+scenes Splashscreen::update(double delta_time)
 {
   switch (switch_fade)
   {
@@ -102,7 +102,7 @@ int Splashscreen::update(double delta_time)
         // Fades the logo out
         if (po_logo_fg->fadeToColour(500, delta_time, true))
         {
-          next_scene = 1;
+          next_scene = scenes::MAIN_MENU;
         }
       }
       break;

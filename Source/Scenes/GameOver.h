@@ -15,8 +15,8 @@ class GameOver : public Scene
  public:
   GameOver() = default;
   ~GameOver() = default;
-  bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) override;
-  int update(double delta_time) override;
+  bool load(ASGE::Renderer* renderer, ASGE::Input* input) override;
+  scenes update(double delta_time) override;
   void render(double delta_time) override;
   void keyHandler(const ASGE::SharedEventData data) override;
   void mouseHandler(const ASGE::SharedEventData data, Point mouse_position) override;

@@ -1,4 +1,3 @@
-#include "../Core/DebugText.h"
 #include "../Core/DynamicSprite.h"
 #include "../Core/GameObject.h"
 #include "Scene.h"
@@ -16,8 +15,8 @@ class Splashscreen : public Scene
  public:
   Splashscreen() = default;
   ~Splashscreen() = default;
-  bool load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config) override;
-  int update(double delta_time) override;
+  bool load(ASGE::Renderer* renderer, ASGE::Input* input) override;
+  scenes update(double delta_time) override;
   void render(double delta_time) override;
   void keyHandler(const ASGE::SharedEventData data) override;
   void mouseHandler(const ASGE::SharedEventData data, Point mouse_position) override;
@@ -28,6 +27,4 @@ class Splashscreen : public Scene
   DynamicSprite* po_logo_bg = nullptr;
   int switch_fade = 0;
   double time_waited = 0;
-
-  DebugText debug_text;
 };

@@ -8,7 +8,6 @@
 #include "Characters/Character.h"
 #include "Map/Tile.h"
 
-// cppcheck-suppress unusedStructMember
 /*struct Entity
 {
   enum
@@ -21,4 +20,5 @@
     Tile* tile;
   };
 };*/
+
 #endif // PLANNEDOBSOLESCENCE_ENTITY_H

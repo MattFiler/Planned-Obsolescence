@@ -11,7 +11,7 @@ using namespace std;
  *   @details Initialises all variables and creates all the new
                          sprites for the scene
  */
-bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config)
+bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
@@ -26,10 +26,10 @@ bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
  */
 void MainMenu::keyHandler(const ASGE::SharedEventData data)
 {
-  auto key = static_cast<const ASGE::KeyEvent*>(data.get());
-  if (key->key == ASGE::KEYS::KEY_ENTER && key->action == ASGE::KEYS::KEY_RELEASED)
+  user_input.registerEvent(static_cast<const ASGE::KeyEvent*>(data.get()));
+  if (user_input.keyReleased("Activate"))
   {
-    next_scene = 2;
+    next_scene = scenes::GAME_CORE;
     string debug_string = "ENTERING GAME";
     debug_text.print(debug_string);
   }
@@ -50,7 +50,7 @@ void MainMenu::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
  *   @param  delta_time is time since last update
  *   @return  number of the scene to switch to, -1 no change, -2 exit game
  */
-int MainMenu::update(double delta_time)
+scenes MainMenu::update(double delta_time)
 {
   return next_scene;
 }
