@@ -30,7 +30,7 @@ namespace PO_Launcher
             readConfigFromZip();
 
             //Load keybinds from config
-            game_config.Value;
+            //game_config.Value;
         }
 
         /* Launcher Close */

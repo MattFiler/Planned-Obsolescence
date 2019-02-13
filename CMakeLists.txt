@@ -158,6 +158,10 @@ if(BUILD_SHARED_LIBS)
     endif()
 endif()
 
+## Copy launcher to build directory on Windows
+if (${PLATFORM} MATCHES "win")
+    configure_file(${CMAKE_SOURCE_DIR}/Launcher/PO_Launcher.exe ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/Launcher.exe COPYONLY)
+endif()
 
 ## enable static linking against gcc build
 if (WIN32 AND NOT BUILD_SHARED_LIBS AND NOT MSVC)
