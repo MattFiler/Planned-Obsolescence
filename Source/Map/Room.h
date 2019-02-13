@@ -8,7 +8,7 @@ class Room
 {
  public:
   Room(std::string room_name, json* room_big_config, json* tile_big_config);
-  ~Room();
+  ~Room() = default;
 
   void build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_offset);
 
@@ -17,6 +17,8 @@ class Room
 
   float getHeight();
   float getWidth();
+
+  std::shared_ptr<DynamicSprite> getSprite();
 
   float getPositionX();
   float getPositionY();
@@ -33,6 +35,9 @@ class Room
   // Engine functionality
   FileHandler file_handler;
   DebugText debug_text;
+
+  // Room sprite
+  std::shared_ptr<DynamicSprite> sprite = nullptr;
 
   // Positions
   float base_x = 0.0f;

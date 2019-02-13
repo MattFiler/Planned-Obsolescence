@@ -65,12 +65,9 @@ void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
 /* Render our map */
 void GameMap::render(double delta_time)
 {
-  for (int i = 0; i < room_count; i++)
+  for (Room& room_to_render : rooms)
   {
-    for (Tile& tile_to_render : rooms[i].getTiles())
-    {
-      game_camera->renderSprite(tile_to_render.getSprite().get(), delta_time);
-    }
+    game_camera->renderSprite(room_to_render.getSprite().get(), delta_time);
   }
 }
 

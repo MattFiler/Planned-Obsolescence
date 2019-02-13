@@ -20,7 +20,7 @@ class Tile
   bool entryIsValid(direction exit);
   bool hasPointOfInterest(point_of_interest poi);
 
-  void configure(float x_position, float y_position, ASGE::Renderer* renderer);
+  void configure(float x_position, float y_position);
   float getPositionX();
   float getPositionY();
 
@@ -28,8 +28,6 @@ class Tile
   void setIndexInMap(int index);
   int getIndexInRoom();
   int getIndexInMap();
-
-  std::shared_ptr<DynamicSprite> getSprite();
 
   float getWidth();
   float getHeight();
@@ -41,8 +39,7 @@ class Tile
   // Engine features
   FileHandler file_handler;
 
-  // Tile sprite and position
-  std::shared_ptr<DynamicSprite> sprite = nullptr;
+  // Tile position
   float x_pos = 0;
   float y_pos = 0;
 
