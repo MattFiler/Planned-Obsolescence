@@ -62,21 +62,19 @@ int SceneManager::updateCurrentScene(double delta_time)
 {
   switch (current_scene->update(delta_time))
   {
-    // Scene -1 signifies no change
-    case -1:
+    case scenes::NO_CHANGE:
       return 0;
-    case 0:
+    case scenes::SPLASHSCREEN:
       swapScene(new Splashscreen);
       break;
-    case 1:
+    case scenes::MAIN_MENU:
       swapScene(new MainMenu);
       break;
-    case 2:
+    case scenes::GAME_CORE:
       swapScene(new GameCore);
       break;
-    // Anything else is unhandled, and we will signal to exit.
     default:
-      return -1;
+      return -1; // Unhandled exception
   }
   return 1;
 }
