@@ -67,7 +67,11 @@ void GameMap::render(double delta_time)
 {
   for (Room& room_to_render : rooms)
   {
-    game_camera->renderSprite(room_to_render.getSprite().get(), delta_time);
+    if (room_to_render.getPositionX() < (SCREEN_WIDTH * dynamic_sprite.width_scale) &&
+        room_to_render.getPositionY() < (SCREEN_HEIGHT * dynamic_sprite.width_scale))
+    {
+      game_camera->renderSprite(room_to_render.getSprite().get(), delta_time);
+    }
   }
 }
 
