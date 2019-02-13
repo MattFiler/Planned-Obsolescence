@@ -75,18 +75,22 @@ add_executable(
         Source/Map/Room.cpp
         Source/Map/Room.h
         Source/Map/Tile.cpp
-        Source/Map/Tile.h
         Source/Core/Observer.cpp
         Source/Core/Observer.h
         Source/Core/Subject.cpp
         Source/Core/Subject.h
+        Source/Constants.cpp
+        Source/Entity.h)
+        Source/Map/Tile.h
         Source/Core/PathfindingMap.cpp
         Source/Core/DebugText.h
         Source/Core/DebugText.cpp
-        Source/Constants.cpp
         Source/Core/Camera.h
         Source/Core/Camera.cpp
-        Source/Entity.h)
+        Source/ConfigParsers/CharacterData.h
+        Source/ConfigParsers/TileData.h
+        Source/Core/ClickArea.cpp
+        Source/Core/ClickArea.h)
 
 ## library includes
 target_include_directories(
@@ -160,6 +164,10 @@ if(BUILD_SHARED_LIBS)
     endif()
 endif()
 
+## Copy launcher to build directory on Windows
+if (${PLATFORM} MATCHES "win")
+    configure_file(${CMAKE_SOURCE_DIR}/Launcher/PO_Launcher.exe ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/Launcher.exe COPYONLY)
+endif()
 
 ## enable static linking against gcc build
 if (WIN32 AND NOT BUILD_SHARED_LIBS AND NOT MSVC)

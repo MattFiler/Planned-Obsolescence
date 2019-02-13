@@ -13,18 +13,15 @@
 class Camera
 {
  public:
-  Camera();
+  Camera() = default;
 
   void setRenderer(ASGE::Renderer* rend);
-  void registerGameSprite(DynamicSprite* sprite);
-  void registerUiSprite(DynamicSprite* sprite);
-  void renderSprites(double delta_time);
+  void renderSprite(DynamicSprite* sprite, double delta_time);
   Point getCameraPosition();
+  Point displayedToSimulatedWorld(Point point);
   void moveCamera(float x_amount, float y_amount);
 
  private:
-  std::vector<DynamicSprite*> game_sprites;
-  std::vector<DynamicSprite*> ui_sprites;
   Point position = Point(0, 0);
   ASGE::Renderer* renderer = nullptr;
 };

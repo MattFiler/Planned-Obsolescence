@@ -32,10 +32,10 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
 /* Spawn all characters */
 void GameCore::spawnCharacters(ASGE::Renderer* renderer)
 {
-  Boss boss_demo;
-  boss_demo.wake(renderer);
-  boss_demo.setSpawnPosition(0, 0);
-  character_manager.spawn(boss_demo);
+  // Boss boss_demo;
+  // boss_demo.wake(renderer);
+  // boss_demo.setSpawnPosition(0, 0);
+  // character_manager.spawn(boss_demo);
 }
 
 /**
@@ -106,7 +106,19 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
  *            the game state / variables etc depending
  *   @param   data is the event, mouse_position the position of the cursor
  */
-void GameCore::mouseHandler(const ASGE::SharedEventData data, Vector mouse_position) {}
+void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_position)
+{
+  auto click = static_cast<const ASGE::ClickEvent*>(data.get());
+
+  if (click->action == ASGE::E_MOUSE_CLICK)
+  {
+    Goon test;
+    test.wake(rend);
+    mouse_position = camera.displayedToSimulatedWorld(mouse_position);
+    test.setSpawnPosition(mouse_position.x_pos, mouse_position.y_pos);
+    character_manager.spawn(test);
+  }
+}
 
 /**
  *   @brief   Updates all variables for this scene
@@ -133,10 +145,8 @@ void GameCore::render(double delta_time)
   rend->renderText("THE GAME", 100, 100, ASGE::COLOURS::RED);
 
   // Render Map
-  // game_map.render();
+  game_map.render(delta_time);
 
   // Render Characters
-  // character_manager.render(delta_time, rend);
-
-  camera.renderSprites(delta_time);
+  character_manager.render(delta_time);
 }

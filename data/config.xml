@@ -278,7 +278,7 @@
   </character_config>
   <game_config>
     <resolution width="1920" height="1080" />
-    <debug enabled="false" />
+    <debug enabled="true" />
     <keybinds>
       <bind key="KEY_ENTER" action="Activate" />
       <bind key="KEY_ESCAPE" action="Back" />

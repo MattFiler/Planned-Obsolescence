@@ -51,6 +51,8 @@ class DynamicSprite
 
   static float width_scale; /**< The scale difference between actual and base width */
 
+  int numberOfSprites();
+
  private:
   float sprite_width = 50;
   float sprite_height = 50;

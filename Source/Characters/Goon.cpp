@@ -2,5 +2,5 @@
 
 Goon::Goon()
 {
-  updateCoreConfig("GOON");
+  updateCoreConfig(character_type::GOON);
 }

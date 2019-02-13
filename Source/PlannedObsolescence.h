@@ -26,6 +26,7 @@ class PlannedObsolescence : public ASGE::OGLGame
 
   SceneManager* scene_manager = nullptr;
   FileHandler file_handler;
+  DebugText debug_text;
 
   json core_config;
 };

@@ -2,11 +2,10 @@
 using namespace std;
 
 /* Load our config on instantiation */
-Tile::Tile(string tile_type)
+Tile::Tile(string tile_type, json* tile_big_config)
 {
   // Load tile config
-  string config_file = "tiles_core.json";
-  tile_data = file_handler.loadConfig(config_file, tile_type);
+  tile_config = file_handler.loadConfigFromExisting(*tile_big_config, tile_type);
 }
 
 /* Work out if we have the requested exit on this tile */
@@ -16,19 +15,19 @@ bool Tile::exitIsValid(direction exit)
   {
     case direction::LEFT:
     {
-      return tile_data["available_exits"]["left"];
+      return tile_config["available_exits"]["left"];
     }
     case direction::RIGHT:
     {
-      return tile_data["available_exits"]["right"];
+      return tile_config["available_exits"]["right"];
     }
     case direction::UP:
     {
-      return tile_data["available_exits"]["up"];
+      return tile_config["available_exits"]["up"];
     }
     case direction::DOWN:
     {
-      return tile_data["available_exits"]["down"];
+      return tile_config["available_exits"]["down"];
     }
     default:
     {
@@ -50,11 +49,11 @@ bool Tile::hasPointOfInterest(point_of_interest poi)
   {
     case point_of_interest::COMPUTER:
     {
-      return tile_data["has_point_of_interest"]["computer"];
+      return tile_config["has_point_of_interest"]["computer"];
     }
     case point_of_interest::DOOR:
     {
-      return tile_data["has_point_of_interest"]["door"];
+      return tile_config["has_point_of_interest"]["door"];
     }
     default:
     {
@@ -64,15 +63,15 @@ bool Tile::hasPointOfInterest(point_of_interest poi)
 }
 
 /* Configure our sprite and set position */
-void Tile::configure(float x_position, float y_position, ASGE::Renderer* renderer, Camera* camera)
+void Tile::configure(float x_position, float y_position, ASGE::Renderer* renderer)
 {
   x_pos = x_position;
   y_pos = y_position;
   // Set tile sprite
   ASGE::Sprite* new_sprite = renderer->createRawSprite();
-  new_sprite->loadTexture(tile_data["sprite"]);
+  new_sprite->loadTexture(tile_config["sprite"]);
 
-  sprite = new DynamicSprite(1);
+  sprite = make_shared<DynamicSprite>(1);
   sprite->addSprite(*new_sprite);
 
   // Set position
@@ -82,8 +81,6 @@ void Tile::configure(float x_position, float y_position, ASGE::Renderer* rendere
   // Set dimensions // Commented out for now as DynamicSprite doesn't can't alter w/h
   // sprite->width(getWidth());
   // sprite->height(getHeight());
-
-  camera->registerGameSprite(sprite);
 }
 
 /* Return the X position of the tile */
@@ -99,21 +96,21 @@ float Tile::getPositionY()
 }
 
 /* Return our sprite */
-ASGE::Sprite* Tile::getSprite()
+shared_ptr<DynamicSprite> Tile::getSprite()
 {
-  return &sprite->returnNextSprite(0);
+  return sprite;
 }
 
 /* Get the width of the tile */
 float Tile::getWidth()
 {
-  return tile_data["width"];
+  return tile_config["width"];
 }
 
 /* Get the height of the tile */
 float Tile::getHeight()
 {
-  return tile_data["height"];
+  return tile_config["height"];
 }
 
 /* Set tile index in its room */
