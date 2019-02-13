@@ -125,6 +125,14 @@ namespace PO_MapMaker
                     break;
                 }
             }
+            DirectoryInfo existing_room_sprites = new DirectoryInfo("data/ROOMS");
+            foreach (var file in existing_room_sprites.GetFiles("*.png"))
+            {
+                if (file.Name != "default.png")
+                {
+                    File.Delete(file.FullName);
+                }
+            }
             string rooms_coreJson = "{";
             foreach (XElement room in room_config.Descendants("room"))
             {
