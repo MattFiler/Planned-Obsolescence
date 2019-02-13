@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.IO.Compression;
 
 namespace PO_MapMaker
 {
@@ -36,7 +37,7 @@ namespace PO_MapMaker
             string game_coreJson = "{\"DEFAULT\":{\"resolution\":{\"width\": " + game_config.Element("resolution").Attribute("width").Value + ",\"height\": " + game_config.Element("resolution").Attribute("height").Value + "},\"debug_enabled\": " + game_config.Element("debug").Attribute("enabled").Value + ",\"keybinds\":{";
             foreach (XElement binds in game_config.Element("keybinds").Descendants("bind"))
             {
-                game_coreJson += "\"" + binds.Attribute("action").Value + "\":\"" + binds.Attribute("key").Value + "\",";
+                game_coreJson += "\"" + binds.Attribute("action").Value + "\": " + keynameToKeycode(binds.Attribute("key").Value) + ",";
             }
             game_coreJson = game_coreJson.Substring(0, game_coreJson.Length - 1) + "}}}";
             JToken game_coreJsonParsed = JToken.Parse(game_coreJson);
@@ -154,17 +155,10 @@ namespace PO_MapMaker
 
             /* Copy Everything */
             statusText.Text = "Finishing up...";
-            if (File.Exists("cmake-build-debug/bin/PlannedObsolescence.exe"))
+            if (File.Exists("cmake-build-debug/bin/game.dat"))
             {
-                //Only copy if the game has been compiled already
-                string outputDirectory = "cmake-build-debug/bin/data";
-                if (Directory.Exists(outputDirectory))
-                {
-                    Directory.Delete(outputDirectory, true);
-                }
-                Directory.CreateDirectory(outputDirectory);
-                directoryCopy("data", outputDirectory, true);
-
+                File.Delete("cmake-build-debug/bin/game.dat");
+                ZipFile.CreateFromDirectory("data", "cmake-build-debug/bin/game.dat");
                 MessageBox.Show("Finished compiling!\nRelaunch the game to try out the changes.", "Completed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -191,6 +185,74 @@ namespace PO_MapMaker
                 if (include_comma) { to_return += ","; }
             }
             return to_return;
+        }
+
+        /* Convert Key Name to Code */
+        int keynameToKeycode(string keyname)
+        {
+            switch (keyname)
+            {
+                case "KEY_SPACE": return 32;
+                case "KEY_APOSTROPHE": return 39;
+                case "KEY_COMMA": return 44;
+                case "KEY_MINUS": return 45;
+                case "KEY_PERIOD": return 46;
+                case "KEY_SLASH": return 47;
+                case "KEY_0": return 48;
+                case "KEY_1": return 49;
+                case "KEY_2": return 50;
+                case "KEY_3": return 51;
+                case "KEY_4": return 52;
+                case "KEY_5": return 53;
+                case "KEY_6": return 54;
+                case "KEY_7": return 55;
+                case "KEY_8": return 56;
+                case "KEY_9": return 57;
+                case "KEY_SEMICOLON": return 59;
+                case "KEY_EQUAL": return 61;
+                case "KEY_A": return 65;
+                case "KEY_B": return 66;
+                case "KEY_C": return 67;
+                case "KEY_D": return 68;
+                case "KEY_E": return 69;
+                case "KEY_F": return 70;
+                case "KEY_G": return 71;
+                case "KEY_H": return 72;
+                case "KEY_I": return 73;
+                case "KEY_J": return 74;
+                case "KEY_K": return 75;
+                case "KEY_L": return 76;
+                case "KEY_M": return 77;
+                case "KEY_N": return 78;
+                case "KEY_O": return 79;
+                case "KEY_P": return 80;
+                case "KEY_Q": return 81;
+                case "KEY_R": return 82;
+                case "KEY_S": return 83;
+                case "KEY_T": return 84;
+                case "KEY_U": return 85;
+                case "KEY_V": return 86;
+                case "KEY_W": return 87;
+                case "KEY_X": return 88;
+                case "KEY_Y": return 89;
+                case "KEY_Z": return 90;
+                case "KEY_LEFT_BRACKET": return 91;
+                case "KEY_BACKSLASH": return 92;
+                case "KEY_RIGHT_BRACKET": return 93;
+                case "KEY_GRAVE_ACCENT": return 96;
+                case "KEY_WORLD_1": return 161;
+                case "KEY_WORLD_2": return 162;
+                case "KEY_ESCAPE": return 256;
+                case "KEY_ENTER": return 257;
+                case "KEY_TAB": return 258;
+                case "KEY_BACKSPACE": return 259;
+                case "KEY_DELETE": return 261;
+                case "KEY_RIGHT": return 262;
+                case "KEY_LEFT": return 263;
+                case "KEY_DOWN": return 264;
+                case "KEY_UP": return 265;
+                default: return 0;
+            }
         }
 
         /* Reference: https://docs.microsoft.com/en-us/dotnet/standard/io/how-to-copy-directories */

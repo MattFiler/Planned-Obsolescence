@@ -1,19 +1,18 @@
 #ifndef PO_ROOM
 #define PO_ROOM
 
+#include "../Core/DebugText.h"
 #include "Tile.h"
 
 class Room
 {
  public:
-  explicit Room(std::string room_name = "DEFAULT");
-  ~Room() = default;
-
-  Room(const Room&) = delete;
+  Room(std::string room_name, json* room_big_config, json* tile_big_config);
+  ~Room();
 
   void build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_offset);
 
-  Tile* getTiles();
+  std::vector<Tile> getTiles();
   int getTileCount();
 
   float getHeight();
@@ -23,12 +22,19 @@ class Room
   float getPositionY();
 
  private:
-  Tile* tiles = nullptr;
+  // Tiles in room
+  std::vector<Tile> tiles;
   int tile_count = 0;
 
+  // Configs (to be refactored)
   json room_config;
-  FileHandler file_handler;
+  json* tile_config;
 
+  // Engine functionality
+  FileHandler file_handler;
+  DebugText debug_text;
+
+  // Positions
   float base_x = 0.0f;
   float base_y = 0.0f;
   float room_h = 0.0f;

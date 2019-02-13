@@ -2,5 +2,5 @@
 
 LabTechnician::LabTechnician()
 {
-  updateCoreConfig("TECH");
+  updateCoreConfig(character_type::TECHNICIAN);
 }

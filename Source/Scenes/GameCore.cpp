@@ -32,10 +32,10 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_conf
 /* Spawn all characters */
 void GameCore::spawnCharacters(ASGE::Renderer* renderer)
 {
-  Boss boss_demo;
-  boss_demo.wake(renderer);
-  boss_demo.setSpawnPosition(0, 0);
-  character_manager.spawn(boss_demo);
+  // Boss boss_demo;
+  // boss_demo.wake(renderer);
+  // boss_demo.setSpawnPosition(0, 0);
+  // character_manager.spawn(boss_demo);
 }
 
 /**

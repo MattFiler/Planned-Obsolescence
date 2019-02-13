@@ -13,10 +13,11 @@
 // Character types are hard-coded into everything. Do not modify this list!
 enum character_type
 {
-  BOSS,
+  DEFAULT,
+  SECURITY, // Also referred to as "GUARD" sometimes... trying to depreciate that!
   GOON,
+  BOSS,
   TECHNICIAN,
-  SECURITY
 };
 
 // The character's currently active job.
@@ -49,14 +50,12 @@ enum point_of_interest
   DOOR
 };
 
-/* --- Game --- */
-
-// Enable debug output if required - this option is set at runtime, do not modify!
-struct debug
+enum Event
 {
-  // cppcheck-suppress unusedStructMember
-  static bool enabled;
+  DEFAULTE
 };
+
+/* --- Game --- */
 
 // Our native resolution which we will scale from to the resolution specified in the game config.
 const float SCREEN_WIDTH = 1280;
