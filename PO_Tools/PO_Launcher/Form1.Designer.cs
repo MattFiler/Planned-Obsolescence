@@ -36,13 +36,9 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.playButton = new System.Windows.Forms.Button();
             this.quitButton = new System.Windows.Forms.Button();
-            this.keyBinds = new System.Windows.Forms.ListView();
-            this.controlName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.primaryBind = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.launcherImage)).BeginInit();
             this.launcherTabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // resolutionSelector
@@ -102,7 +98,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.keyBinds);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -131,30 +126,6 @@
             this.quitButton.UseVisualStyleBackColor = true;
             this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
             // 
-            // keyBinds
-            // 
-            this.keyBinds.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.controlName,
-            this.primaryBind});
-            this.keyBinds.FullRowSelect = true;
-            this.keyBinds.GridLines = true;
-            this.keyBinds.Location = new System.Drawing.Point(6, 6);
-            this.keyBinds.Name = "keyBinds";
-            this.keyBinds.Size = new System.Drawing.Size(416, 169);
-            this.keyBinds.TabIndex = 0;
-            this.keyBinds.UseCompatibleStateImageBehavior = false;
-            this.keyBinds.View = System.Windows.Forms.View.Details;
-            // 
-            // controlName
-            // 
-            this.controlName.Text = "Control";
-            this.controlName.Width = 200;
-            // 
-            // primaryBind
-            // 
-            this.primaryBind.Text = "Primary";
-            this.primaryBind.Width = 200;
-            // 
             // PO_Launcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,7 +144,6 @@
             this.launcherTabs.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -188,9 +158,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Button quitButton;
-        private System.Windows.Forms.ListView keyBinds;
-        private System.Windows.Forms.ColumnHeader controlName;
-        private System.Windows.Forms.ColumnHeader primaryBind;
     }
 }
 
