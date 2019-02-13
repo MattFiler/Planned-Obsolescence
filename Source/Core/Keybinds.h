@@ -10,10 +10,14 @@ using json = nlohmann::json;
 struct Keybinds
 {
  public:
+  Keybinds() = default;
+
   // Initial setup of keybind values
   void setup(json& keybind_config) { config = keybind_config; };
+
   // Initialisation of key event handler
   void registerEvent(const ASGE::KeyEvent* new_event) { key_event = new_event; }
+
   // Check of specific key being released
   bool keyReleased(std::string keybind)
   {
