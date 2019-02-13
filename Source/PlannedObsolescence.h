@@ -11,6 +11,7 @@ using json = nlohmann::json;
 class PlannedObsolescence : public ASGE::OGLGame
 {
  public:
+  PlannedObsolescence() = default;
   ~PlannedObsolescence();
 
   bool init() override;
