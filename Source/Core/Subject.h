@@ -11,12 +11,10 @@
 
 class Subject
 {
+ public:
   Subject() : head_(nullptr) {}
-  // cppcheck-suppress unusedFunction
   void addObserver(Observer* observer);
-  // cppcheck-suppress unusedFunction
   void removeObserver(Observer* observer);
-  // cppcheck-suppress unusedFunction
   void notify(Event event);
   // void notify(Entity& entity, Event event);
 

@@ -79,8 +79,7 @@ add_executable(
         Source/Core/Observer.h
         Source/Core/Subject.cpp
         Source/Core/Subject.h
-        Source/Constants.cpp
-        Source/Entity.h)
+        Source/Entity.h
         Source/Map/Tile.h
         Source/Core/PathfindingMap.cpp
         Source/Core/DebugText.h

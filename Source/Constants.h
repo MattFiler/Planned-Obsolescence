@@ -52,7 +52,7 @@ enum point_of_interest
 
 enum Event
 {
-  DEFAULT
+  DEFAULTE
 };
 
 /* --- Game --- */
