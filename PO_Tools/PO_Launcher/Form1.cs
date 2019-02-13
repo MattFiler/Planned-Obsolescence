@@ -1,23 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using SharpPhysFS;
 using System.IO;
+using System.IO.Compression;
+using Newtonsoft.Json;
 
 namespace PO_Launcher
 {
     public partial class PO_Launcher : Form
     {
+        JsonTextReader game_config;
+
         public PO_Launcher()
         {
             InitializeComponent();
+
+            this.FormClosing += PO_Launcher_FormClosing1;
         }
 
         /* Launcher Load */
@@ -27,18 +26,21 @@ namespace PO_Launcher
             launcherImage.Image = new Bitmap(Properties.Resources.launcher_banner);
             resolutionSelector.SelectedIndex = 0;
 
-            //Load keybinds
-            /*
-            using (var pfs = new PhysFS("game.dat")) 
-            using (var reader = new StreamReader(pfs.OpenRead("/data/CONFIGS/game_core.json")))
-            {
-                var contents = reader.ReadToEnd();
-                File.WriteAllText("test.json", contents);
-            }
-            */
+            //Get current game config 
+            readConfigFromZip();
+
+            //Load keybinds from config
+            game_config.Value;
         }
 
-        /* Quit Launcher */
+        /* Launcher Close */
+        private void PO_Launcher_FormClosing1(object sender, FormClosingEventArgs e)
+        {
+            //Replace old config with new one
+            writeConfigToZip();
+        }
+
+        /* Request Quit Launcher */
         private void quitButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -49,6 +51,37 @@ namespace PO_Launcher
         {
             Process.Start("PlannedObsolescence.exe");
             this.Close();
+        }
+
+        /* Read Config */
+        void readConfigFromZip()
+        {
+            using (FileStream zipToOpen = new FileStream("game.dat", FileMode.Open))
+            {
+                using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read))
+                {
+                    game_config = new JsonTextReader(new StreamReader(archive.GetEntry("CONFIGS/game_core.json").Open()));
+                }
+            }
+        }
+
+        void writeConfigToZip()
+        {
+            /*
+            using (FileStream zipToOpen = new FileStream("game.dat", FileMode.Open))
+            {
+                using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update))
+                {
+                    archive.entry
+                    ZipArchiveEntry readmeEntry = archive.CreateEntry("Readme.txt");
+                    using (StreamWriter writer = new StreamWriter(readmeEntry.Open()))
+                    {
+                        writer.WriteLine("Information about this package.");
+                        writer.WriteLine("========================");
+                    }
+                }
+            }
+            */
         }
     }
 }
