@@ -9,18 +9,27 @@ Room::Room(string room_name, json* room_big_config, json* tile_big_config)
   tile_config = tile_big_config;
 }
 
-/* Delete all tiles when we're destroyed */
-Room::~Room()
-{
-  // only temp for now
-}
-
 /* Build our room */
 void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_offset)
 {
   // Store position data
   base_x = room_x;
   base_y = room_y;
+
+  // Set tile sprite
+  ASGE::Sprite* new_sprite = renderer->createRawSprite();
+  new_sprite->loadTexture(room_config["sprite"]);
+
+  sprite = make_shared<DynamicSprite>(1);
+  sprite->addSprite(*new_sprite);
+
+  // Set position
+  sprite->xPos(room_x);
+  sprite->yPos(room_y);
+
+  // Set dimensions // Commented out for now as DynamicSprite doesn't can't alter w/h
+  // sprite->width(getWidth());
+  // sprite->height(getHeight());
 
   // Load all tiles into room at the correct position
   tile_count = static_cast<int>(room_config["tiles"].size());
@@ -31,7 +40,7 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_
   for (int i = 0; i < tile_count; i++)
   {
     tiles.emplace_back(room_config["tiles"][i], tile_config);
-    tiles[i].configure(tile_x, tile_y, renderer);
+    tiles[i].configure(tile_x, tile_y);
     tiles[i].setIndexInRoom(i);
     tiles[i].setIndexInMap(tile_offset + i);
 
@@ -61,6 +70,12 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_
       }
     }
   }
+}
+
+/* Return our sprite */
+shared_ptr<DynamicSprite> Room::getSprite()
+{
+  return sprite;
 }
 
 /* Return room width */
