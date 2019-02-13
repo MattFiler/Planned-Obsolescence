@@ -2,6 +2,7 @@
 #include <Engine/InputEvents.h>
 #include <memory>
 
+#include "../Constants.h"
 #include "../Scenes/Scene.h"
 #include "Point.h"
 
@@ -24,7 +25,7 @@ class SceneManager
   ~SceneManager();
 
   // Changes the active scene to the passed scene
-  bool loadCurrentScene(ASGE::Renderer* renderer, ASGE::Input* input, json core_config);
+  bool loadCurrentScene(ASGE::Renderer* renderer, ASGE::Input* input);
   int updateCurrentScene(double delta_time);
   void renderCurrentScene(double delta_time);
   void sceneKeyHandler(const ASGE::SharedEventData data);

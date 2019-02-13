@@ -1,5 +1,6 @@
 #include "Core/DynamicSprite.h"
 #include "Core/FileHandler.h"
+#include "Core/Keybinds.h"
 #include "Core/SceneManager.h"
 #include <Engine/OGLGame.h>
 #include <string>
@@ -10,6 +11,7 @@ using json = nlohmann::json;
 class PlannedObsolescence : public ASGE::OGLGame
 {
  public:
+  PlannedObsolescence() = default;
   ~PlannedObsolescence();
 
   bool init() override;
@@ -27,6 +29,7 @@ class PlannedObsolescence : public ASGE::OGLGame
   SceneManager* scene_manager = nullptr;
   FileHandler file_handler;
   DebugText debug_text;
+  Keybinds user_keybinds;
 
   json core_config;
 };

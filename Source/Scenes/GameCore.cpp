@@ -13,7 +13,7 @@ using namespace std;
  *   @details Initialises all variables and creates all the new
                          sprites for the scene
  */
-bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, json core_config)
+bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
@@ -46,14 +46,15 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
  */
 void GameCore::keyHandler(const ASGE::SharedEventData data)
 {
-  auto key = static_cast<const ASGE::KeyEvent*>(data.get());
-  if (key->key == ASGE::KEYS::KEY_ESCAPE && key->action == ASGE::KEYS::KEY_RELEASED)
+  user_input.registerEvent(static_cast<const ASGE::KeyEvent*>(data.get()));
+  if (user_input.keyReleased("Back"))
   {
-    next_scene = 1;
+    next_scene = scenes::MAIN_MENU;
     string debug_string = "RETURNING TO MAIN MENU";
     debug_text.print(debug_string);
   }
 
+  auto key = static_cast<const ASGE::KeyEvent*>(data.get());
   if (key->key == ASGE::KEYS::KEY_W)
   {
     if (key->action == ASGE::KEYS::KEY_PRESSED)
@@ -127,7 +128,7 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
  *   @param  delta_time is time since last update
  *   @return  number of the scene to switch to, -1 no change, -2 exit game
  */
-int GameCore::update(double delta_time)
+scenes GameCore::update(double delta_time)
 {
   character_manager.update(delta_time);
   camera.moveCamera(x_axis_input * static_cast<float>(delta_time),
