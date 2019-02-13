@@ -9,17 +9,16 @@
 #include "Map/Tile.h"
 
 // cppcheck-suppress unusedStructMember
-struct Entity
-{ /*
-   enum
-   {
-     CHARACTER,
-     TILE
-   } event;
-   union {
-     Character* character;
-     Tile* tile;
-   };
- */
-};
+/*struct Entity
+{
+  enum
+  {
+    CHARACTER,
+    TILE
+  } event;
+  union {
+    Character* character;
+    Tile* tile;
+  };
+};*/
 #endif // PLANNEDOBSOLESCENCE_ENTITY_H
