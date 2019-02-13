@@ -50,6 +50,11 @@ enum point_of_interest
   DOOR
 };
 
+enum Event
+{
+  DEFAULTE
+};
+
 /* --- Game --- */
 
 // Our native resolution which we will scale from to the resolution specified in the game config.

@@ -75,6 +75,11 @@ add_executable(
         Source/Map/Room.cpp
         Source/Map/Room.h
         Source/Map/Tile.cpp
+        Source/Core/Observer.cpp
+        Source/Core/Observer.h
+        Source/Core/Subject.cpp
+        Source/Core/Subject.h
+        Source/Entity.h
         Source/Map/Tile.h
         Source/Core/PathfindingMap.cpp
         Source/Core/DebugText.h
