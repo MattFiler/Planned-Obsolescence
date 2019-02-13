@@ -50,6 +50,11 @@ enum point_of_interest
   DOOR
 };
 
+enum Event
+{
+  DEFAULTE
+};
+
 /* --- Game --- */
 
 // Scenes
