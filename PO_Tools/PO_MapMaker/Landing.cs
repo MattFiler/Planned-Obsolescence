@@ -22,28 +22,43 @@ namespace PO_MapMaker
         /* Create XML On Load If Non-Existant */
         private void Landing_Load(object sender, EventArgs e)
         {
-            if (!File.Exists("data/config.xml"))
-            {
-                //Create required directories
-                Directory.CreateDirectory("data/CHARACTERS/BOSS");
-                Directory.CreateDirectory("data/CHARACTERS/DEFAULT");
-                Directory.CreateDirectory("data/CHARACTERS/GOON");
-                Directory.CreateDirectory("data/CHARACTERS/GUARD");
-                Directory.CreateDirectory("data/CHARACTERS/TECH");
-                Directory.CreateDirectory("data/CONFIGS");
-                Directory.CreateDirectory("data/TILES");
+            //Create required directories (unless they already exist) 
+            Directory.CreateDirectory("data/CHARACTERS/BOSS");
+            Directory.CreateDirectory("data/CHARACTERS/DEFAULT");
+            Directory.CreateDirectory("data/CHARACTERS/GOON");
+            Directory.CreateDirectory("data/CHARACTERS/GUARD");
+            Directory.CreateDirectory("data/CHARACTERS/TECH");
+            Directory.CreateDirectory("data/CONFIGS");
+            Directory.CreateDirectory("data/TILES");
+            Directory.CreateDirectory("data/ROOMS");
 
-                //Output placeholder sprite for tiles
+            //Output placeholder sprite for tiles
+            if (!File.Exists("data/TILES/placeholder.png"))
+            { 
                 MemoryStream stream = new MemoryStream();
                 Properties.Resources.placeholder_tile.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
                 File.WriteAllBytes("data/TILES/placeholder.png", stream.ToArray());
+            }
 
-                //Output placeholder sprite for characters
+            //Output placeholder sprite for characters
+            if (!File.Exists("data/CHARACTERS/DEFAULT/placeholder.png"))
+            {
                 MemoryStream stream2 = new MemoryStream();
                 Properties.Resources.placeholder_character.Save(stream2, System.Drawing.Imaging.ImageFormat.Bmp);
                 File.WriteAllBytes("data/CHARACTERS/DEFAULT/placeholder.png", stream2.ToArray());
+            }
 
-                //Create skeleton config file
+            //Output placeholder sprite for rooms
+            if (!File.Exists("data/ROOMS/default.png"))
+            {
+                MemoryStream stream = new MemoryStream();
+                Properties.Resources.placeholder_room.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+                File.WriteAllBytes("data/ROOMS/default.png", stream.ToArray());
+            }
+
+            //Create skeleton config file
+            if (!File.Exists("data/config.xml"))
+            {
                 XElement configBasics = new XElement("config",
                     new XElement("tile_config",
                         new XElement("sets", 
