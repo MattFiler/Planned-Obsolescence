@@ -2,9 +2,9 @@
 using namespace std;
 
 /* Load config on instantiation */
-Character::Character()
+Character::Character(character_type type)
 {
-  updateCoreConfig();
+  updateCoreConfig(type);
   current_route.resize(1);
 }
 

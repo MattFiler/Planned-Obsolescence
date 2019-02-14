@@ -17,7 +17,7 @@
 class Character
 {
  public:
-  Character();
+  Character(character_type type);
   ~Character();
 
   void wake(ASGE::Renderer* passed_renderer);
