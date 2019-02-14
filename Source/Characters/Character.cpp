@@ -35,7 +35,7 @@ void Character::updateCoreConfig(character_type type)
 void Character::updateSprite()
 {
   delete sprite;
-  sprite = new DynamicSprite(1);
+  sprite = new ScaledSpriteArray(1);
   ASGE::Sprite* new_sprite = renderer->createRawSprite();
   new_sprite->loadTexture(getSpritePath());
   sprite->addSprite(*new_sprite);
@@ -309,7 +309,7 @@ string Character::getSpritePath()
 }
 
 /* Return sprite */
-DynamicSprite* Character::getSprite()
+ScaledSpriteArray* Character::getSprite()
 {
   return sprite;
 }

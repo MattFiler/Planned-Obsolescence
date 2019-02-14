@@ -1,6 +1,6 @@
 #include "GameOver.h"
 #include "../Constants.h"
-#include "../Core/DynamicSprite.h"
+#include "../Sprites/ScaledSpriteArray.h"
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>

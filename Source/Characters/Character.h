@@ -1,11 +1,11 @@
 #ifndef PO_CHARACTER
 #define PO_CHARACTER
 
+#include "../Characters/Pathfinding/PathfindingMap.h"
 #include "../ConfigParsers/CharacterData.h"
-#include "../Core/DebugText.h"
-#include "../Core/DynamicSprite.h"
-#include "../Core/PathfindingMap.h"
-#include "../Core/Vector.h"
+#include "../Debug/DebugText.h"
+#include "../Math/Vector.h"
+#include "../Sprites/ScaledSpriteArray.h"
 
 #include <Engine/Renderer.h>
 #include <vector>
@@ -43,7 +43,7 @@ class Character
   std::string getCharacterID();
   int getIndex();
 
-  DynamicSprite* getSprite();
+  ScaledSpriteArray* getSprite();
   ASGE::Renderer* getRenderer();
   std::vector<PathNode*> current_route;
 
@@ -69,7 +69,7 @@ class Character
 
   CharacterData config;
 
-  DynamicSprite* sprite = nullptr;
+  ScaledSpriteArray* sprite = nullptr;
   ASGE::Renderer* renderer = nullptr;
 
   DebugText debug_text;

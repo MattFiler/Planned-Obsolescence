@@ -1,8 +1,8 @@
 #ifndef PLANNEDOBSOLESCENCE_MAPNODE_H
 #define PLANNEDOBSOLESCENCE_MAPNODE_H
 
+#include "../../Math/Point.h"
 #include "NodeConnection.h"
-#include "Point.h"
 
 /**
  **   Similar to the tile class, but with relevant information for path-finding.

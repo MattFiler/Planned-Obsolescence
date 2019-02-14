@@ -2,9 +2,9 @@
 #define PO_SCENE
 
 #include "../Constants.h"
-#include "../Core/DebugText.h"
-#include "../Core/Keybinds.h"
-#include "../Core/Point.h"
+#include "../Debug/DebugText.h"
+#include "../Keybinds/Keybinds.h"
+#include "../Math/Point.h"
 
 #include <Engine/Colours.h>
 #include <Engine/Input.h>

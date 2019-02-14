@@ -6,7 +6,7 @@
 #define PLANNEDOBSOLESCENCE_SUBJECT_H
 
 #include "../Constants.h"
-#include "../Entity.h"
+#include "Entity.h"
 #include "Observer.h"
 
 class Subject

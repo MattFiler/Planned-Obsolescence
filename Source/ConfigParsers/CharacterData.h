@@ -1,10 +1,10 @@
 #ifndef PLANNEDOBSOLESCENCE_CHARACTERDATA_H
 #define PLANNEDOBSOLESCENCE_CHARACTERDATA_H
 
+#include "../../Libs/nlohmann/json.hpp"
 #include "../Constants.h"
-#include "../Core/FileHandler.h"
-#include "../Core/Point.h"
-#include <json.hpp>
+#include "../FileHandler/FileHandler.h"
+#include "../Math/Point.h"
 using json = nlohmann::json;
 
 /* Character Data */

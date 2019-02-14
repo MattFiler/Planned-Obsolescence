@@ -1,7 +1,7 @@
-#include "Core/DynamicSprite.h"
-#include "Core/FileHandler.h"
-#include "Core/Keybinds.h"
-#include "Core/SceneManager.h"
+#include "FileHandler/FileHandler.h"
+#include "Keybinds/Keybinds.h"
+#include "Managers/SceneManager.h"
+#include "Sprites/ScaledSpriteArray.h"
 #include <Engine/OGLGame.h>
 #include <string>
 

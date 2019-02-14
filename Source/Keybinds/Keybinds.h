@@ -1,7 +1,7 @@
 #ifndef PLANNEDOBSOLESCENCE_KEYBINDS_H
 #define PLANNEDOBSOLESCENCE_KEYBINDS_H
 
-#include "DebugText.h"
+#include "../Debug/DebugText.h"
 #include <Engine/InputEvents.h>
 #include <json.hpp>
 using json = nlohmann::json;

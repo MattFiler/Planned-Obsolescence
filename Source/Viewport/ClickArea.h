@@ -1,7 +1,7 @@
 #ifndef PLANNEDOBSOLESCENCE_CLICKAREA_H
 #define PLANNEDOBSOLESCENCE_CLICKAREA_H
 
-#include "../Core/Point.h"
+#include "../Math/Point.h"
 
 class ClickArea
 {

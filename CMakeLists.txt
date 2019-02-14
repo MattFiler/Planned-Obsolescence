@@ -31,16 +31,14 @@ add_executable(
         main.cpp
         Source/PlannedObsolescence.cpp
         Source/PlannedObsolescence.h
-        Source/Core/GameObject.h
-        Source/Core/GameObject.cpp
-        Source/Core/DynamicSprite.h
-        Source/Core/DynamicSprite.cpp
-        Source/Core/SceneManager.h
-        Source/Core/SceneManager.cpp
-        Source/Core/FileHandler.h
-        Source/Core/FileHandler.cpp
-        Source/Core/CharacterManager.h
-        Source/Core/CharacterManager.cpp
+        Source/Sprites/ScaledSpriteArray.h
+        Source/Sprites/ScaledSpriteArray.cpp
+        Source/Managers/SceneManager.h
+        Source/Managers/SceneManager.cpp
+        Source/FileHandler/FileHandler.h
+        Source/FileHandler/FileHandler.cpp
+        Source/Managers/CharacterManager.h
+        Source/Managers/CharacterManager.cpp
         Source/Scenes/Scene.h
         Source/Scenes/Splashscreen.h
         Source/Scenes/Splashscreen.cpp
@@ -63,35 +61,35 @@ add_executable(
         Source/Characters/Security.h
         Source/Characters/Security.cpp
         Source/Constants.h
-        Source/Core/PathfindingMap.h
-        Source/Core/PathNode.h
-        Source/Core/NodeConnection.h
-        Source/Core/Point.h
-        Source/Core/Point.cpp
-        Source/Core/Vector.h
-        Source/Core/Vector.cpp
+        Source/Characters/Pathfinding/PathfindingMap.h
+        Source/Characters/Pathfinding/PathNode.h
+        Source/Characters/Pathfinding/NodeConnection.h
+        Source/Math/Point.h
+        Source/Math/Point.cpp
+        Source/Math/Vector.h
+        Source/Math/Vector.cpp
         Source/Map/GameMap.cpp
         Source/Map/GameMap.h
         Source/Map/Room.cpp
         Source/Map/Room.h
         Source/Map/Tile.cpp
-        Source/Core/Observer.cpp
-        Source/Core/Observer.h
-        Source/Core/Subject.cpp
-        Source/Core/Subject.h
-        Source/Entity.h
+        Source/EventSystem/Observer.cpp
+        Source/EventSystem/Observer.h
+        Source/EventSystem/Subject.cpp
+        Source/EventSystem/Subject.h
+        Source/EventSystem/Entity.h
         Source/Map/Tile.h
-        Source/Core/PathfindingMap.cpp
-        Source/Core/DebugText.h
-        Source/Core/DebugText.cpp
-        Source/Core/Camera.h
-        Source/Core/Camera.cpp
+        Source/Characters/Pathfinding/PathfindingMap.cpp
+        Source/Debug/DebugText.h
+        Source/Debug/DebugText.cpp
+        Source/Viewport/Camera.h
+        Source/Viewport/Camera.cpp
         Source/ConfigParsers/CharacterData.h
         Source/ConfigParsers/TileData.h
-        Source/Core/ClickArea.cpp
-        Source/Core/ClickArea.h
-        Source/Core/Keybinds.h
-        Source/Core/Keybinds.cpp)
+        Source/Viewport/ClickArea.cpp
+        Source/Viewport/ClickArea.h
+        Source/Keybinds/Keybinds.h
+        Source/Keybinds/Keybinds.cpp)
 
 ## library includes
 target_include_directories(
