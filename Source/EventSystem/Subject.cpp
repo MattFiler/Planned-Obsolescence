@@ -4,14 +4,14 @@
 
 #include "Subject.h"
 
-// cppcheck-suppress unusedFunction
+// cppcheck-suppress *
 void Subject::addObserver(Observer* observer)
 {
   observer->next_ = head_;
   head_ = observer;
 }
 
-// cppcheck-suppress unusedFunction
+// cppcheck-suppress *
 void Subject::removeObserver(Observer* observer)
 {
   if (observer == head_)
@@ -34,7 +34,7 @@ void Subject::removeObserver(Observer* observer)
   }
 }
 
-// cppcheck-suppress unusedFunction
+// cppcheck-suppress *
 void Subject::notify(Event event)
 {
   Observer* observer = head_;

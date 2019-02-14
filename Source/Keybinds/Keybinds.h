@@ -19,6 +19,7 @@ struct Keybinds
   void registerEvent(const ASGE::KeyEvent* new_event) { key_event = new_event; }
 
   // Check of specific key being released
+  // cppcheck-suppress *
   bool keyReleased(std::string keybind)
   {
     if (config[keybind].is_null())
