@@ -73,6 +73,16 @@ namespace PO_MapMaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap placeholder_room {
+            get {
+                object obj = ResourceManager.GetObject("placeholder_room", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap placeholder_tile {
             get {
                 object obj = ResourceManager.GetObject("placeholder_tile", resourceCulture);

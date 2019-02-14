@@ -1,7 +1,9 @@
 #ifndef PO_MAP
 #define PO_MAP
 
+#include "../Constants.h"
 #include "../Core/DebugText.h"
+#include "../Core/DynamicSprite.h"
 #include "Room.h"
 #include <Engine/Renderer.h>
 
@@ -31,6 +33,7 @@ class GameMap
   DebugText debug_text;
   Camera* game_camera = nullptr;
   ASGE::Renderer* renderer = nullptr;
+  DynamicSprite dynamic_sprite;
 
   // Map data
   std::vector<Room> rooms;
