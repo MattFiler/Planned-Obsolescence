@@ -1,8 +1,13 @@
 #include "Camera.h"
 
+/* Get/set our renderer */
 void Camera::setRenderer(ASGE::Renderer* rend)
 {
   renderer = rend;
+}
+ASGE::Renderer* Camera::getRenderer()
+{
+  return renderer;
 }
 
 /* Renders the passed sprite with the camera offset applied */

@@ -32,10 +32,12 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 /* Spawn all characters */
 void GameCore::spawnCharacters(ASGE::Renderer* renderer)
 {
-  // Boss boss_demo;
-  // boss_demo.wake(renderer);
-  // boss_demo.setSpawnPosition(0, 0);
-  // character_manager.spawn(boss_demo);
+  if (character_manager.canSpawn(character_type::BOSS))
+  {
+    Boss new_boss;
+    character_manager.spawnCharacter(new_boss);
+    new_boss.setSpawnPosition(10, 10);
+  }
 }
 
 /**
@@ -112,11 +114,13 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
 
   if (click->action == ASGE::E_MOUSE_CLICK)
   {
+    /*
     Goon test;
     test.wake(rend);
     mouse_position = camera.displayedToSimulatedWorld(mouse_position);
     test.setSpawnPosition(mouse_position.x_pos, mouse_position.y_pos);
     character_manager.spawn(test);
+     */
   }
 }
 

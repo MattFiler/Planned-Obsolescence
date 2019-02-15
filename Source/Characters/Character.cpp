@@ -337,3 +337,9 @@ int Character::getIndex()
 {
   return config.index;
 }
+
+/* Return the character type */
+character_type Character::getCharacterType()
+{
+  return config.variant;
+}
