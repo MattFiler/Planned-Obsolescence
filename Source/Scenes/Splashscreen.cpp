@@ -60,8 +60,7 @@ void Splashscreen::keyHandler(const ASGE::SharedEventData data)
   if (user_input.keyReleased("Activate"))
   {
     next_scene = scenes::MAIN_MENU;
-    string debug_string = "SKIPPING SPLASHSCREEN";
-    debug_text.print(debug_string);
+    debug_text.print("SKIPPING SPLASHSCREEN");
   }
 }
 

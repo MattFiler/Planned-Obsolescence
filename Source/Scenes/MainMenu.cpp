@@ -30,8 +30,7 @@ void MainMenu::keyHandler(const ASGE::SharedEventData data)
   if (user_input.keyReleased("Activate"))
   {
     next_scene = scenes::GAME_CORE;
-    string debug_string = "ENTERING GAME";
-    debug_text.print(debug_string);
+    debug_text.print("ENTERING GAME");
   }
 }
 

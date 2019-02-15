@@ -125,8 +125,7 @@ bool Character::calculateRouteToPoint(Point point)
     if (best_score == 100000)
     {
       current_route.resize(1);
-      string debug_string = config.id + " COULD NOT ROUTE TO TARGET!";
-      debug_text.print(debug_string);
+      debug_text.print(config.id + " COULD NOT ROUTE TO TARGET!");
       return false;
     }
   }
@@ -137,9 +136,7 @@ bool Character::calculateRouteToPoint(Point point)
     if (current_route[i]->position == point)
     {
       current_route.resize(i + 1);
-      string debug_string =
-        config.id + " CALCULATED PATH TO TARGET ACROSS " + to_string(i) + " TILES";
-      debug_text.print(debug_string);
+      debug_text.print(config.id + " CALCULATED PATH TO TARGET ACROSS " + to_string(i) + " TILES");
       return true;
     }
   }
@@ -326,8 +323,7 @@ void Character::setCharacterID(int index)
   config.id = "CV" + to_string(config.variant) + "I" + to_string(index);
   config.index = index;
 
-  string debug_string = "SPAWNED NEW CHARACTER WITH ID " + config.id;
-  debug_text.print(debug_string);
+  debug_text.print("SPAWNED NEW CHARACTER WITH ID " + config.id);
 }
 
 /* Get the character ID */

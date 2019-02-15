@@ -50,8 +50,7 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
   if (user_input.keyReleased("Back"))
   {
     next_scene = scenes::MAIN_MENU;
-    string debug_string = "RETURNING TO MAIN MENU";
-    debug_text.print(debug_string);
+    debug_text.print("RETURNING TO MAIN MENU");
   }
 
   auto key = static_cast<const ASGE::KeyEvent*>(data.get());

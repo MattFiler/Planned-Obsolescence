@@ -9,7 +9,7 @@ class DebugText
   DebugText() = default;
   ~DebugText() = default;
 
-  void print(std::string& debug_string);
+  void print(const std::string& debug_string);
 
   static bool enabled;
 };
