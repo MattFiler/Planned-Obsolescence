@@ -4,86 +4,44 @@
 #include "../Characters/Security.h"
 #include <memory>
 
-#define IS_TYPE(x) typeid(CharacterType) == typeid(x)
-
 class CharacterManager
 {
- public:
-  CharacterManager() = default;
-  ~CharacterManager();
+public:
+    CharacterManager() = default;
+    ~CharacterManager();
 
-  bool canSpawn(character_type type);
+    bool canSpawn(character_type type);
+    bool spawnCharacter(Boss& new_boss);
+    bool spawnCharacter(Goon& new_goon);
+    bool spawnCharacter(LabTechnician& new_technician);
+    bool spawnCharacter(Security& new_security);
 
-  /* Spawn a character */
-  template<class CharacterType>
-  bool spawnCharacter(CharacterType& new_character)
-  {
-    if (IS_TYPE(Goon) || IS_TYPE(Boss) || IS_TYPE(Security) || IS_TYPE(LabTechnician))
-    {
-      typedef typename AllCharacterData<CharacterType>::data character_data;
-      int& character_count = character_data::count;
-      CharacterType& character_instances = character_data::instances;
+    void render(double delta_time);
+    void update(double delta_time);
 
-      // Create our array if it doesn't exist
-      if (character_instances == nullptr)
-      {
-        character_instances = new CharacterType[new_character.getSpawnCap()];
-      }
+    void setMap(GameMap* current_map);
+    void setCamera(Camera* scene_camera);
 
-      // Spawn if we haven't exceeded our limits
-      if (character_count < new_character.getSpawnCap())
-      {
-        new_character.wake(renderer);
-        new_character.setCharacterID(character_count);
-        new_character.generatePathfindingMap(game_map);
-        AllCharacterData<CharacterType>::data.instances[character_count] = new_character;
-        character_count++;
-        return true;
-      }
-    }
-    // We've exceeded our spawn limits, or have had the wrong type requested
-    return false;
-  }
+private:
+    template<class CharacterArray>
+    void renderCharacter(CharacterArray character, int character_count, double delta_time);
 
-  template<typename T>
-  struct AllCharacterData;
+    template<class CharacterArray>
+    void updateCharacter(CharacterArray character, int character_count, double delta_time);
 
-  struct GoonData
-  {
-    Goon* instances = nullptr;
-    int count = 0;
-  };
-  struct BossData
-  {
-    Boss* instances = nullptr;
-    int count = 0;
-  };
-  struct TechnicianData
-  {
-    LabTechnician* instances = nullptr;
-    int count = 0;
-  };
-  struct SecurityData
-  {
-    Security* instances = nullptr;
-    int count = 0;
-  };
+    GameMap* game_map = nullptr;
+    Camera* camera = nullptr;
+    ASGE::Renderer* renderer = nullptr;
 
-  void render(double delta_time);
-  void update(double delta_time);
+    Boss* boss_instances = nullptr;
+    int boss_count = 0;
 
-  void setMap(GameMap* current_map);
-  void setCamera(Camera* scene_camera);
+    Goon* goon_instances = nullptr;
+    int goon_count = 0;
 
- private:
-  template<class CharacterArray>
-  void renderCharacter(CharacterArray character, int& character_count, double& delta_time);
+    LabTechnician* technician_instances = nullptr;
+    int technician_count = 0;
 
-  template<class CharacterArray>
-  void updateCharacter(CharacterArray character, int& character_count, double& delta_time);
-
-  GameMap* game_map = nullptr;
-  Camera* camera = nullptr;
-  ASGE::Renderer* renderer = nullptr;
-  DebugText debug_text;
+    Security* security_instances = nullptr;
+    int security_count = 0;
 };
