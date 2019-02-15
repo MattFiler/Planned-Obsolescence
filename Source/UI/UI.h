@@ -4,6 +4,7 @@
 #include "../../Libs/ASGE/include/Engine/Renderer.h"
 #include "../Math/Point.h"
 
+/* Virtual base class for all UI elements */
 class UI
 {
  public:

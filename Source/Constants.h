@@ -55,6 +55,15 @@ enum Event
   DEFAULTE
 };
 
+/* --- UI --- */
+
+// Rotation used for progress bars
+enum rotation
+{
+  LEFT_TO_RIGHT = 0,
+  UP_TO_DOWN = 1,
+};
+
 /* --- Game --- */
 
 // Scenes

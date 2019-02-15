@@ -4,6 +4,7 @@
 #include "../Sprites/ScaledSpriteArray.h"
 #include "UI.h"
 
+/* A self contained text box that once set only needs render to be called */
 class TextBox : public UI
 {
  public:
