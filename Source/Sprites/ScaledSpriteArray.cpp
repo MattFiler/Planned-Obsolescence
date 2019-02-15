@@ -185,6 +185,16 @@ void ScaledSpriteArray::setHeight(float new_height)
   }
 }
 
+/* Sets the rotation of this sprite to the passed argument (in radians) */
+void ScaledSpriteArray::setRotation(float new_rotation)
+{
+  rotation = new_rotation;
+  for (int i = 0; i < number_of_sprites; ++i)
+  {
+    my_sprites[i]->rotationInRadians(rotation);
+  }
+}
+
 /**
  *   @brief   Sets the fade colour
  *   @details Sets the fade colour of DynamicSprite,

@@ -36,6 +36,7 @@ class ScaledSpriteArray
   float height();
   void setWidth(float new_width);
   void setHeight(float new_height);
+  void setRotation(float new_rotation);
   void timeBetweenFrames(double new_time_between_frames);
   void setFadeColour(ASGE::Colour col);
 
@@ -59,6 +60,7 @@ class ScaledSpriteArray
   float scale_factor = 1;
   float colour_fade_percent = 0;
   float opacity_fade_percent = 1;
+  float rotation = 0;
   double time_passed = 0;
   double time_between_frames = 0;
   bool auto_anim = false;
