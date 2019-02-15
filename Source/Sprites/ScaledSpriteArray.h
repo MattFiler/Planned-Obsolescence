@@ -39,6 +39,7 @@ class ScaledSpriteArray
   void setRotation(float new_rotation);
   void timeBetweenFrames(double new_time_between_frames);
   void setFadeColour(ASGE::Colour col);
+  void setCurrentSprite(int new_sprite_index);
 
   void setSpriteSheet(float sprite_sheet_width,
                       float sprite_sheet_height,
