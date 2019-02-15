@@ -45,8 +45,7 @@ matrix:
       compiler: clang
       env:
         - HOMEBREW_NO_AUTO_UPDATE=1
-        #- MATRIX_EVAL="brew tap oclint/formulae &&  brew install git-lfs oclint"
-        - MATRIX_EVAL=""
+        - MATRIX_EVAL="brew tap oclint/formulae &&  brew install git-lfs oclint"
       script:
         - cmake --build .
         - oclint-json-compilation-database -e Libs -e _deps
