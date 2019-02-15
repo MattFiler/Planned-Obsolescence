@@ -89,7 +89,10 @@ add_executable(
         Source/Viewport/ClickArea.cpp
         Source/Viewport/ClickArea.h
         Source/Keybinds/Keybinds.h
-        Source/Keybinds/Keybinds.cpp)
+        Source/Keybinds/Keybinds.cpp
+        Source/UI/UI.h
+        Source/UI/TextBox.h
+        Source/UI/TextBox.cpp)
 
 ## library includes
 target_include_directories(
