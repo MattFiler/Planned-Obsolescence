@@ -45,13 +45,14 @@ matrix:
       compiler: clang
       env:
         - HOMEBREW_NO_AUTO_UPDATE=1
-        - MATRIX_EVAL="brew tap oclint/formulae &&  brew install git-lfs oclint"
+        #- MATRIX_EVAL="brew tap oclint/formulae &&  brew install git-lfs oclint"
+        - MATRIX_EVAL=""
       script:
         - cmake --build .
         - oclint-json-compilation-database -e Libs -e _deps
 
-#before_install:
-#  - eval "${MATRIX_EVAL}"
+before_install:
+  - eval "${MATRIX_EVAL}"
 
 before_script:
   - git lfs install && git lfs pull && git lfs fetch
