@@ -160,12 +160,12 @@ void ScaledSpriteArray::scale(float scale_amount)
  *			 to the width of all contained sprites
  *   @param   The new width for the sprite(s)
  */
-void ScaledSpriteArray::scaleWidth(float new_scale_width)
+void ScaledSpriteArray::setWidth(float new_width)
 {
-  scale_sprite_width = new_scale_width;
+  sprite_width = new_width;
   for (int i = 0; i < number_of_sprites; ++i)
   {
-    my_sprites[i]->width(sprite_width * scale_sprite_width);
+    my_sprites[i]->width(sprite_width * scale_factor);
   }
 }
 
@@ -176,12 +176,12 @@ void ScaledSpriteArray::scaleWidth(float new_scale_width)
  *			 to the height of all contained sprites
  *   @param   The new height for the sprite(s)
  */
-void ScaledSpriteArray::scaleHeight(float new_scale_height)
+void ScaledSpriteArray::setHeight(float new_height)
 {
-  scale_sprite_height = new_scale_height;
+  sprite_height = new_height;
   for (int i = 0; i < number_of_sprites; ++i)
   {
-    my_sprites[i]->height(sprite_height * scale_sprite_height);
+    my_sprites[i]->height(sprite_height * scale_factor);
   }
 }
 
