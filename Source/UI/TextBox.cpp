@@ -2,7 +2,7 @@
 
 TextBox::TextBox(Point pos,
                  ASGE::Renderer* rend,
-                 std::string text,
+                 const std::string& text,
                  float _width,
                  float _height,
                  float _font_size,
@@ -42,7 +42,7 @@ void TextBox::setBackgroundSprite(ScaledSpriteArray* sprite)
 }
 
 /* Replaces the current text with the passed argument */
-void TextBox::setText(std::string new_text)
+void TextBox::setText(const std::string& new_text)
 {
   displayed_text = new_text;
   wrapText();
