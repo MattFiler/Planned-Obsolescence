@@ -198,14 +198,14 @@ void ScaledSpriteArray::setRotation(float new_rotation)
 /* Sets the current index for which sprite is returned */
 void ScaledSpriteArray::setCurrentSprite(int new_sprite_index)
 {
-    if(new_sprite_index >= number_of_sprites)
-    {
-        current_sprite = number_of_sprites-1;
-    }
-    else
-    {
-        current_sprite = new_sprite_index;
-    }
+  if (new_sprite_index >= number_of_sprites)
+  {
+    current_sprite = number_of_sprites - 1;
+  }
+  else
+  {
+    current_sprite = new_sprite_index;
+  }
 }
 
 /**

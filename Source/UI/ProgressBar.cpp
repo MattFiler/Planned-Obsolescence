@@ -9,9 +9,9 @@ ProgressBar::ProgressBar(Point pos,
   UI(pos, rend),
   width(bar_width), height(bar_height), fill_padding(_fill_padding)
 {
-  if(direction == 1)
+  if (direction == 1)
   {
-      horizontal = false;
+    horizontal = false;
   }
 }
 
@@ -42,19 +42,18 @@ void ProgressBar::addBackgroundSprite(ScaledSpriteArray* sprite)
 void ProgressBar::addFillSprite(ScaledSpriteArray* sprite)
 {
   fill_sprite = sprite;
-  fill_sprite->xPos(position.x_pos + (fill_padding.x_pos /2));
-  fill_sprite->yPos(position.y_pos+ (fill_padding.y_pos /2));
-  if(horizontal)
+  fill_sprite->xPos(position.x_pos + (fill_padding.x_pos / 2));
+  fill_sprite->yPos(position.y_pos + (fill_padding.y_pos / 2));
+  if (horizontal)
   {
-      fill_sprite->setWidth((width - fill_padding.x_pos) * bar_progress);
-      fill_sprite->setHeight(height - fill_padding.y_pos);
+    fill_sprite->setWidth((width - fill_padding.x_pos) * bar_progress);
+    fill_sprite->setHeight(height - fill_padding.y_pos);
   }
   else
   {
-      fill_sprite->setWidth((width - fill_padding.x_pos));
-      fill_sprite->setHeight((height - fill_padding.y_pos) * bar_progress);
+    fill_sprite->setWidth((width - fill_padding.x_pos));
+    fill_sprite->setHeight((height - fill_padding.y_pos) * bar_progress);
   }
-
 }
 
 void ProgressBar::addProgress(float delta)
@@ -68,12 +67,12 @@ void ProgressBar::addProgress(float delta)
   {
     bar_progress = 0;
   }
-    if(horizontal)
-    {
-        fill_sprite->setWidth((width - fill_padding.x_pos) * bar_progress);
-    }
-    else
-    {
-        fill_sprite->setHeight((height - fill_padding.y_pos) * bar_progress);
-    }
+  if (horizontal)
+  {
+    fill_sprite->setWidth((width - fill_padding.x_pos) * bar_progress);
+  }
+  else
+  {
+    fill_sprite->setHeight((height - fill_padding.y_pos) * bar_progress);
+  }
 }
