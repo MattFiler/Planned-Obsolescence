@@ -22,11 +22,13 @@ void TextBox::render(double delta_time)
   {
     renderer->renderSprite(background_sprite->returnNextSprite(delta_time));
   }
-  renderer->renderText(displayed_text,
-                       static_cast<int>((position.x_pos + padding.x_pos)*ScaledSpriteArray::width_scale ),
-                       static_cast<int>((position.y_pos + padding.y_pos + (font_size*8))*ScaledSpriteArray::width_scale ),
-                       font_size,
-                       font_colour);
+  renderer->renderText(
+    displayed_text,
+    static_cast<int>((position.x_pos + padding.x_pos) * ScaledSpriteArray::width_scale),
+    static_cast<int>((position.y_pos + padding.y_pos + (font_size * 8)) *
+                     ScaledSpriteArray::width_scale),
+    font_size,
+    font_colour);
 }
 
 /* Sets the sprite that will be rendered behind the text */
@@ -43,6 +45,7 @@ void TextBox::setBackgroundSprite(ScaledSpriteArray* sprite)
 void TextBox::setText(std::string new_text)
 {
   displayed_text = new_text;
+  wrapText();
 }
 
 /* Horizontally wraps text to stay within the width of this TextBos */
@@ -51,11 +54,8 @@ void TextBox::wrapText()
   // Calculate the max number of characters per line, this is only roughly accurate unfortunately
   // Also need to remove the width_scale since all other calculations are done in simulated world
   // space
-  //auto char_per_line = static_cast<unsigned long long>((font_size * (width - (2*padding.x_pos))) /
-   //                                                    (ScaledSpriteArray::width_scale*11));
-
-  auto char_per_line = static_cast<unsigned long long>((width - (2*padding.x_pos)) /
-                                                       (font_size/ScaledSpriteArray::width_scale));
+  auto char_per_line = static_cast<unsigned long long>(
+    (width - (2 * padding.x_pos)) / (font_size / ScaledSpriteArray::width_scale));
   // Divide by some number, may vary by font, unsure on how to get this part exact
   char_per_line /= 11;
   unsigned long long str_index = 0;
