@@ -20,16 +20,9 @@ class CharacterManager
   {
     if (IS_TYPE(Goon) || IS_TYPE(Boss) || IS_TYPE(Security) || IS_TYPE(LabTechnician))
     {
-      // Get our correct variables for type
-      int& character_count =
-        (IS_TYPE(Goon))
-          ? goon_count
-          : (IS_TYPE(Boss)) ? boss_count : (IS_TYPE(Security)) ? security_count : technician_count;
-      CharacterType& character_instances =
-        (IS_TYPE(Goon))
-          ? goon_instances
-          : (IS_TYPE(Boss)) ? boss_instances
-                            : (IS_TYPE(Security)) ? security_instances : technician_instances;
+      typedef typename AllCharacterData<CharacterType>::data character_data;
+      int& character_count = character_data::count;
+      CharacterType& character_instances = character_data::instances;
 
       // Create our array if it doesn't exist
       if (character_instances == nullptr)
@@ -43,7 +36,7 @@ class CharacterManager
         new_character.wake(renderer);
         new_character.setCharacterID(character_count);
         new_character.generatePathfindingMap(game_map);
-        character_instances[character_count] = new_character;
+        AllCharacterData<CharacterType>::data.instances[character_count] = new_character;
         character_count++;
         return true;
       }
@@ -51,6 +44,30 @@ class CharacterManager
     // We've exceeded our spawn limits, or have had the wrong type requested
     return false;
   }
+
+  template<typename T>
+  struct AllCharacterData;
+
+  struct GoonData
+  {
+    Goon* instances = nullptr;
+    int count = 0;
+  };
+  struct BossData
+  {
+    Boss* instances = nullptr;
+    int count = 0;
+  };
+  struct TechnicianData
+  {
+    LabTechnician* instances = nullptr;
+    int count = 0;
+  };
+  struct SecurityData
+  {
+    Security* instances = nullptr;
+    int count = 0;
+  };
 
   void render(double delta_time);
   void update(double delta_time);
@@ -69,16 +86,4 @@ class CharacterManager
   Camera* camera = nullptr;
   ASGE::Renderer* renderer = nullptr;
   DebugText debug_text;
-
-  Boss* boss_instances = nullptr;
-  int boss_count = 0;
-
-  Goon* goon_instances = nullptr;
-  int goon_count = 0;
-
-  LabTechnician* technician_instances = nullptr;
-  int technician_count = 0;
-
-  Security* security_instances = nullptr;
-  int security_count = 0;
 };

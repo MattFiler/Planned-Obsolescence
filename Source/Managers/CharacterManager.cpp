@@ -3,6 +3,7 @@
 /* Deallocate memory */
 CharacterManager::~CharacterManager()
 {
+  /*
   if (boss_count > 0)
   {
     delete[] boss_instances;
@@ -23,6 +24,7 @@ CharacterManager::~CharacterManager()
     delete[] security_instances;
     security_instances = nullptr;
   }
+   */
 }
 
 /* Check we can spawn a character type */
@@ -34,26 +36,26 @@ bool CharacterManager::canSpawn(character_type type)
   {
     case character_type::BOSS:
     {
-      min_case = boss_count;
-      max_case = sizeof(boss_instances);
+      min_case = AllCharacterData<Boss>::data.count;
+      max_case = sizeof(AllCharacterData<Boss>::data.instances);
       break;
     }
     case character_type::GOON:
     {
-      min_case = goon_count;
-      max_case = sizeof(goon_instances);
+      min_case = AllCharacterData<Goon>::data.count;
+      max_case = sizeof(AllCharacterData<Goon>::data.instances);
       break;
     }
     case character_type::TECHNICIAN:
     {
-      min_case = technician_count;
-      max_case = sizeof(technician_instances);
+      min_case = AllCharacterData<LabTechnician>::data.count;
+      max_case = sizeof(AllCharacterData<LabTechnician>::data.instances);
       break;
     }
     case character_type::SECURITY:
     {
-      min_case = security_count;
-      max_case = sizeof(security_instances);
+      min_case = AllCharacterData<Security>::data.count;
+      max_case = sizeof(AllCharacterData<Security>::data.instances);
       break;
     }
     default:
@@ -74,10 +76,12 @@ bool CharacterManager::canSpawn(character_type type)
 /* Render all visible characters */
 void CharacterManager::render(double delta_time)
 {
+  /*
   renderCharacter(boss_instances, boss_count, delta_time);
   renderCharacter(goon_instances, goon_count, delta_time);
   renderCharacter(technician_instances, technician_count, delta_time);
   renderCharacter(security_instances, security_count, delta_time);
+   */
 }
 /* Render our specific character definition */
 template<class CharacterArray>
@@ -97,10 +101,12 @@ void CharacterManager::renderCharacter(CharacterArray character,
 /* Update all characters */
 void CharacterManager::update(double delta_time)
 {
+  /*
   updateCharacter(boss_instances, boss_count, delta_time);
   updateCharacter(goon_instances, goon_count, delta_time);
   updateCharacter(technician_instances, technician_count, delta_time);
   updateCharacter(security_instances, security_count, delta_time);
+   */
 }
 
 /* Update a specific character definition */
@@ -130,3 +136,26 @@ void CharacterManager::setCamera(Camera* scene_camera)
   camera = scene_camera;
   renderer = camera->getRenderer();
 }
+
+
+
+template<>
+struct CharacterManager::AllCharacterData<Goon>
+{
+    typedef GoonData data;
+};
+template<>
+struct CharacterManager::AllCharacterData<Boss>
+{
+    typedef BossData data;
+};
+template<>
+struct CharacterManager::AllCharacterData<LabTechnician>
+{
+    typedef TechnicianData data;
+};
+template<>
+struct CharacterManager::AllCharacterData<Security>
+{
+    typedef SecurityData data;
+};
