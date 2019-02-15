@@ -14,15 +14,15 @@
  *  just set the static field width_scale at run time and only use
  *  ASGE::Sprites through an DynamicSprite component
  */
-class DynamicSprite
+class ScaledSpriteArray
 {
  public:
-  explicit DynamicSprite(unsigned int num_of_sprites = 1, bool should_flipbook = true);
-  ~DynamicSprite();
+  explicit ScaledSpriteArray(unsigned int num_of_sprites = 1, bool should_flipbook = true);
+  ~ScaledSpriteArray();
 
   // TODO: Does your memory shallow copy correctly?
-  DynamicSprite(const DynamicSprite&) = delete;
-  DynamicSprite& operator=(const DynamicSprite&) = delete;
+  ScaledSpriteArray(const ScaledSpriteArray&) = delete;
+  ScaledSpriteArray& operator=(const ScaledSpriteArray&) = delete;
 
   void xPos(float new_x);
   float xPos();

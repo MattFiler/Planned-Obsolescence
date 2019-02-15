@@ -5,8 +5,8 @@
 #ifndef PLANNEDOBSOLESCENCE_ENTITY_H
 #define PLANNEDOBSOLESCENCE_ENTITY_H
 
-#include "Characters/Character.h"
-#include "Map/Tile.h"
+#include "../Characters/Character.h"
+#include "../Map/Tile.h"
 
 /*struct Entity
 {

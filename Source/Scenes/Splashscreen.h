@@ -1,5 +1,4 @@
-#include "../Core/DynamicSprite.h"
-#include "../Core/GameObject.h"
+#include "../Sprites/ScaledSpriteArray.h"
 #include "Scene.h"
 
 namespace ASGE
@@ -23,8 +22,8 @@ class Splashscreen : public Scene
 
  private:
   // All sprites for this scene
-  DynamicSprite* po_logo_fg = nullptr;
-  DynamicSprite* po_logo_bg = nullptr;
+  ScaledSpriteArray* po_logo_fg = nullptr;
+  ScaledSpriteArray* po_logo_bg = nullptr;
   int switch_fade = 0;
   double time_waited = 0;
 };

@@ -1,6 +1,6 @@
 #include "Splashscreen.h"
 #include "../Constants.h"
-#include "../Core/DynamicSprite.h"
+#include "../Sprites/ScaledSpriteArray.h"
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
@@ -23,7 +23,7 @@ bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input)
   }
   po_logo_fg_sprite->colour(ASGE::COLOURS::BLACK);
 
-  po_logo_fg = new DynamicSprite(2);
+  po_logo_fg = new ScaledSpriteArray(2);
   po_logo_fg->addSprite(*po_logo_fg_sprite);
 
   po_logo_fg->setFadeColour(ASGE::COLOURS::WHITE);
@@ -38,7 +38,7 @@ bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input)
     return false;
   }
 
-  po_logo_bg = new DynamicSprite(2);
+  po_logo_bg = new ScaledSpriteArray(2);
   po_logo_bg->addSprite(*po_logo_bg_sprite);
 
   po_logo_bg->scale(0.6666f);
@@ -60,8 +60,7 @@ void Splashscreen::keyHandler(const ASGE::SharedEventData data)
   if (user_input.keyReleased("Activate"))
   {
     next_scene = scenes::MAIN_MENU;
-    string debug_string = "SKIPPING SPLASHSCREEN";
-    debug_text.print(debug_string);
+    debug_text.print("SKIPPING SPLASHSCREEN");
   }
 }
 

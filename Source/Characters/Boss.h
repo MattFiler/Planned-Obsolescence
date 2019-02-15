@@ -3,6 +3,6 @@
 class Boss : public Character
 {
  public:
-  Boss();
+  Boss() : Character(character_type::BOSS){};
   ~Boss() = default;
 };

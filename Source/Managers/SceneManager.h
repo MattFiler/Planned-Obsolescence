@@ -3,8 +3,8 @@
 #include <memory>
 
 #include "../Constants.h"
+#include "../Math/Point.h"
 #include "../Scenes/Scene.h"
-#include "Point.h"
 
 #include <json.hpp>
 using json = nlohmann::json;

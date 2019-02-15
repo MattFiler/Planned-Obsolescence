@@ -1,8 +1,8 @@
 #ifndef PLANNEDOBSOLESCENCE_CAMERA_H
 #define PLANNEDOBSOLESCENCE_CAMERA_H
 
-#include "DynamicSprite.h"
-#include "Point.h"
+#include "../Math/Point.h"
+#include "../Sprites/ScaledSpriteArray.h"
 #include <Engine/Renderer.h>
 #include <vector>
 
@@ -16,7 +16,7 @@ class Camera
   Camera() = default;
 
   void setRenderer(ASGE::Renderer* rend);
-  void renderSprite(DynamicSprite* sprite, double delta_time);
+  void renderSprite(ScaledSpriteArray* sprite, double delta_time);
   Point getCameraPosition();
   Point displayedToSimulatedWorld(Point point);
   void moveCamera(float x_amount, float y_amount);

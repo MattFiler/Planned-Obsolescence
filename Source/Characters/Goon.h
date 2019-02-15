@@ -3,6 +3,6 @@
 class Goon : public Character
 {
  public:
-  Goon();
+  Goon() : Character(character_type::GOON){};
   ~Goon() = default;
 };

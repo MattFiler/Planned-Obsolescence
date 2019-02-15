@@ -1,5 +1,4 @@
-#include "../Core/DynamicSprite.h"
-#include "../Core/GameObject.h"
+#include "../Sprites/ScaledSpriteArray.h"
 #include "Scene.h"
 
 namespace ASGE

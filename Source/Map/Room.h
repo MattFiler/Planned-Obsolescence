@@ -1,7 +1,7 @@
 #ifndef PO_ROOM
 #define PO_ROOM
 
-#include "../Core/DebugText.h"
+#include "../Debug/DebugText.h"
 #include "Tile.h"
 
 class Room
@@ -18,7 +18,7 @@ class Room
   float getHeight();
   float getWidth();
 
-  std::shared_ptr<DynamicSprite> getSprite();
+  std::shared_ptr<ScaledSpriteArray> getSprite();
 
   float getPositionX();
   float getPositionY();
@@ -37,7 +37,7 @@ class Room
   DebugText debug_text;
 
   // Room sprite
-  std::shared_ptr<DynamicSprite> sprite = nullptr;
+  std::shared_ptr<ScaledSpriteArray> sprite = nullptr;
 
   // Positions
   float base_x = 0.0f;

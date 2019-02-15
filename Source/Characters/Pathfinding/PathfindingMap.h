@@ -5,7 +5,7 @@
 #ifndef PLANNEDOBSOLESCENCE_LABMAP_H
 #define PLANNEDOBSOLESCENCE_LABMAP_H
 
-#include "../Map/GameMap.h"
+#include "../../Map/GameMap.h"
 #include "PathNode.h"
 
 /**
