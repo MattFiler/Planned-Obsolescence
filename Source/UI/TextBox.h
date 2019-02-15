@@ -11,7 +11,7 @@ class TextBox : public UI
   TextBox() = default;
   explicit TextBox(Point pos,
                    ASGE::Renderer* rend,
-                   std::string text,
+                   const std::string& text,
                    float _width = 300,
                    float _height = 100,
                    float _font_size = 1,
@@ -21,7 +21,7 @@ class TextBox : public UI
 
   void render(double delta_time) override;
   void setBackgroundSprite(ScaledSpriteArray* sprite);
-  void setText(std::string new_text);
+  void setText(const std::string& new_text);
 
  private:
   void wrapText();
