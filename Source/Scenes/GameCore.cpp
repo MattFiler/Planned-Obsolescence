@@ -26,6 +26,46 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 
   spawnCharacters(renderer);
 
+  // TEST CODE
+  test_text = TextBox(Point(100, 100),
+                      renderer,
+                      "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over "
+                      "the lazy dog",
+                      510,
+                      250,
+                      1);
+  auto* sprite = new ScaledSpriteArray(1);
+  ASGE::Sprite* asge_sprite = renderer->createRawSprite();
+  asge_sprite->loadTexture("data/UI/default.png");
+  sprite->addSprite(*asge_sprite);
+  test_text.setBackgroundSprite(sprite);
+
+  test_progress = ProgressBar(Point(100, 500), rend, 200, 20);
+  sprite = new ScaledSpriteArray(1);
+  asge_sprite = renderer->createRawSprite();
+  asge_sprite->loadTexture("data/UI/default.png");
+  sprite->addSprite(*asge_sprite);
+  test_progress.addBackgroundSprite(sprite);
+  sprite = new ScaledSpriteArray(1);
+  asge_sprite = renderer->createRawSprite();
+  asge_sprite->loadTexture("data/UI/default.png");
+  asge_sprite->colour(ASGE::COLOURS::BLUE);
+  sprite->addSprite(*asge_sprite);
+  test_progress.addFillSprite(sprite);
+
+  sprite = new ScaledSpriteArray(2, false);
+  asge_sprite = renderer->createRawSprite();
+  asge_sprite->loadTexture("data/UI/default.png");
+  asge_sprite->colour(ASGE::COLOURS::WHITE);
+  sprite->addSprite(*asge_sprite);
+  asge_sprite = renderer->createRawSprite();
+  asge_sprite->loadTexture("data/UI/default.png");
+  asge_sprite->colour(ASGE::COLOURS::BLACK);
+  sprite->addSprite(*asge_sprite);
+  test_button = Button(Point(600, 500), renderer, sprite);
+  DebugText* debug_ref = &debug_text;
+  test_button.click_function = [&debug_ref] { debug_ref->print("Button pressed!"); };
+
   return true;
 }
 
@@ -110,13 +150,18 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
 {
   auto click = static_cast<const ASGE::ClickEvent*>(data.get());
 
-  if (click->action == ASGE::E_MOUSE_CLICK)
+  if (click->action == ASGE::MOUSE::BUTTON_PRESSED)
   {
-    Goon test;
-    test.wake(rend);
     mouse_position = camera.displayedToSimulatedWorld(mouse_position);
-    test.setSpawnPosition(mouse_position.x_pos, mouse_position.y_pos);
-    character_manager.spawn(test);
+    if (test_button.checkForClick(mouse_position))
+    {
+      button_pressed = true;
+    }
+  }
+  else if (click->action == ASGE::MOUSE::BUTTON_RELEASED && button_pressed)
+  {
+    button_pressed = false;
+    test_button.releaseClick();
   }
 }
 
@@ -149,4 +194,10 @@ void GameCore::render(double delta_time)
 
   // Render Characters
   character_manager.render(delta_time);
+
+  // TEST CODE
+  test_text.render(delta_time);
+  test_progress.addProgress(static_cast<float>(delta_time) / 10000.0f);
+  test_progress.render(delta_time);
+  test_button.render(delta_time);
 }
