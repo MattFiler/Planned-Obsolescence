@@ -18,8 +18,9 @@ PathfindingMap::PathfindingMap(GameMap* current_map)
   {
     for (int j = 0; j < current_map->getRooms()[i].getTileCount(); j++)
     {
-      nodes[tile_count].position = Point(current_map->getRooms()[i].getTiles()[j].getPositionX(),
-                                         current_map->getRooms()[i].getTiles()[j].getPositionY());
+      float x_pos = current_map->getRooms()[i].getTiles()[j].getPositionX();
+      float y_pos = current_map->getRooms()[i].getTiles()[j].getPositionY();
+      nodes[tile_count].position = Point(x_pos, y_pos);
       tile_count++;
     }
   }

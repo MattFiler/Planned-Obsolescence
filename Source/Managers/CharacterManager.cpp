@@ -85,7 +85,7 @@ bool CharacterManager::spawnCharacter(Boss& new_boss)
   {
     new_boss.wake(renderer);
     new_boss.setCharacterID(boss_count);
-    //new_boss.generatePathfindingMap(game_map);
+    new_boss.generatePathfindingMap(game_map);
     boss_instances[boss_count] = new_boss;
     boss_count++;
     return true;
@@ -186,12 +186,11 @@ void CharacterManager::renderCharacter(CharacterArray character,
 
 /* Update all characters */
 void CharacterManager::update(double delta_time)
-{/*
+{
   updateCharacter(boss_instances, boss_count, delta_time);
   updateCharacter(goon_instances, goon_count, delta_time);
   updateCharacter(technician_instances, technician_count, delta_time);
   updateCharacter(security_instances, security_count, delta_time);
-  */
 }
 
 /* Update a specific character definition */
