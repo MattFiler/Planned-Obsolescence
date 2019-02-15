@@ -13,7 +13,7 @@ class TextBox : public UI
                    std::string text,
                    float _width = 50,
                    float _height = 20,
-                   float _font_size = 2,
+                   float _font_size = 1,
                    ASGE::Colour colour = ASGE::COLOURS::WHITE,
                    Point _padding = Point(10, 10));
   ~TextBox() override = default;
@@ -23,6 +23,8 @@ class TextBox : public UI
   void setText(std::string new_text);
 
  private:
+  void wrapText();
+
   std::string displayed_text = "";
   float width = 0;
   float height = 0;
