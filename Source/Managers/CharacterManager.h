@@ -4,6 +4,8 @@
 #include "../Characters/Security.h"
 #include <memory>
 
+#define IS_TYPE(x) typeid(CharacterType) == typeid(x)
+
 class CharacterManager
 {
  public:
@@ -11,10 +13,42 @@ class CharacterManager
   ~CharacterManager();
 
   bool canSpawn(character_type type);
-  bool spawnCharacter(Boss& new_boss);
-  bool spawnCharacter(Goon& new_goon);
-  bool spawnCharacter(LabTechnician& new_technician);
-  bool spawnCharacter(Security& new_security);
+
+  /* Spawn a character */
+  template<class CharacterType>
+  bool spawnCharacter(CharacterType& new_character)
+  {
+    // Get our correct variables for type
+    int& character_count =
+      (IS_TYPE(Goon))
+        ? goon_count
+        : (IS_TYPE(Boss)) ? boss_count : (IS_TYPE(Security)) ? security_count : technician_count;
+    CharacterType& character_instances =
+      (IS_TYPE(Goon))
+        ? goon_instances
+        : (IS_TYPE(Boss)) ? boss_instances
+                          : (IS_TYPE(Security)) ? security_instances : technician_instances;
+
+    // Create our array if it doesn't exist
+    if (character_instances == nullptr)
+    {
+      character_instances = new CharacterType[new_character.getSpawnCap()];
+    }
+
+    // Spawn if we haven't exceeded our limits
+    if (character_count < new_character.getSpawnCap())
+    {
+      new_character.wake(renderer);
+      new_character.setCharacterID(character_count);
+      new_character.generatePathfindingMap(game_map);
+      character_instances[character_count] = new_character;
+      character_count++;
+      return true;
+    }
+
+    // We've exceeded our spawn limits...
+    return false;
+  }
 
   void render(double delta_time);
   void update(double delta_time);
@@ -24,14 +58,15 @@ class CharacterManager
 
  private:
   template<class CharacterArray>
-  void renderCharacter(CharacterArray character, int character_count, double delta_time);
+  void renderCharacter(CharacterArray character, int& character_count, double& delta_time);
 
   template<class CharacterArray>
-  void updateCharacter(CharacterArray character, int character_count, double delta_time);
+  void updateCharacter(CharacterArray character, int& character_count, double& delta_time);
 
   GameMap* game_map = nullptr;
   Camera* camera = nullptr;
   ASGE::Renderer* renderer = nullptr;
+  DebugText debug_text;
 
   Boss* boss_instances = nullptr;
   int boss_count = 0;

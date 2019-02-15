@@ -76,8 +76,8 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   {
     Boss new_boss;
     character_manager.spawnCharacter(new_boss);
-    new_boss.calculateRouteToPoint(Point(300, 300));
-    new_boss.setSpawnPosition(10, 10);
+    // new_boss.calculateRouteToPoint(Point(300, 300));
+    // new_boss.setSpawnPosition(10, 10);
   }
 }
 
