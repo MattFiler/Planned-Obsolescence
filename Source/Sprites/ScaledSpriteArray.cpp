@@ -1,10 +1,10 @@
-#include "DynamicSprite.h"
+#include "ScaledSpriteArray.h"
 
 /**
  *   @brief   Creates an DynamicSprite with set size
  *   @details num_of_sprites is the number of contained ASGE::Sprite's
  */
-DynamicSprite::DynamicSprite(unsigned int num_of_sprites, bool should_flipbook)
+ScaledSpriteArray::ScaledSpriteArray(unsigned int num_of_sprites, bool should_flipbook)
 {
   my_sprites = new ASGE::Sprite*[num_of_sprites];
   auto_anim = should_flipbook;
@@ -13,7 +13,7 @@ DynamicSprite::DynamicSprite(unsigned int num_of_sprites, bool should_flipbook)
 /**
  *   @brief   Default Deconstructor.
  */
-DynamicSprite::~DynamicSprite()
+ScaledSpriteArray::~ScaledSpriteArray()
 {
   delete[] my_sprites;
   my_sprites = nullptr;
@@ -26,7 +26,7 @@ DynamicSprite::~DynamicSprite()
  *            if this is the first sprite to be added
  *   @param	 Adress of new sprite
  */
-void DynamicSprite::addSprite(ASGE::Sprite& new_sprite)
+void ScaledSpriteArray::addSprite(ASGE::Sprite& new_sprite)
 {
   my_sprites[number_of_sprites] = &new_sprite;
   if (number_of_sprites == 0)
@@ -44,7 +44,7 @@ void DynamicSprite::addSprite(ASGE::Sprite& new_sprite)
  *			 this should be in the displayed world position
  *   @return  The x position of sprite
  */
-float DynamicSprite::xPos()
+float ScaledSpriteArray::xPos()
 {
   return my_sprites[0]->xPos();
 }
@@ -55,7 +55,7 @@ float DynamicSprite::xPos()
  *			 this should be in the displayed world position
  *   @return  The y position of sprite
  */
-float DynamicSprite::yPos()
+float ScaledSpriteArray::yPos()
 {
   return my_sprites[0]->yPos();
 }
@@ -65,7 +65,7 @@ float DynamicSprite::yPos()
  *   @details Sets the x position of all attached sprites
  *   @param   The new x position for the sprite(s)
  */
-void DynamicSprite::xPos(float new_x)
+void ScaledSpriteArray::xPos(float new_x)
 {
   for (int i = 0; i < number_of_sprites; i++)
   {
@@ -74,7 +74,7 @@ void DynamicSprite::xPos(float new_x)
 }
 
 /* Adds an amount to the current x_position contained sprites */
-void DynamicSprite::addX(float x_amount)
+void ScaledSpriteArray::addX(float x_amount)
 {
   for (int i = 0; i < number_of_sprites; i++)
   {
@@ -83,7 +83,7 @@ void DynamicSprite::addX(float x_amount)
 }
 
 /* Adds an amount to the current y_position contained sprites */
-void DynamicSprite::addY(float y_amount)
+void ScaledSpriteArray::addY(float y_amount)
 {
   for (int i = 0; i < number_of_sprites; i++)
   {
@@ -96,7 +96,7 @@ void DynamicSprite::addY(float y_amount)
  *   @details Sets the y position of all attached sprites
  *   @param  The new y position for the sprite(s)
  */
-void DynamicSprite::yPos(float new_y)
+void ScaledSpriteArray::yPos(float new_y)
 {
   for (int i = 0; i < number_of_sprites; i++)
   {
@@ -110,7 +110,7 @@ void DynamicSprite::yPos(float new_y)
  *            of the displayed world
  *   @return  The sprites scale
  */
-float DynamicSprite::scale()
+float ScaledSpriteArray::scale()
 {
   return scale_factor;
 }
@@ -121,7 +121,7 @@ float DynamicSprite::scale()
  *			 read only - use scale to alter size
  *   @return  The width of sprite
  */
-float DynamicSprite::width()
+float ScaledSpriteArray::width()
 {
   return sprite_width * scale_factor;
 }
@@ -132,7 +132,7 @@ float DynamicSprite::width()
  *			 read only - use scale to alter size
  *   @return  The height of sprite
  */
-float DynamicSprite::height()
+float ScaledSpriteArray::height()
 {
   return sprite_height * scale_factor;
 }
@@ -144,7 +144,7 @@ float DynamicSprite::height()
  *			 scaled to the scale of all contained sprites
  *   @param   The new scale for the sprite(s)
  */
-void DynamicSprite::scale(float scale_amount)
+void ScaledSpriteArray::scale(float scale_amount)
 {
   scale_factor = scale_amount * width_scale;
   for (int i = 0; i < number_of_sprites; i++)
@@ -160,7 +160,7 @@ void DynamicSprite::scale(float scale_amount)
  *			 to the width of all contained sprites
  *   @param   The new width for the sprite(s)
  */
-void DynamicSprite::scaleWidth(float new_scale_width)
+void ScaledSpriteArray::scaleWidth(float new_scale_width)
 {
   scale_sprite_width = new_scale_width;
   for (int i = 0; i < number_of_sprites; ++i)
@@ -176,7 +176,7 @@ void DynamicSprite::scaleWidth(float new_scale_width)
  *			 to the height of all contained sprites
  *   @param   The new height for the sprite(s)
  */
-void DynamicSprite::scaleHeight(float new_scale_height)
+void ScaledSpriteArray::scaleHeight(float new_scale_height)
 {
   scale_sprite_height = new_scale_height;
   for (int i = 0; i < number_of_sprites; ++i)
@@ -191,7 +191,7 @@ void DynamicSprite::scaleHeight(float new_scale_height)
  *			 this is the colour of tint applied when using fadeToColour
  *   @param   The new fade colour
  */
-void DynamicSprite::setFadeColour(ASGE::Colour col)
+void ScaledSpriteArray::setFadeColour(ASGE::Colour col)
 {
   fade_colour = col;
 }
@@ -204,7 +204,7 @@ void DynamicSprite::setFadeColour(ASGE::Colour col)
  *   @param   delta_time is the time since last tick
  *   @param   inverse_fade will remove tint instead
  */
-bool DynamicSprite::fadeToColour(double time_to_fade, double delta_time, bool inverse_fade)
+bool ScaledSpriteArray::fadeToColour(double time_to_fade, double delta_time, bool inverse_fade)
 {
   if (inverse_fade)
   {
@@ -266,7 +266,7 @@ bool DynamicSprite::fadeToColour(double time_to_fade, double delta_time, bool in
  *   @param   delta_time is the time since last tick
  *   @param   inverse_fade will remove opacity instead
  */
-bool DynamicSprite::fadeToOpacity(double time_to_fade, double delta_time, bool inverse_fade)
+bool ScaledSpriteArray::fadeToOpacity(double time_to_fade, double delta_time, bool inverse_fade)
 {
   if (inverse_fade)
   {
@@ -324,7 +324,7 @@ bool DynamicSprite::fadeToOpacity(double time_to_fade, double delta_time, bool i
  *   @param   new_time_between_frames how quickly you want
  *           the sprite to animate
  */
-void DynamicSprite::timeBetweenFrames(double new_time_between_frames)
+void ScaledSpriteArray::timeBetweenFrames(double new_time_between_frames)
 {
   time_between_frames = new_time_between_frames;
 }
@@ -336,7 +336,7 @@ void DynamicSprite::timeBetweenFrames(double new_time_between_frames)
  *   @param   delta_time is time since last call
  *   @return  The next sprite of the animation
  */
-ASGE::Sprite& DynamicSprite::returnNextSprite(double delta_time)
+ASGE::Sprite& ScaledSpriteArray::returnNextSprite(double delta_time)
 {
   if (auto_anim)
   {
@@ -355,10 +355,10 @@ ASGE::Sprite& DynamicSprite::returnNextSprite(double delta_time)
   return *my_sprites[current_sprite];
 }
 
-void DynamicSprite::setSpriteSheet(float sprite_sheet_width,
-                                   float sprite_sheet_height,
-                                   float start_x_pos,
-                                   float start_y_pos)
+void ScaledSpriteArray::setSpriteSheet(float sprite_sheet_width,
+                                       float sprite_sheet_height,
+                                       float start_x_pos,
+                                       float start_y_pos)
 {
   src_rect[0] = start_x_pos;
   src_rect[1] = start_y_pos;
@@ -368,10 +368,10 @@ void DynamicSprite::setSpriteSheet(float sprite_sheet_width,
   // float* source_rect = my_sprites[0]->srcRect();
 }
 
-float DynamicSprite::width_scale = 1;
+float ScaledSpriteArray::width_scale = 1;
 
 /* Return number of sprites in object */
-int DynamicSprite::numberOfSprites()
+int ScaledSpriteArray::numberOfSprites()
 {
   return number_of_sprites;
 }

@@ -84,7 +84,7 @@ void PlannedObsolescence::setupResolution()
   game_width = core_config["resolution"]["width"];
   game_height = core_config["resolution"]["height"];
 
-  DynamicSprite::width_scale = static_cast<float>(game_width) / SCREEN_WIDTH;
+  ScaledSpriteArray::width_scale = static_cast<float>(game_width) / SCREEN_WIDTH;
 }
 
 /**

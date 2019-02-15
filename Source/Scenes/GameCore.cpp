@@ -1,6 +1,6 @@
 #include "GameCore.h"
 #include "../Constants.h"
-#include "../Core/DynamicSprite.h"
+#include "../Sprites/ScaledSpriteArray.h"
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
@@ -50,8 +50,7 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
   if (user_input.keyReleased("Back"))
   {
     next_scene = scenes::MAIN_MENU;
-    string debug_string = "RETURNING TO MAIN MENU";
-    debug_text.print(debug_string);
+    debug_text.print("RETURNING TO MAIN MENU");
   }
 
   auto key = static_cast<const ASGE::KeyEvent*>(data.get());

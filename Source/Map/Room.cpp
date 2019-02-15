@@ -20,14 +20,14 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_
   ASGE::Sprite* new_sprite = renderer->createRawSprite();
   new_sprite->loadTexture(room_config["sprite"]);
 
-  sprite = make_shared<DynamicSprite>(1);
+  sprite = make_shared<ScaledSpriteArray>(1);
   sprite->addSprite(*new_sprite);
 
   // Set position
   sprite->xPos(room_x);
   sprite->yPos(room_y);
 
-  // Set dimensions // Commented out for now as DynamicSprite doesn't can't alter w/h
+  // Set dimensions // Commented out for now as ScaledSpriteArray doesn't can't alter w/h
   // sprite->width(getWidth());
   // sprite->height(getHeight());
 
@@ -73,7 +73,7 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_
 }
 
 /* Return our sprite */
-shared_ptr<DynamicSprite> Room::getSprite()
+shared_ptr<ScaledSpriteArray> Room::getSprite()
 {
   return sprite;
 }

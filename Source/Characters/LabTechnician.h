@@ -3,6 +3,6 @@
 class LabTechnician : public Character
 {
  public:
-  LabTechnician();
+  LabTechnician() : Character(character_type::TECHNICIAN){};
   ~LabTechnician() = default;
 };

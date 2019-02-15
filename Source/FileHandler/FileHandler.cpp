@@ -5,8 +5,7 @@ using namespace SoLoud;
 /* Open the file as a JSON data structure */
 json FileHandler::openAsJSON(string& filename)
 {
-  std::string debug_log = "ACCESSING FILE AS JSON (openAsJSON) - " + filename;
-  debug_text.print(debug_log);
+  debug_text.print("ACCESSING FILE AS JSON (openAsJSON) - " + filename);
 
   // Load file into json structure and return
   json json_file;
@@ -25,8 +24,7 @@ json FileHandler::openAsJSON(string& filename)
 /* Load a requested portion of a game config */
 json FileHandler::loadConfig(std::string& config, std::string request)
 {
-  std::string debug_log = "ACCESSING FILE AS JSON (loadConfig) - CONFIGS/" + config;
-  debug_text.print(debug_log);
+  debug_text.print("ACCESSING FILE AS JSON (loadConfig) - CONFIGS/" + config);
 
   // Load our config and assign default values.
   string config_file("CONFIGS/" + config);
@@ -80,8 +78,7 @@ json FileHandler::loadConfigFromExisting(json temp_config,
 /* Open the file as a buffer */
 string FileHandler::openAsString(string& filename)
 {
-  std::string debug_log = "ACCESSING FILE AS STRING - " + filename;
-  debug_text.print(debug_log);
+  debug_text.print("ACCESSING FILE AS STRING - " + filename);
 
   auto file = ASGE::FILEIO::File();
   if (file.open("data/" + filename))
@@ -98,8 +95,7 @@ string FileHandler::openAsString(string& filename)
 /* Load a sound into a SoLoud WavStream */
 WavStream FileHandler::loadSound(std::string& filename)
 {
-  std::string debug_log = "ACCESSING FILE FOR AUDIO - " + filename;
-  debug_text.print(debug_log);
+  debug_text.print("ACCESSING FILE FOR AUDIO - " + filename);
 
   WavStream sound;
   auto file = ASGE::FILEIO::File();

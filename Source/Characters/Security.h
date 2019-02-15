@@ -3,6 +3,6 @@
 class Security : public Character
 {
  public:
-  Security();
+  Security() : Character(character_type::SECURITY){};
   ~Security() = default;
 };

@@ -1,7 +1,7 @@
 #ifndef PO_FILEHANDLER
 #define PO_FILEHANDLER
 
-#include "DebugText.h"
+#include "../Debug/DebugText.h"
 #include <Engine/FileIO.h>
 #include <json.hpp>
 #include <soloud.h>

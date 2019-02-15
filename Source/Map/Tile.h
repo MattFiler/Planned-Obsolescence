@@ -2,9 +2,9 @@
 #define PO_TILE
 
 #include "../Constants.h"
-#include "../Core/Camera.h"
-#include "../Core/DynamicSprite.h"
-#include "../Core/FileHandler.h"
+#include "../FileHandler/FileHandler.h"
+#include "../Sprites/ScaledSpriteArray.h"
+#include "../Viewport/Camera.h"
 #include <Engine/Renderer.h>
 #include <Engine/Sprite.h>
 #include <json.hpp>
