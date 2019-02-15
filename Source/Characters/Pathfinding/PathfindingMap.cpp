@@ -4,9 +4,9 @@ PathfindingMap::PathfindingMap(GameMap* current_map)
 {
   int total_tiles = 0;
   game_map = current_map;
-  for (int i = 0; i < current_map->getRoomCount(); i++)
+  for (int i = 0; i < game_map->getRoomCount(); i++)
   {
-    total_tiles += current_map->getRooms()[i].getTileCount();
+    total_tiles += game_map->getRooms()[i].getTileCount();
   }
 
   nodes = new PathNode[total_tiles];
@@ -14,22 +14,12 @@ PathfindingMap::PathfindingMap(GameMap* current_map)
 
   // First populate the map with the positions of each node
   int tile_count = 0;
-  for (int i = 0; i < current_map->getRoomCount(); i++)
+  for (int i = 0; i < game_map->getRoomCount(); i++)
   {
-    for (int j = 0; j < current_map->getRooms()[i].getTileCount(); j++)
+    for (Tile& this_tile : game_map->getRooms()[i].getTiles())
     {
-      if (tile_count > total_tiles)
-      {
-        debug_text.print("EXCEEDED TILE COUNT");
-        throw "Exceeded number of tiles!";
-      }
-      else
-      {
-        debug_text.print(std::to_string(tile_count));
-        nodes[tile_count].position = Point(current_map->getRooms()[i].getTiles()[j].getPositionX(),
-                                           current_map->getRooms()[i].getTiles()[j].getPositionY());
-        tile_count++;
-      }
+      nodes[tile_count].position = Point(this_tile.getPositionX(), this_tile.getPositionY());
+      tile_count++;
     }
   }
   linkNodes();
@@ -42,25 +32,25 @@ void PathfindingMap::linkNodes()
   float tile_size = game_map->getRooms()[0].getTiles()[0].getWidth();
   for (int i = 0; i < game_map->getRoomCount(); i++)
   {
-    for (int j = 0; j < game_map->getRooms()[i].getTileCount(); j++)
+    for (Tile& this_tile : game_map->getRooms()[i].getTiles())
     {
       // Check all 4 exits on each tile, and if there is one find the node
-      if (game_map->getRooms()[i].getTiles()[j].exitIsValid(direction::LEFT))
+      if (this_tile.exitIsValid(direction::LEFT))
       {
         nodes[tile_count].connections[0].node =
           findNodeAtPoint(nodes[tile_count].position - Point(tile_size, 0));
       }
-      if (game_map->getRooms()[i].getTiles()[j].exitIsValid(direction::RIGHT))
+      if (this_tile.exitIsValid(direction::RIGHT))
       {
         nodes[tile_count].connections[1].node =
           findNodeAtPoint(nodes[tile_count].position + Point(tile_size, 0));
       }
-      if (game_map->getRooms()[i].getTiles()[j].exitIsValid(direction::UP))
+      if (this_tile.exitIsValid(direction::UP))
       {
         nodes[tile_count].connections[2].node =
           findNodeAtPoint(nodes[tile_count].position - Point(0, tile_size));
       }
-      if (game_map->getRooms()[i].getTiles()[j].exitIsValid(direction::DOWN))
+      if (this_tile.exitIsValid(direction::DOWN))
       {
         nodes[tile_count].connections[3].node =
           findNodeAtPoint(nodes[tile_count].position + Point(0, tile_size));
