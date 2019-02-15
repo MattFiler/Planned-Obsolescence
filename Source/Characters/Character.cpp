@@ -13,9 +13,6 @@ Character::~Character()
 {
   delete internal_map;
   internal_map = nullptr;
-
-  // delete sprite;
-  // sprite = nullptr;
 }
 
 /* Catch the renderer, then we can load our sprite */

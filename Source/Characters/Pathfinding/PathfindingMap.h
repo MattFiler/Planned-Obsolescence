@@ -5,6 +5,7 @@
 #ifndef PLANNEDOBSOLESCENCE_LABMAP_H
 #define PLANNEDOBSOLESCENCE_LABMAP_H
 
+#include "../../Debug/DebugText.h"
 #include "../../Map/GameMap.h"
 #include "PathNode.h"
 
@@ -31,6 +32,7 @@ struct PathfindingMap
  private:
   PathNode* findNodeAtPoint(Point point);
   GameMap* game_map = nullptr;
+  DebugText debug_text;
 };
 
 #endif // PLANNEDOBSOLESCENCE_LABMAP_H

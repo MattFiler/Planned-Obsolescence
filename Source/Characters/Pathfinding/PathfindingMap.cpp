@@ -18,10 +18,18 @@ PathfindingMap::PathfindingMap(GameMap* current_map)
   {
     for (int j = 0; j < current_map->getRooms()[i].getTileCount(); j++)
     {
-      float x_pos = current_map->getRooms()[i].getTiles()[j].getPositionX();
-      float y_pos = current_map->getRooms()[i].getTiles()[j].getPositionY();
-      nodes[tile_count].position = Point(x_pos, y_pos);
-      tile_count++;
+      if (tile_count > total_tiles)
+      {
+        debug_text.print("EXCEEDED TILE COUNT");
+        throw "Exceeded number of tiles!";
+      }
+      else
+      {
+        debug_text.print(std::to_string(tile_count));
+        nodes[tile_count].position = Point(current_map->getRooms()[i].getTiles()[j].getPositionX(),
+                                           current_map->getRooms()[i].getTiles()[j].getPositionY());
+        tile_count++;
+      }
     }
   }
   linkNodes();
