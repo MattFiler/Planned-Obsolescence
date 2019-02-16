@@ -77,7 +77,6 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
     Boss* new_boss = new Boss();
     character_manager.spawnCharacter(new_boss);
     new_boss->calculateRouteToPoint(Point(300, 300));
-    // new_boss.setSpawnPosition(10, 10);
   }
 }
 
@@ -199,8 +198,8 @@ void GameCore::render(double delta_time)
   character_manager.render(delta_time);
 
   // TEST CODE
-  test_text.render(delta_time);
-  test_progress.addProgress(static_cast<float>(delta_time) / 10000.0f);
-  test_progress.render(delta_time);
-  test_button.render(delta_time);
+  // test_text.render(delta_time);
+  // test_progress.addProgress(static_cast<float>(delta_time) / 10000.0f);
+  // test_progress.render(delta_time);
+  // test_button.render(delta_time);
 }

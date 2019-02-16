@@ -87,7 +87,6 @@ bool CharacterManager::spawnCharacter(Boss* new_boss)
     boss_instances[boss_count]->wake(renderer);
     boss_instances[boss_count]->setCharacterID(boss_count);
     boss_instances[boss_count]->generatePathfindingMap(game_map);
-    boss_instances[boss_count]->calculateRouteToPoint(Point(300, 300));
 
     boss_count++;
     return true;
