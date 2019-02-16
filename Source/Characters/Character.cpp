@@ -171,6 +171,7 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
     }
     else if (node->connections[i].node != nullptr && !node->connections[i].node->visited)
     {
+        node->connections[i].node->shortest_path_to_here = depth+1;
       // If this connection has not been scored yet
       if (node->connections[i].score == -1)
       {
@@ -179,13 +180,18 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
         node->connections[i].score =
           Point::distanceBetween(node->connections[i].node->position, point);
         // Set this depth as the shortest path
-        node->connections[i].node->shortest_path_to_here = depth;
       }
 
+      // Check if this connection is better than any other option currently available
       if (node->connections[i].score <= best_score)
       {
         best_score = node->connections[i].score;
         best_score_index = i;
+      }
+      // Continue exploring the area even if a better score isn't found
+      else if (best_score_index == -1 && node->connections[i].score <= best_score * 1.3f)
+      {
+          best_score_index = i;
       }
       if (node->connections[i].score < best_score_at_depth)
       {
