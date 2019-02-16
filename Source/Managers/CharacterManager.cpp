@@ -3,46 +3,90 @@
 /* Deallocate memory */
 CharacterManager::~CharacterManager()
 {
-  /*
   if (boss_count > 0)
   {
-    delete[] bosses;
-    bosses = nullptr;
+    delete[] boss_instances;
+    boss_instances = nullptr;
   }
   if (goon_count > 0)
   {
-    delete[] goons;
-    goons = nullptr;
+    delete[] goon_instances;
+    goon_instances = nullptr;
   }
-  if (techie_count > 0)
+  if (technician_count > 0)
   {
-    delete[] techies;
-    techies = nullptr;
+    delete[] technician_instances;
+    technician_instances = nullptr;
   }
-  if (guard_count > 0)
+  if (security_count > 0)
   {
-    delete[] guards;
-    guards = nullptr;
+    delete[] security_instances;
+    security_instances = nullptr;
   }
-   */
 }
 
-/* Spawn a boss */
-bool CharacterManager::spawn(Boss& new_boss)
+/* Check we can spawn a character type */
+bool CharacterManager::canSpawn(character_type type)
 {
-  // Set up our array length
-  if (bosses == nullptr)
+  int min_case = 0;
+  int max_case = 0;
+  switch (type)
   {
-    bosses = new Boss[new_boss.getSpawnCap()];
+    case character_type::BOSS:
+    {
+      min_case = boss_count;
+      max_case = sizeof(boss_instances);
+      break;
+    }
+    case character_type::GOON:
+    {
+      min_case = goon_count;
+      max_case = sizeof(goon_instances);
+      break;
+    }
+    case character_type::TECHNICIAN:
+    {
+      min_case = technician_count;
+      max_case = sizeof(technician_instances);
+      break;
+    }
+    case character_type::SECURITY:
+    {
+      min_case = security_count;
+      max_case = sizeof(security_instances);
+      break;
+    }
+    default:
+    {
+      return false;
+    }
+  }
+  if (min_case < max_case)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+/* Spawn a character */
+bool CharacterManager::spawnCharacter(Boss& new_boss)
+{
+  // Create our array if it doesn't exist
+  if (boss_instances == nullptr)
+  {
+    boss_instances = new Boss[new_boss.getSpawnCap()];
   }
 
-  // Spawn a boss if we haven't exceeded our limits
+  // Spawn if we haven't exceeded our limits
   if (boss_count < new_boss.getSpawnCap())
   {
+    new_boss.wake(renderer);
     new_boss.setCharacterID(boss_count);
-    bosses[boss_count] = new_boss;
-    bosses[boss_count].generatePathfindingMap(game_map);
-    bosses[boss_count].calculateRouteToPoint(Point(300, 300)); // TEMP CODE FOR TESTING
+    new_boss.generatePathfindingMap(game_map);
+    boss_instances[boss_count] = new_boss;
     boss_count++;
     return true;
   }
@@ -50,21 +94,21 @@ bool CharacterManager::spawn(Boss& new_boss)
   // We've exceeded our spawn limits...
   return false;
 }
-
-/* Spawn a goon */
-bool CharacterManager::spawn(Goon& new_goon)
+bool CharacterManager::spawnCharacter(Goon& new_goon)
 {
-  // Set up our array length
-  if (goons == nullptr)
+  // Create our array if it doesn't exist
+  if (goon_instances == nullptr)
   {
-    goons = new Goon[new_goon.getSpawnCap()];
+    goon_instances = new Goon[new_goon.getSpawnCap()];
   }
 
-  // Spawn a goon if we haven't exceeded our limits
+  // Spawn if we haven't exceeded our limits
   if (goon_count < new_goon.getSpawnCap())
   {
+    new_goon.wake(renderer);
     new_goon.setCharacterID(goon_count);
-    goons[goon_count] = new_goon;
+    new_goon.generatePathfindingMap(game_map);
+    goon_instances[goon_count] = new_goon;
     goon_count++;
     return true;
   }
@@ -72,44 +116,44 @@ bool CharacterManager::spawn(Goon& new_goon)
   // We've exceeded our spawn limits...
   return false;
 }
-
-/* Spawn a technician */
-bool CharacterManager::spawn(LabTechnician& new_techie)
+bool CharacterManager::spawnCharacter(LabTechnician& new_technician)
 {
-  // Set up our array length
-  if (techies == nullptr)
+  // Create our array if it doesn't exist
+  if (technician_instances == nullptr)
   {
-    techies = new LabTechnician[new_techie.getSpawnCap()];
+    technician_instances = new LabTechnician[new_technician.getSpawnCap()];
   }
 
-  // Spawn a technician if we haven't exceeded our limits
-  if (techie_count < new_techie.getSpawnCap())
+  // Spawn if we haven't exceeded our limits
+  if (technician_count < new_technician.getSpawnCap())
   {
-    new_techie.setCharacterID(techie_count);
-    techies[techie_count] = new_techie;
-    techie_count++;
+    new_technician.wake(renderer);
+    new_technician.setCharacterID(technician_count);
+    new_technician.generatePathfindingMap(game_map);
+    technician_instances[technician_count] = new_technician;
+    technician_count++;
     return true;
   }
 
   // We've exceeded our spawn limits...
   return false;
 }
-
-/* Spawn a security guard */
-bool CharacterManager::spawn(Security& new_guard)
+bool CharacterManager::spawnCharacter(Security& new_security)
 {
-  // Set up our array length
-  if (guards == nullptr)
+  // Create our array if it doesn't exist
+  if (security_instances == nullptr)
   {
-    guards = new Security[new_guard.getSpawnCap()];
+    security_instances = new Security[new_security.getSpawnCap()];
   }
 
-  // Spawn a guard if we haven't exceeded our limits
-  if (guard_count < new_guard.getSpawnCap())
+  // Spawn if we haven't exceeded our limits
+  if (security_count < new_security.getSpawnCap())
   {
-    new_guard.setCharacterID(guard_count);
-    guards[guard_count] = new_guard;
-    guard_count++;
+    new_security.wake(renderer);
+    new_security.setCharacterID(security_count);
+    new_security.generatePathfindingMap(game_map);
+    security_instances[security_count] = new_security;
+    security_count++;
     return true;
   }
 
@@ -120,56 +164,22 @@ bool CharacterManager::spawn(Security& new_guard)
 /* Render all visible characters */
 void CharacterManager::render(double delta_time)
 {
-  renderBosses(delta_time);
-  renderGoons(delta_time);
-  renderTechnicians(delta_time);
-  renderSecurity(delta_time);
+  renderCharacter(boss_instances, boss_count, delta_time);
+  renderCharacter(goon_instances, goon_count, delta_time);
+  renderCharacter(technician_instances, technician_count, delta_time);
+  renderCharacter(security_instances, security_count, delta_time);
 }
-
-/* Render our bosses */
-void CharacterManager::renderBosses(double delta_time)
+/* Render our specific character definition */
+template<class CharacterArray>
+void CharacterManager::renderCharacter(CharacterArray character,
+                                       int& character_count,
+                                       double& delta_time)
 {
-  for (int i = 0; i < boss_count; i++)
+  for (int i = 0; i < character_count; i++)
   {
-    if (bosses[i].isVisible())
+    if (character[i].isVisible())
     {
-      camera->renderSprite(bosses[i].getSprite(), delta_time);
-    }
-  }
-}
-
-/* Render our goons */
-void CharacterManager::renderGoons(double delta_time)
-{
-  for (int i = 0; i < goon_count; i++)
-  {
-    if (goons[i].isVisible())
-    {
-      camera->renderSprite(goons[i].getSprite(), delta_time);
-    }
-  }
-}
-
-/* Render our technicians */
-void CharacterManager::renderTechnicians(double delta_time)
-{
-  for (int i = 0; i < techie_count; i++)
-  {
-    if (techies[i].isVisible())
-    {
-      camera->renderSprite(techies[i].getSprite(), delta_time);
-    }
-  }
-}
-
-/* Render our security guards */
-void CharacterManager::renderSecurity(double delta_time)
-{
-  for (int i = 0; i < guard_count; i++)
-  {
-    if (guards[i].isVisible())
-    {
-      camera->renderSprite(guards[i].getSprite(), delta_time);
+      camera->renderSprite(character[i].getSprite(), delta_time);
     }
   }
 }
@@ -177,8 +187,25 @@ void CharacterManager::renderSecurity(double delta_time)
 /* Update all characters */
 void CharacterManager::update(double delta_time)
 {
-  // TODO: Add all update ticks, much like for render, just adding this one here to test
-  // bosses[0].updatePosition(delta_time);
+  updateCharacter(boss_instances, boss_count, delta_time);
+  updateCharacter(goon_instances, goon_count, delta_time);
+  updateCharacter(technician_instances, technician_count, delta_time);
+  updateCharacter(security_instances, security_count, delta_time);
+}
+
+/* Update a specific character definition */
+template<class CharacterArray>
+void CharacterManager::updateCharacter(CharacterArray character,
+                                       int& character_count,
+                                       double& delta_time)
+{
+  for (int i = 0; i < character_count; i++)
+  {
+    if (character[i].isVisible()) // Only bother updating if visible?
+    {
+      character[i].updatePosition(delta_time);
+    }
+  }
 }
 
 /* Save a reference to the games current map */
@@ -187,8 +214,9 @@ void CharacterManager::setMap(GameMap* current_map)
   game_map = current_map;
 }
 
-/* Save a reference to the games camera */
+/* Save a reference to the games camera and the renderer */
 void CharacterManager::setCamera(Camera* scene_camera)
 {
   camera = scene_camera;
+  renderer = camera->getRenderer();
 }

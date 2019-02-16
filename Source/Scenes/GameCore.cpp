@@ -72,10 +72,13 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 /* Spawn all characters */
 void GameCore::spawnCharacters(ASGE::Renderer* renderer)
 {
-  // Boss boss_demo;
-  // boss_demo.wake(renderer);
-  // boss_demo.setSpawnPosition(0, 0);
-  // character_manager.spawn(boss_demo);
+  if (character_manager.canSpawn(character_type::BOSS))
+  {
+    Boss new_boss;
+    character_manager.spawnCharacter(new_boss);
+    new_boss.calculateRouteToPoint(Point(300, 300));
+    // new_boss.setSpawnPosition(10, 10);
+  }
 }
 
 /**

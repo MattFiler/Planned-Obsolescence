@@ -16,6 +16,7 @@ class Camera
   Camera() = default;
 
   void setRenderer(ASGE::Renderer* rend);
+  ASGE::Renderer* getRenderer();
   void renderSprite(ScaledSpriteArray* sprite, double delta_time);
   Point getCameraPosition();
   Point displayedToSimulatedWorld(Point point);

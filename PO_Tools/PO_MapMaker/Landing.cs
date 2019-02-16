@@ -183,7 +183,8 @@ namespace PO_MapMaker
         /* Open Map Editor */
         private void openMapEditor_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Coming soon.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            MapEditor mapEditor = new MapEditor();
+            mapEditor.Show();
         }
     }
 }
