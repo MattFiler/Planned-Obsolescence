@@ -154,7 +154,7 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
 
   if (click->action == ASGE::MOUSE::BUTTON_PRESSED)
   {
-    mouse_position = camera.displayedToSimulatedWorld(mouse_position);
+    mouse_position = mouse_position / ScaledSpriteArray::width_scale;
     if (test_button.checkForClick(mouse_position))
     {
       button_pressed = true;
@@ -198,8 +198,8 @@ void GameCore::render(double delta_time)
   character_manager.render(delta_time);
 
   // TEST CODE
-  // test_text.render(delta_time);
-  // test_progress.addProgress(static_cast<float>(delta_time) / 10000.0f);
-  // test_progress.render(delta_time);
-  // test_button.render(delta_time);
+   test_text.render(delta_time);
+   test_progress.addProgress(static_cast<float>(delta_time) / 10000.0f);
+   test_progress.render(delta_time);
+   test_button.render(delta_time);
 }
