@@ -1,11 +1,13 @@
 #include "Character.h"
-using namespace std;
+// using namespace std;
 
 /* Load config on instantiation */
 Character::Character(character_type type)
 {
   updateCoreConfig(type);
   current_route.resize(1);
+  DebugText d;
+  d.print("Char constructor");
 }
 
 /* Delete all dynamic data when destroyed */
@@ -133,7 +135,8 @@ bool Character::calculateRouteToPoint(Point point)
     if (current_route[i]->position == point)
     {
       current_route.resize(i + 1);
-      debug_text.print(config.id + " CALCULATED PATH TO TARGET ACROSS " + to_string(i) + " TILES");
+      debug_text.print(config.id + " CALCULATED PATH TO TARGET ACROSS " + std::to_string(i) +
+                       " TILES");
       return true;
     }
   }
@@ -297,7 +300,7 @@ bool Character::isVisible()
 }
 
 /* Return the path to our character's sprite */
-string Character::getSpritePath()
+std::string Character::getSpritePath()
 {
   return config.sprite_walking;
 }
@@ -317,14 +320,14 @@ ASGE::Renderer* Character::getRenderer()
 /* Set the character ID */
 void Character::setCharacterID(int index)
 {
-  config.id = "CV" + to_string(config.variant) + "I" + to_string(index);
+  config.id = "CV" + std::to_string(config.variant) + "I" + std::to_string(index);
   config.index = index;
 
   debug_text.print("SPAWNED NEW CHARACTER WITH ID " + config.id);
 }
 
 /* Get the character ID */
-string Character::getCharacterID()
+std::string Character::getCharacterID()
 {
   return config.id;
 }
