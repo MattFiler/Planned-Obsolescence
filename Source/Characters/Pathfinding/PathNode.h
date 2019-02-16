@@ -13,6 +13,7 @@ struct PathNode
   Point position;
   NodeConnection connections[4];
   bool visited = false;
+  unsigned long long int shortest_path_to_here = 10000;
 };
 
 #endif // PLANNEDOBSOLESCENCE_MAPNODE_H

@@ -116,6 +116,7 @@ bool Character::calculateRouteToPoint(Point point)
 
   // Loop until the node is found, or all nodes have been visited
   float best_score = 100000;
+  iteration_count = 0;
 
   while (best_score > 0)
   {
@@ -129,6 +130,7 @@ bool Character::calculateRouteToPoint(Point point)
     }
   }
 
+  debug_text.print("PATH FOUND AFTER: " + std::to_string(iteration_count) + " ITERATIONS");
   // Finally loop through the route to find where it ends
   for (unsigned long long i = 0; i < current_route.size(); i++)
   {
@@ -152,21 +154,34 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
                                             float best_score,
                                             Point point)
 {
+  iteration_count++;
   int best_score_index = -1;
   float best_score_at_depth = 100000;
+
+  // If this node was reached in fewer moves than its previous best, update
+
   // Check each connection of the node
   for (int i = 0; i < 4; i++)
   {
-    if (node->connections[i].node != nullptr && !node->connections[i].node->visited)
+    // If the node already has a shorter path, block this direction
+    if (node->connections[i].node != nullptr &&
+        depth > node->connections[i].node->shortest_path_to_here)
     {
-      // If this node has not been scored yet
+      node->connections[i].score = 10000;
+    }
+    else if (node->connections[i].node != nullptr && !node->connections[i].node->visited)
+    {
+      // If this connection has not been scored yet
       if (node->connections[i].score == -1)
       {
         // Calculate a score based on the distance between this node and the
         // target point
         node->connections[i].score =
           Point::distanceBetween(node->connections[i].node->position, point);
+        // Set this depth as the shortest path
+        node->connections[i].node->shortest_path_to_here = depth;
       }
+
       if (node->connections[i].score <= best_score)
       {
         best_score = node->connections[i].score;
