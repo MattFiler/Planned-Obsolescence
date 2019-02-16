@@ -13,9 +13,6 @@ Character::~Character()
 {
   delete internal_map;
   internal_map = nullptr;
-
-  // delete sprite;
-  // sprite = nullptr;
 }
 
 /* Catch the renderer, then we can load our sprite */
@@ -336,4 +333,10 @@ string Character::getCharacterID()
 int Character::getIndex()
 {
   return config.index;
+}
+
+/* Return the character type */
+character_type Character::getCharacterType()
+{
+  return config.variant;
 }

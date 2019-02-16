@@ -42,6 +42,7 @@ class Character
   void setCharacterID(int index);
   std::string getCharacterID();
   int getIndex();
+  character_type getCharacterType();
 
   ScaledSpriteArray* getSprite();
   ASGE::Renderer* getRenderer();

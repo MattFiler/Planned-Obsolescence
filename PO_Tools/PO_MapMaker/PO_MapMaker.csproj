@@ -75,6 +75,18 @@
     <Compile Include="KeybindEditor.Designer.cs">
       <DependentUpon>KeybindEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="MapEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapEditor.Designer.cs">
+      <DependentUpon>MapEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapList.Designer.cs">
+      <DependentUpon>MapList.cs</DependentUpon>
+    </Compile>
     <Compile Include="RoomEditor.cs">
       <SubType>Form</SubType>
     </Compile>
