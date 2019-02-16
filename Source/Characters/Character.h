@@ -64,6 +64,7 @@ class Character
 
   unsigned long long route_index = 0;
   float distance_to_next_node = 0;
+  int iteration_count = 0;
 
  private:
   void importConfig(json json_config);

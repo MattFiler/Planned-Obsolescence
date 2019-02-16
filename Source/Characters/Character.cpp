@@ -1,11 +1,13 @@
 #include "Character.h"
-using namespace std;
+// using namespace std;
 
 /* Load config on instantiation */
 Character::Character(character_type type)
 {
   updateCoreConfig(type);
   current_route.resize(1);
+  DebugText d;
+  d.print("Char constructor");
 }
 
 /* Delete all dynamic data when destroyed */
@@ -114,6 +116,7 @@ bool Character::calculateRouteToPoint(Point point)
 
   // Loop until the node is found, or all nodes have been visited
   float best_score = 100000;
+  iteration_count = 0;
 
   while (best_score > 0)
   {
@@ -127,13 +130,15 @@ bool Character::calculateRouteToPoint(Point point)
     }
   }
 
+  debug_text.print("PATH FOUND AFTER: " + std::to_string(iteration_count) + " ITERATIONS");
   // Finally loop through the route to find where it ends
   for (unsigned long long i = 0; i < current_route.size(); i++)
   {
     if (current_route[i]->position == point)
     {
       current_route.resize(i + 1);
-      debug_text.print(config.id + " CALCULATED PATH TO TARGET ACROSS " + to_string(i) + " TILES");
+      debug_text.print(config.id + " CALCULATED PATH TO TARGET ACROSS " + std::to_string(i) +
+                       " TILES");
       return true;
     }
   }
@@ -149,24 +154,43 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
                                             float best_score,
                                             Point point)
 {
+  iteration_count++;
   int best_score_index = -1;
   float best_score_at_depth = 100000;
+
+  // If this node was reached in fewer moves than its previous best, update
+
   // Check each connection of the node
   for (int i = 0; i < 4; i++)
   {
-    if (node->connections[i].node != nullptr && !node->connections[i].node->visited)
+    // If the node already has a shorter path, block this direction
+    if (node->connections[i].node != nullptr &&
+        depth > node->connections[i].node->shortest_path_to_here)
     {
-      // If this node has not been scored yet
+      node->connections[i].score = 10000;
+    }
+    else if (node->connections[i].node != nullptr && !node->connections[i].node->visited)
+    {
+      node->connections[i].node->shortest_path_to_here = depth + 1;
+      // If this connection has not been scored yet
       if (node->connections[i].score == -1)
       {
         // Calculate a score based on the distance between this node and the
         // target point
         node->connections[i].score =
           Point::distanceBetween(node->connections[i].node->position, point);
+        // Set this depth as the shortest path
       }
+
+      // Check if this connection is better than any other option currently available
       if (node->connections[i].score <= best_score)
       {
         best_score = node->connections[i].score;
+        best_score_index = i;
+      }
+      // Continue exploring the area even if a better score isn't found
+      else if (best_score_index == -1 && node->connections[i].score <= best_score * 1.3f)
+      {
         best_score_index = i;
       }
       if (node->connections[i].score < best_score_at_depth)
@@ -297,7 +321,7 @@ bool Character::isVisible()
 }
 
 /* Return the path to our character's sprite */
-string Character::getSpritePath()
+std::string Character::getSpritePath()
 {
   return config.sprite_walking;
 }
@@ -317,14 +341,14 @@ ASGE::Renderer* Character::getRenderer()
 /* Set the character ID */
 void Character::setCharacterID(int index)
 {
-  config.id = "CV" + to_string(config.variant) + "I" + to_string(index);
+  config.id = "CV" + std::to_string(config.variant) + "I" + std::to_string(index);
   config.index = index;
 
   debug_text.print("SPAWNED NEW CHARACTER WITH ID " + config.id);
 }
 
 /* Get the character ID */
-string Character::getCharacterID()
+std::string Character::getCharacterID()
 {
   return config.id;
 }

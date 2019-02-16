@@ -74,10 +74,9 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
 {
   if (character_manager.canSpawn(character_type::BOSS))
   {
-    Boss new_boss;
+    Boss* new_boss = new Boss();
     character_manager.spawnCharacter(new_boss);
-    new_boss.calculateRouteToPoint(Point(300, 300));
-    // new_boss.setSpawnPosition(10, 10);
+    new_boss->calculateRouteToPoint(Point(300, 300));
   }
 }
 
@@ -155,7 +154,7 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
 
   if (click->action == ASGE::MOUSE::BUTTON_PRESSED)
   {
-    mouse_position = camera.displayedToSimulatedWorld(mouse_position);
+    mouse_position = mouse_position / ScaledSpriteArray::width_scale;
     if (test_button.checkForClick(mouse_position))
     {
       button_pressed = true;

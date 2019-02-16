@@ -11,10 +11,11 @@ class CharacterManager
   ~CharacterManager();
 
   bool canSpawn(character_type type);
-  bool spawnCharacter(Boss& new_boss);
-  bool spawnCharacter(Goon& new_goon);
-  bool spawnCharacter(LabTechnician& new_technician);
-  bool spawnCharacter(Security& new_security);
+  // bool spawnCharacter(Boss& new_boss);
+  bool spawnCharacter(Boss* new_boss);
+  bool spawnCharacter(Goon* new_goon);
+  bool spawnCharacter(LabTechnician* new_technician);
+  bool spawnCharacter(Security* new_security);
 
   void render(double delta_time);
   void update(double delta_time);
@@ -33,15 +34,15 @@ class CharacterManager
   Camera* camera = nullptr;
   ASGE::Renderer* renderer = nullptr;
 
-  Boss* boss_instances = nullptr;
+  Boss** boss_instances = nullptr;
   int boss_count = 0;
 
-  Goon* goon_instances = nullptr;
+  Goon** goon_instances = nullptr;
   int goon_count = 0;
 
-  LabTechnician* technician_instances = nullptr;
+  LabTechnician** technician_instances = nullptr;
   int technician_count = 0;
 
-  Security* security_instances = nullptr;
+  Security** security_instances = nullptr;
   int security_count = 0;
 };
