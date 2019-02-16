@@ -75,6 +75,10 @@ PathNode* PathfindingMap::findNodeAtPoint(Point point)
 
 PathfindingMap::~PathfindingMap()
 {
-  delete[] nodes;
-  nodes = nullptr;
+  // TODO: Does this crash and burn for you too? Probably needs looking at :)
+  if (number_of_nodes > 0)
+  {
+    delete[] nodes;
+    nodes = nullptr;
+  }
 }

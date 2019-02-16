@@ -24,10 +24,10 @@ class CharacterManager
 
  private:
   template<class CharacterArray>
-  void renderCharacter(CharacterArray character, int character_count, double delta_time);
+  void renderCharacter(CharacterArray character, int& character_count, double& delta_time);
 
   template<class CharacterArray>
-  void updateCharacter(CharacterArray character, int character_count, double delta_time);
+  void updateCharacter(CharacterArray character, int& character_count, double& delta_time);
 
   GameMap* game_map = nullptr;
   Camera* camera = nullptr;

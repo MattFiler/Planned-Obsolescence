@@ -172,8 +172,8 @@ void CharacterManager::render(double delta_time)
 /* Render our specific character definition */
 template<class CharacterArray>
 void CharacterManager::renderCharacter(CharacterArray character,
-                                       int character_count,
-                                       double delta_time)
+                                       int& character_count,
+                                       double& delta_time)
 {
   for (int i = 0; i < character_count; i++)
   {
@@ -196,8 +196,8 @@ void CharacterManager::update(double delta_time)
 /* Update a specific character definition */
 template<class CharacterArray>
 void CharacterManager::updateCharacter(CharacterArray character,
-                                       int character_count,
-                                       double delta_time)
+                                       int& character_count,
+                                       double& delta_time)
 {
   for (int i = 0; i < character_count; i++)
   {
