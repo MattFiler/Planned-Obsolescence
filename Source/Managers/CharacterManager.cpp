@@ -170,6 +170,7 @@ void CharacterManager::render(double delta_time)
   renderCharacter(technician_instances, technician_count, delta_time);
   renderCharacter(security_instances, security_count, delta_time);
 }
+
 /* Render our specific character definition */
 template<class CharacterArray>
 void CharacterManager::renderCharacter(CharacterArray character,
@@ -180,7 +181,7 @@ void CharacterManager::renderCharacter(CharacterArray character,
   {
     if (character[i]->isVisible())
     {
-      camera->renderSprite(character[i]->getSprite(), delta_time);
+      camera->renderSprite(character[i]->getSprite(), delta_time, render_index::CHARACTER_LAYER);
     }
   }
 }

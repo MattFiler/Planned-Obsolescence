@@ -6,7 +6,6 @@
 #include <Engine/Renderer.h>
 
 #include "../Map/Room.h"
-using namespace std;
 
 /**
  *   @brief   Loads all variables and sprites for this scene

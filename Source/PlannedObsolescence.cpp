@@ -11,8 +11,6 @@
 #include "PlannedObsolescence.h"
 #include "Scenes/Splashscreen.h"
 
-using namespace std;
-
 PlannedObsolescence::~PlannedObsolescence()
 {
   if (scene_manager)
@@ -25,8 +23,7 @@ PlannedObsolescence::~PlannedObsolescence()
 bool PlannedObsolescence::init()
 {
   // Load core configurations
-  string config_file = "game_core.json";
-  core_config = file_handler.loadConfig(config_file);
+  core_config = file_handler.loadConfig("game_core.json");
 
   // Remember debug toggle (exit if not set, config issue)
   if (core_config["debug_enabled"].is_null())
@@ -64,6 +61,11 @@ bool PlannedObsolescence::init()
   key_callback_id = inputs->addCallbackFnc(ASGE::E_KEY, &PlannedObsolescence::keyHandler, this);
   mouse_callback_id =
     inputs->addCallbackFnc(ASGE::E_MOUSE_CLICK, &PlannedObsolescence::clickHandler, this);
+
+  // Load font
+  auto font_buffer = file_handler.openAsBuffer("UI/font.ttf");
+  po_font = renderer->loadFontFromMem(
+    "VCR Mono", font_buffer.as_unsigned_char(), static_cast<unsigned int>(font_buffer.length), 40);
 
   // Initialise the scene manager
   scene_manager = new SceneManager();
@@ -152,5 +154,6 @@ void PlannedObsolescence::update(const ASGE::GameTime& game_time)
  */
 void PlannedObsolescence::render(const ASGE::GameTime& game_time)
 {
+  renderer->setFont(po_font);
   scene_manager->renderCurrentScene(game_time.delta_time.count());
 }

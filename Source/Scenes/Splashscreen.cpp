@@ -4,7 +4,6 @@
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
-using namespace std;
 
 /**
  *   @brief   Loads all variables and sprites for this scene
@@ -26,11 +25,10 @@ bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input)
   po_logo_fg = new ScaledSpriteArray(2);
   po_logo_fg->addSprite(*po_logo_fg_sprite);
 
-  po_logo_fg->setFadeColour(ASGE::COLOURS::WHITE);
-
   po_logo_fg->scale(0.6666f);
   po_logo_fg->xPos(307);
   po_logo_fg->yPos(27);
+  po_logo_fg->setColour(ASGE::COLOURS::WHITE);
 
   ASGE::Sprite* po_logo_bg_sprite = renderer->createRawSprite();
   if (!po_logo_bg_sprite->loadTexture("data/SPLASHSCREENS/PO_LogoBG.png"))
@@ -86,7 +84,7 @@ scenes Splashscreen::update(double delta_time)
     case 0:
     {
       // Fades the logo in
-      if (po_logo_fg->fadeToColour(1500, delta_time, false))
+      if (po_logo_fg->fadeIn(1500, delta_time))
       {
         switch_fade = 1;
       }
@@ -99,7 +97,7 @@ scenes Splashscreen::update(double delta_time)
       if (time_waited > 1500)
       {
         // Fades the logo out
-        if (po_logo_fg->fadeToColour(500, delta_time, true))
+        if (po_logo_fg->fadeOut(500, delta_time))
         {
           next_scene = scenes::MAIN_MENU;
         }

@@ -46,6 +46,7 @@ enum direction
 // Points of interest are hard-coded into everything. Do not modify this list!
 enum point_of_interest
 {
+  NONE_ON_THIS_TILE,
   COMPUTER,
   DOOR
 };
@@ -72,7 +73,18 @@ enum scenes
   NO_CHANGE = -1,
   SPLASHSCREEN = 0,
   MAIN_MENU = 1,
-  GAME_CORE = 2
+  GAME_CORE = 2,
+  QUIT_GAME = 3
+};
+
+// Render index
+enum render_index
+{
+  ROOM_LAYER,
+  SPECIAL_TILE_LAYER,
+  CHARACTER_LAYER,
+  UI_SPRITE_LAYER,
+  UI_TEXT_LAYER
 };
 
 // Our native resolution which we will scale from to the resolution specified in the game config.

@@ -1,24 +1,23 @@
 #ifndef PO_TILE
 #define PO_TILE
 
+#include "../ConfigParsers/TileData.h"
 #include "../Constants.h"
 #include "../FileHandler/FileHandler.h"
 #include "../Sprites/ScaledSpriteArray.h"
 #include "../Viewport/Camera.h"
 #include <Engine/Renderer.h>
 #include <Engine/Sprite.h>
-#include <json.hpp>
-using json = nlohmann::json;
 
 class Tile
 {
  public:
-  Tile(std::string tile_type, json* tile_big_config);
+  Tile(std::string tile_type, json* tile_big_config, ASGE::Renderer* renderer);
   ~Tile() = default;
 
   bool exitIsValid(direction exit);
-  bool entryIsValid(direction exit);
-  bool hasPointOfInterest(point_of_interest poi);
+  bool hasSpecificPointOfInterest(point_of_interest poi);
+  bool hasAnyPointOfInterest();
 
   void configure(float x_position, float y_position);
   float getPositionX();
@@ -29,23 +28,17 @@ class Tile
   int getIndexInRoom();
   int getIndexInMap();
 
+  std::shared_ptr<ScaledSpriteArray> getSprite();
+
   float getWidth();
   float getHeight();
 
  private:
-  // Config (to be refactored)
-  json tile_config;
-
   // Engine features
   FileHandler file_handler;
 
-  // Tile position
-  float x_pos = 0;
-  float y_pos = 0;
-
-  // Tile ID data
-  int tile_index_in_room = 0;
-  int tile_index_in_map = 0;
+  // Tile data
+  TileData tile_data;
 };
 
 #endif

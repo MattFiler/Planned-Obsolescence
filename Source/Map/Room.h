@@ -1,6 +1,7 @@
 #ifndef PO_ROOM
 #define PO_ROOM
 
+#include "../ConfigParsers/RoomData.h"
 #include "../Debug/DebugText.h"
 #include "Tile.h"
 
@@ -24,26 +25,13 @@ class Room
   float getPositionY();
 
  private:
-  // Tiles in room
-  std::vector<Tile> tiles;
-  int tile_count = 0;
-
-  // Configs (to be refactored)
-  json room_config;
+  // Configs
   json* tile_config;
+  RoomData room_data;
 
   // Engine functionality
   FileHandler file_handler;
   DebugText debug_text;
-
-  // Room sprite
-  std::shared_ptr<ScaledSpriteArray> sprite = nullptr;
-
-  // Positions
-  float base_x = 0.0f;
-  float base_y = 0.0f;
-  float room_h = 0.0f;
-  float room_w = 0.0f;
 };
 
 #endif

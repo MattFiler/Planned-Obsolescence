@@ -27,7 +27,7 @@ class Character
   void setSpawnPositionY(float y_pos);
   void setSpawnPosition(float x_pos, float y_pos);
   void setVisible(bool is_visible);
-  void setDimensions(int new_width, int new_height);
+  void setDimensions(float new_width, float new_height);
   void setSpeed(int speed);
 
   void generatePathfindingMap(GameMap* game_map);
@@ -49,7 +49,6 @@ class Character
   std::vector<PathNode*> current_route;
 
  protected:
-  void updateCoreConfig(character_type type = character_type::DEFAULT);
   void updateSprite();
   float calculateScoresOfNextDepth(PathNode* node,
                                    unsigned long long int depth,

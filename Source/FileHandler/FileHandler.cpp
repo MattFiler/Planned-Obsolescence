@@ -1,41 +1,27 @@
 #include "FileHandler.h"
-using namespace std;
 using namespace SoLoud;
 
 /* Open the file as a JSON data structure */
-json FileHandler::openAsJSON(string& filename)
+json FileHandler::openAsJSON(const std::string& filename)
 {
-  debug_text.print("ACCESSING FILE AS JSON (openAsJSON) - " + filename);
-
   // Load file into json structure and return
   json json_file;
-  auto file = ASGE::FILEIO::File();
-  if (file.open("data/" + filename))
-  {
-    auto buffer = file.read();
-    if (buffer.length > 0)
-    {
-      stringstream(string(buffer.as_char(), buffer.length)) >> json_file;
-    }
-  }
+  auto buffer = openAsBuffer(filename);
+  std::stringstream(std::string(buffer.as_char(), buffer.length)) >> json_file;
   return json_file;
 }
 
 /* Load a requested portion of a game config */
-json FileHandler::loadConfig(std::string& config, std::string request)
+json FileHandler::loadConfig(const std::string& config, const std::string& request)
 {
-  debug_text.print("ACCESSING FILE AS JSON (loadConfig) - CONFIGS/" + config);
-
   // Load our config and assign default values.
-  string config_file("CONFIGS/" + config);
-  json temp_config = openAsJSON(config_file);
-
+  json temp_config = openAsJSON("CONFIGS/" + config);
   return loadConfigFromExisting(temp_config, request, config);
 }
 
 /* Load required JSON from an existing JSON object */
 json FileHandler::loadConfigFromExisting(json temp_config,
-                                         std::string& request,
+                                         const std::string& request,
                                          const std::string& original_filename)
 {
   // TODO: This is an ugly temp fix for DEFAULT enum. Improve!
@@ -76,37 +62,34 @@ json FileHandler::loadConfigFromExisting(json temp_config,
 }
 
 /* Open the file as a buffer */
-string FileHandler::openAsString(string& filename)
+std::string FileHandler::openAsString(const std::string& filename)
 {
-  debug_text.print("ACCESSING FILE AS STRING - " + filename);
-
-  auto file = ASGE::FILEIO::File();
-  if (file.open("data/" + filename))
-  {
-    auto buffer = file.read();
-    if (buffer.length > 0)
-    {
-      return string(buffer.as_char(), buffer.length);
-    }
-  }
-  return "";
+  auto buffer = openAsBuffer(filename);
+  return std::string(buffer.as_char(), buffer.length);
 }
 
 /* Load a sound into a SoLoud WavStream */
-WavStream FileHandler::loadSound(std::string& filename)
+WavStream FileHandler::loadSound(const std::string& filename)
 {
-  debug_text.print("ACCESSING FILE FOR AUDIO - " + filename);
-
   WavStream sound;
+  auto buffer = openAsBuffer(filename);
+  sound.loadMem(buffer.as_unsigned_char(), static_cast<unsigned int>(buffer.length), false, false);
+  return sound;
+}
+
+/* Load a file as a buffer */
+ASGE::FILEIO::IOBuffer FileHandler::openAsBuffer(const std::string& filename)
+{
+  debug_text.print("ACCESSING FILE - " + filename);
+
   auto file = ASGE::FILEIO::File();
   if (file.open("/data/" + filename))
   {
     auto buffer = file.read();
     if (buffer.length > 0)
     {
-      sound.loadMem(
-        buffer.as_unsigned_char(), static_cast<unsigned int>(buffer.length), false, false);
+      return buffer;
     }
   }
-  return sound;
+  throw "An unhandled exception occurred while loading " + filename + ".";
 }
