@@ -15,7 +15,11 @@ ScaledSpriteArray::ScaledSpriteArray(unsigned int num_of_sprites, bool should_fl
  */
 ScaledSpriteArray::~ScaledSpriteArray()
 {
-  delete[] my_sprites;
+  for(int i = 0; i < number_of_sprites; i++)
+  {
+    delete my_sprites[i];
+    my_sprites[i] = nullptr;
+  }
   my_sprites = nullptr;
 }
 
