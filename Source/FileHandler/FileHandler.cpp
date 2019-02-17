@@ -12,7 +12,7 @@ json FileHandler::openAsJSON(const std::string& filename)
 }
 
 /* Load a requested portion of a game config */
-json FileHandler::loadConfig(const std::string& config, const std::string request)
+json FileHandler::loadConfig(const std::string& config, const std::string& request)
 {
   // Load our config and assign default values.
   json temp_config = openAsJSON("CONFIGS/" + config);
