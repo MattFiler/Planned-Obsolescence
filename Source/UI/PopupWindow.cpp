@@ -1,11 +1,11 @@
 #include "PopupWindow.h"
 
-PopupWindow::PopupWindow(Point position,
+PopupWindow::PopupWindow(Point pos,
                          ASGE::Renderer* rend,
                          const std::string& background_sprite_texture_path,
                          float _width,
                          float _height) :
-  UI(position, rend)
+  UI(pos, rend)
 {
   width = _width;
   height = _height;

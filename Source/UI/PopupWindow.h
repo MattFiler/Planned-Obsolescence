@@ -10,7 +10,7 @@
 class PopupWindow : public UI
 {
  public:
-  PopupWindow(Point position,
+  PopupWindow(Point pos,
               ASGE::Renderer* rend,
               const std::string& background_sprite_texture_path,
               float _width = 400,

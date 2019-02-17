@@ -10,8 +10,7 @@ Button::Button(Point pos,
 {
   width = _width;
   height = _height;
-  click_area = ClickArea(Point(position.x_pos + width, position.y_pos),
-                         Point(position.x_pos, position.y_pos + height));
+  click_area = ClickArea(position, width, height);
   sprite = createSprite(first_sprite_texture_path, second_sprite_texture_path);
   sprite->setWidth(width);
   sprite->setHeight(height);
