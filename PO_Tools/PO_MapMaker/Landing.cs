@@ -86,8 +86,10 @@ namespace PO_MapMaker
                         )
                     ),
                     new XElement("map_config",
-                        new XElement("map", new XAttribute("name", "DEFAULT"), new XAttribute("width", "1"), new XAttribute("height", "1"),
-                            new XElement("room", new XAttribute("name", "DEFAULT"))
+                        new XElement("map", new XAttribute("name", "DEFAULT"), new XAttribute("width", "5"), new XAttribute("height", "3"), new XAttribute("mandatory", "true"),
+                            new XElement("room", new XAttribute("name", "DEFAULT")), new XElement("room", new XAttribute("name", "DEFAULT")), new XElement("room", new XAttribute("name", "DEFAULT")), new XElement("room", new XAttribute("name", "DEFAULT")), new XElement("room", new XAttribute("name", "DEFAULT")),
+                            new XElement("room", new XAttribute("name", "DEFAULT")), new XElement("room", new XAttribute("name", "DEFAULT")), new XElement("room", new XAttribute("name", "DEFAULT")), new XElement("room", new XAttribute("name", "DEFAULT")), new XElement("room", new XAttribute("name", "DEFAULT")),
+                            new XElement("room", new XAttribute("name", "DEFAULT")), new XElement("room", new XAttribute("name", "DEFAULT")), new XElement("room", new XAttribute("name", "DEFAULT")), new XElement("room", new XAttribute("name", "DEFAULT")), new XElement("room", new XAttribute("name", "DEFAULT"))
                         )
                     ),
                     new XElement("character_config", 
@@ -183,7 +185,7 @@ namespace PO_MapMaker
         /* Open Map Editor */
         private void openMapEditor_Click(object sender, EventArgs e)
         {
-            MapEditor mapEditor = new MapEditor();
+            MapList mapEditor = new MapList();
             mapEditor.Show();
         }
     }

@@ -142,6 +142,9 @@
     <EmbeddedResource Include="MapEditor.resx">
       <DependentUpon>MapEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MapList.resx">
+      <DependentUpon>MapList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RoomEditor.resx">
       <DependentUpon>RoomEditor.cs</DependentUpon>
     </EmbeddedResource>

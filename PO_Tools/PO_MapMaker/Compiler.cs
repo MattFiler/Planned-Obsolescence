@@ -32,11 +32,6 @@ namespace PO_MapMaker
             //WIP
             progressBar.PerformStep();
 
-            /* map_core.json */
-            statusText.Text = "Compiling Map Data";
-            //WIP
-            progressBar.PerformStep();
-
             /* game_core.json */
             statusText.Text = "Compiling Game Configurations";
             XElement game_config = configXML.Element("config").Element("game_config");
@@ -233,6 +228,11 @@ namespace PO_MapMaker
             rooms_coreJson = rooms_coreJson.Substring(0, rooms_coreJson.Length - 1) + "}";
             JToken rooms_coreJsonParsed = JToken.Parse(rooms_coreJson);
             File.WriteAllText("data/CONFIGS/rooms_core.json", rooms_coreJsonParsed.ToString(Formatting.Indented));
+            progressBar.PerformStep();
+
+            /* map_core.json */
+            statusText.Text = "Compiling Map Data";
+            //WIP
             progressBar.PerformStep();
 
             /* Copy Everything */
