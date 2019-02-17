@@ -16,9 +16,10 @@ class ProgressBar : public UI
                        float bar_height = 20,
                        int direction = rotation::LEFT_TO_RIGHT,
                        Point _fill_padding = Point(5, 5));
-  ~ProgressBar() override = default;
+  ~ProgressBar() override;
 
   void render(double delta_time) override;
+  void moveTo(Point point) override;
 
   void addBackgroundSprite(const std::string& sprite_texture_path);
   void addFillSprite(const std::string& sprite_texture_path);

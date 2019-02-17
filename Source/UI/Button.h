@@ -16,9 +16,10 @@ class Button : public UI
          const std::string& second_sprite_texture_path,
          float _width = 100,
          float _height = 50);
-  ~Button() override = default;
+  ~Button() override;
 
   void render(double delta_time) override;
+  void moveTo(Point point) override;
   bool checkForClick(Point click_location);
   void releaseClick();
 

@@ -15,7 +15,7 @@ class UI
 
   virtual void render(double delta_time) = 0;
 
-  void moveTo(Point point) { position = point; };
+  virtual void moveTo(Point point) { position = point; };
 
  protected:
   ScaledSpriteArray* createSprite(const std::string& sprite_texture_path);

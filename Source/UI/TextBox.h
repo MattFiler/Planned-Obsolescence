@@ -16,7 +16,7 @@ class TextBox : public UI
                    float _font_size = 1,
                    ASGE::Colour colour = ASGE::COLOURS::BLACK,
                    Point _padding = Point(10, 10));
-  ~TextBox() override = default;
+  ~TextBox() override;
 
   void render(double delta_time) override;
   void setBackgroundSprite(const std::string& sprite_texture_path);

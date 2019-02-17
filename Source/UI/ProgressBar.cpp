@@ -17,6 +17,14 @@ ProgressBar::ProgressBar(Point pos,
   }
 }
 
+ProgressBar::~ProgressBar()
+{
+    delete background_sprite;
+    background_sprite = nullptr;
+    delete fill_sprite;
+    fill_sprite = nullptr;
+}
+
 /* Renders the background sprite then the fill sprite on top */
 void ProgressBar::render(double delta_time)
 {
@@ -28,6 +36,15 @@ void ProgressBar::render(double delta_time)
   {
     renderer->renderSprite(fill_sprite->returnNextSprite(delta_time));
   }
+}
+
+void ProgressBar::moveTo(Point point)
+{
+  position = point;
+  background_sprite->xPos(point.x_pos);
+  background_sprite->yPos(point.y_pos);
+  fill_sprite->xPos(point.x_pos);
+  fill_sprite->yPos(point.y_pos);
 }
 
 /* Adds a background sprite to this object, then scales and rotates it fit the progress bar */

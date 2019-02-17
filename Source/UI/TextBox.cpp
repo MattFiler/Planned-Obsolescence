@@ -17,6 +17,12 @@ TextBox::TextBox(Point pos,
   wrapText();
 }
 
+TextBox::~TextBox()
+{
+    delete background_sprite;
+    background_sprite = nullptr;
+}
+
 /* Renders this text to screen with its background (if any) */
 void TextBox::render(double delta_time)
 {

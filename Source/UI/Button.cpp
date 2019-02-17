@@ -19,9 +19,22 @@ Button::Button(Point pos,
   sprite->yPos(position.y_pos);
 }
 
+Button::~Button()
+{
+    delete sprite;
+    sprite = nullptr;
+}
+
 void Button::render(double delta_time)
 {
   renderer->renderSprite(sprite->returnNextSprite(delta_time));
+}
+
+void Button::moveTo(Point point)
+{
+  position = point;
+  sprite->xPos(point.x_pos);
+  sprite->yPos(point.y_pos);
 }
 
 /* Checks to see if a given point is within this objects click area and updates accordingly */
