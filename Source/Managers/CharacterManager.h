@@ -11,7 +11,6 @@ class CharacterManager
   ~CharacterManager();
 
   bool canSpawn(character_type type);
-  // bool spawnCharacter(Boss& new_boss);
   bool spawnCharacter(Boss* new_boss);
   bool spawnCharacter(Goon* new_goon);
   bool spawnCharacter(LabTechnician* new_technician);

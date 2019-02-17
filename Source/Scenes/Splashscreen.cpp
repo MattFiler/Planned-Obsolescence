@@ -4,7 +4,6 @@
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
-using namespace std;
 
 /**
  *   @brief   Loads all variables and sprites for this scene

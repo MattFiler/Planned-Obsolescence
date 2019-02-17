@@ -1,8 +1,7 @@
 #include "Room.h"
-using namespace std;
 
 /* Load config and tiles on instantiation */
-Room::Room(string room_name, json* room_big_config, json* tile_big_config)
+Room::Room(std::string room_name, json* room_big_config, json* tile_big_config)
 {
   // Load configs
   room_data.load(room_big_config, room_name);
@@ -61,7 +60,7 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_
 }
 
 /* Return our sprite */
-shared_ptr<ScaledSpriteArray> Room::getSprite()
+std::shared_ptr<ScaledSpriteArray> Room::getSprite()
 {
   return room_data.sprite;
 }
@@ -91,7 +90,7 @@ float Room::getPositionY()
 }
 
 /* Return all tiles in the room */
-vector<Tile> Room::getTiles()
+std::vector<Tile> Room::getTiles()
 {
   return room_data.tiles;
 }

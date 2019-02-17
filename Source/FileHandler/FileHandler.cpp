@@ -1,9 +1,8 @@
 #include "FileHandler.h"
-using namespace std;
 using namespace SoLoud;
 
 /* Open the file as a JSON data structure */
-json FileHandler::openAsJSON(const string& filename)
+json FileHandler::openAsJSON(const std::string& filename)
 {
   debug_text.print("ACCESSING FILE AS JSON - " + filename);
 
@@ -15,7 +14,7 @@ json FileHandler::openAsJSON(const string& filename)
     auto buffer = file.read();
     if (buffer.length > 0)
     {
-      stringstream(string(buffer.as_char(), buffer.length)) >> json_file;
+      std::stringstream(std::string(buffer.as_char(), buffer.length)) >> json_file;
     }
   }
   return json_file;
@@ -72,7 +71,7 @@ json FileHandler::loadConfigFromExisting(json temp_config,
 }
 
 /* Open the file as a buffer */
-string FileHandler::openAsString(const string& filename)
+std::string FileHandler::openAsString(const std::string& filename)
 {
   debug_text.print("ACCESSING FILE AS STRING - " + filename);
 
@@ -82,7 +81,7 @@ string FileHandler::openAsString(const string& filename)
     auto buffer = file.read();
     if (buffer.length > 0)
     {
-      return string(buffer.as_char(), buffer.length);
+      return std::string(buffer.as_char(), buffer.length);
     }
   }
   return "";

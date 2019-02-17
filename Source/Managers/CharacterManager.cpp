@@ -170,6 +170,7 @@ void CharacterManager::render(double delta_time)
   renderCharacter(technician_instances, technician_count, delta_time);
   renderCharacter(security_instances, security_count, delta_time);
 }
+
 /* Render our specific character definition */
 template<class CharacterArray>
 void CharacterManager::renderCharacter(CharacterArray character,

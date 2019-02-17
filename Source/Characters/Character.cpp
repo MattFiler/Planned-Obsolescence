@@ -1,5 +1,4 @@
 #include "Character.h"
-// using namespace std;
 
 /* Load config on instantiation */
 Character::Character(character_type type)

@@ -11,8 +11,6 @@
 #include "PlannedObsolescence.h"
 #include "Scenes/Splashscreen.h"
 
-using namespace std;
-
 PlannedObsolescence::~PlannedObsolescence()
 {
   if (scene_manager)

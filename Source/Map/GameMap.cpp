@@ -1,5 +1,4 @@
 #include "GameMap.h"
-using namespace std;
 
 GameMap::GameMap()
 {
@@ -10,7 +9,8 @@ GameMap::GameMap()
 void GameMap::importJSON()
 {
   // -- CONFIGURED MAP CONFIG --
-  string map_name = "TEST" + to_string((rand() % 5) + 1); // TODO: Vary this by number of configs.
+  std::string map_name = "TEST" + std::to_string((rand() % 5) + 1); // TODO: Vary this by number of
+                                                                    // configs.
   map_config = file_handler.loadConfig("map_core.json", map_name);
   debug_text.print("LOADING MAP - " + map_name);
 
@@ -54,7 +54,7 @@ void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
     }
   }
 
-  debug_text.print("MAP FINISHED GENERATING WITH TILE COUNT - " + to_string(tile_count));
+  debug_text.print("MAP FINISHED GENERATING WITH TILE COUNT - " + std::to_string(tile_count));
 }
 
 /* Render our map */
@@ -83,7 +83,7 @@ void GameMap::render(double delta_time)
 }
 
 /* Return all rooms in the current map */
-vector<Room> GameMap::getRooms()
+std::vector<Room> GameMap::getRooms()
 {
   return rooms;
 }

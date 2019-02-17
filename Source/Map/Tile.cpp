@@ -1,8 +1,7 @@
 #include "Tile.h"
-using namespace std;
 
 /* Load our config on instantiation */
-Tile::Tile(string tile_type, json* tile_big_config, ASGE::Renderer* renderer)
+Tile::Tile(std::string tile_type, json* tile_big_config, ASGE::Renderer* renderer)
 {
   // Load tile config
   tile_data.load(tile_big_config, tile_type, renderer);
@@ -77,7 +76,7 @@ void Tile::setIndexInMap(int index)
 }
 
 /* Return our sprite (only applies if we have a POI) */
-shared_ptr<ScaledSpriteArray> Tile::getSprite()
+std::shared_ptr<ScaledSpriteArray> Tile::getSprite()
 {
   if (tile_data.poi != point_of_interest::NONE_ON_THIS_TILE)
   {
