@@ -37,7 +37,7 @@ class Menu
   std::vector<std::shared_ptr<ScaledSpriteArray>> menu_sprites;
 
   FileHandler file_handler;
-  ASGE::Renderer* renderer;
+  ASGE::Renderer* renderer = nullptr;
   DebugText debug_text;
 
   int current_menu_index = 0;
