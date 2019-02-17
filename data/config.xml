@@ -282,6 +282,8 @@
     <keybinds>
       <bind key="KEY_ENTER" action="Activate" />
       <bind key="KEY_ESCAPE" action="Back" />
+      <bind key="KEY_UP" action="Menu Up" />
+      <bind key="KEY_DOWN" action="Menu Down" />
     </keybinds>
   </game_config>
 </config>

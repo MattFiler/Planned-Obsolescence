@@ -7,7 +7,9 @@
     "debug_enabled": true,
     "keybinds": {
       "Activate": 257,
-      "Back": 256
+      "Back": 256,
+      "Menu Up": 265,
+      "Menu Down": 264
     }
   }
 }

@@ -1,5 +1,6 @@
 #include "../Debug/DebugText.h"
 #include "../Sprites/ScaledSpriteArray.h"
+#include "../UI/Menu.h"
 #include "Scene.h"
 
 namespace ASGE
@@ -20,4 +21,7 @@ class MainMenu : public Scene
   void render(double delta_time) override;
   void keyHandler(const ASGE::SharedEventData data) override;
   void mouseHandler(const ASGE::SharedEventData data, Point mouse_position) override;
+
+ private:
+  Menu main_menu;
 };

@@ -97,6 +97,9 @@ add_executable(
         Source/UI/ProgressBar.cpp
         Source/UI/Button.h
         Source/UI/Button.cpp
+        Source/ConfigParsers/RoomData.h
+        Source/UI/Menu.h
+        Source/UI/Menu.cpp
         Source/UI/UI.cpp)
 
 ## library includes

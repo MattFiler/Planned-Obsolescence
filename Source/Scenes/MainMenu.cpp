@@ -4,7 +4,6 @@
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
-using namespace std;
 
 /**
  *   @brief   Loads all variables and sprites for this scene
@@ -14,7 +13,18 @@ using namespace std;
 bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
+
+  // Share the renderer
   rend = renderer;
+  main_menu.giveRenderer(renderer);
+
+  // Add menu sprites
+  main_menu.addMenuSprite("SPLASHSCREENS/PO_LogoBG.png")->scale(0.6666f);
+
+  // Add menu options
+  main_menu.addMenuItem("PLAY");
+  main_menu.addMenuItem("EXIT");
+
   return true;
 }
 
@@ -27,10 +37,19 @@ bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
 void MainMenu::keyHandler(const ASGE::SharedEventData data)
 {
   user_input.registerEvent(static_cast<const ASGE::KeyEvent*>(data.get()));
-  if (user_input.keyReleased("Activate"))
+  int menu_activated = main_menu.keyHandler(user_input);
+  if (menu_activated != -1)
   {
-    next_scene = scenes::GAME_CORE;
-    debug_text.print("ENTERING GAME");
+    if (menu_activated == 0)
+    {
+      next_scene = scenes::GAME_CORE;
+      debug_text.print("ENTERING GAME");
+    }
+    else if (menu_activated == 1)
+    {
+      next_scene = scenes::QUIT_GAME;
+      debug_text.print("EXITING GAME");
+    }
   }
 }
 
@@ -61,5 +80,5 @@ scenes MainMenu::update(double delta_time)
  */
 void MainMenu::render(double delta_time)
 {
-  rend->renderText("PRESS ENTER TO CONTINUE TO GAME", 100, 100, ASGE::COLOURS::RED);
+  main_menu.render(delta_time);
 }

@@ -24,6 +24,7 @@ class Splashscreen : public Scene
   // All sprites for this scene
   ScaledSpriteArray* po_logo_fg = nullptr;
   ScaledSpriteArray* po_logo_bg = nullptr;
+
   int switch_fade = 0;
   double time_waited = 0;
 };
