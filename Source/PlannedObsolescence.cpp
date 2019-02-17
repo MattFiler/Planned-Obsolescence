@@ -64,8 +64,10 @@ bool PlannedObsolescence::init()
 
   // Load font
   auto font_buffer = file_handler.openAsBuffer("UI/font.ttf");
-  po_font = renderer->loadFontFromMem(
-    "VCR Mono", font_buffer.as_unsigned_char(), static_cast<unsigned int>(font_buffer.length), 40);
+  po_font = renderer->loadFontFromMem("VCR Mono",
+                                      font_buffer.as_unsigned_char(),
+                                      static_cast<unsigned int>(font_buffer.length),
+                                      static_cast<int>(40 * ScaledSpriteArray::width_scale));
 
   // Initialise the scene manager
   scene_manager = new SceneManager();
