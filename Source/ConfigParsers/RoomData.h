@@ -18,8 +18,8 @@ struct RoomData
     sprite_path = room_config["sprite"];
 
     // Room tile dimensions
-    tile_w = room_config["tile_w"];
-    tile_h = room_config["tile_h"];
+    tiles_x = room_config["tile_w"];
+    tiles_y = room_config["tile_h"];
 
     // Get tile count and reserve space to load in
     tile_count = static_cast<int>(room_config["tiles"].size());
@@ -46,17 +46,17 @@ struct RoomData
   // Refresh sprite size
   void refreshSpriteSize()
   {
-    sprite->setWidth(room_w);
-    sprite->setHeight(room_h);
+    sprite->setWidth(width);
+    sprite->setHeight(height);
   }
 
   // Update our room's position
   void updatePosition(float x, float y)
   {
-    base_x = x;
-    base_y = y;
-    sprite->xPos(base_x);
-    sprite->yPos(base_y);
+    x_pos = x;
+    y_pos = y;
+    sprite->xPos(x_pos);
+    sprite->yPos(y_pos);
   }
 
   // Tiles in room
@@ -64,19 +64,21 @@ struct RoomData
   std::vector<std::string> tile_names;
   int tile_count = 0;
 
-  // Room tile dimensions
-  int tile_w = 0;
-  int tile_h = 0;
+  // Tiles per width/height
+  int tiles_x = 0;
+  int tiles_y = 0;
 
   // Room sprite
   std::string sprite_path = "";
   std::shared_ptr<ScaledSpriteArray> sprite = nullptr;
 
   // Positions
-  float base_x = 0.0f;
-  float base_y = 0.0f;
-  float room_h = 0.0f;
-  float room_w = 0.0f;
+  float x_pos = 0.0f;
+  float y_pos = 0.0f;
+
+  // Sizes
+  float height = 0.0f;
+  float width = 0.0f;
 };
 
 #endif // PLANNEDOBSOLESCENCE_ROOMDATA_H

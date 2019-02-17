@@ -19,8 +19,8 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_
   room_data.updatePosition(room_x, room_y);
 
   // Load all tiles into room at the correct position and add up room size
-  float tile_x = room_data.base_x;
-  float tile_y = room_data.base_y;
+  float tile_x = room_data.x_pos;
+  float tile_y = room_data.y_pos;
   float y_modifier = 0.0f;
   for (int i = 0; i < room_data.tile_count; i++)
   {
@@ -29,21 +29,21 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_
     room_data.tiles[i].setIndexInRoom(i);
     room_data.tiles[i].setIndexInMap(tile_offset + i);
 
-    if ((i + 1) % room_data.tile_w == 0)
+    if ((i + 1) % room_data.tiles_x == 0)
     {
-      float new_room_w = tile_x - room_data.base_x + room_data.tiles[i].getWidth();
+      float new_room_w = tile_x - room_data.x_pos + room_data.tiles[i].getWidth();
 
-      tile_x = room_data.base_x;
+      tile_x = room_data.x_pos;
       tile_y += y_modifier;
       y_modifier = 0.0f;
 
-      if (room_data.room_w < new_room_w)
+      if (room_data.width < new_room_w)
       {
-        room_data.room_w = new_room_w;
+        room_data.width = new_room_w;
       }
-      if (room_data.room_h < tile_y - room_data.base_y)
+      if (room_data.height < tile_y - room_data.y_pos)
       {
-        room_data.room_h = tile_y - room_data.base_y;
+        room_data.height = tile_y - room_data.y_pos;
       }
     }
     else
@@ -69,25 +69,25 @@ shared_ptr<ScaledSpriteArray> Room::getSprite()
 /* Return room width */
 float Room::getWidth()
 {
-  return room_data.room_w;
+  return room_data.width;
 }
 
 /* Return room height */
 float Room::getHeight()
 {
-  return room_data.room_h;
+  return room_data.height;
 }
 
 /* Return room position X */
 float Room::getPositionX()
 {
-  return room_data.base_y;
+  return room_data.y_pos;
 }
 
 /* Return room position Y */
 float Room::getPositionY()
 {
-  return room_data.base_y;
+  return room_data.y_pos;
 }
 
 /* Return all tiles in the room */
