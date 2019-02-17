@@ -1,15 +1,18 @@
 #include "Button.h"
 
-/* The sprites used to create this button can have either 1 or 2 sprites, if the latter it will
- * switch to that sprite when the button is pressed. Ensure flipbook is set to false when adding
- * the sprite */
-Button::Button(
-  Point pos, ASGE::Renderer* rend, ScaledSpriteArray* _sprite, float _width, float _height) :
-  UI(pos, rend),
-  width(_width), height(_height), sprite(_sprite)
+Button::Button(Point pos,
+               ASGE::Renderer* rend,
+               const std::string& first_sprite_texture_path,
+               const std::string& second_sprite_texture_path,
+               float _width,
+               float _height) :
+  UI(pos, rend)
 {
+  width = _width;
+  height = _height;
   click_area = ClickArea(Point(position.x_pos + width, position.y_pos),
                          Point(position.x_pos, position.y_pos + height));
+  sprite = createSprite(first_sprite_texture_path, second_sprite_texture_path);
   sprite->setWidth(width);
   sprite->setHeight(height);
   sprite->xPos(pos.x_pos);

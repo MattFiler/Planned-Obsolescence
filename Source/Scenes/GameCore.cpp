@@ -34,35 +34,13 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
                       510,
                       250,
                       1);
-  auto* sprite = new ScaledSpriteArray(1);
-  ASGE::Sprite* asge_sprite = renderer->createRawSprite();
-  asge_sprite->loadTexture("data/UI/default.png");
-  sprite->addSprite(*asge_sprite);
-  test_text.setBackgroundSprite(sprite);
+  test_text.setBackgroundSprite("data/UI/default.png");
 
   test_progress = ProgressBar(Point(100, 500), rend, 200, 20);
-  sprite = new ScaledSpriteArray(1);
-  asge_sprite = renderer->createRawSprite();
-  asge_sprite->loadTexture("data/UI/default.png");
-  sprite->addSprite(*asge_sprite);
-  test_progress.addBackgroundSprite(sprite);
-  sprite = new ScaledSpriteArray(1);
-  asge_sprite = renderer->createRawSprite();
-  asge_sprite->loadTexture("data/UI/default.png");
-  asge_sprite->colour(ASGE::COLOURS::BLUE);
-  sprite->addSprite(*asge_sprite);
-  test_progress.addFillSprite(sprite);
+  test_progress.addBackgroundSprite("data/UI/default.png");
+  test_progress.addFillSprite("data/UI/default.png");
 
-  sprite = new ScaledSpriteArray(2, false);
-  asge_sprite = renderer->createRawSprite();
-  asge_sprite->loadTexture("data/UI/default.png");
-  asge_sprite->colour(ASGE::COLOURS::WHITE);
-  sprite->addSprite(*asge_sprite);
-  asge_sprite = renderer->createRawSprite();
-  asge_sprite->loadTexture("data/UI/default.png");
-  asge_sprite->colour(ASGE::COLOURS::BLACK);
-  sprite->addSprite(*asge_sprite);
-  test_button = Button(Point(600, 500), renderer, sprite);
+  test_button = Button(Point(600, 500), renderer, "data/UI/default.png", "data/UI/default.png");
   DebugText* debug_ref = &debug_text;
   test_button.click_function = [&debug_ref] { debug_ref->print("Button pressed!"); };
 

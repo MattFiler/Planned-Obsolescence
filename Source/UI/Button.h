@@ -2,7 +2,6 @@
 #define PLANNEDOBSOLESCENCE_BUTTON_H
 
 #include "../Debug/DebugText.h"
-#include "../Sprites/ScaledSpriteArray.h"
 #include "../Viewport/ClickArea.h"
 #include "UI.h"
 #include <functional>
@@ -13,7 +12,8 @@ class Button : public UI
   Button() = default;
   Button(Point pos,
          ASGE::Renderer* rend,
-         ScaledSpriteArray* _sprite,
+         const std::string& first_sprite_texture_path,
+         const std::string& second_sprite_texture_path,
          float _width = 100,
          float _height = 50);
   ~Button() override = default;
@@ -25,9 +25,6 @@ class Button : public UI
   std::function<void()> click_function = []() {};
 
  private:
-  float width = 0;
-  float height = 0;
-
   ScaledSpriteArray* sprite = nullptr;
   ClickArea click_area;
 };

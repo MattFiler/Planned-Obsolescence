@@ -9,9 +9,11 @@ TextBox::TextBox(Point pos,
                  ASGE::Colour colour,
                  Point _padding) :
   UI(pos, rend),
-  displayed_text(text), width(_width), height(_height),
-  font_size(_font_size * ScaledSpriteArray::width_scale), font_colour(colour), padding(_padding)
+  displayed_text(text), font_size(_font_size * ScaledSpriteArray::width_scale), font_colour(colour),
+  padding(_padding)
 {
+  width = _width;
+  height = _height;
   wrapText();
 }
 
@@ -32,9 +34,9 @@ void TextBox::render(double delta_time)
 }
 
 /* Sets the sprite that will be rendered behind the text */
-void TextBox::setBackgroundSprite(ScaledSpriteArray* sprite)
+void TextBox::setBackgroundSprite(const std::string& sprite_texture_path)
 {
-  background_sprite = sprite;
+  background_sprite = createSprite(sprite_texture_path);
   background_sprite->setWidth(width);
   background_sprite->setHeight(height);
   background_sprite->xPos(position.x_pos);

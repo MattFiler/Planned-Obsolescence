@@ -2,7 +2,6 @@
 #define PLANNEDOBSOLESCENCE_PROGRESSBAR_H
 
 #include "../Constants.h"
-#include "../Sprites/ScaledSpriteArray.h"
 #include "UI.h"
 
 /* A self contained progress bar that once set only needs render to be called and progress to be
@@ -21,15 +20,13 @@ class ProgressBar : public UI
 
   void render(double delta_time) override;
 
-  void addBackgroundSprite(ScaledSpriteArray* sprite);
-  void addFillSprite(ScaledSpriteArray* sprite);
+  void addBackgroundSprite(const std::string& sprite_texture_path);
+  void addFillSprite(const std::string& sprite_texture_path);
 
   void addProgress(float delta);
   float getProgress() { return bar_progress; };
 
  private:
-  float width = 0;
-  float height = 0;
   float bar_progress = 0; // Represents a percentage between 0 and 1
   Point fill_padding = Point(0, 0);
   bool horizontal = true;
