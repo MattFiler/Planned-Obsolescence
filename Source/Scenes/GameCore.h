@@ -1,5 +1,6 @@
 #include "../Debug/DebugText.h"
 #include "../Managers/CharacterManager.h"
+#include "../Managers/UIManager.h"
 #include "../Map/GameMap.h"
 #include "../Sprites/ScaledSpriteArray.h"
 #include "../UI/Button.h"
@@ -36,10 +37,4 @@ class GameCore : public Scene
   Camera camera;
   float x_axis_input = 0;
   float y_axis_input = 0;
-
-  // TEST CODE
-  TextBox test_text;
-  ProgressBar test_progress;
-  Button test_button;
-  bool button_pressed = false;
 };

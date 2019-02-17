@@ -25,23 +25,8 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 
   spawnCharacters(renderer);
 
-  // TEST CODE
-  test_text = TextBox(Point(100, 100),
-                      renderer,
-                      "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over "
-                      "the lazy dog",
-                      510,
-                      250,
-                      1);
-  test_text.setBackgroundSprite("data/UI/default.png");
-
-  test_progress = ProgressBar(Point(100, 500), rend, 200, 20);
-  test_progress.addBackgroundSprite("data/UI/default.png");
-  test_progress.addFillSprite("data/UI/default.png");
-
-  test_button = Button(Point(600, 500), renderer, "data/UI/default.png", "data/UI/default.png");
-  DebugText* debug_ref = &debug_text;
-  test_button.click_function = [&debug_ref] { debug_ref->print("Button pressed!"); };
+  UIManager::getInstance().setRenderer(rend);
+  UIManager::getInstance().buildUI();
 
   return true;
 }
@@ -132,15 +117,11 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
   if (click->action == ASGE::MOUSE::BUTTON_PRESSED)
   {
     mouse_position = mouse_position / ScaledSpriteArray::width_scale;
-    if (test_button.checkForClick(mouse_position))
-    {
-      button_pressed = true;
-    }
+    UIManager::getInstance().checkForClick(mouse_position);
   }
-  else if (click->action == ASGE::MOUSE::BUTTON_RELEASED && button_pressed)
+  else if (click->action == ASGE::MOUSE::BUTTON_RELEASED)
   {
-    button_pressed = false;
-    test_button.releaseClick();
+    next_scene = UIManager::getInstance().releaseClick();
   }
 }
 
@@ -174,9 +155,5 @@ void GameCore::render(double delta_time)
   // Render Characters
   character_manager.render(delta_time);
 
-  // TEST CODE
-  test_text.render(delta_time);
-  test_progress.addProgress(static_cast<float>(delta_time) / 10000.0f);
-  test_progress.render(delta_time);
-  test_button.render(delta_time);
+  UIManager::getInstance().render(delta_time);
 }
