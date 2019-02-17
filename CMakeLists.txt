@@ -96,7 +96,8 @@ add_executable(
         Source/UI/ProgressBar.h
         Source/UI/ProgressBar.cpp
         Source/UI/Button.h
-        Source/UI/Button.cpp)
+        Source/UI/Button.cpp
+        Source/ConfigParsers/RoomData.h)
 
 ## library includes
 target_include_directories(
