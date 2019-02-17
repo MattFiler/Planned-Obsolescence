@@ -31,5 +31,7 @@ class PlannedObsolescence : public ASGE::OGLGame
   DebugText debug_text;
   Keybinds user_keybinds;
 
+  int po_font = 0;
+
   json core_config;
 };

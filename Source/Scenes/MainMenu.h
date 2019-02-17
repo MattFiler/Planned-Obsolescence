@@ -20,4 +20,9 @@ class MainMenu : public Scene
   void render(double delta_time) override;
   void keyHandler(const ASGE::SharedEventData data) override;
   void mouseHandler(const ASGE::SharedEventData data, Point mouse_position) override;
+
+ private:
+  ScaledSpriteArray* po_logo_bg = nullptr;
+  int current_menu_index = 0;
+  int menu_item_count = 2;
 };

@@ -28,7 +28,7 @@ bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input)
   po_logo_fg->scale(0.6666f);
   po_logo_fg->xPos(307);
   po_logo_fg->yPos(27);
-    po_logo_fg->setColour(ASGE::COLOURS::WHITE);
+  po_logo_fg->setColour(ASGE::COLOURS::WHITE);
 
   ASGE::Sprite* po_logo_bg_sprite = renderer->createRawSprite();
   if (!po_logo_bg_sprite->loadTexture("data/SPLASHSCREENS/PO_LogoBG.png"))

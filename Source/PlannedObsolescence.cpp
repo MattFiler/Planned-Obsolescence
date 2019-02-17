@@ -62,6 +62,11 @@ bool PlannedObsolescence::init()
   mouse_callback_id =
     inputs->addCallbackFnc(ASGE::E_MOUSE_CLICK, &PlannedObsolescence::clickHandler, this);
 
+  // Load font
+  auto font_buffer = file_handler.openAsBuffer("UI/font.ttf");
+  po_font = renderer->loadFontFromMem(
+    "VCR Mono", font_buffer.as_unsigned_char(), static_cast<unsigned int>(font_buffer.length), 40);
+
   // Initialise the scene manager
   scene_manager = new SceneManager();
 
@@ -149,5 +154,6 @@ void PlannedObsolescence::update(const ASGE::GameTime& game_time)
  */
 void PlannedObsolescence::render(const ASGE::GameTime& game_time)
 {
+  renderer->setFont(po_font);
   scene_manager->renderCurrentScene(game_time.delta_time.count());
 }

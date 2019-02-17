@@ -4,19 +4,10 @@ using namespace SoLoud;
 /* Open the file as a JSON data structure */
 json FileHandler::openAsJSON(const std::string& filename)
 {
-  debug_text.print("ACCESSING FILE AS JSON - " + filename);
-
   // Load file into json structure and return
   json json_file;
-  auto file = ASGE::FILEIO::File();
-  if (file.open("data/" + filename))
-  {
-    auto buffer = file.read();
-    if (buffer.length > 0)
-    {
-      std::stringstream(std::string(buffer.as_char(), buffer.length)) >> json_file;
-    }
-  }
+  auto buffer = openAsBuffer(filename);
+  std::stringstream(std::string(buffer.as_char(), buffer.length)) >> json_file;
   return json_file;
 }
 
@@ -73,35 +64,32 @@ json FileHandler::loadConfigFromExisting(json temp_config,
 /* Open the file as a buffer */
 std::string FileHandler::openAsString(const std::string& filename)
 {
-  debug_text.print("ACCESSING FILE AS STRING - " + filename);
-
-  auto file = ASGE::FILEIO::File();
-  if (file.open("data/" + filename))
-  {
-    auto buffer = file.read();
-    if (buffer.length > 0)
-    {
-      return std::string(buffer.as_char(), buffer.length);
-    }
-  }
-  return "";
+  auto buffer = openAsBuffer(filename);
+  return std::string(buffer.as_char(), buffer.length);
 }
 
 /* Load a sound into a SoLoud WavStream */
 WavStream FileHandler::loadSound(const std::string& filename)
 {
-  debug_text.print("ACCESSING FILE FOR AUDIO - " + filename);
-
   WavStream sound;
+  auto buffer = openAsBuffer(filename);
+  sound.loadMem(buffer.as_unsigned_char(), static_cast<unsigned int>(buffer.length), false, false);
+  return sound;
+}
+
+/* Load a file as a buffer */
+ASGE::FILEIO::IOBuffer FileHandler::openAsBuffer(const std::string& filename)
+{
+  debug_text.print("ACCESSING FILE - " + filename);
+
   auto file = ASGE::FILEIO::File();
   if (file.open("/data/" + filename))
   {
     auto buffer = file.read();
     if (buffer.length > 0)
     {
-      sound.loadMem(
-        buffer.as_unsigned_char(), static_cast<unsigned int>(buffer.length), false, false);
+      return buffer;
     }
   }
-  return sound;
+  throw "An unhandled exception occurred while loading " + filename + ".";
 }

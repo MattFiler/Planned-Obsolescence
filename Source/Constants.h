@@ -73,7 +73,8 @@ enum scenes
   NO_CHANGE = -1,
   SPLASHSCREEN = 0,
   MAIN_MENU = 1,
-  GAME_CORE = 2
+  GAME_CORE = 2,
+  QUIT_GAME = 3
 };
 
 // Render index

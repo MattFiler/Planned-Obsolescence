@@ -22,6 +22,8 @@ class FileHandler
   std::string openAsString(const std::string& filename);
   SoLoud::WavStream loadSound(const std::string& filename);
 
+  ASGE::FILEIO::IOBuffer openAsBuffer(const std::string& filename);
+
  private:
   DebugText debug_text;
 };

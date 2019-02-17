@@ -219,10 +219,11 @@ void ScaledSpriteArray::setFadeColour(ASGE::Colour col)
   fade_colour = col;
 }
 
-//Set colour straight away
+// Set colour straight away
 void ScaledSpriteArray::setColour(ASGE::Colour col)
 {
-  for (int i = 0; i < number_of_sprites; i++) {
+  for (int i = 0; i < number_of_sprites; i++)
+  {
     my_sprites[i]->colour(col);
   }
 }

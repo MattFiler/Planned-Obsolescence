@@ -14,6 +14,20 @@ bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
+
+  ASGE::Sprite* po_logo_bg_sprite = renderer->createRawSprite();
+  if (!po_logo_bg_sprite->loadTexture("data/SPLASHSCREENS/PO_LogoBG.png"))
+  {
+    return false;
+  }
+
+  po_logo_bg = new ScaledSpriteArray(2);
+  po_logo_bg->addSprite(*po_logo_bg_sprite);
+
+  po_logo_bg->scale(0.6666f);
+  po_logo_bg->xPos(0);
+  po_logo_bg->yPos(0);
+
   return true;
 }
 
@@ -28,8 +42,30 @@ void MainMenu::keyHandler(const ASGE::SharedEventData data)
   user_input.registerEvent(static_cast<const ASGE::KeyEvent*>(data.get()));
   if (user_input.keyReleased("Activate"))
   {
-    next_scene = scenes::GAME_CORE;
-    debug_text.print("ENTERING GAME");
+    if (current_menu_index == 0)
+    {
+      next_scene = scenes::GAME_CORE;
+      debug_text.print("ENTERING GAME");
+    }
+    else if (current_menu_index == 1)
+    {
+      next_scene = scenes::QUIT_GAME;
+      debug_text.print("EXITING GAME");
+    }
+  }
+  else if (user_input.keyReleased("Menu Up"))
+  {
+    if (current_menu_index > 0)
+    {
+      current_menu_index--;
+    }
+  }
+  else if (user_input.keyReleased("Menu Down"))
+  {
+    if (current_menu_index < menu_item_count - 1)
+    {
+      current_menu_index++;
+    }
   }
 }
 
@@ -60,5 +96,16 @@ scenes MainMenu::update(double delta_time)
  */
 void MainMenu::render(double delta_time)
 {
-  rend->renderText("PRESS ENTER TO CONTINUE TO GAME", 100, 100, ASGE::COLOURS::RED);
+  // Menu background
+  rend->renderSprite(po_logo_bg->returnNextSprite(delta_time));
+
+  // Menu options
+  rend->renderText("PLAY",
+                   100,
+                   static_cast<int>((SCREEN_HEIGHT * po_logo_bg->width_scale / 2) - 100),
+                   (current_menu_index == 0) ? ASGE::COLOURS::GREY : ASGE::COLOURS::WHITE);
+  rend->renderText("EXIT",
+                   100,
+                   static_cast<int>((SCREEN_HEIGHT * po_logo_bg->width_scale / 2) + 100),
+                   (current_menu_index == 1) ? ASGE::COLOURS::GREY : ASGE::COLOURS::WHITE);
 }
