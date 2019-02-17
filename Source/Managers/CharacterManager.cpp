@@ -180,7 +180,7 @@ void CharacterManager::renderCharacter(CharacterArray character,
   {
     if (character[i]->isVisible())
     {
-      camera->renderSprite(character[i]->getSprite(), delta_time);
+      camera->renderSprite(character[i]->getSprite(), delta_time, render_index::CHARACTER_LAYER);
     }
   }
 }

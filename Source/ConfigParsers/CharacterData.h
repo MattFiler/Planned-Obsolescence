@@ -52,8 +52,8 @@ struct CharacterData
   std::string id = "";
   int index = 0;
 
-  int width = 0;
-  int height = 0;
+  float width = 0;
+  float height = 0;
   bool is_visible = false;
 
   Point spawn_pos = Point(0, 0);

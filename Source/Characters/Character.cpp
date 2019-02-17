@@ -295,10 +295,12 @@ void Character::setVisible(bool is_visible)
 }
 
 /* Adjust dimensions */
-void Character::setDimensions(int new_width, int new_height)
+void Character::setDimensions(float new_width, float new_height)
 {
   config.width = new_width;
   config.height = new_height;
+  sprite->setWidth(config.width);
+  sprite->setHeight(config.height);
 }
 
 /* Adjust movement speed */

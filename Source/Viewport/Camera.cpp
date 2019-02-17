@@ -11,13 +11,13 @@ ASGE::Renderer* Camera::getRenderer()
 }
 
 /* Renders the passed sprite with the camera offset applied */
-void Camera::renderSprite(ScaledSpriteArray* sprite, double delta_time)
+void Camera::renderSprite(ScaledSpriteArray* sprite, double delta_time, render_index index)
 {
   // Add the camera offset to the sprite
   sprite->addX(position.x_pos);
   sprite->addY(position.y_pos);
   // Render ths sprite
-  renderer->renderSprite(sprite->returnNextSprite(delta_time));
+  renderer->renderSprite(sprite->returnNextSprite(delta_time), static_cast<float>(index));
   // Restore the sprite to the previous position
   sprite->addX(-position.x_pos);
   sprite->addY(-position.y_pos);

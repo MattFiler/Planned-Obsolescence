@@ -66,18 +66,18 @@ void GameMap::render(double delta_time)
         room_to_render.getPositionY() < (SCREEN_HEIGHT * dynamic_sprite.width_scale))
     {
       // Render room
-      game_camera->renderSprite(room_to_render.getSprite().get(), delta_time);
+      game_camera->renderSprite(
+        room_to_render.getSprite().get(), delta_time, render_index::ROOM_LAYER);
 
-      /*
       // Check for any POIs to render
       for (Tile& tile_to_render : room_to_render.getTiles())
       {
         if (tile_to_render.hasAnyPointOfInterest())
         {
-          game_camera->renderSprite(tile_to_render.getSprite().get(), delta_time);
+          game_camera->renderSprite(
+            tile_to_render.getSprite().get(), delta_time, render_index::SPECIAL_TILE_LAYER);
         }
       }
-       */
     }
   }
 }

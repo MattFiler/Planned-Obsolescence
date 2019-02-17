@@ -46,8 +46,8 @@ struct TileData
     }
 
     // POIs
-    for (json::iterator tile_data = tile_config["available_exits"].begin();
-         tile_data != tile_config["available_exits"].end();
+    for (json::iterator tile_data = tile_config["has_point_of_interest"].begin();
+         tile_data != tile_config["has_point_of_interest"].end();
          ++tile_data)
     {
       if (tile_data.key() == "door" && tile_data.value() == true)
@@ -69,13 +69,22 @@ struct TileData
       sprite = std::make_shared<ScaledSpriteArray>(1);
       sprite->addSprite(*tile_sprite);
 
-      // Set position
+      // Set dimensions
+      sprite->setWidth(width);
+      sprite->setHeight(height);
+    }
+  }
+
+  // Update our tile position (and sprite if we have one)
+  void updatePosition(float x, float y)
+  {
+    x_pos = x;
+    y_pos = y;
+
+    if (poi != point_of_interest::NONE_ON_THIS_TILE)
+    {
       sprite->xPos(x_pos);
       sprite->yPos(y_pos);
-
-      // Set dimensions
-      // sprite->setWidth(width);
-      // sprite->setHeight(height);
     }
   }
 

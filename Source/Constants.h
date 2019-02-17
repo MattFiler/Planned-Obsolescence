@@ -76,6 +76,15 @@ enum scenes
   GAME_CORE = 2
 };
 
+// Render index
+enum render_index
+{
+  ROOM_LAYER,
+  SPECIAL_TILE_LAYER,
+  CHARACTER_LAYER,
+  UI_LAYER
+};
+
 // Our native resolution which we will scale from to the resolution specified in the game config.
 const float SCREEN_WIDTH = 1280;
 const float SCREEN_HEIGHT = 720;

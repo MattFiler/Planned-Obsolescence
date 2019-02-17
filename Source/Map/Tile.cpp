@@ -37,8 +37,7 @@ bool Tile::hasAnyPointOfInterest()
 /* Configure our sprite and set position */
 void Tile::configure(float x_position, float y_position)
 {
-  tile_data.x_pos = x_position;
-  tile_data.y_pos = y_position;
+  tile_data.updatePosition(x_position, y_position);
 }
 
 /* Return the X position of the tile */
