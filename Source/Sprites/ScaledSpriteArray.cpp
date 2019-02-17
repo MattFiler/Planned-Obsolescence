@@ -219,6 +219,14 @@ void ScaledSpriteArray::setFadeColour(ASGE::Colour col)
   fade_colour = col;
 }
 
+//Set colour straight away
+void ScaledSpriteArray::setColour(ASGE::Colour col)
+{
+  for (int i = 0; i < number_of_sprites; i++) {
+    my_sprites[i]->colour(col);
+  }
+}
+
 /**
  *   @brief   Fades sprite to target colour
  *   @details This function applies a tint to the sprite each time it is called
@@ -281,55 +289,54 @@ bool ScaledSpriteArray::fadeToColour(double time_to_fade, double delta_time, boo
   return false;
 }
 
-/**
- *   @brief   Fades sprite's opacity
- *   @details This function applies a tint to the sprite each time it is called
- *            making it fully translucent after time_to_fade ms
- *   @param   time_to_fade is the time it will take to become fully translucent
- *   @param   delta_time is the time since last tick
- *   @param   inverse_fade will remove opacity instead
- */
-bool ScaledSpriteArray::fadeToOpacity(double time_to_fade, double delta_time, bool inverse_fade)
+// Fade in
+bool ScaledSpriteArray::fadeIn(double time_to_fade, double delta_time)
 {
-  if (inverse_fade)
+  if (opacity_fade_percent == 1)
   {
-    if (opacity_fade_percent == 1)
-    {
-      return true;
-    }
-    if (time_to_fade == 0)
-    {
-      opacity_fade_percent = 1;
-    }
-    else
-    {
-      // Calculate the amount of fade to be applied based on time passed
-      opacity_fade_percent += static_cast<float>(delta_time) / static_cast<float>(time_to_fade);
-    }
-    if (opacity_fade_percent >= 1)
-    {
-      opacity_fade_percent = 1;
-    }
+    return true;
+  }
+  if (time_to_fade == 0)
+  {
+    opacity_fade_percent = 1;
   }
   else
   {
-    if (opacity_fade_percent == 0)
-    {
-      return true;
-    }
-    if (time_to_fade == 0)
-    {
-      opacity_fade_percent = 1;
-    }
-    else
-    {
-      // Calculate the amount of fade to be applied based on time passed
-      opacity_fade_percent -= static_cast<float>(delta_time) / static_cast<float>(time_to_fade);
-    }
-    if (opacity_fade_percent <= 0)
-    {
-      opacity_fade_percent = 0;
-    }
+    // Calculate the amount of fade to be applied based on time passed
+    opacity_fade_percent += static_cast<float>(delta_time) / static_cast<float>(time_to_fade);
+  }
+  if (opacity_fade_percent >= 1)
+  {
+    opacity_fade_percent = 1;
+  }
+
+  for (int i = 0; i < number_of_sprites; i++)
+  {
+    my_sprites[i]->opacity(opacity_fade_percent);
+  }
+
+  return false;
+}
+
+// Fade out
+bool ScaledSpriteArray::fadeOut(double time_to_fade, double delta_time)
+{
+  if (opacity_fade_percent == 0)
+  {
+    return true;
+  }
+  if (time_to_fade == 0)
+  {
+    opacity_fade_percent = 1;
+  }
+  else
+  {
+    // Calculate the amount of fade to be applied based on time passed
+    opacity_fade_percent -= static_cast<float>(delta_time) / static_cast<float>(time_to_fade);
+  }
+  if (opacity_fade_percent <= 0)
+  {
+    opacity_fade_percent = 0;
   }
 
   for (int i = 0; i < number_of_sprites; i++)

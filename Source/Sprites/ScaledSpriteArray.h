@@ -20,7 +20,6 @@ class ScaledSpriteArray
   explicit ScaledSpriteArray(unsigned int num_of_sprites = 1, bool should_flipbook = true);
   ~ScaledSpriteArray();
 
-  // TODO: Does your memory shallow copy correctly?
   ScaledSpriteArray(const ScaledSpriteArray&) = delete;
   ScaledSpriteArray& operator=(const ScaledSpriteArray&) = delete;
 
@@ -41,6 +40,8 @@ class ScaledSpriteArray
   void setFadeColour(ASGE::Colour col);
   void setCurrentSprite(int new_sprite_index);
 
+  void setColour(ASGE::Colour col);
+
   void setSpriteSheet(float sprite_sheet_width,
                       float sprite_sheet_height,
                       float start_x_pos = 0,
@@ -48,8 +49,10 @@ class ScaledSpriteArray
 
   void addSprite(ASGE::Sprite& new_sprite);
   bool fadeToColour(double time_to_fade, double delta_time, bool inverse_fade = false);
-  bool fadeToOpacity(double time_to_fade, double delta_time, bool inverse_fade = false);
   ASGE::Sprite& returnNextSprite(double delta_time);
+
+  bool fadeIn(double time_to_fade, double delta_time);
+  bool fadeOut(double time_to_fade, double delta_time);
 
   static float width_scale; /**< The scale difference between actual and base width */
 
@@ -60,7 +63,7 @@ class ScaledSpriteArray
   float sprite_height = 50;
   float scale_factor = 1;
   float colour_fade_percent = 0;
-  float opacity_fade_percent = 1;
+  float opacity_fade_percent = 0;
   float rotation = 0;
   double time_passed = 0;
   double time_between_frames = 0;
