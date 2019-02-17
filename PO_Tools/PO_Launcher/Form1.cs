@@ -94,15 +94,22 @@ namespace PO_Launcher
                     res_config.Value = Convert.ToInt32(new_resolution[1]);
                 }
             }
-
-            //Save config back
-            zip_file.UpdateEntry("CONFIGS/game_core.json", game_config_json.ToString(Formatting.None));
-            zip_file.Save();
-
-            //Launch game if requested (must do this AFTER saving config!)
-            if (launch_game)
+            
+            try
             {
-                Process.Start("PlannedObsolescence.exe", "PO_Launcher_Auth");
+                //Save config back
+                zip_file.UpdateEntry("CONFIGS/game_core.json", game_config_json.ToString(Formatting.None));
+                zip_file.Save();
+
+                //Launch game if requested (must do this AFTER saving config!)
+                if (launch_game)
+                {
+                    Process.Start("PlannedObsolescence.exe", "PO_Launcher_Auth");
+                }
+            }
+            catch {
+                //Don't crash when a file conflict occurrs!
+                MessageBox.Show("Please make sure that this is the only launcher instance, or that the game isn't running.", "An error occurred!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
