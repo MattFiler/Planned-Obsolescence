@@ -26,7 +26,9 @@ class Menu
   void setActiveTextColour(ASGE::Colour colour);
   void setInactiveTextColour(ASGE::Colour colour);
 
-  int keyHandler(Keybinds& user_input);
+  bool selectedItemWas(const std::string& item_text);
+
+  bool itemWasSelected(Keybinds& user_input);
   void render(double delta_time);
 
  private:

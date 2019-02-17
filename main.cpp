@@ -32,8 +32,6 @@ int main(int argc, char* argv[])
     }
 
     game.run();
-
-    std::cout << "\n Exiting Game!" << std::endl;
   }
   else
   {

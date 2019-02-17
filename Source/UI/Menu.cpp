@@ -4,7 +4,7 @@
 Menu::Menu()
 {
   ScaledSpriteArray sprite_render_data;
-  middle_of_window = static_cast<int>((SCREEN_HEIGHT * sprite_render_data.width_scale / 2) + 14);
+  middle_of_window = static_cast<int>((SCREEN_HEIGHT * sprite_render_data.width_scale / 2) + 15);
 }
 
 /* Grab renderer */
@@ -71,12 +71,22 @@ void Menu::realignMenuTextItems()
   }
 }
 
-/* Key Handler */
-int Menu::keyHandler(Keybinds& user_input)
+/* Checks to see if the given menu item was selected (identified by its text) */
+bool Menu::selectedItemWas(const std::string &item_text)
+{
+  if (menu_text_items[current_menu_index] == item_text)
+  {
+    return true;
+  }
+  return false;
+}
+
+/* Key handler - returns true if the active option was selected */
+bool Menu::itemWasSelected(Keybinds &user_input)
 {
   if (user_input.keyReleased("Activate"))
   {
-    return current_menu_index;
+    return true;
   }
   else if (user_input.keyReleased("Menu Up"))
   {
@@ -92,7 +102,7 @@ int Menu::keyHandler(Keybinds& user_input)
       current_menu_index++;
     }
   }
-  return -1;
+  return false;
 }
 
 /* Render */

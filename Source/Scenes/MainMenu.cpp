@@ -37,15 +37,14 @@ bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
 void MainMenu::keyHandler(const ASGE::SharedEventData data)
 {
   user_input.registerEvent(static_cast<const ASGE::KeyEvent*>(data.get()));
-  int menu_activated = main_menu.keyHandler(user_input);
-  if (menu_activated != -1)
+  if (main_menu.itemWasSelected(user_input))
   {
-    if (menu_activated == 0)
+    if (main_menu.selectedItemWas("PLAY"))
     {
       next_scene = scenes::GAME_CORE;
       debug_text.print("ENTERING GAME");
     }
-    else if (menu_activated == 1)
+    else if (main_menu.selectedItemWas("EXIT"))
     {
       next_scene = scenes::QUIT_GAME;
       debug_text.print("EXITING GAME");

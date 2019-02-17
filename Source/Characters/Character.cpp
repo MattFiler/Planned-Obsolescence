@@ -128,8 +128,8 @@ bool Character::calculateRouteToPoint(Point point)
     }
   }
 
-  debug_text.print("PATH FOUND AFTER: " + std::to_string(iteration_count) + " ITERATIONS");
   // Finally loop through the route to find where it ends
+  debug_text.print("PATH FOUND AFTER " + std::to_string(iteration_count) + " ITERATIONS");
   for (unsigned long long i = 0; i < current_route.size(); i++)
   {
     if (current_route[i]->position == point)

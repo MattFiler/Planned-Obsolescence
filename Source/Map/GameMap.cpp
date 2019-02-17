@@ -12,7 +12,7 @@ void GameMap::importJSON()
   std::string map_name = "TEST" + std::to_string((rand() % 5) + 1); // TODO: Vary this by number of
                                                                     // configs.
   map_config = file_handler.loadConfig("map_core.json", map_name);
-  debug_text.print("LOADING MAP - " + map_name);
+  debug_text.print("LOADING MAP " + map_name);
 
   // -- BASIC ROOM CONFIG --
   room_config = file_handler.openAsJSON("CONFIGS/rooms_core.json");
@@ -54,7 +54,7 @@ void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
     }
   }
 
-  debug_text.print("MAP FINISHED GENERATING WITH TILE COUNT - " + std::to_string(tile_count));
+  debug_text.print("MAP FINISHED GENERATING WITH " + std::to_string(tile_count) + " TILES");
 }
 
 /* Render our map */
