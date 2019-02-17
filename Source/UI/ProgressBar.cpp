@@ -43,7 +43,7 @@ void ProgressBar::addBackgroundSprite(const std::string& sprite_texture_path)
 /* Adds a fill sprite to this object, then scales and rotates it fit the progress bar */
 void ProgressBar::addFillSprite(const std::string& sprite_texture_path)
 {
-  background_sprite = createSprite(sprite_texture_path);
+  fill_sprite = createSprite(sprite_texture_path);
   fill_sprite->xPos(position.x_pos + (fill_padding.x_pos / 2));
   fill_sprite->yPos(position.y_pos + (fill_padding.y_pos / 2));
   if (horizontal)
