@@ -83,7 +83,8 @@ enum render_index
   ROOM_LAYER,
   SPECIAL_TILE_LAYER,
   CHARACTER_LAYER,
-  UI_LAYER
+  UI_SPRITE_LAYER,
+  UI_TEXT_LAYER
 };
 
 // Our native resolution which we will scale from to the resolution specified in the game config.

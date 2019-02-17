@@ -1,5 +1,6 @@
 #include "../Debug/DebugText.h"
 #include "../Sprites/ScaledSpriteArray.h"
+#include "../UI/Menu.h"
 #include "Scene.h"
 
 namespace ASGE
@@ -22,7 +23,5 @@ class MainMenu : public Scene
   void mouseHandler(const ASGE::SharedEventData data, Point mouse_position) override;
 
  private:
-  ScaledSpriteArray* po_logo_bg = nullptr;
-  int current_menu_index = 0;
-  int menu_item_count = 2;
+  Menu main_menu;
 };
