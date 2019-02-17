@@ -19,10 +19,10 @@ ProgressBar::ProgressBar(Point pos,
 
 ProgressBar::~ProgressBar()
 {
-    delete background_sprite;
-    background_sprite = nullptr;
-    delete fill_sprite;
-    fill_sprite = nullptr;
+  delete background_sprite;
+  background_sprite = nullptr;
+  delete fill_sprite;
+  fill_sprite = nullptr;
 }
 
 /* Renders the background sprite then the fill sprite on top */

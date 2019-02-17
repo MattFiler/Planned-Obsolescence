@@ -21,8 +21,8 @@ Button::Button(Point pos,
 
 Button::~Button()
 {
-    delete sprite;
-    sprite = nullptr;
+  delete sprite;
+  sprite = nullptr;
 }
 
 void Button::render(double delta_time)

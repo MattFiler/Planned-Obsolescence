@@ -19,8 +19,8 @@ TextBox::TextBox(Point pos,
 
 TextBox::~TextBox()
 {
-    delete background_sprite;
-    background_sprite = nullptr;
+  delete background_sprite;
+  background_sprite = nullptr;
 }
 
 /* Renders this text to screen with its background (if any) */
