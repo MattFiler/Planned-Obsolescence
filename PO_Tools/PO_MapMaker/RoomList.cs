@@ -63,7 +63,6 @@ namespace PO_MapMaker
         /* Edit Selected Room */
         private void editRoom_Click(object sender, EventArgs e)
         {
-            /*
             if (listRooms.SelectedIndex != -1)
             {
                 RoomEditor roomEditor = new RoomEditor(getRoomNodeByName(listRooms.Items[listRooms.SelectedIndex].ToString()));
@@ -74,8 +73,6 @@ namespace PO_MapMaker
             {
                 MessageBox.Show("Please select a room to edit.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            */
-            MessageBox.Show("This functionality is coming soon.", "COMING SOON.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         /* Delete Selected Room */

@@ -13,8 +13,10 @@ namespace PO_MapMaker
 {
     public partial class RoomEditor : Form
     {
-        public RoomEditor()
+        XElement importedRoom;
+        public RoomEditor(XElement tileNode = null)
         {
+            importedRoom = tileNode;
             InitializeComponent();
         }
 
@@ -57,6 +59,48 @@ namespace PO_MapMaker
             defaultSizes.Checked = true;
 
             refreshGUI();
+
+            //--
+
+            /* LOADING AN EXISTING ROOM INTO THE EDITOR? */
+            if (importedRoom != null)
+            {
+                //Set description
+                roomName.Text = importedRoom.Attribute("name").Value;
+
+                //Select correct tileset
+                foreach (XElement element in configXML.Element("config").Element("tile_config").Element("tiles").Descendants("tile"))
+                {
+                    if (element.Attribute("name").Value == importedRoom.Element("tiles").Elements("tile").First().Attribute("name").Value)
+                    {
+                        tileSet.SelectedItem = element.Attribute("set").Value;
+                    }
+                }
+
+                //Set correct width/height (or tick default if that is the case)
+                int new_room_width = Convert.ToInt32(importedRoom.Element("tiles").Attribute("width").Value);
+                int new_room_height = Convert.ToInt32(importedRoom.Element("tiles").Attribute("height").Value);
+                if (new_room_height == roomHeight.Value && new_room_width == roomWidth.Value)
+                {
+                    if (importedRoom.Attribute("mandatory").Value != "true")
+                    {
+                        defaultSizes.Checked = true;
+                        roomHeight.ReadOnly = true;
+                        roomWidth.ReadOnly = true;
+                    }
+                }
+                else
+                {
+                    defaultSizes.Checked = false;
+                    roomHeight.ReadOnly = false;
+                    roomWidth.ReadOnly = false;
+                    roomHeight.Value = new_room_height;
+                    roomWidth.Value = new_room_width;
+                }
+
+                //Load in the imported data
+                refreshRoom.PerformClick();
+            }
         }
 
         /* Make the Editor GUI */
@@ -86,6 +130,19 @@ namespace PO_MapMaker
                 height = Convert.ToInt32(roomHeight.Text);
             }
             string selectedTileSet = tileSet.Items[tileSet.SelectedIndex].ToString();
+
+            //Update default preview image
+            foreach (XElement tile in configXML.Element("config").Element("tile_config").Element("tiles").Elements("tile"))
+            {
+                if (tile.Attribute("set").Value == selectedTileSet)
+                {
+                    using (var tempPreviewImg = new Bitmap(tile.Attribute("sprite").Value))
+                    {
+                        defaultImage = new Bitmap(tempPreviewImg);
+                    }
+                    break;
+                }
+            }
 
             //Remove existing inputs from form
             foreach (ComboBox dropdown in comboBoxes)
@@ -165,6 +222,21 @@ namespace PO_MapMaker
             {
                 dropdown.SelectedIndex = 0; //Should really never fail this, but it's possible.
             }
+            if (importedRoom != null)
+            {
+                //Load imported settings
+                dropdown.SelectedItem = importedRoom.Element("tiles").Elements("tile").ElementAt(index).Attribute("name").Value;
+                foreach (XElement tile_data in configXML.Element("config").Element("tile_config").Element("tiles").Descendants("tile"))
+                {
+                    if (tile_data.Attribute("name").Value == dropdown.SelectedItem.ToString())
+                    {
+                        using (var tempPreviewImg = new Bitmap(tile_data.Attribute("sprite").Value))
+                        {
+                            defaultImage = new Bitmap(tempPreviewImg);
+                        }
+                    }
+                }
+            }
             dropdown.SelectedIndexChanged += new EventHandler(updateTilePreview);
             comboBoxes.Add(dropdown);
 
@@ -234,10 +306,25 @@ namespace PO_MapMaker
                 {
                     if (element.Attribute("name").Value == roomName.Text)
                     {
-                        hasNameConflict = true;
+                        if (importedRoom != null)
+                        {
+                            if (element.Attribute("mandatory").Value == "true" && (roomName.Text != "DEFAULT" || tileSet.SelectedItem.ToString() != "DEFAULT"))
+                            {
+                                //Default (mandatory) configs must keep these settings... throw a conflict.
+                                hasNameConflict = true;
+                            }
+                            //We are editing (replacing) an old roomset - delete it first!
+                            element.Remove();
+                        }
+                        else
+                        {
+                            //We are conflicting with an existing roomset - stop!
+                            hasNameConflict = true;
+                        }
+                        break;
                     }
                 }
-
+            
                 if (!hasNameConflict)
                 {
                     //Save
@@ -249,12 +336,26 @@ namespace PO_MapMaker
                     configXML.Element("config").Element("room_config").Element("rooms").Add(roomTileList);
                     configXML.Save("data/config.xml");
 
-                    MessageBox.Show("Room created!", "Created.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (importedRoom != null)
+                    {
+                        MessageBox.Show("Room edited!", "Created.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Room created!", "Created.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("A room with this description already exists.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (importedRoom != null)
+                    {
+                        MessageBox.Show("Default configurations must keep the same name and tileset.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("A room with this description already exists.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else

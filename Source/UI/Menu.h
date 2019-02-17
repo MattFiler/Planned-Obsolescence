@@ -20,20 +20,22 @@ class Menu
   void addMenuItem(const std::string& item_text);
   std::shared_ptr<ScaledSpriteArray> addMenuSprite(const std::string& filepath);
 
-  void setMenuTextSpacing(int offset);
-  void setLeftMargin(int offset);
+  void setMenuTextSpacing(float offset);
+  void setLeftMargin(float offset);
 
   void setActiveTextColour(ASGE::Colour colour);
   void setInactiveTextColour(ASGE::Colour colour);
 
-  int keyHandler(Keybinds& user_input);
+  bool selectedItemWas(const std::string& item_text);
+
+  bool itemWasSelected(Keybinds& user_input);
   void render(double delta_time);
 
  private:
   void realignMenuTextItems();
 
   std::vector<std::string> menu_text_items;
-  std::vector<int> menu_text_offsets;
+  std::vector<float> menu_text_offsets;
   std::vector<std::shared_ptr<ScaledSpriteArray>> menu_sprites;
 
   FileHandler file_handler;
@@ -42,9 +44,9 @@ class Menu
 
   int current_menu_index = 0;
 
-  int middle_of_window = 0;
-  int x_offset = 100;
-  int y_offset = 50;
+  float middle_of_window = 0;
+  float x_offset = 100;
+  float y_offset = 50;
 
   ASGE::Colour active_text_colour = ASGE::COLOURS::WHITE;
   ASGE::Colour inactive_text_colour = ASGE::COLOURS::GREY;
