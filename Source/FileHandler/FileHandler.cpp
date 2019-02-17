@@ -3,9 +3,9 @@ using namespace std;
 using namespace SoLoud;
 
 /* Open the file as a JSON data structure */
-json FileHandler::openAsJSON(string& filename)
+json FileHandler::openAsJSON(const string& filename)
 {
-  debug_text.print("ACCESSING FILE AS JSON (openAsJSON) - " + filename);
+  debug_text.print("ACCESSING FILE AS JSON - " + filename);
 
   // Load file into json structure and return
   json json_file;
@@ -22,20 +22,16 @@ json FileHandler::openAsJSON(string& filename)
 }
 
 /* Load a requested portion of a game config */
-json FileHandler::loadConfig(std::string& config, std::string request)
+json FileHandler::loadConfig(const std::string& config, const std::string request)
 {
-  debug_text.print("ACCESSING FILE AS JSON (loadConfig) - CONFIGS/" + config);
-
   // Load our config and assign default values.
-  string config_file("CONFIGS/" + config);
-  json temp_config = openAsJSON(config_file);
-
+  json temp_config = openAsJSON("CONFIGS/" + config);
   return loadConfigFromExisting(temp_config, request, config);
 }
 
 /* Load required JSON from an existing JSON object */
 json FileHandler::loadConfigFromExisting(json temp_config,
-                                         std::string& request,
+                                         const std::string& request,
                                          const std::string& original_filename)
 {
   // TODO: This is an ugly temp fix for DEFAULT enum. Improve!
@@ -76,7 +72,7 @@ json FileHandler::loadConfigFromExisting(json temp_config,
 }
 
 /* Open the file as a buffer */
-string FileHandler::openAsString(string& filename)
+string FileHandler::openAsString(const string& filename)
 {
   debug_text.print("ACCESSING FILE AS STRING - " + filename);
 
@@ -93,7 +89,7 @@ string FileHandler::openAsString(string& filename)
 }
 
 /* Load a sound into a SoLoud WavStream */
-WavStream FileHandler::loadSound(std::string& filename)
+WavStream FileHandler::loadSound(const std::string& filename)
 {
   debug_text.print("ACCESSING FILE FOR AUDIO - " + filename);
 

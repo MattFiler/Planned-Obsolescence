@@ -17,8 +17,7 @@ struct CharacterData
     FileHandler file_handler;
 
     // Get the data from our config file
-    std::string config_file = "characters_core.json";
-    character_config = file_handler.loadConfig(config_file, std::to_string(type));
+    character_config = file_handler.loadConfig("characters_core.json", std::to_string(type));
 
     // Our character variant
     variant = type;

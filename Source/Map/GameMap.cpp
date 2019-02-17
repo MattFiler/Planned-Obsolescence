@@ -10,18 +10,15 @@ GameMap::GameMap()
 void GameMap::importJSON()
 {
   // -- CONFIGURED MAP CONFIG --
-  string config_file = "map_core.json";
   string map_name = "TEST" + to_string((rand() % 5) + 1); // TODO: Vary this by number of configs.
-  map_config = file_handler.loadConfig(config_file, map_name);
+  map_config = file_handler.loadConfig("map_core.json", map_name);
   debug_text.print("LOADING MAP - " + map_name);
 
   // -- BASIC ROOM CONFIG --
-  config_file = "CONFIGS/rooms_core.json";
-  room_config = file_handler.openAsJSON(config_file);
+  room_config = file_handler.openAsJSON("CONFIGS/rooms_core.json");
 
   // -- BASIC TILE CONFIG --
-  config_file = "CONFIGS/tiles_core.json";
-  tile_config = file_handler.openAsJSON(config_file);
+  tile_config = file_handler.openAsJSON("CONFIGS/tiles_core.json");
 }
 
 /* Load our map */
@@ -68,7 +65,19 @@ void GameMap::render(double delta_time)
     if (room_to_render.getPositionX() < (SCREEN_WIDTH * dynamic_sprite.width_scale) &&
         room_to_render.getPositionY() < (SCREEN_HEIGHT * dynamic_sprite.width_scale))
     {
+      // Render room
       game_camera->renderSprite(room_to_render.getSprite().get(), delta_time);
+
+      /*
+      // Check for any POIs to render
+      for (Tile& tile_to_render : room_to_render.getTiles())
+      {
+        if (tile_to_render.hasAnyPointOfInterest())
+        {
+          game_camera->renderSprite(tile_to_render.getSprite().get(), delta_time);
+        }
+      }
+       */
     }
   }
 }

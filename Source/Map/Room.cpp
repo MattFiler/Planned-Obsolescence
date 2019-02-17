@@ -19,17 +19,12 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_
   // Set tile sprite
   ASGE::Sprite* new_sprite = renderer->createRawSprite();
   new_sprite->loadTexture(room_config["sprite"]);
-
   sprite = make_shared<ScaledSpriteArray>(1);
   sprite->addSprite(*new_sprite);
 
   // Set position
   sprite->xPos(room_x);
   sprite->yPos(room_y);
-
-  // Set dimensions // Commented out for now as ScaledSpriteArray doesn't can't alter w/h
-  // sprite->width(getWidth());
-  // sprite->height(getHeight());
 
   // Load all tiles into room at the correct position
   tile_count = static_cast<int>(room_config["tiles"].size());
@@ -39,7 +34,7 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_
   float y_modifier = 0.0f;
   for (int i = 0; i < tile_count; i++)
   {
-    tiles.emplace_back(room_config["tiles"][i], tile_config);
+    tiles.emplace_back(room_config["tiles"][i], tile_config, renderer);
     tiles[i].configure(tile_x, tile_y);
     tiles[i].setIndexInRoom(i);
     tiles[i].setIndexInMap(tile_offset + i);
@@ -70,6 +65,10 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_
       }
     }
   }
+
+  // Set room sprite dimensions now we know our size
+  sprite->setWidth(getWidth());
+  sprite->setHeight(getHeight());
 }
 
 /* Return our sprite */

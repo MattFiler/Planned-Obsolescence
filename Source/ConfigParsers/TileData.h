@@ -1,9 +1,104 @@
 #ifndef PLANNEDOBSOLESCENCE_TILEDATA_H
 #define PLANNEDOBSOLESCENCE_TILEDATA_H
 
+#include "../Constants.h"
+#include "../FileHandler/FileHandler.h"
+#include "../Sprites/ScaledSpriteArray.h"
+#include <Engine/Renderer.h>
+#include <Engine/Sprite.h>
+#include <json.hpp>
+#include <memory>
+using json = nlohmann::json;
+
 struct TileData
 {
-  void load() {}
+  // Load config data in
+  void load(json* tile_global_config, const std::string& tile_type, ASGE::Renderer* renderer)
+  {
+    FileHandler file_handler;
+    json tile_config = file_handler.loadConfigFromExisting(*tile_global_config, tile_type);
+
+    // Size
+    width = tile_config["width"];
+    height = tile_config["height"];
+
+    // Exit ability
+    for (json::iterator tile_data = tile_config["available_exits"].begin();
+         tile_data != tile_config["available_exits"].end();
+         ++tile_data)
+    {
+      if (tile_data.key() == "left" && tile_data.value() == true)
+      {
+        setCanExit(direction::LEFT);
+      }
+      else if (tile_data.key() == "right" && tile_data.value() == true)
+      {
+        setCanExit(direction::RIGHT);
+      }
+      else if (tile_data.key() == "up" && tile_data.value() == true)
+      {
+        setCanExit(direction::UP);
+      }
+      else if (tile_data.key() == "down" && tile_data.value() == true)
+      {
+        setCanExit(direction::DOWN);
+      }
+    }
+
+    // POIs
+    for (json::iterator tile_data = tile_config["available_exits"].begin();
+         tile_data != tile_config["available_exits"].end();
+         ++tile_data)
+    {
+      if (tile_data.key() == "door" && tile_data.value() == true)
+      {
+        poi = point_of_interest::DOOR;
+      }
+      else if (tile_data.key() == "computer" && tile_data.value() == true)
+      {
+        poi = point_of_interest::COMPUTER;
+      }
+    }
+
+    // If we have a POI, we need to a sprite (probs needs refactoring to two)
+    if (poi != point_of_interest::NONE_ON_THIS_TILE)
+    {
+      // Set tile sprite
+      ASGE::Sprite* tile_sprite = renderer->createRawSprite();
+      tile_sprite->loadTexture(tile_config["sprite"]);
+      sprite = std::make_shared<ScaledSpriteArray>(1);
+      sprite->addSprite(*tile_sprite);
+
+      // Set position
+      sprite->xPos(x_pos);
+      sprite->yPos(y_pos);
+
+      // Set dimensions
+      // sprite->setWidth(width);
+      // sprite->setHeight(height);
+    }
+  }
+
+  // Index
+  int index_in_room = 0;
+  int index_in_map = 0;
+
+  // Position
+  float x_pos = 0;
+  float y_pos = 0;
+
+  // Size
+  float width = 0;
+  float height = 0;
+
+  // Exit Ability (call with enum exit_direction - left/right/up/down)
+  bool exits[4] = { false, false, false, false };
+  void setCanExit(direction exit_direction) { exits[exit_direction] = true; }
+  bool getCanExit(direction exit_direction) { return exits[exit_direction]; }
+
+  // POI Data
+  point_of_interest poi = point_of_interest::NONE_ON_THIS_TILE;
+  std::shared_ptr<ScaledSpriteArray> sprite; // Only relevant if we have a POI.
 };
 
 #endif // PLANNEDOBSOLESCENCE_TILEDATA_H

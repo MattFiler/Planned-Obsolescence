@@ -46,6 +46,7 @@ enum direction
 // Points of interest are hard-coded into everything. Do not modify this list!
 enum point_of_interest
 {
+  NONE_ON_THIS_TILE,
   COMPUTER,
   DOOR
 };

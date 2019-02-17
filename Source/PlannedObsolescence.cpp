@@ -25,8 +25,7 @@ PlannedObsolescence::~PlannedObsolescence()
 bool PlannedObsolescence::init()
 {
   // Load core configurations
-  string config_file = "game_core.json";
-  core_config = file_handler.loadConfig(config_file);
+  core_config = file_handler.loadConfig("game_core.json");
 
   // Remember debug toggle (exit if not set, config issue)
   if (core_config["debug_enabled"].is_null())

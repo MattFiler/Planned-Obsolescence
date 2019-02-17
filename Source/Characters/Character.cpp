@@ -4,10 +4,8 @@
 /* Load config on instantiation */
 Character::Character(character_type type)
 {
-  updateCoreConfig(type);
+  config.load(type);
   current_route.resize(1);
-  DebugText d;
-  d.print("Char constructor");
 }
 
 /* Delete all dynamic data when destroyed */
@@ -24,20 +22,21 @@ void Character::wake(ASGE::Renderer* passed_renderer)
   updateSprite();
 }
 
-/* Allow character variations to update the config to suit their needs */
-void Character::updateCoreConfig(character_type type)
-{
-  config.load(type);
-}
-
 /* Update our sprite */
 void Character::updateSprite()
 {
+  // Remove existing
   delete sprite;
+
+  // Create new
   sprite = new ScaledSpriteArray(1);
   ASGE::Sprite* new_sprite = renderer->createRawSprite();
   new_sprite->loadTexture(getSpritePath());
   sprite->addSprite(*new_sprite);
+
+  // Resize
+  sprite->setWidth(config.width);
+  sprite->setHeight(config.height);
 }
 
 /* Update the position of the character based on current route and speed */

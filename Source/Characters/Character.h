@@ -49,7 +49,6 @@ class Character
   std::vector<PathNode*> current_route;
 
  protected:
-  void updateCoreConfig(character_type type = character_type::DEFAULT);
   void updateSprite();
   float calculateScoresOfNextDepth(PathNode* node,
                                    unsigned long long int depth,
