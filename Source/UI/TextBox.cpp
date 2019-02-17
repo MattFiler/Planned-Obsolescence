@@ -27,7 +27,7 @@ void TextBox::render(double delta_time)
   renderer->renderText(
     displayed_text,
     static_cast<int>((position.x_pos + padding.x_pos) * ScaledSpriteArray::width_scale),
-    static_cast<int>((position.y_pos + padding.y_pos + (font_size * 8)) *
+    static_cast<int>((position.y_pos + padding.y_pos + (font_size * 20)) *
                      ScaledSpriteArray::width_scale),
     font_size,
     font_colour);
@@ -59,7 +59,7 @@ void TextBox::wrapText()
   auto char_per_line = static_cast<unsigned long long>(
     (width - (2 * padding.x_pos)) / (font_size / ScaledSpriteArray::width_scale));
   // Divide by some number, may vary by font, unsure on how to get this part exact
-  char_per_line /= 11;
+  char_per_line /= 22;
   unsigned long long str_index = 0;
 
   // While there are characters left to process
