@@ -28,52 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.refreshRoom = new System.Windows.Forms.Button();
-            this.saveRoom = new System.Windows.Forms.Button();
-            this.roomHeight = new System.Windows.Forms.NumericUpDown();
-            this.roomWidth = new System.Windows.Forms.NumericUpDown();
+            this.refreshMap = new System.Windows.Forms.Button();
+            this.saveMap = new System.Windows.Forms.Button();
+            this.mapHeight = new System.Windows.Forms.NumericUpDown();
+            this.mapWidth = new System.Windows.Forms.NumericUpDown();
             this.defaultSizes = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.roomName = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.roomHeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.roomWidth)).BeginInit();
+            this.mapDescription = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.mapHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mapWidth)).BeginInit();
             this.SuspendLayout();
             // 
-            // refreshRoom
+            // refreshMap
             // 
-            this.refreshRoom.Location = new System.Drawing.Point(12, 92);
-            this.refreshRoom.Name = "refreshRoom";
-            this.refreshRoom.Size = new System.Drawing.Size(249, 26);
-            this.refreshRoom.TabIndex = 48;
-            this.refreshRoom.Text = "Refresh";
-            this.refreshRoom.UseVisualStyleBackColor = true;
-            this.refreshRoom.Click += new System.EventHandler(this.refreshRoom_Click);
+            this.refreshMap.Location = new System.Drawing.Point(12, 92);
+            this.refreshMap.Name = "refreshMap";
+            this.refreshMap.Size = new System.Drawing.Size(249, 26);
+            this.refreshMap.TabIndex = 48;
+            this.refreshMap.Text = "Refresh";
+            this.refreshMap.UseVisualStyleBackColor = true;
+            this.refreshMap.Click += new System.EventHandler(this.refreshRoom_Click);
             // 
-            // saveRoom
+            // saveMap
             // 
-            this.saveRoom.Location = new System.Drawing.Point(12, 208);
-            this.saveRoom.Name = "saveRoom";
-            this.saveRoom.Size = new System.Drawing.Size(249, 26);
-            this.saveRoom.TabIndex = 47;
-            this.saveRoom.Text = "Save Room";
-            this.saveRoom.UseVisualStyleBackColor = true;
-            this.saveRoom.Click += new System.EventHandler(this.saveRoom_Click);
+            this.saveMap.Location = new System.Drawing.Point(12, 208);
+            this.saveMap.Name = "saveMap";
+            this.saveMap.Size = new System.Drawing.Size(249, 26);
+            this.saveMap.TabIndex = 47;
+            this.saveMap.Text = "Save Map";
+            this.saveMap.UseVisualStyleBackColor = true;
+            this.saveMap.Click += new System.EventHandler(this.saveRoom_Click);
             // 
-            // roomHeight
+            // mapHeight
             // 
-            this.roomHeight.Location = new System.Drawing.Point(89, 66);
-            this.roomHeight.Name = "roomHeight";
-            this.roomHeight.Size = new System.Drawing.Size(71, 20);
-            this.roomHeight.TabIndex = 46;
+            this.mapHeight.Location = new System.Drawing.Point(89, 66);
+            this.mapHeight.Name = "mapHeight";
+            this.mapHeight.Size = new System.Drawing.Size(71, 20);
+            this.mapHeight.TabIndex = 46;
             // 
-            // roomWidth
+            // mapWidth
             // 
-            this.roomWidth.Location = new System.Drawing.Point(12, 66);
-            this.roomWidth.Name = "roomWidth";
-            this.roomWidth.Size = new System.Drawing.Size(71, 20);
-            this.roomWidth.TabIndex = 45;
+            this.mapWidth.Location = new System.Drawing.Point(12, 66);
+            this.mapWidth.Name = "mapWidth";
+            this.mapWidth.Size = new System.Drawing.Size(71, 20);
+            this.mapWidth.TabIndex = 45;
             // 
             // defaultSizes
             // 
@@ -118,34 +118,34 @@
             this.label5.TabIndex = 41;
             this.label5.Text = "Map Description";
             // 
-            // roomName
+            // mapDescription
             // 
-            this.roomName.Location = new System.Drawing.Point(12, 25);
-            this.roomName.Name = "roomName";
-            this.roomName.Size = new System.Drawing.Size(249, 20);
-            this.roomName.TabIndex = 40;
+            this.mapDescription.Location = new System.Drawing.Point(12, 25);
+            this.mapDescription.Name = "mapDescription";
+            this.mapDescription.Size = new System.Drawing.Size(249, 20);
+            this.mapDescription.TabIndex = 40;
             // 
             // MapEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(273, 245);
-            this.Controls.Add(this.refreshRoom);
-            this.Controls.Add(this.saveRoom);
-            this.Controls.Add(this.roomHeight);
-            this.Controls.Add(this.roomWidth);
+            this.Controls.Add(this.refreshMap);
+            this.Controls.Add(this.saveMap);
+            this.Controls.Add(this.mapHeight);
+            this.Controls.Add(this.mapWidth);
             this.Controls.Add(this.defaultSizes);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.roomName);
+            this.Controls.Add(this.mapDescription);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MapEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Map Editor";
             this.Load += new System.EventHandler(this.MapEditor_Load_1);
-            ((System.ComponentModel.ISupportInitialize)(this.roomHeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.roomWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mapHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mapWidth)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,14 +153,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button refreshRoom;
-        private System.Windows.Forms.Button saveRoom;
-        private System.Windows.Forms.NumericUpDown roomHeight;
-        private System.Windows.Forms.NumericUpDown roomWidth;
+        private System.Windows.Forms.Button refreshMap;
+        private System.Windows.Forms.Button saveMap;
+        private System.Windows.Forms.NumericUpDown mapHeight;
+        private System.Windows.Forms.NumericUpDown mapWidth;
         private System.Windows.Forms.CheckBox defaultSizes;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox roomName;
+        private System.Windows.Forms.TextBox mapDescription;
     }
 }

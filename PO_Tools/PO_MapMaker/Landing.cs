@@ -31,6 +31,7 @@ namespace PO_MapMaker
             Directory.CreateDirectory("data/CONFIGS");
             Directory.CreateDirectory("data/TILES");
             Directory.CreateDirectory("data/ROOMS");
+            Directory.CreateDirectory("data/MAPS");
 
             //Output placeholder sprite for tiles
             if (!File.Exists("data/TILES/placeholder.png"))
@@ -54,6 +55,14 @@ namespace PO_MapMaker
                 MemoryStream stream = new MemoryStream();
                 Properties.Resources.placeholder_room.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
                 File.WriteAllBytes("data/ROOMS/default.png", stream.ToArray());
+            }
+
+            //Output placeholder sprite for maps
+            if (!File.Exists("data/MAPS/default.png"))
+            {
+                MemoryStream stream = new MemoryStream();
+                Properties.Resources.placeholder_map.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+                File.WriteAllBytes("data/MAPS/default.png", stream.ToArray());
             }
 
             //Create skeleton config file
