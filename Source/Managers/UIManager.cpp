@@ -113,7 +113,7 @@ void UIManager::enableBossPopup(Boss* boss)
 {
   boss_popup->setActive(true);
   boss_popup->moveTo(boss->getPosition() - camera->getCameraPosition() );
-  // keepUIWithinScreen(boss_popup);
+  keepUIWithinScreen(boss_popup);
   // TODO Add info about the boss from the passed ref
 }
 

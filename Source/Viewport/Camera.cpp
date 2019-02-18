@@ -26,7 +26,7 @@ void Camera::renderSprite(ScaledSpriteArray* sprite, double delta_time, render_i
 /* Returns the current position of the camera */
 Point Camera::getCameraPosition()
 {
-  return position;
+  return position /ScaledSpriteArray::width_scale;
 }
 
 /* Converts a point in screen space to simulated world space, applying both camera offset and
