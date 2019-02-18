@@ -18,8 +18,11 @@ class UIManager
 
   void addGenericUI(GenericUI* new_generic_ui);
   void addButton(Button* new_button);
+  void addTextBox(TextBox* new_textbox);
+  void addProgressBar(ProgressBar* new_progressbar);
 
-  void buildUI();
+  void buildUI(); // to be removed
+
   void setRenderer(ASGE::Renderer* rend) { renderer = rend; };
   void setCamera(Camera* cam) { camera = cam; };
   void render(double delta_time);
@@ -29,10 +32,6 @@ class UIManager
   void enableBossPopup(Boss* boss);
 
  private:
-  void buildButtons();
-  void buildTextBoxes();
-  void buildProgressBars();
-  void buildPopupWindows();
   void keepUIWithinScreen(UI* ui_object);
 
   std::vector<Button*> buttons;
@@ -46,9 +45,6 @@ class UIManager
   Button* clicked_button = nullptr;
   ASGE::Renderer* renderer = nullptr;
   Camera* camera = nullptr;
-
-  bool loaded = false;
-  scenes next_scene = scenes::NO_CHANGE; // Ideally this whole process would use an event system
 };
 
 #endif // PLANNEDOBSOLESCENCE_UIMANAGER_H

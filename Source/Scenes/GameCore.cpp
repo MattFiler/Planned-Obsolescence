@@ -56,11 +56,11 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 /* Spawn all characters */
 void GameCore::spawnCharacters(ASGE::Renderer* renderer)
 {
-  if (character_manager.canSpawn(character_type::BOSS))
+  if (character_manager.canSpawn(character_type::GOON))
   {
-    Boss* new_boss = new Boss();
-    character_manager.spawnCharacter(new_boss);
-    new_boss->calculateRouteToPoint(Point(300, 300));
+    Goon* new_goon = new Goon();
+    character_manager.spawnCharacter(new_goon);
+    new_goon->calculateRouteToPoint(Point(300, 300));
   }
 }
 
@@ -160,6 +160,7 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
 scenes GameCore::update(double delta_time)
 {
   character_manager.update(delta_time);
+  project_gauge.update(delta_time);
   camera.moveCamera(x_axis_input * static_cast<float>(delta_time),
                     y_axis_input * static_cast<float>(delta_time));
   return next_scene;
@@ -180,4 +181,6 @@ void GameCore::render(double delta_time)
 
   // Render UI
   ui_manager.render(delta_time);
+
+  rend->renderText(std::to_string(character_manager.goon_productivity), 100, 100);
 }

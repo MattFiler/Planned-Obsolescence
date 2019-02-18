@@ -37,7 +37,7 @@ struct CharacterData
     movement_speed = character_config["movement_speed"];
     max_health = character_config["max_health"];
 
-    // Our internal gauges
+    // Our internal gauges (DEPRECIATED)
     gauge_suspicion = character_config["gauge"]["suspicion"];
     gauge_stress = character_config["gauge"]["stress"];
     gauge_productivity = character_config["gauge"]["productivity"];

@@ -1,6 +1,7 @@
 #include "UIManager.h"
 #include "../Characters/Boss.h"
 
+/* destroy! */
 UIManager::~UIManager()
 {
   for (Button* button : buttons)
@@ -37,41 +38,27 @@ void UIManager::addButton(Button* new_button)
   buttons.push_back(new_button);
 }
 
+/* Add a textbox */
+void UIManager::addTextBox(TextBox* new_textbox)
+{
+  text_boxes.push_back(new_textbox);
+}
+
+/* Add a progress bar */
+void UIManager::addProgressBar(ProgressBar* new_progressbar)
+{
+  progress_bars.push_back(new_progressbar);
+}
+
 /* Creates all the UI */
 void UIManager::buildUI()
-{
-  next_scene = scenes ::NO_CHANGE;
-  if (!loaded)
-  {
-    buildButtons();
-    buildTextBoxes();
-    buildProgressBars();
-    buildPopupWindows();
-  }
-}
-
-void UIManager::buildButtons()
-{
-  /*
-   Button* button = new Button(
-     Point(SCREEN_WIDTH - 50, 0), renderer, "data/UI/cross.png", "data/UI/cross.png", 50, 50);
-   scenes* next = &next_scene;
-   button->click_function = [next] { *next = scenes::MAIN_MENU; };
-   buttons.push_back(button);
-   */
-}
-
-void UIManager::buildTextBoxes() {}
-
-void UIManager::buildProgressBars()
 {
   boss_popup = new PopupWindow(Point(0, 0), renderer, "data/UI/default.png");
   TextBox* text = new TextBox(Point(10, 10), renderer, "The BOSS");
   boss_popup->addTextBox(text);
 }
 
-void UIManager::buildPopupWindows() {}
-
+/* render all ui */
 void UIManager::render(double delta_time)
 {
   for (Button* button : buttons)
@@ -133,6 +120,7 @@ void UIManager::enableBossPopup(Boss* boss)
   // TODO Add info about the boss from the passed ref
 }
 
+/* keep a popup within the window bounds */
 void UIManager::keepUIWithinScreen(UI* ui_object)
 {
   Point new_pos = ui_object->getPosition();

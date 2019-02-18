@@ -1,4 +1,5 @@
 #include "../Debug/DebugText.h"
+#include "../Gauges/UniversalGauge.h"
 #include "../Managers/CharacterManager.h"
 #include "../Managers/UIManager.h"
 #include "../Map/GameMap.h"
@@ -34,6 +35,7 @@ class GameCore : public Scene
   CharacterManager character_manager;
   GameMap game_map;
   UIManager ui_manager;
+  UniversalGauge project_gauge;
 
   Camera camera;
   float x_axis_input = 0;

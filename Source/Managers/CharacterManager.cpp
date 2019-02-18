@@ -1,5 +1,7 @@
 #include "CharacterManager.h"
 
+float CharacterManager::goon_productivity = 0;
+
 /* Deallocate memory */
 CharacterManager::~CharacterManager()
 {
@@ -193,6 +195,18 @@ void CharacterManager::update(double delta_time)
   updateCharacter(goon_instances, goon_count, delta_time);
   updateCharacter(technician_instances, technician_count, delta_time);
   updateCharacter(security_instances, security_count, delta_time);
+
+  // Work out current cumulative goon productivity levels
+  int goon_c = 0;
+    goon_productivity = 0;
+  for (int i = 0; i < goon_count; i++)
+  {
+      if (goon_instances[i]->isVisible()) {
+          goon_productivity += goon_instances[i]->getProductivity();
+          goon_c++;
+      }
+  }
+  goon_productivity /= static_cast<float>(goon_c);
 }
 
 /* Update a specific character definition */

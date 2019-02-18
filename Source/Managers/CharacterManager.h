@@ -26,6 +26,8 @@ class CharacterManager
   void setCamera(Camera* scene_camera);
   void setUIManager(UIManager* manager) { ui_manager = manager; };
 
+  static float goon_productivity;
+
  private:
   template<class CharacterArray>
   void renderCharacter(CharacterArray character, int& character_count, double& delta_time);
