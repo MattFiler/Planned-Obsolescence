@@ -19,6 +19,7 @@ class GameMap
   std::vector<Room> getRooms();
   int getRoomCount();
   int getTileCount();
+  std::shared_ptr<ScaledSpriteArray> getSprite();
 
  private:
   void importJSON();
@@ -33,7 +34,9 @@ class GameMap
   DebugText debug_text;
   Camera* game_camera = nullptr;
   ASGE::Renderer* renderer = nullptr;
-  ScaledSpriteArray dynamic_sprite;
+
+  // Map sprite
+  std::shared_ptr<ScaledSpriteArray> sprite = nullptr;
 
   // Map data
   std::vector<Room> rooms;

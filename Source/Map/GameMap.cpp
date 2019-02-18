@@ -31,8 +31,10 @@ void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
   // Load all rooms into the map
   room_count = static_cast<int>(map_config["rooms"].size());
   rooms.reserve(static_cast<size_t>(room_count));
-  float room_x = 0.0f; // TODO: Update base position
-  float room_y = 0.0f; // TODO: Update base position
+  float room_x = 0.0f;
+  float room_y = 0.0f;
+  float map_width = 0.0f;
+  float map_height = 0.0f;
   for (int i = 0; i < room_count; i++)
   {
     if (i != 0)
@@ -45,14 +47,28 @@ void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
 
     if ((i + 1) % static_cast<int>(map_config["rooms_w"]) == 0)
     {
-      room_x = 0.0f; // TODO: Update base position
+      if (room_x > map_width)
+      {
+        map_width = room_x;
+      }
+      room_x = 0.0f;
       room_y += rooms[i].getHeight();
+      map_height = room_y;
     }
     else
     {
       room_x += rooms[i].getWidth();
     }
   }
+  map_width += rooms[rooms.size()-1].getWidth();
+
+  // Set map sprite and resize
+  ASGE::Sprite* map_sprite = renderer->createRawSprite();
+  map_sprite->loadTexture(map_config["sprite"]);
+  sprite = std::make_shared<ScaledSpriteArray>(1);
+  sprite->addSprite(*map_sprite);
+  sprite->setWidth(map_width);
+  sprite->setHeight(map_height);
 
   debug_text.print("MAP FINISHED GENERATING WITH " + std::to_string(tile_count) + " TILES");
 }
@@ -60,26 +76,31 @@ void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
 /* Render our map */
 void GameMap::render(double delta_time)
 {
+  // Render map
+  game_camera->renderSprite(sprite.get(), delta_time, render_index::MAP_LAYER);
+
   for (Room& room_to_render : rooms)
   {
     if (room_to_render.getPositionX() < (SCREEN_WIDTH * ScaledSpriteArray::width_scale) &&
         room_to_render.getPositionY() < (SCREEN_HEIGHT * ScaledSpriteArray::width_scale))
     {
-      // Render room
-      game_camera->renderSprite(
-        room_to_render.getSprite().get(), delta_time, render_index::ROOM_LAYER);
-
-      // Check for any POIs to render
       for (Tile& tile_to_render : room_to_render.getTiles())
       {
         if (tile_to_render.hasAnyPointOfInterest())
         {
+          // Render POI
           game_camera->renderSprite(
-            tile_to_render.getSprite().get(), delta_time, render_index::SPECIAL_TILE_LAYER);
+            tile_to_render.getSprite().get(), delta_time, render_index::TILE_LAYER);
         }
       }
     }
   }
+}
+
+/* Return our sprite */
+std::shared_ptr<ScaledSpriteArray> GameMap::getSprite()
+{
+  return sprite;
 }
 
 /* Return all rooms in the current map */

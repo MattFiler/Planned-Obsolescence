@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO.Compression;
+using System.Diagnostics;
 
 namespace PO_MapMaker
 {
@@ -24,8 +25,13 @@ namespace PO_MapMaker
 
         private void Compiler_Load(object sender, EventArgs e)
         {
+            //Start timer
+            Stopwatch compiler_timer = new Stopwatch();
+            compiler_timer.Start();
+
             UseWaitCursor = true;
             XDocument configXML = XDocument.Load("data/config.xml");
+            string compile_uid = DateTime.Now.ToString("hhmmss");
 
             /* characters_core.json */
             statusText.Text = "Compiling Character Data";
@@ -111,7 +117,6 @@ namespace PO_MapMaker
             statusText.Text = "Compiling Room Data";
             XElement room_config = configXML.Element("config").Element("room_config").Element("rooms");
             XElement default_room = null;
-            string tile_uid = DateTime.Now.ToString("hhmmss");
             foreach (XElement room in room_config.Descendants("room"))
             {
                 if (room.Attribute("name").Value == "DEFAULT")
@@ -219,7 +224,7 @@ namespace PO_MapMaker
                     room_graphics.Dispose();
 
                     //Save room sprite
-                    string room_sprite_filepath = "data/ROOMS/" + room.Attribute("name").Value + "_" + tile_uid + ".png";
+                    string room_sprite_filepath = "data/ROOMS/" + room.Attribute("name").Value + "_" + compile_uid + ".png";
                     room_sprite.Save(room_sprite_filepath);
 
                     //Finish JSON
@@ -288,7 +293,7 @@ namespace PO_MapMaker
                             if (room_data.Attribute("name").Value == room.Attribute("name").Value)
                             {
                                 //Get room sprite (kinda tricky as these aren't stored in our xml - something to change?)
-                                string room_sprite_filepath = "data/ROOMS/" + room_data.Attribute("name").Value + "_" + tile_uid + ".png";
+                                string room_sprite_filepath = "data/ROOMS/" + room_data.Attribute("name").Value + "_" + compile_uid + ".png";
                                 if (room_data.Attribute("name").Value == "DEFAULT")
                                 {
                                     room_sprite_filepath = "data/ROOMS/default.png";
@@ -349,7 +354,7 @@ namespace PO_MapMaker
                     map_graphics.Dispose();
 
                     //Save map sprite
-                    string map_sprite_filepath = "data/MAPS/" + map.Attribute("name").Value + "_" + tile_uid + ".png";
+                    string map_sprite_filepath = "data/MAPS/" + map.Attribute("name").Value + "_" + compile_uid + ".png";
                     map_sprite.Save(map_sprite_filepath);
 
                     //Finish JSON
@@ -360,6 +365,11 @@ namespace PO_MapMaker
             JToken maps_coreJsonParsed = JToken.Parse(maps_coreJson);
             File.WriteAllText("data/CONFIGS/map_core.json", maps_coreJsonParsed.ToString(Formatting.Indented));
             progressBar.PerformStep();
+
+            //Stop timer and write log
+            compiler_timer.Stop();
+            TimeSpan ts = compiler_timer.Elapsed;
+            File.WriteAllText("data/compiler_log.txt", "Successfully compiled!\n\nCompile ID: " + compile_uid + "\nCompile time: " + ts.TotalSeconds + " seconds\nCompile date: " + DateTime.Now.ToString("s"));
 
             /* Copy Everything */
             statusText.Text = "Finishing up...";

@@ -59,7 +59,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_1_121132.png"
+    "sprite": "data/ROOMS/DEMO_1_122227.png"
   },
   "DEMO_2": {
     "tiles": [
@@ -89,7 +89,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_2_121132.png"
+    "sprite": "data/ROOMS/DEMO_2_122227.png"
   },
   "DEMO_3": {
     "tiles": [
@@ -119,7 +119,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_3_121132.png"
+    "sprite": "data/ROOMS/DEMO_3_122227.png"
   },
   "DEMO_4": {
     "tiles": [
@@ -149,6 +149,6 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_4_121132.png"
+    "sprite": "data/ROOMS/DEMO_4_122227.png"
   }
 }
