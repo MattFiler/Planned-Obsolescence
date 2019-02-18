@@ -31,6 +31,8 @@ class PlannedObsolescence : public ASGE::OGLGame
   DebugText debug_text;
   Keybinds user_keybinds;
 
+  ScaledSpriteArray* generic_background = nullptr;
+
   int po_font = 0;
 
   json core_config;

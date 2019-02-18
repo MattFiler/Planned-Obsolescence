@@ -12,7 +12,7 @@ ScaledSpriteArray* UI::createSprite(const std::string& sprite_texture_path)
 ScaledSpriteArray*
 UI::createSprite(const std::string& texture_path1, const std::string& texture_path2)
 {
-  auto* scaled_sprite = new ScaledSpriteArray(1);
+  auto* scaled_sprite = new ScaledSpriteArray(2);
   ASGE::Sprite* sprite1 = renderer->createRawSprite();
   sprite1->loadTexture(texture_path1);
   scaled_sprite->addSprite(*sprite1);

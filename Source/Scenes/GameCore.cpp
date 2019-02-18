@@ -1,6 +1,7 @@
 #include "GameCore.h"
 #include "../Constants.h"
 #include "../Sprites/ScaledSpriteArray.h"
+#include "../UI/GenericUI.h"
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
@@ -25,9 +26,29 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 
   spawnCharacters(renderer);
 
-  UIManager::getInstance().setRenderer(rend);
-  UIManager::getInstance().setCamera(&camera);
-  UIManager::getInstance().buildUI();
+  ui_manager.setRenderer(rend);
+  ui_manager.setCamera(&camera);
+  character_manager.setUIManager(&ui_manager);
+
+  GenericUI* ui_main =
+    new GenericUI(renderer, "IN_GAME_UI/BOTTOM_RIGHT_BG.png", "IN_GAME_UI/BOTTOM_RIGHT_TEXT.png");
+  ui_manager.addGenericUI(ui_main);
+
+  GenericUI* ui_bottom =
+    new GenericUI(renderer, "IN_GAME_UI/BOTTOM_LEFT_BG.png", "IN_GAME_UI/BOTTOM_LEFT_TEXT.png");
+  ui_manager.addGenericUI(ui_bottom);
+
+  Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
+                                   renderer,
+                                   "data/UI/IN_GAME_UI/TOP_RIGHT_QUIT.png",
+                                   "data/UI/IN_GAME_UI/TOP_RIGHT_QUIT.png",
+                                   148,
+                                   53);
+  scenes* next = &next_scene;
+  quit_button->click_function = [next] { *next = scenes::MAIN_MENU; };
+  ui_manager.addButton(quit_button);
+
+  ui_manager.buildUI();
 
   return true;
 }
@@ -118,14 +139,14 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
   if (click->action == ASGE::MOUSE::BUTTON_PRESSED)
   {
     // If the UI manager doesn't register this click
-    if (!UIManager::getInstance().checkForClick(mouse_position / ScaledSpriteArray::width_scale))
+    if (!ui_manager.checkForClick(mouse_position / ScaledSpriteArray::width_scale))
     {
       character_manager.checkForClick(camera.displayedToSimulatedWorld(mouse_position));
     }
   }
   else if (click->action == ASGE::MOUSE::BUTTON_RELEASED)
   {
-    next_scene = UIManager::getInstance().releaseClick();
+    ui_manager.releaseClick();
   }
 }
 
@@ -151,13 +172,12 @@ scenes GameCore::update(double delta_time)
  */
 void GameCore::render(double delta_time)
 {
-  rend->renderText("THE GAME", 100, 100, ASGE::COLOURS::RED);
-
   // Render Map
   game_map.render(delta_time);
 
   // Render Characters
   character_manager.render(delta_time);
 
-  UIManager::getInstance().render(delta_time);
+  // Render UI
+  ui_manager.render(delta_time);
 }
