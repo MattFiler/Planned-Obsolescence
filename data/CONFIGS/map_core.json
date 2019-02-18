@@ -1,59 +1,157 @@
 {
-	"DEFAULT": {	
-		"rooms_w": 5,
-		"rooms_h": 5,
-		
-		"rooms": [
-			"DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT",
-			"DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT",
-			"DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT",
-			"DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT",
-			"DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT"
-		]
-	},
-	"TEST1": {
-		"rooms": [
-			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
-			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
-			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
-			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
-			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1"
-		]
-	},
-	"TEST2": {
-		"rooms": [
-			"DEMO_2", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
-			"DEMO_2", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
-			"DEMO_1", "DEMO_3", "DEMO_1", "DEMO_1", "DEMO_1",
-			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
-			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1"
-		]
-	},
-	"TEST3": {
-		"rooms_h": 3,
-		
-		"rooms": [
-			"DEMO_1", "DEMO_3", "DEMO_1", "DEMO_1", "DEMO_1",
-			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
-			"DEMO_1", "DEMO_3", "DEMO_1", "DEMO_1", "DEMO_1"
-		]
-	},
-	"TEST4": {
-		"rooms_h": 3,
-		
-		"rooms": [
-			"DEMO_2", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
-			"DEMO_2", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1",
-			"DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1", "DEMO_1"
-		]
-	},
-	"TEST5": {
-		"rooms_h": 3,
-		
-		"rooms": [
-			"DEMO_3", "DEMO_3", "DEMO_3", "DEMO_3", "DEMO_3",
-			"DEMO_3", "DEMO_3", "DEMO_3", "DEMO_3", "DEMO_3",
-			"DEMO_3", "DEMO_3", "DEMO_3", "DEMO_3", "DEMO_3"
-		]
-	}
+  "DEFAULT": {
+    "rooms_w": 5,
+    "rooms_h": 5,
+    "rooms": [
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT",
+      "DEFAULT"
+    ],
+    "sprite": "data/MAPS/default.png"
+  },
+  "TEST1": {
+    "rooms": [
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1"
+    ],
+    "sprite": "data/MAPS/TEST1_121132.png"
+  },
+  "TEST2": {
+    "rooms": [
+      "DEMO_2",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_2",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_3",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1"
+    ],
+    "sprite": "data/MAPS/TEST2_121132.png"
+  },
+  "TEST3": {
+    "rooms_h": 3,
+    "rooms": [
+      "DEMO_1",
+      "DEMO_3",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_3",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1"
+    ],
+    "sprite": "data/MAPS/TEST3_121132.png"
+  },
+  "TEST4": {
+    "rooms_h": 3,
+    "rooms": [
+      "DEMO_2",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_2",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1"
+    ],
+    "sprite": "data/MAPS/TEST4_121132.png"
+  },
+  "TEST5": {
+    "rooms_h": 3,
+    "rooms": [
+      "DEMO_3",
+      "DEMO_3",
+      "DEMO_3",
+      "DEMO_3",
+      "DEMO_3",
+      "DEMO_3",
+      "DEMO_3",
+      "DEMO_3",
+      "DEMO_3",
+      "DEMO_3",
+      "DEMO_3",
+      "DEMO_3",
+      "DEMO_3",
+      "DEMO_3",
+      "DEMO_3"
+    ],
+    "sprite": "data/MAPS/TEST5_121132.png"
+  }
 }
