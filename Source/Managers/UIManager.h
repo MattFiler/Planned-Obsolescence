@@ -10,10 +10,10 @@ class Boss;
 class UIManager
 {
  public:
-  static UIManager& getInstance();
   UIManager(UIManager const&) = delete;
   void operator=(UIManager const&) = delete;
 
+  UIManager() = default;
   ~UIManager();
 
   void addGenericUI(GenericUI* new_generic_ui);
@@ -29,8 +29,6 @@ class UIManager
   void enableBossPopup(Boss* boss);
 
  private:
-  UIManager() = default;
-
   void buildButtons();
   void buildTextBoxes();
   void buildProgressBars();

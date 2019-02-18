@@ -230,7 +230,7 @@ bool CharacterManager::checkForClick(Point click)
   {
     if (boss_instances[i]->isPointInArea(click))
     {
-      UIManager::getInstance().enableBossPopup(boss_instances[i]);
+      ui_manager->enableBossPopup(boss_instances[i]);
       return true;
     }
   }

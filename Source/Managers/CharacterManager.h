@@ -24,6 +24,7 @@ class CharacterManager
 
   void setMap(GameMap* current_map);
   void setCamera(Camera* scene_camera);
+  void setUIManager(UIManager* manager) { ui_manager = manager; };
 
  private:
   template<class CharacterArray>
@@ -34,6 +35,7 @@ class CharacterManager
 
   GameMap* game_map = nullptr;
   Camera* camera = nullptr;
+  UIManager* ui_manager = nullptr;
   ASGE::Renderer* renderer = nullptr;
 
   Boss** boss_instances = nullptr;

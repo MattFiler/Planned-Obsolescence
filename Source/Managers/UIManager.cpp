@@ -1,12 +1,6 @@
 #include "UIManager.h"
 #include "../Characters/Boss.h"
 
-UIManager& UIManager::getInstance()
-{
-  static UIManager instance;
-  return instance;
-}
-
 UIManager::~UIManager()
 {
   for (Button* button : buttons)

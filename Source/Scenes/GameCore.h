@@ -33,6 +33,7 @@ class GameCore : public Scene
 
   CharacterManager character_manager;
   GameMap game_map;
+  UIManager ui_manager;
 
   Camera camera;
   float x_axis_input = 0;

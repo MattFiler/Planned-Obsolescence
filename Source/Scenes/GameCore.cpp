@@ -26,16 +26,17 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 
   spawnCharacters(renderer);
 
-  UIManager::getInstance().setRenderer(rend);
-  UIManager::getInstance().setCamera(&camera);
+  ui_manager.setRenderer(rend);
+  ui_manager.setCamera(&camera);
+  character_manager.setUIManager(&ui_manager);
 
   GenericUI* ui_main =
     new GenericUI(renderer, "IN_GAME_UI/BOTTOM_RIGHT_BG.png", "IN_GAME_UI/BOTTOM_RIGHT_TEXT.png");
-  UIManager::getInstance().addGenericUI(ui_main);
+  ui_manager.addGenericUI(ui_main);
 
   GenericUI* ui_bottom =
     new GenericUI(renderer, "IN_GAME_UI/BOTTOM_LEFT_BG.png", "IN_GAME_UI/BOTTOM_LEFT_TEXT.png");
-  UIManager::getInstance().addGenericUI(ui_bottom);
+  ui_manager.addGenericUI(ui_bottom);
 
   Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
                                    renderer,
@@ -45,9 +46,9 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
                                    53);
   scenes* next = &next_scene;
   quit_button->click_function = [next] { *next = scenes::MAIN_MENU; };
-  UIManager::getInstance().addButton(quit_button);
+  ui_manager.addButton(quit_button);
 
-  UIManager::getInstance().buildUI();
+  ui_manager.buildUI();
 
   return true;
 }
@@ -138,14 +139,14 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
   if (click->action == ASGE::MOUSE::BUTTON_PRESSED)
   {
     // If the UI manager doesn't register this click
-    if (!UIManager::getInstance().checkForClick(mouse_position / ScaledSpriteArray::width_scale))
+    if (!ui_manager.checkForClick(mouse_position / ScaledSpriteArray::width_scale))
     {
       character_manager.checkForClick(camera.displayedToSimulatedWorld(mouse_position));
     }
   }
   else if (click->action == ASGE::MOUSE::BUTTON_RELEASED)
   {
-    UIManager::getInstance().releaseClick();
+    ui_manager.releaseClick();
   }
 }
 
@@ -178,5 +179,5 @@ void GameCore::render(double delta_time)
   character_manager.render(delta_time);
 
   // Render UI
-  UIManager::getInstance().render(delta_time);
+  ui_manager.render(delta_time);
 }
