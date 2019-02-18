@@ -34,6 +34,12 @@ class GameCore : public Scene
   CharacterManager character_manager;
   GameMap game_map;
 
+  ScaledSpriteArray* top_ui_bg = nullptr;
+  ScaledSpriteArray* top_ui_fg = nullptr;
+
+  ScaledSpriteArray* bottom_ui_bg = nullptr;
+  ScaledSpriteArray* bottom_ui_fg = nullptr;
+
   Camera camera;
   float x_axis_input = 0;
   float y_axis_input = 0;

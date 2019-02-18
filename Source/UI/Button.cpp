@@ -7,7 +7,7 @@ Button::Button(Point pos,
                float _width,
                float _height) :
   UI(pos, rend),
-  click_area(ClickArea(position, width, height))
+  click_area(ClickArea(position, _width, _height))
 {
   width = _width;
   height = _height;

@@ -29,7 +29,7 @@ std::shared_ptr<ScaledSpriteArray> Menu::addMenuSprite(const std::string& filepa
 {
   // Create sprite
   ASGE::Sprite* new_sprite = renderer->createRawSprite();
-  new_sprite->loadTexture("data/" + filepath);
+  new_sprite->loadTexture("data/UI/" + filepath);
   std::shared_ptr<ScaledSpriteArray> sprite = std::make_shared<ScaledSpriteArray>(1);
   sprite->addSprite(*new_sprite);
 

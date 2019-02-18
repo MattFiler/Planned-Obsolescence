@@ -1,6 +1,7 @@
 #ifndef PLANNEDOBSOLESCENCE_UIMANAGER_H
 #define PLANNEDOBSOLESCENCE_UIMANAGER_H
 
+#include "../UI/GenericUI.h"
 #include "../UI/PopupWindow.h"
 #include "../Viewport/Camera.h"
 
@@ -14,6 +15,9 @@ class UIManager
   void operator=(UIManager const&) = delete;
 
   ~UIManager();
+
+  void addGenericUI(GenericUI* new_generic_ui);
+  void addButton(Button* new_button);
 
   void buildUI();
   void setRenderer(ASGE::Renderer* rend) { renderer = rend; };
@@ -36,6 +40,7 @@ class UIManager
   std::vector<Button*> buttons;
   std::vector<TextBox*> text_boxes;
   std::vector<ProgressBar*> progress_bars;
+  std::vector<GenericUI*> generic_spriteset;
 
   // All the different popup types
   PopupWindow* boss_popup = nullptr;

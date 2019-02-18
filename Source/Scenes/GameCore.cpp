@@ -1,6 +1,7 @@
 #include "GameCore.h"
 #include "../Constants.h"
 #include "../Sprites/ScaledSpriteArray.h"
+#include "../UI/GenericUI.h"
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
@@ -27,6 +28,25 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 
   UIManager::getInstance().setRenderer(rend);
   UIManager::getInstance().setCamera(&camera);
+
+  GenericUI* ui_main =
+    new GenericUI(renderer, "IN_GAME_UI/TOP_LEFT_BG.png", "IN_GAME_UI/TOP_LEFT_TEXT.png");
+  UIManager::getInstance().addGenericUI(ui_main);
+
+  GenericUI* ui_bottom =
+    new GenericUI(renderer, "IN_GAME_UI/BOTTOM_LEFT_BG.png", "IN_GAME_UI/BOTTOM_LEFT_TEXT.png");
+  UIManager::getInstance().addGenericUI(ui_bottom);
+
+  Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
+                                   renderer,
+                                   "data/UI/IN_GAME_UI/TOP_RIGHT_QUIT.png",
+                                   "data/UI/IN_GAME_UI/TOP_RIGHT_QUIT.png",
+                                   148,
+                                   53);
+  scenes* next = &next_scene;
+  quit_button->click_function = [next] { *next = scenes::MAIN_MENU; };
+  UIManager::getInstance().addButton(quit_button);
+
   UIManager::getInstance().buildUI();
 
   return true;
@@ -159,5 +179,6 @@ void GameCore::render(double delta_time)
   // Render Characters
   character_manager.render(delta_time);
 
+  // Render UI
   UIManager::getInstance().render(delta_time);
 }

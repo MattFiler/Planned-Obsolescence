@@ -24,6 +24,23 @@ UIManager::~UIManager()
     delete progress;
     progress = nullptr;
   }
+  for (GenericUI* generic_ui : generic_spriteset)
+  {
+    delete generic_ui;
+    generic_ui = nullptr;
+  }
+}
+
+/* Add a generic UI element set (foreground and background) */
+void UIManager::addGenericUI(GenericUI* new_generic_ui)
+{
+  generic_spriteset.push_back(new_generic_ui);
+}
+
+/* Add a button */
+void UIManager::addButton(Button* new_button)
+{
+  buttons.push_back(new_button);
 }
 
 /* Creates all the UI */
@@ -41,11 +58,13 @@ void UIManager::buildUI()
 
 void UIManager::buildButtons()
 {
+  /*
   Button* button = new Button(
     Point(SCREEN_WIDTH - 50, 0), renderer, "data/UI/cross.png", "data/UI/cross.png", 50, 50);
   scenes* next = &next_scene;
   button->click_function = [next] { *next = scenes::MAIN_MENU; };
   buttons.push_back(button);
+   */
 }
 
 void UIManager::buildTextBoxes() {}
@@ -72,6 +91,10 @@ void UIManager::render(double delta_time)
   for (ProgressBar* progress : progress_bars)
   {
     progress->render(delta_time);
+  }
+  for (GenericUI* generic_ui : generic_spriteset)
+  {
+    generic_ui->render(delta_time);
   }
 
   if (boss_popup->isActive())
