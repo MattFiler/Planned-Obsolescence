@@ -31,36 +31,6 @@
     ],
     "sprite": "data/MAPS/default.png"
   },
-  "TEST1": {
-    "rooms": [
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1"
-    ],
-    "sprite": "data/MAPS/TEST1_122227.png"
-  },
   "TEST2": {
     "rooms": [
       "DEMO_2",
@@ -79,7 +49,7 @@
       "DEMO_1",
       "DEMO_1",
       "DEMO_1",
-      "DEMO_1",
+      "security",
       "DEMO_1",
       "DEMO_1",
       "DEMO_1",
@@ -89,7 +59,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST2_122227.png"
+    "sprite": "data/MAPS/TEST2_101330.png"
   },
   "TEST3": {
     "rooms_h": 3,
@@ -101,7 +71,7 @@
       "DEMO_1",
       "DEMO_1",
       "DEMO_1",
-      "DEMO_1",
+      "security",
       "DEMO_1",
       "DEMO_1",
       "DEMO_1",
@@ -110,7 +80,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST3_122227.png"
+    "sprite": "data/MAPS/TEST3_101330.png"
   },
   "TEST4": {
     "rooms_h": 3,
@@ -122,7 +92,7 @@
       "DEMO_1",
       "DEMO_2",
       "DEMO_1",
-      "DEMO_1",
+      "security",
       "DEMO_1",
       "DEMO_1",
       "DEMO_1",
@@ -131,7 +101,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST4_122227.png"
+    "sprite": "data/MAPS/TEST4_101330.png"
   },
   "TEST5": {
     "rooms_h": 3,
@@ -144,7 +114,7 @@
       "DEMO_3",
       "DEMO_3",
       "DEMO_3",
-      "DEMO_3",
+      "security",
       "DEMO_3",
       "DEMO_3",
       "DEMO_3",
@@ -152,6 +122,36 @@
       "DEMO_3",
       "DEMO_3"
     ],
-    "sprite": "data/MAPS/TEST5_122227.png"
+    "sprite": "data/MAPS/TEST5_101330.png"
+  },
+  "TEST1": {
+    "rooms": [
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security",
+      "security"
+    ],
+    "sprite": "data/MAPS/TEST1_101330.png"
   }
 }

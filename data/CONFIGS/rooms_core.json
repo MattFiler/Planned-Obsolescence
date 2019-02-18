@@ -59,7 +59,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_1_122227.png"
+    "sprite": "data/ROOMS/DEMO_1_101330.png"
   },
   "DEMO_2": {
     "tiles": [
@@ -89,7 +89,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_2_122227.png"
+    "sprite": "data/ROOMS/DEMO_2_101330.png"
   },
   "DEMO_3": {
     "tiles": [
@@ -119,7 +119,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_3_122227.png"
+    "sprite": "data/ROOMS/DEMO_3_101330.png"
   },
   "DEMO_4": {
     "tiles": [
@@ -149,6 +149,49 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_4_122227.png"
+    "sprite": "data/ROOMS/DEMO_4_101330.png"
+  },
+  "security": {
+    "tile_w": 6,
+    "tile_h": 6,
+    "tiles": [
+      "top_left",
+      "top_half_left",
+      "top_half_left",
+      "top_half_right",
+      "top_half_right",
+      "top_right",
+      "left_half_top",
+      "floor_security_rd",
+      "floor_security_lrd",
+      "floor_security_lrd",
+      "floor_security_ld",
+      "right_half_top",
+      "left_half_top",
+      "floor_security_rud",
+      "floor_security_all",
+      "floor_security_all",
+      "floor_security_all",
+      "closed_door_right",
+      "left_half_bottom",
+      "floor_security_rud",
+      "floor_security_all",
+      "floor_security_all",
+      "floor_security_lud",
+      "right_half_bottom",
+      "left_half_bottom",
+      "floor_security_ur",
+      "floor_security_ld",
+      "floor_security_lru",
+      "floor_security_lu",
+      "right_half_bottom",
+      "bottom_left",
+      "bottom_half_left",
+      "bottom_half_left",
+      "bottom_half_right",
+      "bottom_half_right",
+      "bottom_right"
+    ],
+    "sprite": "data/ROOMS/security_101330.png"
   }
 }

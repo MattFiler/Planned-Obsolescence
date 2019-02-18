@@ -157,5 +157,184 @@
     "has_point_of_interest": {
       "door": true
     }
+  },
+  "closed_door_top": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/closed_top_052448.png",
+    "has_point_of_interest": {
+      "door": true
+    }
+  },
+  "closed_door_right": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/closed_right_052513.png",
+    "has_point_of_interest": {
+      "door": true
+    }
+  },
+  "closed_door_left": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/closed_left_052532.png",
+    "has_point_of_interest": {
+      "door": true
+    }
+  },
+  "closed_door_bottom": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/closed_bottom_052600.png",
+    "has_point_of_interest": {
+      "door": true
+    }
+  },
+  "top_right": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/top_right_052745.png"
+  },
+  "top_left": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/top_left_052802.png"
+  },
+  "bottom_left": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/bottom_left_052831.png"
+  },
+  "bottom_right": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/bottom_right_052852.png"
+  },
+  "bottom_half_left": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/bottom_half_left_052934.png"
+  },
+  "bottom_half_right": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/bottom_half_right_053015.png"
+  },
+  "left_half_bottom": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/left_half_bottom_053043.png"
+  },
+  "left_half_top": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/left_half_top_053116.png"
+  },
+  "right_half_bottom": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/right_half_bottom_053149.png"
+  },
+  "right_half_top": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/right_half_top_053206.png"
+  },
+  "top_half_left": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/top_half_left_053227.png"
+  },
+  "top_half_right": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/top_half_right_053244.png"
+  },
+  "floor_security_all": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/floor_blue_051418.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "floor_security_lrd": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/floor_blue_051728.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "down": true
+    }
+  },
+  "floor_security_lud": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/floor_blue_051931.png",
+    "available_exits": {
+      "left": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "floor_security_rud": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/floor_blue_052134.png",
+    "available_exits": {
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "floor_security_lru": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/floor_blue_052257.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true
+    }
+  },
+  "floor_security_lu": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/floor_blue_100146.png",
+    "available_exits": {
+      "left": true,
+      "up": true
+    }
+  },
+  "floor_security_ur": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/floor_blue_100118.png",
+    "available_exits": {
+      "right": true,
+      "up": true
+    }
+  },
+  "floor_security_rd": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/floor_blue_100029.png",
+    "available_exits": {
+      "right": true,
+      "down": true
+    }
+  },
+  "floor_security_ld": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/SZYMON/floor_blue_095933.png",
+    "available_exits": {
+      "left": true,
+      "down": true
+    }
   }
 }

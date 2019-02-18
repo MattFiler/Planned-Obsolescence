@@ -107,6 +107,131 @@
         <valid_exits left="true" right="true" up="true" down="true" />
         <points_of_interest computer="false" door="true" />
       </tile>
+      <tile name="closed_door_top" set="SZYMON" sprite="data/TILES/SZYMON/closed_top_052448.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" />
+      </tile>
+      <tile name="closed_door_right" set="SZYMON" sprite="data/TILES/SZYMON/closed_right_052513.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" />
+      </tile>
+      <tile name="closed_door_left" set="SZYMON" sprite="data/TILES/SZYMON/closed_left_052532.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" />
+      </tile>
+      <tile name="closed_door_bottom" set="SZYMON" sprite="data/TILES/SZYMON/closed_bottom_052600.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" />
+      </tile>
+      <tile name="top_right" set="SZYMON" sprite="data/TILES/SZYMON/top_right_052745.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="top_left" set="SZYMON" sprite="data/TILES/SZYMON/top_left_052802.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="bottom_left" set="SZYMON" sprite="data/TILES/SZYMON/bottom_left_052831.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="bottom_right" set="SZYMON" sprite="data/TILES/SZYMON/bottom_right_052852.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="bottom_half_left" set="SZYMON" sprite="data/TILES/SZYMON/bottom_half_left_052934.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="bottom_half_right" set="SZYMON" sprite="data/TILES/SZYMON/bottom_half_right_053015.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="left_half_bottom" set="SZYMON" sprite="data/TILES/SZYMON/left_half_bottom_053043.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="left_half_top" set="SZYMON" sprite="data/TILES/SZYMON/left_half_top_053116.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="right_half_bottom" set="SZYMON" sprite="data/TILES/SZYMON/right_half_bottom_053149.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="right_half_top" set="SZYMON" sprite="data/TILES/SZYMON/right_half_top_053206.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="top_half_left" set="SZYMON" sprite="data/TILES/SZYMON/top_half_left_053227.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="top_half_right" set="SZYMON" sprite="data/TILES/SZYMON/top_half_right_053244.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="floor_security_all" set="SZYMON" sprite="data/TILES/SZYMON/floor_blue_051418.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="true" right="true" up="true" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="floor_security_lrd" set="SZYMON" sprite="data/TILES/SZYMON/floor_blue_051728.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="true" right="true" up="false" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="floor_security_lud" set="SZYMON" sprite="data/TILES/SZYMON/floor_blue_051931.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="true" right="false" up="true" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="floor_security_rud" set="SZYMON" sprite="data/TILES/SZYMON/floor_blue_052134.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="true" up="true" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="floor_security_lru" set="SZYMON" sprite="data/TILES/SZYMON/floor_blue_052257.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="true" right="true" up="true" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="floor_security_lu" set="SZYMON" sprite="data/TILES/SZYMON/floor_blue_100146.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="true" right="false" up="true" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="floor_security_ur" set="SZYMON" sprite="data/TILES/SZYMON/floor_blue_100118.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="true" up="true" down="false" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="floor_security_rd" set="SZYMON" sprite="data/TILES/SZYMON/floor_blue_100029.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="false" right="true" up="false" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
+      <tile name="floor_security_ld" set="SZYMON" sprite="data/TILES/SZYMON/floor_blue_095933.png" mandatory="false">
+        <dimensions width="32" height="32" />
+        <valid_exits left="true" right="false" up="false" down="true" />
+        <points_of_interest computer="false" door="false" />
+      </tile>
     </tiles>
   </tile_config>
   <room_config>
@@ -256,6 +381,46 @@
           <tile name="LAB_L_U" />
         </tiles>
       </room>
+      <room name="security" mandatory="false">
+        <tiles width="6" height="6">
+          <tile name="top_left" />
+          <tile name="top_half_left" />
+          <tile name="top_half_left" />
+          <tile name="top_half_right" />
+          <tile name="top_half_right" />
+          <tile name="top_right" />
+          <tile name="left_half_top" />
+          <tile name="floor_security_rd" />
+          <tile name="floor_security_lrd" />
+          <tile name="floor_security_lrd" />
+          <tile name="floor_security_ld" />
+          <tile name="right_half_top" />
+          <tile name="left_half_top" />
+          <tile name="floor_security_rud" />
+          <tile name="floor_security_all" />
+          <tile name="floor_security_all" />
+          <tile name="floor_security_all" />
+          <tile name="closed_door_right" />
+          <tile name="left_half_bottom" />
+          <tile name="floor_security_rud" />
+          <tile name="floor_security_all" />
+          <tile name="floor_security_all" />
+          <tile name="floor_security_lud" />
+          <tile name="right_half_bottom" />
+          <tile name="left_half_bottom" />
+          <tile name="floor_security_ur" />
+          <tile name="floor_security_ld" />
+          <tile name="floor_security_lru" />
+          <tile name="floor_security_lu" />
+          <tile name="right_half_bottom" />
+          <tile name="bottom_left" />
+          <tile name="bottom_half_left" />
+          <tile name="bottom_half_left" />
+          <tile name="bottom_half_right" />
+          <tile name="bottom_half_right" />
+          <tile name="bottom_right" />
+        </tiles>
+      </room>
     </rooms>
   </room_config>
   <map_config>
@@ -286,33 +451,6 @@
       <room name="DEFAULT" />
       <room name="DEFAULT" />
     </map>
-    <map name="TEST1" mandatory="false" width="5" height="5">
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-    </map>
     <map name="TEST2" mandatory="false" width="5" height="5">
       <room name="DEMO_2" />
       <room name="DEMO_1" />
@@ -330,7 +468,7 @@
       <room name="DEMO_1" />
       <room name="DEMO_1" />
       <room name="DEMO_1" />
-      <room name="DEMO_1" />
+      <room name="security" />
       <room name="DEMO_1" />
       <room name="DEMO_1" />
       <room name="DEMO_1" />
@@ -348,7 +486,7 @@
       <room name="DEMO_1" />
       <room name="DEMO_1" />
       <room name="DEMO_1" />
-      <room name="DEMO_1" />
+      <room name="security" />
       <room name="DEMO_1" />
       <room name="DEMO_1" />
       <room name="DEMO_1" />
@@ -365,7 +503,7 @@
       <room name="DEMO_1" />
       <room name="DEMO_2" />
       <room name="DEMO_1" />
-      <room name="DEMO_1" />
+      <room name="security" />
       <room name="DEMO_1" />
       <room name="DEMO_1" />
       <room name="DEMO_1" />
@@ -383,13 +521,40 @@
       <room name="DEMO_3" />
       <room name="DEMO_3" />
       <room name="DEMO_3" />
+      <room name="security" />
       <room name="DEMO_3" />
       <room name="DEMO_3" />
       <room name="DEMO_3" />
       <room name="DEMO_3" />
       <room name="DEMO_3" />
       <room name="DEMO_3" />
-      <room name="DEMO_3" />
+    </map>
+    <map name="TEST1" mandatory="false" width="5" height="5">
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
+      <room name="security" />
     </map>
   </map_config>
   <character_config>
