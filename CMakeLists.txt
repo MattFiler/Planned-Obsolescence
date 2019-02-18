@@ -99,7 +99,8 @@ add_executable(
         Source/UI/Button.cpp
         Source/ConfigParsers/RoomData.h
         Source/UI/Menu.h
-        Source/UI/Menu.cpp)
+        Source/UI/Menu.cpp
+        Source/ConfigParsers/MapData.h)
 
 ## library includes
 target_include_directories(

@@ -58,11 +58,7 @@ namespace PO_MapMaker
             roomHeight.Enabled = false;
             defaultSizes.Checked = true;
 
-            refreshGUI();
-
-            //--
-
-            /* LOADING AN EXISTING ROOM INTO THE EDITOR? */
+            //See if we're importing or starting fresh
             if (importedRoom != null)
             {
                 //Set description
@@ -88,6 +84,12 @@ namespace PO_MapMaker
                         roomHeight.ReadOnly = true;
                         roomWidth.ReadOnly = true;
                     }
+                    else
+                    {
+                        defaultSizes.Checked = false;
+                        roomHeight.ReadOnly = false;
+                        roomWidth.ReadOnly = false;
+                    }
                 }
                 else
                 {
@@ -99,7 +101,12 @@ namespace PO_MapMaker
                 }
 
                 //Load in the imported data
-                refreshRoom.PerformClick();
+                refreshGUI(true);
+            }
+            else
+            {
+                //Load in default data
+                refreshGUI();
             }
         }
 
@@ -109,12 +116,13 @@ namespace PO_MapMaker
         string[] selectedTiles = null;
         int positional_x = 0;
         int positional_y = 0;
-        void refreshGUI()
+        void refreshGUI(bool firstLoad = false)
         {
             int width = 0;
             int height = 0;
             if (defaultSizes.Checked)
             {
+                //Get default width/height if requested
                 foreach (XElement element in configXML.Element("config").Element("room_config").Element("rooms").Descendants("room"))
                 {
                     if (element.Attribute("name").Value == "DEFAULT")
@@ -173,7 +181,7 @@ namespace PO_MapMaker
             {
                 int height_index = Convert.ToInt32(i / width);
                 int width_index = Convert.ToInt32(i - (width * height_index));
-                populateInputs(width_index, height_index, i, tileList);
+                populateInputs(width_index, height_index, i, tileList, firstLoad);
             }
 
             //Add new inputs to form and store selections
@@ -201,7 +209,7 @@ namespace PO_MapMaker
             saveRoom.Size = new Size(positional_x + 60, saveRoom.Size.Height);
             saveRoom.Location = new Point(12, positional_y + 110);
         }
-        void populateInputs(int width_index, int height_index, int index, List<string> tileList)
+        void populateInputs(int width_index, int height_index, int index, List<string> tileList, bool firstLoad)
         {
             //Update sizes/positions
             positional_x = (width_index * 80) + 10;
@@ -222,7 +230,7 @@ namespace PO_MapMaker
             {
                 dropdown.SelectedIndex = 0; //Should really never fail this, but it's possible.
             }
-            if (importedRoom != null)
+            if (importedRoom != null && firstLoad)
             {
                 //Load imported settings
                 dropdown.SelectedItem = importedRoom.Element("tiles").Elements("tile").ElementAt(index).Attribute("name").Value;
@@ -298,7 +306,7 @@ namespace PO_MapMaker
         /* Save */
         private void saveRoom_Click(object sender, EventArgs e)
         {
-            if (roomName.Text != "" && (roomWidth.Text != "0" || roomWidth.Text != "") && (roomHeight.Text != "0" || roomHeight.Text != ""))
+            if (roomName.Text != "" && roomWidth.Value != 0 && roomHeight.Value != 0 && selectedTiles.Length == roomWidth.Value * roomHeight.Value)
             {
                 //Check for name conflicts
                 bool hasNameConflict = false;
@@ -328,7 +336,15 @@ namespace PO_MapMaker
                 if (!hasNameConflict)
                 {
                     //Save
-                    XElement roomTileList = new XElement("room", new XAttribute("name", roomName.Text), new XAttribute("mandatory", "false"), new XElement("tiles", new XAttribute("width", roomWidth.Text), new XAttribute("height", roomHeight.Text)));
+                    string mandatory_text = "false";
+                    if (importedRoom != null)
+                    {
+                        if (importedRoom.Attribute("mandatory").Value == "true")
+                        {
+                            mandatory_text = "true";
+                        }
+                    }
+                    XElement roomTileList = new XElement("room", new XAttribute("name", roomName.Text), new XAttribute("mandatory", mandatory_text), new XElement("tiles", new XAttribute("width", roomWidth.Text), new XAttribute("height", roomHeight.Text)));
                     foreach (string tile in selectedTiles)
                     {
                         roomTileList.Element("tiles").Add(new XElement("tile", new XAttribute("name", tile)));
@@ -360,13 +376,20 @@ namespace PO_MapMaker
             }
             else
             {
-                if (roomName.Text != "")
+                if (roomName.Text == "")
                 {
                     MessageBox.Show("Please enter a room description.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Room width/height must be bigger than zero.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (selectedTiles.Length != roomWidth.Value * roomHeight.Value)
+                    {
+                        MessageBox.Show("You must refresh the form when changing room width/height before saving.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Room width/height must be bigger than zero.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

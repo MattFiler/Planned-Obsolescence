@@ -80,8 +80,8 @@ enum scenes
 // Render index
 enum render_index
 {
-  ROOM_LAYER,
-  SPECIAL_TILE_LAYER,
+  MAP_LAYER,
+  TILE_LAYER,
   CHARACTER_LAYER,
   UI_SPRITE_LAYER,
   UI_TEXT_LAYER

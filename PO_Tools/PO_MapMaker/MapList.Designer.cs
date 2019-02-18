@@ -32,7 +32,7 @@
             this.deleteMap = new System.Windows.Forms.Button();
             this.newMap = new System.Windows.Forms.Button();
             this.editMap = new System.Windows.Forms.Button();
-            this.listRooms = new System.Windows.Forms.ListBox();
+            this.listMapSets = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -53,6 +53,7 @@
             this.deleteMap.TabIndex = 17;
             this.deleteMap.Text = "DELETE";
             this.deleteMap.UseVisualStyleBackColor = true;
+            this.deleteMap.Click += new System.EventHandler(this.deleteMap_Click);
             // 
             // newMap
             // 
@@ -62,6 +63,7 @@
             this.newMap.TabIndex = 16;
             this.newMap.Text = "NEW";
             this.newMap.UseVisualStyleBackColor = true;
+            this.newMap.Click += new System.EventHandler(this.newMap_Click);
             // 
             // editMap
             // 
@@ -71,14 +73,15 @@
             this.editMap.TabIndex = 15;
             this.editMap.Text = "EDIT";
             this.editMap.UseVisualStyleBackColor = true;
+            this.editMap.Click += new System.EventHandler(this.editMap_Click);
             // 
-            // listRooms
+            // listMapSets
             // 
-            this.listRooms.FormattingEnabled = true;
-            this.listRooms.Location = new System.Drawing.Point(15, 24);
-            this.listRooms.Name = "listRooms";
-            this.listRooms.Size = new System.Drawing.Size(186, 238);
-            this.listRooms.TabIndex = 14;
+            this.listMapSets.FormattingEnabled = true;
+            this.listMapSets.Location = new System.Drawing.Point(15, 24);
+            this.listMapSets.Name = "listMapSets";
+            this.listMapSets.Size = new System.Drawing.Size(186, 238);
+            this.listMapSets.TabIndex = 14;
             // 
             // MapList
             // 
@@ -89,11 +92,12 @@
             this.Controls.Add(this.deleteMap);
             this.Controls.Add(this.newMap);
             this.Controls.Add(this.editMap);
-            this.Controls.Add(this.listRooms);
+            this.Controls.Add(this.listMapSets);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MapList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MapList";
+            this.Text = "Map Editor";
+            this.Load += new System.EventHandler(this.MapList_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,6 +109,6 @@
         private System.Windows.Forms.Button deleteMap;
         private System.Windows.Forms.Button newMap;
         private System.Windows.Forms.Button editMap;
-        private System.Windows.Forms.ListBox listRooms;
+        private System.Windows.Forms.ListBox listMapSets;
     }
 }

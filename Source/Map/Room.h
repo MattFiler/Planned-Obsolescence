@@ -19,8 +19,6 @@ class Room
   float getHeight();
   float getWidth();
 
-  std::shared_ptr<ScaledSpriteArray> getSprite();
-
   float getPositionX();
   float getPositionY();
 

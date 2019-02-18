@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO.Compression;
+using System.Diagnostics;
 
 namespace PO_MapMaker
 {
@@ -24,16 +25,16 @@ namespace PO_MapMaker
 
         private void Compiler_Load(object sender, EventArgs e)
         {
+            //Start timer
+            Stopwatch compiler_timer = new Stopwatch();
+            compiler_timer.Start();
+
             UseWaitCursor = true;
             XDocument configXML = XDocument.Load("data/config.xml");
+            string compile_uid = DateTime.Now.ToString("hhmmss");
 
             /* characters_core.json */
             statusText.Text = "Compiling Character Data";
-            //WIP
-            progressBar.PerformStep();
-
-            /* map_core.json */
-            statusText.Text = "Compiling Map Data";
             //WIP
             progressBar.PerformStep();
 
@@ -154,8 +155,8 @@ namespace PO_MapMaker
                     List<int[]> room_tile_position = new List<int[]>();
 
                     rooms_coreJson += "\"" + room.Attribute("name").Value + "\":{ ";
-                    rooms_coreJson += addElementIfNotDefault("width", default_room.Element("tiles").Attribute("width"), room.Element("tiles").Attribute("width"), false);
-                    rooms_coreJson += addElementIfNotDefault("height", default_room.Element("tiles").Attribute("height"), room.Element("tiles").Attribute("height"), false);
+                    rooms_coreJson += addElementIfNotDefault("tile_w", default_room.Element("tiles").Attribute("width"), room.Element("tiles").Attribute("width"), false);
+                    rooms_coreJson += addElementIfNotDefault("tile_h", default_room.Element("tiles").Attribute("height"), room.Element("tiles").Attribute("height"), false);
                     rooms_coreJson += "\"tiles\":[ ";
 
                     int tile_index = 0;
@@ -223,7 +224,7 @@ namespace PO_MapMaker
                     room_graphics.Dispose();
 
                     //Save room sprite
-                    string room_sprite_filepath = "data/ROOMS/" + room.Attribute("name").Value + "_" + DateTime.Now.ToString("hhmmss") + ".png";
+                    string room_sprite_filepath = "data/ROOMS/" + room.Attribute("name").Value + "_" + compile_uid + ".png";
                     room_sprite.Save(room_sprite_filepath);
 
                     //Finish JSON
@@ -234,6 +235,141 @@ namespace PO_MapMaker
             JToken rooms_coreJsonParsed = JToken.Parse(rooms_coreJson);
             File.WriteAllText("data/CONFIGS/rooms_core.json", rooms_coreJsonParsed.ToString(Formatting.Indented));
             progressBar.PerformStep();
+
+            /* map_core.json */
+            statusText.Text = "Compiling Map Data";
+            XElement map_config = configXML.Element("config").Element("map_config");
+            XElement default_map = null;
+            foreach (XElement map in map_config.Descendants("map"))
+            {
+                if (map.Attribute("name").Value == "DEFAULT")
+                {
+                    //Get default map set
+                    default_map = map;
+                    break;
+                }
+            }
+            DirectoryInfo existing_map_sprites = new DirectoryInfo("data/MAPS");
+            foreach (var file in existing_map_sprites.GetFiles("*.png"))
+            {
+                if (file.Name != "default.png")
+                {
+                    //clear up existing map sprites
+                    File.Delete(file.FullName);
+                }
+            }
+            string maps_coreJson = "{";
+            foreach (XElement map in map_config.Descendants("map"))
+            {
+                if (map.Attribute("name").Value == "DEFAULT")
+                {
+                    maps_coreJson += "\"DEFAULT\":{\"rooms_w\":" + map.Attribute("width").Value + ",\"rooms_h\":" + map.Attribute("height").Value + ",\"rooms\":[ ";
+                    foreach (XElement room in map.Descendants("room"))
+                    {
+                        maps_coreJson += "\"" + room.Attribute("name").Value + "\",";
+                    }
+                    maps_coreJson = maps_coreJson.Substring(0, maps_coreJson.Length - 1) + "],\"sprite\":\"data/MAPS/default.png\"},";
+                }
+                else
+                {
+                    int map_width = Convert.ToInt32(map.Attribute("width").Value);
+                    int map_height = Convert.ToInt32(map.Attribute("height").Value);
+                    List<Bitmap> map_rooms = new List<Bitmap>();
+                    List<int[]> map_room_dimensions = new List<int[]>();
+                    List<int[]> map_room_positions = new List<int[]>();
+
+                    maps_coreJson += "\"" + map.Attribute("name").Value + "\":{ ";
+                    maps_coreJson += addElementIfNotDefault("rooms_w", default_map.Attribute("width"), map.Attribute("width"), false);
+                    maps_coreJson += addElementIfNotDefault("rooms_h", default_map.Attribute("height"), map.Attribute("height"), false);
+                    maps_coreJson += "\"rooms\":[ ";
+
+                    int room_index = 0;
+                    int[] room_pos = { 0, 0 };
+                    foreach (XElement room in map.Descendants("room"))
+                    {
+                        //Save this room's data for creating the map sprite
+                        foreach (XElement room_data in room_config.Descendants("room"))
+                        {
+                            if (room_data.Attribute("name").Value == room.Attribute("name").Value)
+                            {
+                                //Get room sprite (kinda tricky as these aren't stored in our xml - something to change?)
+                                string room_sprite_filepath = "data/ROOMS/" + room_data.Attribute("name").Value + "_" + compile_uid + ".png";
+                                if (room_data.Attribute("name").Value == "DEFAULT")
+                                {
+                                    room_sprite_filepath = "data/ROOMS/default.png";
+                                }
+                                Bitmap this_room_sprite = loadBMP(room_sprite_filepath);
+                                map_rooms.Add(this_room_sprite);
+
+                                //Get room dimensions from its sprite (sneaky)
+                                int[] room_dims = {
+                                    this_room_sprite.Width,
+                                    this_room_sprite.Height
+                                };
+                                map_room_dimensions.Add(room_dims);
+
+                                //Calculate room position
+                                if ((room_index) % map_width == 0)
+                                {
+                                    if (room_index >= map_width)
+                                    {
+                                        room_pos[0] = 0;
+                                        room_pos[1] += room_dims[1];
+                                    }
+                                }
+                                else
+                                {
+                                    room_pos[0] += room_dims[0];
+                                }
+                                int[] this_room_pos = { room_pos[0], room_pos[1] };
+                                map_room_positions.Add(this_room_pos);
+                                break;
+                            }
+                        }
+                        room_index++;
+
+                        //Add map to json list
+                        maps_coreJson += "\"" + room.Attribute("name").Value + "\",";
+                    }
+
+                    //Map size
+                    int map_size_actual = map_room_positions[map_rooms.Count - 1][0] + map_room_dimensions[map_rooms.Count - 1][0];
+                    int map_height_actual = map_room_positions[map_rooms.Count - 1][1] + map_room_dimensions[map_rooms.Count - 1][1];
+
+                    //Load placeholder bitmap to draw over
+                    Bitmap map_sprite = loadBMP("data/MAPS/default.png", map_size_actual, map_height_actual);
+                    Graphics map_graphics = Graphics.FromImage(map_sprite);
+
+                    //Draw over bitmap with our room sprites
+                    int bitmap_index = 0;
+                    foreach (Bitmap room_sprite in map_rooms)
+                    {
+                        int[] room_dimensions = map_room_dimensions[bitmap_index];
+                        int[] room_position = map_room_positions[bitmap_index];
+
+                        map_graphics.DrawImage(room_sprite, room_position[0], room_position[1], room_dimensions[0], room_dimensions[1]);
+
+                        bitmap_index++;
+                    }
+                    map_graphics.Dispose();
+
+                    //Save map sprite
+                    string map_sprite_filepath = "data/MAPS/" + map.Attribute("name").Value + "_" + compile_uid + ".png";
+                    map_sprite.Save(map_sprite_filepath);
+
+                    //Finish JSON
+                    maps_coreJson = maps_coreJson.Substring(0, maps_coreJson.Length - 1) + "],\"sprite\":\"" + map_sprite_filepath + "\"},";
+                }
+            }
+            maps_coreJson = maps_coreJson.Substring(0, maps_coreJson.Length - 1) + "}";
+            JToken maps_coreJsonParsed = JToken.Parse(maps_coreJson);
+            File.WriteAllText("data/CONFIGS/map_core.json", maps_coreJsonParsed.ToString(Formatting.Indented));
+            progressBar.PerformStep();
+
+            //Stop timer and write log
+            compiler_timer.Stop();
+            TimeSpan ts = compiler_timer.Elapsed;
+            File.WriteAllText("data/compiler_log.txt", "Successfully compiled!\n\nCompile ID: " + compile_uid + "\nCompile time: " + ts.TotalSeconds + " seconds\nCompile date: " + DateTime.Now.ToString("s"));
 
             /* Copy Everything */
             statusText.Text = "Finishing up...";
