@@ -63,7 +63,7 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
   {
     if (key->action == ASGE::KEYS::KEY_PRESSED)
     {
-      y_axis_input = 1;
+      y_axis_input = -1;
     }
     else if (key->action == ASGE::KEYS::KEY_RELEASED)
     {
@@ -74,7 +74,7 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
   {
     if (key->action == ASGE::KEYS::KEY_PRESSED)
     {
-      y_axis_input = -1;
+      y_axis_input = 1;
     }
     else if (key->action == ASGE::KEYS::KEY_RELEASED)
     {
@@ -85,7 +85,7 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
   {
     if (key->action == ASGE::KEYS::KEY_PRESSED)
     {
-      x_axis_input = 1;
+      x_axis_input = -1;
     }
     else if (key->action == ASGE::KEYS::KEY_RELEASED)
     {
@@ -96,7 +96,7 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
   {
     if (key->action == ASGE::KEYS::KEY_PRESSED)
     {
-      x_axis_input = -1;
+      x_axis_input = 1;
     }
     else if (key->action == ASGE::KEYS::KEY_RELEASED)
     {

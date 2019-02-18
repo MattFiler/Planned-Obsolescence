@@ -38,6 +38,7 @@ class Character
   bool isVisible();
   int getSpawnCap();
   int getSpawnCapAsInt();
+  Point getPosition() { return position; };
   std::string getSpritePath();
 
   bool isPointInArea(Point point) { return click_area.isPointInArea(point); };
