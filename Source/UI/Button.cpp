@@ -34,6 +34,7 @@ void Button::moveTo(Point point)
   position = point;
   sprite->xPos(point.x_pos);
   sprite->yPos(point.y_pos);
+  click_area.setPosition(point);
 }
 
 /* Checks to see if a given point is within this objects click area and updates accordingly */
