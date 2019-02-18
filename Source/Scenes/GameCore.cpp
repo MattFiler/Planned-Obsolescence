@@ -30,7 +30,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   UIManager::getInstance().setCamera(&camera);
 
   GenericUI* ui_main =
-    new GenericUI(renderer, "IN_GAME_UI/TOP_LEFT_BG.png", "IN_GAME_UI/TOP_LEFT_TEXT.png");
+    new GenericUI(renderer, "IN_GAME_UI/BOTTOM_RIGHT_BG.png", "IN_GAME_UI/BOTTOM_RIGHT_TEXT.png");
   UIManager::getInstance().addGenericUI(ui_main);
 
   GenericUI* ui_bottom =

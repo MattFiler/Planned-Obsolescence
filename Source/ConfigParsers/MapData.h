@@ -14,7 +14,10 @@ struct MapData
     // Select a map set
     for (json::iterator maps = passed_map_config.begin(); maps != passed_map_config.end(); ++maps)
     {
-      available_roomsets.push_back(maps.key());
+      if (maps.key() != "DEFAULT")
+      {
+        available_roomsets.push_back(maps.key());
+      }
     }
     std::string map_name =
       available_roomsets[static_cast<size_t>(rand() % static_cast<int>(available_roomsets.size()))];

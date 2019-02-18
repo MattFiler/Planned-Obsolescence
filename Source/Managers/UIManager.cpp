@@ -57,14 +57,12 @@ void UIManager::buildUI()
 }
 
 void UIManager::buildButtons()
-{
-  /*
-  Button* button = new Button(
-    Point(SCREEN_WIDTH - 50, 0), renderer, "data/UI/cross.png", "data/UI/cross.png", 50, 50);
-  scenes* next = &next_scene;
-  button->click_function = [next] { *next = scenes::MAIN_MENU; };
-  buttons.push_back(button);
-   */
+{ /*
+   Button* button = new Button(
+     Point(SCREEN_WIDTH - 50, 0), renderer, "data/UI/cross.png", "data/UI/cross.png", 50, 50);
+   scenes* next = &next_scene;
+   button->click_function = [next] { *next = scenes::MAIN_MENU; };
+   buttons.push_back(button);*/
 }
 
 void UIManager::buildTextBoxes() {}
