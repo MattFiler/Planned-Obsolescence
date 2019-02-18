@@ -22,8 +22,8 @@ class UI
 
  protected:
   ScaledSpriteArray* createSprite(const std::string& sprite_texture_path);
-  ScaledSpriteArray* createSprite(const std::string& first_sprite_texture_path,
-                                  const std::string& second_sprite_texture_path);
+  ScaledSpriteArray*
+  createSprite(const std::string& texture_path1, const std::string& texture_path2);
 
   Point position;
   ASGE::Renderer* renderer;

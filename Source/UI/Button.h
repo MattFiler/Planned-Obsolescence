@@ -12,8 +12,8 @@ class Button : public UI
   Button() = default;
   Button(Point pos,
          ASGE::Renderer* rend,
-         const std::string& first_sprite_texture_path,
-         const std::string& second_sprite_texture_path,
+         const std::string& texture_path_1,
+         const std::string& texture_path_2,
          float _width = 100,
          float _height = 50);
   ~Button() override;

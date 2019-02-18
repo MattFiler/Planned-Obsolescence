@@ -2,8 +2,8 @@
 
 Button::Button(Point pos,
                ASGE::Renderer* rend,
-               const std::string& first_sprite_texture_path,
-               const std::string& second_sprite_texture_path,
+               const std::string& texture_path_1,
+               const std::string& texture_path_2,
                float _width,
                float _height) :
   UI(pos, rend),
@@ -11,7 +11,7 @@ Button::Button(Point pos,
 {
   width = _width;
   height = _height;
-  sprite = createSprite(first_sprite_texture_path, second_sprite_texture_path);
+  sprite = createSprite(texture_path_1, texture_path_2);
   sprite->setWidth(width);
   sprite->setHeight(height);
   sprite->xPos(pos.x_pos);

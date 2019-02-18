@@ -78,12 +78,13 @@ Vector Vector::normal()
 
 /**
  *   @brief   Calculates the angle between 2 vectors
- *   @param   a first vector, b second vector
- *   @return  The angle between a and b
+ *   @param   vector_one first vector, vector_two second vector
+ *   @return  The angle between vector_one and vector_two
  */
-float Vector::angleBetweenVectors(Vector a, Vector b)
+float Vector::angleBetweenVectors(Vector vector_one, Vector vector_two)
 {
-  float angle = acosf(dotProduct(a, b) / (a.magnitude * b.magnitude));
+  float angle =
+    acosf(dotProduct(vector_one, vector_two) / (vector_one.magnitude * vector_two.magnitude));
   if (angle > 180)
   {
     angle -= 180;
@@ -93,12 +94,12 @@ float Vector::angleBetweenVectors(Vector a, Vector b)
 
 /**
  *   @brief   Calculates the dot product of 2 vectors
- *   @param   a first vector, b second vector
- *   @return  The bot product of a and b
+ *   @param   vector_one first vector, vector_two second vector
+ *   @return  The bot product of vector_one and vector_two
  */
-float Vector::dotProduct(Vector a, Vector b)
+float Vector::dotProduct(Vector vector_one, Vector vector_two)
 {
-  return (a.x_mag * b.x_mag) + (a.y_mag * b.y_mag);
+  return (vector_one.x_mag * vector_two.x_mag) + (vector_one.y_mag * vector_two.y_mag);
 }
 
 /* Re-calculate the magnitude of this vector */
