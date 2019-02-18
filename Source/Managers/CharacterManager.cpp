@@ -222,3 +222,17 @@ void CharacterManager::setCamera(Camera* scene_camera)
   camera = scene_camera;
   renderer = camera->getRenderer();
 }
+
+/* Returns true if any character lies within the passed point */
+bool CharacterManager::checkForClick(Point click)
+{
+  for (int i = 0; i < boss_count; i++)
+  {
+    if (boss_instances[i]->isPointInArea(click))
+    {
+      UIManager::getInstance().enableBossPopup(boss_instances[i]);
+      return true;
+    }
+  }
+  return false;
+}

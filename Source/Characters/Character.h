@@ -6,6 +6,7 @@
 #include "../Debug/DebugText.h"
 #include "../Math/Vector.h"
 #include "../Sprites/ScaledSpriteArray.h"
+#include "../Viewport/ClickArea.h"
 
 #include <Engine/Renderer.h>
 #include <vector>
@@ -37,7 +38,10 @@ class Character
   bool isVisible();
   int getSpawnCap();
   int getSpawnCapAsInt();
+  Point getPosition() { return position; };
   std::string getSpritePath();
+
+  bool isPointInArea(Point point) { return click_area.isPointInArea(point); };
 
   void setCharacterID(int index);
   std::string getCharacterID();
@@ -64,6 +68,8 @@ class Character
   unsigned long long route_index = 0;
   float distance_to_next_node = 0;
   int iteration_count = 0;
+
+  ClickArea click_area;
 
  private:
   void importConfig(json json_config);

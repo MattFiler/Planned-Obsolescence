@@ -2,6 +2,7 @@
 #include "../Characters/Goon.h"
 #include "../Characters/LabTechnician.h"
 #include "../Characters/Security.h"
+#include "../Managers/UIManager.h"
 #include <memory>
 
 class CharacterManager
@@ -15,6 +16,8 @@ class CharacterManager
   bool spawnCharacter(Goon* new_goon);
   bool spawnCharacter(LabTechnician* new_technician);
   bool spawnCharacter(Security* new_security);
+
+  bool checkForClick(Point click);
 
   void render(double delta_time);
   void update(double delta_time);

@@ -20,8 +20,8 @@ struct Vector
   Vector reflectVector(Vector target_vector);
   Vector normal();
 
-  static float angleBetweenVectors(Vector a, Vector b);
-  static float dotProduct(Vector a, Vector b);
+  static float angleBetweenVectors(Vector vector_one, Vector vector_two);
+  static float dotProduct(Vector vector_one, Vector vector_two);
 
   Vector operator-(Vector& vector);
   Vector operator+(Vector& vector);

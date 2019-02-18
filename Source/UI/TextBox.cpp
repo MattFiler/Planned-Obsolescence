@@ -9,10 +9,18 @@ TextBox::TextBox(Point pos,
                  ASGE::Colour colour,
                  Point _padding) :
   UI(pos, rend),
-  displayed_text(text), width(_width), height(_height),
-  font_size(_font_size * ScaledSpriteArray::width_scale), font_colour(colour), padding(_padding)
+  displayed_text(text), font_size(_font_size * ScaledSpriteArray::width_scale), font_colour(colour),
+  padding(_padding)
 {
+  width = _width;
+  height = _height;
   wrapText();
+}
+
+TextBox::~TextBox()
+{
+  delete background_sprite;
+  background_sprite = nullptr;
 }
 
 /* Renders this text to screen with its background (if any) */
@@ -25,16 +33,16 @@ void TextBox::render(double delta_time)
   renderer->renderText(
     displayed_text,
     static_cast<int>((position.x_pos + padding.x_pos) * ScaledSpriteArray::width_scale),
-    static_cast<int>((position.y_pos + padding.y_pos + (font_size * 8)) *
+    static_cast<int>((position.y_pos + padding.y_pos + (font_size * 20)) *
                      ScaledSpriteArray::width_scale),
     font_size,
     font_colour);
 }
 
 /* Sets the sprite that will be rendered behind the text */
-void TextBox::setBackgroundSprite(ScaledSpriteArray* sprite)
+void TextBox::setBackgroundSprite(const std::string& sprite_texture_path)
 {
-  background_sprite = sprite;
+  background_sprite = createSprite(sprite_texture_path);
   background_sprite->setWidth(width);
   background_sprite->setHeight(height);
   background_sprite->xPos(position.x_pos);
@@ -57,7 +65,7 @@ void TextBox::wrapText()
   auto char_per_line = static_cast<unsigned long long>(
     (width - (2 * padding.x_pos)) / (font_size / ScaledSpriteArray::width_scale));
   // Divide by some number, may vary by font, unsure on how to get this part exact
-  char_per_line /= 11;
+  char_per_line /= 22;
   unsigned long long str_index = 0;
 
   // While there are characters left to process
