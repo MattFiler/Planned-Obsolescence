@@ -16,8 +16,8 @@ struct MapData
     {
       available_roomsets.push_back(maps.key());
     }
-    std::string map_name = available_roomsets[static_cast<size_t>(
-      rand() % static_cast<int>(available_roomsets.size()) + 1)];
+    std::string map_name =
+      available_roomsets[static_cast<size_t>(rand() % static_cast<int>(available_roomsets.size()))];
 
     // Debug log our map name
     DebugText debug_text;
