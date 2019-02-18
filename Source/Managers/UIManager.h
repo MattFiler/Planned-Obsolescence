@@ -1,10 +1,9 @@
 #ifndef PLANNEDOBSOLESCENCE_UIMANAGER_H
 #define PLANNEDOBSOLESCENCE_UIMANAGER_H
 
+#include "../Characters/Boss.h"
 #include "../UI/PopupWindow.h"
 #include "../Viewport/Camera.h"
-
-class Boss;
 
 class UIManager
 {
