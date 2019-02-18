@@ -1,3 +1,6 @@
+#ifndef PO_GOONDEF
+#define PO_GOONDEF
+
 #include "Character.h"
 
 class Goon : public Character
@@ -6,3 +9,5 @@ class Goon : public Character
   Goon() : Character(character_type::GOON){};
   ~Goon() = default;
 };
+
+#endif

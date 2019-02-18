@@ -1,3 +1,6 @@
+#ifndef PO_LABTECHIE
+#define PO_LABTECHIE
+
 #include "Character.h"
 
 class LabTechnician : public Character
@@ -6,3 +9,5 @@ class LabTechnician : public Character
   LabTechnician() : Character(character_type::TECHNICIAN){};
   ~LabTechnician() = default;
 };
+
+#endif
