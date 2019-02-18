@@ -4,6 +4,7 @@
 #include "../UI/Button.h"
 #include "../UI/ProgressBar.h"
 #include "../UI/TextBox.h"
+#include <array>
 
 /* Basically just a collection of other UI elements packaged into a single object.
  * Has a close button by default which hides the window.*/
