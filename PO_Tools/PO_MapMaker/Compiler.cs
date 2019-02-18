@@ -283,7 +283,7 @@ namespace PO_MapMaker
                     foreach (XElement room in map.Descendants("room"))
                     {
                         //Save this room's data for creating the map sprite
-                        foreach (XElement room_data in room_config.Elements())
+                        foreach (XElement room_data in room_config.Descendants("room"))
                         {
                             if (room_data.Attribute("name").Value == room.Attribute("name").Value)
                             {
