@@ -11,9 +11,6 @@ Room::Room(std::string room_name, json* room_big_config, json* tile_big_config)
 /* Build our room */
 void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_offset)
 {
-  // Load room sprite
-  room_data.loadSprite(renderer);
-
   // Store position data
   room_data.updatePosition(room_x, room_y);
 
@@ -54,15 +51,6 @@ void Room::build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_
       }
     }
   }
-
-  // Update sprite size
-  room_data.refreshSpriteSize();
-}
-
-/* Return our sprite */
-std::shared_ptr<ScaledSpriteArray> Room::getSprite()
-{
-  return room_data.sprite;
 }
 
 /* Return room width */

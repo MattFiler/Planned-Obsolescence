@@ -102,7 +102,10 @@ add_executable(
         Source/UI/Menu.cpp
         Source/UI/UI.cpp 
         Source/Managers/UIManager.h 
-        Source/Managers/UIManager.cpp Source/UI/PopupWindow.h Source/UI/PopupWindow.cpp)
+        Source/Managers/UIManager.cpp 
+        Source/UI/PopupWindow.h 
+        Source/UI/PopupWindow.cpp
+        Source/ConfigParsers/MapData.h)
 
 ## library includes
 target_include_directories(
