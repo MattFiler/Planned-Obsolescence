@@ -1,6 +1,7 @@
 #ifndef PO_MAP
 #define PO_MAP
 
+#include "../ConfigParsers/MapData.h"
 #include "../Constants.h"
 #include "../Debug/DebugText.h"
 #include "../Sprites/ScaledSpriteArray.h"
@@ -29,19 +30,14 @@ class GameMap
   json room_config;
   json tile_config;
 
+  // Map data
+  MapData map_data;
+
   // Engine features
   FileHandler file_handler;
   DebugText debug_text;
   Camera* game_camera = nullptr;
   ASGE::Renderer* renderer = nullptr;
-
-  // Map sprite
-  std::shared_ptr<ScaledSpriteArray> sprite = nullptr;
-
-  // Map data
-  std::vector<Room> rooms;
-  int room_count = 0;
-  int tile_count = 0;
 };
 
 #endif

@@ -2,8 +2,6 @@
 #define PLANNEDOBSOLESCENCE_ROOMDATA_H
 
 #include "../Map/Tile.h"
-#include "../Sprites/ScaledSpriteArray.h"
-#include <Engine/Renderer.h>
 #include <vector>
 
 struct RoomData
