@@ -24,7 +24,7 @@ class UIManager
   void setCamera(Camera* cam) { camera = cam; };
   void render(double delta_time);
   bool checkForClick(Point click);
-  scenes releaseClick();
+  void releaseClick();
 
   void enableBossPopup(Boss* boss);
 

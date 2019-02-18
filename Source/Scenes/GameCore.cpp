@@ -145,7 +145,7 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
   }
   else if (click->action == ASGE::MOUSE::BUTTON_RELEASED)
   {
-    next_scene = UIManager::getInstance().releaseClick();
+    UIManager::getInstance().releaseClick();
   }
 }
 
@@ -171,8 +171,6 @@ scenes GameCore::update(double delta_time)
  */
 void GameCore::render(double delta_time)
 {
-  rend->renderText("THE GAME", 100, 100, ASGE::COLOURS::RED);
-
   // Render Map
   game_map.render(delta_time);
 
