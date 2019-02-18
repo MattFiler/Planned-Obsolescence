@@ -26,6 +26,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   spawnCharacters(renderer);
 
   UIManager::getInstance().setRenderer(rend);
+  UIManager::getInstance().setCamera(&camera);
   UIManager::getInstance().buildUI();
 
   return true;
@@ -116,8 +117,11 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
 
   if (click->action == ASGE::MOUSE::BUTTON_PRESSED)
   {
-    mouse_position = mouse_position / ScaledSpriteArray::width_scale;
-    UIManager::getInstance().checkForClick(mouse_position);
+    // If the UI manager doesn't register this click
+    if (!UIManager::getInstance().checkForClick(mouse_position / ScaledSpriteArray::width_scale))
+    {
+      character_manager.checkForClick(camera.displayedToSimulatedWorld(mouse_position));
+    }
   }
   else if (click->action == ASGE::MOUSE::BUTTON_RELEASED)
   {

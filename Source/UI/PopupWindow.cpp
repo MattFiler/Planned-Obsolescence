@@ -15,8 +15,8 @@ PopupWindow::PopupWindow(Point pos,
   background_sprite->xPos(position.x_pos);
   background_sprite->yPos(position.y_pos);
 
-  Button* close_button =
-    new Button(position + Point(width, 0), rend, "data/UI/cross.png", "data/UI/cross.png", 25, 25);
+  Button* close_button = new Button(
+    position + Point(width - 15, 0), rend, "data/UI/cross.png", "data/UI/cross.png", 15, 15);
   bool* active_p = &active;
   close_button->click_function = [active_p] { *active_p = false; };
   buttons.push_back(close_button);
@@ -61,6 +61,8 @@ void PopupWindow::render(double delta_time)
 void PopupWindow::moveTo(Point point)
 {
   position = point;
+  background_sprite->xPos(point.x_pos);
+  background_sprite->yPos(point.y_pos);
   for (Button* button : buttons)
   {
     button->moveTo(point);
@@ -88,4 +90,17 @@ void PopupWindow::addTextBox(TextBox* new_text_box)
 void PopupWindow::addProgressBar(ProgressBar* new_progress_bar)
 {
   progress_bars.push_back(new_progress_bar);
+}
+
+/* Returns a pointer to the button that was clicked (nullptr if none) */
+Button* PopupWindow::checkForClick(Point click_location)
+{
+  for (Button* button : buttons)
+  {
+    if (button->checkForClick(click_location))
+    {
+      return button;
+    }
+  }
+  return nullptr;
 }

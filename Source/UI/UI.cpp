@@ -13,11 +13,11 @@ ScaledSpriteArray* UI::createSprite(const std::string& first_sprite_texture_path
                                     const std::string& second_texture_path)
 {
   auto* scaled_sprite = new ScaledSpriteArray(1);
-  ASGE::Sprite* sprite = renderer->createRawSprite();
-  sprite->loadTexture(first_sprite_texture_path);
-  scaled_sprite->addSprite(*sprite);
-  sprite = renderer->createRawSprite();
-  sprite->loadTexture(second_texture_path);
-  scaled_sprite->addSprite(*sprite);
+  ASGE::Sprite* sprite1 = renderer->createRawSprite();
+  sprite1->loadTexture(first_sprite_texture_path);
+  scaled_sprite->addSprite(*sprite1);
+  ASGE::Sprite* sprite2 = renderer->createRawSprite();
+  sprite2->loadTexture(second_texture_path);
+  scaled_sprite->addSprite(*sprite2);
   return scaled_sprite;
 }

@@ -13,13 +13,15 @@ class PopupWindow : public UI
   PopupWindow(Point pos,
               ASGE::Renderer* rend,
               const std::string& background_sprite_texture_path,
-              float _width = 400,
-              float _height = 300);
+              float _width = 300,
+              float _height = 180);
   ~PopupWindow() override;
 
   void render(double delta_time) override;
   void moveTo(Point point) override;
   void setActive(bool is_active) { active = is_active; };
+  bool isActive() { return active; };
+  Button* checkForClick(Point click_location);
 
   void addButton(Button* new_button);
   void addTextBox(TextBox* new_text_box);

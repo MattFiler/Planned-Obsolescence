@@ -40,6 +40,8 @@ class Character
   int getSpawnCapAsInt();
   std::string getSpritePath();
 
+  bool isPointInArea(Point point) { return click_area.isPointInArea(point); };
+
   void setCharacterID(int index);
   std::string getCharacterID();
   int getIndex();

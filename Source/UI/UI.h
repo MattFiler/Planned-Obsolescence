@@ -16,6 +16,9 @@ class UI
   virtual void render(double delta_time) = 0;
 
   virtual void moveTo(Point point) { position = point; };
+  Point getPosition() { return position; };
+  float getWidth() { return width; };
+  float getHeight() { return height; };
 
  protected:
   ScaledSpriteArray* createSprite(const std::string& sprite_texture_path);
