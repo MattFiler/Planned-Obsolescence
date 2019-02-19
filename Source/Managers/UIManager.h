@@ -4,6 +4,7 @@
 #include "../Characters/Boss.h"
 #include "../UI/CharacterInfoPopup.h"
 #include "../UI/GenericUI.h"
+#include "../UI/MainHUD.h"
 #include "../UI/PopupWindow.h"
 #include "../Viewport/Camera.h"
 
@@ -21,6 +22,7 @@ class UIManager
   void addTextBox(TextBox* new_textbox);
   void addProgressBar(ProgressBar* new_progressbar);
 
+  void createMainHUD();
   void initCharacterPopup();
 
   void updateAndShowCharacterInfo(const std::string& character_type,
@@ -40,6 +42,7 @@ class UIManager
   std::vector<TextBox*> text_boxes;
   std::vector<ProgressBar*> progress_bars;
   std::vector<GenericUI*> generic_spriteset;
+  MainHUD* main_hud_element = nullptr;
 
   CharacterInfoPopup* char_info_popup = nullptr;
 

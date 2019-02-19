@@ -91,6 +91,14 @@ enum render_index
   UI_TOP_LAYER_CAP
 };
 
+// Hud gauges
+enum hud_gauge_types
+{
+  YOUR_DETECTION,
+  PROJECT_PROGRESS,
+  TIME_REMAINING
+};
+
 // Our native resolution which we will scale from to the resolution specified in the game config.
 const float SCREEN_WIDTH = 1280;
 const float SCREEN_HEIGHT = 720;

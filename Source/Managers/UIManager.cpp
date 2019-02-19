@@ -23,6 +23,9 @@ UIManager::~UIManager()
     delete generic_ui;
     generic_ui = nullptr;
   }
+  delete main_hud_element;
+  main_hud_element = nullptr;
+
   delete char_info_popup;
   char_info_popup = nullptr;
 }
@@ -49,6 +52,12 @@ void UIManager::addTextBox(TextBox* new_textbox)
 void UIManager::addProgressBar(ProgressBar* new_progressbar)
 {
   progress_bars.push_back(new_progressbar);
+}
+
+/* Create main hud data element (we only have one of these) */
+void UIManager::createMainHUD()
+{
+  main_hud_element = new MainHUD(renderer);
 }
 
 /* Initialise the character popup */
@@ -89,9 +98,16 @@ void UIManager::render(double delta_time)
     generic_ui->render(delta_time);
   }
 
-  if (char_info_popup->isActive())
+  if (char_info_popup != nullptr)
   {
-    char_info_popup->render(delta_time);
+    if (char_info_popup->isActive())
+    {
+      char_info_popup->render(delta_time);
+    }
+  }
+  if (main_hud_element != nullptr)
+  {
+    main_hud_element->render(delta_time);
   }
 }
 

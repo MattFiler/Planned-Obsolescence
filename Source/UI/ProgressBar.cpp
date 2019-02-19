@@ -75,9 +75,9 @@ void ProgressBar::addFillSprite(const std::string& sprite_texture_path)
   }
 }
 
-void ProgressBar::addProgress(float delta)
+void ProgressBar::setProgress(float new_progress)
 {
-  bar_progress += delta;
+  bar_progress = new_progress;
   if (bar_progress > 1)
   {
     bar_progress = 1;

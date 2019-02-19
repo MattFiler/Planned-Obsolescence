@@ -30,14 +30,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   ui_manager.setCamera(&camera);
   character_manager.setUIManager(&ui_manager);
 
-  GenericUI* ui_main =
-    new GenericUI(renderer, "IN_GAME_UI/BOTTOM_RIGHT_BG.png", "IN_GAME_UI/BOTTOM_RIGHT_TEXT.png");
-  ui_manager.addGenericUI(ui_main);
-  /*
-    GenericUI* ui_bottom =
-      new GenericUI(renderer, "IN_GAME_UI/BOTTOM_LEFT_BG.png", "IN_GAME_UI/BOTTOM_LEFT_TEXT.png");
-    ui_manager.addGenericUI(ui_bottom);
-    */
+  ui_manager.createMainHUD();
 
   Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
                                    renderer,

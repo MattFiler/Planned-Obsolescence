@@ -46,7 +46,7 @@ namespace PO_MapMaker
             {
                 game_coreJson += "\"" + binds.Attribute("action").Value + "\": " + keynameToKeycode(binds.Attribute("key").Value) + ",";
             }
-            game_coreJson = game_coreJson.Substring(0, game_coreJson.Length - 1) + "}}}";
+            game_coreJson = game_coreJson.Substring(0, game_coreJson.Length - 1) + "},\"language\":\"ENGLISH\"}}";
             JToken game_coreJsonParsed = JToken.Parse(game_coreJson);
             File.WriteAllText("data/CONFIGS/game_core.json", game_coreJsonParsed.ToString(Formatting.Indented));
             progressBar.PerformStep();

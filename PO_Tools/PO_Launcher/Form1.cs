@@ -34,6 +34,7 @@ namespace PO_Launcher
             //Load image and select default res
             launcherImage.Image = new Bitmap(Properties.Resources.launcher_banner);
             resolutionSelector.SelectedIndex = 0;
+            po_language.SelectedIndex = 0;
             tabPage2.AutoScroll = true;
 
             //Get current game config 
@@ -94,7 +95,10 @@ namespace PO_Launcher
                     res_config.Value = Convert.ToInt32(new_resolution[1]);
                 }
             }
-            
+
+            //Update internal config with new language
+            game_config_json["DEFAULT"]["language"] = po_language.SelectedItem.ToString().ToUpper();
+
             try
             {
                 //Save config back
