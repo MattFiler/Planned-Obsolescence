@@ -18,7 +18,7 @@ void Menu::giveRenderer(ASGE::Renderer* rend)
 /* Add menu text item */
 void Menu::addMenuItem(const std::string& item_text)
 {
-  menu_text_items.push_back(item_text);
+  menu_text_items.push_back(localiser.getString(item_text));
   menu_text_offsets.push_back(0);
 
   realignMenuTextItems();
@@ -77,7 +77,7 @@ void Menu::realignMenuTextItems()
 /* Checks to see if the given menu item was selected (identified by its text) */
 bool Menu::selectedItemWas(const std::string& item_text)
 {
-  if (menu_text_items[current_menu_index] == item_text)
+  if (menu_text_items[current_menu_index] == localiser.getString(item_text))
   {
     return true;
   }

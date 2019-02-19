@@ -34,6 +34,7 @@ namespace PO_Launcher
             //Load image and select default res
             launcherImage.Image = new Bitmap(Properties.Resources.launcher_banner);
             resolutionSelector.SelectedIndex = 0;
+            po_language.SelectedIndex = 0;
             tabPage2.AutoScroll = true;
 
             //Get current game config 

@@ -6,6 +6,7 @@
 #include "../FileHandler/FileHandler.h"
 #include "../Keybinds/Keybinds.h"
 #include "../Sprites/ScaledSpriteArray.h"
+#include "GetLocalisedString.h"
 #include <Engine/Renderer.h>
 #include <Engine/Sprite.h>
 
@@ -41,6 +42,7 @@ class Menu
   FileHandler file_handler;
   ASGE::Renderer* renderer = nullptr;
   DebugText debug_text;
+  GetLocalisedString localiser;
 
   int current_menu_index = 0;
 
