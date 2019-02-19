@@ -167,11 +167,8 @@ bool UIManager::checkForClick(Point click, bool act_on_click)
     }
   }
 
-  if (act_on_click)
-  {
-    clicked_button = char_info_popup->checkForClick(click);
-    clicked_button = poi_interaction_popup->checkForClick(click);
-  }
+  clicked_button = char_info_popup->checkForClick(click);
+  // clicked_button = poi_interaction_popup->checkForClick(click);
 
   return clicked_button != nullptr;
 }
