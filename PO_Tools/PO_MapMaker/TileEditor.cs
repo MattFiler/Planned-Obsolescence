@@ -62,6 +62,11 @@ namespace PO_MapMaker
                     //Fixing file lock issue, cheers: https://stackoverflow.com/a/8701772
                     tilePreview.Image = new Bitmap(tempPreviewImg);
                 }
+                if (POI_Computer.Checked || POI_Door.Checked)
+                {
+                    altSprite.Text = importedTileNode.Element("points_of_interest").Attribute("alt_sprite").Value;
+                    POI_Desc.SelectedItem = importedTileNode.Element("points_of_interest").Attribute("description").Value;
+                }
                 allowOverwrite = true; //Dangerous!
             }
             else
@@ -303,6 +308,7 @@ namespace PO_MapMaker
             {
                 browseToAltSprite.Enabled = false;
                 altSprite.Text = "";
+                POI_Desc.SelectedIndex = -1;
             }
             if (POI_Computer.Checked)
             {
@@ -311,7 +317,10 @@ namespace PO_MapMaker
             else
             {
                 POI_Desc.Enabled = false;
-                POI_Desc.Text = "";
+            }
+            if (POI_Door.Checked)
+            {
+                POI_Desc.SelectedIndex = 0;
             }
         }
 

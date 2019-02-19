@@ -313,6 +313,7 @@
             this.POI_Desc.Enabled = false;
             this.POI_Desc.FormattingEnabled = true;
             this.POI_Desc.Items.AddRange(new object[] {
+            "poi_door",
             "poi_computer",
             "poi_bookcase",
             "poi_server",
