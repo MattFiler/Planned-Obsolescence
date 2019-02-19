@@ -24,7 +24,7 @@ class ProgressBar : public UI
   void addBackgroundSprite(const std::string& sprite_texture_path);
   void addFillSprite(const std::string& sprite_texture_path);
 
-  void addProgress(float delta);
+  void setProgress(float new_progress);
   float getProgress() { return bar_progress; };
 
  private:

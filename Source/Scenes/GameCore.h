@@ -5,6 +5,7 @@
 #include "../Map/GameMap.h"
 #include "../Sprites/ScaledSpriteArray.h"
 #include "../UI/Button.h"
+#include "../UI/MainHUD.h"
 #include "../UI/ProgressBar.h"
 #include "../UI/TextBox.h"
 #include "../Viewport/Camera.h"
