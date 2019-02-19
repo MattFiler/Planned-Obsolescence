@@ -50,11 +50,11 @@ void CharacterInfoPopup::render(double delta_time)
 /* Set values */
 void CharacterInfoPopup::setCharacterName(const std::string& char_name)
 {
-  character_name = char_name;
+  character_name = localiser.getString(char_name);
 }
 void CharacterInfoPopup::setGaugeDescription(const std::string& gauge_desc)
 {
-  progress_bar->gauge_name = gauge_desc;
+  progress_bar->gauge_name = localiser.getString(gauge_desc);
 }
 void CharacterInfoPopup::setGaugeAmount(float gauge_amount)
 {

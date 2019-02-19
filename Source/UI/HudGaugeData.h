@@ -1,11 +1,15 @@
 #ifndef PLANNEDOBSOLESCENCE_HUDDATA_H
 #define PLANNEDOBSOLESCENCE_HUDDATA_H
 
+#include "GetLocalisedString.h"
 #include "ProgressBar.h"
 
 struct HudGaugeData
 {
-  HudGaugeData(Point location, ASGE::Renderer* renderer, std::string name = "", float value = 0)
+  HudGaugeData(Point location,
+               ASGE::Renderer* renderer,
+               std::string name = "placeholder_text",
+               float value = 0)
   {
     progress_bar = new ProgressBar(location, renderer, 464, 29);
     progress_bar->addBackgroundSprite("data/UI/WHITE.png");
@@ -15,7 +19,7 @@ struct HudGaugeData
     text_location = Point((gauge_location.x_pos + 11) * ScaledSpriteArray::width_scale,
                           (gauge_location.y_pos + 22) * ScaledSpriteArray::width_scale);
 
-    gauge_name = name;
+    gauge_name = localiser.getString(name);
     gauge_value = value;
   }
 
@@ -38,6 +42,7 @@ struct HudGaugeData
  private:
   Point gauge_location;
   Point text_location;
+  GetLocalisedString localiser;
 };
 
 #endif // PLANNEDOBSOLESCENCE_HUDDATA_H

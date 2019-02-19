@@ -76,6 +76,9 @@ bool PlannedObsolescence::init()
   _sprite_bg->loadTexture("data/UI/BACKGROUND.jpg");
   generic_background->addSprite(*_sprite_bg);
 
+  // Configure localised strings to selected language
+  localiser.configure(core_config["language"]);
+
   // Initialise the scene manager
   scene_manager = new SceneManager();
 

@@ -11,9 +11,9 @@
 		"max_health": 100,
 		
 		"gauge_value": 100,
-		"gauge_desc": "PLACEHOLDER",
+		"gauge_desc": "placeholder_text",
 		
-		"display_name": "DEFAULT",
+		"display_name": "placeholder_text",
 		
 		"sprites": {
 			"walking": ["data/CHARACTERS/DEFAULT/placeholder.png"],
@@ -22,9 +22,9 @@
 	},
 	"1": {
 		"gauge_value": 0,
-		"gauge_desc": "SUSPICION",
+		"gauge_desc": "gauge_suspicion",
 		
-		"display_name": "SECURITY",
+		"display_name": "character_security",
 		
 		"sprites": {
 			"walking": ["data/CHARACTERS/GUARD/placeholder.png"],
@@ -33,9 +33,9 @@
 		}
 	},
 	"2": {
-		"gauge_desc": "PRODUCTIVITY",
+		"gauge_desc": "gauge_productivity",
 		
-		"display_name": "LAB WORKER",
+		"display_name": "character_goon",
 		
 		"sprites": {
 			"walking": ["data/CHARACTERS/GOON/placeholder.png"],
@@ -44,9 +44,9 @@
 		}
 	},
 	"3": {
-		"gauge_desc": "PROJECT FAITH",
+		"gauge_desc": "gauge_faith",
 		
-		"display_name": "BOSS",
+		"display_name": "character_boss",
 		
 		"sprites": {
 			"walking": ["data/CHARACTERS/BOSS/placeholder.png"],
@@ -57,9 +57,9 @@
 	},
 	"4": {
 		"gauge_value": 0,
-		"gauge_desc": "STRESS",
+		"gauge_desc": "gauge_stress",
 		
-		"display_name": "TECHNICIAN",
+		"display_name": "character_techie",
 		
 		"sprites": {
 			"walking": ["data/CHARACTERS/TECH/placeholder.png"],

@@ -7,9 +7,9 @@ MainHUD::MainHUD(ASGE::Renderer* rend) : UI(Point(0, 0), rend)
 
   // Make gauges
   hud_gauges.reserve(3);
-  hud_gauges.push_back(HudGaugeData(Point(805, 603), rend, "YOUR DETECTION", 50));
-  hud_gauges.push_back(HudGaugeData(Point(805, 640), rend, "PROJECT PROGRESS", 40));
-  hud_gauges.push_back(HudGaugeData(Point(805, 677), rend, "TIME REMAINING", 30));
+  hud_gauges.push_back(HudGaugeData(Point(805, 603), rend, "gauge_detection", 50));
+  hud_gauges.push_back(HudGaugeData(Point(805, 640), rend, "gauge_progress", 40));
+  hud_gauges.push_back(HudGaugeData(Point(805, 677), rend, "gauge_timeremaining", 30));
 }
 
 MainHUD::~MainHUD()

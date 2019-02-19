@@ -91,6 +91,7 @@ enum render_index
   UI_TOP_LAYER_CAP
 };
 
+// Hud gauges
 enum hud_gauge_types
 {
   YOUR_DETECTION,

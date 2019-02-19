@@ -1,0 +1,31 @@
+#ifndef PLANNEDOBSOLESCENCE_GETLOCALISEDSTRING_H
+#define PLANNEDOBSOLESCENCE_GETLOCALISEDSTRING_H
+
+#include "../Debug/DebugText.h"
+#include "../FileHandler/FileHandler.h"
+#include <json.hpp>
+using json = nlohmann::json;
+
+struct GetLocalisedString
+{
+  void configure(std::string language)
+  {
+    language_config = file_handler.loadConfig("ui_localised.json", language);
+  }
+  std::string getString(std::string id)
+  {
+    if (language_config[id].is_string())
+    {
+      return language_config[id];
+    }
+    debug_text.print("COULDN'T FIND A LOCALISATION FOR '" + id + "'");
+    return id;
+  }
+
+ private:
+  FileHandler file_handler;
+  static json language_config; // EEK!
+  DebugText debug_text;
+};
+
+#endif // PLANNEDOBSOLESCENCE_GETLOCALISEDSTRING_H
