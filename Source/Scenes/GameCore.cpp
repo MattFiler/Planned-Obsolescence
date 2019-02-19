@@ -33,10 +33,11 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   GenericUI* ui_main =
     new GenericUI(renderer, "IN_GAME_UI/BOTTOM_RIGHT_BG.png", "IN_GAME_UI/BOTTOM_RIGHT_TEXT.png");
   ui_manager.addGenericUI(ui_main);
-
-  GenericUI* ui_bottom =
-    new GenericUI(renderer, "IN_GAME_UI/BOTTOM_LEFT_BG.png", "IN_GAME_UI/BOTTOM_LEFT_TEXT.png");
-  ui_manager.addGenericUI(ui_bottom);
+  /*
+    GenericUI* ui_bottom =
+      new GenericUI(renderer, "IN_GAME_UI/BOTTOM_LEFT_BG.png", "IN_GAME_UI/BOTTOM_LEFT_TEXT.png");
+    ui_manager.addGenericUI(ui_bottom);
+    */
 
   Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
                                    renderer,
@@ -48,7 +49,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   quit_button->click_function = [next] { *next = scenes::MAIN_MENU; };
   ui_manager.addButton(quit_button);
 
-  ui_manager.buildUI();
+  ui_manager.initCharacterPopup();
 
   return true;
 }
@@ -56,11 +57,11 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 /* Spawn all characters */
 void GameCore::spawnCharacters(ASGE::Renderer* renderer)
 {
-  if (character_manager.canSpawn(character_type::BOSS))
+  if (character_manager.canSpawn(character_type::GOON))
   {
-    Boss* new_boss = new Boss();
-    character_manager.spawnCharacter(new_boss);
-    new_boss->calculateRouteToPoint(Point(300, 300));
+    Goon* new_goon = new Goon();
+    character_manager.spawnCharacter(new_goon);
+    new_goon->calculateRouteToPoint(Point(300, 300));
   }
 }
 
@@ -160,6 +161,7 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
 scenes GameCore::update(double delta_time)
 {
   character_manager.update(delta_time);
+  project_gauge.update(delta_time);
   camera.moveCamera(x_axis_input * static_cast<float>(delta_time),
                     y_axis_input * static_cast<float>(delta_time));
   return next_scene;

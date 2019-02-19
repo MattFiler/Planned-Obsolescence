@@ -2,6 +2,7 @@
 #define PLANNEDOBSOLESCENCE_UIMANAGER_H
 
 #include "../Characters/Boss.h"
+#include "../UI/CharacterInfoPopup.h"
 #include "../UI/GenericUI.h"
 #include "../UI/PopupWindow.h"
 #include "../Viewport/Camera.h"
@@ -17,21 +18,22 @@ class UIManager
 
   void addGenericUI(GenericUI* new_generic_ui);
   void addButton(Button* new_button);
+  void addTextBox(TextBox* new_textbox);
+  void addProgressBar(ProgressBar* new_progressbar);
 
-  void buildUI();
-  void setRenderer(ASGE::Renderer* rend) { renderer = rend; };
+  void initCharacterPopup();
+
+  void updateAndShowCharacterInfo(const std::string& character_type,
+                                  float character_gauge,
+                                  const std::string& gauge_name);
+
+  void setRenderer(ASGE::Renderer* rend) { renderer = rend; }; // must be called first!
   void setCamera(Camera* cam) { camera = cam; };
   void render(double delta_time);
   bool checkForClick(Point click);
   void releaseClick();
 
-  void enableBossPopup(Boss* boss);
-
  private:
-  void buildButtons();
-  void buildTextBoxes();
-  void buildProgressBars();
-  void buildPopupWindows();
   void keepUIWithinScreen(UI* ui_object);
 
   std::vector<Button*> buttons;
@@ -39,15 +41,11 @@ class UIManager
   std::vector<ProgressBar*> progress_bars;
   std::vector<GenericUI*> generic_spriteset;
 
-  // All the different popup types
-  PopupWindow* boss_popup = nullptr;
+  CharacterInfoPopup* char_info_popup = nullptr;
 
   Button* clicked_button = nullptr;
   ASGE::Renderer* renderer = nullptr;
   Camera* camera = nullptr;
-
-  bool loaded = false;
-  scenes next_scene = scenes::NO_CHANGE; // Ideally this whole process would use an event system
 };
 
 #endif // PLANNEDOBSOLESCENCE_UIMANAGER_H

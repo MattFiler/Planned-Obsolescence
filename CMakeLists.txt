@@ -109,7 +109,9 @@ add_executable(
         Source/UI/GenericUI.cpp
         Source/UI/GenericUI.h
         Source/Gauges/UniversalGauge.cpp
-        Source/Gauges/UniversalGauge.h)
+        Source/Gauges/UniversalGauge.h
+        Source/UI/CharacterInfoPopup.cpp
+        Source/UI/CharacterInfoPopup.h)
 
 ## library includes
 target_include_directories(

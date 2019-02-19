@@ -17,6 +17,8 @@ class CharacterManager
   bool spawnCharacter(LabTechnician* new_technician);
   bool spawnCharacter(Security* new_security);
 
+  float getTotalGaugeValue(character_type character);
+
   bool checkForClick(Point click);
 
   void render(double delta_time);
@@ -31,22 +33,39 @@ class CharacterManager
   void renderCharacter(CharacterArray character, int& character_count, double& delta_time);
 
   template<class CharacterArray>
-  void updateCharacter(CharacterArray character, int& character_count, double& delta_time);
+  void updateCharacter(CharacterArray character,
+                       int& character_count,
+                       int& character_visible_count,
+                       float& character_gauge,
+                       double& delta_time);
+
+  template<class CharacterArray>
+  bool clickedCharacterCheck(CharacterArray character, int& character_count, Point click);
 
   GameMap* game_map = nullptr;
   Camera* camera = nullptr;
   UIManager* ui_manager = nullptr;
   ASGE::Renderer* renderer = nullptr;
 
+  DebugText debug_text;
+
   Boss** boss_instances = nullptr;
   int boss_count = 0;
+  int boss_visible_count = 0;
+  float boss_gauge_sum = 0;
 
   Goon** goon_instances = nullptr;
   int goon_count = 0;
+  int goon_visible_count = 0;
+  float goon_gauge_sum = 0;
 
   LabTechnician** technician_instances = nullptr;
   int technician_count = 0;
+  int technician_visible_count = 0;
+  float technician_gauge_sum = 0;
 
   Security** security_instances = nullptr;
   int security_count = 0;
+  int security_visible_count = 0;
+  float security_gauge_sum = 0;
 };

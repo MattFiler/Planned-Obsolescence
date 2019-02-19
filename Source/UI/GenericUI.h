@@ -20,6 +20,9 @@ class GenericUI : public UI
             Point pos = Point(0, 0));
   ~GenericUI() override;
 
+  GenericUI(const GenericUI&) = delete;
+  GenericUI& operator=(const GenericUI&) = delete;
+
   void render(double delta_time) override;
 
  private:

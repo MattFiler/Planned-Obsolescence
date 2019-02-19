@@ -1,3 +1,4 @@
-//
-// Created by mattf on 18/02/2019.
-//
+#include "UniversalGauge.h"
+
+/* Keep track of game time and perform any updates we need */
+void UniversalGauge::update(double delta_time) {}

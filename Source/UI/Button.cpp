@@ -6,12 +6,12 @@ Button::Button(Point pos,
                const std::string& texture_path_2,
                float _width,
                float _height) :
-  UI(pos, rend)
+  UI(pos, rend),
+  click_area(ClickArea(pos, _width, _height))
 {
   width = _width;
   height = _height;
   position = pos;
-  click_area = ClickArea(position, width, height);
   sprite = createSprite(texture_path_1, texture_path_2);
   sprite->setWidth(width);
   sprite->setHeight(height);

@@ -4,7 +4,6 @@
     <sets>
       <set name="DEFAULT" />
       <set name="TEST" />
-      <set name="SZYMON" />
     </sets>
     <tiles>
       <tile name="DEFAULT" set="DEFAULT" sprite="data/TILES/placeholder.png" mandatory="true">
