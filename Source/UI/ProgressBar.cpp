@@ -7,12 +7,22 @@ ProgressBar::ProgressBar(Point pos,
                          int direction,
                          Point _fill_padding) :
   UI(pos, rend),
-  width(bar_width), height(bar_height), fill_padding(_fill_padding)
+  fill_padding(_fill_padding)
 {
+  width = bar_width;
+  height = bar_height;
   if (direction == 1)
   {
     horizontal = false;
   }
+}
+
+ProgressBar::~ProgressBar()
+{
+  delete background_sprite;
+  background_sprite = nullptr;
+  delete fill_sprite;
+  fill_sprite = nullptr;
 }
 
 /* Renders the background sprite then the fill sprite on top */
@@ -28,10 +38,19 @@ void ProgressBar::render(double delta_time)
   }
 }
 
-/* Adds a background sprite to this object, then scales and rotates it fit the progress bar */
-void ProgressBar::addBackgroundSprite(ScaledSpriteArray* sprite)
+void ProgressBar::moveTo(Point point)
 {
-  background_sprite = sprite;
+  position = point;
+  background_sprite->xPos(point.x_pos);
+  background_sprite->yPos(point.y_pos);
+  fill_sprite->xPos(point.x_pos);
+  fill_sprite->yPos(point.y_pos);
+}
+
+/* Adds a background sprite to this object, then scales and rotates it fit the progress bar */
+void ProgressBar::addBackgroundSprite(const std::string& sprite_texture_path)
+{
+  background_sprite = createSprite(sprite_texture_path);
   background_sprite->xPos(position.x_pos);
   background_sprite->yPos(position.y_pos);
   background_sprite->setWidth(width);
@@ -39,9 +58,9 @@ void ProgressBar::addBackgroundSprite(ScaledSpriteArray* sprite)
 }
 
 /* Adds a fill sprite to this object, then scales and rotates it fit the progress bar */
-void ProgressBar::addFillSprite(ScaledSpriteArray* sprite)
+void ProgressBar::addFillSprite(const std::string& sprite_texture_path)
 {
-  fill_sprite = sprite;
+  fill_sprite = createSprite(sprite_texture_path);
   fill_sprite->xPos(position.x_pos + (fill_padding.x_pos / 2));
   fill_sprite->yPos(position.y_pos + (fill_padding.y_pos / 2));
   if (horizontal)

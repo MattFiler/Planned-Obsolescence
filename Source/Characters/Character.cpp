@@ -36,6 +36,9 @@ void Character::updateSprite()
   // Resize
   sprite->setWidth(config.width);
   sprite->setHeight(config.height);
+
+  click_area.setWidth(config.width);
+  click_area.setHeight(config.height);
 }
 
 /* Update the position of the character based on current route and speed */
@@ -54,6 +57,8 @@ void Character::updatePosition(double delta_time)
 
     sprite->xPos(position.x_pos);
     sprite->yPos(position.y_pos);
+
+    click_area.setPosition(position);
 
     // Calculate the new distance to the next node
     distance_to_next_node =
@@ -363,4 +368,28 @@ int Character::getIndex()
 character_type Character::getCharacterType()
 {
   return config.variant;
+}
+
+/* Get the character's current gauge */
+float Character::getInternalGauge()
+{
+  return config.internal_gauge;
+}
+
+/* Reduce the character's current gauge */
+void Character::reduceInternalGauge(float reduce_by)
+{
+  config.internal_gauge -= reduce_by;
+}
+
+/* Description of the internal gauge */
+std::string Character::getInternalGaugeDesc()
+{
+  return config.internal_gauge_name;
+}
+
+/* Get display name */
+std::string Character::getDisplayName()
+{
+  return config.display_name;
 }

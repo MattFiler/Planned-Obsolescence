@@ -16,7 +16,7 @@ bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input)
   rend = renderer;
 
   ASGE::Sprite* po_logo_fg_sprite = renderer->createRawSprite();
-  if (!po_logo_fg_sprite->loadTexture("data/SPLASHSCREENS/PO_LogoFG.png"))
+  if (!po_logo_fg_sprite->loadTexture("data/UI/SPLASHSCREEN/FOREGROUND.png"))
   {
     return false;
   }
@@ -31,7 +31,7 @@ bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input)
   po_logo_fg->setColour(ASGE::COLOURS::WHITE);
 
   ASGE::Sprite* po_logo_bg_sprite = renderer->createRawSprite();
-  if (!po_logo_bg_sprite->loadTexture("data/SPLASHSCREENS/PO_LogoBG.png"))
+  if (!po_logo_bg_sprite->loadTexture("data/UI/SPLASHSCREEN/BACKGROUND.png"))
   {
     return false;
   }

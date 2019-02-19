@@ -1,6 +1,7 @@
 #include "GameCore.h"
 #include "../Constants.h"
 #include "../Sprites/ScaledSpriteArray.h"
+#include "../UI/GenericUI.h"
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <Engine/Renderer.h>
@@ -25,45 +26,30 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 
   spawnCharacters(renderer);
 
-  // TEST CODE
-  test_text = TextBox(Point(100, 100),
-                      renderer,
-                      "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over "
-                      "the lazy dog",
-                      510,
-                      250,
-                      1);
-  auto* sprite = new ScaledSpriteArray(1);
-  ASGE::Sprite* asge_sprite = renderer->createRawSprite();
-  asge_sprite->loadTexture("data/UI/default.png");
-  sprite->addSprite(*asge_sprite);
-  test_text.setBackgroundSprite(sprite);
+  ui_manager.setRenderer(rend);
+  ui_manager.setCamera(&camera);
+  character_manager.setUIManager(&ui_manager);
 
-  test_progress = ProgressBar(Point(100, 500), rend, 200, 20);
-  sprite = new ScaledSpriteArray(1);
-  asge_sprite = renderer->createRawSprite();
-  asge_sprite->loadTexture("data/UI/default.png");
-  sprite->addSprite(*asge_sprite);
-  test_progress.addBackgroundSprite(sprite);
-  sprite = new ScaledSpriteArray(1);
-  asge_sprite = renderer->createRawSprite();
-  asge_sprite->loadTexture("data/UI/default.png");
-  asge_sprite->colour(ASGE::COLOURS::BLUE);
-  sprite->addSprite(*asge_sprite);
-  test_progress.addFillSprite(sprite);
+  GenericUI* ui_main =
+    new GenericUI(renderer, "IN_GAME_UI/BOTTOM_RIGHT_BG.png", "IN_GAME_UI/BOTTOM_RIGHT_TEXT.png");
+  ui_manager.addGenericUI(ui_main);
+  /*
+    GenericUI* ui_bottom =
+      new GenericUI(renderer, "IN_GAME_UI/BOTTOM_LEFT_BG.png", "IN_GAME_UI/BOTTOM_LEFT_TEXT.png");
+    ui_manager.addGenericUI(ui_bottom);
+    */
 
-  sprite = new ScaledSpriteArray(2, false);
-  asge_sprite = renderer->createRawSprite();
-  asge_sprite->loadTexture("data/UI/default.png");
-  asge_sprite->colour(ASGE::COLOURS::WHITE);
-  sprite->addSprite(*asge_sprite);
-  asge_sprite = renderer->createRawSprite();
-  asge_sprite->loadTexture("data/UI/default.png");
-  asge_sprite->colour(ASGE::COLOURS::BLACK);
-  sprite->addSprite(*asge_sprite);
-  test_button = Button(Point(600, 500), renderer, sprite);
-  DebugText* debug_ref = &debug_text;
-  test_button.click_function = [&debug_ref] { debug_ref->print("Button pressed!"); };
+  Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
+                                   renderer,
+                                   "data/UI/IN_GAME_UI/TOP_RIGHT_QUIT.png",
+                                   "data/UI/IN_GAME_UI/TOP_RIGHT_QUIT.png",
+                                   148,
+                                   53);
+  scenes* next = &next_scene;
+  quit_button->click_function = [next] { *next = scenes::MAIN_MENU; };
+  ui_manager.addButton(quit_button);
+
+  ui_manager.initCharacterPopup();
 
   return true;
 }
@@ -71,11 +57,11 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 /* Spawn all characters */
 void GameCore::spawnCharacters(ASGE::Renderer* renderer)
 {
-  if (character_manager.canSpawn(character_type::BOSS))
+  if (character_manager.canSpawn(character_type::GOON))
   {
-    Boss* new_boss = new Boss();
-    character_manager.spawnCharacter(new_boss);
-    new_boss->calculateRouteToPoint(Point(300, 300));
+    Goon* new_goon = new Goon();
+    character_manager.spawnCharacter(new_goon);
+    new_goon->calculateRouteToPoint(Point(300, 300));
   }
 }
 
@@ -99,7 +85,7 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
   {
     if (key->action == ASGE::KEYS::KEY_PRESSED)
     {
-      y_axis_input = 1;
+      y_axis_input = -1;
     }
     else if (key->action == ASGE::KEYS::KEY_RELEASED)
     {
@@ -110,7 +96,7 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
   {
     if (key->action == ASGE::KEYS::KEY_PRESSED)
     {
-      y_axis_input = -1;
+      y_axis_input = 1;
     }
     else if (key->action == ASGE::KEYS::KEY_RELEASED)
     {
@@ -121,7 +107,7 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
   {
     if (key->action == ASGE::KEYS::KEY_PRESSED)
     {
-      x_axis_input = 1;
+      x_axis_input = -1;
     }
     else if (key->action == ASGE::KEYS::KEY_RELEASED)
     {
@@ -132,7 +118,7 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
   {
     if (key->action == ASGE::KEYS::KEY_PRESSED)
     {
-      x_axis_input = -1;
+      x_axis_input = 1;
     }
     else if (key->action == ASGE::KEYS::KEY_RELEASED)
     {
@@ -153,16 +139,15 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
 
   if (click->action == ASGE::MOUSE::BUTTON_PRESSED)
   {
-    mouse_position = mouse_position / ScaledSpriteArray::width_scale;
-    if (test_button.checkForClick(mouse_position))
+    // If the UI manager doesn't register this click
+    if (!ui_manager.checkForClick(mouse_position / ScaledSpriteArray::width_scale))
     {
-      button_pressed = true;
+      character_manager.checkForClick(camera.displayedToSimulatedWorld(mouse_position));
     }
   }
-  else if (click->action == ASGE::MOUSE::BUTTON_RELEASED && button_pressed)
+  else if (click->action == ASGE::MOUSE::BUTTON_RELEASED)
   {
-    button_pressed = false;
-    test_button.releaseClick();
+    ui_manager.releaseClick();
   }
 }
 
@@ -176,6 +161,7 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
 scenes GameCore::update(double delta_time)
 {
   character_manager.update(delta_time);
+  project_gauge.update(delta_time);
   camera.moveCamera(x_axis_input * static_cast<float>(delta_time),
                     y_axis_input * static_cast<float>(delta_time));
   return next_scene;
@@ -188,17 +174,12 @@ scenes GameCore::update(double delta_time)
  */
 void GameCore::render(double delta_time)
 {
-  rend->renderText("THE GAME", 100, 100, ASGE::COLOURS::RED);
-
   // Render Map
   game_map.render(delta_time);
 
   // Render Characters
   character_manager.render(delta_time);
 
-  // TEST CODE
-  test_text.render(delta_time);
-  test_progress.addProgress(static_cast<float>(delta_time) / 10000.0f);
-  test_progress.render(delta_time);
-  test_button.render(delta_time);
+  // Render UI
+  ui_manager.render(delta_time);
 }

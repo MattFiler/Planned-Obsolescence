@@ -20,7 +20,8 @@ struct Point
   bool operator==(Point& point);
   Point operator-(const Point& point);
   Point operator+(const Point& point);
-  Point operator/(const float multiplier);
+  Point operator/(const float divider);
+  Point operator*(const float multiplier);
 
   static float distanceBetween(Point a, Point b);
 };

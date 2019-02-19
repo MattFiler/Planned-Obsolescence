@@ -1,3 +1,6 @@
+#ifndef PO_SECURITYGUARD
+#define PO_SECURITYGUARD
+
 #include "Character.h"
 
 class Security : public Character
@@ -6,3 +9,5 @@ class Security : public Character
   Security() : Character(character_type::SECURITY){};
   ~Security() = default;
 };
+
+#endif

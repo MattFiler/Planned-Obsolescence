@@ -37,11 +37,12 @@ struct CharacterData
     movement_speed = character_config["movement_speed"];
     max_health = character_config["max_health"];
 
-    // Our internal gauges
-    gauge_suspicion = character_config["gauge"]["suspicion"];
-    gauge_stress = character_config["gauge"]["stress"];
-    gauge_productivity = character_config["gauge"]["productivity"];
-    gauge_faith = character_config["gauge"]["faith"];
+    // Our internal gauge
+    internal_gauge_name = character_config["gauge_desc"];
+    internal_gauge = character_config["gauge_value"];
+
+    // Our display name
+    display_name = character_config["display_name"];
 
     // Our sprites - this is gonna be refactored!!
     sprite_walking = character_config["sprites"]["walking"][0];
@@ -62,10 +63,10 @@ struct CharacterData
   int movement_speed = 0;
   int max_health = 0;
 
-  int gauge_suspicion = 0;
-  int gauge_stress = 0;
-  int gauge_productivity = 0;
-  int gauge_faith = 0;
+  std::string display_name = "";
+
+  std::string internal_gauge_name = "";
+  float internal_gauge = 0.0f;
 
   std::string sprite_walking = "";
   std::string sprite_idle = "";

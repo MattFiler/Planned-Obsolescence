@@ -69,6 +69,13 @@ bool PlannedObsolescence::init()
                                       static_cast<unsigned int>(font_buffer.length),
                                       static_cast<int>(40 * ScaledSpriteArray::width_scale));
 
+  // Generic background
+  delete generic_background;
+  generic_background = new ScaledSpriteArray(1);
+  ASGE::Sprite* _sprite_bg = renderer->createRawSprite();
+  _sprite_bg->loadTexture("data/UI/BACKGROUND.jpg");
+  generic_background->addSprite(*_sprite_bg);
+
   // Initialise the scene manager
   scene_manager = new SceneManager();
 
@@ -157,5 +164,7 @@ void PlannedObsolescence::update(const ASGE::GameTime& game_time)
 void PlannedObsolescence::render(const ASGE::GameTime& game_time)
 {
   renderer->setFont(po_font);
+  renderer->renderSprite(generic_background->returnNextSprite(game_time.delta_time.count()),
+                         render_index::BASE_LAYER);
   scene_manager->renderCurrentScene(game_time.delta_time.count());
 }

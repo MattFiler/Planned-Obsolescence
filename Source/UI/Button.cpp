@@ -1,24 +1,41 @@
 #include "Button.h"
 
-/* The sprites used to create this button can have either 1 or 2 sprites, if the latter it will
- * switch to that sprite when the button is pressed. Ensure flipbook is set to false when adding
- * the sprite */
-Button::Button(
-  Point pos, ASGE::Renderer* rend, ScaledSpriteArray* _sprite, float _width, float _height) :
+Button::Button(Point pos,
+               ASGE::Renderer* rend,
+               const std::string& texture_path_1,
+               const std::string& texture_path_2,
+               float _width,
+               float _height) :
   UI(pos, rend),
-  width(_width), height(_height), sprite(_sprite)
+  click_area(ClickArea(pos, _width, _height))
 {
-  click_area = ClickArea(Point(position.x_pos + width, position.y_pos),
-                         Point(position.x_pos, position.y_pos + height));
+  width = _width;
+  height = _height;
+  position = pos;
+  sprite = createSprite(texture_path_1, texture_path_2);
   sprite->setWidth(width);
   sprite->setHeight(height);
-  sprite->xPos(pos.x_pos);
+  sprite->xPos(position.x_pos);
   sprite->yPos(position.y_pos);
+}
+
+Button::~Button()
+{
+  delete sprite;
+  sprite = nullptr;
 }
 
 void Button::render(double delta_time)
 {
   renderer->renderSprite(sprite->returnNextSprite(delta_time));
+}
+
+void Button::moveTo(Point point)
+{
+  position = point;
+  sprite->xPos(point.x_pos);
+  sprite->yPos(point.y_pos);
+  click_area.setPosition(point);
 }
 
 /* Checks to see if a given point is within this objects click area and updates accordingly */

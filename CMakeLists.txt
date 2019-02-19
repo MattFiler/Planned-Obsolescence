@@ -100,7 +100,18 @@ add_executable(
         Source/ConfigParsers/RoomData.h
         Source/UI/Menu.h
         Source/UI/Menu.cpp
-        Source/ConfigParsers/MapData.h)
+        Source/UI/UI.cpp 
+        Source/Managers/UIManager.h 
+        Source/Managers/UIManager.cpp 
+        Source/UI/PopupWindow.h 
+        Source/UI/PopupWindow.cpp
+        Source/ConfigParsers/MapData.h
+        Source/UI/GenericUI.cpp
+        Source/UI/GenericUI.h
+        Source/Gauges/UniversalGauge.cpp
+        Source/Gauges/UniversalGauge.h
+        Source/UI/CharacterInfoPopup.cpp
+        Source/UI/CharacterInfoPopup.h)
 
 ## library includes
 target_include_directories(

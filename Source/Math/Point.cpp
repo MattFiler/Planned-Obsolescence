@@ -44,11 +44,19 @@ Point Point::operator-(const Point& point)
   return return_point;
 }
 
-Point Point::Point::operator/(const float multiplier)
+Point Point::Point::operator/(const float divider)
 {
   Point return_point;
-  return_point.x_pos = this->x_pos / multiplier;
-  return_point.y_pos = this->y_pos / multiplier;
+  return_point.x_pos = this->x_pos / divider;
+  return_point.y_pos = this->y_pos / divider;
+  return return_point;
+}
+
+Point Point::Point::operator*(const float multiplier)
+{
+  Point return_point;
+  return_point.x_pos = this->x_pos * multiplier;
+  return_point.y_pos = this->y_pos * multiplier;
   return return_point;
 }
 

@@ -19,7 +19,7 @@ bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
   main_menu.giveRenderer(renderer);
 
   // Add menu sprites
-  main_menu.addMenuSprite("SPLASHSCREENS/PO_LogoBG.png")->scale(0.6666f);
+  main_menu.addMenuSprite("MAIN_MENU/BACKGROUND.jpg");
 
   // Add menu options
   main_menu.addMenuItem("PLAY");

@@ -80,11 +80,15 @@ enum scenes
 // Render index
 enum render_index
 {
+  BASE_LAYER,
   MAP_LAYER,
   TILE_LAYER,
   CHARACTER_LAYER,
   UI_SPRITE_LAYER,
-  UI_TEXT_LAYER
+  UI_TEXT_LAYER,
+  UI_TOP_LAYER_BASE,
+  UI_TOP_LAYER_ANIMATED,
+  UI_TOP_LAYER_CAP
 };
 
 // Our native resolution which we will scale from to the resolution specified in the game config.
