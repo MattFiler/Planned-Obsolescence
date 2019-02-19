@@ -116,7 +116,9 @@ add_executable(
         Source/UI/MainHUD.h
         Source/UI/HudGaugeData.h
         Source/UI/GetLocalisedString.h
-        Source/UI/GetLocalisedString.cpp)
+        Source/UI/GetLocalisedString.cpp
+        Source/UI/WorldInteractionPopup.cpp
+        Source/UI/WorldInteractionPopup.h Source/UI/Cursor.cpp Source/UI/Cursor.h)
 
 ## library includes
 target_include_directories(

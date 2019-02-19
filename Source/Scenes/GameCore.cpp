@@ -27,6 +27,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   spawnCharacters(renderer);
 
   ui_manager.setRenderer(rend);
+  ui_manager.setInputData(input);
   ui_manager.setCamera(&camera);
   character_manager.setUIManager(&ui_manager);
 
@@ -41,8 +42,6 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   scenes* next = &next_scene;
   quit_button->click_function = [next] { *next = scenes::MAIN_MENU; };
   ui_manager.addButton(quit_button);
-
-  ui_manager.initCharacterPopup();
 
   return true;
 }
@@ -153,10 +152,30 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
  */
 scenes GameCore::update(double delta_time)
 {
-  character_manager.update(delta_time);
-  project_gauge.update(delta_time);
+  // Handle camera movement
   camera.moveCamera(x_axis_input * static_cast<float>(delta_time),
                     y_axis_input * static_cast<float>(delta_time));
+
+  // Update managers
+  ui_manager.update(delta_time);
+  character_manager.update(delta_time);
+
+  // Update project gauge
+  project_gauge.update(delta_time);
+
+  // Check for cursor hover
+  if (ui_manager.checkForClick(
+        ui_manager.getCursor()->getPosition() / ScaledSpriteArray::width_scale, false) ||
+      character_manager.checkForClick(
+        camera.displayedToSimulatedWorld(ui_manager.getCursor()->getPosition()), false))
+  {
+    ui_manager.getCursor()->setCursorType(cursor_variant::CURSOR_POINTER);
+  }
+  else
+  {
+    ui_manager.getCursor()->setCursorType(cursor_variant::CURSOR_DEFAULT);
+  }
+
   return next_scene;
 }
 

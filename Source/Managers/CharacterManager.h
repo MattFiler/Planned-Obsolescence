@@ -19,7 +19,7 @@ class CharacterManager
 
   float getTotalGaugeValue(character_type character);
 
-  bool checkForClick(Point click);
+  bool checkForClick(Point click, bool act_on_click = true);
 
   void render(double delta_time);
   void update(double delta_time);
@@ -40,7 +40,10 @@ class CharacterManager
                        double& delta_time);
 
   template<class CharacterArray>
-  bool clickedCharacterCheck(CharacterArray character, int& character_count, Point click);
+  bool clickedCharacterCheck(CharacterArray character,
+                             int& character_count,
+                             Point click,
+                             bool act_on_click = true);
 
   GameMap* game_map = nullptr;
   Camera* camera = nullptr;

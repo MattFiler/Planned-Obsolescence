@@ -50,6 +50,7 @@ class ScaledSpriteArray
   void addSprite(ASGE::Sprite& new_sprite);
   bool fadeToColour(double time_to_fade, double delta_time, bool inverse_fade = false);
   ASGE::Sprite& returnNextSprite(double delta_time);
+  ASGE::Sprite& returnCurrentSprite();
 
   bool fadeIn(double time_to_fade, double delta_time);
   bool fadeOut(double time_to_fade, double delta_time);
