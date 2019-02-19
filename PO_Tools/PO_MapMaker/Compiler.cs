@@ -70,7 +70,7 @@ namespace PO_MapMaker
                 if (tile.Attribute("set").Value == "DEFAULT")
                 {
                     //Default is an ugly mess. Apologies...
-                    tiles_coreJson += "\"DEFAULT\":{\"width\":" + tile.Element("dimensions").Attribute("width").Value + ",\"height\":" + tile.Element("dimensions").Attribute("height").Value + ",\"sprite\":\"" + tile.Attribute("sprite").Value + "\",\"available_exits\":{\"left\":" + tile.Element("valid_exits").Attribute("left").Value + ",\"right\":" + tile.Element("valid_exits").Attribute("right").Value + ",\"up\":" + tile.Element("valid_exits").Attribute("up").Value + ",\"down\":" + tile.Element("valid_exits").Attribute("down").Value + "},\"has_point_of_interest\":{\"door\":" + tile.Element("points_of_interest").Attribute("door").Value + ",\"computer\":" + tile.Element("points_of_interest").Attribute("computer").Value + "}},";
+                    tiles_coreJson += "\"DEFAULT\":{\"width\":" + tile.Element("dimensions").Attribute("width").Value + ",\"height\":" + tile.Element("dimensions").Attribute("height").Value + ",\"sprite\":\"" + tile.Attribute("sprite").Value + "\",\"available_exits\":{\"left\":" + tile.Element("valid_exits").Attribute("left").Value + ",\"right\":" + tile.Element("valid_exits").Attribute("right").Value + ",\"up\":" + tile.Element("valid_exits").Attribute("up").Value + ",\"down\":" + tile.Element("valid_exits").Attribute("down").Value + "},\"poi_computer\":false,\"poi_door\":false,\"poi_sprite\":\"\",\"poi_desc\":\"placeholder_text\"},";
                     //...aaaand it's over. Back to neater code.
                 }
                 else
@@ -91,15 +91,21 @@ namespace PO_MapMaker
                         tiles_coreJson += "\"available_exits\":{" + available_exits.Substring(0, available_exits.Length - 1) + "},";
                     }
 
-                    string points_of_interest = "";
-                    string[] pois = { "door", "computer" };
-                    foreach (string poi in pois)
+                    try
                     {
-                        points_of_interest += addElementIfNotDefault(poi, default_tile.Element("points_of_interest").Attribute(poi), tile.Element("points_of_interest").Attribute(poi), false);
+                        if (tile.Element("points_of_interest").Attribute("computer").Value == "true")
+                        {
+                            tiles_coreJson += "\"poi_computer\":true,\"poi_sprite\": \"" + tile.Element("points_of_interest").Attribute("alt_sprite").Value + "\",\"poi_desc\":\"" + tile.Element("points_of_interest").Attribute("description").Value + "\",";
+                        }
+                        if (tile.Element("points_of_interest").Attribute("door").Value == "true")
+                        {
+                            tiles_coreJson += "\"poi_computer\":true,\"poi_sprite\": \"" + tile.Element("points_of_interest").Attribute("alt_sprite").Value + "\",\"poi_desc\":\"poi_door\",";
+                        }
                     }
-                    if (points_of_interest != "")
+                    catch
                     {
-                        tiles_coreJson += "\"has_point_of_interest\":{" + points_of_interest.Substring(0, points_of_interest.Length - 1) + "},";
+                        //Legacy versions can crash here as they don't have the alt_sprite field...
+                        MessageBox.Show("Aborting compile! An error occured while configuring POIs. Have you updated your XML?", "POI Build Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     tiles_coreJson = tiles_coreJson.Substring(0, tiles_coreJson.Length - 1) + "},";

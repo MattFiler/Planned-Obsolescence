@@ -46,34 +46,33 @@ struct TileData
     }
 
     // POIs
-    for (json::iterator tile_data = tile_config["has_point_of_interest"].begin();
-         tile_data != tile_config["has_point_of_interest"].end();
-         ++tile_data)
+    if (tile_config["poi_door"] == true)
     {
-      if (tile_data.key() == "door" && tile_data.value() == true)
-      {
-        poi = point_of_interest::DOOR;
-        state_of_poi = poi_state::DOOR_IS_OPEN;
-      }
-      else if (tile_data.key() == "computer" && tile_data.value() == true)
-      {
-        poi = point_of_interest::COMPUTER;
-        state_of_poi = poi_state::POI_IS_FUNCTIONAL;
-      }
+      poi = point_of_interest::DOOR;
+      state_of_poi = poi_state::DOOR_IS_OPEN;
+    }
+    else if (tile_config["poi_computer"] == true)
+    {
+      poi = point_of_interest::COMPUTER;
+      state_of_poi = poi_state::POI_IS_FUNCTIONAL;
     }
 
-    // If we have a POI, we need to a sprite (probs needs refactoring to two)
+    // If we have a POI, get alt sprite and description
     if (poi != point_of_interest::NONE_ON_THIS_TILE)
     {
       // Set tile sprite
       ASGE::Sprite* tile_sprite = renderer->createRawSprite();
-      tile_sprite->loadTexture(tile_config["sprite"]);
+      tile_sprite->loadTexture(tile_config["poi_sprite"]);
       sprite = std::make_shared<ScaledSpriteArray>(1);
       sprite->addSprite(*tile_sprite);
+      sprite->hide();
 
       // Set dimensions
       sprite->setWidth(width);
       sprite->setHeight(height);
+
+      // Set description
+      poi_desc = tile_config["poi_desc"];
     }
   }
 
@@ -102,14 +101,22 @@ struct TileData
   float width = 0;
   float height = 0;
 
+  // Traverse ability
+  tile_accessibility traversal = tile_accessibility::TILE_IS_NON_TRAVERSABLE;
+
   // Exit Ability (call with enum exit_direction - left/right/up/down)
   bool exits[4] = { false, false, false, false };
-  void setCanExit(direction exit_direction) { exits[exit_direction] = true; }
+  void setCanExit(direction exit_direction)
+  {
+    exits[exit_direction] = true;
+    traversal = tile_accessibility::TILE_IS_TRAVERSABLE;
+  }
   bool getCanExit(direction exit_direction) { return exits[exit_direction]; }
 
   // POI Data
   point_of_interest poi = point_of_interest::NONE_ON_THIS_TILE;
   poi_state state_of_poi = poi_state::UNINITIALISED_POI;
+  std::string poi_desc = "";
   std::shared_ptr<ScaledSpriteArray> sprite; // Only relevant if we have a POI.
 };
 

@@ -80,7 +80,7 @@ void GameMap::render(double delta_time)
     {
       for (Tile& tile_to_render : room_to_render.getTiles())
       {
-        if (tile_to_render.hasAnyPointOfInterest())
+        if (tile_to_render.hasAnyPointOfInterest() && tile_to_render.getSprite()->isVisible())
         {
           // Render POI
           game_camera->renderSprite(

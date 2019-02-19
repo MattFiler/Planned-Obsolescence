@@ -61,6 +61,13 @@ enum poi_state
   UNINITIALISED_POI
 };
 
+// Accessibility - can we traverse this tile?
+enum tile_accessibility
+{
+  TILE_IS_TRAVERSABLE,
+  TILE_IS_NON_TRAVERSABLE
+};
+
 enum Event
 {
   DEFAULTE

@@ -59,7 +59,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST1_040610.png"
+    "sprite": "data/MAPS/TEST1_062543.png"
   },
   "TEST2": {
     "rooms": [
@@ -89,7 +89,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST2_040610.png"
+    "sprite": "data/MAPS/TEST2_062543.png"
   },
   "TEST3": {
     "rooms_h": 3,
@@ -110,7 +110,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST3_040610.png"
+    "sprite": "data/MAPS/TEST3_062543.png"
   },
   "TEST4": {
     "rooms_h": 3,
@@ -131,7 +131,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST4_040610.png"
+    "sprite": "data/MAPS/TEST4_062543.png"
   },
   "TEST5": {
     "rooms_h": 3,
@@ -152,6 +152,6 @@
       "DEMO_3",
       "DEMO_3"
     ],
-    "sprite": "data/MAPS/TEST5_040610.png"
+    "sprite": "data/MAPS/TEST5_062543.png"
   }
 }

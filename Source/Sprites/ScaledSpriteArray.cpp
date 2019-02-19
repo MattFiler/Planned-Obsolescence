@@ -410,3 +410,18 @@ int ScaledSpriteArray::numberOfSprites()
 {
   return number_of_sprites;
 }
+
+void ScaledSpriteArray::hide()
+{
+  is_visible = false;
+}
+
+void ScaledSpriteArray::show()
+{
+  is_visible = true;
+}
+
+bool ScaledSpriteArray::isVisible()
+{
+  return is_visible;
+}

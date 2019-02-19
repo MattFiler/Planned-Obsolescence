@@ -22,6 +22,8 @@ class Tile
   poi_state getPointOfInterestState();
   void setPointOfInterestState(poi_state new_state);
 
+  tile_accessibility getTileAccessibility();
+
   void configure(float x_position, float y_position);
   float getPositionX();
   float getPositionY();
