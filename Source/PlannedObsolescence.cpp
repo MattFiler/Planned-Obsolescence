@@ -13,11 +13,8 @@
 
 PlannedObsolescence::~PlannedObsolescence()
 {
-  if (scene_manager)
-  {
-    delete scene_manager;
-    scene_manager = nullptr;
-  }
+  delete scene_manager;
+  scene_manager = nullptr;
 }
 
 bool PlannedObsolescence::init()

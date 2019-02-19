@@ -107,11 +107,8 @@ std::shared_ptr<ScaledSpriteArray> Tile::getSprite()
   {
     return tile_data.sprite;
   }
-  else
-  {
-    // I have no sympathy for people who don't check for a sprite before calling it.
-    throw "Someone requested a tile's sprite when it didn't have one. That idiot was probably YOU!";
-  }
+  // I have no sympathy for people who don't check for a sprite before calling it.
+  throw "Someone requested a tile's sprite when it didn't have one. That idiot was probably YOU!";
 }
 
 /* Get tile index in its room */

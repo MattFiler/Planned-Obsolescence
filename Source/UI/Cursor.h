@@ -19,7 +19,7 @@ class Cursor
   void updatePosition(double x_pos, double y_pos);
   Point getPosition();
 
-  void render(double delta_time);
+  void render();
 
  private:
   std::shared_ptr<ScaledSpriteArray> cursor_sprite;
