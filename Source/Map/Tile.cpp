@@ -33,6 +33,16 @@ bool Tile::hasAnyPointOfInterest()
   return false;
 }
 
+/* Return our POI state (e.g. open or closed for doors) */
+poi_state Tile::getPointOfInterestState() {
+  return tile_data.state_of_poi;
+}
+
+/* Set our POI state */
+void Tile::setPointOfInterestState(poi_state new_state) {
+  tile_data.state_of_poi = new_state;
+}
+
 /* Configure our sprite and set position */
 void Tile::configure(float x_position, float y_position)
 {

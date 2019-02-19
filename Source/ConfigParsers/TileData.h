@@ -53,10 +53,12 @@ struct TileData
       if (tile_data.key() == "door" && tile_data.value() == true)
       {
         poi = point_of_interest::DOOR;
+        state_of_poi = poi_state::DOOR_IS_OPEN;
       }
       else if (tile_data.key() == "computer" && tile_data.value() == true)
       {
         poi = point_of_interest::COMPUTER;
+        state_of_poi = poi_state::POI_IS_FUNCTIONAL;
       }
     }
 
@@ -107,6 +109,7 @@ struct TileData
 
   // POI Data
   point_of_interest poi = point_of_interest::NONE_ON_THIS_TILE;
+  poi_state state_of_poi = poi_state::UNINITIALISED_POI;
   std::shared_ptr<ScaledSpriteArray> sprite; // Only relevant if we have a POI.
 };
 

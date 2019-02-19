@@ -65,6 +65,10 @@ namespace PO_Launcher
                 }
             }
             resolutionSelector.SelectedItem = current_resolution[0] + "x" + current_resolution[1];
+
+            //Load previous language
+            string loadedLanguage = game_config_json["DEFAULT"]["language"].ToString();
+            po_language.SelectedItem = loadedLanguage.Substring(0,1) + loadedLanguage.Substring(1).ToLower();
         }
 
         /* Launcher Close */
