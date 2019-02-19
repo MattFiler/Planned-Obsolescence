@@ -130,3 +130,26 @@ bool GameMap::isPOIStateAtPoint(poi_state poi_state, Point point)
   }
   return false;
 }
+
+/* Check to see if we clicked a POI */
+bool GameMap::clickedPointCheck(Point click, bool act_on_click)
+{
+  for (Room& room : map_data.rooms)
+  {
+    for (Tile& tile : *room.getTiles())
+    {
+      if (tile.hasAnyPointOfInterest())
+      {
+        if (tile.isPointOnTile(click))
+        {
+          if (act_on_click)
+          {
+            // do stuff
+          }
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}

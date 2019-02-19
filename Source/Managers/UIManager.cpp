@@ -100,6 +100,13 @@ void UIManager::updateAndShowCharacterInfo(const std::string& character_type,
   char_info_popup->setGaugeDescription(gauge_name);
 }
 
+/* Creates all the UI */
+void UIManager::updateAndShowPointInfo(const std::string& point_name)
+{
+  poi_interaction_popup->setActive(true);
+  poi_interaction_popup->setClickedPointName(point_name);
+}
+
 /* render all ui */
 void UIManager::render(double delta_time)
 {
@@ -125,6 +132,13 @@ void UIManager::render(double delta_time)
     if (char_info_popup->isActive())
     {
       char_info_popup->render(delta_time);
+    }
+  }
+  if (poi_interaction_popup != nullptr)
+  {
+    if (poi_interaction_popup->isActive())
+    {
+      poi_interaction_popup->render(delta_time);
     }
   }
   if (main_hud_element != nullptr)
@@ -153,7 +167,11 @@ bool UIManager::checkForClick(Point click, bool act_on_click)
     }
   }
 
-  clicked_button = char_info_popup->checkForClick(click);
+  if (act_on_click)
+  {
+    clicked_button = char_info_popup->checkForClick(click);
+    clicked_button = poi_interaction_popup->checkForClick(click);
+  }
 
   return clicked_button != nullptr;
 }

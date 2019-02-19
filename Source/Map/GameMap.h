@@ -24,6 +24,8 @@ class GameMap
 
   bool isPOIStateAtPoint(poi_state poi_state, Point point);
 
+  bool clickedPointCheck(Point click, bool act_on_click = true);
+
  private:
   void importJSON();
 

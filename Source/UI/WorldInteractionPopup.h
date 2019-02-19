@@ -18,11 +18,9 @@ class WorldInteractionPopup : public UI
 
   void render(double delta_time) override;
 
-  void setCharacterName(const std::string& char_name);
-  void setGaugeDescription(const std::string& gauge_desc);
-  void setGaugeAmount(float gauge_amount);
+  void setClickedPointName(const std::string& char_name);
 
-  void setActive(bool is_active) { active = is_active; };
+  void setActive(bool is_active);
   bool isActive() { return active; };
   Button* checkForClick(Point click_location);
 
@@ -35,7 +33,7 @@ class WorldInteractionPopup : public UI
 
   GetLocalisedString localiser;
 
-  std::string character_name = "";
+  std::string poi_name = "";
 };
 
 #endif // PLANNEDOBSOLESCENCE_WORLDINTERACTIONPOPUP_H
