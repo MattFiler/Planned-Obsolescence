@@ -55,6 +55,12 @@ void Tile::setPointOfInterestState(poi_state new_state)
   }
 }
 
+/* Get accessibility - can we traverse this tile? */
+tile_accessibility Tile::getTileAccessibility()
+{
+  return tile_data.traversal;
+}
+
 /* Configure our sprite and set position */
 void Tile::configure(float x_position, float y_position)
 {

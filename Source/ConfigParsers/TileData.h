@@ -101,9 +101,16 @@ struct TileData
   float width = 0;
   float height = 0;
 
+  // Traverse ability
+  tile_accessibility traversal = tile_accessibility::TILE_IS_NON_TRAVERSABLE;
+
   // Exit Ability (call with enum exit_direction - left/right/up/down)
   bool exits[4] = { false, false, false, false };
-  void setCanExit(direction exit_direction) { exits[exit_direction] = true; }
+  void setCanExit(direction exit_direction)
+  {
+    exits[exit_direction] = true;
+    traversal = tile_accessibility::TILE_IS_TRAVERSABLE;
+  }
   bool getCanExit(direction exit_direction) { return exits[exit_direction]; }
 
   // POI Data
