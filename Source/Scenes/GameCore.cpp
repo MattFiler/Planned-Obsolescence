@@ -54,7 +54,6 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   {
     Goon* new_goon = new Goon();
     character_manager.spawnCharacter(new_goon);
-    new_goon->calculateRouteToPoint(Point(300, 300));
   }
 }
 
