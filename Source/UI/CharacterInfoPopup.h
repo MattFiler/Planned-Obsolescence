@@ -8,8 +8,11 @@
 class CharacterInfoPopup : public UI
 {
  public:
-  CharacterInfoPopup(ASGE::Renderer* rend);
+  explicit CharacterInfoPopup(ASGE::Renderer* rend);
   ~CharacterInfoPopup() override;
+
+  CharacterInfoPopup(const CharacterInfoPopup&) = delete;
+  CharacterInfoPopup& operator=(const CharacterInfoPopup&) = delete;
 
   void render(double delta_time) override;
 
