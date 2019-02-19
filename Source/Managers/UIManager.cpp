@@ -94,6 +94,8 @@ void UIManager::updateAndShowCharacterInfo(const std::string& character_type,
                                            float character_gauge,
                                            const std::string& gauge_name)
 {
+  poi_interaction_popup->setActive(false);
+
   char_info_popup->setActive(true);
   char_info_popup->setCharacterName(character_type);
   char_info_popup->setGaugeAmount(character_gauge);
@@ -103,6 +105,8 @@ void UIManager::updateAndShowCharacterInfo(const std::string& character_type,
 /* Creates all the UI */
 void UIManager::updateAndShowPointInfo(const std::string& point_name)
 {
+  char_info_popup->setActive(false);
+
   poi_interaction_popup->setActive(true);
   poi_interaction_popup->setClickedPointName(point_name);
 }
@@ -167,8 +171,12 @@ bool UIManager::checkForClick(Point click, bool act_on_click)
     }
   }
 
-  clicked_button = char_info_popup->checkForClick(click);
-  // clicked_button = poi_interaction_popup->checkForClick(click);
+  if (char_info_popup->checkForClick(click)) {
+    clicked_button = char_info_popup->checkForClick(click);
+  }
+  else if (poi_interaction_popup->checkForClick(click)) {
+    clicked_button = poi_interaction_popup->checkForClick(click);
+  }
 
   return clicked_button != nullptr;
 }

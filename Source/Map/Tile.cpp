@@ -6,8 +6,7 @@ Tile::Tile(std::string tile_type, json* tile_big_config, ASGE::Renderer* rendere
   // Load tile config
   tile_data.load(tile_big_config, tile_type, renderer);
 
-  // Resize/position click area
-  click_area.setPosition(Point(tile_data.x_pos, tile_data.y_pos));
+  // Resize click area
   click_area.setWidth(tile_data.width);
   click_area.setHeight(tile_data.height);
 }
@@ -62,6 +61,7 @@ tile_accessibility Tile::getTileAccessibility()
 void Tile::configure(float x_position, float y_position)
 {
   tile_data.updatePosition(x_position, y_position);
+  click_area.setPosition(Point(tile_data.x_pos, tile_data.y_pos));
 }
 
 /* Return the X position of the tile */
@@ -124,4 +124,10 @@ int Tile::getIndexInRoom()
 int Tile::getIndexInMap()
 {
   return tile_data.index_in_map;
+}
+
+/* Get description of tile POI */
+std::string Tile::getTileDescription()
+{
+  return tile_data.poi_desc;
 }

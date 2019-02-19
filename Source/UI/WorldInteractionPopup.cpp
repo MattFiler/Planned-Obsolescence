@@ -56,7 +56,7 @@ void WorldInteractionPopup::setClickedPointName(const std::string& char_name)
 /* Returns a pointer to the button that was clicked (nullptr if none) */
 Button* WorldInteractionPopup::checkForClick(Point click_location)
 {
-  if (close_button->checkForClick(click_location))
+  if (active && close_button->checkForClick(click_location))
   {
     return close_button;
   }

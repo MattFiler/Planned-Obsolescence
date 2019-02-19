@@ -41,6 +41,8 @@ class Tile
   float getWidth();
   float getHeight();
 
+  std::string getTileDescription();
+
  private:
   // Engine features
   FileHandler file_handler;

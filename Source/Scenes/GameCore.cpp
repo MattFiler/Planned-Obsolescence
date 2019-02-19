@@ -15,22 +15,18 @@
  */
 bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 {
+  // Setup
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
-  camera.setRenderer(rend);
 
+  // load map
   game_map.load(renderer, &camera);
 
-  character_manager.setMap(&game_map);
-  character_manager.setCamera(&camera);
-
+  // Pass references out and spawn characters
+  passReferences(input);
   spawnCharacters(renderer);
 
-  ui_manager.setRenderer(rend);
-  ui_manager.setInputData(input);
-  ui_manager.setCamera(&camera);
-  character_manager.setUIManager(&ui_manager);
-
+  // Create UI
   ui_manager.createMainHUD();
 
   Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
@@ -44,6 +40,22 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   ui_manager.addButton(quit_button);
 
   return true;
+}
+
+/* Pass references to other classes */
+void GameCore::passReferences(ASGE::Input* input)
+{
+  camera.setRenderer(rend);
+
+  ui_manager.setRenderer(rend);
+  ui_manager.setInputData(input);
+  ui_manager.setCamera(&camera);
+
+  character_manager.setMap(&game_map);
+  character_manager.setCamera(&camera);
+  character_manager.setUIManager(&ui_manager);
+
+  game_map.setUIManager(&ui_manager);
 }
 
 /* Spawn all characters */

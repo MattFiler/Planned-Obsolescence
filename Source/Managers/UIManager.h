@@ -1,7 +1,6 @@
 #ifndef PLANNEDOBSOLESCENCE_UIMANAGER_H
 #define PLANNEDOBSOLESCENCE_UIMANAGER_H
 
-#include "../Characters/Boss.h"
 #include "../UI/CharacterInfoPopup.h"
 #include "../UI/Cursor.h"
 #include "../UI/GenericUI.h"

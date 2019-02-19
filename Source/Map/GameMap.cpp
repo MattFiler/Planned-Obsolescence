@@ -145,6 +145,7 @@ bool GameMap::clickedPointCheck(Point click, bool act_on_click)
           if (act_on_click)
           {
             // do stuff
+            ui_manager->updateAndShowPointInfo(tile.getTileDescription());
           }
           return true;
         }
