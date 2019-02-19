@@ -41,8 +41,8 @@ void Character::updateSprite()
   click_area.setHeight(config.height);
 }
 
-/* Update the position of the character based on current route and speed */
-void Character::updatePosition(double delta_time)
+/* Update the position of the character based on current route and speed, returns true if it moved */
+bool Character::updatePosition(double delta_time)
 {
   // Check if at the end of a route, if so there is no point checking for movement
   if (route_index != current_route.size() - 1)
@@ -73,11 +73,12 @@ void Character::updatePosition(double delta_time)
       if (current_route.size() - 1 == route_index)
       {
         direction.set(0, 0);
+        resetPathfindingMap();
       }
       else
       {
         // Check to see if we have hit a closed door
-        if(global_map->isPOIAtPoint(point_of_interest::DOOR, current_route[route_index+1]->position))
+        if(global_map->isPOIStateAtPoint(poi_state ::DOOR_IS_CLOSED, current_route[route_index+1]->position))
         {
           // Re-calculate the route
           current_route[route_index+1]->pathable = false;
@@ -95,7 +96,9 @@ void Character::updatePosition(double delta_time)
         }
       }
     }
+    return true;
   }
+  return  false;
 }
 
 /* Generate the internal map that this character will use to pathfind */
@@ -124,6 +127,7 @@ void Character::generatePathfindingMap(GameMap* game_map)
 bool Character::calculateRouteToPoint(Point point)
 {
   current_route[0] = current_route[route_index];
+  route_index = 0;
 
   // Reset the current scores on the map
   clearPathfindingMapScores();
@@ -153,6 +157,12 @@ bool Character::calculateRouteToPoint(Point point)
       current_route.resize(i + 1);
       debug_text.print(config.id + " CALCULATED PATH TO TARGET ACROSS " + std::to_string(i) +
                        " TILES");
+      float x_diff = current_route[1]->position.x_pos - position.x_pos;
+      float y_diff = current_route[1]->position.y_pos - position.y_pos;
+      direction.set(x_diff, y_diff);
+      direction.normalise();
+        distance_to_next_node =
+                Point::distanceBetween(position, current_route[1]->position);
       return true;
     }
   }
@@ -260,10 +270,10 @@ void Character::clearPathfindingMapScores()
   for (int i = 0; i < internal_map->number_of_nodes; i++)
   {
     internal_map->nodes[i].visited = false;
+      internal_map->nodes[i].shortest_path_to_here = 10000;
     for (int j = 0; j < 4; j++)
     {
-      internal_map->nodes->shortest_path_to_here = 10000;
-      internal_map->nodes->connections[j].score = -1;
+      internal_map->nodes[i].connections[j].score = -1;
     }
   }
 }
@@ -274,12 +284,12 @@ void Character::resetPathfindingMap()
   for (int i = 0; i < internal_map->number_of_nodes; i++)
   {
     internal_map->nodes[i].visited = false;
-    internal_map->nodes->pathable = true;
-    internal_map->nodes->shortest_path_to_here = 10000;
+    internal_map->nodes[i].pathable = true;
+    internal_map->nodes[i].shortest_path_to_here = 10000;
     for (int j = 0; j < 4; j++)
     {
-      internal_map->nodes->connections[j].score = -1;
-      internal_map->nodes->connections[j].open = true;
+      internal_map->nodes[i].connections[j].score = -1;
+      internal_map->nodes[i].connections[j].open = true;
     }
   }
 }

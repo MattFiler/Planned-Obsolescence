@@ -19,10 +19,11 @@ class Character
 {
  public:
   explicit Character(character_type type);
-  ~Character();
+  virtual ~Character();
 
   void wake(ASGE::Renderer* passed_renderer);
-  void updatePosition(double delta_time);
+  virtual void update(double delta_time) { updatePosition(delta_time); };
+  bool updatePosition(double delta_time);
 
   void setSpawnPositionX(float x_pos);
   void setSpawnPositionY(float y_pos);
@@ -78,10 +79,10 @@ class Character
 
   ClickArea click_area;
 
+  CharacterData config;
+
  private:
   void importConfig(json json_config);
-
-  CharacterData config;
 
   ScaledSpriteArray* sprite = nullptr;
   ASGE::Renderer* renderer = nullptr;
