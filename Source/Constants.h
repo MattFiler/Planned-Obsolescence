@@ -10,7 +10,7 @@
 
 /* --- Character --- */
 
-// Character types are hard-coded into everything. Do not modify this list!
+// Our character types
 enum character_type
 {
   DEFAULT,
@@ -20,7 +20,7 @@ enum character_type
   TECHNICIAN,
 };
 
-// The character's currently active job.
+// The character's currently active job
 enum character_job
 {
   JUST_SPAWNED_IN,
@@ -34,7 +34,7 @@ enum character_job
 
 /* --- Map --- */
 
-// Potential movement directions from tile. Do not modify unless you want to break something!
+// Potential movement directions from tile
 enum direction
 {
   LEFT,
@@ -43,12 +43,22 @@ enum direction
   DOWN
 };
 
-// Points of interest are hard-coded into everything. Do not modify this list!
+// Points of interest are either doors (open/close) or "computers" (working/broken)
 enum point_of_interest
 {
   NONE_ON_THIS_TILE,
   COMPUTER,
   DOOR
+};
+
+// POI state (affected by interaction)
+enum poi_state
+{
+  DOOR_IS_OPEN,
+  DOOR_IS_CLOSED,
+  POI_IS_BROKEN,
+  POI_IS_FUNCTIONAL,
+  UNINITIALISED_POI
 };
 
 enum Event

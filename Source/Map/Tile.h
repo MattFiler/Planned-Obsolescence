@@ -16,8 +16,11 @@ class Tile
   ~Tile() = default;
 
   bool exitIsValid(direction exit);
+
   bool hasSpecificPointOfInterest(point_of_interest poi);
   bool hasAnyPointOfInterest();
+  poi_state getPointOfInterestState();
+  void setPointOfInterestState(poi_state new_state);
 
   void configure(float x_position, float y_position);
   float getPositionX();
