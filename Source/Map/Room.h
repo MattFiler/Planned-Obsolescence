@@ -13,7 +13,7 @@ class Room
 
   void build(float room_x, float room_y, ASGE::Renderer* renderer, int tile_offset);
 
-  std::vector<Tile> getTiles();
+  std::vector<Tile>* getTiles();
   int getTileCount();
 
   float getHeight();

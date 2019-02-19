@@ -78,7 +78,7 @@ void GameMap::render(double delta_time)
     if (room_to_render.getPositionX() < (SCREEN_WIDTH * ScaledSpriteArray::width_scale) &&
         room_to_render.getPositionY() < (SCREEN_HEIGHT * ScaledSpriteArray::width_scale))
     {
-      for (Tile& tile_to_render : room_to_render.getTiles())
+      for (Tile& tile_to_render : *room_to_render.getTiles())
       {
         if (tile_to_render.hasAnyPointOfInterest() && tile_to_render.getSprite()->isVisible())
         {
@@ -98,9 +98,9 @@ std::shared_ptr<ScaledSpriteArray> GameMap::getSprite()
 }
 
 /* Return all rooms in the current map */
-std::vector<Room> GameMap::getRooms()
+std::vector<Room>* GameMap::getRooms()
 {
-  return map_data.rooms;
+  return &map_data.rooms;
 }
 
 /* Return the number of rooms in the current map */
@@ -115,15 +115,16 @@ int GameMap::getTileCount()
   return map_data.tile_count;
 }
 
-/* Checks to see if there is a tile at the passed position that contains the given POI */
-bool GameMap::isPOIAtPoint(point_of_interest poi, Point point)
+/* Checks to see if there is a tile at the passed position that is in the passed state */
+bool GameMap::isPOIStateAtPoint(poi_state poi_state, Point point)
 {
-  for (Room& room : map_data.rooms) {
-    for (Tile &tile : room.getTiles()) {
-        if(tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos)
-        {
-          return (tile.hasSpecificPointOfInterest(poi));
-        }
+  for (Room& room : map_data.rooms)
+  {
+    for (Tile& tile : *room.getTiles())
+    {
+      if (tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos)
+      {
+        return (tile.getPointOfInterestState() == poi_state);
       }
     }
   }

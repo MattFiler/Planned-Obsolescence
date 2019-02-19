@@ -17,12 +17,12 @@ class GameMap
   void load(ASGE::Renderer* renderer_instance, Camera* camera);
   void render(double delta_time);
 
-  std::vector<Room> getRooms();
+  std::vector<Room>* getRooms();
   int getRoomCount();
   int getTileCount();
   std::shared_ptr<ScaledSpriteArray> getSprite();
 
-  bool isPOIAtPoint(point_of_interest poi, Point point);
+  bool isPOIStateAtPoint(poi_state poi_state, Point point);
 
  private:
   void importJSON();

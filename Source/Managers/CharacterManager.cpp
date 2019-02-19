@@ -214,7 +214,7 @@ void CharacterManager::updateCharacter(CharacterArray character,
   {
     if (character[i]->isVisible()) // Only bother updating if visible?
     {
-      character[i]->updatePosition(delta_time);
+      character[i]->update(delta_time);
       character_gauge += goon_instances[i]->getInternalGauge();
       character_visible_count++;
     }
