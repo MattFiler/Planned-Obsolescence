@@ -76,13 +76,23 @@ void Character::updatePosition(double delta_time)
       }
       else
       {
-        // Calculate the new direction
-        float x_diff = current_route[route_index + 1]->position.x_pos - position.x_pos;
-        float y_diff = current_route[route_index + 1]->position.y_pos - position.y_pos;
-        direction.set(x_diff, y_diff);
-        direction.normalise();
-        distance_to_next_node =
-          Point::distanceBetween(position, current_route[route_index + 1]->position);
+        // Check to see if we have hit a closed door
+        if(global_map->isPOIAtPoint(point_of_interest::DOOR, current_route[route_index+1]->position))
+        {
+          // Re-calculate the route
+          current_route[route_index+1]->pathable = false;
+          clearPathfindingMapScores();
+          calculateRouteToPoint(current_route[current_route.size()-1]->position);
+        }
+        else {
+          // Calculate the new direction
+          float x_diff = current_route[route_index + 1]->position.x_pos - position.x_pos;
+          float y_diff = current_route[route_index + 1]->position.y_pos - position.y_pos;
+          direction.set(x_diff, y_diff);
+          direction.normalise();
+          distance_to_next_node =
+                  Point::distanceBetween(position, current_route[route_index + 1]->position);
+        }
       }
     }
   }
@@ -91,6 +101,7 @@ void Character::updatePosition(double delta_time)
 /* Generate the internal map that this character will use to pathfind */
 void Character::generatePathfindingMap(GameMap* game_map)
 {
+  global_map = game_map;
   internal_map = new PathfindingMap(game_map);
   // Find the node that this character is currently at
   for (int i = 0; i < internal_map->number_of_nodes; i++)
@@ -167,7 +178,7 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
   for (int i = 0; i < 4; i++)
   {
     // If the node already has a shorter path, block this direction
-    if (node->connections[i].node != nullptr &&
+    if (node->connections[i].node != nullptr && node->connections[i].node->pathable &&
         depth > node->connections[i].node->shortest_path_to_here)
     {
       node->connections[i].score = 10000;
@@ -251,6 +262,7 @@ void Character::clearPathfindingMapScores()
     internal_map->nodes[i].visited = false;
     for (int j = 0; j < 4; j++)
     {
+      internal_map->nodes->shortest_path_to_here = 10000;
       internal_map->nodes->connections[j].score = -1;
     }
   }
@@ -262,6 +274,8 @@ void Character::resetPathfindingMap()
   for (int i = 0; i < internal_map->number_of_nodes; i++)
   {
     internal_map->nodes[i].visited = false;
+    internal_map->nodes->pathable = true;
+    internal_map->nodes->shortest_path_to_here = 10000;
     for (int j = 0; j < 4; j++)
     {
       internal_map->nodes->connections[j].score = -1;

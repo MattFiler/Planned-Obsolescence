@@ -50,7 +50,6 @@ class Character
 
   ScaledSpriteArray* getSprite();
   ASGE::Renderer* getRenderer();
-  std::vector<PathNode*> current_route;
 
   float getInternalGauge();
   void reduceInternalGauge(float reduce_by = 1);
@@ -70,6 +69,8 @@ class Character
   Vector direction = Vector(0, 0);
 
   PathfindingMap* internal_map = nullptr;
+  GameMap* global_map = nullptr;
+  std::vector<PathNode*> current_route;
 
   unsigned long long route_index = 0;
   float distance_to_next_node = 0;
