@@ -33,10 +33,11 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   GenericUI* ui_main =
     new GenericUI(renderer, "IN_GAME_UI/BOTTOM_RIGHT_BG.png", "IN_GAME_UI/BOTTOM_RIGHT_TEXT.png");
   ui_manager.addGenericUI(ui_main);
-
-  GenericUI* ui_bottom =
-    new GenericUI(renderer, "IN_GAME_UI/BOTTOM_LEFT_BG.png", "IN_GAME_UI/BOTTOM_LEFT_TEXT.png");
-  ui_manager.addGenericUI(ui_bottom);
+  /*
+    GenericUI* ui_bottom =
+      new GenericUI(renderer, "IN_GAME_UI/BOTTOM_LEFT_BG.png", "IN_GAME_UI/BOTTOM_LEFT_TEXT.png");
+    ui_manager.addGenericUI(ui_bottom);
+    */
 
   Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
                                    renderer,
@@ -48,7 +49,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   quit_button->click_function = [next] { *next = scenes::MAIN_MENU; };
   ui_manager.addButton(quit_button);
 
-  ui_manager.buildUI();
+  ui_manager.initCharacterPopup();
 
   return true;
 }
@@ -181,6 +182,4 @@ void GameCore::render(double delta_time)
 
   // Render UI
   ui_manager.render(delta_time);
-
-  rend->renderText(std::to_string(character_manager.goon_productivity), 100, 100);
 }

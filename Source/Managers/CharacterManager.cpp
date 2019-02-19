@@ -1,7 +1,5 @@
 #include "CharacterManager.h"
 
-float CharacterManager::goon_productivity = 0;
-
 /* Deallocate memory */
 CharacterManager::~CharacterManager()
 {
@@ -191,35 +189,63 @@ void CharacterManager::renderCharacter(CharacterArray character,
 /* Update all characters */
 void CharacterManager::update(double delta_time)
 {
-  updateCharacter(boss_instances, boss_count, delta_time);
-  updateCharacter(goon_instances, goon_count, delta_time);
-  updateCharacter(technician_instances, technician_count, delta_time);
-  updateCharacter(security_instances, security_count, delta_time);
-
-  // Work out current cumulative goon productivity levels
-  int goon_c = 0;
-    goon_productivity = 0;
-  for (int i = 0; i < goon_count; i++)
-  {
-      if (goon_instances[i]->isVisible()) {
-          goon_productivity += goon_instances[i]->getProductivity();
-          goon_c++;
-      }
-  }
-  goon_productivity /= static_cast<float>(goon_c);
+  updateCharacter(boss_instances, boss_count, boss_visible_count, boss_gauge_sum, delta_time);
+  updateCharacter(goon_instances, goon_count, goon_visible_count, goon_gauge_sum, delta_time);
+  updateCharacter(technician_instances,
+                  technician_count,
+                  technician_visible_count,
+                  technician_gauge_sum,
+                  delta_time);
+  updateCharacter(
+    security_instances, security_count, security_visible_count, security_gauge_sum, delta_time);
 }
 
 /* Update a specific character definition */
 template<class CharacterArray>
 void CharacterManager::updateCharacter(CharacterArray character,
                                        int& character_count,
+                                       int& character_visible_count,
+                                       float& character_gauge,
                                        double& delta_time)
 {
+  character_visible_count = 0;
+  character_gauge = 0;
   for (int i = 0; i < character_count; i++)
   {
     if (character[i]->isVisible()) // Only bother updating if visible?
     {
       character[i]->updatePosition(delta_time);
+      character_gauge += goon_instances[i]->getInternalGauge();
+      character_visible_count++;
+    }
+  }
+  character_gauge /= static_cast<float>(character_visible_count);
+}
+
+/* Get sum gauge value for character */
+float CharacterManager::getTotalGaugeValue(character_type character)
+{
+  switch (character)
+  {
+    case character_type::BOSS:
+    {
+      return boss_gauge_sum;
+    }
+    case character_type::GOON:
+    {
+      return goon_gauge_sum;
+    }
+    case character_type::TECHNICIAN:
+    {
+      return technician_gauge_sum;
+    }
+    case character_type::SECURITY:
+    {
+      return security_gauge_sum;
+    }
+    default:
+    {
+      return 0.0f;
     }
   }
 }
@@ -240,12 +266,31 @@ void CharacterManager::setCamera(Camera* scene_camera)
 /* Returns true if any character lies within the passed point */
 bool CharacterManager::checkForClick(Point click)
 {
-  for (int i = 0; i < boss_count; i++)
+  bool boss_check = clickedCharacterCheck(boss_instances, boss_count, click);
+  bool goon_check = clickedCharacterCheck(goon_instances, goon_count, click);
+  bool technician_check = clickedCharacterCheck(technician_instances, technician_count, click);
+  bool security_check = clickedCharacterCheck(security_instances, security_count, click);
+
+  return (boss_check && goon_check && technician_check && security_check);
+}
+
+/* Check a set of characters to see if we clicked any */
+template<class CharacterArray>
+bool CharacterManager::clickedCharacterCheck(CharacterArray character,
+                                             int& character_count,
+                                             Point click)
+{
+  for (int i = 0; i < character_count; i++)
   {
-    if (boss_instances[i]->isPointInArea(click))
+    if (character[i]->isVisible())
     {
-      ui_manager->enableBossPopup(boss_instances[i]);
-      return true;
+      if (character[i]->isPointInArea(click))
+      {
+        ui_manager->updateAndShowCharacterInfo(character[i]->getDisplayName(),
+                                               character[i]->getInternalGauge(),
+                                               character[i]->getInternalGaugeDesc());
+        return true;
+      }
     }
   }
   return false;

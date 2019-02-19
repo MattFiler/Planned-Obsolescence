@@ -10,12 +10,10 @@
 		"movement_speed": 5,
 		"max_health": 100,
 		
-		"gauge": {
-			"suspicion": 0,
-			"stress": 0,
-			"productivity": 100,
-			"faith": 100
-		},
+		"gauge_value": 100,
+		"gauge_desc": "PLACEHOLDER",
+		
+		"display_name": "DEFAULT",
 		
 		"sprites": {
 			"walking": ["data/CHARACTERS/DEFAULT/placeholder.png"],
@@ -23,6 +21,11 @@
 		}
 	},
 	"1": {
+		"gauge_value": 0,
+		"gauge_desc": "SUSPICION",
+		
+		"display_name": "SECURITY",
+		
 		"sprites": {
 			"walking": ["data/CHARACTERS/GUARD/placeholder.png"],
 			"idle": ["data/CHARACTERS/GUARD/placeholder.png"],
@@ -30,6 +33,10 @@
 		}
 	},
 	"2": {
+		"gauge_desc": "PRODUCTIVITY",
+		
+		"display_name": "LAB WORKER",
+		
 		"sprites": {
 			"walking": ["data/CHARACTERS/GOON/placeholder.png"],
 			"idle": ["data/CHARACTERS/GOON/placeholder.png"],
@@ -37,6 +44,10 @@
 		}
 	},
 	"3": {
+		"gauge_desc": "PROJECT FAITH",
+		
+		"display_name": "BOSS",
+		
 		"sprites": {
 			"walking": ["data/CHARACTERS/BOSS/placeholder.png"],
 			"idle": ["data/CHARACTERS/BOSS/placeholder.png"],
@@ -45,6 +56,11 @@
 		}
 	},
 	"4": {
+		"gauge_value": 0,
+		"gauge_desc": "STRESS",
+		
+		"display_name": "TECHNICIAN",
+		
 		"sprites": {
 			"walking": ["data/CHARACTERS/TECH/placeholder.png"],
 			"idle": ["data/CHARACTERS/TECH/placeholder.png"],

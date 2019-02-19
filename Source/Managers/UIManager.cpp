@@ -24,6 +24,8 @@ UIManager::~UIManager()
     delete generic_ui;
     generic_ui = nullptr;
   }
+  delete char_info_popup;
+  char_info_popup = nullptr;
 }
 
 /* Add a generic UI element set (foreground and background) */
@@ -50,12 +52,22 @@ void UIManager::addProgressBar(ProgressBar* new_progressbar)
   progress_bars.push_back(new_progressbar);
 }
 
-/* Creates all the UI */
-void UIManager::buildUI()
+/* Initialise the character popup */
+void UIManager::initCharacterPopup()
 {
-  boss_popup = new PopupWindow(Point(0, 0), renderer, "data/UI/default.png");
-  TextBox* text = new TextBox(Point(10, 10), renderer, "The BOSS");
-  boss_popup->addTextBox(text);
+  char_info_popup = new CharacterInfoPopup(renderer);
+  char_info_popup->setActive(false);
+}
+
+/* Creates all the UI */
+void UIManager::updateAndShowCharacterInfo(const std::string& character_type,
+                                           float character_gauge,
+                                           const std::string& gauge_name)
+{
+  char_info_popup->setActive(true);
+  char_info_popup->setCharacterName(character_type);
+  char_info_popup->setGaugeAmount(character_gauge);
+  char_info_popup->setGaugeDescription(gauge_name);
 }
 
 /* render all ui */
@@ -78,9 +90,9 @@ void UIManager::render(double delta_time)
     generic_ui->render(delta_time);
   }
 
-  if (boss_popup->isActive())
+  if (char_info_popup->isActive())
   {
-    boss_popup->render(delta_time);
+    char_info_popup->render(delta_time);
   }
 }
 
@@ -97,7 +109,7 @@ bool UIManager::checkForClick(Point click)
     }
   }
 
-  clicked_button = boss_popup->checkForClick(click);
+  clicked_button = char_info_popup->checkForClick(click);
 
   return clicked_button != nullptr;
 }
@@ -112,17 +124,10 @@ void UIManager::releaseClick()
   }
 }
 
-void UIManager::enableBossPopup(Boss* boss)
-{
-  boss_popup->setActive(true);
-  boss_popup->moveTo(boss->getPosition() - camera->getCameraPosition());
-  keepUIWithinScreen(boss_popup);
-  // TODO Add info about the boss from the passed ref
-}
-
 /* keep a popup within the window bounds */
 void UIManager::keepUIWithinScreen(UI* ui_object)
 {
+  /*
   Point new_pos = ui_object->getPosition();
   if (new_pos.x_pos > SCREEN_WIDTH - boss_popup->getWidth())
   {
@@ -141,4 +146,5 @@ void UIManager::keepUIWithinScreen(UI* ui_object)
     new_pos.y_pos = 0;
   }
   ui_object->moveTo(new_pos);
+  */
 }

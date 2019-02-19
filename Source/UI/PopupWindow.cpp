@@ -15,8 +15,12 @@ PopupWindow::PopupWindow(Point pos,
   background_sprite->xPos(position.x_pos);
   background_sprite->yPos(position.y_pos);
 
-  Button* close_button = new Button(
-    position + Point(width - 15, 0), rend, "data/UI/cross.png", "data/UI/cross.png", 15, 15);
+  Button* close_button = new Button(position + Point(width - 15, 0),
+                                    rend,
+                                    "data/UI/IN_GAME_UI/CHARACTER_POPUP_CLOSE_BUTTON.png",
+                                    "data/UI/IN_GAME_UI/CHARACTER_POPUP_CLOSE_BUTTON.png",
+                                    15,
+                                    15);
   bool* active_p = &active;
   close_button->click_function = [active_p] { *active_p = false; };
   buttons.push_back(close_button);

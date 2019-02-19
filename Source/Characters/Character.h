@@ -52,6 +52,12 @@ class Character
   ASGE::Renderer* getRenderer();
   std::vector<PathNode*> current_route;
 
+  float getInternalGauge();
+  void reduceInternalGauge(float reduce_by = 1);
+  std::string getInternalGaugeDesc();
+
+  std::string getDisplayName();
+
  protected:
   void updateSprite();
   float calculateScoresOfNextDepth(PathNode* node,

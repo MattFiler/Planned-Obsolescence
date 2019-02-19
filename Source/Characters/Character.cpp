@@ -369,3 +369,27 @@ character_type Character::getCharacterType()
 {
   return config.variant;
 }
+
+/* Get the character's current gauge */
+float Character::getInternalGauge()
+{
+  return config.internal_gauge;
+}
+
+/* Reduce the character's current gauge */
+void Character::reduceInternalGauge(float reduce_by)
+{
+  config.internal_gauge -= reduce_by;
+}
+
+/* Description of the internal gauge */
+std::string Character::getInternalGaugeDesc()
+{
+  return config.internal_gauge_name;
+}
+
+/* Get display name */
+std::string Character::getDisplayName()
+{
+  return config.display_name;
+}
