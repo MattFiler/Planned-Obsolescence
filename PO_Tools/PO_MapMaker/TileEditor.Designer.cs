@@ -50,12 +50,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.defaultSizes = new System.Windows.Forms.CheckBox();
             this.tilePreview = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.browseToAltSprite = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.altSprite = new System.Windows.Forms.TextBox();
+            this.POI_Desc = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.tilePreview)).BeginInit();
             this.SuspendLayout();
             // 
             // addTile
             // 
-            this.addTile.Location = new System.Drawing.Point(12, 264);
+            this.addTile.Location = new System.Drawing.Point(12, 345);
             this.addTile.Name = "addTile";
             this.addTile.Size = new System.Drawing.Size(249, 26);
             this.addTile.TabIndex = 0;
@@ -104,36 +109,38 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 166);
+            this.label3.Location = new System.Drawing.Point(9, 227);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 13);
+            this.label3.Size = new System.Drawing.Size(98, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Points of Interest";
+            this.label3.Text = "Point of Interest";
             // 
             // POI_Computer
             // 
             this.POI_Computer.AutoSize = true;
-            this.POI_Computer.Location = new System.Drawing.Point(12, 182);
+            this.POI_Computer.Location = new System.Drawing.Point(12, 243);
             this.POI_Computer.Name = "POI_Computer";
-            this.POI_Computer.Size = new System.Drawing.Size(71, 17);
+            this.POI_Computer.Size = new System.Drawing.Size(68, 17);
             this.POI_Computer.TabIndex = 9;
-            this.POI_Computer.Text = "Computer";
+            this.POI_Computer.Text = "Idle Spot";
             this.POI_Computer.UseVisualStyleBackColor = true;
+            this.POI_Computer.CheckedChanged += new System.EventHandler(this.POI_Computer_CheckedChanged);
             // 
             // POI_Door
             // 
             this.POI_Door.AutoSize = true;
-            this.POI_Door.Location = new System.Drawing.Point(89, 182);
+            this.POI_Door.Location = new System.Drawing.Point(89, 243);
             this.POI_Door.Name = "POI_Door";
             this.POI_Door.Size = new System.Drawing.Size(49, 17);
             this.POI_Door.TabIndex = 10;
             this.POI_Door.Text = "Door";
             this.POI_Door.UseVisualStyleBackColor = true;
+            this.POI_Door.CheckedChanged += new System.EventHandler(this.POI_Door_CheckedChanged);
             // 
             // EXIT_Right
             // 
             this.EXIT_Right.AutoSize = true;
-            this.EXIT_Right.Location = new System.Drawing.Point(62, 218);
+            this.EXIT_Right.Location = new System.Drawing.Point(62, 184);
             this.EXIT_Right.Name = "EXIT_Right";
             this.EXIT_Right.Size = new System.Drawing.Size(51, 17);
             this.EXIT_Right.TabIndex = 13;
@@ -143,7 +150,7 @@
             // EXIT_Left
             // 
             this.EXIT_Left.AutoSize = true;
-            this.EXIT_Left.Location = new System.Drawing.Point(12, 218);
+            this.EXIT_Left.Location = new System.Drawing.Point(12, 184);
             this.EXIT_Left.Name = "EXIT_Left";
             this.EXIT_Left.Size = new System.Drawing.Size(44, 17);
             this.EXIT_Left.TabIndex = 12;
@@ -154,7 +161,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(9, 202);
+            this.label4.Location = new System.Drawing.Point(9, 168);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 13);
             this.label4.TabIndex = 11;
@@ -163,7 +170,7 @@
             // EXIT_Up
             // 
             this.EXIT_Up.AutoSize = true;
-            this.EXIT_Up.Location = new System.Drawing.Point(12, 241);
+            this.EXIT_Up.Location = new System.Drawing.Point(12, 207);
             this.EXIT_Up.Name = "EXIT_Up";
             this.EXIT_Up.Size = new System.Drawing.Size(40, 17);
             this.EXIT_Up.TabIndex = 14;
@@ -173,7 +180,7 @@
             // EXIT_Down
             // 
             this.EXIT_Down.AutoSize = true;
-            this.EXIT_Down.Location = new System.Drawing.Point(62, 241);
+            this.EXIT_Down.Location = new System.Drawing.Point(62, 207);
             this.EXIT_Down.Name = "EXIT_Down";
             this.EXIT_Down.Size = new System.Drawing.Size(54, 17);
             this.EXIT_Down.TabIndex = 15;
@@ -261,11 +268,74 @@
             this.tilePreview.TabIndex = 24;
             this.tilePreview.TabStop = false;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(9, 264);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(126, 13);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "Idle Spot Description";
+            // 
+            // browseToAltSprite
+            // 
+            this.browseToAltSprite.Enabled = false;
+            this.browseToAltSprite.Location = new System.Drawing.Point(187, 319);
+            this.browseToAltSprite.Name = "browseToAltSprite";
+            this.browseToAltSprite.Size = new System.Drawing.Size(74, 20);
+            this.browseToAltSprite.TabIndex = 29;
+            this.browseToAltSprite.Text = "Browse";
+            this.browseToAltSprite.UseVisualStyleBackColor = true;
+            this.browseToAltSprite.Click += new System.EventHandler(this.browseToAltSprite_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(9, 303);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(156, 13);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Point Of Interest Alt Sprite";
+            // 
+            // altSprite
+            // 
+            this.altSprite.Location = new System.Drawing.Point(12, 319);
+            this.altSprite.Name = "altSprite";
+            this.altSprite.ReadOnly = true;
+            this.altSprite.Size = new System.Drawing.Size(169, 20);
+            this.altSprite.TabIndex = 27;
+            // 
+            // POI_Desc
+            // 
+            this.POI_Desc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.POI_Desc.Enabled = false;
+            this.POI_Desc.FormattingEnabled = true;
+            this.POI_Desc.Items.AddRange(new object[] {
+            "poi_computer",
+            "poi_bookcase",
+            "poi_server",
+            "poi_toilet",
+            "poi_shower",
+            "poi_sink",
+            "poi_fridge",
+            "poi_cooker"});
+            this.POI_Desc.Location = new System.Drawing.Point(12, 279);
+            this.POI_Desc.Name = "POI_Desc";
+            this.POI_Desc.Size = new System.Drawing.Size(249, 21);
+            this.POI_Desc.TabIndex = 30;
+            // 
             // TileEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 301);
+            this.ClientSize = new System.Drawing.Size(273, 380);
+            this.Controls.Add(this.POI_Desc);
+            this.Controls.Add(this.browseToAltSprite);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.altSprite);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.tilePreview);
             this.Controls.Add(this.defaultSizes);
             this.Controls.Add(this.label7);
@@ -323,5 +393,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox defaultSizes;
         private System.Windows.Forms.PictureBox tilePreview;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button browseToAltSprite;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox altSprite;
+        private System.Windows.Forms.ComboBox POI_Desc;
     }
 }

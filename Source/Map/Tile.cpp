@@ -34,13 +34,25 @@ bool Tile::hasAnyPointOfInterest()
 }
 
 /* Return our POI state (e.g. open or closed for doors) */
-poi_state Tile::getPointOfInterestState() {
+poi_state Tile::getPointOfInterestState()
+{
   return tile_data.state_of_poi;
 }
 
 /* Set our POI state */
-void Tile::setPointOfInterestState(poi_state new_state) {
+void Tile::setPointOfInterestState(poi_state new_state)
+{
   tile_data.state_of_poi = new_state;
+
+  // Show/hide our specialist "alt-sprite" if needed
+  if (new_state == poi_state::DOOR_IS_CLOSED || new_state == poi_state::POI_IS_BROKEN)
+  {
+    tile_data.sprite->show();
+  }
+  else
+  {
+    tile_data.sprite->hide();
+  }
 }
 
 /* Configure our sprite and set position */

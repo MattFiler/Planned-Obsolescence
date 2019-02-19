@@ -16,6 +16,16 @@
 	"character_goon": "LAB WORKER",
 	"character_security": "SECURITY",
 	
+	"poi_door": "DOOR",
+	"poi_computer": "COMPUTER",
+	"poi_bookcase": "BOOKCASE",
+	"poi_server": "SERVER",
+	"poi_toilet": "TOILET",
+	"poi_shower": "SHOWER",
+	"poi_sink": "SINK",
+	"poi_fridge": "FRIDGE",
+	"poi_cooker": "COOKER",
+	
 	"placeholder_text": "PLACEHOLDER"
   },
   "FRENCH": {
@@ -29,6 +39,16 @@
 	"gauge_stress": "STRESS",
 	"gauge_productivity": "PRODUCTIVITE",
 	"gauge_suspicion": "SOUPCON",
+	
+	"poi_door": "PORTE",
+	"poi_computer": "ORDINATEUR",
+	"poi_bookcase": "BIBLIOTHEQUE",
+	"poi_server": "SERVEUR",
+	"poi_toilet": "TOILETTE",
+	"poi_shower": "DOUCHE",
+	"poi_sink": "EVIER",
+	"poi_fridge": "FRIGO",
+	"poi_cooker": "CUISINIER",
 	
 	"character_boss": "PATRON",
 	"character_techie": "TECHNICIEN",
@@ -46,6 +66,16 @@
 	"gauge_stress": "ESTRES",
 	"gauge_productivity": "PRODUCTIVIDAD",
 	"gauge_suspicion": "SOSPECHA",
+	
+	"poi_door": "PUERTA",
+	"poi_computer": "COMPUTADORA",
+	"poi_bookcase": "LIBRERO",
+	"poi_server": "SERVIDOR",
+	"poi_toilet": "BANO",
+	"poi_shower": "DUCHA",
+	"poi_sink": "LAVABO",
+	"poi_fridge": "REFRIGERADOR",
+	"poi_cooker": "ESTUFA",
 	
 	"character_boss": "JEFE",
 	"character_techie": "TECNICO",

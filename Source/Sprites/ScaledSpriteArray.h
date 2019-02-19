@@ -54,11 +54,16 @@ class ScaledSpriteArray
   bool fadeIn(double time_to_fade, double delta_time);
   bool fadeOut(double time_to_fade, double delta_time);
 
+  void hide();
+  void show();
+  bool isVisible();
+
   static float width_scale; /**< The scale difference between actual and base width */
 
   int numberOfSprites();
 
  private:
+  bool is_visible = true;
   float sprite_width = 50;
   float sprite_height = 50;
   float scale_factor = 1;
