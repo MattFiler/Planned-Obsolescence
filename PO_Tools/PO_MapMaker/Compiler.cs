@@ -99,7 +99,7 @@ namespace PO_MapMaker
                         }
                         if (tile.Element("points_of_interest").Attribute("door").Value == "true")
                         {
-                            tiles_coreJson += "\"poi_computer\":true,\"poi_sprite\": \"" + tile.Element("points_of_interest").Attribute("alt_sprite").Value + "\",\"poi_desc\":\"poi_door\",";
+                            tiles_coreJson += "\"poi_door\":true,\"poi_sprite\": \"" + tile.Element("points_of_interest").Attribute("alt_sprite").Value + "\",\"poi_desc\":\"poi_door\",";
                         }
                     }
                     catch
