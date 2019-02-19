@@ -1,5 +1,4 @@
 #include "UIManager.h"
-#include "../Characters/Boss.h"
 
 /* destroy! */
 UIManager::~UIManager()
