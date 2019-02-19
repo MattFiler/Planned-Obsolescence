@@ -1,5 +1,13 @@
 #include "Goon.h"
 
+Goon::Goon() : Character(character_type::GOON)
+{
+    for(int i = 0; i < 20; i++)
+    {
+        productivity_average[i] = 10000;
+    }
+}
+
 void Goon::update(double delta_time)
 {
   // If the Goon didn't move
@@ -44,7 +52,7 @@ void Goon::update(double delta_time)
     {
       total += productivity_average[i];
     }
-    config.internal_gauge = static_cast<float>((total / 20) / productivity_interval);
+    config.internal_gauge = static_cast<float>((total / 20) / (productivity_interval/100));
   }
 }
 
