@@ -61,12 +61,12 @@ Point Point::Point::operator*(const float multiplier)
 }
 
 /**
- *   @brief   Finds the distance from a->b
- *   @return  The straight line distance between a and b
+ *   @brief   Finds the distance from point_1->point_2
+ *   @return  The straight line distance between point_1 and point_2
  */
-float Point::distanceBetween(Point a, Point b)
+float Point::distanceBetween(Point point_1, Point point_2)
 {
-  float x_diff = a.x_pos - b.x_pos;
-  float y_diff = a.y_pos - b.y_pos;
+  float x_diff = point_1.x_pos - point_2.x_pos;
+  float y_diff = point_1.y_pos - point_2.y_pos;
   return sqrtf((x_diff * x_diff) + (y_diff * y_diff));
 }

@@ -36,7 +36,7 @@ class ScaledSpriteArray
   void setWidth(float new_width);
   void setHeight(float new_height);
   void setRotation(float new_rotation);
-  void timeBetweenFrames(double new_time_between_frames);
+  void timeBetweenFrames(double n_time_btwn_frames);
   void setFadeColour(ASGE::Colour col);
   void setCurrentSprite(int new_sprite_index);
 

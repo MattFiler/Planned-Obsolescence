@@ -34,9 +34,9 @@ class CharacterManager
 
   template<class CharacterArray>
   void updateCharacter(CharacterArray character,
-                       int& character_count,
-                       int& character_visible_count,
-                       float& character_gauge,
+                       int& char_c,
+                       int& char_visible_c,
+                       float& char_gauge,
                        double& delta_time);
 
   template<class CharacterArray>

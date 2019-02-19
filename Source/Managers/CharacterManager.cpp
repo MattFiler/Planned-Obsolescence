@@ -61,14 +61,7 @@ bool CharacterManager::canSpawn(character_type type)
       return false;
     }
   }
-  if (min_case < max_case)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+  return (min_case < max_case);
 }
 
 /* Spawn a character */
@@ -202,24 +195,21 @@ void CharacterManager::update(double delta_time)
 
 /* Update a specific character definition */
 template<class CharacterArray>
-void CharacterManager::updateCharacter(CharacterArray character,
-                                       int& character_count,
-                                       int& character_visible_count,
-                                       float& character_gauge,
-                                       double& delta_time)
+void CharacterManager::updateCharacter(
+  CharacterArray character, int& char_c, int& char_visible_c, float& char_gauge, double& delta_time)
 {
-  character_visible_count = 0;
-  character_gauge = 0;
-  for (int i = 0; i < character_count; i++)
+  char_visible_c = 0;
+  char_gauge = 0;
+  for (int i = 0; i < char_c; i++)
   {
     if (character[i]->isVisible()) // Only bother updating if visible?
     {
       character[i]->update(delta_time);
-      character_gauge += goon_instances[i]->getInternalGauge();
-      character_visible_count++;
+      char_gauge += goon_instances[i]->getInternalGauge();
+      char_visible_c++;
     }
   }
-  character_gauge /= static_cast<float>(character_visible_count);
+  char_gauge /= static_cast<float>(char_visible_c);
 }
 
 /* Get sum gauge value for character */

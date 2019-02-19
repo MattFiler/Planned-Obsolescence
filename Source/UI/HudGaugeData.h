@@ -8,7 +8,7 @@ struct HudGaugeData
 {
   HudGaugeData(Point location,
                ASGE::Renderer* renderer,
-               std::string name = "placeholder_text",
+               const std::string& name = "placeholder_text",
                float value = 0)
   {
     progress_bar = new ProgressBar(location, renderer, 464, 29);
@@ -22,6 +22,9 @@ struct HudGaugeData
     gauge_name = localiser.getString(name);
     gauge_value = value;
   }
+
+  HudGaugeData(const HudGaugeData&) = delete;
+  HudGaugeData& operator=(const HudGaugeData&) = delete;
 
   void render(ASGE::Renderer* renderer, double delta_time)
   {
