@@ -22,6 +22,8 @@ class GameMap
   int getTileCount();
   std::shared_ptr<ScaledSpriteArray> getSprite();
 
+  bool isPOIAtPoint(point_of_interest poi, Point point);
+
  private:
   void importJSON();
 

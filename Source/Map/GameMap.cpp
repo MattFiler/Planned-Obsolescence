@@ -114,3 +114,18 @@ int GameMap::getTileCount()
 {
   return map_data.tile_count;
 }
+
+/* Checks to see if there is a tile at the passed position that contains the given POI */
+bool GameMap::isPOIAtPoint(point_of_interest poi, Point point)
+{
+  for (Room& room : map_data.rooms) {
+    for (Tile &tile : room.getTiles()) {
+        if(tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos)
+        {
+          return (tile.hasSpecificPointOfInterest(poi));
+        }
+      }
+    }
+  }
+  return false;
+}
