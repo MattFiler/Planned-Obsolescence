@@ -78,7 +78,7 @@ void Goon::findNewPOI()
     // Flag that Goon is going to a new room
     leaving_room = true;
     auto random_room = static_cast<unsigned long long int>(
-      rand() & static_cast<int>((*global_map->getRooms()).size() - 1));
+      rand() & static_cast<int>((*global_map->getRooms()).size()));
     our_room = &(*global_map->getRooms())[random_room];
   }
 
@@ -99,7 +99,7 @@ void Goon::findNewPOI()
   if (!all_pois.empty())
   {
     auto random_index =
-      static_cast<unsigned long long>((rand() % (static_cast<int>(all_pois.size() - 1))));
+      static_cast<unsigned long long>((rand() % (static_cast<int>(all_pois.size()))));
     Point tile_point =
       Point(all_pois[random_index]->getPositionX(), all_pois[random_index]->getPositionY());
     point_of_interest_tile = all_pois[random_index];
