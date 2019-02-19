@@ -79,6 +79,9 @@ bool PlannedObsolescence::init()
   // Configure localised strings to selected language
   localiser.configure(core_config["language"]);
 
+  // Hide cursor
+  inputs->setCursorMode(ASGE::MOUSE::CursorMode::HIDDEN);
+
   // Initialise the scene manager
   scene_manager = new SceneManager();
 

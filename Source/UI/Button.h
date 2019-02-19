@@ -23,11 +23,15 @@ class Button : public UI
   bool checkForClick(Point click_location);
   void releaseClick();
 
+  void setActive(bool active) { is_active = active; };
+  bool isActive() { return is_active; };
+
   std::function<void()> click_function = []() {};
 
  private:
   ScaledSpriteArray* sprite = nullptr;
   ClickArea click_area;
+  bool is_active = true;
 };
 
 #endif // PLANNEDOBSOLESCENCE_BUTTON_H

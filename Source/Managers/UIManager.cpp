@@ -28,6 +28,12 @@ UIManager::~UIManager()
 
   delete char_info_popup;
   char_info_popup = nullptr;
+
+  delete poi_interaction_popup;
+  poi_interaction_popup = nullptr;
+
+  delete game_cursor;
+  game_cursor = nullptr;
 }
 
 /* Add a generic UI element set (foreground and background) */
@@ -57,7 +63,16 @@ void UIManager::addProgressBar(ProgressBar* new_progressbar)
 /* Create main hud data element (we only have one of these) */
 void UIManager::createMainHUD()
 {
+  // Create "main hud" element - bottom right stats gauges
   main_hud_element = new MainHUD(renderer);
+
+  // Cursor
+  game_cursor = new Cursor();
+  game_cursor->setupCursor(renderer);
+
+  // Initialise the bottom left interaction popups
+  initCharacterPopup();       // Character interaction
+  initPointOfInterestPopup(); // POI interaction
 }
 
 /* Initialise the character popup */
@@ -65,6 +80,13 @@ void UIManager::initCharacterPopup()
 {
   char_info_popup = new CharacterInfoPopup(renderer);
   char_info_popup->setActive(false);
+}
+
+/* Initialise the poi interaction popup */
+void UIManager::initPointOfInterestPopup()
+{
+  poi_interaction_popup = new WorldInteractionPopup(renderer);
+  poi_interaction_popup->setActive(false);
 }
 
 /* Creates all the UI */
@@ -109,17 +131,24 @@ void UIManager::render(double delta_time)
   {
     main_hud_element->render(delta_time);
   }
+  if (game_cursor != nullptr)
+  {
+    game_cursor->render(delta_time);
+  }
 }
 
 /* Checks all Buttons to see if the passed click lands on any of them */
-bool UIManager::checkForClick(Point click)
+bool UIManager::checkForClick(Point click, bool act_on_click)
 {
   for (Button* button : buttons)
   {
     if (button->checkForClick(click))
     {
-      // Store a reference to the clicked button to un-click it later
-      clicked_button = button;
+      if (act_on_click)
+      {
+        // Store a reference to the clicked button to un-click it later
+        clicked_button = button;
+      }
       return true;
     }
   }
@@ -137,6 +166,19 @@ void UIManager::releaseClick()
     clicked_button->releaseClick();
     clicked_button = nullptr;
   }
+}
+
+/* Update */
+void UIManager::update(double delta_time)
+{
+  input->getCursorPos(cursor_x, cursor_y);
+  game_cursor->updatePosition(cursor_x, cursor_y);
+}
+
+/* get cursor ref */
+Cursor* UIManager::getCursor()
+{
+  return game_cursor;
 }
 
 /* keep a popup within the window bounds */

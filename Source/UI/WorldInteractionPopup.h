@@ -1,5 +1,5 @@
-#ifndef PLANNEDOBSOLESCENCE_CHARACTERINFOPOPUP_H
-#define PLANNEDOBSOLESCENCE_CHARACTERINFOPOPUP_H
+#ifndef PLANNEDOBSOLESCENCE_WORLDINTERACTIONPOPUP_H
+#define PLANNEDOBSOLESCENCE_WORLDINTERACTIONPOPUP_H
 
 #include "Button.h"
 #include "GetLocalisedString.h"
@@ -7,14 +7,14 @@
 #include "ProgressBar.h"
 #include "UI.h"
 
-class CharacterInfoPopup : public UI
+class WorldInteractionPopup : public UI
 {
  public:
-  explicit CharacterInfoPopup(ASGE::Renderer* rend);
-  ~CharacterInfoPopup() override;
+  explicit WorldInteractionPopup(ASGE::Renderer* rend);
+  ~WorldInteractionPopup() override;
 
-  CharacterInfoPopup(const CharacterInfoPopup&) = delete;
-  CharacterInfoPopup& operator=(const CharacterInfoPopup&) = delete;
+  WorldInteractionPopup(const WorldInteractionPopup&) = delete;
+  WorldInteractionPopup& operator=(const WorldInteractionPopup&) = delete;
 
   void render(double delta_time) override;
 
@@ -22,7 +22,7 @@ class CharacterInfoPopup : public UI
   void setGaugeDescription(const std::string& gauge_desc);
   void setGaugeAmount(float gauge_amount);
 
-  void setActive(bool is_active);
+  void setActive(bool is_active) { active = is_active; };
   bool isActive() { return active; };
   Button* checkForClick(Point click_location);
 
@@ -38,4 +38,4 @@ class CharacterInfoPopup : public UI
   std::string character_name = "";
 };
 
-#endif // PLANNEDOBSOLESCENCE_CHARACTERINFOPOPUP_H
+#endif // PLANNEDOBSOLESCENCE_WORLDINTERACTIONPOPUP_H

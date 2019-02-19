@@ -82,6 +82,13 @@ enum rotation
   UP_TO_DOWN = 1,
 };
 
+// Cursor variants
+enum cursor_variant
+{
+  CURSOR_DEFAULT,
+  CURSOR_POINTER
+};
+
 /* --- Game --- */
 
 // Scenes

@@ -154,7 +154,7 @@
       "up": true,
       "down": true
     },
-    "poi_computer": true,
+    "poi_door": true,
     "poi_sprite": "data/TILES/tile_black_placeholder.png",
     "poi_desc": "poi_door"
   }

@@ -390,6 +390,12 @@ ASGE::Sprite& ScaledSpriteArray::returnNextSprite(double delta_time)
   return *my_sprites[current_sprite];
 }
 
+/* return the current sprite for non-animation instances */
+ASGE::Sprite& ScaledSpriteArray::returnCurrentSprite()
+{
+  return *my_sprites[current_sprite];
+}
+
 void ScaledSpriteArray::setSpriteSheet(float sprite_sheet_width,
                                        float sprite_sheet_height,
                                        float start_x_pos,
