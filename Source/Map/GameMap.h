@@ -26,6 +26,9 @@ class GameMap
   MapData* getMapData() { return &map_data; };
   std::shared_ptr<ScaledSpriteArray> getSprite();
 
+  int getRoomsX() { return map_data.rooms_x; };
+  int getRoomsY() { return map_data.rooms_y; };
+
   bool isPOIStateAtPoint(poi_state poi_state, Point point);
   Tile* getTileAtPoint(Point point);
 
