@@ -42,6 +42,9 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   quit_button->click_function = [next] { *next = scenes::MAIN_MENU; };
   ui_manager.addButton(quit_button);
 
+  // Reset game over config for new load
+  game_over_instance.setGameOverType(game_over_type::NOT_YET_DECIDED);
+
   return true;
 }
 
