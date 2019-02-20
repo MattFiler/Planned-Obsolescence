@@ -32,6 +32,7 @@ class GameCore : public Scene
 
  private:
   void spawnCharacters(ASGE::Renderer* renderer);
+  void passReferences(ASGE::Input* input);
 
   CharacterManager character_manager;
   GameMap game_map;

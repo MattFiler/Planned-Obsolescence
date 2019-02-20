@@ -42,7 +42,7 @@ Point Cursor::getPosition()
 }
 
 /* render cursor */
-void Cursor::render(double delta_time)
+void Cursor::render()
 {
   renderer->renderSprite(cursor_sprite->returnCurrentSprite(), render_index::UI_TOP_LAYER_CAP);
 }

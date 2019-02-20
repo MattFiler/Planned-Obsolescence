@@ -5,6 +5,10 @@ Tile::Tile(std::string tile_type, json* tile_big_config, ASGE::Renderer* rendere
 {
   // Load tile config
   tile_data.load(tile_big_config, tile_type, renderer);
+
+  // Resize click area
+  click_area.setWidth(tile_data.width);
+  click_area.setHeight(tile_data.height);
 }
 
 /* Work out if we have the requested exit on this tile */
@@ -16,21 +20,13 @@ bool Tile::exitIsValid(direction exit)
 /* Work out if we have a specified point of interest on this tile */
 bool Tile::hasSpecificPointOfInterest(point_of_interest poi)
 {
-  if (tile_data.poi == poi)
-  {
-    return true;
-  }
-  return false;
+  return (tile_data.poi == poi);
 }
 
 /* Check to see if we have ANY point of interest on this tile */
 bool Tile::hasAnyPointOfInterest()
 {
-  if (tile_data.poi != point_of_interest::NONE_ON_THIS_TILE)
-  {
-    return true;
-  }
-  return false;
+  return (tile_data.poi != point_of_interest::NONE_ON_THIS_TILE);
 }
 
 /* Return our POI state (e.g. open or closed for doors) */
@@ -65,6 +61,7 @@ tile_accessibility Tile::getTileAccessibility()
 void Tile::configure(float x_position, float y_position)
 {
   tile_data.updatePosition(x_position, y_position);
+  click_area.setPosition(Point(tile_data.x_pos, tile_data.y_pos));
 }
 
 /* Return the X position of the tile */
@@ -110,11 +107,8 @@ std::shared_ptr<ScaledSpriteArray> Tile::getSprite()
   {
     return tile_data.sprite;
   }
-  else
-  {
-    // I have no sympathy for people who don't check for a sprite before calling it.
-    throw "Someone requested a tile's sprite when it didn't have one. That idiot was probably YOU!";
-  }
+  // I have no sympathy for people who don't check for a sprite before calling it.
+  throw "Someone requested a tile's sprite when it didn't have one. That idiot was probably YOU!";
 }
 
 /* Get tile index in its room */
@@ -127,4 +121,10 @@ int Tile::getIndexInRoom()
 int Tile::getIndexInMap()
 {
   return tile_data.index_in_map;
+}
+
+/* Get description of tile POI */
+std::string Tile::getTileDescription()
+{
+  return tile_data.poi_desc;
 }

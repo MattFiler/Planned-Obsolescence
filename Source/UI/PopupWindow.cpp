@@ -2,14 +2,14 @@
 
 PopupWindow::PopupWindow(Point pos,
                          ASGE::Renderer* rend,
-                         const std::string& background_sprite_texture_path,
+                         const std::string& bg_texture_path,
                          float _width,
                          float _height) :
   UI(pos, rend)
 {
   width = _width;
   height = _height;
-  background_sprite = createSprite(background_sprite_texture_path);
+  background_sprite = createSprite(bg_texture_path);
   background_sprite->setHeight(height);
   background_sprite->setWidth(width);
   background_sprite->xPos(position.x_pos);

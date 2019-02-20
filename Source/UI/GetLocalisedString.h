@@ -8,11 +8,11 @@ using json = nlohmann::json;
 
 struct GetLocalisedString
 {
-  void configure(std::string language)
+  void configure(const std::string& language)
   {
     language_config = file_handler.loadConfig("ui_localised.json", language);
   }
-  std::string getString(std::string id)
+  std::string getString(const std::string& id)
   {
     if (language_config[id].is_string())
     {

@@ -15,22 +15,18 @@
  */
 bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 {
+  // Setup
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
-  camera.setRenderer(rend);
 
+  // load map
   game_map.load(renderer, &camera);
 
-  character_manager.setMap(&game_map);
-  character_manager.setCamera(&camera);
-
+  // Pass references out and spawn characters
+  passReferences(input);
   spawnCharacters(renderer);
 
-  ui_manager.setRenderer(rend);
-  ui_manager.setInputData(input);
-  ui_manager.setCamera(&camera);
-  character_manager.setUIManager(&ui_manager);
-
+  // Create UI
   ui_manager.createMainHUD();
 
   Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
@@ -44,6 +40,22 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   ui_manager.addButton(quit_button);
 
   return true;
+}
+
+/* Pass references to other classes */
+void GameCore::passReferences(ASGE::Input* input)
+{
+  camera.setRenderer(rend);
+
+  ui_manager.setRenderer(rend);
+  ui_manager.setInputData(input);
+  ui_manager.setCamera(&camera);
+
+  character_manager.setMap(&game_map);
+  character_manager.setCamera(&camera);
+  character_manager.setUIManager(&ui_manager);
+
+  game_map.setUIManager(&ui_manager);
 }
 
 /* Spawn all characters */
@@ -133,7 +145,10 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
     // If the UI manager doesn't register this click
     if (!ui_manager.checkForClick(mouse_position / ScaledSpriteArray::width_scale))
     {
-      character_manager.checkForClick(camera.displayedToSimulatedWorld(mouse_position));
+      if (!character_manager.checkForClick(camera.displayedToSimulatedWorld(mouse_position)))
+      {
+        game_map.clickedPointCheck(camera.displayedToSimulatedWorld(mouse_position));
+      }
     }
   }
   else if (click->action == ASGE::MOUSE::BUTTON_RELEASED)
@@ -163,10 +178,10 @@ scenes GameCore::update(double delta_time)
   project_gauge.update(delta_time);
 
   // Check for cursor hover
-  if (ui_manager.checkForClick(
-        ui_manager.getCursor()->getPosition() / ScaledSpriteArray::width_scale, false) ||
-      character_manager.checkForClick(
-        camera.displayedToSimulatedWorld(ui_manager.getCursor()->getPosition()), false))
+  Point click_position = ui_manager.getCursor()->getPosition();
+  if (ui_manager.checkForClick(click_position / ScaledSpriteArray::width_scale, false) ||
+      character_manager.checkForClick(camera.displayedToSimulatedWorld(click_position), false) ||
+      game_map.clickedPointCheck(camera.displayedToSimulatedWorld(click_position), false))
   {
     ui_manager.getCursor()->setCursorType(cursor_variant::CURSOR_POINTER);
   }

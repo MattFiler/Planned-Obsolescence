@@ -129,11 +129,11 @@ void Character::generatePathfindingMap(GameMap* game_map)
  * if a route could not be found */
 bool Character::calculateRouteToPoint(Point point)
 {
-    // Don't bother calculating a path if its already at the destination
-    if(point == position)
-    {
-        return true;
-    }
+  // Don't bother calculating a path if its already at the destination
+  if (point == position)
+  {
+    return true;
+  }
 
   current_route[0] = current_route[route_index];
   route_index = 0;

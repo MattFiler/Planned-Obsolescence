@@ -12,11 +12,8 @@ WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend) : UI(Point(0,
                             "data/UI/IN_GAME_UI/CHARACTER_POPUP_CLOSE_BUTTON.png",
                             19,
                             22);
-  bool* active_p = &active;
-  close_button->click_function = [active_p] { *active_p = false; };
-
-  // Make progress bar
-  progress_bar = new HudGaugeData(Point(18, 672), rend);
+  WorldInteractionPopup* active_p = this;
+  close_button->click_function = [active_p] { active_p->setActive(false); };
 }
 
 WorldInteractionPopup::~WorldInteractionPopup()
@@ -26,9 +23,13 @@ WorldInteractionPopup::~WorldInteractionPopup()
 
   delete close_button;
   close_button = nullptr;
+}
 
-  delete progress_bar;
-  progress_bar = nullptr;
+/* set active/inactive */
+void WorldInteractionPopup::setActive(bool is_active)
+{
+  active = is_active;
+  close_button->setActive(is_active);
 }
 
 void WorldInteractionPopup::render(double delta_time)
@@ -38,8 +39,7 @@ void WorldInteractionPopup::render(double delta_time)
     renderer->renderSprite(background_sprite->returnNextSprite(delta_time),
                            render_index::UI_TOP_LAYER_BASE);
     close_button->render(delta_time);
-    progress_bar->render(renderer, delta_time);
-    renderer->renderText(character_name,
+    renderer->renderText(poi_name,
                          static_cast<int>(21 * ScaledSpriteArray::width_scale),
                          static_cast<int>(657 * ScaledSpriteArray::width_scale),
                          1,
@@ -48,23 +48,15 @@ void WorldInteractionPopup::render(double delta_time)
 }
 
 /* Set values */
-void WorldInteractionPopup::setCharacterName(const std::string& char_name)
+void WorldInteractionPopup::setClickedPointName(const std::string& char_name)
 {
-  character_name = localiser.getString(char_name);
-}
-void WorldInteractionPopup::setGaugeDescription(const std::string& gauge_desc)
-{
-  progress_bar->gauge_name = localiser.getString(gauge_desc);
-}
-void WorldInteractionPopup::setGaugeAmount(float gauge_amount)
-{
-  progress_bar->progress_bar->setProgress(gauge_amount / 100);
+  poi_name = localiser.getString(char_name);
 }
 
 /* Returns a pointer to the button that was clicked (nullptr if none) */
 Button* WorldInteractionPopup::checkForClick(Point click_location)
 {
-  if (close_button->checkForClick(click_location))
+  if (active && close_button->checkForClick(click_location))
   {
     return close_button;
   }

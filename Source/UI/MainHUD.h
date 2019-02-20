@@ -21,7 +21,11 @@ class MainHUD : public UI
 
  private:
   ScaledSpriteArray* background_sprite = nullptr;
-  std::vector<HudGaugeData> hud_gauges;
+  std::vector<HudGaugeData*> hud_gauges;
+
+  HudGaugeData* gauge_detection = nullptr;
+  HudGaugeData* gauge_progress = nullptr;
+  HudGaugeData* gauge_timeremaining = nullptr;
 };
 
 #endif // PLANNEDOBSOLESCENCE_MAINHUD_H

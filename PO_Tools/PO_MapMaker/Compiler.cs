@@ -289,8 +289,13 @@ namespace PO_MapMaker
                     maps_coreJson += addElementIfNotDefault("rooms_h", default_map.Attribute("height"), map.Attribute("height"), false);
                     maps_coreJson += "\"rooms\":[ ";
 
+                    int map_width_px = 0;
+                    int temp_map_width_px = 0;
+                    int map_height_px = 0;
+
                     int room_index = 0;
                     int[] room_pos = { 0, 0 };
+                    int[] room_dims = { 0, 0 };
                     foreach (XElement room in map.Descendants("room"))
                     {
                         //Save this room's data for creating the map sprite
@@ -298,6 +303,30 @@ namespace PO_MapMaker
                         {
                             if (room_data.Attribute("name").Value == room.Attribute("name").Value)
                             {
+                                //Calculate room position
+                                if ((room_index) % map_width == 0)
+                                {
+                                    temp_map_width_px += room_dims[0];
+                                    if (temp_map_width_px > map_width_px)
+                                    {
+                                        map_width_px = temp_map_width_px;
+                                    }
+                                    temp_map_width_px = 0;
+                                    if (room_index >= map_width)
+                                    {
+                                        room_pos[0] = 0;
+                                        room_pos[1] += room_dims[1];
+                                        map_height_px += room_dims[1];
+                                    }
+                                }
+                                else
+                                {
+                                    room_pos[0] += room_dims[0];
+                                    temp_map_width_px += room_dims[0];
+                                }
+                                int[] this_room_pos = { room_pos[0], room_pos[1] };
+                                map_room_positions.Add(this_room_pos);
+
                                 //Get room sprite (kinda tricky as these aren't stored in our xml - something to change?)
                                 string room_sprite_filepath = "data/ROOMS/" + room_data.Attribute("name").Value + "_" + compile_uid + ".png";
                                 if (room_data.Attribute("name").Value == "DEFAULT")
@@ -306,29 +335,12 @@ namespace PO_MapMaker
                                 }
                                 Bitmap this_room_sprite = loadBMP(room_sprite_filepath);
                                 map_rooms.Add(this_room_sprite);
-
-                                //Get room dimensions from its sprite (sneaky)
-                                int[] room_dims = {
-                                    this_room_sprite.Width,
-                                    this_room_sprite.Height
-                                };
+                                
+                                //Update room offset for next loop
+                                room_dims[0] = this_room_sprite.Width;
+                                room_dims[1] = this_room_sprite.Height;
                                 map_room_dimensions.Add(room_dims);
 
-                                //Calculate room position
-                                if ((room_index) % map_width == 0)
-                                {
-                                    if (room_index >= map_width)
-                                    {
-                                        room_pos[0] = 0;
-                                        room_pos[1] += room_dims[1];
-                                    }
-                                }
-                                else
-                                {
-                                    room_pos[0] += room_dims[0];
-                                }
-                                int[] this_room_pos = { room_pos[0], room_pos[1] };
-                                map_room_positions.Add(this_room_pos);
                                 break;
                             }
                         }
@@ -337,13 +349,10 @@ namespace PO_MapMaker
                         //Add map to json list
                         maps_coreJson += "\"" + room.Attribute("name").Value + "\",";
                     }
-
-                    //Map size
-                    int map_size_actual = map_room_positions[map_rooms.Count - 1][0] + map_room_dimensions[map_rooms.Count - 1][0];
-                    int map_height_actual = map_room_positions[map_rooms.Count - 1][1] + map_room_dimensions[map_rooms.Count - 1][1];
+                    map_height_px += map_room_dimensions[map_room_dimensions.Count() - 1][1];
 
                     //Load placeholder bitmap to draw over
-                    Bitmap map_sprite = loadBMP("data/MAPS/default.png", map_size_actual, map_height_actual);
+                    Bitmap map_sprite = loadBMP("data/MAPS/default.png", map_width_px, map_height_px);
                     Graphics map_graphics = Graphics.FromImage(map_sprite);
 
                     //Draw over bitmap with our room sprites
@@ -353,7 +362,7 @@ namespace PO_MapMaker
                         int[] room_dimensions = map_room_dimensions[bitmap_index];
                         int[] room_position = map_room_positions[bitmap_index];
 
-                        map_graphics.DrawImage(room_sprite, room_position[0], room_position[1], room_dimensions[0], room_dimensions[1]);
+                        map_graphics.DrawImage(room_sprite, room_position[0], room_position[1], room_sprite.Width, room_sprite.Height);
 
                         bitmap_index++;
                     }

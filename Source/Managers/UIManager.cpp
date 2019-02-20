@@ -94,10 +94,21 @@ void UIManager::updateAndShowCharacterInfo(const std::string& character_type,
                                            float character_gauge,
                                            const std::string& gauge_name)
 {
+  poi_interaction_popup->setActive(false);
+
   char_info_popup->setActive(true);
   char_info_popup->setCharacterName(character_type);
   char_info_popup->setGaugeAmount(character_gauge);
   char_info_popup->setGaugeDescription(gauge_name);
+}
+
+/* Creates all the UI */
+void UIManager::updateAndShowPointInfo(const std::string& point_name)
+{
+  char_info_popup->setActive(false);
+
+  poi_interaction_popup->setActive(true);
+  poi_interaction_popup->setClickedPointName(point_name);
 }
 
 /* render all ui */
@@ -127,13 +138,20 @@ void UIManager::render(double delta_time)
       char_info_popup->render(delta_time);
     }
   }
+  if (poi_interaction_popup != nullptr)
+  {
+    if (poi_interaction_popup->isActive())
+    {
+      poi_interaction_popup->render(delta_time);
+    }
+  }
   if (main_hud_element != nullptr)
   {
     main_hud_element->render(delta_time);
   }
   if (game_cursor != nullptr)
   {
-    game_cursor->render(delta_time);
+    game_cursor->render();
   }
 }
 
@@ -153,7 +171,14 @@ bool UIManager::checkForClick(Point click, bool act_on_click)
     }
   }
 
-  clicked_button = char_info_popup->checkForClick(click);
+  if (char_info_popup->checkForClick(click))
+  {
+    clicked_button = char_info_popup->checkForClick(click);
+  }
+  else if (poi_interaction_popup->checkForClick(click))
+  {
+    clicked_button = poi_interaction_popup->checkForClick(click);
+  }
 
   return clicked_button != nullptr;
 }

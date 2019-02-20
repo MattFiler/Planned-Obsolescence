@@ -94,13 +94,11 @@ void Goon::findNewPOI()
   std::vector<Tile*> all_pois;
   for (Tile& tile : *our_room->getTiles())
   {
-    if (tile.hasSpecificPointOfInterest(point_of_interest::COMPUTER))
+    if (tile.hasSpecificPointOfInterest(point_of_interest::COMPUTER) &&
+        (leaving_room || tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL))
     {
       // If Goon is leaving the room, then they don't know if the other rooms POIs are functional
-      if (leaving_room || tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL)
-      {
-        all_pois.push_back(&tile);
-      }
+      all_pois.push_back(&tile);
     }
   }
   // If there are any, then choose a random POI to go to
@@ -130,10 +128,11 @@ void Goon::findPositionForPOI(Point point, Room* room)
     if (tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE)
     {
       // Check to see if this tile matches the position of up, down, left or right of the POI
-      if ((tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos - tile_size) ||
-          (tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos + tile_size) ||
-          (tile.getPositionX() == point.x_pos + tile_size && tile.getPositionY() == point.y_pos) ||
-          (tile.getPositionX() == point.x_pos - tile_size && tile.getPositionY() == point.y_pos))
+      if ((tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE) &&
+          ((tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos - tile_size) ||
+           (tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos + tile_size) ||
+           (tile.getPositionX() == point.x_pos + tile_size && tile.getPositionY() == point.y_pos) ||
+           (tile.getPositionX() == point.x_pos - tile_size && tile.getPositionY() == point.y_pos)))
       {
         poi_position = Point(tile.getPositionX(), tile.getPositionY());
       }

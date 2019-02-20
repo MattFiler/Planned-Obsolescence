@@ -78,7 +78,6 @@ class Character
   int iteration_count = 0;
 
   ClickArea click_area;
-
   CharacterData config;
 
  private:

@@ -356,12 +356,12 @@ bool ScaledSpriteArray::fadeOut(double time_to_fade, double delta_time)
  *   @brief   Sets the speed at which the sprite is animated
  *   @details Sets the time between animation frames used in returnNextSprite
  *           to calculate when to switch to the next frame
- *   @param   new_time_between_frames how quickly you want
+ *   @param   n_time_btwn_frames how quickly you want
  *           the sprite to animate
  */
-void ScaledSpriteArray::timeBetweenFrames(double new_time_between_frames)
+void ScaledSpriteArray::timeBetweenFrames(double n_time_btwn_frames)
 {
-  time_between_frames = new_time_between_frames;
+  time_between_frames = n_time_btwn_frames;
 }
 
 /**
