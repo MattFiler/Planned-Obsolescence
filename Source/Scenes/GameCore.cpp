@@ -42,6 +42,9 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   quit_button->click_function = [next] { *next = scenes::MAIN_MENU; };
   ui_manager.addButton(quit_button);
 
+  // Reset game over config for new load
+  game_over_instance.setGameOverType(game_over_type::NOT_YET_DECIDED);
+
   return true;
 }
 
@@ -77,14 +80,14 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
     Security* new_guard = new Security();
     character_manager.spawnCharacter(new_guard);
     new_guard->setSpawnPosition(200, 200);
-    //std::vector<Point>* route = new_guard->getPatrolRoute();
-    //route->push_back(Point(game_map.getMapData()->rooms_x))
+    // std::vector<Point>* route = new_guard->getPatrolRoute();
+    // route->push_back(Point(game_map.getMapData()->rooms_x))
   }
 
-  if(character_manager.canSpawn(character_type::TECHNICIAN))
+  if (character_manager.canSpawn(character_type::TECHNICIAN))
   {
-      LabTechnician* new_tech = new LabTechnician();
-      character_manager.spawnCharacter(new_tech);
+    LabTechnician* new_tech = new LabTechnician();
+    character_manager.spawnCharacter(new_tech);
   }
 }
 

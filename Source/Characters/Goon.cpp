@@ -22,7 +22,7 @@ void Goon::update(double delta_time)
       findNewPOI();
       time_elapsed_at_poi = 0;
       if (point_of_interest_tile != nullptr &&
-      point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
+          point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
       {
         registerRepairRequest(point_of_interest_tile);
       }
@@ -40,7 +40,7 @@ void Goon::update(double delta_time)
     }
   }
   time_since_last_interval += delta_time;
-  if (time_since_last_interval > productivity_interval)
+  if (time_since_last_interval > gauge_rates::GOON_PRODUCTIVTIY)
   {
     time_since_last_interval = 0;
     productivity_average[average_index] = time_working;
@@ -57,7 +57,8 @@ void Goon::update(double delta_time)
     {
       total += productivity_average[i];
     }
-    config.internal_gauge = static_cast<float>((total / 20) / (productivity_interval / 100));
+    config.internal_gauge =
+      static_cast<float>((total / 20) / (gauge_rates::GOON_PRODUCTIVTIY / 100));
   }
 }
 
@@ -127,22 +128,21 @@ void Goon::findNewPOI()
 }
 
 /* Gets every point of interest in the given room and places it in the vector */
-void Goon::getAllPOIInRoom(std::vector<Tile *> *all_poi, Room* room, bool ignore_functionality)
+void Goon::getAllPOIInRoom(std::vector<Tile*>* all_poi, Room* room, bool ignore_functionality)
 {
-    for (Tile& tile : *room->getTiles())
+  for (Tile& tile : *room->getTiles())
+  {
+    if (tile.hasSpecificPointOfInterest(point_of_interest::COMPUTER))
     {
-        if (tile.hasSpecificPointOfInterest(point_of_interest::COMPUTER))
-        {
-            // If Goon is leaving the room, then they don't know if the other rooms POIs are functional
-            if(tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL || ignore_functionality)
-            {
-                all_poi->push_back(&tile);
-            }
-            else if(tile.getPointOfInterestState() == poi_state::POI_IS_BROKEN)
-            {
-                registerRepairRequest(&tile);
-            }
-        }
+      // If Goon is leaving the room, then they don't know if the other rooms POIs are functional
+      if (tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL || ignore_functionality)
+      {
+        all_poi->push_back(&tile);
+      }
+      else if (tile.getPointOfInterestState() == poi_state::POI_IS_BROKEN)
+      {
+        registerRepairRequest(&tile);
+      }
     }
+  }
 }
-

@@ -26,7 +26,6 @@ class Goon : public Character
 
   double productivity_average[20] = {}; // A 20 point moving average of productivity
   int average_index = 0;
-  double productivity_interval = 10000; // How often the productivity average updates
   double time_since_last_interval = 0;
   double time_working = 0; // Time spent working since last interval
 };

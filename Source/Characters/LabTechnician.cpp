@@ -16,19 +16,21 @@ void LabTechnician::update(double delta_time)
   }
   else if (!updatePosition(delta_time))
   {
-
     if (broken_pois.empty())
     {
       calculateRouteToPoint(idle_position);
     }
     // If after pathing has stopped, we are next to the broken POI at the front of the queue
-    else if(Point::distanceBetween(Point(broken_pois.front()->getPositionX(), broken_pois.front()->getPositionY()), position) < 100)
+    else if (Point::distanceBetween(
+               Point(broken_pois.front()->getPositionX(), broken_pois.front()->getPositionY()),
+               position) < 100)
     {
       repairing = true;
     }
     else
     {
-      calculateRouteToPoint(findPositionForPOI(Point(broken_pois.front()->getPositionX(), broken_pois.front()->getPositionY())));
+      calculateRouteToPoint(findPositionForPOI(
+        Point(broken_pois.front()->getPositionX(), broken_pois.front()->getPositionY())));
     }
   }
 }

@@ -137,9 +137,14 @@ enum gauge_levels
 // Gauge tick-rates
 enum gauge_rates
 {
-  PROJECT_TIMER = 1000,
-  POWER = 400,
-  TOTAL_PROGRESS = 700 // Affected by productivity
+  PROJECT_TIMER = 1000,      // deltatime (ms) divided by THIS
+  POWER = 400,               // deltatime (ms) divided by THIS
+  TOTAL_PROGRESS = 700,      // deltatime (ms) divided by THIS multiplied by normalised productivity
+                             // average
+  GOON_PRODUCTIVTIY = 10000, // defines how often productivity is modified and by how much
+  SECURITY_AWARENESS = 1,    // TO BE IMPLEMENTED
+  TECHIE_STRESS = 1,         // TO BE IMPLEMENTED
+  BOSS_FAITH = 1,            // TO BE IMPLEMENTED
 };
 
 // Game over definitions
