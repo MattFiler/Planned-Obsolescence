@@ -49,7 +49,7 @@
       "DEMO_1",
       "DEMO_1",
       "DEMO_1",
-      "security",
+      "DEMO_1",
       "DEMO_1",
       "DEMO_1",
       "DEMO_1",
@@ -59,7 +59,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST2_101330.png"
+    "sprite": "data/MAPS/TEST2_123155.png"
   },
   "TEST3": {
     "rooms_h": 3,
@@ -71,7 +71,7 @@
       "DEMO_1",
       "DEMO_1",
       "DEMO_1",
-      "security",
+      "DEMO_1",
       "DEMO_1",
       "DEMO_1",
       "DEMO_1",
@@ -80,7 +80,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST3_101330.png"
+    "sprite": "data/MAPS/TEST3_123155.png"
   },
   "TEST4": {
     "rooms_h": 3,
@@ -92,7 +92,7 @@
       "DEMO_1",
       "DEMO_2",
       "DEMO_1",
-      "security",
+      "DEMO_1",
       "DEMO_1",
       "DEMO_1",
       "DEMO_1",
@@ -101,7 +101,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST4_101330.png"
+    "sprite": "data/MAPS/TEST4_123155.png"
   },
   "TEST5": {
     "rooms_h": 3,
@@ -114,7 +114,7 @@
       "DEMO_3",
       "DEMO_3",
       "DEMO_3",
-      "security",
+      "DEMO_3",
       "DEMO_3",
       "DEMO_3",
       "DEMO_3",
@@ -122,36 +122,36 @@
       "DEMO_3",
       "DEMO_3"
     ],
-    "sprite": "data/MAPS/TEST5_101330.png"
+    "sprite": "data/MAPS/TEST5_123155.png"
   },
   "TEST1": {
     "rooms": [
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security",
-      "security"
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "Security",
+      "IT_Tech",
+      "DEFAULT",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST1_101330.png"
+    "sprite": "data/MAPS/TEST1_123155.png"
   }
 }
