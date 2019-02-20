@@ -14,7 +14,9 @@ void Goon::update(double delta_time)
   if (!updatePosition(delta_time))
   {
     // Check if the POI is valid the first time only
-    if(!at_valid_poi && point_of_interest_tile != nullptr && point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL && (poi_position == position))
+    if (!at_valid_poi && point_of_interest_tile != nullptr &&
+        point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL &&
+        (poi_position == position))
     {
       // Setting to true also prevents the previous check on future update ticks
       at_valid_poi = true;
@@ -38,7 +40,7 @@ void Goon::update(double delta_time)
       point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_BEING_USED_BY_GOON);
       if (time_elapsed_at_poi > total_time_for_poi)
       {
-          point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_FUNCTIONAL);
+        point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_FUNCTIONAL);
         findNewPOI();
         time_elapsed_at_poi = 0;
         at_valid_poi = false;
@@ -72,8 +74,8 @@ void Goon::update(double delta_time)
 void Goon::lockedDoorFound()
 {
   // Re-calculate the route
-  registerRepairRequest(global_map->getTileAtPoint(current_route[route_index + 1]->position));
   current_route[route_index + 1]->pathable = false;
+  registerRepairRequest(global_map->getTileAtPoint(current_route[route_index + 1]->position));
   calculateRouteToPoint(current_route[current_route.size() - 1]->position);
 }
 
