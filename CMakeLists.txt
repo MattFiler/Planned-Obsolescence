@@ -108,8 +108,8 @@ add_executable(
         Source/ConfigParsers/MapData.h
         Source/UI/GenericUI.cpp
         Source/UI/GenericUI.h
-        Source/Gauges/UniversalGauge.cpp
-        Source/Gauges/UniversalGauge.h
+        Source/Managers/GaugeManager.cpp
+        Source/Managers/GaugeManager.h
         Source/UI/CharacterInfoPopup.cpp
         Source/UI/CharacterInfoPopup.h
         Source/UI/MainHUD.cpp

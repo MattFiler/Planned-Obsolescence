@@ -120,7 +120,8 @@ enum hud_gauge_types
 {
   YOUR_DETECTION,
   PROJECT_PROGRESS,
-  TIME_REMAINING
+  TIME_REMAINING,
+  PLAYER_POWER
 };
 
 // Our native resolution which we will scale from to the resolution specified in the game config.

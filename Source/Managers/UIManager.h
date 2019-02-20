@@ -39,7 +39,8 @@ class UIManager
   bool checkForClick(Point click, bool act_on_click = true);
   void releaseClick();
 
-  Cursor* getCursor();
+  Cursor* getCursor() { return game_cursor; };
+  MainHUD* getMainHUD() { return main_hud_element; };
 
  private:
   void initCharacterPopup();

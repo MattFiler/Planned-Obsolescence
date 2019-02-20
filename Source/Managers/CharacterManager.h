@@ -1,3 +1,6 @@
+#ifndef PO_CHARACTER_MANAGER
+#define PO_CHARACTER_MANAGER
+
 #include "../Characters/Boss.h"
 #include "../Characters/Goon.h"
 #include "../Characters/LabTechnician.h"
@@ -18,6 +21,7 @@ class CharacterManager
   bool spawnCharacter(Security* new_security);
 
   float getTotalGaugeValue(character_type character);
+  float getHighestGaugeValue(character_type character);
 
   bool checkForClick(Point click, bool act_on_click = true);
 
@@ -56,19 +60,25 @@ class CharacterManager
   int boss_count = 0;
   int boss_visible_count = 0;
   float boss_gauge_sum = 0;
+  float boss_gauge_highest = 0;
 
   Goon** goon_instances = nullptr;
   int goon_count = 0;
   int goon_visible_count = 0;
   float goon_gauge_sum = 0;
+  float goon_gauge_highest = 0;
 
   LabTechnician** technician_instances = nullptr;
   int technician_count = 0;
   int technician_visible_count = 0;
   float technician_gauge_sum = 0;
+  float technician_gauge_highest = 0;
 
   Security** security_instances = nullptr;
   int security_count = 0;
   int security_visible_count = 0;
   float security_gauge_sum = 0;
+  float security_gauge_highest = 0;
 };
+
+#endif

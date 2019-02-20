@@ -26,6 +26,7 @@ class MainHUD : public UI
   HudGaugeData* gauge_detection = nullptr;
   HudGaugeData* gauge_progress = nullptr;
   HudGaugeData* gauge_timeremaining = nullptr;
+  HudGaugeData* gauge_playerpower = nullptr;
 };
 
 #endif // PLANNEDOBSOLESCENCE_MAINHUD_H

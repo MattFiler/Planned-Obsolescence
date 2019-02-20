@@ -219,6 +219,34 @@ float CharacterManager::getTotalGaugeValue(character_type character)
   {
     case character_type::BOSS:
     {
+      return boss_gauge_highest;
+    }
+    case character_type::GOON:
+    {
+      return goon_gauge_highest;
+    }
+    case character_type::TECHNICIAN:
+    {
+      return technician_gauge_highest;
+    }
+    case character_type::SECURITY:
+    {
+      return security_gauge_highest;
+    }
+    default:
+    {
+      return 0.0f;
+    }
+  }
+}
+
+/* Get sum gauge value for character */
+float CharacterManager::getHighestGaugeValue(character_type character)
+{
+  switch (character)
+  {
+    case character_type::BOSS:
+    {
       return boss_gauge_sum;
     }
     case character_type::GOON:

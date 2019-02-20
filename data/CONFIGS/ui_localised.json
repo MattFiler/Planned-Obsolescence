@@ -10,6 +10,7 @@
 	"gauge_stress": "STRESS",
 	"gauge_productivity": "PRODUCTIVITY",
 	"gauge_suspicion": "SUSPICION",
+	"gauge_playerpower": "YOUR POWER",
 	
 	"character_boss": "BOSS",
 	"character_techie": "TECHNICIAN",
@@ -39,6 +40,7 @@
 	"gauge_stress": "STRESS",
 	"gauge_productivity": "PRODUCTIVITE",
 	"gauge_suspicion": "SOUPCON",
+	"gauge_playerpower": "VOTRE PUISSANCE",
 	
 	"poi_door": "PORTE",
 	"poi_computer": "ORDINATEUR",
@@ -66,6 +68,7 @@
 	"gauge_stress": "ESTRES",
 	"gauge_productivity": "PRODUCTIVIDAD",
 	"gauge_suspicion": "SOSPECHA",
+	"gauge_playerpower": "TU PODER",
 	
 	"poi_door": "PUERTA",
 	"poi_computer": "COMPUTADORA",
