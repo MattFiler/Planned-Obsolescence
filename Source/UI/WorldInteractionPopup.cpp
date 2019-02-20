@@ -18,13 +18,13 @@ WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend) : UI(Point(0,
   // Make interaction button
   poi_interaction_button = new Button(Point(18, 672),
                                       rend,
-                                      "data/UI/IN_GAME_UI/POI_INTERACTION_BUTTON.png",
-                                      "data/UI/IN_GAME_UI/POI_INTERACTION_BUTTON_HOVER.png",
-                                      232,
+                                      "data/UI/IN_GAME_UI/POI_INTERACTION_BUTTON.jpg",
+                                      "data/UI/IN_GAME_UI/POI_INTERACTION_BUTTON_HOVER.jpg",
+                                      340,
                                       29,
                                       "placeholder_text",
                                       0.5f,
-                                      Point(7, 7),
+                                      Point(8, 7),
                                       ASGE::COLOURS::BLACK);
   poi_interaction_button->click_function = [popup_instance] {
     // If we have enough power to perform action, and it's not already broken/inuse - break it!
@@ -94,33 +94,48 @@ void WorldInteractionPopup::updateTileDynamicData()
 {
   if (referenced_tile != nullptr)
   {
+    // Show relevant description of clicked POI and enable button if we can sabotage
     switch (referenced_tile->getPointOfInterestState())
     {
       case poi_state::POI_IS_FUNCTIONAL:
       {
-        poi_interaction_button->setActive(true);
-        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hackable");
+        if (gauge_data.player_power < gauge_levels::GAUGE_HALF)
+        {
+          // Not enough power to sabotage this POI
+          poi_interaction_button->setActive(false);
+          poi_desc = localiser.getString("poi_generic_desc_notenoughpower");
+        }
+        else
+        {
+          // Enough power to sabotage, allow option to
+          poi_interaction_button->setActive(true);
+          poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hackable");
+        }
         break;
       }
-      case poi_state::POI_IS_BROKEN:
+      case poi_state::POI_IS_BEING_USED_BY_GOON:
       {
+        // In use by goon, we cannot hack
         poi_interaction_button->setActive(false);
-        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hacked");
+        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_inuse");
         break;
       }
       case poi_state::POI_IS_BEING_FIXED:
       {
+        // being fixed by technician, we cannot hack
         poi_interaction_button->setActive(false);
         poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_being_fixed");
         break;
       }
       default:
       {
+        // Either queued to be fixed or we've broken it and it is idle
         poi_interaction_button->setActive(false);
-        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_inuse");
+        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hacked");
         break;
       }
     }
+    // Update button text
     poi_interaction_button->updateText(referenced_tile->getTileName() + "_interact");
   }
 }
