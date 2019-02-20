@@ -121,22 +121,6 @@ int GameMap::getTileCount()
   return map_data.tile_count;
 }
 
-/* Checks to see if there is a tile at the passed position that is in the passed state */
-bool GameMap::isPOIStateAtPoint(poi_state poi_state, Point point)
-{
-  for (Room& room : map_data.rooms)
-  {
-    for (Tile& tile : *room.getTiles())
-    {
-      if (tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos)
-      {
-        return (tile.getPointOfInterestState() == poi_state);
-      }
-    }
-  }
-  return false;
-}
-
 Tile* GameMap::getTileAtPoint(Point point)
 {
   for (Room& room : map_data.rooms)
