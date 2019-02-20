@@ -109,7 +109,14 @@ void GameOver::render(double delta_time)
   else if (game_over == game_over_type::PLAYER_LOST)
   {
     victory_title = "game_lost";
-    victory_description = "project_completed";
+    if (game_over_v == game_over_reason::PLAYER_WAS_DETECTED)
+    {
+      victory_description = "guards_spotted_you";
+    }
+    else
+    {
+      victory_description = "project_completed";
+    }
   }
 
   rend->renderText(localiser.getString(victory_title),

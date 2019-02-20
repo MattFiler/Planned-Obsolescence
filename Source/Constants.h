@@ -162,6 +162,13 @@ enum game_over_type
   PLAYER_LOST,
   NOT_YET_DECIDED
 };
+enum game_over_reason
+{
+  PLAYER_WAS_DETECTED,
+  PROJECT_WAS_COMPLETED,
+  PROJECT_TIME_RAN_OUT,
+  ISNT_OVER_YET
+};
 
 // Our native resolution which we will scale from to the resolution specified in the game config.
 const float SCREEN_WIDTH = 1280;

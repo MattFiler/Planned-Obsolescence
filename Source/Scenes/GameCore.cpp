@@ -248,5 +248,6 @@ void GameCore::render(double delta_time)
 void GameCore::endGame(game_over_type type)
 {
   game_over_instance.setGameOverType(type);
+  game_over_instance.setGameOverReason(project_gauge.whyDidGameEnd());
   next_scene = scenes::GAME_OVER;
 }

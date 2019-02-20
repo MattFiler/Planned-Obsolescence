@@ -32,18 +32,23 @@ game_over_type GaugeManager::update(double dt_sec)
     if (gauge_data.project_progress != gauge_levels::GAUGE_FULL &&
         gauge_data.detection != gauge_levels::GAUGE_FULL)
     {
+      game_over_why = game_over_reason::PROJECT_TIME_RAN_OUT;
       return game_over_type::PLAYER_WON;
     }
+    game_over_why = game_over_reason::PROJECT_WAS_COMPLETED;
     return game_over_type::PLAYER_LOST;
   }
   else if (gauge_data.project_progress == gauge_levels::GAUGE_FULL)
   {
+    game_over_why = game_over_reason::PROJECT_WAS_COMPLETED;
     return game_over_type::PLAYER_LOST;
   }
   else if (gauge_data.detection == gauge_levels::GAUGE_FULL)
   {
+    game_over_why = game_over_reason::PLAYER_WAS_DETECTED;
     return game_over_type::PLAYER_LOST;
   }
+  game_over_why = game_over_reason::ISNT_OVER_YET;
   return game_over_type::NOT_YET_DECIDED;
 }
 
