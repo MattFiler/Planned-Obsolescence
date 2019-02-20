@@ -2,6 +2,7 @@
 #include "Keybinds/Keybinds.h"
 #include "Managers/SceneManager.h"
 #include "Sprites/ScaledSpriteArray.h"
+#include "UI/GetLocalisedString.h"
 #include <Engine/OGLGame.h>
 #include <string>
 
@@ -30,6 +31,7 @@ class PlannedObsolescence : public ASGE::OGLGame
   FileHandler file_handler;
   DebugText debug_text;
   Keybinds user_keybinds;
+  GetLocalisedString localiser;
 
   ScaledSpriteArray* generic_background = nullptr;
 

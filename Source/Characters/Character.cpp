@@ -41,8 +41,9 @@ void Character::updateSprite()
   click_area.setHeight(config.height);
 }
 
-/* Update the position of the character based on current route and speed */
-void Character::updatePosition(double delta_time)
+/* Update the position of the character based on current route and speed, returns true if it moved
+ */
+bool Character::updatePosition(double delta_time)
 {
   // Check if at the end of a route, if so there is no point checking for movement
   if (route_index != current_route.size() - 1)
@@ -73,24 +74,40 @@ void Character::updatePosition(double delta_time)
       if (current_route.size() - 1 == route_index)
       {
         direction.set(0, 0);
+        resetPathfindingMap();
       }
       else
       {
-        // Calculate the new direction
-        float x_diff = current_route[route_index + 1]->position.x_pos - position.x_pos;
-        float y_diff = current_route[route_index + 1]->position.y_pos - position.y_pos;
-        direction.set(x_diff, y_diff);
-        direction.normalise();
-        distance_to_next_node =
-          Point::distanceBetween(position, current_route[route_index + 1]->position);
+        // Check to see if we have hit a closed door
+        if (global_map->isPOIStateAtPoint(poi_state ::DOOR_IS_CLOSED,
+                                          current_route[route_index + 1]->position))
+        {
+          // Re-calculate the route
+          current_route[route_index + 1]->pathable = false;
+          clearPathfindingMapScores();
+          calculateRouteToPoint(current_route[current_route.size() - 1]->position);
+        }
+        else
+        {
+          // Calculate the new direction
+          float x_diff = current_route[route_index + 1]->position.x_pos - position.x_pos;
+          float y_diff = current_route[route_index + 1]->position.y_pos - position.y_pos;
+          direction.set(x_diff, y_diff);
+          direction.normalise();
+          distance_to_next_node =
+            Point::distanceBetween(position, current_route[route_index + 1]->position);
+        }
       }
     }
+    return true;
   }
+  return false;
 }
 
 /* Generate the internal map that this character will use to pathfind */
 void Character::generatePathfindingMap(GameMap* game_map)
 {
+  global_map = game_map;
   internal_map = new PathfindingMap(game_map);
   // Find the node that this character is currently at
   for (int i = 0; i < internal_map->number_of_nodes; i++)
@@ -112,7 +129,14 @@ void Character::generatePathfindingMap(GameMap* game_map)
  * if a route could not be found */
 bool Character::calculateRouteToPoint(Point point)
 {
+  // Don't bother calculating a path if its already at the destination
+  if (point == position)
+  {
+    return true;
+  }
+
   current_route[0] = current_route[route_index];
+  route_index = 0;
 
   // Reset the current scores on the map
   clearPathfindingMapScores();
@@ -142,6 +166,11 @@ bool Character::calculateRouteToPoint(Point point)
       current_route.resize(i + 1);
       debug_text.print(config.id + " CALCULATED PATH TO TARGET ACROSS " + std::to_string(i) +
                        " TILES");
+      float x_diff = current_route[1]->position.x_pos - position.x_pos;
+      float y_diff = current_route[1]->position.y_pos - position.y_pos;
+      direction.set(x_diff, y_diff);
+      direction.normalise();
+      distance_to_next_node = Point::distanceBetween(position, current_route[1]->position);
       return true;
     }
   }
@@ -167,7 +196,7 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
   for (int i = 0; i < 4; i++)
   {
     // If the node already has a shorter path, block this direction
-    if (node->connections[i].node != nullptr &&
+    if (node->connections[i].node != nullptr && node->connections[i].node->pathable &&
         depth > node->connections[i].node->shortest_path_to_here)
     {
       node->connections[i].score = 10000;
@@ -249,9 +278,10 @@ void Character::clearPathfindingMapScores()
   for (int i = 0; i < internal_map->number_of_nodes; i++)
   {
     internal_map->nodes[i].visited = false;
+    internal_map->nodes[i].shortest_path_to_here = 10000;
     for (int j = 0; j < 4; j++)
     {
-      internal_map->nodes->connections[j].score = -1;
+      internal_map->nodes[i].connections[j].score = -1;
     }
   }
 }
@@ -262,10 +292,12 @@ void Character::resetPathfindingMap()
   for (int i = 0; i < internal_map->number_of_nodes; i++)
   {
     internal_map->nodes[i].visited = false;
+    internal_map->nodes[i].pathable = true;
+    internal_map->nodes[i].shortest_path_to_here = 10000;
     for (int j = 0; j < 4; j++)
     {
-      internal_map->nodes->connections[j].score = -1;
-      internal_map->nodes->connections[j].open = true;
+      internal_map->nodes[i].connections[j].score = -1;
+      internal_map->nodes[i].connections[j].open = true;
     }
   }
 }

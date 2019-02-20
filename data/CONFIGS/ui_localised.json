@@ -1,0 +1,85 @@
+{
+  "DEFAULT": {
+    "play_game": "PLAY",
+	"exit_game": "QUIT",
+	
+	"gauge_detection": "YOUR DETECTION",
+	"gauge_progress": "PROJECT PROGRESS",
+	"gauge_timeremaining": "TIME REMAINING",
+	"gauge_faith": "PROJECT FAITH",
+	"gauge_stress": "STRESS",
+	"gauge_productivity": "PRODUCTIVITY",
+	"gauge_suspicion": "SUSPICION",
+	
+	"character_boss": "BOSS",
+	"character_techie": "TECHNICIAN",
+	"character_goon": "LAB WORKER",
+	"character_security": "SECURITY",
+	
+	"poi_door": "DOOR",
+	"poi_computer": "COMPUTER",
+	"poi_bookcase": "BOOKCASE",
+	"poi_server": "SERVER",
+	"poi_toilet": "TOILET",
+	"poi_shower": "SHOWER",
+	"poi_sink": "SINK",
+	"poi_fridge": "FRIDGE",
+	"poi_cooker": "COOKER",
+	
+	"placeholder_text": "PLACEHOLDER"
+  },
+  "FRENCH": {
+    "play_game": "JOUER",
+	"exit_game": "QUITTER",
+	
+	"gauge_detection": "VOTRE DETECTION",
+	"gauge_progress": "L'AVANCEMENT DU PROJET",
+	"gauge_timeremaining": "TEMPS RESTANT",
+	"gauge_faith": "LA FOI DU PROJET",
+	"gauge_stress": "STRESS",
+	"gauge_productivity": "PRODUCTIVITE",
+	"gauge_suspicion": "SOUPCON",
+	
+	"poi_door": "PORTE",
+	"poi_computer": "ORDINATEUR",
+	"poi_bookcase": "BIBLIOTHEQUE",
+	"poi_server": "SERVEUR",
+	"poi_toilet": "TOILETTE",
+	"poi_shower": "DOUCHE",
+	"poi_sink": "EVIER",
+	"poi_fridge": "FRIGO",
+	"poi_cooker": "CUISINIER",
+	
+	"character_boss": "PATRON",
+	"character_techie": "TECHNICIEN",
+	"character_goon": "OUVRIER",
+	"character_security": "SECURITE"
+  },
+  "SPANISH": {
+    "play_game": "JUGAR",
+	"exit_game": "DEJAR",
+	
+	"gauge_detection": "SU DETECCION",
+	"gauge_progress": "PROGRESO DEL PROYECTO",
+	"gauge_timeremaining": "TIEMPO RESTANTE",
+	"gauge_faith": "LA FE DEL PROYECTO",
+	"gauge_stress": "ESTRES",
+	"gauge_productivity": "PRODUCTIVIDAD",
+	"gauge_suspicion": "SOSPECHA",
+	
+	"poi_door": "PUERTA",
+	"poi_computer": "COMPUTADORA",
+	"poi_bookcase": "LIBRERO",
+	"poi_server": "SERVIDOR",
+	"poi_toilet": "BANO",
+	"poi_shower": "DUCHA",
+	"poi_sink": "LAVABO",
+	"poi_fridge": "REFRIGERADOR",
+	"poi_cooker": "ESTUFA",
+	
+	"character_boss": "JEFE",
+	"character_techie": "TECNICO",
+	"character_goon": "OBRERO",
+	"character_security": "SEGURIDAD"
+  }
+}

@@ -356,12 +356,12 @@ bool ScaledSpriteArray::fadeOut(double time_to_fade, double delta_time)
  *   @brief   Sets the speed at which the sprite is animated
  *   @details Sets the time between animation frames used in returnNextSprite
  *           to calculate when to switch to the next frame
- *   @param   new_time_between_frames how quickly you want
+ *   @param   n_time_btwn_frames how quickly you want
  *           the sprite to animate
  */
-void ScaledSpriteArray::timeBetweenFrames(double new_time_between_frames)
+void ScaledSpriteArray::timeBetweenFrames(double n_time_btwn_frames)
 {
-  time_between_frames = new_time_between_frames;
+  time_between_frames = n_time_btwn_frames;
 }
 
 /**
@@ -390,6 +390,12 @@ ASGE::Sprite& ScaledSpriteArray::returnNextSprite(double delta_time)
   return *my_sprites[current_sprite];
 }
 
+/* return the current sprite for non-animation instances */
+ASGE::Sprite& ScaledSpriteArray::returnCurrentSprite()
+{
+  return *my_sprites[current_sprite];
+}
+
 void ScaledSpriteArray::setSpriteSheet(float sprite_sheet_width,
                                        float sprite_sheet_height,
                                        float start_x_pos,
@@ -409,4 +415,19 @@ float ScaledSpriteArray::width_scale = 1;
 int ScaledSpriteArray::numberOfSprites()
 {
   return number_of_sprites;
+}
+
+void ScaledSpriteArray::hide()
+{
+  is_visible = false;
+}
+
+void ScaledSpriteArray::show()
+{
+  is_visible = true;
+}
+
+bool ScaledSpriteArray::isVisible()
+{
+  return is_visible;
 }

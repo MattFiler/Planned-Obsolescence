@@ -17,11 +17,8 @@ SceneManager::SceneManager() {}
  */
 SceneManager::~SceneManager()
 {
-  if (current_scene)
-  {
-    delete current_scene;
-    current_scene = nullptr;
-  }
+  delete current_scene;
+  current_scene = nullptr;
 }
 
 /**

@@ -23,8 +23,17 @@ UIManager::~UIManager()
     delete generic_ui;
     generic_ui = nullptr;
   }
+  delete main_hud_element;
+  main_hud_element = nullptr;
+
   delete char_info_popup;
   char_info_popup = nullptr;
+
+  delete poi_interaction_popup;
+  poi_interaction_popup = nullptr;
+
+  delete game_cursor;
+  game_cursor = nullptr;
 }
 
 /* Add a generic UI element set (foreground and background) */
@@ -51,6 +60,21 @@ void UIManager::addProgressBar(ProgressBar* new_progressbar)
   progress_bars.push_back(new_progressbar);
 }
 
+/* Create main hud data element (we only have one of these) */
+void UIManager::createMainHUD()
+{
+  // Create "main hud" element - bottom right stats gauges
+  main_hud_element = new MainHUD(renderer);
+
+  // Cursor
+  game_cursor = new Cursor();
+  game_cursor->setupCursor(renderer);
+
+  // Initialise the bottom left interaction popups
+  initCharacterPopup();       // Character interaction
+  initPointOfInterestPopup(); // POI interaction
+}
+
 /* Initialise the character popup */
 void UIManager::initCharacterPopup()
 {
@@ -58,15 +82,33 @@ void UIManager::initCharacterPopup()
   char_info_popup->setActive(false);
 }
 
+/* Initialise the poi interaction popup */
+void UIManager::initPointOfInterestPopup()
+{
+  poi_interaction_popup = new WorldInteractionPopup(renderer);
+  poi_interaction_popup->setActive(false);
+}
+
 /* Creates all the UI */
 void UIManager::updateAndShowCharacterInfo(const std::string& character_type,
                                            float character_gauge,
                                            const std::string& gauge_name)
 {
+  poi_interaction_popup->setActive(false);
+
   char_info_popup->setActive(true);
   char_info_popup->setCharacterName(character_type);
   char_info_popup->setGaugeAmount(character_gauge);
   char_info_popup->setGaugeDescription(gauge_name);
+}
+
+/* Creates all the UI */
+void UIManager::updateAndShowPointInfo(const std::string& point_name)
+{
+  char_info_popup->setActive(false);
+
+  poi_interaction_popup->setActive(true);
+  poi_interaction_popup->setClickedPointName(point_name);
 }
 
 /* render all ui */
@@ -89,26 +131,54 @@ void UIManager::render(double delta_time)
     generic_ui->render(delta_time);
   }
 
-  if (char_info_popup->isActive())
+  if (char_info_popup != nullptr)
   {
-    char_info_popup->render(delta_time);
+    if (char_info_popup->isActive())
+    {
+      char_info_popup->render(delta_time);
+    }
+  }
+  if (poi_interaction_popup != nullptr)
+  {
+    if (poi_interaction_popup->isActive())
+    {
+      poi_interaction_popup->render(delta_time);
+    }
+  }
+  if (main_hud_element != nullptr)
+  {
+    main_hud_element->render(delta_time);
+  }
+  if (game_cursor != nullptr)
+  {
+    game_cursor->render();
   }
 }
 
 /* Checks all Buttons to see if the passed click lands on any of them */
-bool UIManager::checkForClick(Point click)
+bool UIManager::checkForClick(Point click, bool act_on_click)
 {
   for (Button* button : buttons)
   {
     if (button->checkForClick(click))
     {
-      // Store a reference to the clicked button to un-click it later
-      clicked_button = button;
+      if (act_on_click)
+      {
+        // Store a reference to the clicked button to un-click it later
+        clicked_button = button;
+      }
       return true;
     }
   }
 
-  clicked_button = char_info_popup->checkForClick(click);
+  if (char_info_popup->checkForClick(click))
+  {
+    clicked_button = char_info_popup->checkForClick(click);
+  }
+  else if (poi_interaction_popup->checkForClick(click))
+  {
+    clicked_button = poi_interaction_popup->checkForClick(click);
+  }
 
   return clicked_button != nullptr;
 }
@@ -121,6 +191,19 @@ void UIManager::releaseClick()
     clicked_button->releaseClick();
     clicked_button = nullptr;
   }
+}
+
+/* Update */
+void UIManager::update(double delta_time)
+{
+  input->getCursorPos(cursor_x, cursor_y);
+  game_cursor->updatePosition(cursor_x, cursor_y);
+}
+
+/* get cursor ref */
+Cursor* UIManager::getCursor()
+{
+  return game_cursor;
 }
 
 /* keep a popup within the window bounds */

@@ -12,6 +12,7 @@ struct PathNode
 {
   Point position;
   NodeConnection connections[4];
+  bool pathable = true;
   bool visited = false;
   unsigned long long int shortest_path_to_here = 10000;
 };

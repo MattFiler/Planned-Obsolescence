@@ -46,7 +46,7 @@ namespace PO_MapMaker
             {
                 game_coreJson += "\"" + binds.Attribute("action").Value + "\": " + keynameToKeycode(binds.Attribute("key").Value) + ",";
             }
-            game_coreJson = game_coreJson.Substring(0, game_coreJson.Length - 1) + "}}}";
+            game_coreJson = game_coreJson.Substring(0, game_coreJson.Length - 1) + "},\"language\":\"ENGLISH\"}}";
             JToken game_coreJsonParsed = JToken.Parse(game_coreJson);
             File.WriteAllText("data/CONFIGS/game_core.json", game_coreJsonParsed.ToString(Formatting.Indented));
             progressBar.PerformStep();
@@ -70,7 +70,7 @@ namespace PO_MapMaker
                 if (tile.Attribute("set").Value == "DEFAULT")
                 {
                     //Default is an ugly mess. Apologies...
-                    tiles_coreJson += "\"DEFAULT\":{\"width\":" + tile.Element("dimensions").Attribute("width").Value + ",\"height\":" + tile.Element("dimensions").Attribute("height").Value + ",\"sprite\":\"" + tile.Attribute("sprite").Value + "\",\"available_exits\":{\"left\":" + tile.Element("valid_exits").Attribute("left").Value + ",\"right\":" + tile.Element("valid_exits").Attribute("right").Value + ",\"up\":" + tile.Element("valid_exits").Attribute("up").Value + ",\"down\":" + tile.Element("valid_exits").Attribute("down").Value + "},\"has_point_of_interest\":{\"door\":" + tile.Element("points_of_interest").Attribute("door").Value + ",\"computer\":" + tile.Element("points_of_interest").Attribute("computer").Value + "}},";
+                    tiles_coreJson += "\"DEFAULT\":{\"width\":" + tile.Element("dimensions").Attribute("width").Value + ",\"height\":" + tile.Element("dimensions").Attribute("height").Value + ",\"sprite\":\"" + tile.Attribute("sprite").Value + "\",\"available_exits\":{\"left\":" + tile.Element("valid_exits").Attribute("left").Value + ",\"right\":" + tile.Element("valid_exits").Attribute("right").Value + ",\"up\":" + tile.Element("valid_exits").Attribute("up").Value + ",\"down\":" + tile.Element("valid_exits").Attribute("down").Value + "},\"poi_computer\":false,\"poi_door\":false,\"poi_sprite\":\"\",\"poi_desc\":\"placeholder_text\"},";
                     //...aaaand it's over. Back to neater code.
                 }
                 else
@@ -91,15 +91,21 @@ namespace PO_MapMaker
                         tiles_coreJson += "\"available_exits\":{" + available_exits.Substring(0, available_exits.Length - 1) + "},";
                     }
 
-                    string points_of_interest = "";
-                    string[] pois = { "door", "computer" };
-                    foreach (string poi in pois)
+                    try
                     {
-                        points_of_interest += addElementIfNotDefault(poi, default_tile.Element("points_of_interest").Attribute(poi), tile.Element("points_of_interest").Attribute(poi), false);
+                        if (tile.Element("points_of_interest").Attribute("computer").Value == "true")
+                        {
+                            tiles_coreJson += "\"poi_computer\":true,\"poi_sprite\": \"" + tile.Element("points_of_interest").Attribute("alt_sprite").Value + "\",\"poi_desc\":\"" + tile.Element("points_of_interest").Attribute("description").Value + "\",";
+                        }
+                        if (tile.Element("points_of_interest").Attribute("door").Value == "true")
+                        {
+                            tiles_coreJson += "\"poi_door\":true,\"poi_sprite\": \"" + tile.Element("points_of_interest").Attribute("alt_sprite").Value + "\",\"poi_desc\":\"poi_door\",";
+                        }
                     }
-                    if (points_of_interest != "")
+                    catch
                     {
-                        tiles_coreJson += "\"has_point_of_interest\":{" + points_of_interest.Substring(0, points_of_interest.Length - 1) + "},";
+                        //Legacy versions can crash here as they don't have the alt_sprite field...
+                        MessageBox.Show("Aborting compile! An error occured while configuring POIs. Have you updated your XML?", "POI Build Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     tiles_coreJson = tiles_coreJson.Substring(0, tiles_coreJson.Length - 1) + "},";
@@ -283,8 +289,13 @@ namespace PO_MapMaker
                     maps_coreJson += addElementIfNotDefault("rooms_h", default_map.Attribute("height"), map.Attribute("height"), false);
                     maps_coreJson += "\"rooms\":[ ";
 
+                    int map_width_px = 0;
+                    int temp_map_width_px = 0;
+                    int map_height_px = 0;
+
                     int room_index = 0;
                     int[] room_pos = { 0, 0 };
+                    int[] room_dims = { 0, 0 };
                     foreach (XElement room in map.Descendants("room"))
                     {
                         //Save this room's data for creating the map sprite
@@ -292,6 +303,30 @@ namespace PO_MapMaker
                         {
                             if (room_data.Attribute("name").Value == room.Attribute("name").Value)
                             {
+                                //Calculate room position
+                                if ((room_index) % map_width == 0)
+                                {
+                                    temp_map_width_px += room_dims[0];
+                                    if (temp_map_width_px > map_width_px)
+                                    {
+                                        map_width_px = temp_map_width_px;
+                                    }
+                                    temp_map_width_px = 0;
+                                    if (room_index >= map_width)
+                                    {
+                                        room_pos[0] = 0;
+                                        room_pos[1] += room_dims[1];
+                                        map_height_px += room_dims[1];
+                                    }
+                                }
+                                else
+                                {
+                                    room_pos[0] += room_dims[0];
+                                    temp_map_width_px += room_dims[0];
+                                }
+                                int[] this_room_pos = { room_pos[0], room_pos[1] };
+                                map_room_positions.Add(this_room_pos);
+
                                 //Get room sprite (kinda tricky as these aren't stored in our xml - something to change?)
                                 string room_sprite_filepath = "data/ROOMS/" + room_data.Attribute("name").Value + "_" + compile_uid + ".png";
                                 if (room_data.Attribute("name").Value == "DEFAULT")
@@ -300,29 +335,12 @@ namespace PO_MapMaker
                                 }
                                 Bitmap this_room_sprite = loadBMP(room_sprite_filepath);
                                 map_rooms.Add(this_room_sprite);
-
-                                //Get room dimensions from its sprite (sneaky)
-                                int[] room_dims = {
-                                    this_room_sprite.Width,
-                                    this_room_sprite.Height
-                                };
+                                
+                                //Update room offset for next loop
+                                room_dims[0] = this_room_sprite.Width;
+                                room_dims[1] = this_room_sprite.Height;
                                 map_room_dimensions.Add(room_dims);
 
-                                //Calculate room position
-                                if ((room_index) % map_width == 0)
-                                {
-                                    if (room_index >= map_width)
-                                    {
-                                        room_pos[0] = 0;
-                                        room_pos[1] += room_dims[1];
-                                    }
-                                }
-                                else
-                                {
-                                    room_pos[0] += room_dims[0];
-                                }
-                                int[] this_room_pos = { room_pos[0], room_pos[1] };
-                                map_room_positions.Add(this_room_pos);
                                 break;
                             }
                         }
@@ -331,13 +349,10 @@ namespace PO_MapMaker
                         //Add map to json list
                         maps_coreJson += "\"" + room.Attribute("name").Value + "\",";
                     }
-
-                    //Map size
-                    int map_size_actual = map_room_positions[map_rooms.Count - 1][0] + map_room_dimensions[map_rooms.Count - 1][0];
-                    int map_height_actual = map_room_positions[map_rooms.Count - 1][1] + map_room_dimensions[map_rooms.Count - 1][1];
+                    map_height_px += map_room_dimensions[map_room_dimensions.Count() - 1][1];
 
                     //Load placeholder bitmap to draw over
-                    Bitmap map_sprite = loadBMP("data/MAPS/default.png", map_size_actual, map_height_actual);
+                    Bitmap map_sprite = loadBMP("data/MAPS/default.png", map_width_px, map_height_px);
                     Graphics map_graphics = Graphics.FromImage(map_sprite);
 
                     //Draw over bitmap with our room sprites
@@ -347,7 +362,7 @@ namespace PO_MapMaker
                         int[] room_dimensions = map_room_dimensions[bitmap_index];
                         int[] room_position = map_room_positions[bitmap_index];
 
-                        map_graphics.DrawImage(room_sprite, room_position[0], room_position[1], room_dimensions[0], room_dimensions[1]);
+                        map_graphics.DrawImage(room_sprite, room_position[0], room_position[1], room_sprite.Width, room_sprite.Height);
 
                         bitmap_index++;
                     }

@@ -19,10 +19,11 @@ class Character
 {
  public:
   explicit Character(character_type type);
-  ~Character();
+  virtual ~Character();
 
   void wake(ASGE::Renderer* passed_renderer);
-  void updatePosition(double delta_time);
+  virtual void update(double delta_time) { updatePosition(delta_time); };
+  bool updatePosition(double delta_time);
 
   void setSpawnPositionX(float x_pos);
   void setSpawnPositionY(float y_pos);
@@ -50,7 +51,6 @@ class Character
 
   ScaledSpriteArray* getSprite();
   ASGE::Renderer* getRenderer();
-  std::vector<PathNode*> current_route;
 
   float getInternalGauge();
   void reduceInternalGauge(float reduce_by = 1);
@@ -70,17 +70,18 @@ class Character
   Vector direction = Vector(0, 0);
 
   PathfindingMap* internal_map = nullptr;
+  GameMap* global_map = nullptr;
+  std::vector<PathNode*> current_route;
 
   unsigned long long route_index = 0;
   float distance_to_next_node = 0;
   int iteration_count = 0;
 
   ClickArea click_area;
+  CharacterData config;
 
  private:
   void importConfig(json json_config);
-
-  CharacterData config;
 
   ScaledSpriteArray* sprite = nullptr;
   ASGE::Renderer* renderer = nullptr;

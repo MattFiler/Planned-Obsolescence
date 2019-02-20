@@ -38,10 +38,10 @@ void Button::moveTo(Point point)
   click_area.setPosition(point);
 }
 
-/* Checks to see if a given point is within this objects click area and updates accordingly */
+/* acts like a hover effect */
 bool Button::checkForClick(Point click_location)
 {
-  if (click_area.isPointInArea(click_location))
+  if (is_active && click_area.isPointInArea(click_location))
   {
     sprite->setCurrentSprite(1);
     return true;

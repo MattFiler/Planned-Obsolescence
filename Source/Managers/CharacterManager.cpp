@@ -61,14 +61,7 @@ bool CharacterManager::canSpawn(character_type type)
       return false;
     }
   }
-  if (min_case < max_case)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+  return (min_case < max_case);
 }
 
 /* Spawn a character */
@@ -202,24 +195,21 @@ void CharacterManager::update(double delta_time)
 
 /* Update a specific character definition */
 template<class CharacterArray>
-void CharacterManager::updateCharacter(CharacterArray character,
-                                       int& character_count,
-                                       int& character_visible_count,
-                                       float& character_gauge,
-                                       double& delta_time)
+void CharacterManager::updateCharacter(
+  CharacterArray character, int& char_c, int& char_visible_c, float& char_gauge, double& delta_time)
 {
-  character_visible_count = 0;
-  character_gauge = 0;
-  for (int i = 0; i < character_count; i++)
+  char_visible_c = 0;
+  char_gauge = 0;
+  for (int i = 0; i < char_c; i++)
   {
     if (character[i]->isVisible()) // Only bother updating if visible?
     {
-      character[i]->updatePosition(delta_time);
-      character_gauge += goon_instances[i]->getInternalGauge();
-      character_visible_count++;
+      character[i]->update(delta_time);
+      char_gauge += goon_instances[i]->getInternalGauge();
+      char_visible_c++;
     }
   }
-  character_gauge /= static_cast<float>(character_visible_count);
+  char_gauge /= static_cast<float>(char_visible_c);
 }
 
 /* Get sum gauge value for character */
@@ -264,21 +254,24 @@ void CharacterManager::setCamera(Camera* scene_camera)
 }
 
 /* Returns true if any character lies within the passed point */
-bool CharacterManager::checkForClick(Point click)
+bool CharacterManager::checkForClick(Point click, bool act_on_click)
 {
-  bool boss_check = clickedCharacterCheck(boss_instances, boss_count, click);
-  bool goon_check = clickedCharacterCheck(goon_instances, goon_count, click);
-  bool technician_check = clickedCharacterCheck(technician_instances, technician_count, click);
-  bool security_check = clickedCharacterCheck(security_instances, security_count, click);
+  bool boss_check = clickedCharacterCheck(boss_instances, boss_count, click, act_on_click);
+  bool goon_check = clickedCharacterCheck(goon_instances, goon_count, click, act_on_click);
+  bool technician_check =
+    clickedCharacterCheck(technician_instances, technician_count, click, act_on_click);
+  bool security_check =
+    clickedCharacterCheck(security_instances, security_count, click, act_on_click);
 
-  return (boss_check && goon_check && technician_check && security_check);
+  return (boss_check || goon_check || technician_check || security_check);
 }
 
 /* Check a set of characters to see if we clicked any */
 template<class CharacterArray>
 bool CharacterManager::clickedCharacterCheck(CharacterArray character,
                                              int& character_count,
-                                             Point click)
+                                             Point click,
+                                             bool act_on_click)
 {
   for (int i = 0; i < character_count; i++)
   {
@@ -286,9 +279,12 @@ bool CharacterManager::clickedCharacterCheck(CharacterArray character,
     {
       if (character[i]->isPointInArea(click))
       {
-        ui_manager->updateAndShowCharacterInfo(character[i]->getDisplayName(),
-                                               character[i]->getInternalGauge(),
-                                               character[i]->getInternalGaugeDesc());
+        if (act_on_click)
+        {
+          ui_manager->updateAndShowCharacterInfo(character[i]->getDisplayName(),
+                                                 character[i]->getInternalGauge(),
+                                                 character[i]->getInternalGaugeDesc());
+        }
         return true;
       }
     }

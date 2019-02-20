@@ -13,11 +13,8 @@
 
 PlannedObsolescence::~PlannedObsolescence()
 {
-  if (scene_manager)
-  {
-    delete scene_manager;
-    scene_manager = nullptr;
-  }
+  delete scene_manager;
+  scene_manager = nullptr;
 }
 
 bool PlannedObsolescence::init()
@@ -75,6 +72,12 @@ bool PlannedObsolescence::init()
   ASGE::Sprite* _sprite_bg = renderer->createRawSprite();
   _sprite_bg->loadTexture("data/UI/BACKGROUND.jpg");
   generic_background->addSprite(*_sprite_bg);
+
+  // Configure localised strings to selected language
+  localiser.configure(core_config["language"]);
+
+  // Hide cursor
+  inputs->setCursorMode(ASGE::MOUSE::CursorMode::HIDDEN);
 
   // Initialise the scene manager
   scene_manager = new SceneManager();

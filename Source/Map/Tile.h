@@ -6,6 +6,7 @@
 #include "../FileHandler/FileHandler.h"
 #include "../Sprites/ScaledSpriteArray.h"
 #include "../Viewport/Camera.h"
+#include "../Viewport/ClickArea.h"
 #include <Engine/Renderer.h>
 #include <Engine/Sprite.h>
 
@@ -16,8 +17,15 @@ class Tile
   ~Tile() = default;
 
   bool exitIsValid(direction exit);
+
   bool hasSpecificPointOfInterest(point_of_interest poi);
   bool hasAnyPointOfInterest();
+  poi_state getPointOfInterestState();
+  void setPointOfInterestState(poi_state new_state);
+
+  tile_accessibility getTileAccessibility();
+
+  bool isPointOnTile(Point point) { return click_area.isPointInArea(point); };
 
   void configure(float x_position, float y_position);
   float getPositionX();
@@ -33,11 +41,14 @@ class Tile
   float getWidth();
   float getHeight();
 
+  std::string getTileDescription();
+
  private:
   // Engine features
   FileHandler file_handler;
 
   // Tile data
+  ClickArea click_area;
   TileData tile_data;
 };
 

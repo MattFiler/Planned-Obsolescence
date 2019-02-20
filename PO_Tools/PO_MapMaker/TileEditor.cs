@@ -62,6 +62,11 @@ namespace PO_MapMaker
                     //Fixing file lock issue, cheers: https://stackoverflow.com/a/8701772
                     tilePreview.Image = new Bitmap(tempPreviewImg);
                 }
+                if (POI_Computer.Checked || POI_Door.Checked)
+                {
+                    altSprite.Text = importedTileNode.Element("points_of_interest").Attribute("alt_sprite").Value;
+                    POI_Desc.SelectedItem = importedTileNode.Element("points_of_interest").Attribute("description").Value;
+                }
                 allowOverwrite = true; //Dangerous!
             }
             else
@@ -84,7 +89,14 @@ namespace PO_MapMaker
         /* Add tile to config */
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tileName.Text == "" || tileSet.Text == "" || tileSprite.Text == "" || (tileWidth.Text == "" && tileWidth.Enabled == true) || (tileHeight.Text == "" && tileHeight.Enabled == true))
+            if (tileName.Text == "" || 
+                tileSet.Text == "" || 
+                tileSprite.Text == "" || 
+                (tileWidth.Text == "" && tileWidth.Enabled == true) || 
+                (tileHeight.Text == "" && tileHeight.Enabled == true) ||
+                (POI_Door.Checked && altSprite.Text == "") ||
+                (POI_Computer.Checked && altSprite.Text == "") ||
+                (POI_Computer.Checked && POI_Desc.Text ==""))
             {
                 MessageBox.Show("Please enter all required information!", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -118,28 +130,34 @@ namespace PO_MapMaker
 
                         //Try and generate sprite path
                         string newSpritePath = "";
+                        string newAltSpritePath = "";
                         bool hasPathError = false;
                         if (allowOverwrite && tileSprite.Text.Substring(0, 10) == "data/TILES")
                         {
                             //Editing existing tile and sprite is already copied
                             newSpritePath = tileSprite.Text;
+                            newAltSpritePath = altSprite.Text;
                         }
                         else
                         {
                             //Creating new tile (or importing new sprite for existing) - generate a path
                             newSpritePath = "data/TILES/" + tileSet.Text + "/" + Path.GetFileNameWithoutExtension(tileSprite.Text) + "_" + DateTime.Now.ToString("hhmmss") + Path.GetExtension(tileSprite.Text);
-                            if (File.Exists(newSpritePath))
+                            if (altSprite.Text != "")
                             {
-                                newSpritePath = "data/TILES/" + tileSet.Text + "/" + Path.GetFileNameWithoutExtension(tileSprite.Text) + "_" + DateTime.Now.ToString("hhmmssdddmmyy") + Path.GetExtension(tileSprite.Text);
-                                if (File.Exists(newSpritePath))
-                                {
-                                    hasPathError = true;
-                                }
+                                newAltSpritePath = "data/TILES/" + tileSet.Text + "/" + Path.GetFileNameWithoutExtension(altSprite.Text) + "_alt_" + DateTime.Now.ToString("hhmmss") + Path.GetExtension(altSprite.Text);
+                            }
+                            if (File.Exists(newSpritePath) || (altSprite.Text != "" && File.Exists(newAltSpritePath)))
+                            {
+                                hasPathError = true;
                             }
                             if (allowOverwrite)
                             {
                                 //Tidy up old file
                                 File.Delete(importedTileNode.Attribute("sprite").Value);
+                                if (altSprite.Text != "")
+                                {
+                                    File.Delete(importedTileNode.Element("points_of_interest").Attribute("alt_sprite").Value);
+                                }
                             }
                         }
 
@@ -194,7 +212,9 @@ namespace PO_MapMaker
                                 ),
                                 new XElement("points_of_interest",
                                     new XAttribute("computer", POI_Computer.Checked),
-                                    new XAttribute("door", POI_Door.Checked)
+                                    new XAttribute("door", POI_Door.Checked),
+                                    new XAttribute("description", POI_Desc.Text),
+                                    new XAttribute("alt_sprite", newAltSpritePath)
                                 )
                             );
                             configXML.Element("config").Element("tile_config").Element("tiles").Add(newTileParent);
@@ -204,6 +224,11 @@ namespace PO_MapMaker
                             {
                                 Directory.CreateDirectory(Path.GetDirectoryName(newSpritePath));
                                 File.Copy(tileSprite.Text, newSpritePath);
+                            }
+                            if (altSprite.Text != newAltSpritePath)
+                            {
+                                Directory.CreateDirectory(Path.GetDirectoryName(newAltSpritePath));
+                                File.Copy(altSprite.Text, newAltSpritePath);
                             }
 
                             //Save
@@ -258,6 +283,56 @@ namespace PO_MapMaker
         private void addSet_Click(object sender, EventArgs e)
         {
             //Depreciated
+        }
+
+        /* Dis-allow both checkboxes on one tile (will break stuff!) */
+        private void POI_Door_CheckedChanged(object sender, EventArgs e)
+        {
+            poiCheckChanged(POI_Computer);
+        }
+        private void POI_Computer_CheckedChanged(object sender, EventArgs e)
+        {
+            poiCheckChanged(POI_Door);
+        }
+        void poiCheckChanged(CheckBox the_other_one)
+        {
+            if (POI_Computer.Checked && POI_Door.Checked)
+            {
+                the_other_one.Checked = false;
+            }
+            if (POI_Computer.Checked || POI_Door.Checked)
+            {
+                browseToAltSprite.Enabled = true;
+            }
+            else
+            {
+                browseToAltSprite.Enabled = false;
+                altSprite.Text = "";
+                POI_Desc.SelectedIndex = -1;
+            }
+            if (POI_Computer.Checked)
+            {
+                POI_Desc.Enabled = true;
+            }
+            else
+            {
+                POI_Desc.Enabled = false;
+            }
+            if (POI_Door.Checked)
+            {
+                POI_Desc.SelectedIndex = 0;
+            }
+        }
+
+        /* Find alt sprite */
+        private void browseToAltSprite_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog filePicker = new OpenFileDialog();
+            filePicker.Filter = "PO Sprites (JPG,PNG)|*.JPG;*.PNG";
+            if (filePicker.ShowDialog() == DialogResult.OK)
+            {
+                altSprite.Text = filePicker.FileName;
+            }
         }
     }
 }

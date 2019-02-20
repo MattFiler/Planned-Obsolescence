@@ -34,6 +34,7 @@ namespace PO_Launcher
             //Load image and select default res
             launcherImage.Image = new Bitmap(Properties.Resources.launcher_banner);
             resolutionSelector.SelectedIndex = 0;
+            po_language.SelectedIndex = 0;
             tabPage2.AutoScroll = true;
 
             //Get current game config 
@@ -64,6 +65,10 @@ namespace PO_Launcher
                 }
             }
             resolutionSelector.SelectedItem = current_resolution[0] + "x" + current_resolution[1];
+
+            //Load previous language
+            string loadedLanguage = game_config_json["DEFAULT"]["language"].ToString();
+            po_language.SelectedItem = loadedLanguage.Substring(0,1) + loadedLanguage.Substring(1).ToLower();
         }
 
         /* Launcher Close */
@@ -94,7 +99,10 @@ namespace PO_Launcher
                     res_config.Value = Convert.ToInt32(new_resolution[1]);
                 }
             }
-            
+
+            //Update internal config with new language
+            game_config_json["DEFAULT"]["language"] = po_language.SelectedItem.ToString().ToUpper();
+
             try
             {
                 //Save config back

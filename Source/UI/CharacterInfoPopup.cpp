@@ -12,13 +12,11 @@ CharacterInfoPopup::CharacterInfoPopup(ASGE::Renderer* rend) : UI(Point(0, 0), r
                             "data/UI/IN_GAME_UI/CHARACTER_POPUP_CLOSE_BUTTON.png",
                             19,
                             22);
-  bool* active_p = &active;
-  close_button->click_function = [active_p] { *active_p = false; };
+  CharacterInfoPopup* myself = this;
+  close_button->click_function = [myself] { myself->setActive(false); };
 
   // Make progress bar
-  progress_bar = new ProgressBar(Point(18, 762), rend, 463, 29);
-  progress_bar->addBackgroundSprite("data/UI/default.png");
-  progress_bar->addFillSprite("data/UI/default.png");
+  progress_bar = new HudGaugeData(Point(18, 672), rend);
 }
 
 CharacterInfoPopup::~CharacterInfoPopup()
@@ -37,34 +35,37 @@ void CharacterInfoPopup::render(double delta_time)
 {
   if (active)
   {
-    renderer->renderSprite(background_sprite->returnNextSprite(delta_time));
+    renderer->renderSprite(background_sprite->returnNextSprite(delta_time),
+                           render_index::UI_TOP_LAYER_BASE);
     close_button->render(delta_time);
-    progress_bar->render(delta_time);
+    progress_bar->render(renderer, delta_time);
     renderer->renderText(character_name,
                          static_cast<int>(21 * ScaledSpriteArray::width_scale),
-                         static_cast<int>(653 * ScaledSpriteArray::width_scale),
+                         static_cast<int>(657 * ScaledSpriteArray::width_scale),
                          1,
                          ASGE::COLOURS::WHITE);
-    renderer->renderText(gauge_name,
-                         static_cast<int>(29 * ScaledSpriteArray::width_scale),
-                         static_cast<int>(694 * ScaledSpriteArray::width_scale),
-                         0.5,
-                         ASGE::COLOURS::BLACK);
   }
+}
+
+/* set active/inactive */
+void CharacterInfoPopup::setActive(bool is_active)
+{
+  active = is_active;
+  close_button->setActive(is_active);
 }
 
 /* Set values */
 void CharacterInfoPopup::setCharacterName(const std::string& char_name)
 {
-  character_name = char_name;
+  character_name = localiser.getString(char_name);
 }
 void CharacterInfoPopup::setGaugeDescription(const std::string& gauge_desc)
 {
-  gauge_name = gauge_desc;
+  progress_bar->gauge_name = localiser.getString(gauge_desc);
 }
 void CharacterInfoPopup::setGaugeAmount(float gauge_amount)
 {
-  gauge_value = gauge_amount;
+  progress_bar->progress_bar->setProgress(gauge_amount / 100);
 }
 
 /* Returns a pointer to the button that was clicked (nullptr if none) */

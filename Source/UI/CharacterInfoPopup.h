@@ -2,6 +2,8 @@
 #define PLANNEDOBSOLESCENCE_CHARACTERINFOPOPUP_H
 
 #include "Button.h"
+#include "GetLocalisedString.h"
+#include "HudGaugeData.h"
 #include "ProgressBar.h"
 #include "UI.h"
 
@@ -20,7 +22,7 @@ class CharacterInfoPopup : public UI
   void setGaugeDescription(const std::string& gauge_desc);
   void setGaugeAmount(float gauge_amount);
 
-  void setActive(bool is_active) { active = is_active; };
+  void setActive(bool is_active);
   bool isActive() { return active; };
   Button* checkForClick(Point click_location);
 
@@ -29,11 +31,11 @@ class CharacterInfoPopup : public UI
 
   ScaledSpriteArray* background_sprite = nullptr;
   Button* close_button = nullptr;
-  ProgressBar* progress_bar = nullptr;
+  HudGaugeData* progress_bar = nullptr;
+
+  GetLocalisedString localiser;
 
   std::string character_name = "";
-  std::string gauge_name = "";
-  float gauge_value = 0.0f;
 };
 
 #endif // PLANNEDOBSOLESCENCE_CHARACTERINFOPOPUP_H

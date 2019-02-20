@@ -78,9 +78,9 @@ float Room::getPositionY()
 }
 
 /* Return all tiles in the room */
-std::vector<Tile> Room::getTiles()
+std::vector<Tile>* Room::getTiles()
 {
-  return room_data.tiles;
+  return &room_data.tiles;
 }
 
 /* Return the number of tiles in the room */

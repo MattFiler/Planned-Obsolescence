@@ -6,7 +6,7 @@ PathfindingMap::PathfindingMap(GameMap* current_map)
   game_map = current_map;
   for (int i = 0; i < game_map->getRoomCount(); i++)
   {
-    total_tiles += game_map->getRooms()[i].getTileCount();
+    total_tiles += (*game_map->getRooms())[i].getTileCount();
   }
 
   nodes = new PathNode[total_tiles];
@@ -16,7 +16,7 @@ PathfindingMap::PathfindingMap(GameMap* current_map)
   int tile_count = 0;
   for (int i = 0; i < game_map->getRoomCount(); i++)
   {
-    for (Tile& this_tile : game_map->getRooms()[i].getTiles())
+    for (Tile& this_tile : *(*game_map->getRooms())[i].getTiles())
     {
       nodes[tile_count].position = Point(this_tile.getPositionX(), this_tile.getPositionY());
       tile_count++;
@@ -29,10 +29,10 @@ void PathfindingMap::linkNodes()
 {
   // Loop through a second time to add the connections between nodes
   int tile_count = 0;
-  float tile_size = game_map->getRooms()[0].getTiles()[0].getWidth();
+  float tile_size = (*(*game_map->getRooms())[0].getTiles())[0].getWidth();
   for (int i = 0; i < game_map->getRoomCount(); i++)
   {
-    for (Tile& this_tile : game_map->getRooms()[i].getTiles())
+    for (Tile& this_tile : *(*game_map->getRooms())[i].getTiles())
     {
       // Check all 4 exits on each tile, and if there is one find the node
       if (this_tile.exitIsValid(direction::LEFT))

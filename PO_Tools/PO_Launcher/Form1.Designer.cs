@@ -36,6 +36,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.playButton = new System.Windows.Forms.Button();
             this.quitButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.po_language = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.launcherImage)).BeginInit();
             this.launcherTabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -51,7 +53,7 @@
             "1280x720",
             "1024x576",
             "768x432"});
-            this.resolutionSelector.Location = new System.Drawing.Point(137, 74);
+            this.resolutionSelector.Location = new System.Drawing.Point(18, 18);
             this.resolutionSelector.Name = "resolutionSelector";
             this.resolutionSelector.Size = new System.Drawing.Size(154, 21);
             this.resolutionSelector.TabIndex = 0;
@@ -59,7 +61,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 77);
+            this.label1.Location = new System.Drawing.Point(178, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 1;
@@ -86,6 +88,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.po_language);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.resolutionSelector);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -93,7 +97,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(428, 178);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Graphics";
+            this.tabPage1.Text = "Output";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -125,6 +129,28 @@
             this.quitButton.Text = "Quit";
             this.quitButton.UseVisualStyleBackColor = true;
             this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(178, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Language";
+            // 
+            // po_language
+            // 
+            this.po_language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.po_language.FormattingEnabled = true;
+            this.po_language.Items.AddRange(new object[] {
+            "English",
+            "French",
+            "Spanish"});
+            this.po_language.Location = new System.Drawing.Point(18, 45);
+            this.po_language.Name = "po_language";
+            this.po_language.Size = new System.Drawing.Size(154, 21);
+            this.po_language.TabIndex = 2;
             // 
             // PO_Launcher
             // 
@@ -158,6 +184,8 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Button quitButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox po_language;
     }
 }
 

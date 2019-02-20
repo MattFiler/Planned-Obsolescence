@@ -15,29 +15,19 @@
  */
 bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 {
+  // Setup
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
-  camera.setRenderer(rend);
 
+  // load map
   game_map.load(renderer, &camera);
 
-  character_manager.setMap(&game_map);
-  character_manager.setCamera(&camera);
-
+  // Pass references out and spawn characters
+  passReferences(input);
   spawnCharacters(renderer);
 
-  ui_manager.setRenderer(rend);
-  ui_manager.setCamera(&camera);
-  character_manager.setUIManager(&ui_manager);
-
-  GenericUI* ui_main =
-    new GenericUI(renderer, "IN_GAME_UI/BOTTOM_RIGHT_BG.png", "IN_GAME_UI/BOTTOM_RIGHT_TEXT.png");
-  ui_manager.addGenericUI(ui_main);
-  /*
-    GenericUI* ui_bottom =
-      new GenericUI(renderer, "IN_GAME_UI/BOTTOM_LEFT_BG.png", "IN_GAME_UI/BOTTOM_LEFT_TEXT.png");
-    ui_manager.addGenericUI(ui_bottom);
-    */
+  // Create UI
+  ui_manager.createMainHUD();
 
   Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
                                    renderer,
@@ -49,9 +39,23 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   quit_button->click_function = [next] { *next = scenes::MAIN_MENU; };
   ui_manager.addButton(quit_button);
 
-  ui_manager.initCharacterPopup();
-
   return true;
+}
+
+/* Pass references to other classes */
+void GameCore::passReferences(ASGE::Input* input)
+{
+  camera.setRenderer(rend);
+
+  ui_manager.setRenderer(rend);
+  ui_manager.setInputData(input);
+  ui_manager.setCamera(&camera);
+
+  character_manager.setMap(&game_map);
+  character_manager.setCamera(&camera);
+  character_manager.setUIManager(&ui_manager);
+
+  game_map.setUIManager(&ui_manager);
 }
 
 /* Spawn all characters */
@@ -61,7 +65,6 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   {
     Goon* new_goon = new Goon();
     character_manager.spawnCharacter(new_goon);
-    new_goon->calculateRouteToPoint(Point(300, 300));
   }
 }
 
@@ -142,7 +145,10 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
     // If the UI manager doesn't register this click
     if (!ui_manager.checkForClick(mouse_position / ScaledSpriteArray::width_scale))
     {
-      character_manager.checkForClick(camera.displayedToSimulatedWorld(mouse_position));
+      if (!character_manager.checkForClick(camera.displayedToSimulatedWorld(mouse_position)))
+      {
+        game_map.clickedPointCheck(camera.displayedToSimulatedWorld(mouse_position));
+      }
     }
   }
   else if (click->action == ASGE::MOUSE::BUTTON_RELEASED)
@@ -160,10 +166,30 @@ void GameCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
  */
 scenes GameCore::update(double delta_time)
 {
-  character_manager.update(delta_time);
-  project_gauge.update(delta_time);
+  // Handle camera movement
   camera.moveCamera(x_axis_input * static_cast<float>(delta_time),
                     y_axis_input * static_cast<float>(delta_time));
+
+  // Update managers
+  ui_manager.update(delta_time);
+  character_manager.update(delta_time);
+
+  // Update project gauge
+  project_gauge.update(delta_time);
+
+  // Check for cursor hover
+  Point click_position = ui_manager.getCursor()->getPosition();
+  if (ui_manager.checkForClick(click_position / ScaledSpriteArray::width_scale, false) ||
+      character_manager.checkForClick(camera.displayedToSimulatedWorld(click_position), false) ||
+      game_map.clickedPointCheck(camera.displayedToSimulatedWorld(click_position), false))
+  {
+    ui_manager.getCursor()->setCursorType(cursor_variant::CURSOR_POINTER);
+  }
+  else
+  {
+    ui_manager.getCursor()->setCursorType(cursor_variant::CURSOR_DEFAULT);
+  }
+
   return next_scene;
 }
 

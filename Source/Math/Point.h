@@ -23,7 +23,7 @@ struct Point
   Point operator/(const float divider);
   Point operator*(const float multiplier);
 
-  static float distanceBetween(Point a, Point b);
+  static float distanceBetween(Point point_1, Point point_2);
 };
 
 #endif // PLANNEDOBSOLESCENCE_POINT_H

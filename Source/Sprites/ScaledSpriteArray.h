@@ -36,7 +36,7 @@ class ScaledSpriteArray
   void setWidth(float new_width);
   void setHeight(float new_height);
   void setRotation(float new_rotation);
-  void timeBetweenFrames(double new_time_between_frames);
+  void timeBetweenFrames(double n_time_btwn_frames);
   void setFadeColour(ASGE::Colour col);
   void setCurrentSprite(int new_sprite_index);
 
@@ -50,15 +50,21 @@ class ScaledSpriteArray
   void addSprite(ASGE::Sprite& new_sprite);
   bool fadeToColour(double time_to_fade, double delta_time, bool inverse_fade = false);
   ASGE::Sprite& returnNextSprite(double delta_time);
+  ASGE::Sprite& returnCurrentSprite();
 
   bool fadeIn(double time_to_fade, double delta_time);
   bool fadeOut(double time_to_fade, double delta_time);
+
+  void hide();
+  void show();
+  bool isVisible();
 
   static float width_scale; /**< The scale difference between actual and base width */
 
   int numberOfSprites();
 
  private:
+  bool is_visible = true;
   float sprite_width = 50;
   float sprite_height = 50;
   float scale_factor = 1;

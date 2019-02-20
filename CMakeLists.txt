@@ -111,7 +111,16 @@ add_executable(
         Source/Gauges/UniversalGauge.cpp
         Source/Gauges/UniversalGauge.h
         Source/UI/CharacterInfoPopup.cpp
-        Source/UI/CharacterInfoPopup.h)
+        Source/UI/CharacterInfoPopup.h
+        Source/UI/MainHUD.cpp
+        Source/UI/MainHUD.h
+        Source/UI/HudGaugeData.h
+        Source/UI/GetLocalisedString.h
+        Source/UI/GetLocalisedString.cpp
+        Source/UI/WorldInteractionPopup.cpp
+        Source/UI/WorldInteractionPopup.h
+        Source/UI/Cursor.cpp
+        Source/UI/Cursor.h)
 
 ## library includes
 target_include_directories(
