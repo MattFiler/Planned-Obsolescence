@@ -80,11 +80,17 @@ void GameMap::render(double delta_time)
     {
       for (Tile& tile_to_render : *room_to_render.getTiles())
       {
-        if (tile_to_render.hasAnyPointOfInterest() && tile_to_render.getSprite()->isVisible())
+        if (tile_to_render.hasAnyPointOfInterest() && tile_to_render.getTileSprite()->isVisible())
         {
           // Render POI
           game_camera->renderSprite(
-            tile_to_render.getSprite().get(), delta_time, render_index::TILE_LAYER);
+            tile_to_render.getTileSprite().get(), delta_time, render_index::TILE_LAYER);
+        }
+        if (tile_to_render.hasAnyPointOfInterest() && tile_to_render.getRepairSprite()->isVisible())
+        {
+          // Render POI repair status
+          game_camera->renderSprite(
+            tile_to_render.getRepairSprite().get(), delta_time, render_index::TILE_LAYER, false);
         }
       }
     }

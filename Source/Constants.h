@@ -90,6 +90,14 @@ enum cursor_variant
   CURSOR_POINTER
 };
 
+// Repair sprites to display on tile
+enum repair_sprites
+{
+  JUST_PLAIN_BROKEN,
+  REPAIR_REQUESTED,
+  REPAIR_IN_PROGRESS
+};
+
 /* --- Game --- */
 
 // Scenes
