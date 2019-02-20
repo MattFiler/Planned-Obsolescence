@@ -32,6 +32,8 @@
 	"character_security": "GUARD",
 	"character_security_desc": "THE GUARD PATROLS THE LAB AND WILL SPOT YOUR ACTIONS.",
 	
+	"poi_generic_desc_notenoughpower": "YOU DO NOT HAVE SUFFICIENT POWER TO SABOTAGE.",
+	
 	"poi_door": "DOOR",
 	"poi_door_interact": "CLOSE DOOR",
 	"poi_door_desc_hackable": "THIS DOOR IS CURRENTLY OPEN.",

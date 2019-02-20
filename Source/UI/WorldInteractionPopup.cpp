@@ -94,12 +94,23 @@ void WorldInteractionPopup::updateTileDynamicData()
 {
   if (referenced_tile != nullptr)
   {
+    // Show relevant description of clicked POI and enable button if we can sabotage
     switch (referenced_tile->getPointOfInterestState())
     {
       case poi_state::POI_IS_FUNCTIONAL:
       {
-        poi_interaction_button->setActive(true);
-        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hackable");
+        if (gauge_data.player_power < gauge_levels::GAUGE_HALF)
+        {
+          // Not enough power to sabotage this POI
+          poi_interaction_button->setActive(false);
+          poi_desc = localiser.getString("poi_generic_desc_notenoughpower");
+        }
+        else
+        {
+          // Enough power to sabotage, allow option to
+          poi_interaction_button->setActive(true);
+          poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hackable");
+        }
         break;
       }
       case poi_state::POI_IS_BROKEN:
@@ -121,6 +132,7 @@ void WorldInteractionPopup::updateTileDynamicData()
         break;
       }
     }
+    // Update button text
     poi_interaction_button->updateText(referenced_tile->getTileName() + "_interact");
   }
 }
