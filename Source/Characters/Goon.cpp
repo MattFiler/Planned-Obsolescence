@@ -16,15 +16,15 @@ void Goon::update(double delta_time)
     // If there is no current PoI, or it's broken, or the current destination was never reached find
     // a new one
     if (point_of_interest_tile == nullptr ||
-        point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN ||
+        point_of_interest_tile->getPointOfInterestState() != poi_state::POI_IS_FUNCTIONAL ||
         !(poi_position == position))
     {
       findNewPOI();
       time_elapsed_at_poi = 0;
-      if (point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
+      if (point_of_interest_tile != nullptr &&
+      point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
       {
-        registerRepairRequest(
-          Point(point_of_interest_tile->getPositionX(), point_of_interest_tile->getPositionY()));
+        registerRepairRequest(point_of_interest_tile);
       }
     }
     else
@@ -92,34 +92,10 @@ void Goon::findNewPOI()
     }
   }
 
-  // If no room was found, pick a random one
-  bool leaving_room = false;
-  if (!our_room)
-  {
-    // Flag that Goon is going to a new room
-    leaving_room = true;
-    auto random_room = static_cast<unsigned long long int>(
-      rand() & static_cast<int>((*global_map->getRooms()).size()));
-    our_room = &(*global_map->getRooms())[random_room];
-  }
-
   // Loop through and find all POI's
   std::vector<Tile*> all_pois;
-  for (Tile& tile : *our_room->getTiles())
-  {
-    if (tile.hasSpecificPointOfInterest(point_of_interest::COMPUTER))
-    {
-      // If Goon is leaving the room, then they don't know if the other rooms POIs are functional
-      if (leaving_room || tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL)
-      {
-        all_pois.push_back(&tile);
-      }
-      else
-      {
-        registerRepairRequest(Point(tile.getPositionY(), tile.getPositionY()));
-      }
-    }
-  }
+  getAllPOIInRoom(&all_pois, our_room, false);
+
   // If there are any, then choose a random POI to go to
   if (!all_pois.empty())
   {
@@ -128,33 +104,43 @@ void Goon::findNewPOI()
     Point tile_point =
       Point(all_pois[random_index]->getPositionX(), all_pois[random_index]->getPositionY());
     point_of_interest_tile = all_pois[random_index];
-    findPositionForPOI(tile_point, our_room);
+    poi_position = findPositionForPOI(tile_point, our_room);
     calculateRouteToPoint(poi_position);
   }
   else
   {
-    point_of_interest_tile = nullptr;
+      auto random_room = static_cast<unsigned long long int>(
+              rand() & static_cast<int>((*global_map->getRooms()).size()));
+      our_room = &(*global_map->getRooms())[random_room];
+      all_pois.clear();
+      getAllPOIInRoom(&all_pois, our_room, true);
+      auto random_index =
+              static_cast<unsigned long long>((rand() % (static_cast<int>(all_pois.size()))));
+      Point tile_point =
+              Point(all_pois[random_index]->getPositionX(), all_pois[random_index]->getPositionY());
+      point_of_interest_tile = all_pois[random_index];
+      poi_position = findPositionForPOI(tile_point, our_room);
+      calculateRouteToPoint(poi_position);
   }
 }
 
-/* Finds the position to stand on to access the point of interest */
-void Goon::findPositionForPOI(Point point, Room* room)
+/* Gets every point of interest in the given room and places it in the vector */
+void Goon::getAllPOIInRoom(std::vector<Tile *> *all_poi, Room* room, bool ignore_functionality)
 {
-  float tile_size = (*room->getTiles())[0].getWidth();
-
-  for (Tile& tile : *room->getTiles())
-  {
-    if (tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE)
+    for (Tile& tile : *room->getTiles())
     {
-      // Check to see if this tile matches the position of up, down, left or right of the POI
-      if ((tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE) &&
-          ((tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos - tile_size) ||
-           (tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos + tile_size) ||
-           (tile.getPositionX() == point.x_pos + tile_size && tile.getPositionY() == point.y_pos) ||
-           (tile.getPositionX() == point.x_pos - tile_size && tile.getPositionY() == point.y_pos)))
-      {
-        poi_position = Point(tile.getPositionX(), tile.getPositionY());
-      }
+        if (tile.hasSpecificPointOfInterest(point_of_interest::COMPUTER))
+        {
+            // If Goon is leaving the room, then they don't know if the other rooms POIs are functional
+            if(tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL || ignore_functionality)
+            {
+                all_poi->push_back(&tile);
+            }
+            else if(tile.getPointOfInterestState() == poi_state::POI_IS_BROKEN)
+            {
+                registerRepairRequest(&tile);
+            }
+        }
     }
-  }
 }
+

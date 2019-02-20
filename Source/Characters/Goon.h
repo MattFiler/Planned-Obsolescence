@@ -12,11 +12,12 @@ class Goon : public Character
   void update(double delta_time) override;
   void lockedDoorFound() override;
   void findNewPOI();
-  void findPositionForPOI(Point point, Room* room);
 
-  std::function<void(Point)> registerRepairRequest;
+  std::function<void(Tile*)> registerRepairRequest;
 
  private:
+  void getAllPOIInRoom(std::vector<Tile*>* all_poi, Room* room, bool ignore_functionality);
+
   Tile* point_of_interest_tile = nullptr;
   Point poi_position = Point(0, 0);
 
