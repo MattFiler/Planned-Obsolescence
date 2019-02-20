@@ -137,7 +137,8 @@ enum gauge_levels
 enum gauge_rates
 {
   PROJECT_TIMER = 1000,
-  POWER = 400
+  POWER = 400,
+  TOTAL_PROGRESS = 700 // Affected by productivity
 };
 
 // Game over definitions

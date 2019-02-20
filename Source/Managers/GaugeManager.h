@@ -26,6 +26,7 @@ class GaugeManager
  private:
   void decreaseProjectTimeRemaining(double dt_sec);
   void increasePlayerPower(double dt_sec);
+  void increaseProjectProgress(double dt_sec);
 
   PO_Gauges gauge_data; // Moved to static struct as event system is unlikely :(
 

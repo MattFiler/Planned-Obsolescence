@@ -120,7 +120,9 @@ add_executable(
         Source/UI/WorldInteractionPopup.cpp
         Source/UI/WorldInteractionPopup.h
         Source/UI/Cursor.cpp
-        Source/UI/Cursor.h Source/Managers/Gauges.h Source/Managers/Gauges.cpp)
+        Source/UI/Cursor.h
+        Source/Managers/Gauges.h
+        Source/Managers/Gauges.cpp)
 
 ## library includes
 target_include_directories(
