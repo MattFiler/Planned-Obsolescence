@@ -345,15 +345,18 @@ bool CharacterManager::clickedCharacterCheck(CharacterArray character,
 /* Registers a repair request with the technician with the shortest queue */
 void CharacterManager::registerRepairRequest(Tile* tile)
 {
-    if(tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN) {
-        int index = 0;
-        unsigned long long int shortest_queue = 1000;
-        for (int i = 0; i < technician_count; i++) {
-            if (technician_instances[i]->getRepairQueueLength() < shortest_queue) {
-                index = i;
-            }
-        }
-        technician_instances[index]->addRepairRequest(tile);
-        tile->setPointOfInterestState(poi_state::POI_REPAIR_PENDING);
+  if (tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
+  {
+    int index = 0;
+    unsigned long long int shortest_queue = 1000;
+    for (int i = 0; i < technician_count; i++)
+    {
+      if (technician_instances[i]->getRepairQueueLength() < shortest_queue)
+      {
+        index = i;
+      }
     }
+    technician_instances[index]->addRepairRequest(tile);
+    tile->setPointOfInterestState(poi_state::POI_REPAIR_PENDING);
+  }
 }

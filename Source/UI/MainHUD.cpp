@@ -33,6 +33,9 @@ MainHUD::~MainHUD()
 
   delete gauge_timeremaining;
   gauge_timeremaining = nullptr;
+
+  delete gauge_playerpower;
+  gauge_playerpower = nullptr;
 }
 
 void MainHUD::render(double delta_time)

@@ -36,7 +36,7 @@ class WorldInteractionPopup : public UI
 
   Tile* referenced_tile = nullptr;
 
-  PO_Gauges gauge_data;
+  PO_Gauges gauge_data = PO_Gauges();
 
   GetLocalisedString localiser;
 

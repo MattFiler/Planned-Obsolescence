@@ -80,14 +80,14 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
     Security* new_guard = new Security();
     character_manager.spawnCharacter(new_guard);
     new_guard->setSpawnPosition(200, 200);
-    //std::vector<Point>* route = new_guard->getPatrolRoute();
-    //route->push_back(Point(game_map.getMapData()->rooms_x))
+    // std::vector<Point>* route = new_guard->getPatrolRoute();
+    // route->push_back(Point(game_map.getMapData()->rooms_x))
   }
 
-  if(character_manager.canSpawn(character_type::TECHNICIAN))
+  if (character_manager.canSpawn(character_type::TECHNICIAN))
   {
-      LabTechnician* new_tech = new LabTechnician();
-      character_manager.spawnCharacter(new_tech);
+    LabTechnician* new_tech = new LabTechnician();
+    character_manager.spawnCharacter(new_tech);
   }
 }
 
