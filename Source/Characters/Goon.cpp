@@ -40,7 +40,7 @@ void Goon::update(double delta_time)
     }
   }
   time_since_last_interval += delta_time;
-  if (time_since_last_interval > productivity_interval)
+  if (time_since_last_interval > gauge_rates::GOON_PRODUCTIVTIY)
   {
     time_since_last_interval = 0;
     productivity_average[average_index] = time_working;
@@ -57,7 +57,8 @@ void Goon::update(double delta_time)
     {
       total += productivity_average[i];
     }
-    config.internal_gauge = static_cast<float>((total / 20) / (productivity_interval / 100));
+    config.internal_gauge =
+      static_cast<float>((total / 20) / (gauge_rates::GOON_PRODUCTIVTIY / 100));
   }
 }
 
