@@ -846,12 +846,12 @@
       <tile name="cooker" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/kitchen_cooker_015121.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="true" door="false" description="poi_cooker" alt_sprite="C:\Users\Szymon\Desktop\Project\ex-machina-planned-obsolescence\data\TILES\Assets\POI\Broken_cooker.png" />
+        <points_of_interest computer="true" door="false" description="poi_cooker" alt_sprite="data/TILES/BREAK ROOM/Broken_cooker.png" />
       </tile>
       <tile name="fridge" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/kitchen_fridge_015149.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="true" door="false" description="poi_fridge" alt_sprite="C:\Users\Szymon\Desktop\Project\ex-machina-planned-obsolescence\data\TILES\Assets\POI\Broken_fridge.png" />
+        <points_of_interest computer="true" door="false" description="poi_fridge" alt_sprite="data/TILES/BREAK ROOM/Broken_fridge.png" />
       </tile>
       <tile name="kitchen_sink" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Kitchen_sink_091755.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />

@@ -905,18 +905,6 @@
     "poi_sprite": "data/TILES/BREAK ROOM/open_side_door_alt_010518.png",
     "poi_desc": "poi_door"
   },
-  "cooker": {
-    "sprite": "data/TILES/BREAK ROOM/kitchen_cooker_015121.png",
-    "poi_computer": true,
-    "poi_sprite": "data/TILES/BREAK ROOM/kitchen_cooker_alt_015121.png",
-    "poi_desc": "poi_cooker"
-  },
-  "fridge": {
-    "sprite": "data/TILES/BREAK ROOM/kitchen_fridge_015149.png",
-    "poi_computer": true,
-    "poi_sprite": "data/TILES/BREAK ROOM/kitchen_fridge_alt_015149.png",
-    "poi_desc": "poi_fridge"
-  },
   "computer": {
     "sprite": "data/TILES/SECURITY/Computer_and_desk_090959.png",
     "poi_computer": true,
@@ -964,5 +952,66 @@
     "poi_computer": true,
     "poi_sprite": "data/TILES/SERVER/Broken_computer_left_alt_091403.png",
     "poi_desc": "poi_computer"
+  },
+  "toilet_tile": {
+    "sprite": "data/TILES/TOILET/toilet_091514.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/TOILET/Broken_toilet_alt_091514.png",
+    "poi_desc": "poi_toilet"
+  },
+  "shower_tile": {
+    "sprite": "data/TILES/TOILET/Shower_091547.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/TOILET/Broken_shower_alt_091547.png",
+    "poi_desc": "poi_shower"
+  },
+  "Toilet_sink": {
+    "sprite": "data/TILES/TOILET/Toilet_sink_091646.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/TOILET/Broken_sink_toilet_alt_091646.png",
+    "poi_desc": "poi_sink"
+  },
+  "cooker": {
+    "sprite": "data/TILES/BREAK ROOM/kitchen_cooker_015121.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/Broken_cooker.png",
+    "poi_desc": "poi_cooker"
+  },
+  "fridge": {
+    "sprite": "data/TILES/BREAK ROOM/kitchen_fridge_015149.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/Broken_fridge.png",
+    "poi_desc": "poi_fridge"
+  },
+  "kitchen_sink": {
+    "sprite": "data/TILES/BREAK ROOM/Kitchen_sink_091755.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/Broken_sink_kitchen_alt_091755.png",
+    "poi_desc": "poi_sink"
+  },
+  "server_sprite": {
+    "sprite": "data/TILES/SERVER/Server_091841.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/SERVER/Broken_Server_alt_091841.png",
+    "poi_desc": "poi_server"
+  },
+  "printer_boss": {
+    "sprite": "data/TILES/BOSS/Printer_and_desk_091927.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BOSS/Broken_printer_alt_091927.png",
+    "poi_desc": "poi_bookcase"
+  },
+  "printer_lab": {
+    "sprite": "data/TILES/LAB/Printer_and_desk_091959.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/LAB/Broken_printer_alt_091959.png",
+    "poi_desc": "poi_bookcase"
+  },
+  "UD_red": {
+    "sprite": "data/TILES/BOSS/Red_floor_092251.png",
+    "available_exits": {
+      "up": true,
+      "down": true
+    }
   }
 }

@@ -59,7 +59,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_1_091404.png"
+    "sprite": "data/ROOMS/DEMO_1_094819.png"
   },
   "DEMO_2": {
     "tiles": [
@@ -89,7 +89,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_2_091404.png"
+    "sprite": "data/ROOMS/DEMO_2_094819.png"
   },
   "DEMO_3": {
     "tiles": [
@@ -119,7 +119,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_3_091404.png"
+    "sprite": "data/ROOMS/DEMO_3_094819.png"
   },
   "DEMO_4": {
     "tiles": [
@@ -149,7 +149,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_4_091404.png"
+    "sprite": "data/ROOMS/DEMO_4_094819.png"
   },
   "Security": {
     "tiles": [
@@ -179,7 +179,7 @@
       "bottom_wall",
       "bottom_right_wall"
     ],
-    "sprite": "data/ROOMS/Security_091404.png"
+    "sprite": "data/ROOMS/Security_094819.png"
   },
   "corridor": {
     "tile_w": 2,
@@ -195,7 +195,7 @@
       "RUD_floor",
       "LUD_floor"
     ],
-    "sprite": "data/ROOMS/corridor_091404.png"
+    "sprite": "data/ROOMS/corridor_094819.png"
   },
   "IT_Tech": {
     "tiles": [
@@ -225,37 +225,7 @@
       "bottom_green",
       "bottom_right_green"
     ],
-    "sprite": "data/ROOMS/IT_Tech_091404.png"
-  },
-  "Boss_Office": {
-    "tiles": [
-      "top_left_red",
-      "top_red",
-      "door_up_boss",
-      "top_red",
-      "top_right_red",
-      "left_red",
-      "computer_boss",
-      "RUD_red",
-      "LD_red",
-      "right_red",
-      "left_red",
-      "RD_red",
-      "ALL_red",
-      "LUD_red",
-      "right_red",
-      "left_red",
-      "RU_red",
-      "ALL_red",
-      "LU_red",
-      "right_red",
-      "bottom_left_red",
-      "bottom_red",
-      "door_up_boss",
-      "bottom_red",
-      "bottom_right_red"
-    ],
-    "sprite": "data/ROOMS/Boss_Office_091404.png"
+    "sprite": "data/ROOMS/IT_Tech_094819.png"
   },
   "Server_room": {
     "tiles": [
@@ -285,7 +255,7 @@
       "bottom_grey",
       "bottom_right_grey"
     ],
-    "sprite": "data/ROOMS/Server_room_091404.png"
+    "sprite": "data/ROOMS/Server_room_094819.png"
   },
   "Toilet_room": {
     "tiles": [
@@ -315,7 +285,7 @@
       "bottom_toilet",
       "bottom_right_toilet"
     ],
-    "sprite": "data/ROOMS/Toilet_room_091404.png"
+    "sprite": "data/ROOMS/Toilet_room_094819.png"
   },
   "Lab_ALL_exits": {
     "tiles": [
@@ -345,7 +315,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_ALL_exits_091404.png"
+    "sprite": "data/ROOMS/Lab_ALL_exits_094819.png"
   },
   "Lunch_room": {
     "tile_w": 10,
@@ -401,7 +371,7 @@
       "bottom_yellow",
       "bottom_right_yellow"
     ],
-    "sprite": "data/ROOMS/Lunch_room_091404.png"
+    "sprite": "data/ROOMS/Lunch_room_094819.png"
   },
   "Toilet_room_right_exit": {
     "tiles": [
@@ -431,7 +401,7 @@
       "bottom_toilet",
       "bottom_right_toilet"
     ],
-    "sprite": "data/ROOMS/Toilet_room_right_exit_091404.png"
+    "sprite": "data/ROOMS/Toilet_room_right_exit_094819.png"
   },
   "Toilet_room_bottom_exit": {
     "tiles": [
@@ -461,7 +431,7 @@
       "bottom_toilet",
       "bottom_right_toilet"
     ],
-    "sprite": "data/ROOMS/Toilet_room_bottom_exit_091404.png"
+    "sprite": "data/ROOMS/Toilet_room_bottom_exit_094819.png"
   },
   "lab_right_exit": {
     "tiles": [
@@ -491,7 +461,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/lab_right_exit_091404.png"
+    "sprite": "data/ROOMS/lab_right_exit_094819.png"
   },
   "lab_UL_exits": {
     "tiles": [
@@ -521,7 +491,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/lab_UL_exits_091404.png"
+    "sprite": "data/ROOMS/lab_UL_exits_094819.png"
   },
   "Lab_LDR_exits": {
     "tiles": [
@@ -551,7 +521,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LDR_exits_091404.png"
+    "sprite": "data/ROOMS/Lab_LDR_exits_094819.png"
   },
   "Lab_LUR_exits": {
     "tiles": [
@@ -581,7 +551,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LUR_exits_091404.png"
+    "sprite": "data/ROOMS/Lab_LUR_exits_094819.png"
   },
   "Lab_LUD_exits": {
     "tiles": [
@@ -611,7 +581,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LUD_exits_091404.png"
+    "sprite": "data/ROOMS/Lab_LUD_exits_094819.png"
   },
   "Lab_LD_exits": {
     "tiles": [
@@ -641,7 +611,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LD_exits_091404.png"
+    "sprite": "data/ROOMS/Lab_LD_exits_094819.png"
   },
   "Lab_LR_exits": {
     "tiles": [
@@ -671,37 +641,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LR_exits_091404.png"
-  },
-  "Kitchen_right_half": {
-    "tiles": [
-      "top_yellow",
-      "top_yellow",
-      "door_up_yellow",
-      "top_yellow",
-      "top_right_yellow",
-      "fridge",
-      "fridge",
-      "RUD_yellow",
-      "LD_yellow",
-      "right_yellow",
-      "LRD_yellow",
-      "LRD_yellow",
-      "ALL_yellow",
-      "ALL_yellow",
-      "door_side_yellow",
-      "LRU_yellow",
-      "LRU_yellow",
-      "ALL_yellow",
-      "LU_yellow",
-      "right_yellow",
-      "bottom_yellow",
-      "bottom_yellow",
-      "door_up_yellow",
-      "bottom_yellow",
-      "bottom_right_yellow"
-    ],
-    "sprite": "data/ROOMS/Kitchen_right_half_091404.png"
+    "sprite": "data/ROOMS/Lab_LR_exits_094819.png"
   },
   "Kitchen_left_half": {
     "tiles": [
@@ -731,6 +671,66 @@
       "bottom_yellow",
       "bottom_yellow"
     ],
-    "sprite": "data/ROOMS/Kitchen_left_half_091404.png"
+    "sprite": "data/ROOMS/Kitchen_left_half_094819.png"
+  },
+  "Kitchen_right_half": {
+    "tiles": [
+      "top_yellow",
+      "top_yellow",
+      "door_up_yellow",
+      "top_yellow",
+      "top_right_yellow",
+      "fridge",
+      "kitchen_sink",
+      "RUD_yellow",
+      "LD_yellow",
+      "right_yellow",
+      "LRD_yellow",
+      "LRD_yellow",
+      "ALL_yellow",
+      "ALL_yellow",
+      "door_side_yellow",
+      "LRU_yellow",
+      "LRU_yellow",
+      "ALL_yellow",
+      "LU_yellow",
+      "right_yellow",
+      "bottom_yellow",
+      "bottom_yellow",
+      "door_up_yellow",
+      "bottom_yellow",
+      "bottom_right_yellow"
+    ],
+    "sprite": "data/ROOMS/Kitchen_right_half_094819.png"
+  },
+  "Boss_Office": {
+    "tiles": [
+      "top_left_red",
+      "top_red",
+      "door_up_boss",
+      "top_red",
+      "top_right_red",
+      "left_red",
+      "computer_boss",
+      "UD_red",
+      "printer_boss",
+      "right_red",
+      "left_red",
+      "RD_red",
+      "ALL_red",
+      "LD_red",
+      "right_red",
+      "left_red",
+      "RU_red",
+      "ALL_red",
+      "LU_red",
+      "right_red",
+      "bottom_left_red",
+      "bottom_red",
+      "door_up_boss",
+      "bottom_red",
+      "bottom_right_red"
+    ],
+    "sprite": "data/ROOMS/Boss_Office_094819.png"
   }
 }
