@@ -24,21 +24,21 @@ Point Security::getMiddleTilePosition(Room& this_room)
 
 void Security::update(double delta_time)
 {
-    if(!updatePosition(delta_time))
+  if (!updatePosition(delta_time))
+  {
+    patrol_index++;
+    if (patrol_index > patrol_route.size() - 1)
     {
-        patrol_index++;
-        if(patrol_index > patrol_route.size()-1)
-        {
-            patrol_index = 0;
-        }
-        calculateRouteToPoint(patrol_route[patrol_index]);
+      patrol_index = 0;
     }
+    calculateRouteToPoint(patrol_route[patrol_index]);
+  }
 }
 
 void Security::lockedDoorFound()
 {
-    // Re-calculate the route
-    current_route[route_index + 1]->pathable = false;
-    registerRepairRequest(global_map->getTileAtPoint(current_route[route_index + 1]->position));
-    calculateRouteToPoint(current_route[current_route.size() - 1]->position);
+  // Re-calculate the route
+  current_route[route_index + 1]->pathable = false;
+  registerRepairRequest(global_map->getTileAtPoint(current_route[route_index + 1]->position));
+  calculateRouteToPoint(current_route[current_route.size() - 1]->position);
 }

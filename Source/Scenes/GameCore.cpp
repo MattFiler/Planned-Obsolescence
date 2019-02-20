@@ -27,7 +27,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   spawnCharacters(renderer);
 
   // Create UI
-  ui_manager.createMainHUD();
+  ui_manager.createMainHUD(&character_manager);
 
   Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
                                    renderer,

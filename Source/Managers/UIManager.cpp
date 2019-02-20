@@ -61,7 +61,7 @@ void UIManager::addProgressBar(ProgressBar* new_progressbar)
 }
 
 /* Create main hud data element (we only have one of these) */
-void UIManager::createMainHUD()
+void UIManager::createMainHUD(CharacterManager* character_manager)
 {
   // Create "main hud" element - bottom right stats gauges
   main_hud_element = new MainHUD(renderer);
@@ -71,8 +71,8 @@ void UIManager::createMainHUD()
   game_cursor->setupCursor(renderer);
 
   // Initialise the bottom left interaction popups
-  initCharacterPopup();       // Character interaction
-  initPointOfInterestPopup(); // POI interaction
+  initCharacterPopup();                        // Character interaction
+  initPointOfInterestPopup(character_manager); // POI interaction
 }
 
 /* Initialise the character popup */
@@ -83,9 +83,9 @@ void UIManager::initCharacterPopup()
 }
 
 /* Initialise the poi interaction popup */
-void UIManager::initPointOfInterestPopup()
+void UIManager::initPointOfInterestPopup(CharacterManager* character_manager)
 {
-  poi_interaction_popup = new WorldInteractionPopup(renderer);
+  poi_interaction_popup = new WorldInteractionPopup(renderer, character_manager);
   poi_interaction_popup->setActive(false);
 }
 

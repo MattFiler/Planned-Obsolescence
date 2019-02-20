@@ -1,6 +1,9 @@
 #include "WorldInteractionPopup.h"
+#include "../Managers/CharacterManager.h"
 
-WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend) : UI(Point(0, 0), rend)
+WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend,
+                                             CharacterManager* character_manager) :
+  UI(Point(0, 0), rend)
 {
   // Make background sprite
   background_sprite = createSprite("data/UI/IN_GAME_UI/BOTTOM_LEFT_BG.png");
@@ -26,7 +29,7 @@ WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend) : UI(Point(0,
                                       0.5f,
                                       Point(8, 7),
                                       ASGE::COLOURS::BLACK);
-  poi_interaction_button->click_function = [popup_instance] {
+  poi_interaction_button->click_function = [popup_instance, character_manager] {
     // If we have enough power to perform action, and it's not already broken/inuse - break it!
     if (popup_instance->referenced_tile->getPointOfInterestState() ==
           poi_state::POI_IS_FUNCTIONAL &&
@@ -34,6 +37,8 @@ WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend) : UI(Point(0,
     {
       popup_instance->referenced_tile->setPointOfInterestState(poi_state::POI_IS_BROKEN);
       popup_instance->gauge_data.player_power -= gauge_levels::GAUGE_HALF;
+      character_manager->sabotageAtPoint(Point(popup_instance->referenced_tile->getPositionX(),
+                                               popup_instance->referenced_tile->getPositionY()));
     }
   };
 }
