@@ -27,7 +27,14 @@ WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend) : UI(Point(0,
                                       Point(7, 7),
                                       ASGE::COLOURS::BLACK);
   poi_interaction_button->click_function = [popup_instance] {
-    popup_instance->referenced_tile->setPointOfInterestState(poi_state::POI_IS_BROKEN);
+    // If we have enough power to perform action, and it's not already broken/inuse - break it!
+    if (popup_instance->referenced_tile->getPointOfInterestState() ==
+          poi_state::POI_IS_FUNCTIONAL &&
+        popup_instance->gauge_data.player_power >= gauge_levels::GAUGE_HALF)
+    {
+      popup_instance->referenced_tile->setPointOfInterestState(poi_state::POI_IS_BROKEN);
+      popup_instance->gauge_data.player_power -= gauge_levels::GAUGE_HALF;
+    }
   };
 }
 
@@ -91,21 +98,25 @@ void WorldInteractionPopup::updateTileDynamicData()
     {
       case poi_state::POI_IS_FUNCTIONAL:
       {
+        poi_interaction_button->setActive(true);
         poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hackable");
         break;
       }
       case poi_state::POI_IS_BROKEN:
       {
+        poi_interaction_button->setActive(false);
         poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hacked");
         break;
       }
       case poi_state::POI_IS_BEING_FIXED:
       {
+        poi_interaction_button->setActive(false);
         poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_being_fixed");
         break;
       }
       default:
       {
+        poi_interaction_button->setActive(false);
         poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_inuse");
         break;
       }

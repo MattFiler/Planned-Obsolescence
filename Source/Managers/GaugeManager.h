@@ -2,6 +2,7 @@
 #define PLANNEDOBSOLESCENCE_UNIVERSALGAUGE_H
 
 #include "CharacterManager.h"
+#include "Gauges.h"
 #include "UIManager.h"
 
 class GaugeManager
@@ -26,9 +27,7 @@ class GaugeManager
   void decreaseProjectTimeRemaining(double dt_sec);
   void increasePlayerPower(double dt_sec);
 
-  float project_progress = gauge_levels::GAUGE_EMPTY;
-  float project_time_remaining = gauge_levels::GAUGE_FULL;
-  float player_power = gauge_levels::GAUGE_FULL;
+  PO_Gauges gauge_data; // Moved to static struct as event system is unlikely :(
 
   UIManager* ui_manager;
   CharacterManager* character_manager;

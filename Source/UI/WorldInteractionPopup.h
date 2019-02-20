@@ -1,6 +1,7 @@
 #ifndef PLANNEDOBSOLESCENCE_WORLDINTERACTIONPOPUP_H
 #define PLANNEDOBSOLESCENCE_WORLDINTERACTIONPOPUP_H
 
+#include "../Managers/Gauges.h"
 #include "../Map/Tile.h"
 #include "Button.h"
 #include "GetLocalisedString.h"
@@ -34,6 +35,8 @@ class WorldInteractionPopup : public UI
   Button* poi_interaction_button = nullptr;
 
   Tile* referenced_tile = nullptr;
+
+  PO_Gauges gauge_data;
 
   GetLocalisedString localiser;
 

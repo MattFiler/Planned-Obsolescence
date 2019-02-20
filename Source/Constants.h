@@ -129,6 +129,7 @@ enum hud_gauge_types
 enum gauge_levels
 {
   GAUGE_FULL = 100,
+  GAUGE_HALF = 50,
   GAUGE_EMPTY = 0
 };
 
