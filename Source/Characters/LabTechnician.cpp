@@ -40,4 +40,10 @@ void LabTechnician::lockedDoorFound()
   // Add fixing this door to the front of the queue
   broken_pois.push_front(global_map->getTileAtPoint(current_route[route_index + 1]->position));
   repairing = true;
+  float x_diff = current_route[route_index + 1]->position.x_pos - position.x_pos;
+  float y_diff = current_route[route_index + 1]->position.y_pos - position.y_pos;
+  direction.set(x_diff, y_diff);
+  direction.normalise();
+  distance_to_next_node =
+          Point::distanceBetween(position, current_route[route_index + 1]->position);
 }
