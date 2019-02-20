@@ -54,11 +54,12 @@ enum point_of_interest
 // POI state (affected by interaction)
 enum poi_state
 {
-  POI_IS_BROKEN,
-  POI_IS_FUNCTIONAL,
-  POI_IS_BEING_USED_BY_GOON,
-  POI_IS_BEING_FIXED,
-  UNINITIALISED_POI
+  POI_IS_BROKEN,             // POI is broken and unused
+  POI_IS_FUNCTIONAL,         // POI is functional and unused
+  POI_IS_BEING_USED_BY_GOON, // POI is in use, can't interact
+  POI_REPAIR_PENDING,        // A repair is queued up
+  POI_IS_BEING_FIXED,        // POI is being repaired by technician
+  UNINITIALISED_POI          // Tile is not a POI
 };
 
 // Accessibility - can we traverse this tile?

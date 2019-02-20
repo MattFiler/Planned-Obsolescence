@@ -113,22 +113,25 @@ void WorldInteractionPopup::updateTileDynamicData()
         }
         break;
       }
-      case poi_state::POI_IS_BROKEN:
+      case poi_state::POI_IS_BEING_USED_BY_GOON:
       {
+        // In use by goon, we cannot hack
         poi_interaction_button->setActive(false);
-        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hacked");
+        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_inuse");
         break;
       }
       case poi_state::POI_IS_BEING_FIXED:
       {
+        // being fixed by technician, we cannot hack
         poi_interaction_button->setActive(false);
         poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_being_fixed");
         break;
       }
       default:
       {
+        // Either queued to be fixed or we've broken it and it is idle
         poi_interaction_button->setActive(false);
-        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_inuse");
+        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hacked");
         break;
       }
     }
