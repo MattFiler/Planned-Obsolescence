@@ -24,6 +24,14 @@ Point Security::getMiddleTilePosition(Room& this_room)
 
 void Security::update(double delta_time)
 {
+    if(config.internal_gauge > 0)
+    {
+        config.internal_gauge -= (gauge_rates::SECURITY_RESET_RATE * (static_cast<float>(delta_time)/1000));
+        if (config.internal_gauge < 0) {
+            config.internal_gauge = 0;
+        }
+    }
+
   if (!updatePosition(delta_time))
   {
     patrol_index++;

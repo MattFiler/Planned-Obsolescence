@@ -2,11 +2,31 @@
 
 void LabTechnician::update(double delta_time)
 {
+  if (position == idle_position)
+  {
+    // Decay stress while at idle position
+    config.internal_gauge -= gauge_rates ::TECHIE_STRESS_RELEIF * (static_cast<float>(delta_time)/1000);
+    if (config.internal_gauge < 0)
+    {
+      config.internal_gauge = 0;
+    }
+  }
+  else
+  {
+    float multiplier = 1 + (gauge_rates ::TECHIE_STRESS_QUEUE_MULTIPLIER * static_cast<float>(broken_pois.size()));
+    config.internal_gauge += (gauge_rates ::TECHIE_STRESS_GAIN * multiplier) * (static_cast<float>(delta_time)/1000);
+    if (config.internal_gauge > 100)
+    {
+      config.internal_gauge = 100;
+    }
+  }
   if (repairing)
   {
     time_elapsed += delta_time;
     broken_pois.front()->setPointOfInterestState(poi_state::POI_IS_BEING_FIXED);
-    if (time_elapsed > repair_time)
+    auto adjusted_time = static_cast<float>(repair_time);
+    adjusted_time *= 1 + ((config.internal_gauge / 100) * gauge_rates::TECHIE_STRESS_SLOW);
+    if (time_elapsed > adjusted_time)
     {
       time_elapsed = 0;
       repairing = false;
