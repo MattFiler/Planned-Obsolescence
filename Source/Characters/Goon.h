@@ -2,15 +2,19 @@
 #define PO_GOONDEF
 
 #include "Character.h"
+#include <functional>
 
 class Goon : public Character
 {
  public:
-  Goon() : Character(character_type::GOON){};
+  Goon();
 
   void update(double delta_time) override;
+  void lockedDoorFound() override;
   void findNewPOI();
   void findPositionForPOI(Point point, Room* room);
+
+  std::function<void(Point)> registerRepairRequest;
 
  private:
   Tile* point_of_interest_tile = nullptr;

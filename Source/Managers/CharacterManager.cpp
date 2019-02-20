@@ -103,6 +103,9 @@ bool CharacterManager::spawnCharacter(Goon* new_goon)
     goon_instances[goon_count]->wake(renderer);
     goon_instances[goon_count]->setCharacterID(goon_count);
     goon_instances[goon_count]->generatePathfindingMap(game_map);
+    goon_instances[goon_count]->registerRepairRequest = [&](Point point) {
+      this->registerRepairRequest(point);
+    };
 
     goon_count++;
     return true;
@@ -337,4 +340,19 @@ bool CharacterManager::clickedCharacterCheck(CharacterArray character,
     }
   }
   return false;
+}
+
+/* Registers a repair request with the technician with the shortest queue */
+void CharacterManager::registerRepairRequest(Point point)
+{
+  int index = 0;
+  unsigned long long int shortest_queue = 1000;
+  for (int i = 0; i < technician_count; i++)
+  {
+    if (technician_instances[i]->getRepairQueueLength() < shortest_queue)
+    {
+      index = i;
+    }
+  }
+  technician_instances[index]->addRepairRequest(point);
 }
