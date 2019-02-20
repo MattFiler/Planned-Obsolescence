@@ -8,19 +8,20 @@ class Security : public Character
 {
  public:
   Security() : Character(character_type::SECURITY){};
-  ~Security() override;
+  ~Security() override = default;
 
-  void setMapData(GameMap* map) { game_map = map; };
-  std::vector<Point>* getPatrolRoute() { return &patrol_route; };
+  void update(double delta_time) override;
+  void lockedDoorFound() override;
 
   void setupPatrolRoute();
+
+  std::function<void(Tile*)> registerRepairRequest;
 
  private:
   Point getMiddleTilePosition(Room& this_room);
 
   std::vector<Point> patrol_route;
-
-  GameMap* game_map = nullptr;
+  unsigned long long int patrol_index = 0;
 };
 
 #endif

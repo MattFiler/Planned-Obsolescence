@@ -151,9 +151,11 @@ bool CharacterManager::spawnCharacter(Security* new_security)
     security_instances[security_count] = new_security;
     security_instances[security_count]->wake(renderer);
     security_instances[security_count]->setCharacterID(security_count);
-    security_instances[security_count]->setMapData(game_map);
     security_instances[security_count]->generatePathfindingMap(game_map);
-
+    security_instances[security_count]->setupPatrolRoute();
+    security_instances[security_count]->registerRepairRequest = [&](Tile* tile) {
+        this->registerRepairRequest(tile);
+    };
     security_count++;
     return true;
   }
