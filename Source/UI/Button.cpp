@@ -60,6 +60,7 @@ bool Button::checkForClick(Point click_location)
     sprite->setCurrentSprite(1);
     return true;
   }
+  sprite->setCurrentSprite(0);
   return false;
 }
 

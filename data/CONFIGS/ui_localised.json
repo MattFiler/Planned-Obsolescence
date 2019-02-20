@@ -35,6 +35,8 @@
 	"poi_fridge": "FRIDGE",
 	"poi_cooker": "COOKER",
 	
+	"poi_interact_door": "CLOSE",
+	
 	"placeholder_text": "PLACEHOLDER"
   },
   "FRENCH": {

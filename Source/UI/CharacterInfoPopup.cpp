@@ -9,7 +9,7 @@ CharacterInfoPopup::CharacterInfoPopup(ASGE::Renderer* rend) : UI(Point(0, 0), r
   close_button = new Button(Point(461, 606),
                             rend,
                             "data/UI/IN_GAME_UI/CHARACTER_POPUP_CLOSE_BUTTON.png",
-                            "data/UI/IN_GAME_UI/CHARACTER_POPUP_CLOSE_BUTTON.png",
+                            "data/UI/IN_GAME_UI/CHARACTER_POPUP_CLOSE_BUTTON_HOVER.png",
                             19,
                             22);
   CharacterInfoPopup* myself = this;

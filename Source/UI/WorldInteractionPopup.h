@@ -29,7 +29,7 @@ class WorldInteractionPopup : public UI
 
   ScaledSpriteArray* background_sprite = nullptr;
   Button* close_button = nullptr;
-  HudGaugeData* progress_bar = nullptr;
+  Button* poi_interaction_button = nullptr;
 
   GetLocalisedString localiser;
 
