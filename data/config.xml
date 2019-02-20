@@ -818,6 +818,26 @@
         <valid_exits left="false" right="false" up="false" down="false" />
         <points_of_interest computer="true" door="false" description="poi_fridge" alt_sprite="data/TILES/BREAK ROOM/kitchen_fridge_alt_015149.png" />
       </tile>
+      <tile name="computer_left_server" set="SERVER" sprite="data/TILES/SERVER/left_computer_021724.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/SERVER/left_computer_alt_021724.png" />
+      </tile>
+      <tile name="computer_left_lab" set="LAB" sprite="data/TILES/LAB/left_computer_024341.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/LAB/left_computer_alt_024341.png" />
+      </tile>
+      <tile name="computer_right_lab" set="LAB" sprite="data/TILES/LAB/right_computer_024429.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/LAB/right_computer_alt_024429.png" />
+      </tile>
+      <tile name="computer_down_lab" set="LAB" sprite="data/TILES/LAB/down_computer_024506.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/LAB/down_computer_alt_024506.png" />
+      </tile>
     </tiles>
   </tile_config>
   <room_config>
@@ -1039,6 +1059,437 @@
           <tile name="bottom_right_green" />
         </tiles>
       </room>
+      <room name="Boss_Office" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_red" />
+          <tile name="top_red" />
+          <tile name="door_up_boss" />
+          <tile name="top_red" />
+          <tile name="top_right_red" />
+          <tile name="left_red" />
+          <tile name="computer_boss" />
+          <tile name="RUD_red" />
+          <tile name="LD_red" />
+          <tile name="right_red" />
+          <tile name="left_red" />
+          <tile name="RD_red" />
+          <tile name="ALL_red" />
+          <tile name="LUD_red" />
+          <tile name="right_red" />
+          <tile name="left_red" />
+          <tile name="RU_red" />
+          <tile name="ALL_red" />
+          <tile name="LU_red" />
+          <tile name="right_red" />
+          <tile name="bottom_left_red" />
+          <tile name="bottom_red" />
+          <tile name="door_up_boss" />
+          <tile name="bottom_red" />
+          <tile name="bottom_right_red" />
+        </tiles>
+      </room>
+      <room name="Server_room" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_grey" />
+          <tile name="top_grey" />
+          <tile name="door_up_server" />
+          <tile name="top_grey" />
+          <tile name="top_right_grey" />
+          <tile name="left_grey" />
+          <tile name="computer_left_server" />
+          <tile name="RUD_grey" />
+          <tile name="LD_grey" />
+          <tile name="right_grey" />
+          <tile name="left_grey" />
+          <tile name="computer_left_server" />
+          <tile name="RUD_grey" />
+          <tile name="ALL_grey" />
+          <tile name="door_side_server" />
+          <tile name="left_grey" />
+          <tile name="computer_left_server" />
+          <tile name="RU_grey" />
+          <tile name="LU_grey" />
+          <tile name="right_grey" />
+          <tile name="bottom_left_grey" />
+          <tile name="bottom_grey" />
+          <tile name="bottom_grey" />
+          <tile name="bottom_grey" />
+          <tile name="bottom_right_grey" />
+        </tiles>
+      </room>
+      <room name="Toilet_room" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_toilet" />
+          <tile name="top_toilet" />
+          <tile name="top_toilet" />
+          <tile name="top_toilet" />
+          <tile name="top_right_toilet" />
+          <tile name="left_toilet" />
+          <tile name="RD_toilet" />
+          <tile name="LRD_toilet" />
+          <tile name="LD_toilet" />
+          <tile name="right_toilet" />
+          <tile name="left_toilet" />
+          <tile name="RUD_toilet" />
+          <tile name="ALL_toilet" />
+          <tile name="LUD_toilet" />
+          <tile name="right_toilet" />
+          <tile name="left_toilet" />
+          <tile name="RU_toilet" />
+          <tile name="LRU_toilet" />
+          <tile name="LU_toilet" />
+          <tile name="right_toilet" />
+          <tile name="bottom_left_toilet" />
+          <tile name="bottom_toilet" />
+          <tile name="door_up_toilet" />
+          <tile name="bottom_toilet" />
+          <tile name="bottom_right_toilet" />
+        </tiles>
+      </room>
+      <room name="Lab_ALL_exits" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_white" />
+          <tile name="top_white" />
+          <tile name="door_up_lab" />
+          <tile name="top_white" />
+          <tile name="top_right_white" />
+          <tile name="left_white" />
+          <tile name="Computer_lab" />
+          <tile name="RUD_white" />
+          <tile name="LD_white" />
+          <tile name="right_white" />
+          <tile name="door_side_lab" />
+          <tile name="LRD_white" />
+          <tile name="ALL_white" />
+          <tile name="LRU_white" />
+          <tile name="door_side_lab" />
+          <tile name="left_white" />
+          <tile name="RU_white" />
+          <tile name="LUD_white" />
+          <tile name="computer_down_lab" />
+          <tile name="right_white" />
+          <tile name="bottom_left_white" />
+          <tile name="bottom_white" />
+          <tile name="door_up_lab" />
+          <tile name="bottom_white" />
+          <tile name="bottom_right_white" />
+        </tiles>
+      </room>
+      <room name="Lunch_room" mandatory="false">
+        <tiles width="10" height="5">
+          <tile name="top_left_yellow" />
+          <tile name="top_yellow" />
+          <tile name="door_up_yellow" />
+          <tile name="top_yellow" />
+          <tile name="top_yellow" />
+          <tile name="top_yellow" />
+          <tile name="top_yellow" />
+          <tile name="door_up_yellow" />
+          <tile name="top_yellow" />
+          <tile name="top_right_yellow" />
+          <tile name="left_yellow" />
+          <tile name="RD_yellow" />
+          <tile name="LUD_yellow" />
+          <tile name="cooker" />
+          <tile name="cooker" />
+          <tile name="fridge" />
+          <tile name="fridge" />
+          <tile name="RD_yellow" />
+          <tile name="LD_yellow" />
+          <tile name="right_yellow" />
+          <tile name="door_side_yellow" />
+          <tile name="ALL_yellow" />
+          <tile name="ALL_yellow" />
+          <tile name="LRD_yellow" />
+          <tile name="LRD_yellow" />
+          <tile name="LRD_yellow" />
+          <tile name="LRD_yellow" />
+          <tile name="ALL_yellow" />
+          <tile name="ALL_yellow" />
+          <tile name="door_side_yellow" />
+          <tile name="left_yellow" />
+          <tile name="RU_yellow" />
+          <tile name="LRU_yellow" />
+          <tile name="LRU_yellow" />
+          <tile name="LRU_yellow" />
+          <tile name="LRU_yellow" />
+          <tile name="LRU_yellow" />
+          <tile name="ALL_yellow" />
+          <tile name="LU_yellow" />
+          <tile name="right_yellow" />
+          <tile name="bottom_left_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="door_up_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="bottom_right_yellow" />
+        </tiles>
+      </room>
+      <room name="Toilet_room_right_exit" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_toilet" />
+          <tile name="top_toilet" />
+          <tile name="top_toilet" />
+          <tile name="top_toilet" />
+          <tile name="top_right_toilet" />
+          <tile name="left_toilet" />
+          <tile name="RD_toilet" />
+          <tile name="LRD_toilet" />
+          <tile name="LD_toilet" />
+          <tile name="right_toilet" />
+          <tile name="left_toilet" />
+          <tile name="RUD_toilet" />
+          <tile name="ALL_toilet" />
+          <tile name="ALL_toilet" />
+          <tile name="door_side_toilet" />
+          <tile name="left_toilet" />
+          <tile name="RU_toilet" />
+          <tile name="LRU_toilet" />
+          <tile name="LU_toilet" />
+          <tile name="right_toilet" />
+          <tile name="bottom_left_toilet" />
+          <tile name="bottom_toilet" />
+          <tile name="bottom_toilet" />
+          <tile name="bottom_toilet" />
+          <tile name="bottom_right_toilet" />
+        </tiles>
+      </room>
+      <room name="Toilet_room_bottom_exit" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_toilet" />
+          <tile name="top_toilet" />
+          <tile name="top_toilet" />
+          <tile name="top_toilet" />
+          <tile name="top_right_toilet" />
+          <tile name="left_toilet" />
+          <tile name="RD_toilet" />
+          <tile name="LRD_toilet" />
+          <tile name="LD_toilet" />
+          <tile name="right_toilet" />
+          <tile name="left_toilet" />
+          <tile name="RUD_toilet" />
+          <tile name="ALL_toilet" />
+          <tile name="LUD_toilet" />
+          <tile name="right_toilet" />
+          <tile name="left_toilet" />
+          <tile name="RU_toilet" />
+          <tile name="ALL_toilet" />
+          <tile name="LU_toilet" />
+          <tile name="right_toilet" />
+          <tile name="bottom_left_toilet" />
+          <tile name="bottom_toilet" />
+          <tile name="door_up_toilet" />
+          <tile name="bottom_toilet" />
+          <tile name="bottom_right_toilet" />
+        </tiles>
+      </room>
+      <room name="lab_right_exit" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_right_white" />
+          <tile name="left_white" />
+          <tile name="computer_left_lab" />
+          <tile name="RD_white" />
+          <tile name="LD_white" />
+          <tile name="right_white" />
+          <tile name="left_white" />
+          <tile name="computer_left_lab" />
+          <tile name="RUD_white" />
+          <tile name="ALL_white" />
+          <tile name="door_up_lab" />
+          <tile name="left_white" />
+          <tile name="computer_left_lab" />
+          <tile name="RU_white" />
+          <tile name="LU_white" />
+          <tile name="right_white" />
+          <tile name="bottom_left_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_right_white" />
+        </tiles>
+      </room>
+      <room name="lab_UL_exits" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_white" />
+          <tile name="top_white" />
+          <tile name="door_up_lab" />
+          <tile name="top_white" />
+          <tile name="top_right_white" />
+          <tile name="left_white" />
+          <tile name="RD_white" />
+          <tile name="LUD_white" />
+          <tile name="computer_right_lab" />
+          <tile name="right_white" />
+          <tile name="door_side_lab" />
+          <tile name="LRU_white" />
+          <tile name="ALL_white" />
+          <tile name="LD_white" />
+          <tile name="right_white" />
+          <tile name="left_white" />
+          <tile name="computer_down_lab" />
+          <tile name="RU_white" />
+          <tile name="LU_white" />
+          <tile name="right_white" />
+          <tile name="bottom_left_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_right_white" />
+        </tiles>
+      </room>
+      <room name="Lab_LDR_exits" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_right_white" />
+          <tile name="left_white" />
+          <tile name="Computer_lab" />
+          <tile name="Computer_lab" />
+          <tile name="Computer_lab" />
+          <tile name="right_white" />
+          <tile name="door_side_lab" />
+          <tile name="LRD_white" />
+          <tile name="LRD_white" />
+          <tile name="LRD_white" />
+          <tile name="door_side_lab" />
+          <tile name="left_white" />
+          <tile name="RU_white" />
+          <tile name="ALL_white" />
+          <tile name="RU_white" />
+          <tile name="right_white" />
+          <tile name="bottom_left_white" />
+          <tile name="bottom_white" />
+          <tile name="door_up_lab" />
+          <tile name="bottom_white" />
+          <tile name="bottom_right_white" />
+        </tiles>
+      </room>
+      <room name="Lab_LUR_exits" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_white" />
+          <tile name="top_white" />
+          <tile name="door_up_lab" />
+          <tile name="top_white" />
+          <tile name="top_right_white" />
+          <tile name="left_white" />
+          <tile name="RD_white" />
+          <tile name="ALL_white" />
+          <tile name="LD_white" />
+          <tile name="right_white" />
+          <tile name="door_side_lab" />
+          <tile name="LRU_white" />
+          <tile name="LRU_white" />
+          <tile name="LRU_white" />
+          <tile name="door_side_lab" />
+          <tile name="left_white" />
+          <tile name="computer_down_lab" />
+          <tile name="computer_down_lab" />
+          <tile name="computer_down_lab" />
+          <tile name="right_white" />
+          <tile name="bottom_left_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_right_white" />
+        </tiles>
+      </room>
+      <room name="Lab_LUD_exits" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_white" />
+          <tile name="top_white" />
+          <tile name="door_up_lab" />
+          <tile name="top_white" />
+          <tile name="top_right_white" />
+          <tile name="left_white" />
+          <tile name="RD_white" />
+          <tile name="LUD_white" />
+          <tile name="computer_right_lab" />
+          <tile name="right_white" />
+          <tile name="door_side_lab" />
+          <tile name="ALL_white" />
+          <tile name="LUD_white" />
+          <tile name="computer_right_lab" />
+          <tile name="right_white" />
+          <tile name="left_white" />
+          <tile name="RU_white" />
+          <tile name="LUD_white" />
+          <tile name="computer_right_lab" />
+          <tile name="right_white" />
+          <tile name="bottom_left_white" />
+          <tile name="bottom_white" />
+          <tile name="door_up_lab" />
+          <tile name="bottom_white" />
+          <tile name="bottom_right_white" />
+        </tiles>
+      </room>
+      <room name="Lab_LD_exits" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_right_white" />
+          <tile name="left_white" />
+          <tile name="Computer_lab" />
+          <tile name="Computer_lab" />
+          <tile name="Computer_lab" />
+          <tile name="right_white" />
+          <tile name="door_side_lab" />
+          <tile name="LRD_white" />
+          <tile name="LRD_white" />
+          <tile name="LD_white" />
+          <tile name="right_white" />
+          <tile name="left_white" />
+          <tile name="RU_white" />
+          <tile name="ALL_white" />
+          <tile name="LU_white" />
+          <tile name="right_white" />
+          <tile name="bottom_left_white" />
+          <tile name="bottom_white" />
+          <tile name="door_up_lab" />
+          <tile name="bottom_white" />
+          <tile name="bottom_right_white" />
+        </tiles>
+      </room>
+      <room name="Lab_LR_exits" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_right_white" />
+          <tile name="left_white" />
+          <tile name="computer_left_lab" />
+          <tile name="RD_white" />
+          <tile name="LD_white" />
+          <tile name="right_white" />
+          <tile name="door_side_lab" />
+          <tile name="LRD_white" />
+          <tile name="ALL_white" />
+          <tile name="LRU_white" />
+          <tile name="door_side_lab" />
+          <tile name="left_white" />
+          <tile name="RU_white" />
+          <tile name="LU_white" />
+          <tile name="computer_right_lab" />
+          <tile name="right_white" />
+          <tile name="bottom_left_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_right_white" />
+        </tiles>
+      </room>
     </rooms>
   </room_config>
   <map_config>
@@ -1173,6 +1624,33 @@
       <room name="DEMO_1" />
       <room name="DEMO_1" />
       <room name="DEMO_1" />
+    </map>
+    <map name="Map1" mandatory="false" width="5" height="5">
+      <room name="lab_right_exit" />
+      <room name="Lab_LDR_exits" />
+      <room name="Lab_LDR_exits" />
+      <room name="Lab_LD_exits" />
+      <room name="Toilet_room_bottom_exit" />
+      <room name="Security" />
+      <room name="Lab_ALL_exits" />
+      <room name="Lab_ALL_exits" />
+      <room name="Lab_ALL_exits" />
+      <room name="Lab_LUD_exits" />
+      <room name="Server_room" />
+      <room name="Lab_LUD_exits" />
+      <room name="Lab_ALL_exits" />
+      <room name="Lab_LUD_exits" />
+      <room name="Boss_Office" />
+      <room name="Toilet_room_right_exit" />
+      <room name="IT_Tech" />
+      <room name="Lab_ALL_exits" />
+      <room name="Lab_ALL_exits" />
+      <room name="Lab_LUD_exits" />
+      <room name="lab_right_exit" />
+      <room name="Lab_LR_exits" />
+      <room name="Lab_LUR_exits" />
+      <room name="Lab_LUR_exits" />
+      <room name="lab_UL_exits" />
     </map>
   </map_config>
   <character_config>

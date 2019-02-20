@@ -940,5 +940,29 @@
     "poi_computer": true,
     "poi_sprite": "data/TILES/BREAK ROOM/kitchen_fridge_alt_015149.png",
     "poi_desc": "poi_fridge"
+  },
+  "computer_left_server": {
+    "sprite": "data/TILES/SERVER/left_computer_021724.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/SERVER/left_computer_alt_021724.png",
+    "poi_desc": "poi_computer"
+  },
+  "computer_left_lab": {
+    "sprite": "data/TILES/LAB/left_computer_024341.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/LAB/left_computer_alt_024341.png",
+    "poi_desc": "poi_computer"
+  },
+  "computer_right_lab": {
+    "sprite": "data/TILES/LAB/right_computer_024429.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/LAB/right_computer_alt_024429.png",
+    "poi_desc": "poi_computer"
+  },
+  "computer_down_lab": {
+    "sprite": "data/TILES/LAB/down_computer_024506.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/LAB/down_computer_alt_024506.png",
+    "poi_desc": "poi_computer"
   }
 }

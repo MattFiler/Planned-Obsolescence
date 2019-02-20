@@ -59,7 +59,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST2_015217.png"
+    "sprite": "data/MAPS/TEST2_034120.png"
   },
   "TEST3": {
     "rooms_h": 3,
@@ -80,7 +80,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST3_015217.png"
+    "sprite": "data/MAPS/TEST3_034120.png"
   },
   "TEST4": {
     "rooms_h": 3,
@@ -101,7 +101,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST4_015217.png"
+    "sprite": "data/MAPS/TEST4_034120.png"
   },
   "TEST5": {
     "rooms_h": 3,
@@ -122,7 +122,7 @@
       "DEMO_3",
       "DEMO_3"
     ],
-    "sprite": "data/MAPS/TEST5_015217.png"
+    "sprite": "data/MAPS/TEST5_034120.png"
   },
   "TEST1": {
     "rooms": [
@@ -152,6 +152,36 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST1_015217.png"
+    "sprite": "data/MAPS/TEST1_034120.png"
+  },
+  "Map1": {
+    "rooms": [
+      "lab_right_exit",
+      "Lab_LDR_exits",
+      "Lab_LDR_exits",
+      "Lab_LD_exits",
+      "Toilet_room_bottom_exit",
+      "Security",
+      "Lab_ALL_exits",
+      "Lab_ALL_exits",
+      "Lab_ALL_exits",
+      "Lab_LUD_exits",
+      "Server_room",
+      "Lab_LUD_exits",
+      "Lab_ALL_exits",
+      "Lab_LUD_exits",
+      "Boss_Office",
+      "Toilet_room_right_exit",
+      "IT_Tech",
+      "Lab_ALL_exits",
+      "Lab_ALL_exits",
+      "Lab_LUD_exits",
+      "lab_right_exit",
+      "Lab_LR_exits",
+      "Lab_LUR_exits",
+      "Lab_LUR_exits",
+      "lab_UL_exits"
+    ],
+    "sprite": "data/MAPS/Map1_034120.png"
   }
 }
