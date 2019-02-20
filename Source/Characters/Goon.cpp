@@ -66,8 +66,10 @@ void Goon::update(double delta_time)
 void Goon::lockedDoorFound()
 {
   // Re-calculate the route
+    registerRepairRequest(global_map->getTileAtPoint(current_route[route_index+1]->position));
   current_route[route_index + 1]->pathable = false;
   calculateRouteToPoint(current_route[current_route.size() - 1]->position);
+
 }
 
 /* Finds a new point of interest in the room, or in a random room if there are none */
@@ -110,18 +112,18 @@ void Goon::findNewPOI()
   }
   else
   {
-    auto random_room = static_cast<unsigned long long int>(
-      rand() & static_cast<int>((*global_map->getRooms()).size()));
-    our_room = &(*global_map->getRooms())[random_room];
-    all_pois.clear();
-    getAllPOIInRoom(&all_pois, our_room, true);
-    auto random_index =
-      static_cast<unsigned long long>((rand() % (static_cast<int>(all_pois.size()))));
-    Point tile_point =
-      Point(all_pois[random_index]->getPositionX(), all_pois[random_index]->getPositionY());
-    point_of_interest_tile = all_pois[random_index];
-    poi_position = findPositionForPOI(tile_point, our_room);
-    calculateRouteToPoint(poi_position);
+      auto random_room = static_cast<unsigned long long int>(
+              rand() & static_cast<int>((*global_map->getRooms()).size()-1));
+      our_room = &(*global_map->getRooms())[random_room];
+      all_pois.clear();
+      getAllPOIInRoom(&all_pois, our_room, true);
+      auto random_index =
+              static_cast<unsigned long long>((rand() % (static_cast<int>(all_pois.size()))));
+      Point tile_point =
+              Point(all_pois[random_index]->getPositionX(), all_pois[random_index]->getPositionY());
+      point_of_interest_tile = all_pois[random_index];
+      poi_position = findPositionForPOI(tile_point, our_room);
+      calculateRouteToPoint(poi_position);
   }
 }
 
