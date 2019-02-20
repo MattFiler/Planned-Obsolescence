@@ -32,7 +32,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
                                    renderer,
                                    "data/UI/IN_GAME_UI/TOP_RIGHT_QUIT.png",
-                                   "data/UI/IN_GAME_UI/TOP_RIGHT_QUIT.png",
+                                   "data/UI/IN_GAME_UI/TOP_RIGHT_QUIT_HOVER.png",
                                    148,
                                    53,
                                    "exit_game",
