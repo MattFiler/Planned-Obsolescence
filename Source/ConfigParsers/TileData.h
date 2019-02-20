@@ -68,6 +68,19 @@ struct TileData
       sprite->addSprite(*tile_sprite);
       sprite->hide();
 
+      // Assign repair sprites
+      repair_sprites = std::make_shared<ScaledSpriteArray>(3);
+      ASGE::Sprite* repair_sprite_1 = renderer->createRawSprite();
+      repair_sprite_1->loadTexture("data/UI/IN_GAME_UI/POI_BROKEN.png");
+      ASGE::Sprite* repair_sprite_2 = renderer->createRawSprite();
+      repair_sprite_2->loadTexture("data/UI/IN_GAME_UI/POI_REPAIR_REQUESTED.png");
+      ASGE::Sprite* repair_sprite_3 = renderer->createRawSprite();
+      repair_sprite_3->loadTexture("data/UI/IN_GAME_UI/POI_REPAIRING.png");
+      repair_sprites->addSprite(*repair_sprite_1);
+      repair_sprites->addSprite(*repair_sprite_2);
+      repair_sprites->addSprite(*repair_sprite_3);
+      repair_sprites->hide();
+
       // Set dimensions
       sprite->setWidth(width);
       sprite->setHeight(height);
@@ -87,6 +100,8 @@ struct TileData
     {
       sprite->xPos(x_pos);
       sprite->yPos(y_pos);
+      repair_sprites->xPos(x_pos);
+      repair_sprites->yPos(y_pos);
     }
   }
 
@@ -118,7 +133,8 @@ struct TileData
   point_of_interest poi = point_of_interest::NONE_ON_THIS_TILE;
   poi_state state_of_poi = poi_state::UNINITIALISED_POI;
   std::string poi_desc = "";
-  std::shared_ptr<ScaledSpriteArray> sprite; // Only relevant if we have a POI.
+  std::shared_ptr<ScaledSpriteArray> sprite;
+  std::shared_ptr<ScaledSpriteArray> repair_sprites;
 };
 
 #endif // PLANNEDOBSOLESCENCE_TILEDATA_H

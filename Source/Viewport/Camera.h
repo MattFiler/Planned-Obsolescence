@@ -18,7 +18,10 @@ class Camera
 
   void setRenderer(ASGE::Renderer* rend);
   ASGE::Renderer* getRenderer();
-  void renderSprite(ScaledSpriteArray* sprite, double delta_time, render_index index);
+  void renderSprite(ScaledSpriteArray* sprite,
+                    double delta_time,
+                    render_index index,
+                    bool should_flipbook = true);
   Point getCameraPosition();
   Point displayedToSimulatedWorld(Point point);
   void moveCamera(float x_amount, float y_amount);

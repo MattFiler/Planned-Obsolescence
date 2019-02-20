@@ -36,7 +36,8 @@ class Tile
   int getIndexInRoom();
   int getIndexInMap();
 
-  std::shared_ptr<ScaledSpriteArray> getSprite();
+  std::shared_ptr<ScaledSpriteArray> getTileSprite();
+  std::shared_ptr<ScaledSpriteArray> getRepairSprite();
 
   float getWidth();
   float getHeight();
