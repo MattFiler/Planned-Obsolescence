@@ -24,7 +24,7 @@ class UIManager
   void addTextBox(TextBox* new_textbox);
   void addProgressBar(ProgressBar* new_progressbar);
 
-  void createMainHUD();
+  void createMainHUD(CharacterManager* character_manager);
 
   void updateAndShowCharacterInfo(const std::string& character_type,
                                   float character_gauge,
@@ -44,7 +44,7 @@ class UIManager
 
  private:
   void initCharacterPopup();
-  void initPointOfInterestPopup();
+  void initPointOfInterestPopup(CharacterManager* character_manager);
 
   void keepUIWithinScreen(UI* ui_object);
 

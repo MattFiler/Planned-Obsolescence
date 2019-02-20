@@ -9,10 +9,12 @@
 #include "ProgressBar.h"
 #include "UI.h"
 
+class CharacterManager;
+
 class WorldInteractionPopup : public UI
 {
  public:
-  explicit WorldInteractionPopup(ASGE::Renderer* rend);
+  explicit WorldInteractionPopup(ASGE::Renderer* rend, CharacterManager* character_manager);
   ~WorldInteractionPopup() override;
 
   WorldInteractionPopup(const WorldInteractionPopup&) = delete;

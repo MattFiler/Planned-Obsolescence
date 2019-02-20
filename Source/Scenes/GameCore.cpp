@@ -27,7 +27,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   spawnCharacters(renderer);
 
   // Create UI
-  ui_manager.createMainHUD();
+  ui_manager.createMainHUD(&character_manager);
 
   Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
                                    renderer,
@@ -75,6 +75,10 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   {
     Goon* new_goon = new Goon();
     character_manager.spawnCharacter(new_goon);
+    new_goon = new Goon();
+    character_manager.spawnCharacter(new_goon);
+    new_goon = new Goon();
+    character_manager.spawnCharacter(new_goon);
   }
   if (character_manager.canSpawn(character_type::SECURITY))
   {
@@ -88,6 +92,8 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   if (character_manager.canSpawn(character_type::TECHNICIAN))
   {
     LabTechnician* new_tech = new LabTechnician();
+    character_manager.spawnCharacter(new_tech);
+    new_tech = new LabTechnician();
     character_manager.spawnCharacter(new_tech);
   }
 }

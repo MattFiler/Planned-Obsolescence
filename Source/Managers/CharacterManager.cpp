@@ -151,9 +151,11 @@ bool CharacterManager::spawnCharacter(Security* new_security)
     security_instances[security_count] = new_security;
     security_instances[security_count]->wake(renderer);
     security_instances[security_count]->setCharacterID(security_count);
-    security_instances[security_count]->setMapData(game_map);
     security_instances[security_count]->generatePathfindingMap(game_map);
-
+    security_instances[security_count]->setupPatrolRoute();
+    security_instances[security_count]->registerRepairRequest = [&](Tile* tile) {
+      this->registerRepairRequest(tile);
+    };
     security_count++;
     return true;
   }
@@ -359,5 +361,25 @@ void CharacterManager::registerRepairRequest(Tile* tile)
     }
     technician_instances[index]->addRepairRequest(tile);
     tile->setPointOfInterestState(poi_state::POI_REPAIR_PENDING);
+  }
+}
+
+/* Checks to see if security notices a sabotage */
+void CharacterManager::sabotageAtPoint(Point point)
+{
+  for (int i = 0; i < security_count; i++)
+  {
+    // Get the distance between the security member and the sabotage
+    float dist = Point::distanceBetween(security_instances[i]->getPosition(), point) / 50;
+    // Then apply an amount with a square falloff
+    float amount = 50.0f - (dist * dist);
+    if (amount > 0)
+    {
+      if (amount + security_instances[i]->getInternalGauge() > 100)
+      {
+        amount = 100 - security_instances[i]->getInternalGauge();
+      }
+      security_instances[i]->reduceInternalGauge(-amount);
+    }
   }
 }
