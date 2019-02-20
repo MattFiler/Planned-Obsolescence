@@ -23,7 +23,7 @@
 	"character_boss": "BOSS",
 	"character_techie": "TECHNICIAN",
 	"character_goon": "LAB WORKER",
-	"character_security": "SECURITY",
+	"character_security": "GUARD",
 	
 	"poi_door": "DOOR",
 	"poi_computer": "COMPUTER",

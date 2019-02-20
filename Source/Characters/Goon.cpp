@@ -21,9 +21,10 @@ void Goon::update(double delta_time)
     {
       findNewPOI();
       time_elapsed_at_poi = 0;
-      if(point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
+      if (point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
       {
-        registerRepairRequest(Point(point_of_interest_tile->getPositionX(), point_of_interest_tile->getPositionY()));
+        registerRepairRequest(
+          Point(point_of_interest_tile->getPositionX(), point_of_interest_tile->getPositionY()));
       }
     }
     else
@@ -109,13 +110,13 @@ void Goon::findNewPOI()
     if (tile.hasSpecificPointOfInterest(point_of_interest::COMPUTER))
     {
       // If Goon is leaving the room, then they don't know if the other rooms POIs are functional
-      if(leaving_room || tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL) 
+      if (leaving_room || tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL)
       {
         all_pois.push_back(&tile);
-      } 
+      }
       else
       {
-        registerRepairRequest(Point(tile.getPositionY(), tile.getPositionY());
+        registerRepairRequest(Point(tile.getPositionY(), tile.getPositionY()));
       }
     }
   }
