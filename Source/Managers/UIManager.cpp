@@ -200,12 +200,6 @@ void UIManager::update(double delta_time)
   game_cursor->updatePosition(cursor_x, cursor_y);
 }
 
-/* get cursor ref */
-Cursor* UIManager::getCursor()
-{
-  return game_cursor;
-}
-
 /* keep a popup within the window bounds */
 void UIManager::keepUIWithinScreen(UI* ui_object)
 {

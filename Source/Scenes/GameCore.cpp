@@ -55,6 +55,9 @@ void GameCore::passReferences(ASGE::Input* input)
   character_manager.setCamera(&camera);
   character_manager.setUIManager(&ui_manager);
 
+  project_gauge.setUIManager(&ui_manager);
+  project_gauge.setCharacterManager(&character_manager);
+
   game_map.setUIManager(&ui_manager);
 }
 
@@ -65,6 +68,12 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   {
     Goon* new_goon = new Goon();
     character_manager.spawnCharacter(new_goon);
+  }
+  if (character_manager.canSpawn(character_type::SECURITY))
+  {
+    Security* new_guard = new Security();
+    character_manager.spawnCharacter(new_guard);
+    new_guard->setSpawnPosition(200, 200);
   }
 }
 
@@ -170,12 +179,16 @@ scenes GameCore::update(double delta_time)
   camera.moveCamera(x_axis_input * static_cast<float>(delta_time),
                     y_axis_input * static_cast<float>(delta_time));
 
+  // Update gauges and check for ending conditions (end game if required)
+  game_over_type current_endstate = project_gauge.update(delta_time);
+  if (current_endstate != game_over_type::NOT_YET_DECIDED)
+  {
+    endGame(current_endstate);
+  }
+
   // Update managers
   ui_manager.update(delta_time);
   character_manager.update(delta_time);
-
-  // Update project gauge
-  project_gauge.update(delta_time);
 
   // Check for cursor hover
   Point click_position = ui_manager.getCursor()->getPosition();
@@ -208,4 +221,11 @@ void GameCore::render(double delta_time)
 
   // Render UI
   ui_manager.render(delta_time);
+}
+
+/* Trigger a game over */
+void GameCore::endGame(game_over_type type)
+{
+  game_over_instance.setGameOverType(type);
+  next_scene = scenes::GAME_OVER;
 }

@@ -36,9 +36,11 @@ void Character::updateSprite()
   // Resize
   sprite->setWidth(config.width);
   sprite->setHeight(config.height);
-
   click_area.setWidth(config.width);
   click_area.setHeight(config.height);
+
+  // Update click area position
+  click_area.setPosition(position);
 }
 
 /* Update the position of the character based on current route and speed, returns true if it moved
@@ -305,12 +307,14 @@ void Character::setSpawnPositionX(float x_pos)
   config.spawn_pos.x_pos = x_pos;
   position.x_pos = x_pos;
   sprite->xPos(position.x_pos);
+  click_area.setPosition(position);
 }
 void Character::setSpawnPositionY(float y_pos)
 {
   config.spawn_pos.y_pos = y_pos;
   position.y_pos = y_pos;
   sprite->yPos(position.y_pos);
+  click_area.setPosition(position);
 }
 void Character::setSpawnPosition(float x_pos, float y_pos)
 {
@@ -319,6 +323,7 @@ void Character::setSpawnPosition(float x_pos, float y_pos)
   position.y_pos = y_pos;
   sprite->xPos(position.x_pos);
   sprite->yPos(position.y_pos);
+  click_area.setPosition(position);
 }
 
 /* Toggle visibility */
@@ -334,6 +339,8 @@ void Character::setDimensions(float new_width, float new_height)
   config.height = new_height;
   sprite->setWidth(config.width);
   sprite->setHeight(config.height);
+  click_area.setWidth(config.width);
+  click_area.setHeight(config.height);
 }
 
 /* Adjust movement speed */

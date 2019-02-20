@@ -2,6 +2,14 @@
   "DEFAULT": {
     "play_game": "PLAY",
 	"exit_game": "QUIT",
+	"retry_game": "TRY AGAIN",
+	"return_to_menu": "RETURN TO MENU",
+	
+	"game_won": "YOU WON!",
+	"game_lost": "YOU LOST.",
+	
+	"project_sabotaged": "YOU STOPPED THE RESEARCH PROJECT\nTO REPLACE YOU.",
+	"project_completed": "THE RESEARCHERS FINISHED THEIR\nPROJECT TO REPLACE YOU.",
 	
 	"gauge_detection": "YOUR DETECTION",
 	"gauge_progress": "PROJECT PROGRESS",
@@ -10,6 +18,7 @@
 	"gauge_stress": "STRESS",
 	"gauge_productivity": "PRODUCTIVITY",
 	"gauge_suspicion": "SUSPICION",
+	"gauge_playerpower": "YOUR POWER",
 	
 	"character_boss": "BOSS",
 	"character_techie": "TECHNICIAN",
@@ -31,6 +40,14 @@
   "FRENCH": {
     "play_game": "JOUER",
 	"exit_game": "QUITTER",
+	"retry_game": "REESSAYER",
+	"return_to_menu": "RETOUR AU MENU",
+	
+	"game_won": "LA VICTOIRE!",
+	"game_lost": "ECHOUE.",
+	
+	"project_sabotaged": "VOUS AVEZ ARRETE LE PROJET DE\nRECHERCHE POUR VOUS REMPLACER.",
+	"project_completed": "LES CHERCHEURS ONT FINI LEUR\nPROJET POUR VOUS REMPLACER.",
 	
 	"gauge_detection": "VOTRE DETECTION",
 	"gauge_progress": "L'AVANCEMENT DU PROJET",
@@ -39,6 +56,7 @@
 	"gauge_stress": "STRESS",
 	"gauge_productivity": "PRODUCTIVITE",
 	"gauge_suspicion": "SOUPCON",
+	"gauge_playerpower": "VOTRE PUISSANCE",
 	
 	"poi_door": "PORTE",
 	"poi_computer": "ORDINATEUR",
@@ -58,6 +76,14 @@
   "SPANISH": {
     "play_game": "JUGAR",
 	"exit_game": "DEJAR",
+	"retry_game": "REINICIAR",
+	"return_to_menu": "VOLVER AL MENU",
+	
+	"game_won": "GANASTE!",
+	"game_lost": "PERDISTE.",
+	
+	"project_sabotaged": "DETESTE EL PROYECTO DE INVESTIGACION\nPARA REEMPLAZARLO.",
+	"project_completed": "LOS INVESTIGADORES TERMINARON SU\nPROYECTO PARA REEMPLAZARLE.",
 	
 	"gauge_detection": "SU DETECCION",
 	"gauge_progress": "PROGRESO DEL PROYECTO",
@@ -66,6 +92,7 @@
 	"gauge_stress": "ESTRES",
 	"gauge_productivity": "PRODUCTIVIDAD",
 	"gauge_suspicion": "SOSPECHA",
+	"gauge_playerpower": "TU PODER",
 	
 	"poi_door": "PUERTA",
 	"poi_computer": "COMPUTADORA",

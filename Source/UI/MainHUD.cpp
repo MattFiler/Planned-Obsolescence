@@ -3,18 +3,21 @@
 /* Create main hud */
 MainHUD::MainHUD(ASGE::Renderer* rend) : UI(Point(0, 0), rend)
 {
-  background_sprite = createSprite("data/UI/IN_GAME_UI/BOTTOM_RIGHT_BG.png");
+  background_sprite = createSprite("data/UI/IN_GAME_UI/CORE_UI.png");
 
   hud_gauges.reserve(3);
 
-  gauge_detection = new HudGaugeData(Point(805, 603), rend, "gauge_detection", 50);
+  gauge_detection = new HudGaugeData(Point(805, 603), rend, "gauge_detection");
   hud_gauges.push_back(gauge_detection);
 
-  gauge_progress = new HudGaugeData(Point(805, 640), rend, "gauge_progress", 40);
+  gauge_progress = new HudGaugeData(Point(805, 640), rend, "gauge_progress");
   hud_gauges.push_back(gauge_progress);
 
-  gauge_timeremaining = new HudGaugeData(Point(805, 677), rend, "gauge_timeremaining", 30);
+  gauge_timeremaining = new HudGaugeData(Point(805, 677), rend, "gauge_timeremaining");
   hud_gauges.push_back(gauge_timeremaining);
+
+  gauge_playerpower = new HudGaugeData(Point(13, 10), rend, "gauge_playerpower");
+  hud_gauges.push_back(gauge_playerpower);
 }
 
 MainHUD::~MainHUD()
