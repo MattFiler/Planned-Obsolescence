@@ -117,6 +117,16 @@ void GaugeManager::increaseProjectProgress(double dt_sec)
   }
 }
 
+/* reset all gauges */
+void GaugeManager::resetAll()
+{
+  gauge_data.project_progress = gauge_levels::GAUGE_EMPTY;
+  gauge_data.productivity = gauge_levels::GAUGE_FULL;
+  gauge_data.player_power = gauge_levels::GAUGE_FULL;
+  gauge_data.detection = gauge_levels::GAUGE_EMPTY;
+  gauge_data.project_time_remaining = gauge_levels::GAUGE_FULL;
+}
+
 /* Get project progress */
 float GaugeManager::getProjectProgress()
 {
