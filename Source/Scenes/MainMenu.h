@@ -1,3 +1,6 @@
+#ifndef PO_MAINMENU
+#define PO_MAINMENU
+
 #include "../Debug/DebugText.h"
 #include "../Sprites/ScaledSpriteArray.h"
 #include "../UI/Menu.h"
@@ -25,3 +28,5 @@ class MainMenu : public Scene
  private:
   Menu main_menu;
 };
+
+#endif

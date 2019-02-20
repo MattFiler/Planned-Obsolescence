@@ -199,6 +199,9 @@ scenes GameCore::update(double delta_time)
     ui_manager.getCursor()->setCursorType(cursor_variant::CURSOR_DEFAULT);
   }
 
+  // for testing
+  endGame(game_over_type::PLAYER_LOST);
+
   return next_scene;
 }
 
@@ -218,3 +221,10 @@ void GameCore::render(double delta_time)
   // Render UI
   ui_manager.render(delta_time);
 }
+
+/* Trigger a game over */
+void GameCore::endGame(game_over_type type)
+{
+  game_over_instance.setGameOverType(type);
+  next_scene = scenes::GAME_OVER;
+};

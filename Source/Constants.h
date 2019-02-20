@@ -94,11 +94,12 @@ enum cursor_variant
 // Scenes
 enum scenes
 {
-  NO_CHANGE = -1,
-  SPLASHSCREEN = 0,
-  MAIN_MENU = 1,
-  GAME_CORE = 2,
-  QUIT_GAME = 3
+  NO_CHANGE,
+  SPLASHSCREEN,
+  MAIN_MENU,
+  GAME_CORE,
+  QUIT_GAME,
+  GAME_OVER
 };
 
 // Render index
@@ -122,6 +123,14 @@ enum hud_gauge_types
   PROJECT_PROGRESS,
   TIME_REMAINING,
   PLAYER_POWER
+};
+
+// Game over definitions
+enum game_over_type
+{
+  PLAYER_WON,
+  PLAYER_LOST,
+  NOT_YET_DECIDED
 };
 
 // Our native resolution which we will scale from to the resolution specified in the game config.

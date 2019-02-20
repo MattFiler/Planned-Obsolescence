@@ -2,8 +2,8 @@
 
 GaugeManager::~GaugeManager()
 {
-  delete ui_manager;
-  ui_manager = nullptr;
+  // delete ui_manager;
+  // ui_manager = nullptr;
 }
 
 /* Handle our per-frame updates */

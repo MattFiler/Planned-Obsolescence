@@ -70,6 +70,9 @@ int SceneManager::updateCurrentScene(double delta_time)
     case scenes::GAME_CORE:
       swapScene(new GameCore);
       break;
+    case scenes::GAME_OVER:
+      swapScene(new GameOver);
+      break;
     default:
       return -1; // Unhandled exception
   }
