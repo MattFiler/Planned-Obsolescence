@@ -71,7 +71,7 @@ void CharacterInfoPopup::setGaugeDescription(const std::string& gauge_desc)
 }
 void CharacterInfoPopup::setGaugeAmount(float gauge_amount)
 {
-  progress_bar->progress_bar->setProgress(gauge_amount / 100);
+  progress_bar->update(gauge_amount / 100);
 }
 
 /* Returns a pointer to the button that was clicked (nullptr if none) */
