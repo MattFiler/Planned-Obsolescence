@@ -13,10 +13,10 @@ MainHUD::MainHUD(ASGE::Renderer* rend) : UI(Point(0, 0), rend)
   gauge_progress = new HudGaugeData(Point(805, 640), rend, "gauge_progress");
   hud_gauges.push_back(gauge_progress);
 
-  gauge_timeremaining = new HudGaugeData(Point(805, 677), rend, "gauge_timeremaining");
+  gauge_timeremaining = new HudGaugeData(Point(805, 677), rend, "gauge_timeremaining", 0, false);
   hud_gauges.push_back(gauge_timeremaining);
 
-  gauge_playerpower = new HudGaugeData(Point(13, 10), rend, "gauge_playerpower");
+  gauge_playerpower = new HudGaugeData(Point(13, 10), rend, "gauge_playerpower", 100, false);
   hud_gauges.push_back(gauge_playerpower);
 }
 
@@ -51,5 +51,5 @@ void MainHUD::render(double delta_time)
 /* Set values of gauges */
 void MainHUD::adjustGauge(hud_gauge_types bar, float gauge_amount)
 {
-  hud_gauges[bar]->progress_bar->setProgress(gauge_amount / 100);
+  hud_gauges.at(bar)->update(gauge_amount / 100);
 }

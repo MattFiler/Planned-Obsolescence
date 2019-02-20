@@ -68,10 +68,28 @@ void CharacterInfoPopup::setCharacterName(const std::string& char_name)
 void CharacterInfoPopup::setGaugeDescription(const std::string& gauge_desc)
 {
   progress_bar->gauge_name = localiser.getString(gauge_desc);
+
+  // Hacky fix for player-specific gauge colours
+  if (gauge_desc == "gauge_faith")
+  {
+    progress_bar->setFullBarIsFailure(false);
+  }
+  else if (gauge_desc == "gauge_stress")
+  {
+    progress_bar->setFullBarIsFailure(true);
+  }
+  else if (gauge_desc == "gauge_productivity")
+  {
+    progress_bar->setFullBarIsFailure(false);
+  }
+  else if (gauge_desc == "gauge_suspicion")
+  {
+    progress_bar->setFullBarIsFailure(true);
+  }
 }
 void CharacterInfoPopup::setGaugeAmount(float gauge_amount)
 {
-  progress_bar->progress_bar->setProgress(gauge_amount / 100);
+  progress_bar->update(gauge_amount / 100);
 }
 
 /* Returns a pointer to the button that was clicked (nullptr if none) */
