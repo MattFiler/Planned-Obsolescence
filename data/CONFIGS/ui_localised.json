@@ -43,8 +43,8 @@
 	"retry_game": "REESSAYER",
 	"return_to_menu": "RETOUR AU MENU",
 	
-	"game_won": "TU AS GAGNE!",
-	"game_lost": "TU AS PERDU.",
+	"game_won": "LA VICTOIRE!",
+	"game_lost": "ECHOUE.",
 	
 	"project_sabotaged": "VOUS AVEZ ARRETE LE PROJET DE\nRECHERCHE POUR VOUS REMPLACER.",
 	"project_completed": "LES CHERCHEURS ONT FINI LEUR\nPROJET POUR VOUS REMPLACER.",

@@ -200,7 +200,7 @@ scenes GameCore::update(double delta_time)
   }
 
   // for testing
-  endGame(game_over_type::PLAYER_LOST);
+  // endGame(game_over_type::PLAYER_LOST);
 
   return next_scene;
 }
