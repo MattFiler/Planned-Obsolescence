@@ -77,6 +77,8 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
     Security* new_guard = new Security();
     character_manager.spawnCharacter(new_guard);
     new_guard->setSpawnPosition(200, 200);
+    std::vector<Point>* route = new_guard->getPatrolRoute();
+    route->push_back(Point(game_map.getMapData()->rooms_x))
   }
 }
 

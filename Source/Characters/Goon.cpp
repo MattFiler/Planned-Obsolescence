@@ -110,7 +110,7 @@ void Goon::findNewPOI()
     if (tile.hasSpecificPointOfInterest(point_of_interest::COMPUTER))
     {
       // If Goon is leaving the room, then they don't know if the other rooms POIs are functional
-      if (leaving_room || tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL)
+      if(leaving_room || tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL)
       {
         all_pois.push_back(&tile);
       }
