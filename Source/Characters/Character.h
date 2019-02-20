@@ -23,6 +23,7 @@ class Character
 
   void wake(ASGE::Renderer* passed_renderer);
   virtual void update(double delta_time) { updatePosition(delta_time); };
+  virtual void lockedDoorFound(){};
   bool updatePosition(double delta_time);
 
   void setSpawnPositionX(float x_pos);

@@ -56,6 +56,14 @@ void Goon::update(double delta_time)
   }
 }
 
+/* Specific implementation for when a goon paths into a locked door */
+void Goon::lockedDoorFound()
+{
+  // Re-calculate the route
+  current_route[route_index + 1]->pathable = false;
+  calculateRouteToPoint(current_route[current_route.size() - 1]->position);
+}
+
 /* Finds a new point of interest in the room, or in a random room if there are none */
 void Goon::findNewPOI()
 {

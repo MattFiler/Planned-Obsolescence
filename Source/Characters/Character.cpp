@@ -82,10 +82,7 @@ bool Character::updatePosition(double delta_time)
         if (global_map->isPOIStateAtPoint(poi_state ::DOOR_IS_CLOSED,
                                           current_route[route_index + 1]->position))
         {
-          // Re-calculate the route
-          current_route[route_index + 1]->pathable = false;
-          clearPathfindingMapScores();
-          calculateRouteToPoint(current_route[current_route.size() - 1]->position);
+            lockedDoorFound();
         }
         else
         {
