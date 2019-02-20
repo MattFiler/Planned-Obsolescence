@@ -106,7 +106,7 @@ bool CharacterManager::spawnCharacter(Goon* new_goon)
     goon_instances[goon_count]->registerRepairRequest = [&](Point point) {
       this->registerRepairRequest(point);
     };
-
+    
     goon_count++;
     return true;
   }
