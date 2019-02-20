@@ -45,5 +45,5 @@ void LabTechnician::lockedDoorFound()
   direction.set(x_diff, y_diff);
   direction.normalise();
   distance_to_next_node =
-          Point::distanceBetween(position, current_route[route_index + 1]->position);
+    Point::distanceBetween(position, current_route[route_index + 1]->position);
 }

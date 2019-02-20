@@ -172,13 +172,13 @@ bool Character::calculateRouteToPoint(Point point)
       direction.set(x_diff, y_diff);
       direction.normalise();
       distance_to_next_node = Point::distanceBetween(position, current_route[1]->position);
-        // Check to see if the first node is a closed door
-        Tile* tile = global_map->getTileAtPoint(current_route[route_index + 1]->position);
-        if (tile->getPointOfInterestState() != poi_state::POI_IS_FUNCTIONAL &&
-            tile->getPointOfInterestState() != poi_state::UNINITIALISED_POI)
-        {
-            lockedDoorFound();
-        }
+      // Check to see if the first node is a closed door
+      Tile* tile = global_map->getTileAtPoint(current_route[route_index + 1]->position);
+      if (tile->getPointOfInterestState() != poi_state::POI_IS_FUNCTIONAL &&
+          tile->getPointOfInterestState() != poi_state::UNINITIALISED_POI)
+      {
+        lockedDoorFound();
+      }
       return true;
     }
   }
