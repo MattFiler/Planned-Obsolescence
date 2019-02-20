@@ -103,12 +103,12 @@ void UIManager::updateAndShowCharacterInfo(const std::string& character_type,
 }
 
 /* Creates all the UI */
-void UIManager::updateAndShowPointInfo(const std::string& point_name)
+void UIManager::updateAndShowTileData(Tile& clicked_tile)
 {
   char_info_popup->setActive(false);
 
   poi_interaction_popup->setActive(true);
-  poi_interaction_popup->setClickedPointName(point_name);
+  poi_interaction_popup->getClickedTileReference(clicked_tile);
 }
 
 /* render all ui */
@@ -171,16 +171,26 @@ bool UIManager::checkForClick(Point click, bool act_on_click)
     }
   }
 
-  if (char_info_popup->checkForClick(click))
+  Button* popup_click_button = char_info_popup->checkForClick(click);
+  if (popup_click_button)
   {
-    clicked_button = char_info_popup->checkForClick(click);
+    if (act_on_click)
+    {
+      clicked_button = popup_click_button;
+    }
+    return true;
   }
-  else if (poi_interaction_popup->checkForClick(click))
+  Button* popup_click_button2 = poi_interaction_popup->checkForClick(click);
+  if (popup_click_button2)
   {
-    clicked_button = poi_interaction_popup->checkForClick(click);
+    if (act_on_click)
+    {
+      clicked_button = popup_click_button2;
+    }
+    return true;
   }
 
-  return clicked_button != nullptr;
+  return false;
 }
 
 /* 'un-clicks' the currently clicked button (if any) and triggers its click function */

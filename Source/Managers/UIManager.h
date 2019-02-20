@@ -29,7 +29,7 @@ class UIManager
   void updateAndShowCharacterInfo(const std::string& character_type,
                                   float character_gauge,
                                   const std::string& gauge_name);
-  void updateAndShowPointInfo(const std::string& point_name);
+  void updateAndShowTileData(Tile& clicked_tile);
 
   void setRenderer(ASGE::Renderer* rend) { renderer = rend; }; // must be called first!
   void setCamera(Camera* cam) { camera = cam; };

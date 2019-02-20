@@ -103,10 +103,10 @@ bool CharacterManager::spawnCharacter(Goon* new_goon)
     goon_instances[goon_count]->wake(renderer);
     goon_instances[goon_count]->setCharacterID(goon_count);
     goon_instances[goon_count]->generatePathfindingMap(game_map);
-
     goon_instances[goon_count]->registerRepairRequest = [&](Point point) {
       this->registerRepairRequest(point);
     };
+
     goon_count++;
     return true;
   }

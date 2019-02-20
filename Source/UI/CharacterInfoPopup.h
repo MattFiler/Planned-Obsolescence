@@ -36,6 +36,7 @@ class CharacterInfoPopup : public UI
   GetLocalisedString localiser;
 
   std::string character_name = "";
+  std::string character_desc = "";
 };
 
 #endif // PLANNEDOBSOLESCENCE_CHARACTERINFOPOPUP_H

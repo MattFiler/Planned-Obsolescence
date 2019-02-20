@@ -1,3 +1,6 @@
+#ifndef PO_SCENEMANAGER
+#define PO_SCENEMANAGER
+
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <memory>
@@ -36,3 +39,5 @@ class SceneManager
  private:
   void swapScene(Scene* new_scene);
 };
+
+#endif

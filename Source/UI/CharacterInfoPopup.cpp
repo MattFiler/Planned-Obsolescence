@@ -9,7 +9,7 @@ CharacterInfoPopup::CharacterInfoPopup(ASGE::Renderer* rend) : UI(Point(0, 0), r
   close_button = new Button(Point(461, 606),
                             rend,
                             "data/UI/IN_GAME_UI/CHARACTER_POPUP_CLOSE_BUTTON.png",
-                            "data/UI/IN_GAME_UI/CHARACTER_POPUP_CLOSE_BUTTON.png",
+                            "data/UI/IN_GAME_UI/CHARACTER_POPUP_CLOSE_BUTTON_HOVER.png",
                             19,
                             22);
   CharacterInfoPopup* myself = this;
@@ -39,9 +39,14 @@ void CharacterInfoPopup::render(double delta_time)
                            render_index::UI_TOP_LAYER_BASE);
     close_button->render(delta_time);
     progress_bar->render(renderer, delta_time);
+    renderer->renderText(character_desc,
+                         static_cast<int>(17 * ScaledSpriteArray::width_scale),
+                         static_cast<int>(668 * ScaledSpriteArray::width_scale),
+                         0.4f,
+                         ASGE::COLOURS::WHITE);
     renderer->renderText(character_name,
-                         static_cast<int>(21 * ScaledSpriteArray::width_scale),
-                         static_cast<int>(657 * ScaledSpriteArray::width_scale),
+                         static_cast<int>(17 * ScaledSpriteArray::width_scale),
+                         static_cast<int>(652 * ScaledSpriteArray::width_scale),
                          1,
                          ASGE::COLOURS::WHITE);
   }
@@ -58,6 +63,7 @@ void CharacterInfoPopup::setActive(bool is_active)
 void CharacterInfoPopup::setCharacterName(const std::string& char_name)
 {
   character_name = localiser.getString(char_name);
+  character_desc = localiser.getString(char_name + "_desc");
 }
 void CharacterInfoPopup::setGaugeDescription(const std::string& gauge_desc)
 {

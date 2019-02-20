@@ -41,7 +41,7 @@ class Tile
   float getWidth();
   float getHeight();
 
-  std::string getTileDescription();
+  std::string getTileName();
 
  private:
   // Engine features

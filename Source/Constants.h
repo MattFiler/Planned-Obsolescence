@@ -54,10 +54,10 @@ enum point_of_interest
 // POI state (affected by interaction)
 enum poi_state
 {
-  DOOR_IS_OPEN,
-  DOOR_IS_CLOSED,
   POI_IS_BROKEN,
   POI_IS_FUNCTIONAL,
+  POI_IS_BEING_USED_BY_GOON,
+  POI_IS_BEING_FIXED,
   UNINITIALISED_POI
 };
 
@@ -129,6 +129,7 @@ enum hud_gauge_types
 enum gauge_levels
 {
   GAUGE_FULL = 100,
+  GAUGE_HALF = 50,
   GAUGE_EMPTY = 0
 };
 
