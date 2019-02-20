@@ -44,6 +44,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 
   // Reset game over config for new load
   game_over_instance.setGameOverType(game_over_type::NOT_YET_DECIDED);
+  project_gauge.resetAll();
 
   return true;
 }

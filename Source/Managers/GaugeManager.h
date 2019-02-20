@@ -17,6 +17,8 @@ class GaugeManager
   void incrementProjectProgress(float add_progress);
   void decreasePlayerPower(float decrease_power);
 
+  void resetAll();
+
   game_over_type update(double dt_sec);
 
   float getProjectProgress();
