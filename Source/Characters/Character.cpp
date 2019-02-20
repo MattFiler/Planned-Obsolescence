@@ -81,7 +81,7 @@ bool Character::updatePosition(double delta_time)
       else
       {
         // Check to see if we have hit a closed door
-        if (global_map->isPOIStateAtPoint(poi_state ::DOOR_IS_CLOSED,
+        if (global_map->isPOIStateAtPoint(poi_state::POI_IS_BROKEN,
                                           current_route[route_index + 1]->position))
         {
           lockedDoorFound();

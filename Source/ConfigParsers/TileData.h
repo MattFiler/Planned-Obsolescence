@@ -49,17 +49,18 @@ struct TileData
     if (tile_config["poi_door"] == true)
     {
       poi = point_of_interest::DOOR;
-      state_of_poi = poi_state::DOOR_IS_OPEN;
     }
     else if (tile_config["poi_computer"] == true)
     {
       poi = point_of_interest::COMPUTER;
-      state_of_poi = poi_state::POI_IS_FUNCTIONAL;
     }
 
     // If we have a POI, get alt sprite and description
     if (poi != point_of_interest::NONE_ON_THIS_TILE)
     {
+      // We start as a functional POI (not being used, not broken, not being fixed)
+      state_of_poi = poi_state::POI_IS_FUNCTIONAL;
+
       // Set tile sprite
       ASGE::Sprite* tile_sprite = renderer->createRawSprite();
       tile_sprite->loadTexture(tile_config["poi_sprite"]);

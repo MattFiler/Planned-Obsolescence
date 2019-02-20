@@ -41,7 +41,7 @@ void Tile::setPointOfInterestState(poi_state new_state)
   tile_data.state_of_poi = new_state;
 
   // Show/hide our specialist "alt-sprite" if needed
-  if (new_state == poi_state::DOOR_IS_CLOSED || new_state == poi_state::POI_IS_BROKEN)
+  if (new_state == poi_state::POI_IS_BROKEN)
   {
     tile_data.sprite->show();
   }
@@ -124,7 +124,7 @@ int Tile::getIndexInMap()
 }
 
 /* Get description of tile POI */
-std::string Tile::getTileDescription()
+std::string Tile::getTileName()
 {
   return tile_data.poi_desc;
 }

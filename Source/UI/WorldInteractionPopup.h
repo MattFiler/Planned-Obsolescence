@@ -1,6 +1,7 @@
 #ifndef PLANNEDOBSOLESCENCE_WORLDINTERACTIONPOPUP_H
 #define PLANNEDOBSOLESCENCE_WORLDINTERACTIONPOPUP_H
 
+#include "../Map/Tile.h"
 #include "Button.h"
 #include "GetLocalisedString.h"
 #include "HudGaugeData.h"
@@ -18,7 +19,8 @@ class WorldInteractionPopup : public UI
 
   void render(double delta_time) override;
 
-  void setClickedPointName(const std::string& char_name);
+  void getClickedTileReference(Tile& clicked_tile);
+  void updateTileDynamicData();
 
   void setActive(bool is_active);
   bool isActive() { return active; };
@@ -31,9 +33,12 @@ class WorldInteractionPopup : public UI
   Button* close_button = nullptr;
   Button* poi_interaction_button = nullptr;
 
+  Tile* referenced_tile = nullptr;
+
   GetLocalisedString localiser;
 
   std::string poi_name = "";
+  std::string poi_desc = "";
 };
 
 #endif // PLANNEDOBSOLESCENCE_WORLDINTERACTIONPOPUP_H

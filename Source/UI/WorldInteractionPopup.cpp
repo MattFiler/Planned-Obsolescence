@@ -12,8 +12,8 @@ WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend) : UI(Point(0,
                             "data/UI/IN_GAME_UI/CHARACTER_POPUP_CLOSE_BUTTON_HOVER.png",
                             19,
                             22);
-  WorldInteractionPopup* active_p = this;
-  close_button->click_function = [active_p] { active_p->setActive(false); };
+  WorldInteractionPopup* popup_instance = this;
+  close_button->click_function = [popup_instance] { popup_instance->setActive(false); };
 
   // Make interaction button
   poi_interaction_button = new Button(Point(18, 672),
@@ -26,7 +26,9 @@ WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend) : UI(Point(0,
                                       0.5f,
                                       Point(7, 7),
                                       ASGE::COLOURS::BLACK);
-  poi_interaction_button->click_function = [active_p] { active_p->setActive(false); };
+  poi_interaction_button->click_function = [popup_instance] {
+    popup_instance->referenced_tile->setPointOfInterestState(poi_state::POI_IS_BROKEN);
+  };
 }
 
 WorldInteractionPopup::~WorldInteractionPopup()
@@ -53,23 +55,63 @@ void WorldInteractionPopup::render(double delta_time)
 {
   if (active)
   {
+    updateTileDynamicData();
+
     renderer->renderSprite(background_sprite->returnNextSprite(delta_time),
                            render_index::UI_TOP_LAYER_BASE);
     close_button->render(delta_time);
     poi_interaction_button->render(delta_time);
+    renderer->renderText(poi_desc,
+                         static_cast<int>(17 * ScaledSpriteArray::width_scale),
+                         static_cast<int>(668 * ScaledSpriteArray::width_scale),
+                         0.4f,
+                         ASGE::COLOURS::WHITE);
     renderer->renderText(poi_name,
-                         static_cast<int>(21 * ScaledSpriteArray::width_scale),
-                         static_cast<int>(657 * ScaledSpriteArray::width_scale),
+                         static_cast<int>(17 * ScaledSpriteArray::width_scale),
+                         static_cast<int>(652 * ScaledSpriteArray::width_scale),
                          1,
                          ASGE::COLOURS::WHITE);
   }
 }
 
 /* Set values */
-void WorldInteractionPopup::setClickedPointName(const std::string& char_name)
+void WorldInteractionPopup::getClickedTileReference(Tile& clicked_tile)
 {
-  poi_name = localiser.getString(char_name);
-  poi_interaction_button->updateText(char_name + "_interact");
+  referenced_tile = &clicked_tile;
+  poi_name = localiser.getString(clicked_tile.getTileName());
+  updateTileDynamicData();
+}
+
+/* update dynamic tile-related data */
+void WorldInteractionPopup::updateTileDynamicData()
+{
+  if (referenced_tile != nullptr)
+  {
+    switch (referenced_tile->getPointOfInterestState())
+    {
+      case poi_state::POI_IS_FUNCTIONAL:
+      {
+        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hackable");
+        break;
+      }
+      case poi_state::POI_IS_BROKEN:
+      {
+        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hacked");
+        break;
+      }
+      case poi_state::POI_IS_BEING_FIXED:
+      {
+        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_being_fixed");
+        break;
+      }
+      default:
+      {
+        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_inuse");
+        break;
+      }
+    }
+    poi_interaction_button->updateText(referenced_tile->getTileName() + "_interact");
+  }
 }
 
 /* Returns a pointer to the button that was clicked (nullptr if none) */

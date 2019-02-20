@@ -103,12 +103,12 @@ void UIManager::updateAndShowCharacterInfo(const std::string& character_type,
 }
 
 /* Creates all the UI */
-void UIManager::updateAndShowPointInfo(const std::string& point_name)
+void UIManager::updateAndShowTileData(Tile& clicked_tile)
 {
   char_info_popup->setActive(false);
 
   poi_interaction_popup->setActive(true);
-  poi_interaction_popup->setClickedPointName(point_name);
+  poi_interaction_popup->getClickedTileReference(clicked_tile);
 }
 
 /* render all ui */
