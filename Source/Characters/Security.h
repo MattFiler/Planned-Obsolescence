@@ -11,7 +11,7 @@ class Security : public Character
   ~Security() override;
 
   void setMapData(GameMap* map) { game_map = map; };
-  = std::vector<Point> * getPatrolRoute() { return &patrol_route; };
+  std::vector<Point>* getPatrolRoute() { return &patrol_route; };
 
   void setupPatrolRoute();
 
