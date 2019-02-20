@@ -34,6 +34,7 @@ struct HudGaugeData
   {
     full_bar_fails = full_is_failed;
     setBaseColour();
+    update(progress_bar->getProgress());
   }
 
   void render(ASGE::Renderer* renderer, double delta_time)
