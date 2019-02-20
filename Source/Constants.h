@@ -152,8 +152,11 @@ enum gauge_rates
   GOON_PRODUCTIVTIY = 10000, // defines how often productivity is modified and by how much
   SECURITY_AWARENESS = 50,   // bigger number increases the radius of detection
   SECURITY_RESET_RATE = 1,   // amount per second suspicion naturally decays
-  TECHIE_STRESS = 1,         // TO BE IMPLEMENTED
-  BOSS_FAITH = 1,            // TO BE IMPLEMENTED
+  TECHIE_STRESS_QUEUE_MULTIPLIER = 1, // How much having a long queue affects stress
+  TECHIE_STRESS_GAIN = 1,             // How much stress is gained by working
+  TECHIE_STRESS_RELEIF = 2,           // How much stress decays over time while not working
+  TECHIE_STRESS_SLOW = 2,             // How much being stressed slows work down
+  BOSS_FAITH = 1,                     // TO BE IMPLEMENTED
 };
 
 // Game over definitions
