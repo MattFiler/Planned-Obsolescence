@@ -41,6 +41,7 @@ class CharacterManager
                        int& char_c,
                        int& char_visible_c,
                        float& char_gauge,
+                       float& char_gauge_h,
                        double& delta_time);
 
   template<class CharacterArray>

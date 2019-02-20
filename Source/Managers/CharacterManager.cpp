@@ -99,10 +99,11 @@ bool CharacterManager::spawnCharacter(Goon* new_goon)
   // Spawn if we haven't exceeded our limits
   if (goon_count < new_goon->getSpawnCap())
   {
-    new_goon->wake(renderer);
-    new_goon->setCharacterID(goon_count);
-    new_goon->generatePathfindingMap(game_map);
     goon_instances[goon_count] = new_goon;
+    goon_instances[goon_count]->wake(renderer);
+    goon_instances[goon_count]->setCharacterID(goon_count);
+    goon_instances[goon_count]->generatePathfindingMap(game_map);
+
     goon_count++;
     return true;
   }
@@ -121,10 +122,11 @@ bool CharacterManager::spawnCharacter(LabTechnician* new_technician)
   // Spawn if we haven't exceeded our limits
   if (technician_count < new_technician->getSpawnCap())
   {
-    new_technician->wake(renderer);
-    new_technician->setCharacterID(technician_count);
-    new_technician->generatePathfindingMap(game_map);
     technician_instances[technician_count] = new_technician;
+    technician_instances[technician_count]->wake(renderer);
+    technician_instances[technician_count]->setCharacterID(technician_count);
+    technician_instances[technician_count]->generatePathfindingMap(game_map);
+
     technician_count++;
     return true;
   }
@@ -143,10 +145,11 @@ bool CharacterManager::spawnCharacter(Security* new_security)
   // Spawn if we haven't exceeded our limits
   if (security_count < new_security->getSpawnCap())
   {
-    new_security->wake(renderer);
-    new_security->setCharacterID(security_count);
-    new_security->generatePathfindingMap(game_map);
     security_instances[security_count] = new_security;
+    security_instances[security_count]->wake(renderer);
+    security_instances[security_count]->setCharacterID(security_count);
+    security_instances[security_count]->generatePathfindingMap(game_map);
+
     security_count++;
     return true;
   }
@@ -182,30 +185,46 @@ void CharacterManager::renderCharacter(CharacterArray character,
 /* Update all characters */
 void CharacterManager::update(double delta_time)
 {
-  updateCharacter(boss_instances, boss_count, boss_visible_count, boss_gauge_sum, delta_time);
-  updateCharacter(goon_instances, goon_count, goon_visible_count, goon_gauge_sum, delta_time);
+  updateCharacter(
+    boss_instances, boss_count, boss_visible_count, boss_gauge_sum, boss_gauge_highest, delta_time);
+  updateCharacter(
+    goon_instances, goon_count, goon_visible_count, goon_gauge_sum, goon_gauge_highest, delta_time);
   updateCharacter(technician_instances,
                   technician_count,
                   technician_visible_count,
                   technician_gauge_sum,
+                  technician_gauge_highest,
                   delta_time);
-  updateCharacter(
-    security_instances, security_count, security_visible_count, security_gauge_sum, delta_time);
+  updateCharacter(security_instances,
+                  security_count,
+                  security_visible_count,
+                  security_gauge_sum,
+                  security_gauge_highest,
+                  delta_time);
 }
 
 /* Update a specific character definition */
 template<class CharacterArray>
-void CharacterManager::updateCharacter(
-  CharacterArray character, int& char_c, int& char_visible_c, float& char_gauge, double& delta_time)
+void CharacterManager::updateCharacter(CharacterArray character,
+                                       int& char_c,
+                                       int& char_visible_c,
+                                       float& char_gauge,
+                                       float& char_gauge_h,
+                                       double& delta_time)
 {
   char_visible_c = 0;
   char_gauge = 0;
+  char_gauge_h = 0;
   for (int i = 0; i < char_c; i++)
   {
     if (character[i]->isVisible()) // Only bother updating if visible?
     {
       character[i]->update(delta_time);
-      char_gauge += goon_instances[i]->getInternalGauge();
+      char_gauge += character[i]->getInternalGauge();
+      if (character[i]->getInternalGauge() > char_gauge_h)
+      {
+        char_gauge_h = character[i]->getInternalGauge();
+      }
       char_visible_c++;
     }
   }
@@ -214,34 +233,6 @@ void CharacterManager::updateCharacter(
 
 /* Get sum gauge value for character */
 float CharacterManager::getTotalGaugeValue(character_type character)
-{
-  switch (character)
-  {
-    case character_type::BOSS:
-    {
-      return boss_gauge_highest;
-    }
-    case character_type::GOON:
-    {
-      return goon_gauge_highest;
-    }
-    case character_type::TECHNICIAN:
-    {
-      return technician_gauge_highest;
-    }
-    case character_type::SECURITY:
-    {
-      return security_gauge_highest;
-    }
-    default:
-    {
-      return 0.0f;
-    }
-  }
-}
-
-/* Get sum gauge value for character */
-float CharacterManager::getHighestGaugeValue(character_type character)
 {
   switch (character)
   {
@@ -260,6 +251,34 @@ float CharacterManager::getHighestGaugeValue(character_type character)
     case character_type::SECURITY:
     {
       return security_gauge_sum;
+    }
+    default:
+    {
+      return 0.0f;
+    }
+  }
+}
+
+/* Get sum gauge value for character */
+float CharacterManager::getHighestGaugeValue(character_type character)
+{
+  switch (character)
+  {
+    case character_type::BOSS:
+    {
+      return boss_gauge_highest;
+    }
+    case character_type::GOON:
+    {
+      return goon_gauge_highest;
+    }
+    case character_type::TECHNICIAN:
+    {
+      return technician_gauge_highest;
+    }
+    case character_type::SECURITY:
+    {
+      return security_gauge_highest;
     }
     default:
     {
