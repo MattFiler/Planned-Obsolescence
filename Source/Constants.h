@@ -125,6 +125,20 @@ enum hud_gauge_types
   PLAYER_POWER
 };
 
+// Gauge levels
+enum gauge_levels
+{
+  GAUGE_FULL = 100,
+  GAUGE_EMPTY = 0
+};
+
+// Gauge tick-rates
+enum gauge_rates
+{
+  PROJECT_TIMER = 1000,
+  POWER = 400
+};
+
 // Game over definitions
 enum game_over_type
 {

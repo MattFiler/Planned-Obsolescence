@@ -16,7 +16,7 @@ class GaugeManager
   void incrementProjectProgress(float add_progress);
   void decreasePlayerPower(float decrease_power);
 
-  void update(double dt_sec);
+  game_over_type update(double dt_sec);
 
   float getProjectProgress();
   float getProjectTimeRemaining();
@@ -26,9 +26,9 @@ class GaugeManager
   void decreaseProjectTimeRemaining(double dt_sec);
   void increasePlayerPower(double dt_sec);
 
-  float project_progress = 0;
-  float project_time_remaining = 100;
-  float player_power = 100;
+  float project_progress = gauge_levels::GAUGE_EMPTY;
+  float project_time_remaining = gauge_levels::GAUGE_FULL;
+  float player_power = gauge_levels::GAUGE_FULL;
 
   UIManager* ui_manager;
   CharacterManager* character_manager;

@@ -6,26 +6,43 @@ GaugeManager::~GaugeManager()
   // ui_manager = nullptr;
 }
 
-/* Handle our per-frame updates */
-void GaugeManager::update(double dt_sec)
+/* Handle our per-frame updates and check game over state */
+game_over_type GaugeManager::update(double dt_sec)
 {
   increasePlayerPower(dt_sec);
   decreaseProjectTimeRemaining(dt_sec);
 
+  float detection_gauge = character_manager->getHighestGaugeValue(character_type::SECURITY);
   ui_manager->getMainHUD()->adjustGauge(hud_gauge_types::PROJECT_PROGRESS, project_progress);
   ui_manager->getMainHUD()->adjustGauge(hud_gauge_types::TIME_REMAINING, project_time_remaining);
-  ui_manager->getMainHUD()->adjustGauge(
-    hud_gauge_types::YOUR_DETECTION,
-    character_manager->getHighestGaugeValue(character_type::SECURITY));
+  ui_manager->getMainHUD()->adjustGauge(hud_gauge_types::YOUR_DETECTION, detection_gauge);
   ui_manager->getMainHUD()->adjustGauge(hud_gauge_types::PLAYER_POWER, player_power);
+
+  if (project_time_remaining == gauge_levels::GAUGE_EMPTY)
+  {
+    if (project_progress != gauge_levels::GAUGE_FULL && detection_gauge != gauge_levels::GAUGE_FULL)
+    {
+      return game_over_type::PLAYER_WON;
+    }
+    return game_over_type::PLAYER_LOST;
+  }
+  else if (project_progress == gauge_levels::GAUGE_FULL)
+  {
+    return game_over_type::PLAYER_LOST;
+  }
+  else if (detection_gauge == gauge_levels::GAUGE_FULL)
+  {
+    return game_over_type::PLAYER_LOST;
+  }
+  return game_over_type::NOT_YET_DECIDED;
 }
 
 /* Increase project progress */
 void GaugeManager::incrementProjectProgress(float add_progress)
 {
-  if (project_progress + add_progress > 100)
+  if (project_progress + add_progress > gauge_levels::GAUGE_FULL)
   {
-    project_progress = 100;
+    project_progress = gauge_levels::GAUGE_FULL;
   }
   else
   {
@@ -36,9 +53,9 @@ void GaugeManager::incrementProjectProgress(float add_progress)
 /* Increase player's power */
 void GaugeManager::decreasePlayerPower(float decrease_power)
 {
-  if (player_power - decrease_power < 0)
+  if (player_power - decrease_power < gauge_levels::GAUGE_EMPTY)
   {
-    player_power = 0;
+    player_power = gauge_levels::GAUGE_EMPTY;
   }
   else
   {
@@ -49,10 +66,10 @@ void GaugeManager::decreasePlayerPower(float decrease_power)
 /* Decrease project timer based on delta time */
 void GaugeManager::decreaseProjectTimeRemaining(double dt_sec)
 {
-  dt_sec /= 1000;
-  if (project_time_remaining - static_cast<float>(dt_sec) < 0)
+  dt_sec /= gauge_rates::PROJECT_TIMER;
+  if (project_time_remaining - static_cast<float>(dt_sec) < gauge_levels::GAUGE_EMPTY)
   {
-    project_time_remaining = 0;
+    project_time_remaining = gauge_levels::GAUGE_EMPTY;
   }
   else
   {
@@ -63,10 +80,10 @@ void GaugeManager::decreaseProjectTimeRemaining(double dt_sec)
 /* Decrease player's power based on delta time */
 void GaugeManager::increasePlayerPower(double dt_sec)
 {
-  dt_sec /= 400;
-  if (player_power + static_cast<float>(dt_sec) > 100)
+  dt_sec /= gauge_rates::POWER;
+  if (player_power + static_cast<float>(dt_sec) > gauge_levels::GAUGE_FULL)
   {
-    player_power = 100;
+    player_power = gauge_levels::GAUGE_FULL;
   }
   else
   {

@@ -179,8 +179,12 @@ scenes GameCore::update(double delta_time)
   camera.moveCamera(x_axis_input * static_cast<float>(delta_time),
                     y_axis_input * static_cast<float>(delta_time));
 
-  // Update project gauge
-  project_gauge.update(delta_time);
+  // Update gauges and check for ending conditions (end game if required)
+  game_over_type current_endstate = project_gauge.update(delta_time);
+  if (current_endstate != game_over_type::NOT_YET_DECIDED)
+  {
+    endGame(current_endstate);
+  }
 
   // Update managers
   ui_manager.update(delta_time);
@@ -198,9 +202,6 @@ scenes GameCore::update(double delta_time)
   {
     ui_manager.getCursor()->setCursorType(cursor_variant::CURSOR_DEFAULT);
   }
-
-  // for testing
-  // endGame(game_over_type::PLAYER_LOST);
 
   return next_scene;
 }
