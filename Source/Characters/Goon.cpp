@@ -13,14 +13,17 @@ void Goon::update(double delta_time)
   // If the Goon didn't move
   if (!updatePosition(delta_time))
   {
-    // If there is no current PoI, or it's broken, or the current destination was never reached find
-    // a new one
-    if (point_of_interest_tile == nullptr ||
-        point_of_interest_tile->getPointOfInterestState() != poi_state::POI_IS_FUNCTIONAL ||
-        !(poi_position == position))
+    // Check if the POI is valid the first time only
+    if(!at_valid_poi && point_of_interest_tile != nullptr && point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL && (poi_position == position))
+    {
+      // Setting to true also prevents the previous check on future update ticks
+      at_valid_poi = true;
+    }
+    if (!at_valid_poi)
     {
       findNewPOI();
       time_elapsed_at_poi = 0;
+      at_valid_poi = false;
       if (point_of_interest_tile != nullptr &&
           point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
       {
@@ -32,10 +35,13 @@ void Goon::update(double delta_time)
       // If the allotted time is spent at the POI, find a new one
       time_elapsed_at_poi += delta_time;
       time_working += delta_time;
+      point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_BEING_USED_BY_GOON);
       if (time_elapsed_at_poi > total_time_for_poi)
       {
+          point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_FUNCTIONAL);
         findNewPOI();
         time_elapsed_at_poi = 0;
+        at_valid_poi = false;
       }
     }
   }

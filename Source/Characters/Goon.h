@@ -28,6 +28,7 @@ class Goon : public Character
   int average_index = 0;
   double time_since_last_interval = 0;
   double time_working = 0; // Time spent working since last interval
+  bool at_valid_poi = false;
 };
 
 #endif
