@@ -248,12 +248,6 @@
     "poi_sprite": "data/TILES/SECURITY/open_side_door_alt_104107.png",
     "poi_desc": "poi_door"
   },
-  "computer": {
-    "sprite": "data/TILES/SECURITY/Computer_and_desk_104216.png",
-    "poi_computer": true,
-    "poi_sprite": "data/TILES/SECURITY/Computer_and_desk_alt_104216.png",
-    "poi_desc": "poi_computer"
-  },
   "D_floor": {
     "sprite": "data/TILES/SECURITY/Blue_floor_104911.png",
     "available_exits": {
@@ -261,8 +255,8 @@
     }
   },
   "DEFAULT": {
-    "width": 50,
-    "height": 50,
+    "width": 32,
+    "height": 32,
     "sprite": "data/TILES/placeholder.png",
     "available_exits": {
       "left": false,
@@ -367,12 +361,6 @@
       "up": true,
       "down": true
     }
-  },
-  "Computer_tech": {
-    "sprite": "data/TILES/IT/TECH/Computer_and_desk_112850.png",
-    "poi_computer": true,
-    "poi_sprite": "data/TILES/IT/TECH/Computer_and_desk_alt_112850.png",
-    "poi_desc": "poi_computer"
   },
   "Door_up_tech": {
     "sprite": "data/TILES/IT/TECH/Door_112938.png",
@@ -491,12 +479,6 @@
     "poi_sprite": "data/TILES/BOSS/open_side_door_alt_115821.png",
     "poi_desc": "poi_door"
   },
-  "computer_boss": {
-    "sprite": "data/TILES/BOSS/Computer_and_desk_115925.png",
-    "poi_computer": true,
-    "poi_sprite": "data/TILES/BOSS/Computer_and_desk_alt_115925.png",
-    "poi_desc": "poi_computer"
-  },
   "bottom_left_white": {
     "sprite": "data/TILES/LAB/bottom_left_White_120713.png"
   },
@@ -589,12 +571,6 @@
       "up": true,
       "down": true
     }
-  },
-  "Computer_lab": {
-    "sprite": "data/TILES/LAB/Computer_and_desk_121425.png",
-    "poi_computer": true,
-    "poi_sprite": "data/TILES/LAB/Computer_and_desk_alt_121425.png",
-    "poi_desc": "poi_computer"
   },
   "door_up_lab": {
     "sprite": "data/TILES/LAB/Door_121459.png",
@@ -941,28 +917,52 @@
     "poi_sprite": "data/TILES/BREAK ROOM/kitchen_fridge_alt_015149.png",
     "poi_desc": "poi_fridge"
   },
-  "computer_left_server": {
-    "sprite": "data/TILES/SERVER/left_computer_021724.png",
+  "computer": {
+    "sprite": "data/TILES/SECURITY/Computer_and_desk_090959.png",
     "poi_computer": true,
-    "poi_sprite": "data/TILES/SERVER/left_computer_alt_021724.png",
+    "poi_sprite": "data/TILES/SECURITY/Broken_computer_up_alt_090959.png",
+    "poi_desc": "poi_computer"
+  },
+  "Computer_tech": {
+    "sprite": "data/TILES/IT/TECH/Computer_and_desk_091059.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/IT/TECH/Broken_computer_up_alt_091059.png",
+    "poi_desc": "poi_computer"
+  },
+  "computer_boss": {
+    "sprite": "data/TILES/BOSS/Computer_and_desk_091120.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BOSS/Broken_computer_up_alt_091120.png",
+    "poi_desc": "poi_computer"
+  },
+  "Computer_lab": {
+    "sprite": "data/TILES/LAB/Computer_and_desk_091137.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/LAB/Broken_computer_up_alt_091137.png",
     "poi_desc": "poi_computer"
   },
   "computer_left_lab": {
-    "sprite": "data/TILES/LAB/left_computer_024341.png",
+    "sprite": "data/TILES/LAB/left_computer_091200.png",
     "poi_computer": true,
-    "poi_sprite": "data/TILES/LAB/left_computer_alt_024341.png",
+    "poi_sprite": "data/TILES/LAB/Broken_computer_left_alt_091200.png",
     "poi_desc": "poi_computer"
   },
   "computer_right_lab": {
-    "sprite": "data/TILES/LAB/right_computer_024429.png",
+    "sprite": "data/TILES/LAB/right_computer_091230.png",
     "poi_computer": true,
-    "poi_sprite": "data/TILES/LAB/right_computer_alt_024429.png",
+    "poi_sprite": "data/TILES/LAB/Broken_computer_right_alt_091230.png",
     "poi_desc": "poi_computer"
   },
   "computer_down_lab": {
-    "sprite": "data/TILES/LAB/down_computer_024506.png",
+    "sprite": "data/TILES/LAB/down_computer_091241.png",
     "poi_computer": true,
-    "poi_sprite": "data/TILES/LAB/down_computer_alt_024506.png",
+    "poi_sprite": "data/TILES/LAB/Broken_computer_down_alt_091241.png",
+    "poi_desc": "poi_computer"
+  },
+  "computer_left_server": {
+    "sprite": "data/TILES/SERVER/left_computer_091403.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/SERVER/Broken_computer_left_alt_091403.png",
     "poi_desc": "poi_computer"
   }
 }

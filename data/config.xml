@@ -203,11 +203,6 @@
         <valid_exits left="false" right="false" up="false" down="false" />
         <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/SECURITY/open_side_door_alt_104107.png" />
       </tile>
-      <tile name="computer" set="SECURITY" sprite="data/TILES/SECURITY/Computer_and_desk_104216.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/SECURITY/Computer_and_desk_alt_104216.png" />
-      </tile>
       <tile name="D_floor" set="SECURITY" sprite="data/TILES/SECURITY/Blue_floor_104911.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="true" />
@@ -302,11 +297,6 @@
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="true" right="true" up="true" down="true" />
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
-      </tile>
-      <tile name="Computer_tech" set="IT/TECH" sprite="data/TILES/IT/TECH/Computer_and_desk_112850.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/IT/TECH/Computer_and_desk_alt_112850.png" />
       </tile>
       <tile name="Door_up_tech" set="IT/TECH" sprite="data/TILES/IT/TECH/Door_112938.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
@@ -413,11 +403,6 @@
         <valid_exits left="false" right="false" up="false" down="false" />
         <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/BOSS/open_side_door_alt_115821.png" />
       </tile>
-      <tile name="computer_boss" set="BOSS" sprite="data/TILES/BOSS/Computer_and_desk_115925.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/BOSS/Computer_and_desk_alt_115925.png" />
-      </tile>
       <tile name="bottom_left_white" set="LAB" sprite="data/TILES/LAB/bottom_left_White_120713.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="false" />
@@ -502,11 +487,6 @@
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="true" right="true" up="true" down="true" />
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
-      </tile>
-      <tile name="Computer_lab" set="LAB" sprite="data/TILES/LAB/Computer_and_desk_121425.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/LAB/Computer_and_desk_alt_121425.png" />
       </tile>
       <tile name="door_up_lab" set="LAB" sprite="data/TILES/LAB/Door_121459.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
@@ -808,35 +788,95 @@
         <valid_exits left="false" right="false" up="false" down="false" />
         <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/BREAK ROOM/open_side_door_alt_010518.png" />
       </tile>
+      <tile name="computer" set="SECURITY" sprite="data/TILES/SECURITY/Computer_and_desk_090959.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/SECURITY/Broken_computer_up_alt_090959.png" />
+      </tile>
+      <tile name="Computer_tech" set="IT/TECH" sprite="data/TILES/IT/TECH/Computer_and_desk_091059.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/IT/TECH/Broken_computer_up_alt_091059.png" />
+      </tile>
+      <tile name="computer_boss" set="BOSS" sprite="data/TILES/BOSS/Computer_and_desk_091120.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/BOSS/Broken_computer_up_alt_091120.png" />
+      </tile>
+      <tile name="Computer_lab" set="LAB" sprite="data/TILES/LAB/Computer_and_desk_091137.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/LAB/Broken_computer_up_alt_091137.png" />
+      </tile>
+      <tile name="computer_left_lab" set="LAB" sprite="data/TILES/LAB/left_computer_091200.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/LAB/Broken_computer_left_alt_091200.png" />
+      </tile>
+      <tile name="computer_right_lab" set="LAB" sprite="data/TILES/LAB/right_computer_091230.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/LAB/Broken_computer_right_alt_091230.png" />
+      </tile>
+      <tile name="computer_down_lab" set="LAB" sprite="data/TILES/LAB/down_computer_091241.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/LAB/Broken_computer_down_alt_091241.png" />
+      </tile>
+      <tile name="computer_left_server" set="SERVER" sprite="data/TILES/SERVER/left_computer_091403.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/SERVER/Broken_computer_left_alt_091403.png" />
+      </tile>
+      <tile name="toilet_tile" set="TOILET" sprite="data/TILES/TOILET/toilet_091514.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_toilet" alt_sprite="data/TILES/TOILET/Broken_toilet_alt_091514.png" />
+      </tile>
+      <tile name="shower_tile" set="TOILET" sprite="data/TILES/TOILET/Shower_091547.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_shower" alt_sprite="data/TILES/TOILET/Broken_shower_alt_091547.png" />
+      </tile>
+      <tile name="Toilet_sink" set="TOILET" sprite="data/TILES/TOILET/Toilet_sink_091646.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_sink" alt_sprite="data/TILES/TOILET/Broken_sink_toilet_alt_091646.png" />
+      </tile>
       <tile name="cooker" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/kitchen_cooker_015121.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="true" door="false" description="poi_cooker" alt_sprite="data/TILES/BREAK ROOM/kitchen_cooker_alt_015121.png" />
+        <points_of_interest computer="true" door="false" description="poi_cooker" alt_sprite="C:\Users\Szymon\Desktop\Project\ex-machina-planned-obsolescence\data\TILES\Assets\POI\Broken_cooker.png" />
       </tile>
       <tile name="fridge" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/kitchen_fridge_015149.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="true" door="false" description="poi_fridge" alt_sprite="data/TILES/BREAK ROOM/kitchen_fridge_alt_015149.png" />
+        <points_of_interest computer="true" door="false" description="poi_fridge" alt_sprite="C:\Users\Szymon\Desktop\Project\ex-machina-planned-obsolescence\data\TILES\Assets\POI\Broken_fridge.png" />
       </tile>
-      <tile name="computer_left_server" set="SERVER" sprite="data/TILES/SERVER/left_computer_021724.png" mandatory="false">
+      <tile name="kitchen_sink" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Kitchen_sink_091755.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/SERVER/left_computer_alt_021724.png" />
+        <points_of_interest computer="true" door="false" description="poi_sink" alt_sprite="data/TILES/BREAK ROOM/Broken_sink_kitchen_alt_091755.png" />
       </tile>
-      <tile name="computer_left_lab" set="LAB" sprite="data/TILES/LAB/left_computer_024341.png" mandatory="false">
+      <tile name="server_sprite" set="SERVER" sprite="data/TILES/SERVER/Server_091841.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/LAB/left_computer_alt_024341.png" />
+        <points_of_interest computer="true" door="false" description="poi_server" alt_sprite="data/TILES/SERVER/Broken_Server_alt_091841.png" />
       </tile>
-      <tile name="computer_right_lab" set="LAB" sprite="data/TILES/LAB/right_computer_024429.png" mandatory="false">
+      <tile name="printer_boss" set="BOSS" sprite="data/TILES/BOSS/Printer_and_desk_091927.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/LAB/right_computer_alt_024429.png" />
+        <points_of_interest computer="true" door="false" description="poi_bookcase" alt_sprite="data/TILES/BOSS/Broken_printer_alt_091927.png" />
       </tile>
-      <tile name="computer_down_lab" set="LAB" sprite="data/TILES/LAB/down_computer_024506.png" mandatory="false">
+      <tile name="printer_lab" set="LAB" sprite="data/TILES/LAB/Printer_and_desk_091959.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/LAB/down_computer_alt_024506.png" />
+        <points_of_interest computer="true" door="false" description="poi_bookcase" alt_sprite="data/TILES/LAB/Broken_printer_alt_091959.png" />
+      </tile>
+      <tile name="UD_red" set="BOSS" sprite="data/TILES/BOSS/Red_floor_092251.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="true" down="true" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
       </tile>
     </tiles>
   </tile_config>
@@ -1057,35 +1097,6 @@
           <tile name="bottom_green" />
           <tile name="bottom_green" />
           <tile name="bottom_right_green" />
-        </tiles>
-      </room>
-      <room name="Boss_Office" mandatory="false">
-        <tiles width="5" height="5">
-          <tile name="top_left_red" />
-          <tile name="top_red" />
-          <tile name="door_up_boss" />
-          <tile name="top_red" />
-          <tile name="top_right_red" />
-          <tile name="left_red" />
-          <tile name="computer_boss" />
-          <tile name="RUD_red" />
-          <tile name="LD_red" />
-          <tile name="right_red" />
-          <tile name="left_red" />
-          <tile name="RD_red" />
-          <tile name="ALL_red" />
-          <tile name="LUD_red" />
-          <tile name="right_red" />
-          <tile name="left_red" />
-          <tile name="RU_red" />
-          <tile name="ALL_red" />
-          <tile name="LU_red" />
-          <tile name="right_red" />
-          <tile name="bottom_left_red" />
-          <tile name="bottom_red" />
-          <tile name="door_up_boss" />
-          <tile name="bottom_red" />
-          <tile name="bottom_right_red" />
         </tiles>
       </room>
       <room name="Server_room" mandatory="false">
@@ -1490,35 +1501,6 @@
           <tile name="bottom_right_white" />
         </tiles>
       </room>
-      <room name="Kitchen_right_half" mandatory="false">
-        <tiles width="5" height="5">
-          <tile name="top_yellow" />
-          <tile name="top_yellow" />
-          <tile name="door_up_yellow" />
-          <tile name="top_yellow" />
-          <tile name="top_right_yellow" />
-          <tile name="fridge" />
-          <tile name="fridge" />
-          <tile name="RUD_yellow" />
-          <tile name="LD_yellow" />
-          <tile name="right_yellow" />
-          <tile name="LRD_yellow" />
-          <tile name="LRD_yellow" />
-          <tile name="ALL_yellow" />
-          <tile name="ALL_yellow" />
-          <tile name="door_side_yellow" />
-          <tile name="LRU_yellow" />
-          <tile name="LRU_yellow" />
-          <tile name="ALL_yellow" />
-          <tile name="LU_yellow" />
-          <tile name="right_yellow" />
-          <tile name="bottom_yellow" />
-          <tile name="bottom_yellow" />
-          <tile name="door_up_yellow" />
-          <tile name="bottom_yellow" />
-          <tile name="bottom_right_yellow" />
-        </tiles>
-      </room>
       <room name="Kitchen_left_half" mandatory="false">
         <tiles width="5" height="5">
           <tile name="top_left_yellow" />
@@ -1546,6 +1528,64 @@
           <tile name="bottom_yellow" />
           <tile name="bottom_yellow" />
           <tile name="bottom_yellow" />
+        </tiles>
+      </room>
+      <room name="Kitchen_right_half" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_yellow" />
+          <tile name="top_yellow" />
+          <tile name="door_up_yellow" />
+          <tile name="top_yellow" />
+          <tile name="top_right_yellow" />
+          <tile name="fridge" />
+          <tile name="kitchen_sink" />
+          <tile name="RUD_yellow" />
+          <tile name="LD_yellow" />
+          <tile name="right_yellow" />
+          <tile name="LRD_yellow" />
+          <tile name="LRD_yellow" />
+          <tile name="ALL_yellow" />
+          <tile name="ALL_yellow" />
+          <tile name="door_side_yellow" />
+          <tile name="LRU_yellow" />
+          <tile name="LRU_yellow" />
+          <tile name="ALL_yellow" />
+          <tile name="LU_yellow" />
+          <tile name="right_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="door_up_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="bottom_right_yellow" />
+        </tiles>
+      </room>
+      <room name="Boss_Office" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_red" />
+          <tile name="top_red" />
+          <tile name="door_up_boss" />
+          <tile name="top_red" />
+          <tile name="top_right_red" />
+          <tile name="left_red" />
+          <tile name="computer_boss" />
+          <tile name="UD_red" />
+          <tile name="printer_boss" />
+          <tile name="right_red" />
+          <tile name="left_red" />
+          <tile name="RD_red" />
+          <tile name="ALL_red" />
+          <tile name="LD_red" />
+          <tile name="right_red" />
+          <tile name="left_red" />
+          <tile name="RU_red" />
+          <tile name="ALL_red" />
+          <tile name="LU_red" />
+          <tile name="right_red" />
+          <tile name="bottom_left_red" />
+          <tile name="bottom_red" />
+          <tile name="door_up_boss" />
+          <tile name="bottom_red" />
+          <tile name="bottom_right_red" />
         </tiles>
       </room>
     </rooms>
