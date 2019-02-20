@@ -718,5 +718,227 @@
     "poi_computer": true,
     "poi_sprite": "data/TILES/SERVER/open_side_door_alt_123142.png",
     "poi_desc": "poi_door"
+  },
+  "bottom_left_toilet": {
+    "sprite": "data/TILES/TOILET/bottom_left_Light_Blue_123518.png"
+  },
+  "bottom_toilet": {
+    "sprite": "data/TILES/TOILET/bottom_Light_Blue_123539.png"
+  },
+  "bottom_right_toilet": {
+    "sprite": "data/TILES/TOILET/bottom_right_Light_Blue_123740.png"
+  },
+  "left_toilet": {
+    "sprite": "data/TILES/TOILET/left_side_Light_Blue_123806.png"
+  },
+  "right_toilet": {
+    "sprite": "data/TILES/TOILET/right_side_Light_Blue_123825.png"
+  },
+  "top_left_toilet": {
+    "sprite": "data/TILES/TOILET/top_left_Light_Blue_123841.png"
+  },
+  "top_toilet": {
+    "sprite": "data/TILES/TOILET/top_Light_Blue_123908.png"
+  },
+  "top_right_toilet": {
+    "sprite": "data/TILES/TOILET/top_right_Light_Blue_123935.png"
+  },
+  "RD_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124131.png",
+    "available_exits": {
+      "right": true,
+      "down": true
+    }
+  },
+  "LD_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124208.png",
+    "available_exits": {
+      "left": true,
+      "down": true
+    }
+  },
+  "LU_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124258.png",
+    "available_exits": {
+      "left": true,
+      "up": true
+    }
+  },
+  "RU_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124226.png",
+    "available_exits": {
+      "right": true,
+      "up": true
+    }
+  },
+  "LRD_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124413.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "down": true
+    }
+  },
+  "RUD_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124451.png",
+    "available_exits": {
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LUD_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124514.png",
+    "available_exits": {
+      "left": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LRU_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124539.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true
+    }
+  },
+  "ALL_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124603.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "door_up_toilet": {
+    "sprite": "data/TILES/TOILET/Door_124635.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/TOILET/Opened_door_alt_124635.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side_toilet": {
+    "sprite": "data/TILES/TOILET/Door_124705.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/TOILET/open_side_door_alt_124705.png",
+    "poi_desc": "poi_door"
+  },
+  "bottom_left_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/bottom_left_Yellow_124907.png"
+  },
+  "bottom_right_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/bottom_right_Yellow_124930.png"
+  },
+  "bottom_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/bottom_Yellow_124941.png"
+  },
+  "left_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/left_side_Yellow_124952.png"
+  },
+  "right_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/right_side_Yellow_125012.png"
+  },
+  "top_left_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/top_left_Yellow_125028.png"
+  },
+  "top_right_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/top_right_Yellow_125043.png"
+  },
+  "top_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/top_Yellow_125054.png"
+  },
+  "RD_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125138.png",
+    "available_exits": {
+      "right": true,
+      "down": true
+    }
+  },
+  "LD_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125153.png",
+    "available_exits": {
+      "left": true,
+      "down": true
+    }
+  },
+  "RU_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125227.png",
+    "available_exits": {
+      "right": true,
+      "up": true
+    }
+  },
+  "LU_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125239.png",
+    "available_exits": {
+      "left": true,
+      "up": true
+    }
+  },
+  "LRD_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125448.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "down": true
+    }
+  },
+  "RUD_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125503.png",
+    "available_exits": {
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LUD_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125518.png",
+    "available_exits": {
+      "left": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LRU_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125545.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true
+    }
+  },
+  "ALL_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125710.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "door_up_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Door_010449.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/Opened_door_alt_010449.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Door_010518.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/open_side_door_alt_010518.png",
+    "poi_desc": "poi_door"
+  },
+  "cooker": {
+    "sprite": "data/TILES/BREAK ROOM/kitchen_cooker_015121.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/kitchen_cooker_alt_015121.png",
+    "poi_desc": "poi_cooker"
+  },
+  "fridge": {
+    "sprite": "data/TILES/BREAK ROOM/kitchen_fridge_015149.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/kitchen_fridge_alt_015149.png",
+    "poi_desc": "poi_fridge"
   }
 }

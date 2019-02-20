@@ -59,7 +59,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST2_123155.png"
+    "sprite": "data/MAPS/TEST2_015217.png"
   },
   "TEST3": {
     "rooms_h": 3,
@@ -80,7 +80,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST3_123155.png"
+    "sprite": "data/MAPS/TEST3_015217.png"
   },
   "TEST4": {
     "rooms_h": 3,
@@ -101,7 +101,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST4_123155.png"
+    "sprite": "data/MAPS/TEST4_015217.png"
   },
   "TEST5": {
     "rooms_h": 3,
@@ -122,7 +122,7 @@
       "DEMO_3",
       "DEMO_3"
     ],
-    "sprite": "data/MAPS/TEST5_123155.png"
+    "sprite": "data/MAPS/TEST5_015217.png"
   },
   "TEST1": {
     "rooms": [
@@ -133,8 +133,8 @@
       "DEMO_1",
       "DEMO_1",
       "Security",
+      "corridor",
       "IT_Tech",
-      "DEFAULT",
       "DEMO_1",
       "DEMO_1",
       "DEMO_1",
@@ -152,6 +152,6 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST1_123155.png"
+    "sprite": "data/MAPS/TEST1_015217.png"
   }
 }

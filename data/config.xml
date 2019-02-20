@@ -9,6 +9,8 @@
       <set name="BOSS" />
       <set name="LAB" />
       <set name="SERVER" />
+      <set name="TOILET" />
+      <set name="BREAK ROOM" />
     </sets>
     <tiles>
       <tile name="LAB_L" set="TEST" sprite="data/TILES/TEST/tile_pink_placeholder101053.png" mandatory="false">
@@ -616,6 +618,206 @@
         <valid_exits left="false" right="false" up="false" down="false" />
         <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/SERVER/open_side_door_alt_123142.png" />
       </tile>
+      <tile name="bottom_left_toilet" set="TOILET" sprite="data/TILES/TOILET/bottom_left_Light_Blue_123518.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="bottom_toilet" set="TOILET" sprite="data/TILES/TOILET/bottom_Light_Blue_123539.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="bottom_right_toilet" set="TOILET" sprite="data/TILES/TOILET/bottom_right_Light_Blue_123740.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="left_toilet" set="TOILET" sprite="data/TILES/TOILET/left_side_Light_Blue_123806.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="right_toilet" set="TOILET" sprite="data/TILES/TOILET/right_side_Light_Blue_123825.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="top_left_toilet" set="TOILET" sprite="data/TILES/TOILET/top_left_Light_Blue_123841.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="top_toilet" set="TOILET" sprite="data/TILES/TOILET/top_Light_Blue_123908.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="top_right_toilet" set="TOILET" sprite="data/TILES/TOILET/top_right_Light_Blue_123935.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="RD_toilet" set="TOILET" sprite="data/TILES/TOILET/Light_blue_124131.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="true" up="false" down="true" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="LD_toilet" set="TOILET" sprite="data/TILES/TOILET/Light_blue_124208.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="false" up="false" down="true" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="LU_toilet" set="TOILET" sprite="data/TILES/TOILET/Light_blue_124258.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="false" up="true" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="RU_toilet" set="TOILET" sprite="data/TILES/TOILET/Light_blue_124226.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="true" up="true" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="LRD_toilet" set="TOILET" sprite="data/TILES/TOILET/Light_blue_124413.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="true" up="false" down="true" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="RUD_toilet" set="TOILET" sprite="data/TILES/TOILET/Light_blue_124451.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="true" up="true" down="true" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="LUD_toilet" set="TOILET" sprite="data/TILES/TOILET/Light_blue_124514.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="false" up="true" down="true" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="LRU_toilet" set="TOILET" sprite="data/TILES/TOILET/Light_blue_124539.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="true" up="true" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="ALL_toilet" set="TOILET" sprite="data/TILES/TOILET/Light_blue_124603.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="true" up="true" down="true" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="door_up_toilet" set="TOILET" sprite="data/TILES/TOILET/Door_124635.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/TOILET/Opened_door_alt_124635.png" />
+      </tile>
+      <tile name="door_side_toilet" set="TOILET" sprite="data/TILES/TOILET/Door_124705.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/TOILET/open_side_door_alt_124705.png" />
+      </tile>
+      <tile name="bottom_left_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/bottom_left_Yellow_124907.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="bottom_right_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/bottom_right_Yellow_124930.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="bottom_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/bottom_Yellow_124941.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="left_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/left_side_Yellow_124952.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="right_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/right_side_Yellow_125012.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="top_left_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/top_left_Yellow_125028.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="top_right_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/top_right_Yellow_125043.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="top_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/top_Yellow_125054.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="RD_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Yellow_floor_125138.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="true" up="false" down="true" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="LD_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Yellow_floor_125153.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="false" up="false" down="true" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="RU_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Yellow_floor_125227.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="true" up="true" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="LU_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Yellow_floor_125239.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="false" up="true" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="LRD_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Yellow_floor_125448.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="true" up="false" down="true" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="RUD_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Yellow_floor_125503.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="true" up="true" down="true" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="LUD_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Yellow_floor_125518.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="false" up="true" down="true" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="LRU_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Yellow_floor_125545.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="true" up="true" down="false" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="ALL_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Yellow_floor_125710.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="true" right="true" up="true" down="true" />
+        <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="door_up_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Door_010449.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/BREAK ROOM/Opened_door_alt_010449.png" />
+      </tile>
+      <tile name="door_side_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Door_010518.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/BREAK ROOM/open_side_door_alt_010518.png" />
+      </tile>
+      <tile name="cooker" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/kitchen_cooker_015121.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_cooker" alt_sprite="data/TILES/BREAK ROOM/kitchen_cooker_alt_015121.png" />
+      </tile>
+      <tile name="fridge" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/kitchen_fridge_015149.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="true" door="false" description="poi_fridge" alt_sprite="data/TILES/BREAK ROOM/kitchen_fridge_alt_015149.png" />
+      </tile>
     </tiles>
   </tile_config>
   <room_config>
@@ -953,8 +1155,8 @@
       <room name="DEMO_1" />
       <room name="DEMO_1" />
       <room name="Security" />
+      <room name="corridor" />
       <room name="IT_Tech" />
-      <room name="DEFAULT" />
       <room name="DEMO_1" />
       <room name="DEMO_1" />
       <room name="DEMO_1" />
