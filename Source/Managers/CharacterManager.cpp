@@ -370,7 +370,7 @@ void CharacterManager::sabotageAtPoint(Point point)
   for (int i = 0; i < security_count; i++)
   {
     // Get the distance between the security member and the sabotage
-    float dist = Point::distanceBetween(security_instances[i]->getPosition(), point) / 50;
+    float dist = Point::distanceBetween(security_instances[i]->getPosition(), point) / gauge_rates ::SECURITY_AWARENESS;
     // Then apply an amount with a square falloff
     float amount = 50.0f - (dist * dist);
     if (amount > 0)
