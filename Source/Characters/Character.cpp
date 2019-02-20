@@ -201,7 +201,8 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
     {
       node->connections[i].score = 10000;
     }
-    else if (node->connections[i].node != nullptr && !node->connections[i].node->visited && node->connections[i].node->pathable)
+    else if (node->connections[i].node != nullptr && !node->connections[i].node->visited &&
+             node->connections[i].node->pathable)
     {
       node->connections[i].node->shortest_path_to_here = depth + 1;
       // If this connection has not been scored yet
