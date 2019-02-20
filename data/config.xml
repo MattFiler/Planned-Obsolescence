@@ -1490,6 +1490,64 @@
           <tile name="bottom_right_white" />
         </tiles>
       </room>
+      <room name="Kitchen_right_half" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_yellow" />
+          <tile name="top_yellow" />
+          <tile name="door_up_yellow" />
+          <tile name="top_yellow" />
+          <tile name="top_right_yellow" />
+          <tile name="fridge" />
+          <tile name="fridge" />
+          <tile name="RUD_yellow" />
+          <tile name="LD_yellow" />
+          <tile name="right_yellow" />
+          <tile name="LRD_yellow" />
+          <tile name="LRD_yellow" />
+          <tile name="ALL_yellow" />
+          <tile name="ALL_yellow" />
+          <tile name="door_side_yellow" />
+          <tile name="LRU_yellow" />
+          <tile name="LRU_yellow" />
+          <tile name="ALL_yellow" />
+          <tile name="LU_yellow" />
+          <tile name="right_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="door_up_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="bottom_right_yellow" />
+        </tiles>
+      </room>
+      <room name="Kitchen_left_half" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_yellow" />
+          <tile name="top_yellow" />
+          <tile name="door_up_yellow" />
+          <tile name="top_yellow" />
+          <tile name="top_yellow" />
+          <tile name="left_yellow" />
+          <tile name="RD_yellow" />
+          <tile name="LUD_yellow" />
+          <tile name="cooker" />
+          <tile name="cooker" />
+          <tile name="door_side_yellow" />
+          <tile name="ALL_yellow" />
+          <tile name="ALL_yellow" />
+          <tile name="LRD_yellow" />
+          <tile name="LRD_yellow" />
+          <tile name="left_yellow" />
+          <tile name="RU_yellow" />
+          <tile name="LRU_yellow" />
+          <tile name="LRU_yellow" />
+          <tile name="LRU_yellow" />
+          <tile name="bottom_left_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="bottom_yellow" />
+          <tile name="bottom_yellow" />
+        </tiles>
+      </room>
     </rooms>
   </room_config>
   <map_config>
@@ -1637,8 +1695,8 @@
       <room name="Lab_ALL_exits" />
       <room name="Lab_LUD_exits" />
       <room name="Server_room" />
-      <room name="Lab_LUR_exits" />
-      <room name="Lab_ALL_exits" />
+      <room name="Kitchen_left_half" />
+      <room name="Kitchen_right_half" />
       <room name="Lab_LUD_exits" />
       <room name="Boss_Office" />
       <room name="Toilet_room_right_exit" />
