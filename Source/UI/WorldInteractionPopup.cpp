@@ -23,7 +23,9 @@ WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend) : UI(Point(0,
                                       232,
                                       29,
                                       "placeholder_text",
-                                      0.5f);
+                                      0.5f,
+                                      Point(7, 7),
+                                      ASGE::COLOURS::BLACK);
   poi_interaction_button->click_function = [active_p] { active_p->setActive(false); };
 }
 
@@ -67,6 +69,7 @@ void WorldInteractionPopup::render(double delta_time)
 void WorldInteractionPopup::setClickedPointName(const std::string& char_name)
 {
   poi_name = localiser.getString(char_name);
+  poi_interaction_button->updateText(char_name + "_interact");
 }
 
 /* Returns a pointer to the button that was clicked (nullptr if none) */

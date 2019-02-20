@@ -35,7 +35,15 @@
 	"poi_fridge": "FRIDGE",
 	"poi_cooker": "COOKER",
 	
-	"poi_interact_door": "CLOSE",
+	"poi_door_interact": "CLOSE DOOR",
+	"poi_computer_interact": "CORRUPT DATA",
+	"poi_bookcase_interact": "SHUFFLE BOOKS",
+	"poi_server_interact": "TURN OFF SERVER",
+	"poi_toilet_interact": "DISABLE WATER",
+	"poi_shower_interact": "TURN DOWN TEMPERATURE",
+	"poi_sink_interact": "OVERFLOW SINK",
+	"poi_fridge_interact": "TURN UP TEMPERATURE",
+	"poi_cooker_interact": "DISCONNECT GAS",
 	
 	"placeholder_text": "PLACEHOLDER"
   },
@@ -69,6 +77,16 @@
 	"poi_sink": "EVIER",
 	"poi_fridge": "FRIGO",
 	"poi_cooker": "CUISINIER",
+	
+	"poi_door_interact": "FERME LA PORTE",
+	"poi_computer_interact": "DONNEES DE CORRUPTION",
+	"poi_bookcase_interact": "LIVRES SHUFFLE",
+	"poi_server_interact": "ETEINDRE LE SERVEUR",
+	"poi_toilet_interact": "DESACTIVER L'EAU",
+	"poi_shower_interact": "BAISSEZ LA TEMPERATURE",
+	"poi_sink_interact": "EVIER DE TROP-PLEIN",
+	"poi_fridge_interact": "AUGMENTER LA TEMPERATURE",
+	"poi_cooker_interact": "DEBRANCHEZ LE GAZ",
 	
 	"character_boss": "PATRON",
 	"character_techie": "TECHNICIEN",
@@ -105,6 +123,16 @@
 	"poi_sink": "LAVABO",
 	"poi_fridge": "REFRIGERADOR",
 	"poi_cooker": "ESTUFA",
+	
+	"poi_door_interact": "CERRAR LA PUERTA",
+	"poi_computer_interact": "DATOS CORRUPTOS",
+	"poi_bookcase_interact": "LIBROS DE CHUFFLE",
+	"poi_server_interact": "APAGAR EL SERVIDOR",
+	"poi_toilet_interact": "DESHABILITAR EL AGUA",
+	"poi_shower_interact": "BAJAR LA TEMPERATURA",
+	"poi_sink_interact": "CUBIERTA DE DESBORDAMIENTO",
+	"poi_fridge_interact": "AUMENTAR LA TEMPERATURA",
+	"poi_cooker_interact": "DESCONECTAR GAS",
 	
 	"character_boss": "JEFE",
 	"character_techie": "TECNICO",

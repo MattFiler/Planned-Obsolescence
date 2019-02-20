@@ -8,10 +8,11 @@ Button::Button(Point pos,
                float _height,
                const std::string& button_text,
                float text_size,
-               Point text_offset) :
+               Point text_offset,
+               ASGE::Colour text_colour) :
   UI(pos, rend),
-  click_area(ClickArea(pos, _width, _height)), my_b_text(localiser.getString(button_text)),
-  my_b_text_size(text_size), my_b_text_offset(text_offset)
+  click_area(ClickArea(pos, _width, _height)), my_b_text(button_text), my_b_text_size(text_size),
+  my_b_text_offset(text_offset), my_b_text_colour(text_colour)
 {
   width = _width;
   height = _height;
@@ -21,6 +22,10 @@ Button::Button(Point pos,
   sprite->setHeight(height);
   sprite->xPos(position.x_pos);
   sprite->yPos(position.y_pos);
+  if (my_b_text != "")
+  {
+    my_b_text = localiser.getString(button_text);
+  }
 }
 
 Button::~Button()
