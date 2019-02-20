@@ -36,6 +36,8 @@ class Character
   void generatePathfindingMap(GameMap* game_map);
   bool calculateRouteToPoint(Point point);
   void resetPathfindingMap();
+  Point findPositionForPOI(Point point, Room* room);
+  Point findPositionForPOI(Point point);
 
   bool isVisible();
   int getSpawnCap();

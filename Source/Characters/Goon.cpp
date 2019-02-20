@@ -16,15 +16,15 @@ void Goon::update(double delta_time)
     // If there is no current PoI, or it's broken, or the current destination was never reached find
     // a new one
     if (point_of_interest_tile == nullptr ||
-        point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN ||
+        point_of_interest_tile->getPointOfInterestState() != poi_state::POI_IS_FUNCTIONAL ||
         !(poi_position == position))
     {
       findNewPOI();
       time_elapsed_at_poi = 0;
-      if (point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
+      if (point_of_interest_tile != nullptr &&
+      point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
       {
-        registerRepairRequest(
-          Point(point_of_interest_tile->getPositionX(), point_of_interest_tile->getPositionY()));
+        registerRepairRequest(point_of_interest_tile);
       }
     }
     else
@@ -114,12 +114,12 @@ void Goon::findNewPOI()
       {
         all_pois.push_back(&tile);
       }
-      else
+      else if(tile.getPointOfInterestState() == poi_state::POI_IS_BROKEN)
       {
-        registerRepairRequest(Point(tile.getPositionY(), tile.getPositionY()));
+        registerRepairRequest(&tile);
       }
     }
-  }
+}
   // If there are any, then choose a random POI to go to
   if (!all_pois.empty())
   {
@@ -128,7 +128,7 @@ void Goon::findNewPOI()
     Point tile_point =
       Point(all_pois[random_index]->getPositionX(), all_pois[random_index]->getPositionY());
     point_of_interest_tile = all_pois[random_index];
-    findPositionForPOI(tile_point, our_room);
+    poi_position = findPositionForPOI(tile_point, our_room);
     calculateRouteToPoint(poi_position);
   }
   else
@@ -137,24 +137,3 @@ void Goon::findNewPOI()
   }
 }
 
-/* Finds the position to stand on to access the point of interest */
-void Goon::findPositionForPOI(Point point, Room* room)
-{
-  float tile_size = (*room->getTiles())[0].getWidth();
-
-  for (Tile& tile : *room->getTiles())
-  {
-    if (tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE)
-    {
-      // Check to see if this tile matches the position of up, down, left or right of the POI
-      if ((tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE) &&
-          ((tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos - tile_size) ||
-           (tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos + tile_size) ||
-           (tile.getPositionX() == point.x_pos + tile_size && tile.getPositionY() == point.y_pos) ||
-           (tile.getPositionX() == point.x_pos - tile_size && tile.getPositionY() == point.y_pos)))
-      {
-        poi_position = Point(tile.getPositionX(), tile.getPositionY());
-      }
-    }
-  }
-}

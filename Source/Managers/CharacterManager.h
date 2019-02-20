@@ -50,7 +50,7 @@ class CharacterManager
                              Point click,
                              bool act_on_click = true);
 
-  void registerRepairRequest(Point point);
+  void registerRepairRequest(Tile* tile);
 
   GameMap* game_map = nullptr;
   Camera* camera = nullptr;

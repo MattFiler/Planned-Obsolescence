@@ -131,6 +131,21 @@ bool GameMap::isPOIStateAtPoint(poi_state poi_state, Point point)
   return false;
 }
 
+Tile* GameMap::getTileAtPoint(Point point)
+{
+  for (Room& room : map_data.rooms)
+  {
+    for (Tile& tile : *room.getTiles())
+    {
+      if (tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos)
+      {
+        return &tile;
+      }
+    }
+  }
+  return nullptr;
+}
+
 /* Check to see if we clicked a POI */
 bool GameMap::clickedPointCheck(Point click, bool act_on_click)
 {

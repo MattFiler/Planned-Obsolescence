@@ -12,9 +12,8 @@ class Goon : public Character
   void update(double delta_time) override;
   void lockedDoorFound() override;
   void findNewPOI();
-  void findPositionForPOI(Point point, Room* room);
 
-  std::function<void(Point)> registerRepairRequest;
+  std::function<void(Tile*)> registerRepairRequest;
 
  private:
   Tile* point_of_interest_tile = nullptr;

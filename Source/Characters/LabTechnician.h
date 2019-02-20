@@ -2,7 +2,7 @@
 #define PO_LABTECHIE
 
 #include "Character.h"
-#include <queue>
+#include <deque>
 
 class LabTechnician : public Character
 {
@@ -12,7 +12,7 @@ class LabTechnician : public Character
 
   void lockedDoorFound() override;
   void update(double delta_time) override;
-  void addRepairRequest(Point point) { broken_pois.push(point); };
+  void addRepairRequest(Tile* tile) { broken_pois.push_back(tile); };
 
   unsigned long long int getRepairQueueLength() { return broken_pois.size(); }
 
@@ -23,7 +23,7 @@ class LabTechnician : public Character
   double time_elapsed = 0;
   bool repairing = false;
 
-  std::queue<Point> broken_pois;
+  std::deque<Tile*> broken_pois;
 };
 
 #endif

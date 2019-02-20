@@ -103,8 +103,8 @@ bool CharacterManager::spawnCharacter(Goon* new_goon)
     goon_instances[goon_count]->wake(renderer);
     goon_instances[goon_count]->setCharacterID(goon_count);
     goon_instances[goon_count]->generatePathfindingMap(game_map);
-    goon_instances[goon_count]->registerRepairRequest = [&](Point point) {
-      this->registerRepairRequest(point);
+    goon_instances[goon_count]->registerRepairRequest = [&](Tile* tile) {
+      this->registerRepairRequest(tile);
     };
 
     goon_count++;
@@ -343,16 +343,17 @@ bool CharacterManager::clickedCharacterCheck(CharacterArray character,
 }
 
 /* Registers a repair request with the technician with the shortest queue */
-void CharacterManager::registerRepairRequest(Point point)
+void CharacterManager::registerRepairRequest(Tile* tile)
 {
-  int index = 0;
-  unsigned long long int shortest_queue = 1000;
-  for (int i = 0; i < technician_count; i++)
-  {
-    if (technician_instances[i]->getRepairQueueLength() < shortest_queue)
-    {
-      index = i;
+    if(tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN) {
+        int index = 0;
+        unsigned long long int shortest_queue = 1000;
+        for (int i = 0; i < technician_count; i++) {
+            if (technician_instances[i]->getRepairQueueLength() < shortest_queue) {
+                index = i;
+            }
+        }
+        technician_instances[index]->addRepairRequest(tile);
+        tile->setPointOfInterestState(poi_state::POI_REPAIR_PENDING);
     }
-  }
-  technician_instances[index]->addRepairRequest(point);
 }

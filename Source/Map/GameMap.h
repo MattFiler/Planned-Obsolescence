@@ -27,6 +27,7 @@ class GameMap
   std::shared_ptr<ScaledSpriteArray> getSprite();
 
   bool isPOIStateAtPoint(poi_state poi_state, Point point);
+  Tile* getTileAtPoint(Point point);
 
   bool clickedPointCheck(Point click, bool act_on_click = true);
 

@@ -429,3 +429,47 @@ std::string Character::getDisplayName()
 {
   return config.display_name;
 }
+
+/* Finds the position to stand on to access the point of interest */
+Point Character::findPositionForPOI(Point point, Room* room)
+{
+  float tile_size = (*room->getTiles())[0].getWidth();
+
+  for (Tile& tile : *room->getTiles())
+  {
+    if (tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE)
+    {
+      // Check to see if this tile matches the position of up, down, left or right of the POI
+      if ((tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE) &&
+          ((tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos - tile_size) ||
+           (tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos + tile_size) ||
+           (tile.getPositionX() == point.x_pos + tile_size && tile.getPositionY() == point.y_pos) ||
+           (tile.getPositionX() == point.x_pos - tile_size && tile.getPositionY() == point.y_pos)))
+      {
+        return Point(tile.getPositionX(), tile.getPositionY());
+      }
+    }
+  }
+  return Point(-1,-1);
+}
+
+Point Character::findPositionForPOI(Point point)
+{
+  for(Room& room : *global_map->getRooms())
+  {
+  for (Tile& tile : *room.getTiles()) {
+    float tile_size = tile.getWidth();
+    if (tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE) {
+      // Check to see if this tile matches the position of up, down, left or right of the POI
+      if ((tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE) &&
+          ((tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos - tile_size) ||
+           (tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos + tile_size) ||
+           (tile.getPositionX() == point.x_pos + tile_size && tile.getPositionY() == point.y_pos) ||
+           (tile.getPositionX() == point.x_pos - tile_size && tile.getPositionY() == point.y_pos))) {
+        return Point(tile.getPositionX(), tile.getPositionY());
+      }
+    }
+  }
+  }
+  return Point(-1,-1);
+}
