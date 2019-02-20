@@ -34,6 +34,7 @@ bool GameOver::load(ASGE::Renderer* renderer, ASGE::Input* input)
 
   // Add menu options
   main_menu.addMenuItem("retry_game");
+  main_menu.addMenuItem("return_to_menu");
   main_menu.addMenuItem("exit_game");
 
   return true;
@@ -54,6 +55,11 @@ void GameOver::keyHandler(const ASGE::SharedEventData data)
     {
       next_scene = scenes::GAME_CORE;
       debug_text.print("ENTERING GAME");
+    }
+    else if (main_menu.selectedItemWas("return_to_menu"))
+    {
+      next_scene = scenes::MAIN_MENU;
+      debug_text.print("RETURNING TO MAIN MENU");
     }
     else if (main_menu.selectedItemWas("exit_game"))
     {

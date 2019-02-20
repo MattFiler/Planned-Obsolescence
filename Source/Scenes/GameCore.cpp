@@ -227,4 +227,4 @@ void GameCore::endGame(game_over_type type)
 {
   game_over_instance.setGameOverType(type);
   next_scene = scenes::GAME_OVER;
-};
+}

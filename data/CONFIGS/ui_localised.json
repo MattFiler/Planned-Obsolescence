@@ -3,6 +3,7 @@
     "play_game": "PLAY",
 	"exit_game": "QUIT",
 	"retry_game": "TRY AGAIN",
+	"return_to_menu": "RETURN TO MENU",
 	
 	"game_won": "YOU WON!",
 	"game_lost": "YOU LOST.",
@@ -40,6 +41,7 @@
     "play_game": "JOUER",
 	"exit_game": "QUITTER",
 	"retry_game": "REESSAYER",
+	"return_to_menu": "RETOUR AU MENU",
 	
 	"game_won": "TU AS GAGNE!",
 	"game_lost": "TU AS PERDU.",
@@ -75,6 +77,7 @@
     "play_game": "JUGAR",
 	"exit_game": "DEJAR",
 	"retry_game": "REINICIAR",
+	"return_to_menu": "VOLVER AL MENU",
 	
 	"game_won": "GANASTE!",
 	"game_lost": "PERDISTE.",
