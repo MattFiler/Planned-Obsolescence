@@ -16,6 +16,8 @@ class Goon : public Character
   std::function<void(Tile*)> registerRepairRequest;
 
  private:
+  void getAllPOIInRoom(std::vector<Tile*>* all_poi, Room* room, bool ignore_functionality);
+
   Tile* point_of_interest_tile = nullptr;
   Point poi_position = Point(0, 0);
 

@@ -92,34 +92,10 @@ void Goon::findNewPOI()
     }
   }
 
-  // If no room was found, pick a random one
-  bool leaving_room = false;
-  if (!our_room)
-  {
-    // Flag that Goon is going to a new room
-    leaving_room = true;
-    auto random_room = static_cast<unsigned long long int>(
-      rand() & static_cast<int>((*global_map->getRooms()).size()));
-    our_room = &(*global_map->getRooms())[random_room];
-  }
-
   // Loop through and find all POI's
   std::vector<Tile*> all_pois;
-  for (Tile& tile : *our_room->getTiles())
-  {
-    if (tile.hasSpecificPointOfInterest(point_of_interest::COMPUTER))
-    {
-      // If Goon is leaving the room, then they don't know if the other rooms POIs are functional
-      if(leaving_room || tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL)
-      {
-        all_pois.push_back(&tile);
-      }
-      else if(tile.getPointOfInterestState() == poi_state::POI_IS_BROKEN)
-      {
-        registerRepairRequest(&tile);
-      }
-    }
-}
+  getAllPOIInRoom(&all_pois, our_room, false);
+
   // If there are any, then choose a random POI to go to
   if (!all_pois.empty())
   {
@@ -133,7 +109,38 @@ void Goon::findNewPOI()
   }
   else
   {
-    point_of_interest_tile = nullptr;
+      auto random_room = static_cast<unsigned long long int>(
+              rand() & static_cast<int>((*global_map->getRooms()).size()));
+      our_room = &(*global_map->getRooms())[random_room];
+      all_pois.clear();
+      getAllPOIInRoom(&all_pois, our_room, true);
+      auto random_index =
+              static_cast<unsigned long long>((rand() % (static_cast<int>(all_pois.size()))));
+      Point tile_point =
+              Point(all_pois[random_index]->getPositionX(), all_pois[random_index]->getPositionY());
+      point_of_interest_tile = all_pois[random_index];
+      poi_position = findPositionForPOI(tile_point, our_room);
+      calculateRouteToPoint(poi_position);
   }
+}
+
+/* Gets every point of interest in the given room and places it in the vector */
+void Goon::getAllPOIInRoom(std::vector<Tile *> *all_poi, Room* room, bool ignore_functionality)
+{
+    for (Tile& tile : *room->getTiles())
+    {
+        if (tile.hasSpecificPointOfInterest(point_of_interest::COMPUTER))
+        {
+            // If Goon is leaving the room, then they don't know if the other rooms POIs are functional
+            if(tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL || ignore_functionality)
+            {
+                all_poi->push_back(&tile);
+            }
+            else if(tile.getPointOfInterestState() == poi_state::POI_IS_BROKEN)
+            {
+                registerRepairRequest(&tile);
+            }
+        }
+    }
 }
 
