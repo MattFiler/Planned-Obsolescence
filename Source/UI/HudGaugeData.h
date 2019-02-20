@@ -22,19 +22,19 @@ struct HudGaugeData
 
     gauge_name = localiser.getString(name);
 
-    full_bar_fails = full_is_failed;
-    if (!full_bar_fails)
-    {
-      fill_colour_orig[0] = 1.0f;
-      fill_colour_orig[1] = 0.0f;
-      fill_colour_orig[2] = 0.0f;
-    }
+    setFullBarIsFailure(full_is_failed);
 
     progress_bar->setProgress(value);
   }
 
   HudGaugeData(const HudGaugeData&) = delete;
   HudGaugeData& operator=(const HudGaugeData&) = delete;
+
+  void setFullBarIsFailure(bool full_is_failed)
+  {
+    full_bar_fails = full_is_failed;
+    setBaseColour();
+  }
 
   void render(ASGE::Renderer* renderer, double delta_time)
   {
@@ -70,6 +70,25 @@ struct HudGaugeData
   std::string gauge_name = "";
 
  private:
+  void setBaseColour()
+  {
+    fill_colour[0] = 0.839f;
+    fill_colour[1] = 0.564f;
+    fill_colour[2] = 0.976f;
+    if (full_bar_fails)
+    {
+      fill_colour_orig[0] = 0.839f;
+      fill_colour_orig[1] = 0.564f;
+      fill_colour_orig[2] = 0.976f;
+    }
+    else
+    {
+      fill_colour_orig[0] = 1.0f;
+      fill_colour_orig[1] = 0.0f;
+      fill_colour_orig[2] = 0.0f;
+    }
+  }
+
   Point gauge_location;
   Point text_location;
   GetLocalisedString localiser;
