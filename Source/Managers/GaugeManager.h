@@ -14,7 +14,7 @@ class GaugeManager
   void setCharacterManager(CharacterManager* manager) { character_manager = manager; };
 
   void incrementProjectProgress(float add_progress);
-  void increasePlayerPower(float increase_power);
+  void decreasePlayerPower(float decrease_power);
 
   void update(double dt_sec);
 
@@ -24,7 +24,7 @@ class GaugeManager
 
  private:
   void decreaseProjectTimeRemaining(double dt_sec);
-  void decreasePlayerPower(double dt_sec);
+  void increasePlayerPower(double dt_sec);
 
   float project_progress = 0;
   float project_time_remaining = 100;
