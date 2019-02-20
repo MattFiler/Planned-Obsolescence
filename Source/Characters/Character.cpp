@@ -82,7 +82,7 @@ bool Character::updatePosition(double delta_time)
         if (global_map->isPOIStateAtPoint(poi_state ::DOOR_IS_CLOSED,
                                           current_route[route_index + 1]->position))
         {
-            lockedDoorFound();
+          lockedDoorFound();
         }
         else
         {

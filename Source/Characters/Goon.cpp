@@ -2,10 +2,10 @@
 
 Goon::Goon() : Character(character_type::GOON)
 {
-    for(int i = 0; i < 20; i++)
-    {
-        productivity_average[i] = 10000;
-    }
+  for (int i = 0; i < 20; i++)
+  {
+    productivity_average[i] = 10000;
+  }
 }
 
 void Goon::update(double delta_time)
@@ -21,6 +21,10 @@ void Goon::update(double delta_time)
     {
       findNewPOI();
       time_elapsed_at_poi = 0;
+      if(point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
+      {
+        registerRepairRequest(Point(point_of_interest_tile->getPositionX(), point_of_interest_tile->getPositionY()));
+      }
     }
     else
     {
@@ -52,7 +56,7 @@ void Goon::update(double delta_time)
     {
       total += productivity_average[i];
     }
-    config.internal_gauge = static_cast<float>((total / 20) / (productivity_interval/100));
+    config.internal_gauge = static_cast<float>((total / 20) / (productivity_interval / 100));
   }
 }
 
@@ -102,11 +106,17 @@ void Goon::findNewPOI()
   std::vector<Tile*> all_pois;
   for (Tile& tile : *our_room->getTiles())
   {
-    if (tile.hasSpecificPointOfInterest(point_of_interest::COMPUTER) &&
-        (leaving_room || tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL))
+    if (tile.hasSpecificPointOfInterest(point_of_interest::COMPUTER))
     {
       // If Goon is leaving the room, then they don't know if the other rooms POIs are functional
-      all_pois.push_back(&tile);
+      if(leaving_room || tile.getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL) 
+      {
+        all_pois.push_back(&tile);
+      } 
+      else
+      {
+        registerRepairRequest(Point(tile.getPositionY(), tile.getPositionY());
+      }
     }
   }
   // If there are any, then choose a random POI to go to

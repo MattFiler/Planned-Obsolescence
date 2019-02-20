@@ -45,6 +45,8 @@ class CharacterManager
                              Point click,
                              bool act_on_click = true);
 
+  void registerRepairRequest(Point point);
+
   GameMap* game_map = nullptr;
   Camera* camera = nullptr;
   UIManager* ui_manager = nullptr;

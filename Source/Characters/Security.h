@@ -7,7 +7,7 @@ class Security : public Character
 {
  public:
   Security() : Character(character_type::SECURITY){};
-  ~Security() = default;
+  ~Security() override = default;
 };
 
 #endif
