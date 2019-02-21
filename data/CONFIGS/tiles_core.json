@@ -1013,5 +1013,49 @@
       "up": true,
       "down": true
     }
+  },
+  "UD_grey": {
+    "sprite": "data/TILES/SERVER/Grey_floor_102954.png",
+    "available_exits": {
+      "up": true,
+      "down": true
+    }
+  },
+  "R_grey": {
+    "sprite": "data/TILES/SERVER/Grey_floor_103010.png",
+    "available_exits": {
+      "right": true
+    }
+  },
+  "D_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_103356.png",
+    "available_exits": {
+      "down": true
+    }
+  },
+  "L_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_103543.png",
+    "available_exits": {
+      "left": true
+    }
+  },
+  "R_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_104055.png",
+    "available_exits": {
+      "right": true
+    }
+  },
+  "D_white": {
+    "sprite": "data/TILES/LAB/White_floor_104456.png",
+    "available_exits": {
+      "down": true
+    }
+  },
+  "LR_white": {
+    "sprite": "data/TILES/LAB/White_floor_104907.png",
+    "available_exits": {
+      "left": true,
+      "right": true
+    }
   }
 }
