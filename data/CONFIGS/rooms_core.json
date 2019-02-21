@@ -59,7 +59,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_1_123010.png"
+    "sprite": "data/ROOMS/DEMO_1_124937.png"
   },
   "DEMO_2": {
     "tiles": [
@@ -89,7 +89,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_2_123010.png"
+    "sprite": "data/ROOMS/DEMO_2_124937.png"
   },
   "DEMO_3": {
     "tiles": [
@@ -119,7 +119,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_3_123010.png"
+    "sprite": "data/ROOMS/DEMO_3_124937.png"
   },
   "DEMO_4": {
     "tiles": [
@@ -149,7 +149,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_4_123010.png"
+    "sprite": "data/ROOMS/DEMO_4_124937.png"
   },
   "Security": {
     "tiles": [
@@ -179,7 +179,7 @@
       "bottom_wall",
       "bottom_right_wall"
     ],
-    "sprite": "data/ROOMS/Security_123010.png"
+    "sprite": "data/ROOMS/Security_124937.png"
   },
   "corridor": {
     "tile_w": 2,
@@ -195,37 +195,7 @@
       "RUD_floor",
       "LUD_floor"
     ],
-    "sprite": "data/ROOMS/corridor_123010.png"
-  },
-  "IT_Tech": {
-    "tiles": [
-      "top_left_green",
-      "top_green",
-      "top_green",
-      "top_green",
-      "top_right_green",
-      "left_green",
-      "Computer_tech",
-      "Computer_tech",
-      "Computer_tech",
-      "right_green",
-      "Door_up_tech",
-      "LRD_green",
-      "LRD_green",
-      "LRD_green",
-      "Door_up_tech",
-      "left_green",
-      "RU_green",
-      "LRU_green",
-      "LU_green",
-      "right_green",
-      "bottom_left_green",
-      "bottom_green",
-      "bottom_green",
-      "bottom_green",
-      "bottom_right_green"
-    ],
-    "sprite": "data/ROOMS/IT_Tech_123010.png"
+    "sprite": "data/ROOMS/corridor_124937.png"
   },
   "Lunch_room": {
     "tile_w": 10,
@@ -281,7 +251,7 @@
       "bottom_yellow",
       "bottom_right_yellow"
     ],
-    "sprite": "data/ROOMS/Lunch_room_123010.png"
+    "sprite": "data/ROOMS/Lunch_room_124937.png"
   },
   "Kitchen_left_half": {
     "tiles": [
@@ -311,7 +281,7 @@
       "bottom_yellow",
       "bottom_yellow"
     ],
-    "sprite": "data/ROOMS/Kitchen_left_half_123010.png"
+    "sprite": "data/ROOMS/Kitchen_left_half_124937.png"
   },
   "Kitchen_right_half": {
     "tiles": [
@@ -341,7 +311,7 @@
       "bottom_yellow",
       "bottom_right_yellow"
     ],
-    "sprite": "data/ROOMS/Kitchen_right_half_123010.png"
+    "sprite": "data/ROOMS/Kitchen_right_half_124937.png"
   },
   "Boss_Office": {
     "tiles": [
@@ -371,37 +341,7 @@
       "bottom_red",
       "bottom_right_red"
     ],
-    "sprite": "data/ROOMS/Boss_Office_123010.png"
-  },
-  "Server_room": {
-    "tiles": [
-      "top_left_grey",
-      "top_grey",
-      "door_up_server",
-      "top_grey",
-      "top_right_grey",
-      "left_grey",
-      "server_sprite",
-      "UD_grey",
-      "server_sprite",
-      "right_grey",
-      "left_grey",
-      "R_grey",
-      "ALL_grey",
-      "LD_grey",
-      "door_side_server",
-      "left_grey",
-      "computer_left_server",
-      "RU_grey",
-      "LU_grey",
-      "right_grey",
-      "bottom_left_grey",
-      "bottom_grey",
-      "bottom_grey",
-      "bottom_grey",
-      "bottom_right_grey"
-    ],
-    "sprite": "data/ROOMS/Server_room_123010.png"
+    "sprite": "data/ROOMS/Boss_Office_124937.png"
   },
   "Toilet_room": {
     "tiles": [
@@ -431,7 +371,7 @@
       "bottom_toilet",
       "bottom_right_toilet"
     ],
-    "sprite": "data/ROOMS/Toilet_room_123010.png"
+    "sprite": "data/ROOMS/Toilet_room_124937.png"
   },
   "Lab_ALL_exits": {
     "tiles": [
@@ -461,7 +401,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_ALL_exits_123010.png"
+    "sprite": "data/ROOMS/Lab_ALL_exits_124937.png"
   },
   "Toilet_room_right_exit": {
     "tiles": [
@@ -491,7 +431,7 @@
       "bottom_toilet",
       "bottom_right_toilet"
     ],
-    "sprite": "data/ROOMS/Toilet_room_right_exit_123010.png"
+    "sprite": "data/ROOMS/Toilet_room_right_exit_124937.png"
   },
   "Toilet_room_bottom_exit": {
     "tiles": [
@@ -521,7 +461,7 @@
       "bottom_toilet",
       "bottom_right_toilet"
     ],
-    "sprite": "data/ROOMS/Toilet_room_bottom_exit_123010.png"
+    "sprite": "data/ROOMS/Toilet_room_bottom_exit_124937.png"
   },
   "lab_UL_exits": {
     "tiles": [
@@ -551,7 +491,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/lab_UL_exits_123010.png"
+    "sprite": "data/ROOMS/lab_UL_exits_124937.png"
   },
   "Lab_LDR_exits": {
     "tiles": [
@@ -581,7 +521,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LDR_exits_123010.png"
+    "sprite": "data/ROOMS/Lab_LDR_exits_124937.png"
   },
   "Lab_LUR_exits": {
     "tiles": [
@@ -611,7 +551,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LUR_exits_123010.png"
+    "sprite": "data/ROOMS/Lab_LUR_exits_124937.png"
   },
   "Lab_LUD_exits": {
     "tiles": [
@@ -641,7 +581,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LUD_exits_123010.png"
+    "sprite": "data/ROOMS/Lab_LUD_exits_124937.png"
   },
   "Lab_LD_exits": {
     "tiles": [
@@ -671,7 +611,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LD_exits_123010.png"
+    "sprite": "data/ROOMS/Lab_LD_exits_124937.png"
   },
   "Lab_LR_exits": {
     "tiles": [
@@ -701,7 +641,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LR_exits_123010.png"
+    "sprite": "data/ROOMS/Lab_LR_exits_124937.png"
   },
   "Top_left_lab": {
     "tiles": [
@@ -731,7 +671,7 @@
       "LUD_white",
       "right_white"
     ],
-    "sprite": "data/ROOMS/Top_left_lab_123010.png"
+    "sprite": "data/ROOMS/Top_left_lab_124937.png"
   },
   "top_left_lab": {
     "tiles": [
@@ -761,7 +701,7 @@
       "computer_down_lab",
       "computer_down_lab"
     ],
-    "sprite": "data/ROOMS/top_left_lab_123010.png"
+    "sprite": "data/ROOMS/top_left_lab_124937.png"
   },
   "bottom_right_lab": {
     "tiles": [
@@ -791,7 +731,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/bottom_right_lab_123010.png"
+    "sprite": "data/ROOMS/bottom_right_lab_124937.png"
   },
   "Bottom_left_lab": {
     "tiles": [
@@ -821,7 +761,7 @@
       "bottom_white",
       "bottom_white"
     ],
-    "sprite": "data/ROOMS/Bottom_left_lab_123010.png"
+    "sprite": "data/ROOMS/Bottom_left_lab_124937.png"
   },
   "Lab_UD_exites": {
     "tiles": [
@@ -851,7 +791,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_UD_exites_123010.png"
+    "sprite": "data/ROOMS/Lab_UD_exites_124937.png"
   },
   "Top_rightt_lab": {
     "tiles": [
@@ -881,7 +821,157 @@
       "LUD_white",
       "right_white"
     ],
-    "sprite": "data/ROOMS/Top_rightt_lab_123010.png"
+    "sprite": "data/ROOMS/Top_rightt_lab_124937.png"
+  },
+  "lab_top": {
+    "tiles": [
+      "top_white",
+      "top_white",
+      "top_white",
+      "top_white",
+      "top_white",
+      "Computer_lab",
+      "Computer_lab",
+      "D_white",
+      "Computer_lab",
+      "Computer_lab",
+      "LRD_white",
+      "LRD_white",
+      "ALL_white",
+      "LRD_white",
+      "LRD_white",
+      "LRU_white",
+      "ALL_white",
+      "ALL_white",
+      "ALL_white",
+      "LRU_white",
+      "computer_down_lab",
+      "RU_white",
+      "ALL_white",
+      "LU_white",
+      "computer_down_lab"
+    ],
+    "sprite": "data/ROOMS/lab_top_124937.png"
+  },
+  "lab_left": {
+    "tiles": [
+      "left_white",
+      "RUD_white",
+      "LUD_white",
+      "Computer_lab",
+      "printer_lab",
+      "left_white",
+      "RUD_white",
+      "ALL_white",
+      "LRD_white",
+      "LD_white",
+      "left_white",
+      "RUD_white",
+      "ALL_white",
+      "ALL_white",
+      "ALL_white",
+      "left_white",
+      "RUD_white",
+      "ALL_white",
+      "LRU_white",
+      "LU_white",
+      "left_white",
+      "RUD_white",
+      "LUD_white",
+      "computer_down_lab",
+      "computer_down_lab"
+    ],
+    "sprite": "data/ROOMS/lab_left_124937.png"
+  },
+  "lab_bottom_right": {
+    "tiles": [
+      "computer_left_lab",
+      "RD_white",
+      "LUD_white",
+      "Computer_lab",
+      "printer_lab",
+      "computer_left_lab",
+      "RUD_white",
+      "ALL_white",
+      "LRD_white",
+      "LRD_white",
+      "computer_left_lab",
+      "RUD_white",
+      "ALL_white",
+      "LRU_white",
+      "LRU_white",
+      "LR_white",
+      "LRU_white",
+      "LU_white",
+      "computer_down_lab",
+      "computer_down_lab",
+      "bottom_white",
+      "bottom_white",
+      "bottom_white",
+      "bottom_white",
+      "bottom_white"
+    ],
+    "sprite": "data/ROOMS/lab_bottom_right_124937.png"
+  },
+  "Lab_bottom_left": {
+    "tiles": [
+      "Computer_lab",
+      "printer_lab",
+      "RD_white",
+      "LD_white",
+      "computer_right_lab",
+      "LRD_white",
+      "LRD_white",
+      "ALL_white",
+      "LUD_white",
+      "computer_right_lab",
+      "LRU_white",
+      "LRU_white",
+      "ALL_white",
+      "LUD_white",
+      "computer_right_lab",
+      "computer_down_lab",
+      "computer_down_lab",
+      "RU_white",
+      "LRU_white",
+      "LR_white",
+      "bottom_white",
+      "bottom_white",
+      "bottom_white",
+      "bottom_white",
+      "bottom_white"
+    ],
+    "sprite": "data/ROOMS/Lab_bottom_left_124937.png"
+  },
+  "IT_Tech": {
+    "tiles": [
+      "top_left_green",
+      "top_green",
+      "top_green",
+      "top_green",
+      "top_right_green",
+      "left_green",
+      "Computer_tech",
+      "Computer_tech",
+      "Computer_tech",
+      "right_green",
+      "Door_side_tech",
+      "LRD_green",
+      "LRD_green",
+      "LRD_green",
+      "Door_side_tech",
+      "left_green",
+      "RU_green",
+      "LRU_green",
+      "LU_green",
+      "right_green",
+      "bottom_left_green",
+      "bottom_green",
+      "bottom_green",
+      "bottom_green",
+      "bottom_right_green"
+    ],
+    "sprite": "data/ROOMS/IT_Tech_124937.png"
   },
   "lab_right_exit": {
     "tiles": [
@@ -911,6 +1001,66 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/lab_right_exit_123010.png"
+    "sprite": "data/ROOMS/lab_right_exit_124937.png"
+  },
+  "Server_room": {
+    "tiles": [
+      "top_left_grey",
+      "top_grey",
+      "door_up_server",
+      "top_grey",
+      "top_right_grey",
+      "left_grey",
+      "server_sprite",
+      "UD_grey",
+      "server_sprite",
+      "right_grey",
+      "left_grey",
+      "R_grey",
+      "ALL_grey",
+      "LRD_grey",
+      "door_side_server",
+      "left_grey",
+      "computer_left_server",
+      "RU_grey",
+      "LU_grey",
+      "right_grey",
+      "bottom_left_grey",
+      "bottom_grey",
+      "bottom_grey",
+      "bottom_grey",
+      "bottom_right_grey"
+    ],
+    "sprite": "data/ROOMS/Server_room_124937.png"
+  },
+  "Lab_right": {
+    "tiles": [
+      "printer_lab",
+      "Computer_lab",
+      "RUD_white",
+      "LUD_white",
+      "right_white",
+      "RD_white",
+      "LRD_white",
+      "ALL_white",
+      "LUD_white",
+      "right_white",
+      "ALL_white",
+      "ALL_white",
+      "ALL_white",
+      "LUD_white",
+      "right_white",
+      "RU_white",
+      "LRU_white",
+      "ALL_white",
+      "LUD_white",
+      "right_white",
+      "computer_down_lab",
+      "computer_down_lab",
+      "RUD_white",
+      "LUD_white",
+      "right_white"
+    ],
+    "sprite": "data/ROOMS/Lab_right_124937.png"
   }
 }

@@ -236,18 +236,6 @@
       "down": true
     }
   },
-  "door_up": {
-    "sprite": "data/TILES/SECURITY/Door_104034.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/SECURITY/Opened_door_alt_104034.png",
-    "poi_desc": "poi_door"
-  },
-  "door_side": {
-    "sprite": "data/TILES/SECURITY/Door_104107.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/SECURITY/open_side_door_alt_104107.png",
-    "poi_desc": "poi_door"
-  },
   "D_floor": {
     "sprite": "data/TILES/SECURITY/Blue_floor_104911.png",
     "available_exits": {
@@ -255,8 +243,8 @@
     }
   },
   "DEFAULT": {
-    "width": 50,
-    "height": 50,
+    "width": 32,
+    "height": 32,
     "sprite": "data/TILES/placeholder.png",
     "available_exits": {
       "left": false,
@@ -362,18 +350,6 @@
       "down": true
     }
   },
-  "Door_up_tech": {
-    "sprite": "data/TILES/IT/TECH/Door_112938.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/IT/TECH/Opened_door_alt_112938.png",
-    "poi_desc": "poi_door"
-  },
-  "Door_side_tech": {
-    "sprite": "data/TILES/IT/TECH/Door_113012.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/IT/TECH/open_side_door_alt_113012.png",
-    "poi_desc": "poi_door"
-  },
   "bottom_left_red": {
     "sprite": "data/TILES/BOSS/bottom_left_Red_114731.png"
   },
@@ -467,18 +443,6 @@
       "down": true
     }
   },
-  "door_up_boss": {
-    "sprite": "data/TILES/BOSS/Door_115747.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/BOSS/Opened_door_alt_115747.png",
-    "poi_desc": "poi_door"
-  },
-  "door_side_boss": {
-    "sprite": "data/TILES/BOSS/Door_115821.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/BOSS/open_side_door_alt_115821.png",
-    "poi_desc": "poi_door"
-  },
   "bottom_left_white": {
     "sprite": "data/TILES/LAB/bottom_left_White_120713.png"
   },
@@ -571,18 +535,6 @@
       "up": true,
       "down": true
     }
-  },
-  "door_up_lab": {
-    "sprite": "data/TILES/LAB/Door_121459.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/LAB/Opened_door_alt_121459.png",
-    "poi_desc": "poi_door"
-  },
-  "door_side_lab": {
-    "sprite": "data/TILES/LAB/Door_121527.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/LAB/open_side_door_alt_121527.png",
-    "poi_desc": "poi_door"
   },
   "bottom_grey": {
     "sprite": "data/TILES/SERVER/bottom_122043.png"
@@ -683,18 +635,6 @@
     "poi_sprite": "data/TILES/SERVER/Computer_and_desk_alt_122947.png",
     "poi_desc": "poi_computer"
   },
-  "door_up_server": {
-    "sprite": "data/TILES/SERVER/Door_123034.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/SERVER/Opened_door_alt_123034.png",
-    "poi_desc": "poi_door"
-  },
-  "door_side_server": {
-    "sprite": "data/TILES/SERVER/Door_123142.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/SERVER/open_side_door_alt_123142.png",
-    "poi_desc": "poi_door"
-  },
   "bottom_left_toilet": {
     "sprite": "data/TILES/TOILET/bottom_left_Light_Blue_123518.png"
   },
@@ -788,18 +728,6 @@
       "down": true
     }
   },
-  "door_up_toilet": {
-    "sprite": "data/TILES/TOILET/Door_124635.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/TOILET/Opened_door_alt_124635.png",
-    "poi_desc": "poi_door"
-  },
-  "door_side_toilet": {
-    "sprite": "data/TILES/TOILET/Door_124705.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/TOILET/open_side_door_alt_124705.png",
-    "poi_desc": "poi_door"
-  },
   "bottom_left_yellow": {
     "sprite": "data/TILES/BREAK ROOM/bottom_left_Yellow_124907.png"
   },
@@ -892,18 +820,6 @@
       "up": true,
       "down": true
     }
-  },
-  "door_up_yellow": {
-    "sprite": "data/TILES/BREAK ROOM/Door_010449.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/BREAK ROOM/Opened_door_alt_010449.png",
-    "poi_desc": "poi_door"
-  },
-  "door_side_yellow": {
-    "sprite": "data/TILES/BREAK ROOM/Door_010518.png",
-    "poi_door": true,
-    "poi_sprite": "data/TILES/BREAK ROOM/open_side_door_alt_010518.png",
-    "poi_desc": "poi_door"
   },
   "computer": {
     "sprite": "data/TILES/SECURITY/Computer_and_desk_090959.png",
@@ -1057,5 +973,89 @@
       "left": true,
       "right": true
     }
+  },
+  "door_up": {
+    "sprite": "data/TILES/SECURITY/Opened_door_010527.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/SECURITY/Door_alt_010527.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side": {
+    "sprite": "data/TILES/SECURITY/open_side_door_010543.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/SECURITY/Door_alt_010543.png",
+    "poi_desc": "poi_door"
+  },
+  "Door_up_tech": {
+    "sprite": "data/TILES/IT/TECH/Opened_door_010621.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/IT/TECH/Door_alt_010621.png",
+    "poi_desc": "poi_door"
+  },
+  "Door_side_tech": {
+    "sprite": "data/TILES/IT/TECH/open_side_door_010634.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/IT/TECH/Door_alt_010634.png",
+    "poi_desc": "poi_door"
+  },
+  "door_up_boss": {
+    "sprite": "data/TILES/BOSS/Opened_door_010655.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/BOSS/Door_alt_010655.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side_boss": {
+    "sprite": "data/TILES/BOSS/open_side_door_010712.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/BOSS/Door_alt_010712.png",
+    "poi_desc": "poi_door"
+  },
+  "door_up_lab": {
+    "sprite": "data/TILES/LAB/Opened_door_010724.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/LAB/Door_alt_010724.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side_lab": {
+    "sprite": "data/TILES/LAB/open_side_door_010740.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/LAB/Door_alt_010740.png",
+    "poi_desc": "poi_door"
+  },
+  "door_up_server": {
+    "sprite": "data/TILES/SERVER/Opened_door_010823.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/SERVER/Door_alt_010823.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side_server": {
+    "sprite": "data/TILES/SERVER/open_side_door_010838.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/SERVER/Door_alt_010838.png",
+    "poi_desc": "poi_door"
+  },
+  "door_up_toilet": {
+    "sprite": "data/TILES/TOILET/Opened_door_010906.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/TOILET/Door_alt_010906.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side_toilet": {
+    "sprite": "data/TILES/TOILET/open_side_door_010920.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/TOILET/Door_alt_010920.png",
+    "poi_desc": "poi_door"
+  },
+  "door_up_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Opened_door_010939.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/Door_alt_010939.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/open_side_door_010953.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/Door_alt_010953.png",
+    "poi_desc": "poi_door"
   }
 }

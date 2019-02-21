@@ -193,23 +193,13 @@
         <valid_exits left="true" right="false" up="true" down="true" />
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
       </tile>
-      <tile name="door_up" set="SECURITY" sprite="data/TILES/SECURITY/Door_104034.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/SECURITY/Opened_door_alt_104034.png" />
-      </tile>
-      <tile name="door_side" set="SECURITY" sprite="data/TILES/SECURITY/Door_104107.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/SECURITY/open_side_door_alt_104107.png" />
-      </tile>
       <tile name="D_floor" set="SECURITY" sprite="data/TILES/SECURITY/Blue_floor_104911.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="true" />
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
       </tile>
       <tile name="DEFAULT" set="DEFAULT" sprite="data/TILES/placeholder.png" mandatory="false">
-        <dimensions width="50" height="50" />
+        <dimensions width="32" height="32" />
         <valid_exits left="false" right="false" up="false" down="false" />
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
       </tile>
@@ -298,16 +288,6 @@
         <valid_exits left="true" right="true" up="true" down="true" />
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
       </tile>
-      <tile name="Door_up_tech" set="IT/TECH" sprite="data/TILES/IT/TECH/Door_112938.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/IT/TECH/Opened_door_alt_112938.png" />
-      </tile>
-      <tile name="Door_side_tech" set="IT/TECH" sprite="data/TILES/IT/TECH/Door_113012.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/IT/TECH/open_side_door_alt_113012.png" />
-      </tile>
       <tile name="bottom_left_red" set="BOSS" sprite="data/TILES/BOSS/bottom_left_Red_114731.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="false" />
@@ -393,16 +373,6 @@
         <valid_exits left="true" right="true" up="true" down="true" />
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
       </tile>
-      <tile name="door_up_boss" set="BOSS" sprite="data/TILES/BOSS/Door_115747.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/BOSS/Opened_door_alt_115747.png" />
-      </tile>
-      <tile name="door_side_boss" set="BOSS" sprite="data/TILES/BOSS/Door_115821.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/BOSS/open_side_door_alt_115821.png" />
-      </tile>
       <tile name="bottom_left_white" set="LAB" sprite="data/TILES/LAB/bottom_left_White_120713.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="false" />
@@ -487,16 +457,6 @@
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="true" right="true" up="true" down="true" />
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
-      </tile>
-      <tile name="door_up_lab" set="LAB" sprite="data/TILES/LAB/Door_121459.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/LAB/Opened_door_alt_121459.png" />
-      </tile>
-      <tile name="door_side_lab" set="LAB" sprite="data/TILES/LAB/Door_121527.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/LAB/open_side_door_alt_121527.png" />
       </tile>
       <tile name="bottom_grey" set="SERVER" sprite="data/TILES/SERVER/bottom_122043.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
@@ -588,16 +548,6 @@
         <valid_exits left="false" right="false" up="false" down="false" />
         <points_of_interest computer="true" door="false" description="poi_computer" alt_sprite="data/TILES/SERVER/Computer_and_desk_alt_122947.png" />
       </tile>
-      <tile name="door_up_server" set="SERVER" sprite="data/TILES/SERVER/Door_123034.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/SERVER/Opened_door_alt_123034.png" />
-      </tile>
-      <tile name="door_side_server" set="SERVER" sprite="data/TILES/SERVER/Door_123142.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/SERVER/open_side_door_alt_123142.png" />
-      </tile>
       <tile name="bottom_left_toilet" set="TOILET" sprite="data/TILES/TOILET/bottom_left_Light_Blue_123518.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="false" />
@@ -683,16 +633,6 @@
         <valid_exits left="true" right="true" up="true" down="true" />
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
       </tile>
-      <tile name="door_up_toilet" set="TOILET" sprite="data/TILES/TOILET/Door_124635.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/TOILET/Opened_door_alt_124635.png" />
-      </tile>
-      <tile name="door_side_toilet" set="TOILET" sprite="data/TILES/TOILET/Door_124705.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/TOILET/open_side_door_alt_124705.png" />
-      </tile>
       <tile name="bottom_left_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/bottom_left_Yellow_124907.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="false" right="false" up="false" down="false" />
@@ -777,16 +717,6 @@
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="true" right="true" up="true" down="true" />
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
-      </tile>
-      <tile name="door_up_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Door_010449.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/BREAK ROOM/Opened_door_alt_010449.png" />
-      </tile>
-      <tile name="door_side_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Door_010518.png" mandatory="false">
-        <dimensions width="DEFAULT" height="DEFAULT" />
-        <valid_exits left="false" right="false" up="false" down="false" />
-        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/BREAK ROOM/open_side_door_alt_010518.png" />
       </tile>
       <tile name="computer" set="SECURITY" sprite="data/TILES/SECURITY/Computer_and_desk_090959.png" mandatory="false">
         <dimensions width="DEFAULT" height="DEFAULT" />
@@ -912,6 +842,76 @@
         <dimensions width="DEFAULT" height="DEFAULT" />
         <valid_exits left="true" right="true" up="false" down="false" />
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
+      </tile>
+      <tile name="door_up" set="SECURITY" sprite="data/TILES/SECURITY/Opened_door_010527.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/SECURITY/Door_alt_010527.png" />
+      </tile>
+      <tile name="door_side" set="SECURITY" sprite="data/TILES/SECURITY/open_side_door_010543.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/SECURITY/Door_alt_010543.png" />
+      </tile>
+      <tile name="Door_up_tech" set="IT/TECH" sprite="data/TILES/IT/TECH/Opened_door_010621.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/IT/TECH/Door_alt_010621.png" />
+      </tile>
+      <tile name="Door_side_tech" set="IT/TECH" sprite="data/TILES/IT/TECH/open_side_door_010634.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/IT/TECH/Door_alt_010634.png" />
+      </tile>
+      <tile name="door_up_boss" set="BOSS" sprite="data/TILES/BOSS/Opened_door_010655.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/BOSS/Door_alt_010655.png" />
+      </tile>
+      <tile name="door_side_boss" set="BOSS" sprite="data/TILES/BOSS/open_side_door_010712.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/BOSS/Door_alt_010712.png" />
+      </tile>
+      <tile name="door_up_lab" set="LAB" sprite="data/TILES/LAB/Opened_door_010724.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/LAB/Door_alt_010724.png" />
+      </tile>
+      <tile name="door_side_lab" set="LAB" sprite="data/TILES/LAB/open_side_door_010740.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/LAB/Door_alt_010740.png" />
+      </tile>
+      <tile name="door_up_server" set="SERVER" sprite="data/TILES/SERVER/Opened_door_010823.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/SERVER/Door_alt_010823.png" />
+      </tile>
+      <tile name="door_side_server" set="SERVER" sprite="data/TILES/SERVER/open_side_door_010838.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/SERVER/Door_alt_010838.png" />
+      </tile>
+      <tile name="door_up_toilet" set="TOILET" sprite="data/TILES/TOILET/Opened_door_010906.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/TOILET/Door_alt_010906.png" />
+      </tile>
+      <tile name="door_side_toilet" set="TOILET" sprite="data/TILES/TOILET/open_side_door_010920.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/TOILET/Door_alt_010920.png" />
+      </tile>
+      <tile name="door_up_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/Opened_door_010939.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/BREAK ROOM/Door_alt_010939.png" />
+      </tile>
+      <tile name="door_side_yellow" set="BREAK ROOM" sprite="data/TILES/BREAK ROOM/open_side_door_010953.png" mandatory="false">
+        <dimensions width="DEFAULT" height="DEFAULT" />
+        <valid_exits left="false" right="false" up="false" down="false" />
+        <points_of_interest computer="false" door="true" description="poi_door" alt_sprite="data/TILES/BREAK ROOM/Door_alt_010953.png" />
       </tile>
     </tiles>
   </tile_config>
@@ -1105,35 +1105,6 @@
           <tile name="LUD_floor" />
         </tiles>
       </room>
-      <room name="IT_Tech" mandatory="false">
-        <tiles width="5" height="5">
-          <tile name="top_left_green" />
-          <tile name="top_green" />
-          <tile name="top_green" />
-          <tile name="top_green" />
-          <tile name="top_right_green" />
-          <tile name="left_green" />
-          <tile name="Computer_tech" />
-          <tile name="Computer_tech" />
-          <tile name="Computer_tech" />
-          <tile name="right_green" />
-          <tile name="Door_up_tech" />
-          <tile name="LRD_green" />
-          <tile name="LRD_green" />
-          <tile name="LRD_green" />
-          <tile name="Door_up_tech" />
-          <tile name="left_green" />
-          <tile name="RU_green" />
-          <tile name="LRU_green" />
-          <tile name="LU_green" />
-          <tile name="right_green" />
-          <tile name="bottom_left_green" />
-          <tile name="bottom_green" />
-          <tile name="bottom_green" />
-          <tile name="bottom_green" />
-          <tile name="bottom_right_green" />
-        </tiles>
-      </room>
       <room name="Lunch_room" mandatory="false">
         <tiles width="10" height="5">
           <tile name="top_left_yellow" />
@@ -1273,35 +1244,6 @@
           <tile name="door_up_boss" />
           <tile name="bottom_red" />
           <tile name="bottom_right_red" />
-        </tiles>
-      </room>
-      <room name="Server_room" mandatory="false">
-        <tiles width="5" height="5">
-          <tile name="top_left_grey" />
-          <tile name="top_grey" />
-          <tile name="door_up_server" />
-          <tile name="top_grey" />
-          <tile name="top_right_grey" />
-          <tile name="left_grey" />
-          <tile name="server_sprite" />
-          <tile name="UD_grey" />
-          <tile name="server_sprite" />
-          <tile name="right_grey" />
-          <tile name="left_grey" />
-          <tile name="R_grey" />
-          <tile name="ALL_grey" />
-          <tile name="LD_grey" />
-          <tile name="door_side_server" />
-          <tile name="left_grey" />
-          <tile name="computer_left_server" />
-          <tile name="RU_grey" />
-          <tile name="LU_grey" />
-          <tile name="right_grey" />
-          <tile name="bottom_left_grey" />
-          <tile name="bottom_grey" />
-          <tile name="bottom_grey" />
-          <tile name="bottom_grey" />
-          <tile name="bottom_right_grey" />
         </tiles>
       </room>
       <room name="Toilet_room" mandatory="false">
@@ -1768,6 +1710,151 @@
           <tile name="right_white" />
         </tiles>
       </room>
+      <room name="lab_top" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="Computer_lab" />
+          <tile name="Computer_lab" />
+          <tile name="D_white" />
+          <tile name="Computer_lab" />
+          <tile name="Computer_lab" />
+          <tile name="LRD_white" />
+          <tile name="LRD_white" />
+          <tile name="ALL_white" />
+          <tile name="LRD_white" />
+          <tile name="LRD_white" />
+          <tile name="LRU_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="LRU_white" />
+          <tile name="computer_down_lab" />
+          <tile name="RU_white" />
+          <tile name="ALL_white" />
+          <tile name="LU_white" />
+          <tile name="computer_down_lab" />
+        </tiles>
+      </room>
+      <room name="lab_left" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="left_white" />
+          <tile name="RUD_white" />
+          <tile name="LUD_white" />
+          <tile name="Computer_lab" />
+          <tile name="printer_lab" />
+          <tile name="left_white" />
+          <tile name="RUD_white" />
+          <tile name="ALL_white" />
+          <tile name="LRD_white" />
+          <tile name="LD_white" />
+          <tile name="left_white" />
+          <tile name="RUD_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="left_white" />
+          <tile name="RUD_white" />
+          <tile name="ALL_white" />
+          <tile name="LRU_white" />
+          <tile name="LU_white" />
+          <tile name="left_white" />
+          <tile name="RUD_white" />
+          <tile name="LUD_white" />
+          <tile name="computer_down_lab" />
+          <tile name="computer_down_lab" />
+        </tiles>
+      </room>
+      <room name="lab_bottom_right" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="computer_left_lab" />
+          <tile name="RD_white" />
+          <tile name="LUD_white" />
+          <tile name="Computer_lab" />
+          <tile name="printer_lab" />
+          <tile name="computer_left_lab" />
+          <tile name="RUD_white" />
+          <tile name="ALL_white" />
+          <tile name="LRD_white" />
+          <tile name="LRD_white" />
+          <tile name="computer_left_lab" />
+          <tile name="RUD_white" />
+          <tile name="ALL_white" />
+          <tile name="LRU_white" />
+          <tile name="LRU_white" />
+          <tile name="LR_white" />
+          <tile name="LRU_white" />
+          <tile name="LU_white" />
+          <tile name="computer_down_lab" />
+          <tile name="computer_down_lab" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+        </tiles>
+      </room>
+      <room name="Lab_bottom_left" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="Computer_lab" />
+          <tile name="printer_lab" />
+          <tile name="RD_white" />
+          <tile name="LD_white" />
+          <tile name="computer_right_lab" />
+          <tile name="LRD_white" />
+          <tile name="LRD_white" />
+          <tile name="ALL_white" />
+          <tile name="LUD_white" />
+          <tile name="computer_right_lab" />
+          <tile name="LRU_white" />
+          <tile name="LRU_white" />
+          <tile name="ALL_white" />
+          <tile name="LUD_white" />
+          <tile name="computer_right_lab" />
+          <tile name="computer_down_lab" />
+          <tile name="computer_down_lab" />
+          <tile name="RU_white" />
+          <tile name="LRU_white" />
+          <tile name="LR_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+        </tiles>
+      </room>
+      <room name="IT_Tech" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_green" />
+          <tile name="top_green" />
+          <tile name="top_green" />
+          <tile name="top_green" />
+          <tile name="top_right_green" />
+          <tile name="left_green" />
+          <tile name="Computer_tech" />
+          <tile name="Computer_tech" />
+          <tile name="Computer_tech" />
+          <tile name="right_green" />
+          <tile name="Door_side_tech" />
+          <tile name="LRD_green" />
+          <tile name="LRD_green" />
+          <tile name="LRD_green" />
+          <tile name="Door_side_tech" />
+          <tile name="left_green" />
+          <tile name="RU_green" />
+          <tile name="LRU_green" />
+          <tile name="LU_green" />
+          <tile name="right_green" />
+          <tile name="bottom_left_green" />
+          <tile name="bottom_green" />
+          <tile name="bottom_green" />
+          <tile name="bottom_green" />
+          <tile name="bottom_right_green" />
+        </tiles>
+      </room>
       <room name="lab_right_exit" mandatory="false">
         <tiles width="5" height="5">
           <tile name="top_left_white" />
@@ -1795,6 +1882,64 @@
           <tile name="bottom_white" />
           <tile name="bottom_white" />
           <tile name="bottom_right_white" />
+        </tiles>
+      </room>
+      <room name="Server_room" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_grey" />
+          <tile name="top_grey" />
+          <tile name="door_up_server" />
+          <tile name="top_grey" />
+          <tile name="top_right_grey" />
+          <tile name="left_grey" />
+          <tile name="server_sprite" />
+          <tile name="UD_grey" />
+          <tile name="server_sprite" />
+          <tile name="right_grey" />
+          <tile name="left_grey" />
+          <tile name="R_grey" />
+          <tile name="ALL_grey" />
+          <tile name="LRD_grey" />
+          <tile name="door_side_server" />
+          <tile name="left_grey" />
+          <tile name="computer_left_server" />
+          <tile name="RU_grey" />
+          <tile name="LU_grey" />
+          <tile name="right_grey" />
+          <tile name="bottom_left_grey" />
+          <tile name="bottom_grey" />
+          <tile name="bottom_grey" />
+          <tile name="bottom_grey" />
+          <tile name="bottom_right_grey" />
+        </tiles>
+      </room>
+      <room name="Lab_right" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="printer_lab" />
+          <tile name="Computer_lab" />
+          <tile name="RUD_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
+          <tile name="RD_white" />
+          <tile name="LRD_white" />
+          <tile name="ALL_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
+          <tile name="RU_white" />
+          <tile name="LRU_white" />
+          <tile name="ALL_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
+          <tile name="computer_down_lab" />
+          <tile name="computer_down_lab" />
+          <tile name="RUD_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
         </tiles>
       </room>
     </rooms>
@@ -1826,6 +1971,111 @@
       <room name="DEFAULT" />
       <room name="DEFAULT" />
       <room name="DEFAULT" />
+    </map>
+    <map name="TEST2" mandatory="false" width="5" height="5">
+      <room name="DEMO_2" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_2" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_3" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+    </map>
+    <map name="TEST3" mandatory="false" width="5" height="3">
+      <room name="DEMO_1" />
+      <room name="DEMO_3" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_3" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+    </map>
+    <map name="TEST4" mandatory="false" width="5" height="3">
+      <room name="DEMO_2" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_2" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+    </map>
+    <map name="TEST5" mandatory="false" width="5" height="3">
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+      <room name="DEMO_3" />
+    </map>
+    <map name="TEST1" mandatory="false" width="5" height="5">
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="Security" />
+      <room name="corridor" />
+      <room name="IT_Tech" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
+      <room name="DEMO_1" />
     </map>
     <map name="Map1" mandatory="false" width="5" height="5">
       <room name="lab_right_exit" />
@@ -1919,11 +2169,118 @@
       <room name="lab_right_exit" />
       <room name="lab_UL_exits" />
     </map>
-    <map name="TEST_MAP_DEMO" mandatory="false" width="2" height="2">
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
+    <map name="Map4" mandatory="false" width="6" height="4">
+      <room name="Security" />
+      <room name="top_left_lab" />
+      <room name="lab_top" />
+      <room name="lab_top" />
+      <room name="Top_rightt_lab" />
+      <room name="Lab_LD_exits" />
+      <room name="Lab_UD_exites" />
+      <room name="lab_left" />
+      <room name="Kitchen_left_half" />
+      <room name="Kitchen_right_half" />
+      <room name="Lab_right" />
+      <room name="Boss_Office" />
+      <room name="Lab_UD_exites" />
+      <room name="Bottom_left_lab" />
+      <room name="Lab_bottom_left" />
+      <room name="lab_bottom_right" />
+      <room name="bottom_right_lab" />
+      <room name="Lab_LUD_exits" />
+      <room name="Server_room" />
+      <room name="lab_UL_exits" />
+      <room name="Toilet_room_right_exit" />
+      <room name="Lab_LR_exits" />
+      <room name="IT_Tech" />
+      <room name="lab_UL_exits" />
+    </map>
+    <map name="Map5" mandatory="false" width="7" height="5">
+      <room name="Security" />
+      <room name="Lab_LR_exits" />
+      <room name="top_left_lab" />
+      <room name="lab_top" />
+      <room name="lab_top" />
+      <room name="Top_rightt_lab" />
+      <room name="Lab_LD_exits" />
+      <room name="Lab_UD_exites" />
+      <room name="Toilet_room_bottom_exit" />
+      <room name="lab_left" />
+      <room name="Kitchen_left_half" />
+      <room name="Kitchen_right_half" />
+      <room name="Lab_right" />
+      <room name="Lab_UD_exites" />
+      <room name="Lab_UD_exites" />
+      <room name="Boss_Office" />
+      <room name="Bottom_left_lab" />
+      <room name="Lab_bottom_left" />
+      <room name="lab_bottom_right" />
+      <room name="bottom_right_lab" />
+      <room name="Lab_LUD_exits" />
+      <room name="Server_room" />
+      <room name="Kitchen_left_half" />
+      <room name="Kitchen_right_half" />
+      <room name="IT_Tech" />
+      <room name="Lab_LDR_exits" />
+      <room name="Lab_LDR_exits" />
+      <room name="Lab_LUD_exits" />
+      <room name="Toilet_room_right_exit" />
+      <room name="Lab_LR_exits" />
+      <room name="Lab_LUR_exits" />
+      <room name="Lab_LR_exits" />
+      <room name="Lab_LUR_exits" />
+      <room name="Lab_LUR_exits" />
+      <room name="lab_UL_exits" />
+    </map>
+    <map name="Map6" mandatory="false" width="8" height="6">
+      <room name="Security" />
+      <room name="top_left_lab" />
+      <room name="lab_top" />
+      <room name="lab_top" />
+      <room name="Top_rightt_lab" />
+      <room name="top_left_lab" />
+      <room name="Top_rightt_lab" />
+      <room name="Lab_LD_exits" />
+      <room name="Lab_UD_exites" />
+      <room name="lab_left" />
+      <room name="Kitchen_left_half" />
+      <room name="Kitchen_right_half" />
+      <room name="Lab_right" />
+      <room name="Bottom_left_lab" />
+      <room name="bottom_right_lab" />
+      <room name="Lab_LUD_exits" />
+      <room name="Lab_UD_exites" />
+      <room name="Bottom_left_lab" />
+      <room name="Lab_bottom_left" />
+      <room name="lab_bottom_right" />
+      <room name="bottom_right_lab" />
+      <room name="Lab_LUD_exits" />
+      <room name="Toilet_room_bottom_exit" />
+      <room name="Boss_Office" />
+      <room name="Lab_UD_exites" />
+      <room name="Lab_UD_exites" />
+      <room name="lab_right_exit" />
+      <room name="top_left_lab" />
+      <room name="Top_rightt_lab" />
+      <room name="Kitchen_left_half" />
+      <room name="Kitchen_right_half" />
+      <room name="Lab_LUD_exits" />
+      <room name="Server_room" />
+      <room name="Lab_LUR_exits" />
+      <room name="Lab_LD_exits" />
+      <room name="Bottom_left_lab" />
+      <room name="bottom_right_lab" />
+      <room name="Lab_LDR_exits" />
+      <room name="Lab_ALL_exits" />
+      <room name="Lab_LUD_exits" />
+      <room name="Toilet_room_right_exit" />
+      <room name="IT_Tech" />
+      <room name="Lab_LUR_exits" />
+      <room name="Lab_LUR_exits" />
+      <room name="Lab_LR_exits" />
+      <room name="Lab_LUR_exits" />
+      <room name="Lab_LUR_exits" />
+      <room name="lab_UL_exits" />
     </map>
   </map_config>
   <character_config>
