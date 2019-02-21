@@ -59,7 +59,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST2_110931.png"
+    "sprite": "data/MAPS/TEST2_120245.png"
   },
   "TEST3": {
     "rooms_h": 3,
@@ -80,7 +80,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST3_110931.png"
+    "sprite": "data/MAPS/TEST3_120245.png"
   },
   "TEST4": {
     "rooms_h": 3,
@@ -101,7 +101,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST4_110931.png"
+    "sprite": "data/MAPS/TEST4_120245.png"
   },
   "TEST5": {
     "rooms_h": 3,
@@ -122,7 +122,7 @@
       "DEMO_3",
       "DEMO_3"
     ],
-    "sprite": "data/MAPS/TEST5_110931.png"
+    "sprite": "data/MAPS/TEST5_120245.png"
   },
   "TEST1": {
     "rooms": [
@@ -152,7 +152,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST1_110931.png"
+    "sprite": "data/MAPS/TEST1_120245.png"
   },
   "Map1": {
     "rooms": [
@@ -182,7 +182,7 @@
       "Lab_LUR_exits",
       "lab_UL_exits"
     ],
-    "sprite": "data/MAPS/Map1_110931.png"
+    "sprite": "data/MAPS/Map1_120245.png"
   },
   "Map2": {
     "rooms": [
@@ -212,7 +212,7 @@
       "Lab_LR_exits",
       "lab_UL_exits"
     ],
-    "sprite": "data/MAPS/Map2_110931.png"
+    "sprite": "data/MAPS/Map2_120245.png"
   },
   "Map3": {
     "rooms_w": 6,
@@ -255,7 +255,7 @@
       "lab_right_exit",
       "lab_UL_exits"
     ],
-    "sprite": "data/MAPS/Map3_110931.png"
+    "sprite": "data/MAPS/Map3_120245.png"
   },
   "Map4": {
     "rooms_w": 6,
@@ -286,6 +286,102 @@
       "IT_Tech",
       "lab_UL_exits"
     ],
-    "sprite": "data/MAPS/Map4_110931.png"
+    "sprite": "data/MAPS/Map4_120245.png"
+  },
+  "Map5": {
+    "rooms_w": 7,
+    "rooms": [
+      "Security",
+      "Lab_LR_exits",
+      "top_left_lab",
+      "lab_top",
+      "lab_top",
+      "Top_rightt_lab",
+      "Lab_LD_exits",
+      "Lab_UD_exites",
+      "Toilet_room_bottom_exit",
+      "lab_left",
+      "Kitchen_left_half",
+      "Kitchen_right_half",
+      "Lab_right",
+      "Lab_UD_exites",
+      "Lab_UD_exites",
+      "Boss_Office",
+      "Bottom_left_lab",
+      "Lab_bottom_left",
+      "lab_bottom_right",
+      "bottom_right_lab",
+      "Lab_LUD_exits",
+      "Server_room",
+      "Kitchen_left_half",
+      "Kitchen_right_half",
+      "IT_Tech",
+      "Lab_LDR_exits",
+      "Lab_LDR_exits",
+      "Lab_LUD_exits",
+      "Toilet_room_right_exit",
+      "Lab_LR_exits",
+      "Lab_LUR_exits",
+      "Lab_LR_exits",
+      "Lab_LUR_exits",
+      "Lab_LUR_exits",
+      "lab_UL_exits"
+    ],
+    "sprite": "data/MAPS/Map5_120245.png"
+  },
+  "Map6": {
+    "rooms_w": 8,
+    "rooms_h": 6,
+    "rooms": [
+      "Security",
+      "top_left_lab",
+      "lab_top",
+      "lab_top",
+      "Top_rightt_lab",
+      "top_left_lab",
+      "Top_rightt_lab",
+      "Lab_LD_exits",
+      "Lab_UD_exites",
+      "lab_left",
+      "Kitchen_left_half",
+      "Kitchen_right_half",
+      "Lab_right",
+      "Bottom_left_lab",
+      "bottom_right_lab",
+      "Lab_LUD_exits",
+      "Lab_UD_exites",
+      "Bottom_left_lab",
+      "Lab_bottom_left",
+      "lab_bottom_right",
+      "bottom_right_lab",
+      "Lab_LUD_exits",
+      "Toilet_room_bottom_exit",
+      "Boss_Office",
+      "Lab_UD_exites",
+      "Lab_UD_exites",
+      "lab_right_exit",
+      "top_left_lab",
+      "Top_rightt_lab",
+      "Kitchen_left_half",
+      "Kitchen_right_half",
+      "Lab_LUD_exits",
+      "Server_room",
+      "Lab_LUR_exits",
+      "Lab_LD_exits",
+      "Bottom_left_lab",
+      "bottom_right_lab",
+      "Lab_LDR_exits",
+      "Lab_ALL_exits",
+      "Lab_LUD_exits",
+      "Toilet_room_right_exit",
+      "IT_Tech",
+      "Lab_LUR_exits",
+      "Lab_LUR_exits",
+      "Lab_LR_exits",
+      "Lab_LUR_exits",
+      "Lab_LUR_exits",
+      "lab_UL_exits"
+    ],
+    "sprite": "data/MAPS/Map6_120245.png"
   }
 }
