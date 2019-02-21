@@ -2127,56 +2127,6 @@
       <room name="Lab_LUR_exits" />
       <room name="lab_UL_exits" />
     </map>
-    <map name="Map6" mandatory="false" width="8" height="6">
-      <room name="Security" />
-      <room name="top_left_lab" />
-      <room name="lab_top" />
-      <room name="lab_top" />
-      <room name="Top_rightt_lab" />
-      <room name="top_left_lab" />
-      <room name="Top_rightt_lab" />
-      <room name="Lab_LD_exits" />
-      <room name="Lab_UD_exites" />
-      <room name="lab_left" />
-      <room name="Kitchen_left_half" />
-      <room name="Kitchen_right_half" />
-      <room name="Lab_right" />
-      <room name="Bottom_left_lab" />
-      <room name="bottom_right_lab" />
-      <room name="Lab_LUD_exits" />
-      <room name="Lab_UD_exites" />
-      <room name="Bottom_left_lab" />
-      <room name="Lab_bottom_left" />
-      <room name="lab_bottom_right" />
-      <room name="bottom_right_lab" />
-      <room name="Lab_LUD_exits" />
-      <room name="Toilet_room_bottom_exit" />
-      <room name="Boss_Office" />
-      <room name="Lab_UD_exites" />
-      <room name="Lab_UD_exites" />
-      <room name="lab_right_exit" />
-      <room name="top_left_lab" />
-      <room name="Top_rightt_lab" />
-      <room name="Kitchen_left_half" />
-      <room name="Kitchen_right_half" />
-      <room name="Lab_LUD_exits" />
-      <room name="Server_room" />
-      <room name="Lab_LUR_exits" />
-      <room name="Lab_LD_exits" />
-      <room name="Bottom_left_lab" />
-      <room name="bottom_right_lab" />
-      <room name="Lab_LDR_exits" />
-      <room name="Lab_ALL_exits" />
-      <room name="Lab_LUD_exits" />
-      <room name="Toilet_room_right_exit" />
-      <room name="IT_Tech" />
-      <room name="Lab_LUR_exits" />
-      <room name="Lab_LUR_exits" />
-      <room name="Lab_LR_exits" />
-      <room name="Lab_LUR_exits" />
-      <room name="Lab_LUR_exits" />
-      <room name="lab_UL_exits" />
-    </map>
   </map_config>
   <character_config>
     <character type="DEFAULT">

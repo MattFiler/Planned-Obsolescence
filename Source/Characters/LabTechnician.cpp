@@ -18,7 +18,7 @@ void LabTechnician::update(double delta_time)
   else
   {
     config.internal_gauge +=
-      ((static_cast<float>(gauge_rates ::TECHIE_STRESS_GAIN) / 5) * multiplier) *
+      ((static_cast<float>(gauge_rates ::TECHIE_STRESS_GAIN) / 40) * multiplier) *
       (static_cast<float>(delta_time) / 1000);
     if (config.internal_gauge > 100)
     {
@@ -27,8 +27,9 @@ void LabTechnician::update(double delta_time)
   }
   if (repairing)
   {
+    updateTimeBetweenFrames(1000000);
     config.internal_gauge +=
-      ((static_cast<float>(gauge_rates ::TECHIE_STRESS_GAIN) / 5) * multiplier) *
+      ((static_cast<float>(gauge_rates ::TECHIE_STRESS_GAIN) / 20) * multiplier) *
       (static_cast<float>(delta_time) / 1000);
     time_elapsed += delta_time;
     broken_pois.front()->setPointOfInterestState(poi_state::POI_IS_BEING_FIXED);

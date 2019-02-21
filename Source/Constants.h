@@ -140,7 +140,7 @@ enum gauge_levels
 enum gauge_rates
 {
   PROJECT_TIMER = 2500,     // deltatime (ms) divided by THIS
-  POWER = 600,              // deltatime (ms) divided by THIS
+  POWER = 400,              // deltatime (ms) divided by THIS
   SABOTAGE_COST = 15,       // energy used to sabotate POI
   TOTAL_PROGRESS = 1700,    // deltatime (ms) divided by THIS multiplied by normalised productivity
                             // average
