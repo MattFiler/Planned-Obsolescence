@@ -208,7 +208,7 @@ scenes GameCore::update(double delta_time)
   }
 
   // Update managers
-  ui_manager.update(delta_time);
+  ui_manager.update();
   character_manager.update(delta_time);
 
   // Check for cursor hover

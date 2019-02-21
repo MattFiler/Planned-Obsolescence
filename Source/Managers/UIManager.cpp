@@ -131,19 +131,13 @@ void UIManager::render(double delta_time)
     generic_ui->render(delta_time);
   }
 
-  if (char_info_popup != nullptr)
+  if (char_info_popup != nullptr && char_info_popup->isActive())
   {
-    if (char_info_popup->isActive())
-    {
-      char_info_popup->render(delta_time);
-    }
+    char_info_popup->render(delta_time);
   }
-  if (poi_interaction_popup != nullptr)
+  if (poi_interaction_popup != nullptr && poi_interaction_popup->isActive())
   {
-    if (poi_interaction_popup->isActive())
-    {
-      poi_interaction_popup->render(delta_time);
-    }
+    poi_interaction_popup->render(delta_time);
   }
   if (main_hud_element != nullptr)
   {
@@ -204,33 +198,8 @@ void UIManager::releaseClick()
 }
 
 /* Update */
-void UIManager::update(double delta_time)
+void UIManager::update()
 {
   input->getCursorPos(cursor_x, cursor_y);
   game_cursor->updatePosition(cursor_x, cursor_y);
-}
-
-/* keep a popup within the window bounds */
-void UIManager::keepUIWithinScreen(UI* ui_object)
-{
-  /*
-  Point new_pos = ui_object->getPosition();
-  if (new_pos.x_pos > SCREEN_WIDTH - boss_popup->getWidth())
-  {
-    new_pos.x_pos = SCREEN_WIDTH - boss_popup->getWidth();
-  }
-  else if (new_pos.x_pos < 0)
-  {
-    new_pos.x_pos = 0;
-  }
-  if (new_pos.y_pos > SCREEN_HEIGHT - boss_popup->getHeight())
-  {
-    new_pos.y_pos = SCREEN_HEIGHT - boss_popup->getHeight();
-  }
-  else if (new_pos.y_pos < 0)
-  {
-    new_pos.y_pos = 0;
-  }
-  ui_object->moveTo(new_pos);
-  */
 }

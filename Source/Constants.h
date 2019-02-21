@@ -20,18 +20,6 @@ enum character_type
   TECHNICIAN,
 };
 
-// The character's currently active job
-enum character_job
-{
-  JUST_SPAWNED_IN,
-  IDLE,
-  LOOKING_BUSY,
-  SUSPICIOUS,
-  CHILLING_OUT,
-  GETTING_ANGRY,
-  REALLY_ANGRY
-};
-
 /* --- Map --- */
 
 // Potential movement directions from tile
@@ -67,11 +55,6 @@ enum tile_accessibility
 {
   TILE_IS_TRAVERSABLE,
   TILE_IS_NON_TRAVERSABLE
-};
-
-enum Event
-{
-  DEFAULTE
 };
 
 /* --- UI --- */

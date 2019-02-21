@@ -328,18 +328,15 @@ bool CharacterManager::clickedCharacterCheck(CharacterArray character,
 {
   for (int i = 0; i < character_count; i++)
   {
-    if (character[i]->isVisible())
+    if (character[i]->isVisible() && character[i]->isPointInArea(click))
     {
-      if (character[i]->isPointInArea(click))
+      if (act_on_click)
       {
-        if (act_on_click)
-        {
-          ui_manager->updateAndShowCharacterInfo(character[i]->getDisplayName(),
-                                                 character[i]->getInternalGauge(),
-                                                 character[i]->getInternalGaugeDesc());
-        }
-        return true;
+        ui_manager->updateAndShowCharacterInfo(character[i]->getDisplayName(),
+                                               character[i]->getInternalGauge(),
+                                               character[i]->getInternalGaugeDesc());
       }
+      return true;
     }
   }
   return false;

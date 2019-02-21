@@ -21,13 +21,12 @@ game_over_type GaugeManager::update(double dt_sec)
   // Adjust UI
   ui_manager->getMainHUD()->adjustGauge(hud_gauge_types::PROJECT_PROGRESS,
                                         gauge_data.project_progress);
-  ui_manager->getMainHUD()->adjustGauge(hud_gauge_types::TIME_REMAINING,
-                                        gauge_data.project_time_remaining);
+  ui_manager->getMainHUD()->adjustGauge(hud_gauge_types::TIME_REMAINING, gauge_data.time_remaining);
   ui_manager->getMainHUD()->adjustGauge(hud_gauge_types::YOUR_DETECTION, gauge_data.detection);
   ui_manager->getMainHUD()->adjustGauge(hud_gauge_types::PLAYER_POWER, gauge_data.player_power);
 
   // Check for a win condition
-  if (gauge_data.project_time_remaining == gauge_levels::GAUGE_EMPTY)
+  if (gauge_data.time_remaining == gauge_levels::GAUGE_EMPTY)
   {
     if (gauge_data.project_progress != gauge_levels::GAUGE_FULL &&
         gauge_data.detection != gauge_levels::GAUGE_FULL)
@@ -82,13 +81,13 @@ void GaugeManager::decreasePlayerPower(float decrease_power)
 void GaugeManager::decreaseProjectTimeRemaining(double dt_sec)
 {
   dt_sec /= gauge_rates::PROJECT_TIMER;
-  if (gauge_data.project_time_remaining - static_cast<float>(dt_sec) < gauge_levels::GAUGE_EMPTY)
+  if (gauge_data.time_remaining - static_cast<float>(dt_sec) < gauge_levels::GAUGE_EMPTY)
   {
-    gauge_data.project_time_remaining = gauge_levels::GAUGE_EMPTY;
+    gauge_data.time_remaining = gauge_levels::GAUGE_EMPTY;
   }
   else
   {
-    gauge_data.project_time_remaining -= static_cast<float>(dt_sec);
+    gauge_data.time_remaining -= static_cast<float>(dt_sec);
   }
 }
 
@@ -129,7 +128,7 @@ void GaugeManager::resetAll()
   gauge_data.productivity = gauge_levels::GAUGE_FULL;
   gauge_data.player_power = gauge_levels::GAUGE_FULL;
   gauge_data.detection = gauge_levels::GAUGE_EMPTY;
-  gauge_data.project_time_remaining = gauge_levels::GAUGE_FULL;
+  gauge_data.time_remaining = gauge_levels::GAUGE_FULL;
 }
 
 /* Get project progress */
@@ -141,7 +140,7 @@ float GaugeManager::getProjectProgress()
 /* Get remaining project time */
 float GaugeManager::getProjectTimeRemaining()
 {
-  return gauge_data.project_time_remaining;
+  return gauge_data.time_remaining;
 }
 
 /* Get the player's current power value */

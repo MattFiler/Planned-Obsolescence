@@ -34,7 +34,7 @@ class UIManager
   void setRenderer(ASGE::Renderer* rend) { renderer = rend; }; // must be called first!
   void setCamera(Camera* cam) { camera = cam; };
   void setInputData(ASGE::Input* inp) { input = inp; }
-  void update(double delta_time);
+  void update();
   void render(double delta_time);
   bool checkForClick(Point click, bool act_on_click = true);
   void releaseClick();
@@ -45,8 +45,6 @@ class UIManager
  private:
   void initCharacterPopup();
   void initPointOfInterestPopup(CharacterManager* character_manager);
-
-  void keepUIWithinScreen(UI* ui_object);
 
   std::vector<Button*> buttons;
   std::vector<TextBox*> text_boxes;
