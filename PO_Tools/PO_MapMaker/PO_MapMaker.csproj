@@ -194,6 +194,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\placeholder_map.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\placeholder_room - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\placeholder_map - Copy.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

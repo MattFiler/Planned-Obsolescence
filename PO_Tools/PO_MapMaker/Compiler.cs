@@ -231,7 +231,7 @@ namespace PO_MapMaker
 
                     //Save room sprite
                     string room_sprite_filepath = "data/ROOMS/" + room.Attribute("name").Value + "_" + compile_uid + ".png";
-                    room_sprite.Save(room_sprite_filepath);
+                    room_sprite.Save(room_sprite_filepath, System.Drawing.Imaging.ImageFormat.Png);
 
                     //Finish JSON
                     rooms_coreJson = rooms_coreJson.Substring(0, rooms_coreJson.Length - 1) + "],\"sprite\":\"" + room_sprite_filepath + "\"},";
@@ -370,7 +370,7 @@ namespace PO_MapMaker
 
                     //Save map sprite
                     string map_sprite_filepath = "data/MAPS/" + map.Attribute("name").Value + "_" + compile_uid + ".png";
-                    map_sprite.Save(map_sprite_filepath);
+                    map_sprite.Save(map_sprite_filepath, System.Drawing.Imaging.ImageFormat.Png);
 
                     //Finish JSON
                     maps_coreJson = maps_coreJson.Substring(0, maps_coreJson.Length - 1) + "],\"sprite\":\"" + map_sprite_filepath + "\"},";
