@@ -8,6 +8,12 @@ WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend,
   // Make background sprite
   background_sprite = createSprite("data/UI/IN_GAME_UI/BOTTOM_LEFT_BG.png");
 
+  // Load our sounds
+  file_handler.loadSound(popup_load, "UI_ACCEPT_BEEP", 0.5f);
+  file_handler.loadSound(popup_close, "KEYPAD_flicker_enter_code", 0.5f);
+  file_handler.loadSound(hacked_poi, "UI_ACCEPT_BEEP_ALT", 0.7f);
+  file_handler.loadSound(hacked_poi_failed, "Inventory_Item_Create_Click", 0.5f);
+
   // Make close button
   close_button = new Button(Point(461, 606),
                             rend,
@@ -39,6 +45,11 @@ WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend,
       popup_instance->gauge_data.player_power -= gauge_levels::GAUGE_HALF;
       character_manager->sabotageAtPoint(Point(popup_instance->referenced_tile->getPositionX(),
                                                popup_instance->referenced_tile->getPositionY()));
+      popup_instance->sound_player->play(popup_instance->hacked_poi);
+    }
+    else if (popup_instance->gauge_data.player_power < gauge_levels::GAUGE_HALF)
+    {
+      popup_instance->sound_player->play(popup_instance->hacked_poi_failed);
     }
   };
 }
@@ -56,11 +67,23 @@ WorldInteractionPopup::~WorldInteractionPopup()
 }
 
 /* set active/inactive */
-void WorldInteractionPopup::setActive(bool is_active)
+void WorldInteractionPopup::setActive(bool is_active, bool should_play_sound)
 {
   active = is_active;
   close_button->setActive(is_active);
   poi_interaction_button->setActive(is_active);
+
+  if (should_play_sound)
+  {
+    if (is_active)
+    {
+      sound_player->play(popup_load);
+    }
+    else
+    {
+      sound_player->play(popup_close);
+    }
+  }
 }
 
 void WorldInteractionPopup::render(double delta_time)

@@ -5,6 +5,10 @@ CharacterInfoPopup::CharacterInfoPopup(ASGE::Renderer* rend) : UI(Point(0, 0), r
   // Make background sprite
   background_sprite = createSprite("data/UI/IN_GAME_UI/BOTTOM_LEFT_BG.png");
 
+  // Load our sounds
+  file_handler.loadSound(popup_load, "UI_ACCEPT_BEEP", 0.5f);
+  file_handler.loadSound(popup_close, "KEYPAD_flicker_enter_code", 0.5f);
+
   // Make close button
   close_button = new Button(Point(461, 606),
                             rend,
@@ -53,10 +57,22 @@ void CharacterInfoPopup::render(double delta_time)
 }
 
 /* set active/inactive */
-void CharacterInfoPopup::setActive(bool is_active)
+void CharacterInfoPopup::setActive(bool is_active, bool should_play_sound)
 {
   active = is_active;
   close_button->setActive(is_active);
+
+  if (should_play_sound)
+  {
+    if (is_active)
+    {
+      sound_player->play(popup_load);
+    }
+    else
+    {
+      sound_player->play(popup_close);
+    }
+  }
 }
 
 /* Set values */

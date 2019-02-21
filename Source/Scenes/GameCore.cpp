@@ -14,18 +14,13 @@
                          sprites for the scene
  */
 
-GameCore::~GameCore()
-{
-  // player.deinit();
-}
-
 bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud& player)
 {
   // Setup
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
 
-  // Sound player
+  // Get sound player
   sound_player = &player;
 
   // load map
@@ -56,8 +51,8 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud
   project_gauge.resetAll();
 
   // Load all sounds for this scene
-  // file_handler.loadSound("CLICK_11.wav");
-  // sound_player->play(sound_file);
+  // file_handler.loadSound(sound_wav, "CLICK_11");
+  // sound_player->play(sound_wav);
 
   return true;
 }
@@ -70,6 +65,7 @@ void GameCore::passReferences(ASGE::Input* input)
   ui_manager.setRenderer(rend);
   ui_manager.setInputData(input);
   ui_manager.setCamera(&camera);
+  ui_manager.setSoundPlayer(sound_player);
 
   character_manager.setMap(&game_map);
   character_manager.setCamera(&camera);

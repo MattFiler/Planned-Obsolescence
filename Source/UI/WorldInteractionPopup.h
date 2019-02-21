@@ -20,12 +20,14 @@ class WorldInteractionPopup : public UI
   WorldInteractionPopup(const WorldInteractionPopup&) = delete;
   WorldInteractionPopup& operator=(const WorldInteractionPopup&) = delete;
 
+  void setSoundPlayer(SoLoud::Soloud* player) { sound_player = player; }
+
   void render(double delta_time) override;
 
   void getClickedTileReference(Tile& clicked_tile);
   void updateTileDynamicData();
 
-  void setActive(bool is_active);
+  void setActive(bool is_active, bool should_play_sound = true);
   bool isActive() { return active; };
   Button* checkForClick(Point click_location);
 
@@ -39,8 +41,14 @@ class WorldInteractionPopup : public UI
   Tile* referenced_tile = nullptr;
 
   PO_Gauges gauge_data = PO_Gauges();
-
+  FileHandler file_handler;
   GetLocalisedString localiser;
+
+  SoLoud::Soloud* sound_player;
+  SoLoud::Wav popup_load;
+  SoLoud::Wav popup_close;
+  SoLoud::Wav hacked_poi;
+  SoLoud::Wav hacked_poi_failed;
 
   std::string poi_name = "";
   std::string poi_desc = "";

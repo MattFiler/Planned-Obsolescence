@@ -7,6 +7,9 @@ Menu::Menu()
     (SCREEN_HEIGHT * ScaledSpriteArray::width_scale / 2) + (15 * ScaledSpriteArray::width_scale);
   x_offset *= ScaledSpriteArray::width_scale;
   y_offset *= ScaledSpriteArray::width_scale;
+
+  file_handler.loadSound(item_select, "CLICK_03", 0.7f);
+  file_handler.loadSound(item_index_change, "CLICK_04", 0.5f);
 }
 
 /* Grab renderer */
@@ -89,15 +92,18 @@ bool Menu::itemWasSelected(Keybinds& user_input)
 {
   if (user_input.keyReleased("Activate"))
   {
+    sound_player->play(item_select);
     return true;
   }
   else if (user_input.keyReleased("Menu Up") && (current_menu_index > 0))
   {
+    sound_player->play(item_index_change);
     current_menu_index--;
   }
   else if (user_input.keyReleased("Menu Down") &&
            (current_menu_index < static_cast<int>(menu_text_items.size() - 1)))
   {
+    sound_player->play(item_index_change);
     current_menu_index++;
   }
   return false;

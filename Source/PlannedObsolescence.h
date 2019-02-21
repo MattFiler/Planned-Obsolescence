@@ -34,8 +34,9 @@ class PlannedObsolescence : public ASGE::OGLGame
   DebugText debug_text;
   Keybinds user_keybinds;
   GetLocalisedString localiser;
-
   SoLoud::Soloud sound_player;
+
+  SoLoud::Wav background_music;
 
   ScaledSpriteArray* generic_background = nullptr;
 

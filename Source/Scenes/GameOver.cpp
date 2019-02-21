@@ -21,8 +21,9 @@ bool GameOver::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud
   rend = renderer;
   main_menu.giveRenderer(renderer);
 
-  // Sound player
+  // Get sound player
   sound_player = &player;
+  main_menu.setSoundPlayer(sound_player);
 
   // Add menu sprites
   if (game_over == game_over_type::PLAYER_WON)

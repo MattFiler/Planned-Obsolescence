@@ -27,7 +27,7 @@ class GameCore : public Scene
 {
  public:
   GameCore() = default;
-  ~GameCore();
+  ~GameCore() = default;
   bool load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud& player) override;
   scenes update(double delta_time) override;
   void render(double delta_time) override;
@@ -45,6 +45,8 @@ class GameCore : public Scene
   GaugeManager project_gauge;
   GameOver game_over_instance;
   FileHandler file_handler;
+
+  SoLoud::Wav sound_wav;
 
   Camera camera;
   float x_axis_input = 0;
