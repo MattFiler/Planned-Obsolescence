@@ -53,7 +53,6 @@ struct CharacterData
 
   void configureSprites(ASGE::Renderer* renderer)
   {
-    sprites.reserve(direction::DIRECTION_COUNT - 1);
     loadSpriteForDirection("left", renderer);  // enum direction::LEFT (0)
     loadSpriteForDirection("right", renderer); // enum direction::RIGHT (1)
     loadSpriteForDirection("up", renderer);    // enum direction::UP (2)
