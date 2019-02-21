@@ -38,6 +38,9 @@ bool PlannedObsolescence::init()
   // Set keybinds
   user_keybinds.setup(core_config["keybinds"]);
 
+  // Initialise sound player
+  sound_player.init();
+
   // Configure resolution and game title
   setupResolution();
   game_name = "Planned Obsolescence";
@@ -90,7 +93,7 @@ bool PlannedObsolescence::init()
 
   // Start out on the splashscreen scene
   scene_manager->current_scene = new Splashscreen();
-  return scene_manager->loadCurrentScene(renderer.get(), inputs.get());
+  return scene_manager->loadCurrentScene(renderer.get(), inputs.get(), sound_player);
 }
 
 /**
@@ -152,7 +155,7 @@ void PlannedObsolescence::update(const ASGE::GameTime& game_time)
   int num = scene_manager->updateCurrentScene(game_time.delta_time.count());
   if (num == 1)
   {
-    if (!scene_manager->loadCurrentScene(renderer.get(), inputs.get()))
+    if (!scene_manager->loadCurrentScene(renderer.get(), inputs.get(), sound_player))
     {
       signalExit();
     }

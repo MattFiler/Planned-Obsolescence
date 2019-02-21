@@ -10,6 +10,8 @@
 #include <Engine/Input.h>
 #include <Engine/InputEvents.h>
 #include <memory>
+#include <soloud.h>
+#include <soloud_wav.h>
 
 namespace ASGE
 {
@@ -25,7 +27,7 @@ class Scene
  public:
   Scene() = default;
   virtual ~Scene() = default;
-  virtual bool load(ASGE::Renderer* renderer, ASGE::Input* input) = 0;
+  virtual bool load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud& player) = 0;
   virtual scenes update(double delta_time) = 0;
   virtual void render(double delta_time) = 0;
   virtual void keyHandler(const ASGE::SharedEventData data) = 0;
@@ -39,6 +41,7 @@ class Scene
   ASGE::Renderer* rend = nullptr;
   Keybinds user_input;
   DebugText debug_text;
+  SoLoud::Soloud* sound_player;
 };
 
 #endif

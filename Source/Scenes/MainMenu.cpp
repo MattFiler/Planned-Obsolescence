@@ -10,13 +10,16 @@
  *   @details Initialises all variables and creates all the new
                          sprites for the scene
  */
-bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
+bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud& player)
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
 
   // Share the renderer
   rend = renderer;
   main_menu.giveRenderer(renderer);
+
+  // Sound player
+  sound_player = &player;
 
   // Add menu sprites
   main_menu.addMenuSprite("MAIN_MENU/BACKGROUND.jpg");

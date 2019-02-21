@@ -17,7 +17,7 @@ class Splashscreen : public Scene
  public:
   Splashscreen() = default;
   ~Splashscreen() = default;
-  bool load(ASGE::Renderer* renderer, ASGE::Input* input) override;
+  bool load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud& player) override;
   scenes update(double delta_time) override;
   void render(double delta_time) override;
   void keyHandler(const ASGE::SharedEventData data) override;

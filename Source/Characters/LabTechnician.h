@@ -14,6 +14,7 @@ class LabTechnician : public Character
   void update(double delta_time) override;
   void addRepairRequest(Tile* tile) { broken_pois.push_back(tile); };
 
+  void setHomePosition(float x_pos, float y_pos) { idle_position = Point(x_pos, y_pos); };
   unsigned long long int getRepairQueueLength() { return broken_pois.size(); }
 
  private:

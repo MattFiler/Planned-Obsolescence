@@ -976,84 +976,140 @@
   },
   "door_up": {
     "sprite": "data/TILES/SECURITY/Opened_door_010527.png",
+    "available_exits": {
+      "up": true,
+      "down": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/SECURITY/Door_alt_010527.png",
     "poi_desc": "poi_door"
   },
   "door_side": {
     "sprite": "data/TILES/SECURITY/open_side_door_010543.png",
+    "available_exits": {
+      "left": true,
+      "right": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/SECURITY/Door_alt_010543.png",
     "poi_desc": "poi_door"
   },
   "Door_up_tech": {
     "sprite": "data/TILES/IT/TECH/Opened_door_010621.png",
+    "available_exits": {
+      "up": true,
+      "down": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/IT/TECH/Door_alt_010621.png",
     "poi_desc": "poi_door"
   },
   "Door_side_tech": {
     "sprite": "data/TILES/IT/TECH/open_side_door_010634.png",
+    "available_exits": {
+      "left": true,
+      "right": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/IT/TECH/Door_alt_010634.png",
     "poi_desc": "poi_door"
   },
   "door_up_boss": {
     "sprite": "data/TILES/BOSS/Opened_door_010655.png",
+    "available_exits": {
+      "up": true,
+      "down": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/BOSS/Door_alt_010655.png",
     "poi_desc": "poi_door"
   },
   "door_side_boss": {
     "sprite": "data/TILES/BOSS/open_side_door_010712.png",
+    "available_exits": {
+      "left": true,
+      "right": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/BOSS/Door_alt_010712.png",
     "poi_desc": "poi_door"
   },
   "door_up_lab": {
     "sprite": "data/TILES/LAB/Opened_door_010724.png",
+    "available_exits": {
+      "up": true,
+      "down": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/LAB/Door_alt_010724.png",
     "poi_desc": "poi_door"
   },
   "door_side_lab": {
     "sprite": "data/TILES/LAB/open_side_door_010740.png",
+    "available_exits": {
+      "left": true,
+      "right": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/LAB/Door_alt_010740.png",
     "poi_desc": "poi_door"
   },
   "door_up_server": {
     "sprite": "data/TILES/SERVER/Opened_door_010823.png",
+    "available_exits": {
+      "up": true,
+      "down": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/SERVER/Door_alt_010823.png",
     "poi_desc": "poi_door"
   },
   "door_side_server": {
     "sprite": "data/TILES/SERVER/open_side_door_010838.png",
+    "available_exits": {
+      "left": true,
+      "right": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/SERVER/Door_alt_010838.png",
     "poi_desc": "poi_door"
   },
   "door_up_toilet": {
     "sprite": "data/TILES/TOILET/Opened_door_010906.png",
+    "available_exits": {
+      "up": true,
+      "down": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/TOILET/Door_alt_010906.png",
     "poi_desc": "poi_door"
   },
   "door_side_toilet": {
     "sprite": "data/TILES/TOILET/open_side_door_010920.png",
+    "available_exits": {
+      "left": true,
+      "right": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/TOILET/Door_alt_010920.png",
     "poi_desc": "poi_door"
   },
   "door_up_yellow": {
     "sprite": "data/TILES/BREAK ROOM/Opened_door_010939.png",
+    "available_exits": {
+      "up": true,
+      "down": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/BREAK ROOM/Door_alt_010939.png",
     "poi_desc": "poi_door"
   },
   "door_side_yellow": {
     "sprite": "data/TILES/BREAK ROOM/open_side_door_010953.png",
+    "available_exits": {
+      "left": true,
+      "right": true
+    },
     "poi_door": true,
     "poi_sprite": "data/TILES/BREAK ROOM/Door_alt_010953.png",
     "poi_desc": "poi_door"

@@ -68,8 +68,9 @@ std::string FileHandler::openAsString(const std::string& filename)
 }
 
 /* Load a sound into a SoLoud WavStream */
-SoLoud::Wav FileHandler::loadSound(SoLoud::Wav& sound_file, const std::string& filename)
+SoLoud::Wav FileHandler::loadSound(const std::string& filename)
 {
+  SoLoud::Wav sound_file;
   auto buffer = openAsBuffer(filename);
   sound_file.loadMem(
     buffer.as_unsigned_char(), static_cast<unsigned int>(buffer.length), false, false);

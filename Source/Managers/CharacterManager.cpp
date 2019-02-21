@@ -131,6 +131,7 @@ bool CharacterManager::spawnCharacter(LabTechnician* new_technician, float spawn
     technician_instances[technician_count]->wake(renderer);
     technician_instances[technician_count]->setCharacterID(technician_count);
     technician_instances[technician_count]->setSpawnPosition(spawn_x, spawn_y);
+    technician_instances[technician_count]->setHomePosition(spawn_x, spawn_y);
     technician_instances[technician_count]->generatePathfindingMap(game_map);
 
     technician_count++;

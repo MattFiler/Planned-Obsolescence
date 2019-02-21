@@ -10,10 +10,12 @@
  *   @details Initialises all variables and creates all the new
                          sprites for the scene
  */
-bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input)
+bool Splashscreen::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud& player)
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
+
+  sound_player = &player;
 
   ASGE::Sprite* po_logo_fg_sprite = renderer->createRawSprite();
   if (!po_logo_fg_sprite->loadTexture("data/UI/SPLASHSCREEN/FOREGROUND.png"))
