@@ -30,7 +30,6 @@ class Character
   void setSpawnPositionY(float y_pos);
   void setSpawnPosition(float x_pos, float y_pos);
   void setVisible(bool is_visible);
-  void setDimensions(float new_width, float new_height);
   void setSpeed(int speed);
 
   void generatePathfindingMap(GameMap* game_map);
@@ -43,9 +42,11 @@ class Character
   int getSpawnCap();
   int getSpawnCapAsInt();
   Point getPosition() { return position; };
-  std::string getSpritePath();
 
   bool isPointInArea(Point point) { return click_area.isPointInArea(point); };
+
+  direction getDirection() { return config.currently_facing; };
+  void setDirection(direction new_direction) { config.currently_facing = new_direction; };
 
   void setCharacterID(int index);
   std::string getCharacterID();
@@ -62,7 +63,6 @@ class Character
   std::string getDisplayName();
 
  protected:
-  void updateSprite();
   float calculateScoresOfNextDepth(PathNode* node,
                                    unsigned long long int depth,
                                    float best_score,
@@ -88,7 +88,6 @@ class Character
  private:
   void importConfig(json json_config);
 
-  ScaledSpriteArray* sprite = nullptr;
   ASGE::Renderer* renderer = nullptr;
 
   DebugText debug_text;

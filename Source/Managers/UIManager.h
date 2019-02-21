@@ -16,7 +16,7 @@ class UIManager
   UIManager(UIManager const&) = delete;
   void operator=(UIManager const&) = delete;
 
-  UIManager() = default;
+  UIManager();
   ~UIManager();
 
   void addGenericUI(GenericUI* new_generic_ui);
@@ -34,6 +34,11 @@ class UIManager
   void setRenderer(ASGE::Renderer* rend) { renderer = rend; }; // must be called first!
   void setCamera(Camera* cam) { camera = cam; };
   void setInputData(ASGE::Input* inp) { input = inp; }
+  void setSoundPlayer(SoLoud::Soloud* player)
+  {
+    delete sound_player;
+    sound_player = player;
+  }
   void update();
   void render(double delta_time);
   bool checkForClick(Point click, bool act_on_click = true);
@@ -63,6 +68,9 @@ class UIManager
   ASGE::Renderer* renderer = nullptr;
   ASGE::Input* input = nullptr;
   Camera* camera = nullptr;
+  FileHandler file_handler;
+
+  SoLoud::Soloud* sound_player;
 };
 
 #endif // PLANNEDOBSOLESCENCE_UIMANAGER_H

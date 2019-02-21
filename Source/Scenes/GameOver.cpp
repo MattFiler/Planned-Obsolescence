@@ -21,20 +21,24 @@ bool GameOver::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud
   rend = renderer;
   main_menu.giveRenderer(renderer);
 
-  // Sound player
+  // Get sound player
   sound_player = &player;
+  main_menu.setSoundPlayer(sound_player);
 
   // Add menu sprites
   if (game_over == game_over_type::PLAYER_WON)
   {
     main_menu.addMenuSprite("GAME_OVER/BACKGROUND_VICTORY.png");
+    file_handler.loadSound(ending_sound, "UI_OMINOUS_WIN");
     debug_text.print("GAME OVER - PLAYER WON");
   }
-  else if (game_over == game_over_type::PLAYER_LOST)
+  else
   {
     main_menu.addMenuSprite("GAME_OVER/BACKGROUND_LOSS.png");
+    file_handler.loadSound(ending_sound, "UI_OMINOUS_LOSS");
     debug_text.print("GAME OVER - PLAYER LOST");
   }
+  sound_player->play(ending_sound);
 
   // Add menu options
   main_menu.addMenuItem("retry_game");

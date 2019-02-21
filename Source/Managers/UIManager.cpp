@@ -1,5 +1,11 @@
 #include "UIManager.h"
 
+/* Load all sounds */
+UIManager::UIManager()
+{
+  sound_player = new SoLoud::Soloud;
+}
+
 /* destroy! */
 UIManager::~UIManager()
 {
@@ -79,14 +85,16 @@ void UIManager::createMainHUD(CharacterManager* character_manager)
 void UIManager::initCharacterPopup()
 {
   char_info_popup = new CharacterInfoPopup(renderer);
-  char_info_popup->setActive(false);
+  char_info_popup->setSoundPlayer(sound_player);
+  char_info_popup->setActive(false, false);
 }
 
 /* Initialise the poi interaction popup */
 void UIManager::initPointOfInterestPopup(CharacterManager* character_manager)
 {
   poi_interaction_popup = new WorldInteractionPopup(renderer, character_manager);
-  poi_interaction_popup->setActive(false);
+  poi_interaction_popup->setSoundPlayer(sound_player);
+  poi_interaction_popup->setActive(false, false);
 }
 
 /* Creates all the UI */
@@ -94,7 +102,7 @@ void UIManager::updateAndShowCharacterInfo(const std::string& character_type,
                                            float character_gauge,
                                            const std::string& gauge_name)
 {
-  poi_interaction_popup->setActive(false);
+  poi_interaction_popup->setActive(false, false);
 
   char_info_popup->setActive(true);
   char_info_popup->setCharacterName(character_type);
@@ -105,7 +113,7 @@ void UIManager::updateAndShowCharacterInfo(const std::string& character_type,
 /* Creates all the UI */
 void UIManager::updateAndShowTileData(Tile& clicked_tile)
 {
-  char_info_popup->setActive(false);
+  char_info_popup->setActive(false, false);
 
   poi_interaction_popup->setActive(true);
   poi_interaction_popup->getClickedTileReference(clicked_tile);

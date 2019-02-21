@@ -40,12 +40,13 @@ void Goon::update(double delta_time)
       time_elapsed_at_poi += delta_time;
       time_working += delta_time;
 
-      if (time_elapsed_at_poi > total_time_for_poi || point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
+      if (time_elapsed_at_poi > total_time_for_poi ||
+          point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
       {
         poi_iteration_count++;
-        if(point_of_interest_tile->getPointOfInterestState() != poi_state::POI_IS_BROKEN)
+        if (point_of_interest_tile->getPointOfInterestState() != poi_state::POI_IS_BROKEN)
         {
-            point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_FUNCTIONAL);
+          point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_FUNCTIONAL);
         }
         findNewPOI();
         time_elapsed_at_poi = 0;
@@ -53,7 +54,7 @@ void Goon::update(double delta_time)
       }
       else
       {
-          point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_BEING_USED_BY_GOON);
+        point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_BEING_USED_BY_GOON);
       }
     }
   }
@@ -93,7 +94,8 @@ void Goon::lockedDoorFound()
 void Goon::findNewPOI()
 {
   // Generate a random time for the Goon to stay at this POI
-  total_time_for_poi = gauge_rates ::GOON_MIN_TIME_AT_POI + (rand() % gauge_rates::GOON_MAX_TIME_AT_POI);
+  total_time_for_poi =
+    gauge_rates ::GOON_MIN_TIME_AT_POI + (rand() % gauge_rates::GOON_MAX_TIME_AT_POI);
   // Find which room the goon is in
   Room* our_room = nullptr;
   for (Room& room : *global_map->getRooms())

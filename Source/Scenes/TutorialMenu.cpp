@@ -18,8 +18,9 @@ bool TutorialMenu::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::So
   rend = renderer;
   main_menu.giveRenderer(renderer);
 
-  // Sound player
+  // Get sound player
   sound_player = &player;
+  main_menu.setSoundPlayer(sound_player);
 
   // Add menu sprites
   main_menu.addMenuSprite("MAIN_MENU/BACKGROUND.jpg");

@@ -21,6 +21,8 @@ PlannedObsolescence::~PlannedObsolescence()
 {
   delete scene_manager;
   scene_manager = nullptr;
+
+  sound_player.deinit();
 }
 
 bool PlannedObsolescence::init()
@@ -37,9 +39,6 @@ bool PlannedObsolescence::init()
 
   // Set keybinds
   user_keybinds.setup(core_config["keybinds"]);
-
-  // Initialise sound player
-  sound_player.init();
 
   // Configure resolution and game title
   setupResolution();
@@ -90,6 +89,11 @@ bool PlannedObsolescence::init()
 
   // Initialise the scene manager
   scene_manager = new SceneManager();
+
+  // Initialise sound player and play background music
+  sound_player.init();
+  file_handler.loadSound(background_music, "IN_GAME_SOUNDTRACK", 1.0f, true);
+  sound_player.play(background_music);
 
   // Start out on the splashscreen scene
   scene_manager->current_scene = new Splashscreen();

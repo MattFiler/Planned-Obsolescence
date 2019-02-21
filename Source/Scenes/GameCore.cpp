@@ -14,19 +14,15 @@
                          sprites for the scene
  */
 
-GameCore::~GameCore()
-{
-  // player.deinit();
-}
-
 bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud& player)
 {
   // Setup
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
 
-  // Sound player
+  // Get sound player
   sound_player = &player;
+  file_handler.loadSound(exit_sound, "Interactive_Terminal_End", 0.5f);
 
   // load map
   game_map.load(renderer, &camera);
@@ -48,16 +44,16 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud
                                    0.7f,
                                    Point(45, 17));
   scenes* next = &next_scene;
-  quit_button->click_function = [next] { *next = scenes::MAIN_MENU; };
+  GameCore* this_scene = this;
+  quit_button->click_function = [next, this_scene] {
+    *next = scenes::MAIN_MENU;
+    this_scene->sound_player->play(this_scene->exit_sound);
+  };
   ui_manager.addButton(quit_button);
 
   // Reset game over config for new load
   game_over_instance.setGameOverType(game_over_type::NOT_YET_DECIDED);
   project_gauge.resetAll();
-
-  // Load all sounds for this scene
-  // file_handler.loadSound("CLICK_11.wav");
-  // sound_player->play(sound_file);
 
   return true;
 }
@@ -70,6 +66,7 @@ void GameCore::passReferences(ASGE::Input* input)
   ui_manager.setRenderer(rend);
   ui_manager.setInputData(input);
   ui_manager.setCamera(&camera);
+  ui_manager.setSoundPlayer(sound_player);
 
   character_manager.setMap(&game_map);
   character_manager.setCamera(&camera);
@@ -86,42 +83,68 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
 {
   if (character_manager.canSpawn(character_type::GOON))
   {
-    for(int i = 1; i < 4; i++)
+    for (int i = 1; i < 4; i++)
     {
-      auto tile_count = static_cast<unsigned  long long int>(game_map.getRooms()->at(i).getTileCount() / 2);
+      auto tile_count =
+        static_cast<unsigned long long int>(game_map.getRooms()->at(i).getTileCount() / 2);
       float x_pos = game_map.getRooms()->at(i).getTiles()->at(tile_count).getPositionX();
       float y_pos = game_map.getRooms()->at(i).getTiles()->at(tile_count).getPositionY();
-      Goon *new_goon = new Goon();
+      Goon* new_goon = new Goon();
       character_manager.spawnCharacter(new_goon, x_pos, y_pos);
     }
-    for(int i = 1; i < 5; i++)
+    for (int i = 1; i < 5; i++)
     {
-      auto tile_count = static_cast<unsigned  long long int>(game_map.getRooms()->at(static_cast<unsigned long long int>(game_map.getRoomCount()-i)).getTileCount() / 2);
-      float x_pos = game_map.getRooms()->at(static_cast<unsigned long long int>(game_map.getRoomCount()-i)).getTiles()->at(tile_count).getPositionX();
-      float y_pos = game_map.getRooms()->at(static_cast<unsigned long long int>(game_map.getRoomCount()-i)).getTiles()->at(tile_count).getPositionY();
-      Goon *new_goon = new Goon();
+      auto tile_count = static_cast<unsigned long long int>(
+        game_map.getRooms()
+          ->at(static_cast<unsigned long long int>(game_map.getRoomCount() - i))
+          .getTileCount() /
+        2);
+      float x_pos = game_map.getRooms()
+                      ->at(static_cast<unsigned long long int>(game_map.getRoomCount() - i))
+                      .getTiles()
+                      ->at(tile_count)
+                      .getPositionX();
+      float y_pos = game_map.getRooms()
+                      ->at(static_cast<unsigned long long int>(game_map.getRoomCount() - i))
+                      .getTiles()
+                      ->at(tile_count)
+                      .getPositionY();
+      Goon* new_goon = new Goon();
       character_manager.spawnCharacter(new_goon, x_pos, y_pos);
     }
   }
   if (character_manager.canSpawn(character_type::SECURITY))
   {
-    auto tile_count = static_cast<unsigned  long long int>(game_map.getRooms()->at(0).getTileCount() / 2);
+    auto tile_count =
+      static_cast<unsigned long long int>(game_map.getRooms()->at(0).getTileCount() / 2);
     float x_pos = game_map.getRooms()->at(0).getTiles()->at(tile_count).getPositionX();
     float y_pos = game_map.getRooms()->at(0).getTiles()->at(tile_count).getPositionY();
     auto* new_guard = new Security();
     character_manager.spawnCharacter(new_guard, x_pos, y_pos);
 
-    tile_count = static_cast<unsigned  long long int>(game_map.getRooms()->at(
-            static_cast<unsigned long long int>(game_map.getRoomCount()-1)).getTileCount() / 2);
-    x_pos = game_map.getRooms()->at(static_cast<unsigned long long int>(game_map.getRoomCount()-1)).getTiles()->at(tile_count).getPositionX();
-    y_pos = game_map.getRooms()->at(static_cast<unsigned long long int>(game_map.getRoomCount()-1)).getTiles()->at(tile_count).getPositionY();
+    tile_count = static_cast<unsigned long long int>(
+      game_map.getRooms()
+        ->at(static_cast<unsigned long long int>(game_map.getRoomCount() - 1))
+        .getTileCount() /
+      2);
+    x_pos = game_map.getRooms()
+              ->at(static_cast<unsigned long long int>(game_map.getRoomCount() - 1))
+              .getTiles()
+              ->at(tile_count)
+              .getPositionX();
+    y_pos = game_map.getRooms()
+              ->at(static_cast<unsigned long long int>(game_map.getRoomCount() - 1))
+              .getTiles()
+              ->at(tile_count)
+              .getPositionY();
     new_guard = new Security();
     character_manager.spawnCharacter(new_guard, x_pos, y_pos);
   }
 
   if (character_manager.canSpawn(character_type::TECHNICIAN))
   {
-    auto tile_count = static_cast<unsigned  long long int>(game_map.getRooms()->at(0).getTileCount() / 2);
+    auto tile_count =
+      static_cast<unsigned long long int>(game_map.getRooms()->at(0).getTileCount() / 2);
     float x_pos = game_map.getRooms()->at(0).getTiles()->at(tile_count).getPositionX();
     float y_pos = game_map.getRooms()->at(0).getTiles()->at(tile_count).getPositionY();
     auto* new_tech = new LabTechnician();
