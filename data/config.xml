@@ -199,7 +199,7 @@
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
       </tile>
       <tile name="DEFAULT" set="DEFAULT" sprite="data/TILES/placeholder.png" mandatory="false">
-        <dimensions width="32" height="32" />
+        <dimensions width="50" height="50" />
         <valid_exits left="false" right="false" up="false" down="false" />
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
       </tile>
