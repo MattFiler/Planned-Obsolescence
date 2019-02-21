@@ -48,8 +48,8 @@ add_executable(
         Source/Scenes/GameOver.cpp
         Source/Scenes/MainMenu.h
         Source/Scenes/MainMenu.cpp
-        Source/Scenes/PauseMenu.h
-        Source/Scenes/PauseMenu.cpp
+        Source/Scenes/TutorialMenu.h
+        Source/Scenes/TutorialMenu.cpp
         Source/Characters/Character.h
         Source/Characters/Character.cpp
         Source/Characters/Boss.h

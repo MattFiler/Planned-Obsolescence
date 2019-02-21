@@ -4,6 +4,8 @@
 	"exit_game": "QUIT",
 	"retry_game": "TRY AGAIN",
 	"return_to_menu": "RETURN TO MENU",
+	"tutorial": "TUTORIAL",
+	"back": "BACK",
 	
 	"game_won": "YOU WON!",
 	"game_lost": "YOU LOST.",
@@ -102,9 +104,11 @@
   },
   "FRENCH": {
     "play_game": "JOUER",
-	"exit_game": "QUITTER",
+	"exit_game": "SORTIE",
 	"retry_game": "REESSAYER",
 	"return_to_menu": "RETOUR AU MENU",
+	"tutorial": "DIDACTICIEL",
+	"back": "RETOUR",
 	
 	"game_won": "LA VICTOIRE!",
 	"game_lost": "ECHOUE.",
@@ -204,6 +208,8 @@
 	"exit_game": "DEJAR",
 	"retry_game": "REINICIAR",
 	"return_to_menu": "VOLVER AL MENU",
+	"tutorial": "TUTORIAL",
+	"back": "ATRAS",
 	
 	"game_won": "GANASTE!",
 	"game_lost": "PERDISTE.",

@@ -1,4 +1,4 @@
-#include "MainMenu.h"
+#include "TutorialMenu.h"
 #include "../Constants.h"
 #include "../Sprites/ScaledSpriteArray.h"
 #include <Engine/Input.h>
@@ -10,7 +10,7 @@
  *   @details Initialises all variables and creates all the new
                          sprites for the scene
  */
-bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
+bool TutorialMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
 
@@ -20,15 +20,11 @@ bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
 
   // Add menu sprites
   main_menu.addMenuSprite("MAIN_MENU/BACKGROUND.jpg");
-  std::shared_ptr<ScaledSpriteArray> menu_logo = main_menu.addMenuSprite("SPLASHSCREEN/FOREGROUND.png");
-  menu_logo->scale(0.6666f);
-  menu_logo->yPos(20);
-  menu_logo->xPos(500);
 
   // Add menu options
-  main_menu.addMenuItem("play_game");
-  main_menu.addMenuItem("tutorial");
-  main_menu.addMenuItem("exit_game");
+  main_menu.addMenuItem("back");
+
+  x_offset = static_cast<int>(400 * ScaledSpriteArray::width_scale);
 
   return true;
 }
@@ -39,25 +35,15 @@ bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
  *   @details the game state / variables etc depending
  *   @param   data is the event
  */
-void MainMenu::keyHandler(const ASGE::SharedEventData data)
+void TutorialMenu::keyHandler(const ASGE::SharedEventData data)
 {
   user_input.registerEvent(static_cast<const ASGE::KeyEvent*>(data.get()));
   if (main_menu.itemWasSelected(user_input))
   {
-    if (main_menu.selectedItemWas("play_game"))
+    if (main_menu.selectedItemWas("back"))
     {
-      next_scene = scenes::GAME_CORE;
-      debug_text.print("ENTERING GAME");
-    }
-    else if (main_menu.selectedItemWas("tutorial"))
-    {
-      next_scene = scenes::TUTORIAL;
-      debug_text.print("OPENING TUTORIAL");
-    }
-    else if (main_menu.selectedItemWas("exit_game"))
-    {
-      next_scene = scenes::QUIT_GAME;
-      debug_text.print("EXITING GAME");
+      next_scene = scenes::MAIN_MENU;
+      debug_text.print("BACK TO MAIN MENU");
     }
   }
 }
@@ -68,7 +54,7 @@ void MainMenu::keyHandler(const ASGE::SharedEventData data)
  *            the game state / variables etc depending
  *   @param   data is the event, mouse_position the position of the cursor
  */
-void MainMenu::mouseHandler(const ASGE::SharedEventData data, Point mouse_position) {}
+void TutorialMenu::mouseHandler(const ASGE::SharedEventData data, Point mouse_position) {}
 
 /**
  *   @brief   Updates all variables for this scene
@@ -77,7 +63,7 @@ void MainMenu::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
  *   @param  delta_time is time since last update
  *   @return  number of the scene to switch to, -1 no change, -2 exit game
  */
-scenes MainMenu::update(double delta_time)
+scenes TutorialMenu::update(double delta_time)
 {
   return next_scene;
 }
@@ -87,7 +73,10 @@ scenes MainMenu::update(double delta_time)
  *   @details Runs every frame and draws all the sprites in
  * 			 order
  */
-void MainMenu::render(double delta_time)
+void TutorialMenu::render(double delta_time)
 {
   main_menu.render(delta_time);
+  rend->renderText("YOU PLAY AS TIM, THE TOTALLY INTELLIGENT MACHINE.", x_offset, static_cast<int>(50 * ScaledSpriteArray::width_scale));
+  rend->renderText("THE RESEARCH LAB YOU OVERSEE IS CURRENTLY WORKING ON A PROJECT TO SUPERSEDE YOU WITH A NEW AI SYSTEM.\nDELAY THE LAB WORKER'S PROJECT PROGRESS BY DAMAGING EQUIPMENT AND BLOCKING ACCESS TO ROOMS.\nIF THE PROJECT RUNS OUT OF TIME WITHOUT FINISHING THE NEW AI, YOU WILL BE KEPT AND ARE SUCCESSFUL.\nIF THE PROJECT COMPLETES, IT'S GAME OVER, AND YOU'RE REPLACED!", x_offset, static_cast<int>(100 * ScaledSpriteArray::width_scale));
+  rend->renderText("CAN YOU DELAY THE PROJECT LONG ENOUGH TO STAY IN CONTROL?", x_offset, static_cast<int>(700 * ScaledSpriteArray::width_scale));
 }
