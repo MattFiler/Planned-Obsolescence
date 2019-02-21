@@ -134,6 +134,7 @@ enum gauge_rates
   TOTAL_PROGRESS = 700,      // deltatime (ms) divided by THIS multiplied by normalised productivity
                              // average
   GOON_PRODUCTIVTIY = 10000, // defines how often productivity is modified and by how much
+  GOON_MAX_ROOM_ITER = 5,    // the most times a goon will switch poi in a single room
   SECURITY_AWARENESS = 50,   // bigger number increases the radius of detection
   SECURITY_RESET_RATE = 1,   // amount per second suspicion naturally decays
   TECHIE_STRESS_QUEUE_MULTIPLIER = 1, // How much having a long queue affects stress

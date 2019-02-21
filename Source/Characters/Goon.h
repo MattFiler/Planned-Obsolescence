@@ -20,6 +20,7 @@ class Goon : public Character
 
   Tile* point_of_interest_tile = nullptr;
   Point poi_position = Point(0, 0);
+  int poi_iteration_count = 0;
 
   double total_time_for_poi = 0;
   double time_elapsed_at_poi = 0;
