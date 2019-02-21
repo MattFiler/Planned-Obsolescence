@@ -1,19 +1,4 @@
 {
-  "DEFAULT": {
-    "width": 50,
-    "height": 50,
-    "sprite": "data/TILES/placeholder.png",
-    "available_exits": {
-      "left": false,
-      "right": false,
-      "up": false,
-      "down": false
-    },
-    "poi_computer": false,
-    "poi_door": false,
-    "poi_sprite": "",
-    "poi_desc": "placeholder_text"
-  },
   "LAB_L": {
     "sprite": "data/TILES/TEST/tile_pink_placeholder101053.png",
     "available_exits": {
@@ -157,5 +142,920 @@
     "poi_door": true,
     "poi_sprite": "data/TILES/tile_black_placeholder.png",
     "poi_desc": "poi_door"
+  },
+  "bottom_wall": {
+    "sprite": "data/TILES/SECURITY/bottom_BLUE_102127.png"
+  },
+  "top_wall": {
+    "sprite": "data/TILES/SECURITY/top_BLUE_102153.png"
+  },
+  "left_wall": {
+    "sprite": "data/TILES/SECURITY/left_side_BLUE_102225.png"
+  },
+  "right_wall": {
+    "sprite": "data/TILES/SECURITY/right_side_BLUE_102249.png"
+  },
+  "top_right_wall": {
+    "sprite": "data/TILES/SECURITY/top_right_BLUE_102316.png"
+  },
+  "top_left_wall": {
+    "sprite": "data/TILES/SECURITY/top_left_BLUE_102339.png"
+  },
+  "bottom_right_wall": {
+    "sprite": "data/TILES/SECURITY/bottom_right_BLUE_102412.png"
+  },
+  "bottom_left_wall": {
+    "sprite": "data/TILES/SECURITY/bottom_left_BLUE_102427.png"
+  },
+  "all_floor": {
+    "sprite": "data/TILES/SECURITY/Blue_floor_102604.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "RD_floor": {
+    "sprite": "data/TILES/SECURITY/Blue_floor_103429.png",
+    "available_exits": {
+      "right": true,
+      "down": true
+    }
+  },
+  "LU_floor": {
+    "sprite": "data/TILES/SECURITY/Blue_floor_103602.png",
+    "available_exits": {
+      "left": true,
+      "up": true
+    }
+  },
+  "RU_floor": {
+    "sprite": "data/TILES/SECURITY/Blue_floor_103458.png",
+    "available_exits": {
+      "right": true,
+      "up": true
+    }
+  },
+  "LD_floor": {
+    "sprite": "data/TILES/SECURITY/Blue_floor_103524.png",
+    "available_exits": {
+      "left": true,
+      "down": true
+    }
+  },
+  "LRD_floor": {
+    "sprite": "data/TILES/SECURITY/Blue_floor_103749.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "down": true
+    }
+  },
+  "RUD_floor": {
+    "sprite": "data/TILES/SECURITY/Blue_floor_103832.png",
+    "available_exits": {
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LRU_floor": {
+    "sprite": "data/TILES/SECURITY/Blue_floor_103854.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true
+    }
+  },
+  "LUD_floor": {
+    "sprite": "data/TILES/SECURITY/Blue_floor_103919.png",
+    "available_exits": {
+      "left": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "door_up": {
+    "sprite": "data/TILES/SECURITY/Door_104034.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/SECURITY/Opened_door_alt_104034.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side": {
+    "sprite": "data/TILES/SECURITY/Door_104107.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/SECURITY/open_side_door_alt_104107.png",
+    "poi_desc": "poi_door"
+  },
+  "D_floor": {
+    "sprite": "data/TILES/SECURITY/Blue_floor_104911.png",
+    "available_exits": {
+      "down": true
+    }
+  },
+  "DEFAULT": {
+    "width": 32,
+    "height": 32,
+    "sprite": "data/TILES/placeholder.png",
+    "available_exits": {
+      "left": false,
+      "right": false,
+      "up": false,
+      "down": false
+    },
+    "poi_computer": false,
+    "poi_door": false,
+    "poi_sprite": "",
+    "poi_desc": "placeholder_text"
+  },
+  "bottom_green": {
+    "sprite": "data/TILES/IT/TECH/bottom_Green_111256.png"
+  },
+  "top_green": {
+    "sprite": "data/TILES/IT/TECH/top_Green_111312.png"
+  },
+  "bottom_left_green": {
+    "sprite": "data/TILES/IT/TECH/bottom_left_Green_111352.png"
+  },
+  "bottom_right_green": {
+    "sprite": "data/TILES/IT/TECH/bottom_right_Green_111411.png"
+  },
+  "left_green": {
+    "sprite": "data/TILES/IT/TECH/left_side_Green_111435.png"
+  },
+  "right_green": {
+    "sprite": "data/TILES/IT/TECH/right_side_Green_111536.png"
+  },
+  "top_left_green": {
+    "sprite": "data/TILES/IT/TECH/top_left_Green_111600.png"
+  },
+  "top_right_green": {
+    "sprite": "data/TILES/IT/TECH/top_right_Green_111618.png"
+  },
+  "RD_green": {
+    "sprite": "data/TILES/IT/TECH/Green_floor_111746.png",
+    "available_exits": {
+      "right": true,
+      "down": true
+    }
+  },
+  "LD_green": {
+    "sprite": "data/TILES/IT/TECH/Green_floor_111822.png",
+    "available_exits": {
+      "left": true,
+      "down": true
+    }
+  },
+  "RU_green": {
+    "sprite": "data/TILES/IT/TECH/Green_floor_111845.png",
+    "available_exits": {
+      "right": true,
+      "up": true
+    }
+  },
+  "LU_green": {
+    "sprite": "data/TILES/IT/TECH/Green_floor_112048.png",
+    "available_exits": {
+      "left": true,
+      "up": true
+    }
+  },
+  "LRD_green": {
+    "sprite": "data/TILES/IT/TECH/Green_floor_112153.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "down": true
+    }
+  },
+  "RUD_green": {
+    "sprite": "data/TILES/IT/TECH/Green_floor_112226.png",
+    "available_exits": {
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LUD_green": {
+    "sprite": "data/TILES/IT/TECH/Green_floor_112253.png",
+    "available_exits": {
+      "left": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LRU_green": {
+    "sprite": "data/TILES/IT/TECH/Green_floor_112408.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true
+    }
+  },
+  "ALL_green": {
+    "sprite": "data/TILES/IT/TECH/Green_floor_112443.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "Door_up_tech": {
+    "sprite": "data/TILES/IT/TECH/Door_112938.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/IT/TECH/Opened_door_alt_112938.png",
+    "poi_desc": "poi_door"
+  },
+  "Door_side_tech": {
+    "sprite": "data/TILES/IT/TECH/Door_113012.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/IT/TECH/open_side_door_alt_113012.png",
+    "poi_desc": "poi_door"
+  },
+  "bottom_left_red": {
+    "sprite": "data/TILES/BOSS/bottom_left_Red_114731.png"
+  },
+  "bottom_right_red": {
+    "sprite": "data/TILES/BOSS/bottom_right_Red_114754.png"
+  },
+  "top_red": {
+    "sprite": "data/TILES/BOSS/top_Red_114812.png"
+  },
+  "bottom_red": {
+    "sprite": "data/TILES/BOSS/bottom_Red_114837.png"
+  },
+  "left_red": {
+    "sprite": "data/TILES/BOSS/left_side_Red_114901.png"
+  },
+  "right_red": {
+    "sprite": "data/TILES/BOSS/right_side_Red_114951.png"
+  },
+  "top_left_red": {
+    "sprite": "data/TILES/BOSS/top_left_Red_115019.png"
+  },
+  "top_right_red": {
+    "sprite": "data/TILES/BOSS/top_right_Red_115044.png"
+  },
+  "RD_red": {
+    "sprite": "data/TILES/BOSS/Red_floor_115238.png",
+    "available_exits": {
+      "right": true,
+      "down": true
+    }
+  },
+  "LD_red": {
+    "sprite": "data/TILES/BOSS/Red_floor_115256.png",
+    "available_exits": {
+      "left": true,
+      "down": true
+    }
+  },
+  "RU_red": {
+    "sprite": "data/TILES/BOSS/Red_floor_115325.png",
+    "available_exits": {
+      "right": true,
+      "up": true
+    }
+  },
+  "LU_red": {
+    "sprite": "data/TILES/BOSS/Red_floor_115343.png",
+    "available_exits": {
+      "left": true,
+      "up": true
+    }
+  },
+  "LRD_red": {
+    "sprite": "data/TILES/BOSS/Red_floor_115407.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "down": true
+    }
+  },
+  "RUD_red": {
+    "sprite": "data/TILES/BOSS/Red_floor_115445.png",
+    "available_exits": {
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LUD_red": {
+    "sprite": "data/TILES/BOSS/Red_floor_115518.png",
+    "available_exits": {
+      "left": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LRU": {
+    "sprite": "data/TILES/BOSS/Red_floor_115554.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true
+    }
+  },
+  "ALL_red": {
+    "sprite": "data/TILES/BOSS/Red_floor_115614.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "door_up_boss": {
+    "sprite": "data/TILES/BOSS/Door_115747.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/BOSS/Opened_door_alt_115747.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side_boss": {
+    "sprite": "data/TILES/BOSS/Door_115821.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/BOSS/open_side_door_alt_115821.png",
+    "poi_desc": "poi_door"
+  },
+  "bottom_left_white": {
+    "sprite": "data/TILES/LAB/bottom_left_White_120713.png"
+  },
+  "bottom_right_white": {
+    "sprite": "data/TILES/LAB/bottom_right_White_120738.png"
+  },
+  "bottom_white": {
+    "sprite": "data/TILES/LAB/bottom_White_120805.png"
+  },
+  "top_white": {
+    "sprite": "data/TILES/LAB/top_White_120820.png"
+  },
+  "left_white": {
+    "sprite": "data/TILES/LAB/left_side_White_120837.png"
+  },
+  "right_white": {
+    "sprite": "data/TILES/LAB/right_side_White_120848.png"
+  },
+  "top_left_white": {
+    "sprite": "data/TILES/LAB/top_left_White_120906.png"
+  },
+  "top_right_white": {
+    "sprite": "data/TILES/LAB/top_right_White_120934.png"
+  },
+  "RD_white": {
+    "sprite": "data/TILES/LAB/White_floor_121036.png",
+    "available_exits": {
+      "right": true,
+      "down": true
+    }
+  },
+  "LD_white": {
+    "sprite": "data/TILES/LAB/White_floor_121052.png",
+    "available_exits": {
+      "left": true,
+      "down": true
+    }
+  },
+  "RU_white": {
+    "sprite": "data/TILES/LAB/White_floor_121121.png",
+    "available_exits": {
+      "right": true,
+      "up": true
+    }
+  },
+  "LU_white": {
+    "sprite": "data/TILES/LAB/White_floor_121152.png",
+    "available_exits": {
+      "left": true,
+      "up": true
+    }
+  },
+  "LRD_white": {
+    "sprite": "data/TILES/LAB/White_floor_121212.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "down": true
+    }
+  },
+  "RUD_white": {
+    "sprite": "data/TILES/LAB/White_floor_121230.png",
+    "available_exits": {
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LUD_white": {
+    "sprite": "data/TILES/LAB/White_floor_121242.png",
+    "available_exits": {
+      "left": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LRU_white": {
+    "sprite": "data/TILES/LAB/White_floor_121324.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true
+    }
+  },
+  "ALL_white": {
+    "sprite": "data/TILES/LAB/White_floor_121350.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "door_up_lab": {
+    "sprite": "data/TILES/LAB/Door_121459.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/LAB/Opened_door_alt_121459.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side_lab": {
+    "sprite": "data/TILES/LAB/Door_121527.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/LAB/open_side_door_alt_121527.png",
+    "poi_desc": "poi_door"
+  },
+  "bottom_grey": {
+    "sprite": "data/TILES/SERVER/bottom_122043.png"
+  },
+  "bottom_left_grey": {
+    "sprite": "data/TILES/SERVER/bottom_left_122132.png"
+  },
+  "bottom_right_grey": {
+    "sprite": "data/TILES/SERVER/bottom_right_122201.png"
+  },
+  "left_grey": {
+    "sprite": "data/TILES/SERVER/left_side_122215.png"
+  },
+  "right_grey": {
+    "sprite": "data/TILES/SERVER/right_side_122231.png"
+  },
+  "top_grey": {
+    "sprite": "data/TILES/SERVER/top_122245.png"
+  },
+  "top_left_grey": {
+    "sprite": "data/TILES/SERVER/top_left_122305.png"
+  },
+  "top_right_grey": {
+    "sprite": "data/TILES/SERVER/top_right_122320.png"
+  },
+  "RD_grey": {
+    "sprite": "data/TILES/SERVER/Grey_floor_122356.png",
+    "available_exits": {
+      "right": true,
+      "down": true
+    }
+  },
+  "LD_grey": {
+    "sprite": "data/TILES/SERVER/Grey_floor_122415.png",
+    "available_exits": {
+      "left": true,
+      "down": true
+    }
+  },
+  "RU_grey": {
+    "sprite": "data/TILES/SERVER/Grey_floor_122433.png",
+    "available_exits": {
+      "right": true,
+      "up": true
+    }
+  },
+  "LU_grey": {
+    "sprite": "data/TILES/SERVER/Grey_floor_122456.png",
+    "available_exits": {
+      "left": true,
+      "up": true
+    }
+  },
+  "LRD_grey": {
+    "sprite": "data/TILES/SERVER/Grey_floor_122524.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "down": true
+    }
+  },
+  "RUD_grey": {
+    "sprite": "data/TILES/SERVER/Grey_floor_122556.png",
+    "available_exits": {
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LUD_grey": {
+    "sprite": "data/TILES/SERVER/Grey_floor_122635.png",
+    "available_exits": {
+      "left": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LRU_grey": {
+    "sprite": "data/TILES/SERVER/Grey_floor_122713.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true
+    }
+  },
+  "ALL_grey": {
+    "sprite": "data/TILES/SERVER/Grey_floor_122738.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "computer_server": {
+    "sprite": "data/TILES/SERVER/Computer_and_desk_122947.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/SERVER/Computer_and_desk_alt_122947.png",
+    "poi_desc": "poi_computer"
+  },
+  "door_up_server": {
+    "sprite": "data/TILES/SERVER/Door_123034.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/SERVER/Opened_door_alt_123034.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side_server": {
+    "sprite": "data/TILES/SERVER/Door_123142.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/SERVER/open_side_door_alt_123142.png",
+    "poi_desc": "poi_door"
+  },
+  "bottom_left_toilet": {
+    "sprite": "data/TILES/TOILET/bottom_left_Light_Blue_123518.png"
+  },
+  "bottom_toilet": {
+    "sprite": "data/TILES/TOILET/bottom_Light_Blue_123539.png"
+  },
+  "bottom_right_toilet": {
+    "sprite": "data/TILES/TOILET/bottom_right_Light_Blue_123740.png"
+  },
+  "left_toilet": {
+    "sprite": "data/TILES/TOILET/left_side_Light_Blue_123806.png"
+  },
+  "right_toilet": {
+    "sprite": "data/TILES/TOILET/right_side_Light_Blue_123825.png"
+  },
+  "top_left_toilet": {
+    "sprite": "data/TILES/TOILET/top_left_Light_Blue_123841.png"
+  },
+  "top_toilet": {
+    "sprite": "data/TILES/TOILET/top_Light_Blue_123908.png"
+  },
+  "top_right_toilet": {
+    "sprite": "data/TILES/TOILET/top_right_Light_Blue_123935.png"
+  },
+  "RD_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124131.png",
+    "available_exits": {
+      "right": true,
+      "down": true
+    }
+  },
+  "LD_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124208.png",
+    "available_exits": {
+      "left": true,
+      "down": true
+    }
+  },
+  "LU_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124258.png",
+    "available_exits": {
+      "left": true,
+      "up": true
+    }
+  },
+  "RU_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124226.png",
+    "available_exits": {
+      "right": true,
+      "up": true
+    }
+  },
+  "LRD_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124413.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "down": true
+    }
+  },
+  "RUD_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124451.png",
+    "available_exits": {
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LUD_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124514.png",
+    "available_exits": {
+      "left": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LRU_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124539.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true
+    }
+  },
+  "ALL_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_124603.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "door_up_toilet": {
+    "sprite": "data/TILES/TOILET/Door_124635.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/TOILET/Opened_door_alt_124635.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side_toilet": {
+    "sprite": "data/TILES/TOILET/Door_124705.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/TOILET/open_side_door_alt_124705.png",
+    "poi_desc": "poi_door"
+  },
+  "bottom_left_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/bottom_left_Yellow_124907.png"
+  },
+  "bottom_right_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/bottom_right_Yellow_124930.png"
+  },
+  "bottom_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/bottom_Yellow_124941.png"
+  },
+  "left_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/left_side_Yellow_124952.png"
+  },
+  "right_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/right_side_Yellow_125012.png"
+  },
+  "top_left_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/top_left_Yellow_125028.png"
+  },
+  "top_right_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/top_right_Yellow_125043.png"
+  },
+  "top_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/top_Yellow_125054.png"
+  },
+  "RD_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125138.png",
+    "available_exits": {
+      "right": true,
+      "down": true
+    }
+  },
+  "LD_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125153.png",
+    "available_exits": {
+      "left": true,
+      "down": true
+    }
+  },
+  "RU_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125227.png",
+    "available_exits": {
+      "right": true,
+      "up": true
+    }
+  },
+  "LU_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125239.png",
+    "available_exits": {
+      "left": true,
+      "up": true
+    }
+  },
+  "LRD_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125448.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "down": true
+    }
+  },
+  "RUD_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125503.png",
+    "available_exits": {
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LUD_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125518.png",
+    "available_exits": {
+      "left": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "LRU_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125545.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true
+    }
+  },
+  "ALL_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Yellow_floor_125710.png",
+    "available_exits": {
+      "left": true,
+      "right": true,
+      "up": true,
+      "down": true
+    }
+  },
+  "door_up_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Door_010449.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/Opened_door_alt_010449.png",
+    "poi_desc": "poi_door"
+  },
+  "door_side_yellow": {
+    "sprite": "data/TILES/BREAK ROOM/Door_010518.png",
+    "poi_door": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/open_side_door_alt_010518.png",
+    "poi_desc": "poi_door"
+  },
+  "computer": {
+    "sprite": "data/TILES/SECURITY/Computer_and_desk_090959.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/SECURITY/Broken_computer_up_alt_090959.png",
+    "poi_desc": "poi_computer"
+  },
+  "Computer_tech": {
+    "sprite": "data/TILES/IT/TECH/Computer_and_desk_091059.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/IT/TECH/Broken_computer_up_alt_091059.png",
+    "poi_desc": "poi_computer"
+  },
+  "computer_boss": {
+    "sprite": "data/TILES/BOSS/Computer_and_desk_091120.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BOSS/Broken_computer_up_alt_091120.png",
+    "poi_desc": "poi_computer"
+  },
+  "Computer_lab": {
+    "sprite": "data/TILES/LAB/Computer_and_desk_091137.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/LAB/Broken_computer_up_alt_091137.png",
+    "poi_desc": "poi_computer"
+  },
+  "computer_left_lab": {
+    "sprite": "data/TILES/LAB/left_computer_091200.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/LAB/Broken_computer_left_alt_091200.png",
+    "poi_desc": "poi_computer"
+  },
+  "computer_right_lab": {
+    "sprite": "data/TILES/LAB/right_computer_091230.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/LAB/Broken_computer_right_alt_091230.png",
+    "poi_desc": "poi_computer"
+  },
+  "computer_down_lab": {
+    "sprite": "data/TILES/LAB/down_computer_091241.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/LAB/Broken_computer_down_alt_091241.png",
+    "poi_desc": "poi_computer"
+  },
+  "computer_left_server": {
+    "sprite": "data/TILES/SERVER/left_computer_091403.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/SERVER/Broken_computer_left_alt_091403.png",
+    "poi_desc": "poi_computer"
+  },
+  "toilet_tile": {
+    "sprite": "data/TILES/TOILET/toilet_091514.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/TOILET/Broken_toilet_alt_091514.png",
+    "poi_desc": "poi_toilet"
+  },
+  "shower_tile": {
+    "sprite": "data/TILES/TOILET/Shower_091547.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/TOILET/Broken_shower_alt_091547.png",
+    "poi_desc": "poi_shower"
+  },
+  "Toilet_sink": {
+    "sprite": "data/TILES/TOILET/Toilet_sink_091646.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/TOILET/Broken_sink_toilet_alt_091646.png",
+    "poi_desc": "poi_sink"
+  },
+  "cooker": {
+    "sprite": "data/TILES/BREAK ROOM/kitchen_cooker_015121.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/Broken_cooker.png",
+    "poi_desc": "poi_cooker"
+  },
+  "fridge": {
+    "sprite": "data/TILES/BREAK ROOM/kitchen_fridge_015149.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/Broken_fridge.png",
+    "poi_desc": "poi_fridge"
+  },
+  "kitchen_sink": {
+    "sprite": "data/TILES/BREAK ROOM/Kitchen_sink_091755.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BREAK ROOM/Broken_sink_kitchen_alt_091755.png",
+    "poi_desc": "poi_sink"
+  },
+  "server_sprite": {
+    "sprite": "data/TILES/SERVER/Server_091841.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/SERVER/Broken_Server_alt_091841.png",
+    "poi_desc": "poi_server"
+  },
+  "printer_boss": {
+    "sprite": "data/TILES/BOSS/Printer_and_desk_091927.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/BOSS/Broken_printer_alt_091927.png",
+    "poi_desc": "poi_bookcase"
+  },
+  "printer_lab": {
+    "sprite": "data/TILES/LAB/Printer_and_desk_091959.png",
+    "poi_computer": true,
+    "poi_sprite": "data/TILES/LAB/Broken_printer_alt_091959.png",
+    "poi_desc": "poi_bookcase"
+  },
+  "UD_red": {
+    "sprite": "data/TILES/BOSS/Red_floor_092251.png",
+    "available_exits": {
+      "up": true,
+      "down": true
+    }
+  },
+  "UD_grey": {
+    "sprite": "data/TILES/SERVER/Grey_floor_102954.png",
+    "available_exits": {
+      "up": true,
+      "down": true
+    }
+  },
+  "R_grey": {
+    "sprite": "data/TILES/SERVER/Grey_floor_103010.png",
+    "available_exits": {
+      "right": true
+    }
+  },
+  "D_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_103356.png",
+    "available_exits": {
+      "down": true
+    }
+  },
+  "L_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_103543.png",
+    "available_exits": {
+      "left": true
+    }
+  },
+  "R_toilet": {
+    "sprite": "data/TILES/TOILET/Light_blue_104055.png",
+    "available_exits": {
+      "right": true
+    }
+  },
+  "D_white": {
+    "sprite": "data/TILES/LAB/White_floor_104456.png",
+    "available_exits": {
+      "down": true
+    }
+  },
+  "LR_white": {
+    "sprite": "data/TILES/LAB/White_floor_104907.png",
+    "available_exits": {
+      "left": true,
+      "right": true
+    }
   }
 }
