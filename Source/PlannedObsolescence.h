@@ -4,9 +4,11 @@
 #include "Sprites/ScaledSpriteArray.h"
 #include "UI/GetLocalisedString.h"
 #include <Engine/OGLGame.h>
+#include <json.hpp>
+#include <soloud.h>
+#include <soloud_wav.h>
 #include <string>
 
-#include <json.hpp>
 using json = nlohmann::json;
 
 class PlannedObsolescence : public ASGE::OGLGame
@@ -32,6 +34,8 @@ class PlannedObsolescence : public ASGE::OGLGame
   DebugText debug_text;
   Keybinds user_keybinds;
   GetLocalisedString localiser;
+
+  SoLoud::Soloud sound_player;
 
   ScaledSpriteArray* generic_background = nullptr;
 

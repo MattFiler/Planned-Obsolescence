@@ -13,13 +13,16 @@ game_over_reason GameOver::game_over_v = game_over_reason::ISNT_OVER_YET;
  *   @details Initialises all variables and creates all the new
                          sprites for the scene
  */
-bool GameOver::load(ASGE::Renderer* renderer, ASGE::Input* input)
+bool GameOver::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud& player)
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
 
   // Share the renderer
   rend = renderer;
   main_menu.giveRenderer(renderer);
+
+  // Sound player
+  sound_player = &player;
 
   // Add menu sprites
   if (game_over == game_over_type::PLAYER_WON)

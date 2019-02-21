@@ -20,7 +20,7 @@ class FileHandler
                               const std::string& original_filename = "");
 
   std::string openAsString(const std::string& filename);
-  SoLoud::Wav loadSound(SoLoud::Wav& sound_file, const std::string& filename);
+  SoLoud::Wav loadSound(const std::string& filename);
 
   ASGE::FILEIO::IOBuffer openAsBuffer(const std::string& filename);
 

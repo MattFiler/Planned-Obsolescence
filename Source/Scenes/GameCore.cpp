@@ -19,11 +19,14 @@ GameCore::~GameCore()
   // player.deinit();
 }
 
-bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
+bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud& player)
 {
   // Setup
   renderer->setClearColour(ASGE::COLOURS::BLACK);
   rend = renderer;
+
+  // Sound player
+  sound_player = &player;
 
   // load map
   game_map.load(renderer, &camera);
@@ -52,11 +55,9 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   game_over_instance.setGameOverType(game_over_type::NOT_YET_DECIDED);
   project_gauge.resetAll();
 
-  /*
-  player.init();
-  file_handler.loadSound(sound_file, "CLICK_11.wav");
-  player.play(sound_file);
-   */
+  // Load all sounds for this scene
+  // file_handler.loadSound("CLICK_11.wav");
+  // sound_player->play(sound_file);
 
   return true;
 }

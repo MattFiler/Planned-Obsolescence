@@ -28,7 +28,7 @@ class SceneManager
   ~SceneManager();
 
   // Changes the active scene to the passed scene
-  bool loadCurrentScene(ASGE::Renderer* renderer, ASGE::Input* input);
+  bool loadCurrentScene(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud& player);
   int updateCurrentScene(double delta_time);
   void renderCurrentScene(double delta_time);
   void sceneKeyHandler(const ASGE::SharedEventData data);
