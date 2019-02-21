@@ -46,7 +46,7 @@ class GameCore : public Scene
   GameOver game_over_instance;
   FileHandler file_handler;
 
-  SoLoud::Wav sound_wav;
+  SoLoud::Wav exit_sound;
 
   Camera camera;
   float x_axis_input = 0;

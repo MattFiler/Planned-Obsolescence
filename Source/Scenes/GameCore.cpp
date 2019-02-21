@@ -22,6 +22,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud
 
   // Get sound player
   sound_player = &player;
+  file_handler.loadSound(exit_sound, "Interactive_Terminal_End", 0.5f);
 
   // load map
   game_map.load(renderer, &camera);
@@ -43,7 +44,8 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud
                                    0.7f,
                                    Point(45, 17));
   scenes* next = &next_scene;
-  quit_button->click_function = [next] { *next = scenes::MAIN_MENU; };
+  GameCore* this_scene = this;
+  quit_button->click_function = [next, this_scene] { *next = scenes::MAIN_MENU; this_scene->sound_player->play(this_scene->exit_sound); };
   ui_manager.addButton(quit_button);
 
   // Reset game over config for new load
