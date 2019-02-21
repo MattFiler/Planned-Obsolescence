@@ -129,18 +129,20 @@ enum gauge_levels
 // Gauge tick-rates
 enum gauge_rates
 {
-  PROJECT_TIMER = 1000,      // deltatime (ms) divided by THIS
-  POWER = 400,               // deltatime (ms) divided by THIS
-  TOTAL_PROGRESS = 700,      // deltatime (ms) divided by THIS multiplied by normalised productivity
-                             // average
-  GOON_PRODUCTIVTIY = 10000, // defines how often productivity is modified and by how much
-  GOON_MAX_ROOM_ITER = 5,    // the most times a goon will switch poi in a single room
-  SECURITY_AWARENESS = 50,   // bigger number increases the radius of detection
-  SECURITY_RESET_RATE = 1,   // amount per second suspicion naturally decays
+  PROJECT_TIMER = 2500,     // deltatime (ms) divided by THIS
+  POWER = 700,              // deltatime (ms) divided by THIS
+  SABOTAGE_COST = 15,       // energy used to sabotate POI
+  TOTAL_PROGRESS = 1700,    // deltatime (ms) divided by THIS multiplied by normalised productivity
+                            // average
+  GOON_PRODUCTIVTIY = 5000, // defines how often productivity is modified and by how much
+  GOON_MAX_ROOM_ITER = 5,   // the most times a goon will switch poi in a single room
+  SECURITY_AWARENESS = 50,  // bigger number increases the radius of detection
+  SECURITY_RESET_RATE = 1,  // amount per second suspicion naturally decays
   TECHIE_STRESS_QUEUE_MULTIPLIER = 1, // How much having a long queue affects stress
   TECHIE_STRESS_GAIN = 1,             // How much stress is gained by working
-  TECHIE_STRESS_RELEIF = 2,           // How much stress decays over time while not working
-  TECHIE_STRESS_SLOW = 2,             // How much being stressed slows work down
+  TECHIE_STRESS_RELEIF = 1,           // How much stress decays over time while not working
+  TECHIE_STRESS_SLOW = 1,             // How much being stressed slows work down
+  TECHIE_REPAIR_TIME = 4000,          // Time taken to repair POI (ms)
   BOSS_FAITH = 1,                     // TO BE IMPLEMENTED
 };
 

@@ -359,6 +359,7 @@ void CharacterManager::registerRepairRequest(Tile* tile)
       if (technician_instances[i]->getRepairQueueLength() < shortest_queue)
       {
         index = i;
+        shortest_queue = technician_instances[i]->getRepairQueueLength();
       }
     }
     technician_instances[index]->addRepairRequest(tile);
