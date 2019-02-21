@@ -11,6 +11,12 @@
 #include "PlannedObsolescence.h"
 #include "Scenes/Splashscreen.h"
 
+#ifdef NDEBUG
+#  define IS_IN_DEBUG_MODE false
+#else
+#  define IS_IN_DEBUG_MODE true
+#endif
+
 PlannedObsolescence::~PlannedObsolescence()
 {
   delete scene_manager;
@@ -27,7 +33,7 @@ bool PlannedObsolescence::init()
   {
     return false;
   }
-  debug_text.enabled = core_config["debug_enabled"];
+  debug_text.enabled = (core_config["debug_enabled"] && IS_IN_DEBUG_MODE);
 
   // Set keybinds
   user_keybinds.setup(core_config["keybinds"]);
@@ -43,7 +49,7 @@ bool PlannedObsolescence::init()
   }
 
   // Display debug data if requested
-  if (core_config["debug_enabled"])
+  if (core_config["debug_enabled"] && IS_IN_DEBUG_MODE)
   {
     toggleFPS();
   }
