@@ -28,6 +28,7 @@ class TutorialMenu : public Scene
   Menu main_menu;
   GetLocalisedString localiser;
   int x_offset = 0;
+  ASGE::Colour text_colour = ASGE::COLOURS::WHITE;
 };
 
 #endif

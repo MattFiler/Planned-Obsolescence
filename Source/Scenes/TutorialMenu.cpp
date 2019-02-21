@@ -24,7 +24,7 @@ bool TutorialMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
   // Add menu options
   main_menu.addMenuItem("back");
 
-  x_offset = static_cast<int>(400 * ScaledSpriteArray::width_scale);
+  x_offset = static_cast<int>(380 * ScaledSpriteArray::width_scale);
 
   return true;
 }
@@ -76,7 +76,7 @@ scenes TutorialMenu::update(double delta_time)
 void TutorialMenu::render(double delta_time)
 {
   main_menu.render(delta_time);
-  rend->renderText("YOU PLAY AS TIM, THE TOTALLY INTELLIGENT MACHINE.", x_offset, static_cast<int>(50 * ScaledSpriteArray::width_scale));
-  rend->renderText("THE RESEARCH LAB YOU OVERSEE IS CURRENTLY WORKING ON A PROJECT TO SUPERSEDE YOU WITH A NEW AI SYSTEM.\nDELAY THE LAB WORKER'S PROJECT PROGRESS BY DAMAGING EQUIPMENT AND BLOCKING ACCESS TO ROOMS.\nIF THE PROJECT RUNS OUT OF TIME WITHOUT FINISHING THE NEW AI, YOU WILL BE KEPT AND ARE SUCCESSFUL.\nIF THE PROJECT COMPLETES, IT'S GAME OVER, AND YOU'RE REPLACED!", x_offset, static_cast<int>(100 * ScaledSpriteArray::width_scale));
-  rend->renderText("CAN YOU DELAY THE PROJECT LONG ENOUGH TO STAY IN CONTROL?", x_offset, static_cast<int>(700 * ScaledSpriteArray::width_scale));
+  rend->renderText(localiser.getString("tutorial_pt01"), x_offset, static_cast<int>(150 * ScaledSpriteArray::width_scale), 1.1f, text_colour);
+  rend->renderText(localiser.getString("tutorial_pt02"), x_offset, static_cast<int>(270 * ScaledSpriteArray::width_scale), 0.5f, text_colour);
+  rend->renderText(localiser.getString("tutorial_pt03"), x_offset, static_cast<int>(550 * ScaledSpriteArray::width_scale), 1.1f, text_colour);
 }
