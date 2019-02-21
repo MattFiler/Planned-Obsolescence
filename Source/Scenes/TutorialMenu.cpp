@@ -76,7 +76,19 @@ scenes TutorialMenu::update(double delta_time)
 void TutorialMenu::render(double delta_time)
 {
   main_menu.render(delta_time);
-  rend->renderText(localiser.getString("tutorial_pt01"), x_offset, static_cast<int>(150 * ScaledSpriteArray::width_scale), 1.1f, text_colour);
-  rend->renderText(localiser.getString("tutorial_pt02"), x_offset, static_cast<int>(270 * ScaledSpriteArray::width_scale), 0.5f, text_colour);
-  rend->renderText(localiser.getString("tutorial_pt03"), x_offset, static_cast<int>(550 * ScaledSpriteArray::width_scale), 1.1f, text_colour);
+  rend->renderText(localiser.getString("tutorial_pt01"),
+                   x_offset,
+                   static_cast<int>(150 * ScaledSpriteArray::width_scale),
+                   1.1f,
+                   text_colour);
+  rend->renderText(localiser.getString("tutorial_pt02"),
+                   x_offset,
+                   static_cast<int>(270 * ScaledSpriteArray::width_scale),
+                   0.5f,
+                   text_colour);
+  rend->renderText(localiser.getString("tutorial_pt03"),
+                   x_offset,
+                   static_cast<int>(550 * ScaledSpriteArray::width_scale),
+                   1.1f,
+                   text_colour);
 }

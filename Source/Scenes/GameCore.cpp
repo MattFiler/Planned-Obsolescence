@@ -13,6 +13,12 @@
  *   @details Initialises all variables and creates all the new
                          sprites for the scene
  */
+
+GameCore::~GameCore()
+{
+  // player.deinit();
+}
+
 bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 {
   // Setup
@@ -46,6 +52,12 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   game_over_instance.setGameOverType(game_over_type::NOT_YET_DECIDED);
   project_gauge.resetAll();
 
+  /*
+  player.init();
+  file_handler.loadSound(sound_file, "CLICK_11.wav");
+  player.play(sound_file);
+   */
+
   return true;
 }
 
@@ -78,10 +90,10 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
     new_goon->setSpawnPosition(100, 150);
     new_goon = new Goon();
     character_manager.spawnCharacter(new_goon);
-    new_goon->setSpawnPosition(100, 150);
+    new_goon->setSpawnPosition(500, 150);
     new_goon = new Goon();
     character_manager.spawnCharacter(new_goon);
-    new_goon->setSpawnPosition(100, 150);
+    new_goon->setSpawnPosition(500, 500);
   }
   if (character_manager.canSpawn(character_type::SECURITY))
   {

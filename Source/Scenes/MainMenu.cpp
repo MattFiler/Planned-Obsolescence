@@ -20,7 +20,8 @@ bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
 
   // Add menu sprites
   main_menu.addMenuSprite("MAIN_MENU/BACKGROUND.jpg");
-  std::shared_ptr<ScaledSpriteArray> menu_logo = main_menu.addMenuSprite("SPLASHSCREEN/FOREGROUND.png");
+  std::shared_ptr<ScaledSpriteArray> menu_logo = main_menu.addMenuSprite("SPLASHSCREEN/"
+                                                                         "FOREGROUND.png");
   menu_logo->scale(0.6666f);
   menu_logo->yPos(20);
   menu_logo->xPos(500);

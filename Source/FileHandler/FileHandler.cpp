@@ -1,5 +1,4 @@
 #include "FileHandler.h"
-using namespace SoLoud;
 
 /* Open the file as a JSON data structure */
 json FileHandler::openAsJSON(const std::string& filename)
@@ -69,12 +68,12 @@ std::string FileHandler::openAsString(const std::string& filename)
 }
 
 /* Load a sound into a SoLoud WavStream */
-WavStream FileHandler::loadSound(const std::string& filename)
+SoLoud::Wav FileHandler::loadSound(SoLoud::Wav& sound_file, const std::string& filename)
 {
-  WavStream sound;
   auto buffer = openAsBuffer(filename);
-  sound.loadMem(buffer.as_unsigned_char(), static_cast<unsigned int>(buffer.length), false, false);
-  return sound;
+  sound_file.loadMem(
+    buffer.as_unsigned_char(), static_cast<unsigned int>(buffer.length), false, false);
+  return sound_file;
 }
 
 /* Load a file as a buffer */
@@ -91,5 +90,6 @@ ASGE::FILEIO::IOBuffer FileHandler::openAsBuffer(const std::string& filename)
       return buffer;
     }
   }
+  debug_text.print("FAILED LOADING OF - " + filename);
   throw "An unhandled exception occurred while loading " + filename + ".";
 }

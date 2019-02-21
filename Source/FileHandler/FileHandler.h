@@ -5,7 +5,7 @@
 #include <Engine/FileIO.h>
 #include <json.hpp>
 #include <soloud.h>
-#include <soloud_wavstream.h>
+#include <soloud_wav.h>
 #include <sstream>
 #include <string>
 using json = nlohmann::json;
@@ -20,7 +20,7 @@ class FileHandler
                               const std::string& original_filename = "");
 
   std::string openAsString(const std::string& filename);
-  SoLoud::WavStream loadSound(const std::string& filename);
+  SoLoud::Wav loadSound(SoLoud::Wav& sound_file, const std::string& filename);
 
   ASGE::FILEIO::IOBuffer openAsBuffer(const std::string& filename);
 

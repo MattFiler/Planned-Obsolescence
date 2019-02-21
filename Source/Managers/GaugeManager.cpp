@@ -17,6 +17,10 @@ game_over_type GaugeManager::update(double dt_sec)
   // Update static data
   gauge_data.productivity = character_manager->getTotalGaugeValue(character_type::GOON);
   gauge_data.detection = character_manager->getHighestGaugeValue(character_type::SECURITY);
+  if (gauge_data.detection > gauge_levels::GAUGE_FULL)
+  {
+    gauge_data.detection = gauge_levels::GAUGE_FULL;
+  }
 
   // Adjust UI
   ui_manager->getMainHUD()->adjustGauge(hud_gauge_types::PROJECT_PROGRESS,

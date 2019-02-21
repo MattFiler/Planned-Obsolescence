@@ -59,7 +59,7 @@
       "Lab_LUR_exits",
       "lab_UL_exits"
     ],
-    "sprite": "data/MAPS/Map1_121413.png"
+    "sprite": "data/MAPS/Map1_123010.png"
   },
   "Map2": {
     "rooms": [
@@ -89,7 +89,7 @@
       "Lab_LR_exits",
       "lab_UL_exits"
     ],
-    "sprite": "data/MAPS/Map2_121413.png"
+    "sprite": "data/MAPS/Map2_123010.png"
   },
   "Map3": {
     "rooms_w": 6,
@@ -132,6 +132,17 @@
       "lab_right_exit",
       "lab_UL_exits"
     ],
-    "sprite": "data/MAPS/Map3_121413.png"
+    "sprite": "data/MAPS/Map3_123010.png"
+  },
+  "TEST_MAP_DEMO": {
+    "rooms_w": 2,
+    "rooms_h": 2,
+    "rooms": [
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1",
+      "DEMO_1"
+    ],
+    "sprite": "data/MAPS/TEST_MAP_DEMO_123010.png"
   }
 }
