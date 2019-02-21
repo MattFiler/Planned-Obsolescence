@@ -59,7 +59,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST2_115511.png"
+    "sprite": "data/MAPS/TEST2_125452.png"
   },
   "TEST3": {
     "rooms_h": 3,
@@ -80,7 +80,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST3_115511.png"
+    "sprite": "data/MAPS/TEST3_125452.png"
   },
   "TEST4": {
     "rooms_h": 3,
@@ -101,7 +101,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST4_115511.png"
+    "sprite": "data/MAPS/TEST4_125452.png"
   },
   "TEST5": {
     "rooms_h": 3,
@@ -122,7 +122,7 @@
       "DEMO_3",
       "DEMO_3"
     ],
-    "sprite": "data/MAPS/TEST5_115511.png"
+    "sprite": "data/MAPS/TEST5_125452.png"
   },
   "TEST1": {
     "rooms": [
@@ -152,7 +152,7 @@
       "DEMO_1",
       "DEMO_1"
     ],
-    "sprite": "data/MAPS/TEST1_115511.png"
+    "sprite": "data/MAPS/TEST1_125452.png"
   },
   "Map1": {
     "rooms": [
@@ -182,7 +182,7 @@
       "Lab_LUR_exits",
       "lab_UL_exits"
     ],
-    "sprite": "data/MAPS/Map1_115511.png"
+    "sprite": "data/MAPS/Map1_125452.png"
   },
   "Map2": {
     "rooms": [
@@ -212,7 +212,7 @@
       "Lab_LR_exits",
       "lab_UL_exits"
     ],
-    "sprite": "data/MAPS/Map2_115511.png"
+    "sprite": "data/MAPS/Map2_125452.png"
   },
   "Map3": {
     "rooms_w": 6,
@@ -255,6 +255,37 @@
       "lab_right_exit",
       "lab_UL_exits"
     ],
-    "sprite": "data/MAPS/Map3_115511.png"
+    "sprite": "data/MAPS/Map3_125452.png"
+  },
+  "Map4": {
+    "rooms_w": 6,
+    "rooms_h": 4,
+    "rooms": [
+      "Security",
+      "top_left_lab",
+      "lab_top",
+      "lab_top",
+      "Top_rightt_lab",
+      "Lab_LD_exits",
+      "Lab_UD_exites",
+      "lab_left",
+      "Kitchen_left_half",
+      "Kitchen_right_half",
+      "Lab_right",
+      "Boss_Office",
+      "Lab_UD_exites",
+      "Bottom_left_lab",
+      "Lab_bottom_left",
+      "lab_bottom_right",
+      "bottom_right_lab",
+      "Lab_LUD_exits",
+      "Server_room",
+      "lab_UL_exits",
+      "Toilet_room_right_exit",
+      "Lab_LR_exits",
+      "IT_Tech",
+      "lab_UL_exits"
+    ],
+    "sprite": "data/MAPS/Map4_125452.png"
   }
 }

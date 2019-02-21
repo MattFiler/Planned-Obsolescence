@@ -1797,6 +1797,151 @@
           <tile name="right_white" />
         </tiles>
       </room>
+      <room name="lab_top" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="top_white" />
+          <tile name="Computer_lab" />
+          <tile name="Computer_lab" />
+          <tile name="D_white" />
+          <tile name="Computer_lab" />
+          <tile name="Computer_lab" />
+          <tile name="LRD_white" />
+          <tile name="LRD_white" />
+          <tile name="ALL_white" />
+          <tile name="LRD_white" />
+          <tile name="LRD_white" />
+          <tile name="LRU_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="LRU_white" />
+          <tile name="computer_down_lab" />
+          <tile name="RU_white" />
+          <tile name="ALL_white" />
+          <tile name="LU_white" />
+          <tile name="computer_down_lab" />
+        </tiles>
+      </room>
+      <room name="lab_left" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="left_white" />
+          <tile name="RUD_white" />
+          <tile name="LUD_white" />
+          <tile name="Computer_lab" />
+          <tile name="printer_lab" />
+          <tile name="left_white" />
+          <tile name="RUD_white" />
+          <tile name="ALL_white" />
+          <tile name="LRD_white" />
+          <tile name="LD_white" />
+          <tile name="left_white" />
+          <tile name="RUD_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="left_white" />
+          <tile name="RUD_white" />
+          <tile name="ALL_white" />
+          <tile name="LRU_white" />
+          <tile name="LU_white" />
+          <tile name="left_white" />
+          <tile name="RUD_white" />
+          <tile name="LUD_white" />
+          <tile name="computer_down_lab" />
+          <tile name="computer_down_lab" />
+        </tiles>
+      </room>
+      <room name="lab_bottom_right" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="computer_left_lab" />
+          <tile name="RD_white" />
+          <tile name="LUD_white" />
+          <tile name="Computer_lab" />
+          <tile name="printer_lab" />
+          <tile name="computer_left_lab" />
+          <tile name="RUD_white" />
+          <tile name="ALL_white" />
+          <tile name="LRD_white" />
+          <tile name="LRD_white" />
+          <tile name="computer_left_lab" />
+          <tile name="RUD_white" />
+          <tile name="ALL_white" />
+          <tile name="LRU_white" />
+          <tile name="LRU_white" />
+          <tile name="LR_white" />
+          <tile name="LRU_white" />
+          <tile name="LU_white" />
+          <tile name="computer_down_lab" />
+          <tile name="computer_down_lab" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+        </tiles>
+      </room>
+      <room name="Lab_bottom_left" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="Computer_lab" />
+          <tile name="printer_lab" />
+          <tile name="RD_white" />
+          <tile name="LD_white" />
+          <tile name="computer_right_lab" />
+          <tile name="LRD_white" />
+          <tile name="LRD_white" />
+          <tile name="ALL_white" />
+          <tile name="LUD_white" />
+          <tile name="computer_right_lab" />
+          <tile name="LRU_white" />
+          <tile name="LRU_white" />
+          <tile name="ALL_white" />
+          <tile name="LUD_white" />
+          <tile name="computer_right_lab" />
+          <tile name="computer_down_lab" />
+          <tile name="computer_down_lab" />
+          <tile name="RU_white" />
+          <tile name="LRU_white" />
+          <tile name="LR_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+          <tile name="bottom_white" />
+        </tiles>
+      </room>
+      <room name="Lab_right" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="printer_lab" />
+          <tile name="Computer_lab" />
+          <tile name="RUD_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
+          <tile name="RD_white" />
+          <tile name="LRD_white" />
+          <tile name="ALL_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
+          <tile name="RU_white" />
+          <tile name="LRU_white" />
+          <tile name="LUD_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
+          <tile name="computer_down_lab" />
+          <tile name="computer_down_lab" />
+          <tile name="RUD_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
+        </tiles>
+      </room>
     </rooms>
   </room_config>
   <map_config>
@@ -2022,6 +2167,32 @@
       <room name="Lab_LUR_exits" />
       <room name="lab_UL_exits" />
       <room name="lab_right_exit" />
+      <room name="lab_UL_exits" />
+    </map>
+    <map name="Map4" mandatory="false" width="6" height="4">
+      <room name="Security" />
+      <room name="top_left_lab" />
+      <room name="lab_top" />
+      <room name="lab_top" />
+      <room name="Top_rightt_lab" />
+      <room name="Lab_LD_exits" />
+      <room name="Lab_UD_exites" />
+      <room name="lab_left" />
+      <room name="Kitchen_left_half" />
+      <room name="Kitchen_right_half" />
+      <room name="Lab_right" />
+      <room name="Boss_Office" />
+      <room name="Lab_UD_exites" />
+      <room name="Bottom_left_lab" />
+      <room name="Lab_bottom_left" />
+      <room name="lab_bottom_right" />
+      <room name="bottom_right_lab" />
+      <room name="Lab_LUD_exits" />
+      <room name="Server_room" />
+      <room name="lab_UL_exits" />
+      <room name="Toilet_room_right_exit" />
+      <room name="Lab_LR_exits" />
+      <room name="IT_Tech" />
       <room name="lab_UL_exits" />
     </map>
   </map_config>

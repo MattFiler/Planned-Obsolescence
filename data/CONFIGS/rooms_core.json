@@ -59,7 +59,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_1_115511.png"
+    "sprite": "data/ROOMS/DEMO_1_125452.png"
   },
   "DEMO_2": {
     "tiles": [
@@ -89,7 +89,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_2_115511.png"
+    "sprite": "data/ROOMS/DEMO_2_125452.png"
   },
   "DEMO_3": {
     "tiles": [
@@ -119,7 +119,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_3_115511.png"
+    "sprite": "data/ROOMS/DEMO_3_125452.png"
   },
   "DEMO_4": {
     "tiles": [
@@ -149,7 +149,7 @@
       "LAB_L_R_U",
       "LAB_L_U"
     ],
-    "sprite": "data/ROOMS/DEMO_4_115511.png"
+    "sprite": "data/ROOMS/DEMO_4_125452.png"
   },
   "Security": {
     "tiles": [
@@ -179,7 +179,7 @@
       "bottom_wall",
       "bottom_right_wall"
     ],
-    "sprite": "data/ROOMS/Security_115511.png"
+    "sprite": "data/ROOMS/Security_125452.png"
   },
   "corridor": {
     "tile_w": 2,
@@ -195,7 +195,7 @@
       "RUD_floor",
       "LUD_floor"
     ],
-    "sprite": "data/ROOMS/corridor_115511.png"
+    "sprite": "data/ROOMS/corridor_125452.png"
   },
   "IT_Tech": {
     "tiles": [
@@ -225,7 +225,7 @@
       "bottom_green",
       "bottom_right_green"
     ],
-    "sprite": "data/ROOMS/IT_Tech_115511.png"
+    "sprite": "data/ROOMS/IT_Tech_125452.png"
   },
   "Lunch_room": {
     "tile_w": 10,
@@ -281,7 +281,7 @@
       "bottom_yellow",
       "bottom_right_yellow"
     ],
-    "sprite": "data/ROOMS/Lunch_room_115511.png"
+    "sprite": "data/ROOMS/Lunch_room_125452.png"
   },
   "Kitchen_left_half": {
     "tiles": [
@@ -311,7 +311,7 @@
       "bottom_yellow",
       "bottom_yellow"
     ],
-    "sprite": "data/ROOMS/Kitchen_left_half_115511.png"
+    "sprite": "data/ROOMS/Kitchen_left_half_125452.png"
   },
   "Kitchen_right_half": {
     "tiles": [
@@ -341,7 +341,7 @@
       "bottom_yellow",
       "bottom_right_yellow"
     ],
-    "sprite": "data/ROOMS/Kitchen_right_half_115511.png"
+    "sprite": "data/ROOMS/Kitchen_right_half_125452.png"
   },
   "Boss_Office": {
     "tiles": [
@@ -371,7 +371,7 @@
       "bottom_red",
       "bottom_right_red"
     ],
-    "sprite": "data/ROOMS/Boss_Office_115511.png"
+    "sprite": "data/ROOMS/Boss_Office_125452.png"
   },
   "Server_room": {
     "tiles": [
@@ -401,7 +401,7 @@
       "bottom_grey",
       "bottom_right_grey"
     ],
-    "sprite": "data/ROOMS/Server_room_115511.png"
+    "sprite": "data/ROOMS/Server_room_125452.png"
   },
   "Toilet_room": {
     "tiles": [
@@ -431,7 +431,7 @@
       "bottom_toilet",
       "bottom_right_toilet"
     ],
-    "sprite": "data/ROOMS/Toilet_room_115511.png"
+    "sprite": "data/ROOMS/Toilet_room_125452.png"
   },
   "Lab_ALL_exits": {
     "tiles": [
@@ -461,7 +461,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_ALL_exits_115511.png"
+    "sprite": "data/ROOMS/Lab_ALL_exits_125452.png"
   },
   "Toilet_room_right_exit": {
     "tiles": [
@@ -491,7 +491,7 @@
       "bottom_toilet",
       "bottom_right_toilet"
     ],
-    "sprite": "data/ROOMS/Toilet_room_right_exit_115511.png"
+    "sprite": "data/ROOMS/Toilet_room_right_exit_125452.png"
   },
   "Toilet_room_bottom_exit": {
     "tiles": [
@@ -521,7 +521,7 @@
       "bottom_toilet",
       "bottom_right_toilet"
     ],
-    "sprite": "data/ROOMS/Toilet_room_bottom_exit_115511.png"
+    "sprite": "data/ROOMS/Toilet_room_bottom_exit_125452.png"
   },
   "lab_right_exit": {
     "tiles": [
@@ -551,7 +551,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/lab_right_exit_115511.png"
+    "sprite": "data/ROOMS/lab_right_exit_125452.png"
   },
   "lab_UL_exits": {
     "tiles": [
@@ -581,7 +581,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/lab_UL_exits_115511.png"
+    "sprite": "data/ROOMS/lab_UL_exits_125452.png"
   },
   "Lab_LDR_exits": {
     "tiles": [
@@ -611,7 +611,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LDR_exits_115511.png"
+    "sprite": "data/ROOMS/Lab_LDR_exits_125452.png"
   },
   "Lab_LUR_exits": {
     "tiles": [
@@ -641,7 +641,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LUR_exits_115511.png"
+    "sprite": "data/ROOMS/Lab_LUR_exits_125452.png"
   },
   "Lab_LUD_exits": {
     "tiles": [
@@ -671,7 +671,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LUD_exits_115511.png"
+    "sprite": "data/ROOMS/Lab_LUD_exits_125452.png"
   },
   "Lab_LD_exits": {
     "tiles": [
@@ -701,7 +701,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LD_exits_115511.png"
+    "sprite": "data/ROOMS/Lab_LD_exits_125452.png"
   },
   "Lab_LR_exits": {
     "tiles": [
@@ -731,7 +731,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_LR_exits_115511.png"
+    "sprite": "data/ROOMS/Lab_LR_exits_125452.png"
   },
   "Top_left_lab": {
     "tiles": [
@@ -761,7 +761,7 @@
       "LUD_white",
       "right_white"
     ],
-    "sprite": "data/ROOMS/Top_left_lab_115511.png"
+    "sprite": "data/ROOMS/Top_left_lab_125452.png"
   },
   "top_left_lab": {
     "tiles": [
@@ -791,7 +791,7 @@
       "computer_down_lab",
       "computer_down_lab"
     ],
-    "sprite": "data/ROOMS/top_left_lab_115511.png"
+    "sprite": "data/ROOMS/top_left_lab_125452.png"
   },
   "bottom_right_lab": {
     "tiles": [
@@ -821,7 +821,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/bottom_right_lab_115511.png"
+    "sprite": "data/ROOMS/bottom_right_lab_125452.png"
   },
   "Bottom_left_lab": {
     "tiles": [
@@ -851,7 +851,7 @@
       "bottom_white",
       "bottom_white"
     ],
-    "sprite": "data/ROOMS/Bottom_left_lab_115511.png"
+    "sprite": "data/ROOMS/Bottom_left_lab_125452.png"
   },
   "Lab_UD_exites": {
     "tiles": [
@@ -881,7 +881,7 @@
       "bottom_white",
       "bottom_right_white"
     ],
-    "sprite": "data/ROOMS/Lab_UD_exites_115511.png"
+    "sprite": "data/ROOMS/Lab_UD_exites_125452.png"
   },
   "Top_rightt_lab": {
     "tiles": [
@@ -911,6 +911,156 @@
       "LUD_white",
       "right_white"
     ],
-    "sprite": "data/ROOMS/Top_rightt_lab_115511.png"
+    "sprite": "data/ROOMS/Top_rightt_lab_125452.png"
+  },
+  "lab_top": {
+    "tiles": [
+      "top_white",
+      "top_white",
+      "top_white",
+      "top_white",
+      "top_white",
+      "Computer_lab",
+      "Computer_lab",
+      "D_white",
+      "Computer_lab",
+      "Computer_lab",
+      "LRD_white",
+      "LRD_white",
+      "ALL_white",
+      "LRD_white",
+      "LRD_white",
+      "LRU_white",
+      "ALL_white",
+      "ALL_white",
+      "ALL_white",
+      "LRU_white",
+      "computer_down_lab",
+      "RU_white",
+      "ALL_white",
+      "LU_white",
+      "computer_down_lab"
+    ],
+    "sprite": "data/ROOMS/lab_top_125452.png"
+  },
+  "lab_left": {
+    "tiles": [
+      "left_white",
+      "RUD_white",
+      "LUD_white",
+      "Computer_lab",
+      "printer_lab",
+      "left_white",
+      "RUD_white",
+      "ALL_white",
+      "LRD_white",
+      "LD_white",
+      "left_white",
+      "RUD_white",
+      "ALL_white",
+      "ALL_white",
+      "ALL_white",
+      "left_white",
+      "RUD_white",
+      "ALL_white",
+      "LRU_white",
+      "LU_white",
+      "left_white",
+      "RUD_white",
+      "LUD_white",
+      "computer_down_lab",
+      "computer_down_lab"
+    ],
+    "sprite": "data/ROOMS/lab_left_125452.png"
+  },
+  "lab_bottom_right": {
+    "tiles": [
+      "computer_left_lab",
+      "RD_white",
+      "LUD_white",
+      "Computer_lab",
+      "printer_lab",
+      "computer_left_lab",
+      "RUD_white",
+      "ALL_white",
+      "LRD_white",
+      "LRD_white",
+      "computer_left_lab",
+      "RUD_white",
+      "ALL_white",
+      "LRU_white",
+      "LRU_white",
+      "LR_white",
+      "LRU_white",
+      "LU_white",
+      "computer_down_lab",
+      "computer_down_lab",
+      "bottom_white",
+      "bottom_white",
+      "bottom_white",
+      "bottom_white",
+      "bottom_white"
+    ],
+    "sprite": "data/ROOMS/lab_bottom_right_125452.png"
+  },
+  "Lab_bottom_left": {
+    "tiles": [
+      "Computer_lab",
+      "printer_lab",
+      "RD_white",
+      "LD_white",
+      "computer_right_lab",
+      "LRD_white",
+      "LRD_white",
+      "ALL_white",
+      "LUD_white",
+      "computer_right_lab",
+      "LRU_white",
+      "LRU_white",
+      "ALL_white",
+      "LUD_white",
+      "computer_right_lab",
+      "computer_down_lab",
+      "computer_down_lab",
+      "RU_white",
+      "LRU_white",
+      "LR_white",
+      "bottom_white",
+      "bottom_white",
+      "bottom_white",
+      "bottom_white",
+      "bottom_white"
+    ],
+    "sprite": "data/ROOMS/Lab_bottom_left_125452.png"
+  },
+  "Lab_right": {
+    "tiles": [
+      "printer_lab",
+      "Computer_lab",
+      "RUD_white",
+      "LUD_white",
+      "right_white",
+      "RD_white",
+      "LRD_white",
+      "ALL_white",
+      "LUD_white",
+      "right_white",
+      "ALL_white",
+      "ALL_white",
+      "ALL_white",
+      "LUD_white",
+      "right_white",
+      "RU_white",
+      "LRU_white",
+      "LUD_white",
+      "LUD_white",
+      "right_white",
+      "computer_down_lab",
+      "computer_down_lab",
+      "RUD_white",
+      "LUD_white",
+      "right_white"
+    ],
+    "sprite": "data/ROOMS/Lab_right_125452.png"
   }
 }
