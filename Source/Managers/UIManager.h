@@ -34,7 +34,11 @@ class UIManager
   void setRenderer(ASGE::Renderer* rend) { renderer = rend; }; // must be called first!
   void setCamera(Camera* cam) { camera = cam; };
   void setInputData(ASGE::Input* inp) { input = inp; }
-  void setSoundPlayer(SoLoud::Soloud* player) { sound_player = player; }
+  void setSoundPlayer(SoLoud::Soloud* player)
+  {
+    delete sound_player;
+    sound_player = player;
+  }
   void update();
   void render(double delta_time);
   bool checkForClick(Point click, bool act_on_click = true);

@@ -8,6 +8,8 @@ Menu::Menu()
   x_offset *= ScaledSpriteArray::width_scale;
   y_offset *= ScaledSpriteArray::width_scale;
 
+  sound_player = new SoLoud::Soloud;
+
   file_handler.loadSound(item_select, "CLICK_03", 0.7f);
   file_handler.loadSound(item_index_change, "CLICK_04", 0.5f);
 }

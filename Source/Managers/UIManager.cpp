@@ -3,7 +3,7 @@
 /* Load all sounds */
 UIManager::UIManager()
 {
-  // stuff
+  sound_player = new SoLoud::Soloud;
 }
 
 /* destroy! */

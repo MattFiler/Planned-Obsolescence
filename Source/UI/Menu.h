@@ -18,12 +18,19 @@ class Menu
   Menu();
   ~Menu() = default;
 
+  Menu(const Menu&) = delete;
+  Menu& operator=(const Menu&) = delete;
+
   void giveRenderer(ASGE::Renderer* rend);
 
   void addMenuItem(const std::string& item_text);
   std::shared_ptr<ScaledSpriteArray> addMenuSprite(const std::string& filepath);
 
-  void setSoundPlayer(SoLoud::Soloud* player) { sound_player = player; }
+  void setSoundPlayer(SoLoud::Soloud* player)
+  {
+    delete sound_player;
+    sound_player = player;
+  }
 
   void setMenuTextSpacing(float offset);
   void setLeftMargin(float offset);

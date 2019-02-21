@@ -45,7 +45,10 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud
                                    Point(45, 17));
   scenes* next = &next_scene;
   GameCore* this_scene = this;
-  quit_button->click_function = [next, this_scene] { *next = scenes::MAIN_MENU; this_scene->sound_player->play(this_scene->exit_sound); };
+  quit_button->click_function = [next, this_scene] {
+    *next = scenes::MAIN_MENU;
+    this_scene->sound_player->play(this_scene->exit_sound);
+  };
   ui_manager.addButton(quit_button);
 
   // Reset game over config for new load

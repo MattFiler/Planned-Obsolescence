@@ -38,8 +38,9 @@ WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend,
   poi_interaction_button->click_function = [popup_instance, character_manager] {
     // If we have enough power to perform action, and it's not already broken/inuse - break it!
     if ((popup_instance->referenced_tile->getPointOfInterestState() ==
-          poi_state::POI_IS_FUNCTIONAL || popup_instance->referenced_tile->getPointOfInterestState() ==
-                                          poi_state::POI_IS_BEING_USED_BY_GOON) &&
+           poi_state::POI_IS_FUNCTIONAL ||
+         popup_instance->referenced_tile->getPointOfInterestState() ==
+           poi_state::POI_IS_BEING_USED_BY_GOON) &&
         popup_instance->gauge_data.player_power >= gauge_rates::SABOTAGE_COST)
     {
       popup_instance->referenced_tile->setPointOfInterestState(poi_state::POI_IS_BROKEN);
