@@ -14,6 +14,8 @@
 #include "../Viewport/Camera.h"
 #include "GameOver.h"
 #include "Scene.h"
+#include <soloud.h>
+#include <soloud_wav.h>
 
 namespace ASGE
 {
@@ -27,7 +29,7 @@ class GameCore : public Scene
 {
  public:
   GameCore() = default;
-  ~GameCore() = default;
+  ~GameCore();
   bool load(ASGE::Renderer* renderer, ASGE::Input* input) override;
   scenes update(double delta_time) override;
   void render(double delta_time) override;
@@ -44,6 +46,10 @@ class GameCore : public Scene
   UIManager ui_manager;
   GaugeManager project_gauge;
   GameOver game_over_instance;
+  FileHandler file_handler;
+
+  // SoLoud::Soloud player;
+  // SoLoud::Wav sound_file;
 
   Camera camera;
   float x_axis_input = 0;

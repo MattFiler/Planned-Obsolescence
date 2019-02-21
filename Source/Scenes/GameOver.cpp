@@ -6,6 +6,7 @@
 #include <Engine/Renderer.h>
 
 game_over_type GameOver::game_over = game_over_type::NOT_YET_DECIDED;
+game_over_reason GameOver::game_over_v = game_over_reason::ISNT_OVER_YET;
 
 /**
  *   @brief   Loads all variables and sprites for this scene
@@ -109,7 +110,14 @@ void GameOver::render(double delta_time)
   else if (game_over == game_over_type::PLAYER_LOST)
   {
     victory_title = "game_lost";
-    victory_description = "project_completed";
+    if (game_over_v == game_over_reason::PLAYER_WAS_DETECTED)
+    {
+      victory_description = "guards_spotted_you";
+    }
+    else
+    {
+      victory_description = "project_completed";
+    }
   }
 
   rend->renderText(localiser.getString(victory_title),

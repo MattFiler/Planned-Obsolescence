@@ -20,6 +20,7 @@ class GaugeManager
   void resetAll();
 
   game_over_type update(double dt_sec);
+  game_over_reason whyDidGameEnd() { return game_over_why; };
 
   float getProjectProgress();
   float getProjectTimeRemaining();
@@ -31,6 +32,8 @@ class GaugeManager
   void increaseProjectProgress(double dt_sec);
 
   PO_Gauges gauge_data; // Moved to static struct as event system is unlikely :(
+
+  game_over_reason game_over_why = game_over_reason::ISNT_OVER_YET;
 
   UIManager* ui_manager;
   CharacterManager* character_manager;

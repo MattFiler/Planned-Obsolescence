@@ -6,7 +6,7 @@
 struct PO_Gauges
 {
   static float project_progress;
-  static float project_time_remaining;
+  static float time_remaining;
   static float player_power;
   static float detection;
   static float productivity;

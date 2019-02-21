@@ -15,10 +15,10 @@ class CharacterManager
   ~CharacterManager();
 
   bool canSpawn(character_type type);
-  bool spawnCharacter(Boss* new_boss);
-  bool spawnCharacter(Goon* new_goon);
-  bool spawnCharacter(LabTechnician* new_technician);
-  bool spawnCharacter(Security* new_security);
+  bool spawnCharacter(Boss* new_boss, float spawn_x, float spawn_y);
+  bool spawnCharacter(Goon* new_goon, float spawn_x, float spawn_y);
+  bool spawnCharacter(LabTechnician* new_technician, float spawn_x, float spawn_y);
+  bool spawnCharacter(Security* new_security, float spawn_x, float spawn_y);
 
   float getTotalGaugeValue(character_type character);
   float getHighestGaugeValue(character_type character);

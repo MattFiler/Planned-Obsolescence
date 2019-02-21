@@ -20,18 +20,6 @@ enum character_type
   TECHNICIAN,
 };
 
-// The character's currently active job
-enum character_job
-{
-  JUST_SPAWNED_IN,
-  IDLE,
-  LOOKING_BUSY,
-  SUSPICIOUS,
-  CHILLING_OUT,
-  GETTING_ANGRY,
-  REALLY_ANGRY
-};
-
 /* --- Map --- */
 
 // Potential movement directions from tile
@@ -69,11 +57,6 @@ enum tile_accessibility
   TILE_IS_NON_TRAVERSABLE
 };
 
-enum Event
-{
-  DEFAULTE
-};
-
 /* --- UI --- */
 
 // Rotation used for progress bars
@@ -108,7 +91,8 @@ enum scenes
   MAIN_MENU,
   GAME_CORE,
   QUIT_GAME,
-  GAME_OVER
+  GAME_OVER,
+  TUTORIAL
 };
 
 // Render index
@@ -165,6 +149,13 @@ enum game_over_type
   PLAYER_WON,
   PLAYER_LOST,
   NOT_YET_DECIDED
+};
+enum game_over_reason
+{
+  PLAYER_WAS_DETECTED,
+  PROJECT_WAS_COMPLETED,
+  PROJECT_TIME_RAN_OUT,
+  ISNT_OVER_YET
 };
 
 // Our native resolution which we will scale from to the resolution specified in the game config.

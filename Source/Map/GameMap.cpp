@@ -143,17 +143,14 @@ bool GameMap::clickedPointCheck(Point click, bool act_on_click)
   {
     for (Tile& tile : *room.getTiles())
     {
-      if (tile.hasAnyPointOfInterest())
+      if (tile.hasAnyPointOfInterest() && tile.isPointOnTile(click))
       {
-        if (tile.isPointOnTile(click))
+        if (act_on_click)
         {
-          if (act_on_click)
-          {
-            // do stuff
-            ui_manager->updateAndShowTileData(tile);
-          }
-          return true;
+          // do stuff
+          ui_manager->updateAndShowTileData(tile);
         }
+        return true;
       }
     }
   }

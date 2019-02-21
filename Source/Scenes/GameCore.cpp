@@ -13,6 +13,12 @@
  *   @details Initialises all variables and creates all the new
                          sprites for the scene
  */
+
+GameCore::~GameCore()
+{
+  // player.deinit();
+}
+
 bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
 {
   // Setup
@@ -46,6 +52,12 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   game_over_instance.setGameOverType(game_over_type::NOT_YET_DECIDED);
   project_gauge.resetAll();
 
+  /*
+  player.init();
+  file_handler.loadSound(sound_file, "CLICK_11.wav");
+  player.play(sound_file);
+   */
+
   return true;
 }
 
@@ -74,17 +86,16 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   if (character_manager.canSpawn(character_type::GOON))
   {
     Goon* new_goon = new Goon();
-    character_manager.spawnCharacter(new_goon);
+    character_manager.spawnCharacter(new_goon, 100.0f, 150.0f);
     new_goon = new Goon();
-    character_manager.spawnCharacter(new_goon);
+    character_manager.spawnCharacter(new_goon, 100.0f, 150.0f);
     new_goon = new Goon();
-    character_manager.spawnCharacter(new_goon);
+    character_manager.spawnCharacter(new_goon, 100.0f, 150.0f);
   }
   if (character_manager.canSpawn(character_type::SECURITY))
   {
     Security* new_guard = new Security();
-    character_manager.spawnCharacter(new_guard);
-    new_guard->setSpawnPosition(200, 200);
+    character_manager.spawnCharacter(new_guard, 100.0f, 150.0f);
     // std::vector<Point>* route = new_guard->getPatrolRoute();
     // route->push_back(Point(game_map.getMapData()->rooms_x))
   }
@@ -92,9 +103,9 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   if (character_manager.canSpawn(character_type::TECHNICIAN))
   {
     LabTechnician* new_tech = new LabTechnician();
-    character_manager.spawnCharacter(new_tech);
+    character_manager.spawnCharacter(new_tech, 550.0f, 550.0f);
     new_tech = new LabTechnician();
-    character_manager.spawnCharacter(new_tech);
+    character_manager.spawnCharacter(new_tech, 550.0f, 550.0f);
   }
 }
 
@@ -208,7 +219,7 @@ scenes GameCore::update(double delta_time)
   }
 
   // Update managers
-  ui_manager.update(delta_time);
+  ui_manager.update();
   character_manager.update(delta_time);
 
   // Check for cursor hover
@@ -248,5 +259,6 @@ void GameCore::render(double delta_time)
 void GameCore::endGame(game_over_type type)
 {
   game_over_instance.setGameOverType(type);
+  game_over_instance.setGameOverReason(project_gauge.whyDidGameEnd());
   next_scene = scenes::GAME_OVER;
 }

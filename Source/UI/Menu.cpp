@@ -91,19 +91,14 @@ bool Menu::itemWasSelected(Keybinds& user_input)
   {
     return true;
   }
-  else if (user_input.keyReleased("Menu Up"))
+  else if (user_input.keyReleased("Menu Up") && (current_menu_index > 0))
   {
-    if (current_menu_index > 0)
-    {
-      current_menu_index--;
-    }
+    current_menu_index--;
   }
-  else if (user_input.keyReleased("Menu Down"))
+  else if (user_input.keyReleased("Menu Down") &&
+           (current_menu_index < static_cast<int>(menu_text_items.size() - 1)))
   {
-    if (current_menu_index < static_cast<int>(menu_text_items.size() - 1))
-    {
-      current_menu_index++;
-    }
+    current_menu_index++;
   }
   return false;
 }

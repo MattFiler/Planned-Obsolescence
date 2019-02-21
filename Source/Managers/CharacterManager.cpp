@@ -65,7 +65,7 @@ bool CharacterManager::canSpawn(character_type type)
 }
 
 /* Spawn a character */
-bool CharacterManager::spawnCharacter(Boss* new_boss)
+bool CharacterManager::spawnCharacter(Boss* new_boss, float spawn_x, float spawn_y)
 {
   // Create our array if it doesn't exist
   if (boss_instances == nullptr)
@@ -79,6 +79,7 @@ bool CharacterManager::spawnCharacter(Boss* new_boss)
     boss_instances[boss_count] = new_boss;
     boss_instances[boss_count]->wake(renderer);
     boss_instances[boss_count]->setCharacterID(boss_count);
+    boss_instances[boss_count]->setSpawnPosition(spawn_x, spawn_y);
     boss_instances[boss_count]->generatePathfindingMap(game_map);
 
     boss_count++;
@@ -88,7 +89,7 @@ bool CharacterManager::spawnCharacter(Boss* new_boss)
   // We've exceeded our spawn limits...
   return false;
 }
-bool CharacterManager::spawnCharacter(Goon* new_goon)
+bool CharacterManager::spawnCharacter(Goon* new_goon, float spawn_x, float spawn_y)
 {
   // Create our array if it doesn't exist
   if (goon_instances == nullptr)
@@ -102,6 +103,7 @@ bool CharacterManager::spawnCharacter(Goon* new_goon)
     goon_instances[goon_count] = new_goon;
     goon_instances[goon_count]->wake(renderer);
     goon_instances[goon_count]->setCharacterID(goon_count);
+    goon_instances[goon_count]->setSpawnPosition(spawn_x, spawn_y);
     goon_instances[goon_count]->generatePathfindingMap(game_map);
     goon_instances[goon_count]->registerRepairRequest = [&](Tile* tile) {
       this->registerRepairRequest(tile);
@@ -114,7 +116,7 @@ bool CharacterManager::spawnCharacter(Goon* new_goon)
   // We've exceeded our spawn limits...
   return false;
 }
-bool CharacterManager::spawnCharacter(LabTechnician* new_technician)
+bool CharacterManager::spawnCharacter(LabTechnician* new_technician, float spawn_x, float spawn_y)
 {
   // Create our array if it doesn't exist
   if (technician_instances == nullptr)
@@ -128,6 +130,7 @@ bool CharacterManager::spawnCharacter(LabTechnician* new_technician)
     technician_instances[technician_count] = new_technician;
     technician_instances[technician_count]->wake(renderer);
     technician_instances[technician_count]->setCharacterID(technician_count);
+    technician_instances[technician_count]->setSpawnPosition(spawn_x, spawn_y);
     technician_instances[technician_count]->generatePathfindingMap(game_map);
 
     technician_count++;
@@ -137,7 +140,7 @@ bool CharacterManager::spawnCharacter(LabTechnician* new_technician)
   // We've exceeded our spawn limits...
   return false;
 }
-bool CharacterManager::spawnCharacter(Security* new_security)
+bool CharacterManager::spawnCharacter(Security* new_security, float spawn_x, float spawn_y)
 {
   // Create our array if it doesn't exist
   if (security_instances == nullptr)
@@ -151,6 +154,7 @@ bool CharacterManager::spawnCharacter(Security* new_security)
     security_instances[security_count] = new_security;
     security_instances[security_count]->wake(renderer);
     security_instances[security_count]->setCharacterID(security_count);
+    security_instances[security_count]->setSpawnPosition(spawn_x, spawn_y);
     security_instances[security_count]->generatePathfindingMap(game_map);
     security_instances[security_count]->setupPatrolRoute();
     security_instances[security_count]->registerRepairRequest = [&](Tile* tile) {
@@ -328,18 +332,15 @@ bool CharacterManager::clickedCharacterCheck(CharacterArray character,
 {
   for (int i = 0; i < character_count; i++)
   {
-    if (character[i]->isVisible())
+    if (character[i]->isVisible() && character[i]->isPointInArea(click))
     {
-      if (character[i]->isPointInArea(click))
+      if (act_on_click)
       {
-        if (act_on_click)
-        {
-          ui_manager->updateAndShowCharacterInfo(character[i]->getDisplayName(),
-                                                 character[i]->getInternalGauge(),
-                                                 character[i]->getInternalGaugeDesc());
-        }
-        return true;
+        ui_manager->updateAndShowCharacterInfo(character[i]->getDisplayName(),
+                                               character[i]->getInternalGauge(),
+                                               character[i]->getInternalGaugeDesc());
       }
+      return true;
     }
   }
   return false;

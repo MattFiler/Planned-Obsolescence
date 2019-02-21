@@ -20,9 +20,15 @@ bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input)
 
   // Add menu sprites
   main_menu.addMenuSprite("MAIN_MENU/BACKGROUND.jpg");
+  std::shared_ptr<ScaledSpriteArray> menu_logo = main_menu.addMenuSprite("SPLASHSCREEN/"
+                                                                         "FOREGROUND.png");
+  menu_logo->scale(0.6666f);
+  menu_logo->yPos(20);
+  menu_logo->xPos(500);
 
   // Add menu options
   main_menu.addMenuItem("play_game");
+  main_menu.addMenuItem("tutorial");
   main_menu.addMenuItem("exit_game");
 
   return true;
@@ -43,6 +49,11 @@ void MainMenu::keyHandler(const ASGE::SharedEventData data)
     {
       next_scene = scenes::GAME_CORE;
       debug_text.print("ENTERING GAME");
+    }
+    else if (main_menu.selectedItemWas("tutorial"))
+    {
+      next_scene = scenes::TUTORIAL;
+      debug_text.print("OPENING TUTORIAL");
     }
     else if (main_menu.selectedItemWas("exit_game"))
     {
