@@ -5,6 +5,8 @@
 #include "../Constants.h"
 #include "../FileHandler/FileHandler.h"
 #include "../Math/Point.h"
+#include "../Sprites/ScaledSpriteArray.h"
+#include <Engine/Renderer.h>
 using json = nlohmann::json;
 
 /* Character Data */
@@ -44,10 +46,19 @@ struct CharacterData
     // Our display name
     display_name = character_config["display_name"];
 
-    // Our sprites - this is gonna be refactored!!
-    sprite_walking = character_config["sprites"]["walking"][0];
-    sprite_idle = character_config["sprites"]["idle"][0];
+    // Basic sprite data
+    sprite_folder = character_config["sprites_folder"];
+    sprite_prefix = character_config["sprites_prefix"];
   };
+
+  void configureSprites(ASGE::Renderer* renderer)
+  {
+    sprites.reserve(direction::DIRECTION_COUNT - 1);
+    loadSpriteForDirection("left", renderer);  // enum direction::LEFT (0)
+    loadSpriteForDirection("right", renderer); // enum direction::RIGHT (1)
+    loadSpriteForDirection("up", renderer);    // enum direction::UP (2)
+    loadSpriteForDirection("down", renderer);  // enum direction::DOWN (3)
+  }
 
   character_type variant = character_type::DEFAULT;
   std::string id = "";
@@ -68,8 +79,30 @@ struct CharacterData
   std::string internal_gauge_name = "";
   float internal_gauge = 0.0f;
 
-  std::string sprite_walking = "";
-  std::string sprite_idle = "";
+  direction currently_facing = direction::DOWN;
+
+  std::vector<ScaledSpriteArray*> sprites;
+
+ private:
+  void loadSpriteForDirection(const std::string direction, ASGE::Renderer* renderer)
+  {
+    ScaledSpriteArray* new_direction_sprites =
+      new ScaledSpriteArray(character_sprite_index::SPRITE_COUNT);
+    for (int x = 0; x < character_sprite_index::SPRITE_COUNT - 1; x++)
+    {
+      ASGE::Sprite* new_sprite = renderer->createRawSprite();
+      std::string this_direction = "up";
+      new_sprite->loadTexture(sprite_folder + this_direction + "/" + sprite_prefix +
+                              this_direction + std::to_string(x + 1) + ".png");
+      new_direction_sprites->addSprite(*new_sprite);
+    }
+    new_direction_sprites->setWidth(width);
+    new_direction_sprites->setHeight(height);
+    sprites.push_back(new_direction_sprites);
+  }
+
+  std::string sprite_folder = "";
+  std::string sprite_prefix = "";
 };
 
 #endif // PLANNEDOBSOLESCENCE_CHARACTERDATA_H

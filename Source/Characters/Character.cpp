@@ -17,29 +17,15 @@ Character::~Character()
 /* Catch the renderer, then we can load our sprite */
 void Character::wake(ASGE::Renderer* passed_renderer)
 {
+  // Save renderer
   renderer = passed_renderer;
-  updateSprite();
-}
-
-/* Update our sprite */
-void Character::updateSprite()
-{
-  // Remove existing
-  delete sprite;
 
   // Create new
-  sprite = new ScaledSpriteArray(1);
-  ASGE::Sprite* new_sprite = renderer->createRawSprite();
-  new_sprite->loadTexture(getSpritePath());
-  sprite->addSprite(*new_sprite);
+  config.configureSprites(renderer);
 
-  // Resize
-  sprite->setWidth(config.width);
-  sprite->setHeight(config.height);
+  // Resize click area and set position
   click_area.setWidth(config.width);
   click_area.setHeight(config.height);
-
-  // Update click area position
   click_area.setPosition(position);
 }
 
@@ -58,8 +44,11 @@ bool Character::updatePosition(double delta_time)
     position.y_pos += direction.y_mag * static_cast<float>(delta_time) * 0.01f *
                       static_cast<float>(config.movement_speed);
 
-    sprite->xPos(position.x_pos);
-    sprite->yPos(position.y_pos);
+    for (int i = 0; i < direction::DIRECTION_COUNT; i++)
+    {
+      config.sprites.at(i)->xPos(position.x_pos);
+      config.sprites.at(i)->yPos(position.y_pos);
+    }
 
     click_area.setPosition(position);
 
@@ -316,14 +305,20 @@ void Character::setSpawnPositionX(float x_pos)
 {
   config.spawn_pos.x_pos = x_pos;
   position.x_pos = x_pos;
-  sprite->xPos(position.x_pos);
+  for (int i = 0; i < direction::DIRECTION_COUNT; i++)
+  {
+    config.sprites.at(i)->xPos(position.x_pos);
+  }
   click_area.setPosition(position);
 }
 void Character::setSpawnPositionY(float y_pos)
 {
   config.spawn_pos.y_pos = y_pos;
   position.y_pos = y_pos;
-  sprite->yPos(position.y_pos);
+  for (int i = 0; i < direction::DIRECTION_COUNT; i++)
+  {
+    config.sprites.at(i)->yPos(position.y_pos);
+  }
   click_area.setPosition(position);
 }
 void Character::setSpawnPosition(float x_pos, float y_pos)
@@ -331,8 +326,11 @@ void Character::setSpawnPosition(float x_pos, float y_pos)
   config.spawn_pos = Point(x_pos, y_pos);
   position.x_pos = x_pos;
   position.y_pos = y_pos;
-  sprite->xPos(position.x_pos);
-  sprite->yPos(position.y_pos);
+  for (int i = 0; i < direction::DIRECTION_COUNT; i++)
+  {
+    config.sprites.at(i)->xPos(position.x_pos);
+    config.sprites.at(i)->yPos(position.y_pos);
+  }
   click_area.setPosition(position);
 }
 
@@ -340,17 +338,6 @@ void Character::setSpawnPosition(float x_pos, float y_pos)
 void Character::setVisible(bool is_visible)
 {
   config.is_visible = is_visible;
-}
-
-/* Adjust dimensions */
-void Character::setDimensions(float new_width, float new_height)
-{
-  config.width = new_width;
-  config.height = new_height;
-  sprite->setWidth(config.width);
-  sprite->setHeight(config.height);
-  click_area.setWidth(config.width);
-  click_area.setHeight(config.height);
 }
 
 /* Adjust movement speed */
@@ -371,16 +358,10 @@ bool Character::isVisible()
   return config.is_visible;
 }
 
-/* Return the path to our character's sprite */
-std::string Character::getSpritePath()
-{
-  return config.sprite_walking;
-}
-
 /* Return sprite */
 ScaledSpriteArray* Character::getSprite()
 {
-  return sprite;
+  return config.sprites.at(getDirection());
 }
 
 /* Return renderer */

@@ -38,16 +38,23 @@ struct HudGaugeData
     update(progress_bar->getProgress());
   }
 
-  /*
-  void overrideColourTo(bool reset = false, float col_r = 0.0f, float col_g = 0.0f, float col_b =
-  0.0f) { should_tick_colour = false; if (reset) {
-
+  void
+  overrideColourTo(bool reset = true, float col_r = 0.0f, float col_g = 0.0f, float col_b = 0.0f)
+  {
+    should_tick_colour = false;
+    if (reset)
+    {
+      fill_colour[0] = 0.839f;
+      fill_colour[1] = 0.564f;
+      fill_colour[2] = 0.976f;
     }
-    fill_colour[0] = col_r;
-    fill_colour[1] = col_g;
-    fill_colour[2] = col_b;
+    else
+    {
+      fill_colour[0] = col_r;
+      fill_colour[1] = col_g;
+      fill_colour[2] = col_b;
+    }
   }
-   */
 
   void render(ASGE::Renderer* renderer, double delta_time)
   {

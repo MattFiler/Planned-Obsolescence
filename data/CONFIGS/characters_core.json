@@ -15,10 +15,8 @@
 		
 		"display_name": "placeholder_text",
 		
-		"sprites": {
-			"walking": ["data/CHARACTERS/DEFAULT/placeholder.png"],
-			"idle": ["data/CHARACTERS/DEFAULT/placeholder.png"]
-		}
+		"sprites_folder": "data/CHARACTERS/DEFAULT/",
+		"sprites_prefix": "default_"
 	},
 	"1": {
 		"gauge_value": 0,
@@ -26,34 +24,24 @@
 		
 		"display_name": "character_security",
 		
-		"sprites": {
-			"walking": ["data/CHARACTERS/GUARD/placeholder.png"],
-			"idle": ["data/CHARACTERS/GUARD/placeholder.png"],
-			"patrol": ["data/CHARACTERS/GUARD/placeholder.png"]
-		}
+		"sprites_folder": "data/CHARACTERS/GUARD/",
+		"sprites_prefix": "security_"
 	},
 	"2": {
 		"gauge_desc": "gauge_productivity",
 		
 		"display_name": "character_goon",
 		
-		"sprites": {
-			"walking": ["data/CHARACTERS/GOON/placeholder.png"],
-			"idle": ["data/CHARACTERS/GOON/placeholder.png"],
-			"working": ["data/CHARACTERS/GUARD/placeholder.png"]
-		}
+		"sprites_folder": "data/CHARACTERS/GOON/",
+		"sprites_prefix": "goon_"
 	},
 	"3": {
 		"gauge_desc": "gauge_faith",
 		
 		"display_name": "character_boss",
 		
-		"sprites": {
-			"walking": ["data/CHARACTERS/BOSS/placeholder.png"],
-			"idle": ["data/CHARACTERS/BOSS/placeholder.png"],
-			"working": ["data/CHARACTERS/GUARD/placeholder.png"],
-			"angry": ["data/CHARACTERS/GUARD/placeholder.png"]
-		}
+		"sprites_folder": "data/CHARACTERS/BOSS/",
+		"sprites_prefix": "boss_"
 	},
 	"4": {
 		"gauge_value": 0,
@@ -61,10 +49,7 @@
 		
 		"display_name": "character_techie",
 		
-		"sprites": {
-			"walking": ["data/CHARACTERS/TECH/placeholder.png"],
-			"idle": ["data/CHARACTERS/TECH/placeholder.png"],
-			"working": ["data/CHARACTERS/GUARD/placeholder.png"]
-		}
+		"sprites_folder": "data/CHARACTERS/TECH/",
+		"sprites_prefix": "tech_"
 	}
 }

@@ -20,6 +20,15 @@ enum character_type
   TECHNICIAN,
 };
 
+// Character sprite index
+enum character_sprite_index
+{
+  IDLE,
+  WALKING_START,
+  WALKING_END = 8,
+  SPRITE_COUNT
+};
+
 /* --- Map --- */
 
 // Potential movement directions from tile
@@ -28,7 +37,8 @@ enum direction
   LEFT,
   RIGHT,
   UP,
-  DOWN
+  DOWN,
+  DIRECTION_COUNT
 };
 
 // Points of interest are either doors (open/close) or "computers" (working/broken)
