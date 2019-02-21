@@ -1246,35 +1246,6 @@
           <tile name="bottom_right_red" />
         </tiles>
       </room>
-      <room name="Server_room" mandatory="false">
-        <tiles width="5" height="5">
-          <tile name="top_left_grey" />
-          <tile name="top_grey" />
-          <tile name="door_up_server" />
-          <tile name="top_grey" />
-          <tile name="top_right_grey" />
-          <tile name="left_grey" />
-          <tile name="server_sprite" />
-          <tile name="UD_grey" />
-          <tile name="server_sprite" />
-          <tile name="right_grey" />
-          <tile name="left_grey" />
-          <tile name="R_grey" />
-          <tile name="ALL_grey" />
-          <tile name="LD_grey" />
-          <tile name="door_side_server" />
-          <tile name="left_grey" />
-          <tile name="computer_left_server" />
-          <tile name="RU_grey" />
-          <tile name="LU_grey" />
-          <tile name="right_grey" />
-          <tile name="bottom_left_grey" />
-          <tile name="bottom_grey" />
-          <tile name="bottom_grey" />
-          <tile name="bottom_grey" />
-          <tile name="bottom_right_grey" />
-        </tiles>
-      </room>
       <room name="Toilet_room" mandatory="false">
         <tiles width="5" height="5">
           <tile name="top_left_toilet" />
@@ -1855,35 +1826,6 @@
           <tile name="bottom_white" />
         </tiles>
       </room>
-      <room name="Lab_right" mandatory="false">
-        <tiles width="5" height="5">
-          <tile name="printer_lab" />
-          <tile name="Computer_lab" />
-          <tile name="RUD_white" />
-          <tile name="LUD_white" />
-          <tile name="right_white" />
-          <tile name="RD_white" />
-          <tile name="LRD_white" />
-          <tile name="ALL_white" />
-          <tile name="LUD_white" />
-          <tile name="right_white" />
-          <tile name="ALL_white" />
-          <tile name="ALL_white" />
-          <tile name="ALL_white" />
-          <tile name="LUD_white" />
-          <tile name="right_white" />
-          <tile name="RU_white" />
-          <tile name="LRU_white" />
-          <tile name="LUD_white" />
-          <tile name="LUD_white" />
-          <tile name="right_white" />
-          <tile name="computer_down_lab" />
-          <tile name="computer_down_lab" />
-          <tile name="RUD_white" />
-          <tile name="LUD_white" />
-          <tile name="right_white" />
-        </tiles>
-      </room>
       <room name="IT_Tech" mandatory="false">
         <tiles width="5" height="5">
           <tile name="top_left_green" />
@@ -1940,6 +1882,64 @@
           <tile name="bottom_white" />
           <tile name="bottom_white" />
           <tile name="bottom_right_white" />
+        </tiles>
+      </room>
+      <room name="Server_room" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="top_left_grey" />
+          <tile name="top_grey" />
+          <tile name="door_up_server" />
+          <tile name="top_grey" />
+          <tile name="top_right_grey" />
+          <tile name="left_grey" />
+          <tile name="server_sprite" />
+          <tile name="UD_grey" />
+          <tile name="server_sprite" />
+          <tile name="right_grey" />
+          <tile name="left_grey" />
+          <tile name="R_grey" />
+          <tile name="ALL_grey" />
+          <tile name="LRD_grey" />
+          <tile name="door_side_server" />
+          <tile name="left_grey" />
+          <tile name="computer_left_server" />
+          <tile name="RU_grey" />
+          <tile name="LU_grey" />
+          <tile name="right_grey" />
+          <tile name="bottom_left_grey" />
+          <tile name="bottom_grey" />
+          <tile name="bottom_grey" />
+          <tile name="bottom_grey" />
+          <tile name="bottom_right_grey" />
+        </tiles>
+      </room>
+      <room name="Lab_right" mandatory="false">
+        <tiles width="5" height="5">
+          <tile name="printer_lab" />
+          <tile name="Computer_lab" />
+          <tile name="RUD_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
+          <tile name="RD_white" />
+          <tile name="LRD_white" />
+          <tile name="ALL_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="ALL_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
+          <tile name="RU_white" />
+          <tile name="LRU_white" />
+          <tile name="ALL_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
+          <tile name="computer_down_lab" />
+          <tile name="computer_down_lab" />
+          <tile name="RUD_white" />
+          <tile name="LUD_white" />
+          <tile name="right_white" />
         </tiles>
       </room>
     </rooms>
