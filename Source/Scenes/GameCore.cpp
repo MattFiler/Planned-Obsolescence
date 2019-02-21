@@ -50,10 +50,6 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud
   game_over_instance.setGameOverType(game_over_type::NOT_YET_DECIDED);
   project_gauge.resetAll();
 
-  // Load all sounds for this scene
-  // file_handler.loadSound(sound_wav, "CLICK_11");
-  // sound_player->play(sound_wav);
-
   return true;
 }
 

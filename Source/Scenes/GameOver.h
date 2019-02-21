@@ -31,9 +31,12 @@ class GameOver : public Scene
 
  private:
   Menu main_menu;
+  FileHandler file_handler;
   static game_over_type game_over;
   static game_over_reason game_over_v;
   GetLocalisedString localiser;
+
+  SoLoud::Wav ending_sound;
 };
 
 #endif
