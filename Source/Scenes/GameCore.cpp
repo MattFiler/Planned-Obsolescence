@@ -29,7 +29,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud
 
   // Pass references out and spawn characters
   passReferences(input);
-  spawnCharacters(renderer);
+  spawnCharacters();
 
   // Create UI
   ui_manager.createMainHUD(&character_manager);
@@ -79,7 +79,7 @@ void GameCore::passReferences(ASGE::Input* input)
 }
 
 /* Spawn all characters */
-void GameCore::spawnCharacters(ASGE::Renderer* renderer)
+void GameCore::spawnCharacters()
 {
   for (int i = 1; i < 4; i++)
   {

@@ -20,13 +20,13 @@ bool Tile::exitIsValid(direction exit)
 /* Work out if we have a specified point of interest on this tile */
 bool Tile::hasSpecificPointOfInterest(point_of_interest poi)
 {
-  return (tile_data.poi == poi);
+  return tile_data.poi == poi;
 }
 
 /* Check to see if we have ANY point of interest on this tile */
 bool Tile::hasAnyPointOfInterest()
 {
-  return (tile_data.poi != point_of_interest::NONE_ON_THIS_TILE);
+  return tile_data.poi != point_of_interest::NONE_ON_THIS_TILE;
 }
 
 /* Return our POI state (e.g. open or closed for doors) */

@@ -61,7 +61,7 @@ bool CharacterManager::canSpawn(character_type type)
       return false;
     }
   }
-  return (min_case < max_case);
+  return min_case < max_case;
 }
 
 /* Spawn a character */

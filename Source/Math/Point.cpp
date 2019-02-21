@@ -24,7 +24,7 @@ void Point::set(float new_x, float new_y)
 bool Point::operator==(Point& point)
 {
   float x_dif = fabs(this->x_pos - point.x_pos);
-  float y_dif = fabs((this->y_pos - point.y_pos));
+  float y_dif = fabs(this->y_pos - point.y_pos);
   return (x_dif < 0.01f && y_dif < 0.01f);
 }
 

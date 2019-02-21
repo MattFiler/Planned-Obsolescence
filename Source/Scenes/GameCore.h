@@ -36,7 +36,7 @@ class GameCore : public Scene
   void endGame(game_over_type type);
 
  private:
-  void spawnCharacters(ASGE::Renderer* renderer);
+  void spawnCharacters();
   void passReferences(ASGE::Input* input);
 
   CharacterManager character_manager;
