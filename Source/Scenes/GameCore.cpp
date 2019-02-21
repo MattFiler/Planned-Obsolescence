@@ -81,18 +81,23 @@ void GameCore::passReferences(ASGE::Input* input)
 /* Spawn all characters */
 void GameCore::spawnCharacters(ASGE::Renderer* renderer)
 {
-  if (character_manager.canSpawn(character_type::GOON))
+  for (int i = 1; i < 4; i++)
   {
-    for (int i = 1; i < 4; i++)
+    if (character_manager.canSpawn(character_type::GOON))
     {
+      debug_text.print("For start");
       auto tile_count =
         static_cast<unsigned long long int>(game_map.getRooms()->at(i).getTileCount() / 2);
       float x_pos = game_map.getRooms()->at(i).getTiles()->at(tile_count).getPositionX();
       float y_pos = game_map.getRooms()->at(i).getTiles()->at(tile_count).getPositionY();
       Goon* new_goon = new Goon();
       character_manager.spawnCharacter(new_goon, x_pos, y_pos);
+      debug_text.print("For end");
     }
-    for (int i = 1; i < 5; i++)
+  }
+  for (int i = 1; i < 5; i++)
+  {
+    if (character_manager.canSpawn(character_type::GOON))
     {
       auto tile_count = static_cast<unsigned long long int>(
         game_map.getRooms()
@@ -150,7 +155,7 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
     auto* new_tech = new LabTechnician();
     character_manager.spawnCharacter(new_tech, x_pos, y_pos);
     new_tech = new LabTechnician();
-    character_manager.spawnCharacter(new_tech, x_pos - 50, y_pos);
+    character_manager.spawnCharacter(new_tech, x_pos + 50, y_pos);
   }
 }
 

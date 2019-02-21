@@ -3,7 +3,7 @@
 
 Goon::Goon() : Character(character_type::GOON)
 {
-  for (int i = 0; i < 20; i++)
+  for (int i = 0; i < 10; i++)
   {
     productivity_average[i] = gauge_rates ::GOON_PRODUCTIVTIY;
   }
