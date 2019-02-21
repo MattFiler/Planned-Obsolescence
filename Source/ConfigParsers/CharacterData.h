@@ -96,7 +96,7 @@ struct CharacterData
                               this_direction + std::to_string(x + 1) + ".png");
       new_direction_sprites->addSprite(*new_sprite);
     }
-    new_direction_sprites->timeBetweenFrames(movement_speed * 1000);
+    new_direction_sprites->timeBetweenFrames(movement_speed * 10);
     new_direction_sprites->setWidth(width);
     new_direction_sprites->setHeight(height);
     sprites.push_back(new_direction_sprites);

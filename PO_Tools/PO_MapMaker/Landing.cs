@@ -37,7 +37,7 @@ namespace PO_MapMaker
             if (!File.Exists("data/TILES/placeholder.png"))
             { 
                 MemoryStream stream = new MemoryStream();
-                Properties.Resources.placeholder_tile.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+                Properties.Resources.placeholder_tile.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
                 File.WriteAllBytes("data/TILES/placeholder.png", stream.ToArray());
             }
 
@@ -45,7 +45,7 @@ namespace PO_MapMaker
             if (!File.Exists("data/CHARACTERS/DEFAULT/placeholder.png"))
             {
                 MemoryStream stream2 = new MemoryStream();
-                Properties.Resources.placeholder_character.Save(stream2, System.Drawing.Imaging.ImageFormat.Bmp);
+                Properties.Resources.placeholder_character.Save(stream2, System.Drawing.Imaging.ImageFormat.Png);
                 File.WriteAllBytes("data/CHARACTERS/DEFAULT/placeholder.png", stream2.ToArray());
             }
 
@@ -53,7 +53,7 @@ namespace PO_MapMaker
             if (!File.Exists("data/ROOMS/default.png"))
             {
                 MemoryStream stream = new MemoryStream();
-                Properties.Resources.placeholder_room.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+                Properties.Resources.placeholder_room_trans.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
                 File.WriteAllBytes("data/ROOMS/default.png", stream.ToArray());
             }
 
@@ -61,7 +61,7 @@ namespace PO_MapMaker
             if (!File.Exists("data/MAPS/default.png"))
             {
                 MemoryStream stream = new MemoryStream();
-                Properties.Resources.placeholder_map.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+                Properties.Resources.placeholder_map_trans.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
                 File.WriteAllBytes("data/MAPS/default.png", stream.ToArray());
             }
 
