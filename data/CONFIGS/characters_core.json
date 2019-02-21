@@ -1,0 +1,55 @@
+{
+	"0": {		
+		"width": 50,
+		"height": 50,
+		"is_visible": true,
+		
+		"spawn_pos": [0,0],
+		"spawn_cap": 10,
+		
+		"movement_speed": 5,
+		"max_health": 100,
+		
+		"gauge_value": 100,
+		"gauge_desc": "placeholder_text",
+		
+		"display_name": "placeholder_text",
+		
+		"sprites_folder": "data/CHARACTERS/DEFAULT/",
+		"sprites_prefix": "default_"
+	},
+	"1": {
+		"gauge_value": 0,
+		"gauge_desc": "gauge_suspicion",
+		
+		"display_name": "character_security",
+		
+		"sprites_folder": "data/CHARACTERS/GUARD/",
+		"sprites_prefix": "security_"
+	},
+	"2": {
+		"gauge_desc": "gauge_productivity",
+		
+		"display_name": "character_goon",
+		
+		"sprites_folder": "data/CHARACTERS/GOON/",
+		"sprites_prefix": "goon_"
+	},
+	"3": {
+		"gauge_desc": "gauge_faith",
+		
+		"display_name": "character_boss",
+		
+		"sprites_folder": "data/CHARACTERS/BOSS/",
+		"sprites_prefix": "boss_"
+	},
+	"4": {
+		"gauge_value": 0,
+		"gauge_desc": "gauge_stress",
+		
+		"display_name": "character_techie",
+		
+		"sprites_folder": "data/CHARACTERS/TECH/",
+		"sprites_prefix": "tech_"
+	}
+}

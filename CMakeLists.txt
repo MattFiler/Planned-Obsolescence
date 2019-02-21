@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9.2)
-project(ExMachina)
+project(PlannedObsolescence)
 
 if(UNIX AND APPLE)
     set(PLATFORM "osx" )
@@ -7,22 +7,6 @@ elseif(UNIX)
     set(PLATFORM "linux")
 else()
     set(PLATFORM "win")
-endif()
-
-if ( CMAKE_COMPILER_IS_GNUCC )
-    set(CMAKE_CXX_FLAGS
-        "${CMAKE_CXX_FLAGS}                          \
-        -Wall -Wextra -Wshadow -Wnon-virtual-dtor    \
-        -Wold-style-cast -Wunused -pedantic          \
-        -Woverloaded-virtual -Wpedantic -Wconversion \
-        -Wduplicated-cond                            \
-        -Wduplicated-branches -Wlogical-op           \
-        -Wnull-dereference -Wuseless-cast            \
-        -Wno-unused-parameter -Werror")
-
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0" )
-elseif( MSVC )
-    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W4 /WX")
 endif()
 
 ## hide console unless debug build ##
@@ -38,28 +22,150 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(BUILD_SHARED_LIBS false)
 
 ## itch.io and gamedata settings ##
-set(GAMEDATA_FOLDER "Data")
+set(GAMEDATA_FOLDER "data")
 set(ITCHIO_USER     "")
 
 ## files used to build this game
 add_executable(
         ${PROJECT_NAME}
         main.cpp
-        Source/MyGame.cpp
-        Source/MyGame.h)
+        Source/PlannedObsolescence.cpp
+        Source/PlannedObsolescence.h
+        Source/Sprites/ScaledSpriteArray.h
+        Source/Sprites/ScaledSpriteArray.cpp
+        Source/Managers/SceneManager.h
+        Source/Managers/SceneManager.cpp
+        Source/FileHandler/FileHandler.h
+        Source/FileHandler/FileHandler.cpp
+        Source/Managers/CharacterManager.h
+        Source/Managers/CharacterManager.cpp
+        Source/Scenes/Scene.h
+        Source/Scenes/Splashscreen.h
+        Source/Scenes/Splashscreen.cpp
+        Source/Scenes/GameCore.h
+        Source/Scenes/GameCore.cpp
+        Source/Scenes/GameOver.h
+        Source/Scenes/GameOver.cpp
+        Source/Scenes/MainMenu.h
+        Source/Scenes/MainMenu.cpp
+        Source/Scenes/TutorialMenu.h
+        Source/Scenes/TutorialMenu.cpp
+        Source/Characters/Character.h
+        Source/Characters/Character.cpp
+        Source/Characters/Boss.h
+        Source/Characters/Boss.cpp
+        Source/Characters/Goon.h
+        Source/Characters/Goon.cpp
+        Source/Characters/LabTechnician.h
+        Source/Characters/LabTechnician.cpp
+        Source/Characters/Security.h
+        Source/Characters/Security.cpp
+        Source/Constants.h
+        Source/Characters/Pathfinding/PathfindingMap.h
+        Source/Characters/Pathfinding/PathNode.h
+        Source/Characters/Pathfinding/NodeConnection.h
+        Source/Math/Point.h
+        Source/Math/Point.cpp
+        Source/Math/Vector.h
+        Source/Math/Vector.cpp
+        Source/Map/GameMap.cpp
+        Source/Map/GameMap.h
+        Source/Map/Room.cpp
+        Source/Map/Room.h
+        Source/Map/Tile.cpp
+        Source/Map/Tile.h
+        Source/Characters/Pathfinding/PathfindingMap.cpp
+        Source/Debug/DebugText.h
+        Source/Debug/DebugText.cpp
+        Source/Viewport/Camera.h
+        Source/Viewport/Camera.cpp
+        Source/ConfigParsers/CharacterData.h
+        Source/ConfigParsers/TileData.h
+        Source/Viewport/ClickArea.cpp
+        Source/Viewport/ClickArea.h
+        Source/Keybinds/Keybinds.h
+        Source/Keybinds/Keybinds.cpp
+        Source/UI/UI.h
+        Source/UI/TextBox.h
+        Source/UI/TextBox.cpp
+        Source/UI/ProgressBar.h
+        Source/UI/ProgressBar.cpp
+        Source/UI/Button.h
+        Source/UI/Button.cpp
+        Source/ConfigParsers/RoomData.h
+        Source/UI/Menu.h
+        Source/UI/Menu.cpp
+        Source/UI/UI.cpp 
+        Source/Managers/UIManager.h 
+        Source/Managers/UIManager.cpp 
+        Source/UI/PopupWindow.h 
+        Source/UI/PopupWindow.cpp
+        Source/ConfigParsers/MapData.h
+        Source/UI/GenericUI.cpp
+        Source/UI/GenericUI.h
+        Source/Managers/GaugeManager.cpp
+        Source/Managers/GaugeManager.h
+        Source/UI/CharacterInfoPopup.cpp
+        Source/UI/CharacterInfoPopup.h
+        Source/UI/MainHUD.cpp
+        Source/UI/MainHUD.h
+        Source/UI/HudGaugeData.h
+        Source/UI/GetLocalisedString.h
+        Source/UI/GetLocalisedString.cpp
+        Source/UI/WorldInteractionPopup.cpp
+        Source/UI/WorldInteractionPopup.h
+        Source/UI/Cursor.cpp
+        Source/UI/Cursor.h
+        Source/Managers/Gauges.h
+        Source/Managers/Gauges.cpp)
 
 ## library includes
 target_include_directories(
         ${PROJECT_NAME}
         SYSTEM
         PRIVATE
-        "${CMAKE_SOURCE_DIR}/Libs/ASGE/include")
+        "${CMAKE_SOURCE_DIR}/Libs/ASGE/include"
+        "${CMAKE_SOURCE_DIR}/Libs/nlohmann")
 
 ## compile language settings
 target_compile_features(
         ${PROJECT_NAME}
         PRIVATE
         cxx_std_17)
+
+if ( CMAKE_COMPILER_IS_GNUCC )
+    list(APPEND BUILD_FLAGS_FOR_CXX
+        "-Wall" "-Wextra" "-Wshadow" "-Wnon-virtual-dtor"
+        "-Wold-style-cast" "-Wunused" "-pedantic"
+        "-Woverloaded-virtual" "-Wpedantic" "-Wconversion"
+        "-Wduplicated-cond" "-Wduplicated-branches" "-Wlogical-op"
+        "-Wnull-dereference" "-Wuseless-cast"
+        "-Wno-unused-parameter" "-Werror")
+
+    target_compile_options(${PROJECT_NAME} PRIVATE
+            $<$<COMPILE_LANGUAGE:CXX>:${BUILD_FLAGS_FOR_CXX}>)
+
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0" )
+elseif( MSVC )
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W4 /WX")
+endif()
+
+if ( CMAKE_COMPILER_IS_GNUCC )
+    list(APPEND BUILD_FLAGS_FOR_CXX
+            "-Wall" "-Wextra" "-Wshadow" "-Wnon-virtual-dtor"
+            "-Wold-style-cast" "-Wunused" "-pedantic"
+            "-Woverloaded-virtual" "-Wpedantic" "-Wconversion"
+            "-Wduplicated-cond" "-Wduplicated-branches" "-Wlogical-op"
+            "-Wnull-dereference" "-Wuseless-cast"
+            "-Wno-unused-parameter" "-Werror")
+
+    target_compile_options(${PROJECT_NAME} PRIVATE
+            $<$<COMPILE_LANGUAGE:CXX>:${BUILD_FLAGS_FOR_CXX}>)
+
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0" )
+elseif( MSVC )
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W4 /WX")
+endif()
 
 ## build the game libs folder
 add_library(ASGE UNKNOWN IMPORTED)
@@ -85,6 +191,10 @@ if(BUILD_SHARED_LIBS)
     endif()
 endif()
 
+## Copy launcher to build directory on Windows
+if (${PLATFORM} MATCHES "win")
+    configure_file(${CMAKE_SOURCE_DIR}/Launcher/PO_Launcher.exe ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/Launcher.exe COPYONLY)
+endif()
 
 ## enable static linking against gcc build
 if (WIN32 AND NOT BUILD_SHARED_LIBS AND NOT MSVC)
@@ -92,9 +202,9 @@ if (WIN32 AND NOT BUILD_SHARED_LIBS AND NOT MSVC)
 endif()
 
 ## utility scripts
-include(CMake/clang.format.cmake)
-include(CMake/githooks.cmake)
-include(CMake/itch.io.cmake)
+SET(ENABLE_SOUND ON CACHE BOOL "Adds SoLoud to the Project" FORCE)
+include(CMake/datapak.cmake)
+target_link_libraries(${PROJECT_NAME} soloud)
 
 ## build types
 set(CMAKE_CONFIGURATION_TYPES Debug;Release)

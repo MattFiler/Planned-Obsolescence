@@ -1,0 +1,20 @@
+All config files are read in the same way:
+	- Default branch is queried and all its data is read-in.
+	- Bespoke branch is queried if requested and its data is read-in, overwriting any default attributes.
+	- If the bespoke branch is not found, the system falls back to the default branch.
+
+This means that any changes to default will affect ALL children.
+Please remember this when editing the configs!
+
+Default branches should contain all possible parameters of their children set to default values.
+Children should then contain bespoke values for their intended purpose.
+
+Every config must start with a default branch.
+Worth noting some configs, such as game_core may not require any children branches.
+
+The game will ONLY PARSE ONE OBJECT DEEP. It will not recurse any further.
+Make sure to only go one object deep within each branch, do not make extra children objects.
+
+Config-specific notes:
+	- tile_w and tile_h define the size of a room in rooms_core
+	- width and height define the size of a tile relative to the game window in tiles_core
