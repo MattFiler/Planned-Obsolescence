@@ -20,7 +20,6 @@ class LabTechnician : public Character
  private:
   Point idle_position = Point(0, 0);
 
-  double repair_time = 10000;
   double time_elapsed = 0;
   bool repairing = false;
 

@@ -40,6 +40,7 @@ void Goon::update(double delta_time)
       point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_BEING_USED_BY_GOON);
       if (time_elapsed_at_poi > total_time_for_poi)
       {
+        poi_iteration_count++;
         point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_FUNCTIONAL);
         findNewPOI();
         time_elapsed_at_poi = 0;
@@ -107,7 +108,7 @@ void Goon::findNewPOI()
   getAllPOIInRoom(&all_pois, our_room, false);
 
   // If there are any, then choose a random POI to go to
-  if (!all_pois.empty())
+  if (!all_pois.empty() && poi_iteration_count < gauge_rates::GOON_MAX_ROOM_ITER)
   {
     auto random_index =
       static_cast<unsigned long long>((rand() % (static_cast<int>(all_pois.size()))));
