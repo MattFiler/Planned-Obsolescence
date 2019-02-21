@@ -31,129 +31,6 @@
     ],
     "sprite": "data/MAPS/default.png"
   },
-  "TEST2": {
-    "rooms": [
-      "DEMO_2",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_2",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_3",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1"
-    ],
-    "sprite": "data/MAPS/TEST2_120730.png"
-  },
-  "TEST3": {
-    "rooms_h": 3,
-    "rooms": [
-      "DEMO_1",
-      "DEMO_3",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_3",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1"
-    ],
-    "sprite": "data/MAPS/TEST3_120730.png"
-  },
-  "TEST4": {
-    "rooms_h": 3,
-    "rooms": [
-      "DEMO_2",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_2",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1"
-    ],
-    "sprite": "data/MAPS/TEST4_120730.png"
-  },
-  "TEST5": {
-    "rooms_h": 3,
-    "rooms": [
-      "DEMO_3",
-      "DEMO_3",
-      "DEMO_3",
-      "DEMO_3",
-      "DEMO_3",
-      "DEMO_3",
-      "DEMO_3",
-      "DEMO_3",
-      "DEMO_3",
-      "DEMO_3",
-      "DEMO_3",
-      "DEMO_3",
-      "DEMO_3",
-      "DEMO_3",
-      "DEMO_3"
-    ],
-    "sprite": "data/MAPS/TEST5_120730.png"
-  },
-  "TEST1": {
-    "rooms": [
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "Security",
-      "corridor",
-      "IT_Tech",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1",
-      "DEMO_1"
-    ],
-    "sprite": "data/MAPS/TEST1_120730.png"
-  },
   "Map1": {
     "rooms": [
       "lab_right_exit",
@@ -182,7 +59,7 @@
       "Lab_LUR_exits",
       "lab_UL_exits"
     ],
-    "sprite": "data/MAPS/Map1_120730.png"
+    "sprite": "data/MAPS/Map1_121413.png"
   },
   "Map2": {
     "rooms": [
@@ -212,7 +89,7 @@
       "Lab_LR_exits",
       "lab_UL_exits"
     ],
-    "sprite": "data/MAPS/Map2_120730.png"
+    "sprite": "data/MAPS/Map2_121413.png"
   },
   "Map3": {
     "rooms_w": 6,
@@ -255,6 +132,6 @@
       "lab_right_exit",
       "lab_UL_exits"
     ],
-    "sprite": "data/MAPS/Map3_120730.png"
+    "sprite": "data/MAPS/Map3_121413.png"
   }
 }

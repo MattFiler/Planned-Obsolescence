@@ -209,7 +209,7 @@
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
       </tile>
       <tile name="DEFAULT" set="DEFAULT" sprite="data/TILES/placeholder.png" mandatory="false">
-        <dimensions width="32" height="32" />
+        <dimensions width="50" height="50" />
         <valid_exits left="false" right="false" up="false" down="false" />
         <points_of_interest computer="false" door="false" description="" alt_sprite="" />
       </tile>
@@ -1826,111 +1826,6 @@
       <room name="DEFAULT" />
       <room name="DEFAULT" />
       <room name="DEFAULT" />
-    </map>
-    <map name="TEST2" mandatory="false" width="5" height="5">
-      <room name="DEMO_2" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_2" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_3" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-    </map>
-    <map name="TEST3" mandatory="false" width="5" height="3">
-      <room name="DEMO_1" />
-      <room name="DEMO_3" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_3" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-    </map>
-    <map name="TEST4" mandatory="false" width="5" height="3">
-      <room name="DEMO_2" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_2" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-    </map>
-    <map name="TEST5" mandatory="false" width="5" height="3">
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-      <room name="DEMO_3" />
-    </map>
-    <map name="TEST1" mandatory="false" width="5" height="5">
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="Security" />
-      <room name="corridor" />
-      <room name="IT_Tech" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
-      <room name="DEMO_1" />
     </map>
     <map name="Map1" mandatory="false" width="5" height="5">
       <room name="lab_right_exit" />
