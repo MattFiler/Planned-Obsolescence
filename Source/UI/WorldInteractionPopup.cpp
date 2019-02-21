@@ -129,7 +129,10 @@ void WorldInteractionPopup::updateTileDynamicData()
     {
       case poi_state::POI_IS_FUNCTIONAL:
       {
-        if (gauge_data.player_power < gauge_levels::GAUGE_HALF)
+      }
+      case poi_state::POI_IS_BEING_USED_BY_GOON:
+      {
+        if (gauge_data.player_power < gauge_rates::SABOTAGE_COST)
         {
           // Not enough power to sabotage this POI
           poi_interaction_button->setActive(false);
@@ -139,15 +142,15 @@ void WorldInteractionPopup::updateTileDynamicData()
         {
           // Enough power to sabotage, allow option to
           poi_interaction_button->setActive(true);
-          poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hackable");
+          if (referenced_tile->getPointOfInterestState() == poi_state::POI_IS_BEING_USED_BY_GOON)
+          {
+            poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_inuse");
+          }
+          else
+          {
+            poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hackable");
+          }
         }
-        break;
-      }
-      case poi_state::POI_IS_BEING_USED_BY_GOON:
-      {
-        // In use by goon, we cannot hack
-        poi_interaction_button->setActive(false);
-        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_inuse");
         break;
       }
       case poi_state::POI_IS_BEING_FIXED:

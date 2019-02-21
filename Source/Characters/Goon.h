@@ -25,7 +25,7 @@ class Goon : public Character
   double total_time_for_poi = 0;
   double time_elapsed_at_poi = 0;
 
-  double productivity_average[20] = {}; // A 20 point moving average of productivity
+  double productivity_average[10] = {}; // A 10 point moving average of productivity
   int average_index = 0;
   double time_since_last_interval = 0;
   double time_working = 0; // Time spent working since last interval

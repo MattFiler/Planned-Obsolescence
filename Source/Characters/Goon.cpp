@@ -1,15 +1,17 @@
 #include "Goon.h"
+#include "../Managers/Gauges.h"
 
 Goon::Goon() : Character(character_type::GOON)
 {
   for (int i = 0; i < 20; i++)
   {
-    productivity_average[i] = 10000;
+    productivity_average[i] = gauge_rates ::GOON_PRODUCTIVTIY;
   }
 }
 
 void Goon::update(double delta_time)
 {
+  speed_multiplier = 1 + ((100 - PO_Gauges::time_remaining) / 100);
   // If the Goon didn't move
   if (!updatePosition(delta_time))
   {
@@ -37,14 +39,21 @@ void Goon::update(double delta_time)
       // If the allotted time is spent at the POI, find a new one
       time_elapsed_at_poi += delta_time;
       time_working += delta_time;
-      point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_BEING_USED_BY_GOON);
-      if (time_elapsed_at_poi > total_time_for_poi)
+
+      if (time_elapsed_at_poi > total_time_for_poi || point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_BROKEN)
       {
         poi_iteration_count++;
-        point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_FUNCTIONAL);
+        if(point_of_interest_tile->getPointOfInterestState() != poi_state::POI_IS_BROKEN)
+        {
+            point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_FUNCTIONAL);
+        }
         findNewPOI();
         time_elapsed_at_poi = 0;
         at_valid_poi = false;
+      }
+      else
+      {
+          point_of_interest_tile->setPointOfInterestState(poi_state::POI_IS_BEING_USED_BY_GOON);
       }
     }
   }
@@ -55,19 +64,19 @@ void Goon::update(double delta_time)
     productivity_average[average_index] = time_working;
     time_working = 0;
     average_index++;
-    // Wrap the index around if gets to 20
-    if (average_index == 20)
+    // Wrap the index around if gets to 10
+    if (average_index == 10)
     {
       average_index = 0;
     }
     // Re-calculate the average
     double total = 0;
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < 10; i++)
     {
       total += productivity_average[i];
     }
     config.internal_gauge =
-      static_cast<float>((total / 20) / (gauge_rates::GOON_PRODUCTIVTIY / 100));
+      static_cast<float>((total / 10) / (gauge_rates::GOON_PRODUCTIVTIY / 100));
   }
 }
 
@@ -84,7 +93,7 @@ void Goon::lockedDoorFound()
 void Goon::findNewPOI()
 {
   // Generate a random time for the Goon to stay at this POI
-  total_time_for_poi = rand() % 20000;
+  total_time_for_poi = gauge_rates ::GOON_MIN_TIME_AT_POI + (rand() % gauge_rates::GOON_MAX_TIME_AT_POI);
   // Find which room the goon is in
   Room* our_room = nullptr;
   for (Room& room : *global_map->getRooms())
