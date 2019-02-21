@@ -54,9 +54,9 @@ bool Character::updatePosition(double delta_time)
     float previous_distance = distance_to_next_node;
     // Add to the current position based on speed and delta_time
     position.x_pos += direction.x_mag * static_cast<float>(delta_time) * 0.01f *
-                      static_cast<float>(config.movement_speed);
+                      static_cast<float>(config.movement_speed) * speed_multiplier;
     position.y_pos += direction.y_mag * static_cast<float>(delta_time) * 0.01f *
-                      static_cast<float>(config.movement_speed);
+                      static_cast<float>(config.movement_speed) * speed_multiplier;
 
     sprite->xPos(position.x_pos);
     sprite->yPos(position.y_pos);

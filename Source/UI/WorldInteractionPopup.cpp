@@ -32,8 +32,9 @@ WorldInteractionPopup::WorldInteractionPopup(ASGE::Renderer* rend,
   poi_interaction_button->click_function = [popup_instance, character_manager] {
     // If we have enough power to perform action, and it's not already broken/inuse - break it!
     if ((popup_instance->referenced_tile->getPointOfInterestState() ==
-          poi_state::POI_IS_FUNCTIONAL || popup_instance->referenced_tile->getPointOfInterestState() ==
-                                          poi_state::POI_IS_BEING_USED_BY_GOON) &&
+           poi_state::POI_IS_FUNCTIONAL ||
+         popup_instance->referenced_tile->getPointOfInterestState() ==
+           poi_state::POI_IS_BEING_USED_BY_GOON) &&
         popup_instance->gauge_data.player_power >= gauge_rates::SABOTAGE_COST)
     {
       popup_instance->referenced_tile->setPointOfInterestState(poi_state::POI_IS_BROKEN);
@@ -105,7 +106,10 @@ void WorldInteractionPopup::updateTileDynamicData()
     {
       case poi_state::POI_IS_FUNCTIONAL:
       {
-        if (gauge_data.player_power < gauge_levels::GAUGE_HALF)
+      }
+      case poi_state::POI_IS_BEING_USED_BY_GOON:
+      {
+        if (gauge_data.player_power < gauge_rates::SABOTAGE_COST)
         {
           // Not enough power to sabotage this POI
           poi_interaction_button->setActive(false);
@@ -115,15 +119,15 @@ void WorldInteractionPopup::updateTileDynamicData()
         {
           // Enough power to sabotage, allow option to
           poi_interaction_button->setActive(true);
-          poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hackable");
+          if (referenced_tile->getPointOfInterestState() == poi_state::POI_IS_BEING_USED_BY_GOON)
+          {
+            poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_inuse");
+          }
+          else
+          {
+            poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_hackable");
+          }
         }
-        break;
-      }
-      case poi_state::POI_IS_BEING_USED_BY_GOON:
-      {
-        // In use by goon, we cannot hack
-        poi_interaction_button->setActive(false);
-        poi_desc = localiser.getString(referenced_tile->getTileName() + "_desc_inuse");
         break;
       }
       case poi_state::POI_IS_BEING_FIXED:

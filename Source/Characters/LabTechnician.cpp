@@ -3,7 +3,7 @@
 void LabTechnician::update(double delta_time)
 {
   float multiplier =
-          1 + (gauge_rates ::TECHIE_STRESS_QUEUE_MULTIPLIER * static_cast<float>(broken_pois.size()));
+    1 + (gauge_rates ::TECHIE_STRESS_QUEUE_MULTIPLIER * static_cast<float>(broken_pois.size()));
   if (position == idle_position)
   {
     // Decay stress while at idle position
@@ -17,7 +17,8 @@ void LabTechnician::update(double delta_time)
   else
   {
     config.internal_gauge +=
-      ((static_cast<float>(gauge_rates ::TECHIE_STRESS_GAIN)/5) * multiplier) * (static_cast<float>(delta_time) / 1000);
+      ((static_cast<float>(gauge_rates ::TECHIE_STRESS_GAIN) / 5) * multiplier) *
+      (static_cast<float>(delta_time) / 1000);
     if (config.internal_gauge > 100)
     {
       config.internal_gauge = 100;
@@ -25,8 +26,9 @@ void LabTechnician::update(double delta_time)
   }
   if (repairing)
   {
-      config.internal_gauge +=
-              ((static_cast<float>(gauge_rates ::TECHIE_STRESS_GAIN)/5) * multiplier) * (static_cast<float>(delta_time) / 1000);
+    config.internal_gauge +=
+      ((static_cast<float>(gauge_rates ::TECHIE_STRESS_GAIN) / 5) * multiplier) *
+      (static_cast<float>(delta_time) / 1000);
     time_elapsed += delta_time;
     broken_pois.front()->setPointOfInterestState(poi_state::POI_IS_BEING_FIXED);
     auto adjusted_time = static_cast<float>(gauge_rates::TECHIE_REPAIR_TIME);
@@ -50,7 +52,8 @@ void LabTechnician::update(double delta_time)
                Point(broken_pois.front()->getPositionX(), broken_pois.front()->getPositionY()),
                position) < 100)
     {
-      if(broken_pois.front()->getPointOfInterestState() == poi_state::POI_IS_BROKEN || broken_pois.front()->getPointOfInterestState() == poi_state::POI_REPAIR_PENDING)
+      if (broken_pois.front()->getPointOfInterestState() == poi_state::POI_IS_BROKEN ||
+          broken_pois.front()->getPointOfInterestState() == poi_state::POI_REPAIR_PENDING)
       {
         repairing = true;
       }
@@ -61,15 +64,16 @@ void LabTechnician::update(double delta_time)
     }
     else
     {
-        calculateRouteToPoint(findPositionForPOI(
-                Point(broken_pois.front()->getPositionX(), broken_pois.front()->getPositionY())));
+      calculateRouteToPoint(findPositionForPOI(
+        Point(broken_pois.front()->getPositionX(), broken_pois.front()->getPositionY())));
     }
   }
 }
 
 void LabTechnician::lockedDoorFound()
 {
-  if(global_map->getTileAtPoint(current_route[route_index + 1]->position)->getPointOfInterestState() != poi_state ::POI_IS_BEING_FIXED)
+  if (global_map->getTileAtPoint(current_route[route_index + 1]->position)
+        ->getPointOfInterestState() != poi_state ::POI_IS_BEING_FIXED)
   {
     // Add fixing this door to the front of the queue
     broken_pois.push_front(global_map->getTileAtPoint(current_route[route_index + 1]->position));
@@ -77,15 +81,14 @@ void LabTechnician::lockedDoorFound()
   }
   else
   {
-      current_route[route_index + 1]->pathable = false;
-      calculateRouteToPoint(findPositionForPOI(
-              Point(broken_pois.front()->getPositionX(), broken_pois.front()->getPositionY())));
+    current_route[route_index + 1]->pathable = false;
+    calculateRouteToPoint(findPositionForPOI(
+      Point(broken_pois.front()->getPositionX(), broken_pois.front()->getPositionY())));
   }
-    float x_diff = current_route[route_index + 1]->position.x_pos - position.x_pos;
-    float y_diff = current_route[route_index + 1]->position.y_pos - position.y_pos;
-    direction.set(x_diff, y_diff);
-    direction.normalise();
-    distance_to_next_node =
-            Point::distanceBetween(position, current_route[route_index + 1]->position);
-
+  float x_diff = current_route[route_index + 1]->position.x_pos - position.x_pos;
+  float y_diff = current_route[route_index + 1]->position.y_pos - position.y_pos;
+  direction.set(x_diff, y_diff);
+  direction.normalise();
+  distance_to_next_node =
+    Point::distanceBetween(position, current_route[route_index + 1]->position);
 }

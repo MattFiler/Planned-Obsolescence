@@ -83,6 +83,8 @@ class Character
   ClickArea click_area;
   CharacterData config;
 
+  float speed_multiplier = 1;
+
  private:
   void importConfig(json json_config);
 
