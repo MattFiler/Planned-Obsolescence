@@ -23,9 +23,14 @@ class GameMap
   std::vector<Room>* getRooms();
   int getRoomCount();
   int getTileCount();
+  MapData* getMapData() { return &map_data; };
   std::shared_ptr<ScaledSpriteArray> getSprite();
 
+  int getRoomsX() { return map_data.rooms_x; };
+  int getRoomsY() { return map_data.rooms_y; };
+
   bool isPOIStateAtPoint(poi_state poi_state, Point point);
+  Tile* getTileAtPoint(Point point);
 
   bool clickedPointCheck(Point click, bool act_on_click = true);
 

@@ -23,6 +23,7 @@ class Character
 
   void wake(ASGE::Renderer* passed_renderer);
   virtual void update(double delta_time) { updatePosition(delta_time); };
+  virtual void lockedDoorFound(){};
   bool updatePosition(double delta_time);
 
   void setSpawnPositionX(float x_pos);
@@ -35,6 +36,8 @@ class Character
   void generatePathfindingMap(GameMap* game_map);
   bool calculateRouteToPoint(Point point);
   void resetPathfindingMap();
+  Point findPositionForPOI(Point point, Room* room);
+  Point findPositionForPOI(Point point);
 
   bool isVisible();
   int getSpawnCap();

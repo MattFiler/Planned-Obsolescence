@@ -32,6 +32,8 @@ class Menu
   bool itemWasSelected(Keybinds& user_input);
   void render(double delta_time);
 
+  int getMiddleOfWindow() { return static_cast<int>(middle_of_window); };
+
  private:
   void realignMenuTextItems();
 

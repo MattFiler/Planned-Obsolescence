@@ -41,12 +41,27 @@ void Tile::setPointOfInterestState(poi_state new_state)
   tile_data.state_of_poi = new_state;
 
   // Show/hide our specialist "alt-sprite" if needed
-  if (new_state == poi_state::DOOR_IS_CLOSED || new_state == poi_state::POI_IS_BROKEN)
+  if (new_state == poi_state::POI_IS_BROKEN || new_state == poi_state::POI_IS_BEING_FIXED ||
+      new_state == poi_state::POI_REPAIR_PENDING)
   {
+    if (new_state == poi_state::POI_IS_BROKEN)
+    {
+      tile_data.repair_sprites->setCurrentSprite(repair_sprites::JUST_PLAIN_BROKEN);
+    }
+    else if (new_state == poi_state::POI_IS_BEING_FIXED)
+    {
+      tile_data.repair_sprites->setCurrentSprite(repair_sprites::REPAIR_IN_PROGRESS);
+    }
+    else
+    {
+      tile_data.repair_sprites->setCurrentSprite(repair_sprites::REPAIR_REQUESTED);
+    }
+    tile_data.repair_sprites->show();
     tile_data.sprite->show();
   }
   else
   {
+    tile_data.repair_sprites->hide();
     tile_data.sprite->hide();
   }
 }
@@ -100,12 +115,23 @@ void Tile::setIndexInMap(int index)
   tile_data.index_in_map = index;
 }
 
-/* Return our sprite (only applies if we have a POI) */
-std::shared_ptr<ScaledSpriteArray> Tile::getSprite()
+/* Return our sprite */
+std::shared_ptr<ScaledSpriteArray> Tile::getTileSprite()
 {
   if (tile_data.poi != point_of_interest::NONE_ON_THIS_TILE)
   {
     return tile_data.sprite;
+  }
+  // I have no sympathy for people who don't check for a sprite before calling it.
+  throw "Someone requested a tile's sprite when it didn't have one. That idiot was probably YOU!";
+}
+
+/* Return our repair sprite */
+std::shared_ptr<ScaledSpriteArray> Tile::getRepairSprite()
+{
+  if (tile_data.poi != point_of_interest::NONE_ON_THIS_TILE)
+  {
+    return tile_data.repair_sprites;
   }
   // I have no sympathy for people who don't check for a sprite before calling it.
   throw "Someone requested a tile's sprite when it didn't have one. That idiot was probably YOU!";
@@ -124,7 +150,7 @@ int Tile::getIndexInMap()
 }
 
 /* Get description of tile POI */
-std::string Tile::getTileDescription()
+std::string Tile::getTileName()
 {
   return tile_data.poi_desc;
 }

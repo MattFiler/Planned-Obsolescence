@@ -36,9 +36,11 @@ void Character::updateSprite()
   // Resize
   sprite->setWidth(config.width);
   sprite->setHeight(config.height);
-
   click_area.setWidth(config.width);
   click_area.setHeight(config.height);
+
+  // Update click area position
+  click_area.setPosition(position);
 }
 
 /* Update the position of the character based on current route and speed, returns true if it moved
@@ -79,13 +81,11 @@ bool Character::updatePosition(double delta_time)
       else
       {
         // Check to see if we have hit a closed door
-        if (global_map->isPOIStateAtPoint(poi_state ::DOOR_IS_CLOSED,
-                                          current_route[route_index + 1]->position))
+        Tile* tile = global_map->getTileAtPoint(current_route[route_index + 1]->position);
+        if (tile->getPointOfInterestState() != poi_state::POI_IS_FUNCTIONAL &&
+            tile->getPointOfInterestState() != poi_state::UNINITIALISED_POI)
         {
-          // Re-calculate the route
-          current_route[route_index + 1]->pathable = false;
-          clearPathfindingMapScores();
-          calculateRouteToPoint(current_route[current_route.size() - 1]->position);
+          lockedDoorFound();
         }
         else
         {
@@ -153,6 +153,7 @@ bool Character::calculateRouteToPoint(Point point)
     {
       current_route.resize(1);
       debug_text.print(config.id + " COULD NOT ROUTE TO TARGET!");
+      resetPathfindingMap();
       return false;
     }
   }
@@ -171,6 +172,13 @@ bool Character::calculateRouteToPoint(Point point)
       direction.set(x_diff, y_diff);
       direction.normalise();
       distance_to_next_node = Point::distanceBetween(position, current_route[1]->position);
+      // Check to see if the first node is a closed door
+      Tile* tile = global_map->getTileAtPoint(current_route[route_index + 1]->position);
+      if (tile->getPointOfInterestState() != poi_state::POI_IS_FUNCTIONAL &&
+          tile->getPointOfInterestState() != poi_state::UNINITIALISED_POI)
+      {
+        lockedDoorFound();
+      }
       return true;
     }
   }
@@ -201,7 +209,8 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
     {
       node->connections[i].score = 10000;
     }
-    else if (node->connections[i].node != nullptr && !node->connections[i].node->visited)
+    else if (node->connections[i].node != nullptr && !node->connections[i].node->visited &&
+             node->connections[i].node->pathable)
     {
       node->connections[i].node->shortest_path_to_here = depth + 1;
       // If this connection has not been scored yet
@@ -308,12 +317,14 @@ void Character::setSpawnPositionX(float x_pos)
   config.spawn_pos.x_pos = x_pos;
   position.x_pos = x_pos;
   sprite->xPos(position.x_pos);
+  click_area.setPosition(position);
 }
 void Character::setSpawnPositionY(float y_pos)
 {
   config.spawn_pos.y_pos = y_pos;
   position.y_pos = y_pos;
   sprite->yPos(position.y_pos);
+  click_area.setPosition(position);
 }
 void Character::setSpawnPosition(float x_pos, float y_pos)
 {
@@ -322,6 +333,7 @@ void Character::setSpawnPosition(float x_pos, float y_pos)
   position.y_pos = y_pos;
   sprite->xPos(position.x_pos);
   sprite->yPos(position.y_pos);
+  click_area.setPosition(position);
 }
 
 /* Toggle visibility */
@@ -337,6 +349,8 @@ void Character::setDimensions(float new_width, float new_height)
   config.height = new_height;
   sprite->setWidth(config.width);
   sprite->setHeight(config.height);
+  click_area.setWidth(config.width);
+  click_area.setHeight(config.height);
 }
 
 /* Adjust movement speed */
@@ -424,4 +438,54 @@ std::string Character::getInternalGaugeDesc()
 std::string Character::getDisplayName()
 {
   return config.display_name;
+}
+
+/* Finds the position to stand on to access the point of interest */
+Point Character::findPositionForPOI(Point point, Room* room)
+{
+  float tile_size = (*room->getTiles())[0].getWidth();
+
+  for (Tile& tile : *room->getTiles())
+  {
+    if (tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE)
+    {
+      // Check to see if this tile matches the position of up, down, left or right of the POI
+      if ((tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE) &&
+          ((tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos - tile_size) ||
+           (tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos + tile_size) ||
+           (tile.getPositionX() == point.x_pos + tile_size && tile.getPositionY() == point.y_pos) ||
+           (tile.getPositionX() == point.x_pos - tile_size && tile.getPositionY() == point.y_pos)))
+      {
+        return Point(tile.getPositionX(), tile.getPositionY());
+      }
+    }
+  }
+  return Point(-1, -1);
+}
+
+Point Character::findPositionForPOI(Point point)
+{
+  for (Room& room : *global_map->getRooms())
+  {
+    for (Tile& tile : *room.getTiles())
+    {
+      float tile_size = tile.getWidth();
+      if (tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE)
+      {
+        // Check to see if this tile matches the position of up, down, left or right of the POI
+        if ((tile.getTileAccessibility() == tile_accessibility::TILE_IS_TRAVERSABLE) &&
+            ((tile.getPositionX() == point.x_pos &&
+              tile.getPositionY() == point.y_pos - tile_size) ||
+             (tile.getPositionX() == point.x_pos &&
+              tile.getPositionY() == point.y_pos + tile_size) ||
+             (tile.getPositionX() == point.x_pos + tile_size &&
+              tile.getPositionY() == point.y_pos) ||
+             (tile.getPositionX() == point.x_pos - tile_size && tile.getPositionY() == point.y_pos)))
+        {
+          return Point(tile.getPositionX(), tile.getPositionY());
+        }
+      }
+    }
+  }
+  return Point(-1, -1);
 }

@@ -9,7 +9,8 @@ struct HudGaugeData
   HudGaugeData(Point location,
                ASGE::Renderer* renderer,
                const std::string& name = "placeholder_text",
-               float value = 0)
+               float value = 0,
+               bool full_is_failed = true)
   {
     progress_bar = new ProgressBar(location, renderer, 464, 29);
     progress_bar->addBackgroundSprite("data/UI/WHITE.png");
@@ -20,11 +21,21 @@ struct HudGaugeData
                           (gauge_location.y_pos + 22) * ScaledSpriteArray::width_scale);
 
     gauge_name = localiser.getString(name);
-    gauge_value = value;
+
+    setFullBarIsFailure(full_is_failed);
+
+    progress_bar->setProgress(value);
   }
 
   HudGaugeData(const HudGaugeData&) = delete;
   HudGaugeData& operator=(const HudGaugeData&) = delete;
+
+  void setFullBarIsFailure(bool full_is_failed)
+  {
+    full_bar_fails = full_is_failed;
+    setBaseColour();
+    update(progress_bar->getProgress());
+  }
 
   void render(ASGE::Renderer* renderer, double delta_time)
   {
@@ -36,16 +47,56 @@ struct HudGaugeData
                          ASGE::COLOURS::BLACK);
   }
 
-  void update(float value) { gauge_value = value; }
+  void update(float value)
+  {
+    float normalised_value = progress_bar->setProgress(value);
+
+    // Make bar turn red as we approach a loss
+    if (full_bar_fails)
+    {
+      fill_colour[0] = fill_colour_orig[0] + (0.161f * normalised_value);
+      fill_colour[1] = fill_colour_orig[1] - (0.564f * normalised_value);
+      fill_colour[2] = fill_colour_orig[2] - (0.976f * normalised_value);
+    }
+    else
+    {
+      fill_colour[0] = fill_colour_orig[0] - (0.161f * normalised_value);
+      fill_colour[1] = fill_colour_orig[1] + (0.564f * normalised_value);
+      fill_colour[2] = fill_colour_orig[2] + (0.976f * normalised_value);
+    }
+    progress_bar->getFillSprite()->setColour(fill_colour);
+  }
 
   ProgressBar* progress_bar = nullptr;
   std::string gauge_name = "";
-  float gauge_value = 0.0f;
 
  private:
+  void setBaseColour()
+  {
+    fill_colour[0] = 0.839f;
+    fill_colour[1] = 0.564f;
+    fill_colour[2] = 0.976f;
+    if (full_bar_fails)
+    {
+      fill_colour_orig[0] = 0.839f;
+      fill_colour_orig[1] = 0.564f;
+      fill_colour_orig[2] = 0.976f;
+    }
+    else
+    {
+      fill_colour_orig[0] = 1.0f;
+      fill_colour_orig[1] = 0.0f;
+      fill_colour_orig[2] = 0.0f;
+    }
+  }
+
   Point gauge_location;
   Point text_location;
   GetLocalisedString localiser;
+
+  float fill_colour[3] = { 0.839f, 0.564f, 0.976f };
+  float fill_colour_orig[3] = { 0.839f, 0.564f, 0.976f };
+  bool full_bar_fails = true;
 };
 
 #endif // PLANNEDOBSOLESCENCE_HUDDATA_H

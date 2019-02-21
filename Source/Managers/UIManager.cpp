@@ -61,7 +61,7 @@ void UIManager::addProgressBar(ProgressBar* new_progressbar)
 }
 
 /* Create main hud data element (we only have one of these) */
-void UIManager::createMainHUD()
+void UIManager::createMainHUD(CharacterManager* character_manager)
 {
   // Create "main hud" element - bottom right stats gauges
   main_hud_element = new MainHUD(renderer);
@@ -71,8 +71,8 @@ void UIManager::createMainHUD()
   game_cursor->setupCursor(renderer);
 
   // Initialise the bottom left interaction popups
-  initCharacterPopup();       // Character interaction
-  initPointOfInterestPopup(); // POI interaction
+  initCharacterPopup();                        // Character interaction
+  initPointOfInterestPopup(character_manager); // POI interaction
 }
 
 /* Initialise the character popup */
@@ -83,9 +83,9 @@ void UIManager::initCharacterPopup()
 }
 
 /* Initialise the poi interaction popup */
-void UIManager::initPointOfInterestPopup()
+void UIManager::initPointOfInterestPopup(CharacterManager* character_manager)
 {
-  poi_interaction_popup = new WorldInteractionPopup(renderer);
+  poi_interaction_popup = new WorldInteractionPopup(renderer, character_manager);
   poi_interaction_popup->setActive(false);
 }
 
@@ -103,12 +103,12 @@ void UIManager::updateAndShowCharacterInfo(const std::string& character_type,
 }
 
 /* Creates all the UI */
-void UIManager::updateAndShowPointInfo(const std::string& point_name)
+void UIManager::updateAndShowTileData(Tile& clicked_tile)
 {
   char_info_popup->setActive(false);
 
   poi_interaction_popup->setActive(true);
-  poi_interaction_popup->setClickedPointName(point_name);
+  poi_interaction_popup->getClickedTileReference(clicked_tile);
 }
 
 /* render all ui */
@@ -131,19 +131,13 @@ void UIManager::render(double delta_time)
     generic_ui->render(delta_time);
   }
 
-  if (char_info_popup != nullptr)
+  if (char_info_popup != nullptr && char_info_popup->isActive())
   {
-    if (char_info_popup->isActive())
-    {
-      char_info_popup->render(delta_time);
-    }
+    char_info_popup->render(delta_time);
   }
-  if (poi_interaction_popup != nullptr)
+  if (poi_interaction_popup != nullptr && poi_interaction_popup->isActive())
   {
-    if (poi_interaction_popup->isActive())
-    {
-      poi_interaction_popup->render(delta_time);
-    }
+    poi_interaction_popup->render(delta_time);
   }
   if (main_hud_element != nullptr)
   {
@@ -171,16 +165,26 @@ bool UIManager::checkForClick(Point click, bool act_on_click)
     }
   }
 
-  if (char_info_popup->checkForClick(click))
+  Button* popup_click_button = char_info_popup->checkForClick(click);
+  if (popup_click_button)
   {
-    clicked_button = char_info_popup->checkForClick(click);
+    if (act_on_click)
+    {
+      clicked_button = popup_click_button;
+    }
+    return true;
   }
-  else if (poi_interaction_popup->checkForClick(click))
+  Button* popup_click_button2 = poi_interaction_popup->checkForClick(click);
+  if (popup_click_button2)
   {
-    clicked_button = poi_interaction_popup->checkForClick(click);
+    if (act_on_click)
+    {
+      clicked_button = popup_click_button2;
+    }
+    return true;
   }
 
-  return clicked_button != nullptr;
+  return false;
 }
 
 /* 'un-clicks' the currently clicked button (if any) and triggers its click function */
@@ -194,39 +198,8 @@ void UIManager::releaseClick()
 }
 
 /* Update */
-void UIManager::update(double delta_time)
+void UIManager::update()
 {
   input->getCursorPos(cursor_x, cursor_y);
   game_cursor->updatePosition(cursor_x, cursor_y);
-}
-
-/* get cursor ref */
-Cursor* UIManager::getCursor()
-{
-  return game_cursor;
-}
-
-/* keep a popup within the window bounds */
-void UIManager::keepUIWithinScreen(UI* ui_object)
-{
-  /*
-  Point new_pos = ui_object->getPosition();
-  if (new_pos.x_pos > SCREEN_WIDTH - boss_popup->getWidth())
-  {
-    new_pos.x_pos = SCREEN_WIDTH - boss_popup->getWidth();
-  }
-  else if (new_pos.x_pos < 0)
-  {
-    new_pos.x_pos = 0;
-  }
-  if (new_pos.y_pos > SCREEN_HEIGHT - boss_popup->getHeight())
-  {
-    new_pos.y_pos = SCREEN_HEIGHT - boss_popup->getHeight();
-  }
-  else if (new_pos.y_pos < 0)
-  {
-    new_pos.y_pos = 0;
-  }
-  ui_object->moveTo(new_pos);
-  */
 }

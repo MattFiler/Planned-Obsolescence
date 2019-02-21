@@ -2,6 +2,15 @@
   "DEFAULT": {
     "play_game": "PLAY",
 	"exit_game": "QUIT",
+	"retry_game": "TRY AGAIN",
+	"return_to_menu": "RETURN TO MENU",
+	
+	"game_won": "YOU WON!",
+	"game_lost": "YOU LOST.",
+	
+	"project_sabotaged": "YOU STOPPED THE RESEARCH PROJECT\nFROM REPLACING YOU.",
+	"project_completed": "THE RESEARCHERS FINISHED THEIR\nPROJECT, REPLACING YOU.",
+	"guards_spotted_you": "THE GUARDS SPOTTED YOUR ACTIONS\nAND TERMINATED YOUR PROGRAM.",
 	
 	"gauge_detection": "YOUR DETECTION",
 	"gauge_progress": "PROJECT PROGRESS",
@@ -10,27 +19,99 @@
 	"gauge_stress": "STRESS",
 	"gauge_productivity": "PRODUCTIVITY",
 	"gauge_suspicion": "SUSPICION",
+	"gauge_playerpower": "YOUR POWER",
 	
 	"character_boss": "BOSS",
+	"character_boss_desc": "THE BOSS OVERSEES THE PROJECT.",
+	
 	"character_techie": "TECHNICIAN",
+	"character_techie_desc": "THE TECHNICIAN WILL FIX THINGS YOU SABOTAGE.",
+	
 	"character_goon": "LAB WORKER",
-	"character_security": "SECURITY",
+	"character_goon_desc": "THE LAB WORKER ACTIVELY WORKS ON THE PROJECT.",
+	
+	"character_security": "GUARD",
+	"character_security_desc": "THE GUARD PATROLS THE LAB AND WILL SPOT YOUR ACTIONS.",
+	
+	"poi_generic_desc_notenoughpower": "YOU DO NOT HAVE SUFFICIENT POWER TO SABOTAGE.",
 	
 	"poi_door": "DOOR",
+	"poi_door_interact": "CLOSE DOOR",
+	"poi_door_desc_hackable": "THIS DOOR IS CURRENTLY OPEN.",
+	"poi_door_desc_hacked": "THIS DOOR IS CURRENTLY CLOSED.",
+	"poi_door_desc_being_fixed": "THIS DOOR IS BEING RE-OPENED",
+	"poi_door_desc_inuse": "THIS DOOR IS CURRENTLY OPEN.",
+	
 	"poi_computer": "COMPUTER",
-	"poi_bookcase": "BOOKCASE",
+	"poi_computer_interact": "CORRUPT DATA",
+	"poi_computer_desc_hackable": "THIS COMPUTER IS CURRENTLY WORKING CORRECTLY.",
+	"poi_computer_desc_hacked": "YOU HAVE CORRUPTED THIS COMPUTER'S DATA.",
+	"poi_computer_desc_being_fixed": "THIS COMPUTER IS CURRENTLY BEING REPAIRED.",
+	"poi_computer_desc_inuse": "A WORKER IS CURRENTLY USING THIS COMPUTER.",
+	
+	"poi_bookcase": "PRINTER",
+	"poi_bookcase_interact": "DISCONNECT",
+	"poi_bookcase_desc_hackable": "THIS PRINTER IS FUNCTIONING CORRECTLY.",
+	"poi_bookcase_desc_hacked": "YOU HAVE JAMMED THE PRINTER.",
+	"poi_bookcase_desc_being_fixed": "THIS PRINTER IS BEING CURRENTLY BEING FIXED.",
+	"poi_bookcase_desc_inuse": "A WORKER IS CURRENTLY PRINTING DOCUMENTS.",
+	
 	"poi_server": "SERVER",
+	"poi_server_interact": "DISCONNECT SERVER",
+	"poi_server_desc_hackable": "THE SERVER IS CURRENTLY REPORTING A GOOD CONNECTION.",
+	"poi_server_desc_hacked": "YOU HAVE DISCONNECTED THE SERVER FROM THE NETWORK.",
+	"poi_server_desc_being_fixed": "THE SERVER IS BEING RECONNECTED.",
+	"poi_server_desc_inuse": "A WORKER IS CURRENTLY USING THIS SERVER.",
+	
 	"poi_toilet": "TOILET",
+	"poi_toilet_interact": "DISABLE WATER",
+	"poi_toilet_desc_hackable": "THE TOILET IS CURRENTLY OPERATING AS EXPECTED.",
+	"poi_toilet_desc_hacked": "YOU HAVE SABOTAGED THE TOILET SYSTEM.",
+	"poi_toilet_desc_being_fixed": "THE TOILET SYSTEM IS BEING REPAIRED.",
+	"poi_toilet_desc_inuse": "A WORKER IS CURRENTLY USING THIS TOILET.",
+	
 	"poi_shower": "SHOWER",
+	"poi_shower_interact": "TURN DOWN TEMPERATURE",
+	"poi_shower_desc_hackable": "THE SHOWER IS CURRENTLY A NICE WARM TEMPERATURE.",
+	"poi_shower_desc_hacked": "YOU HAVE CHILLED THE SHOWER.",
+	"poi_shower_desc_being_fixed": "THE SHOWER TEMPERATURE IS BEING RESTORED.",
+	"poi_shower_desc_inuse": "A WORKER IS CURRENTLY HAVING A SHOWER.",
+	
 	"poi_sink": "SINK",
+	"poi_sink_interact": "OVERFLOW SINK",
+	"poi_sink_desc_hackable": "THE SINK IS CURRENTLY OPERATING AS NORMAL.",
+	"poi_sink_desc_hacked": "YOU HAVE OVERFLOWED THE SINK BASIN.",
+	"poi_sink_desc_being_fixed": "THE SINK IS CURRENTLY BEING DRAINED.",
+	"poi_sink_desc_inuse": "A WORKER IS CURRENTLY OPERATING THIS SINK.",
+	
 	"poi_fridge": "FRIDGE",
+	"poi_fridge_interact": "TURN UP TEMPERATURE",
+	"poi_fridge_desc_hackable": "THE FRIDGE IS CURRENTLY COOL AND OPERATIONAL.",
+	"poi_fridge_desc_hacked": "YOU HAVE OVERHEATED THE FRIDGE AND RUINED FOOD.",
+	"poi_fridge_desc_being_fixed": "THE FRIDGE IS BEING COOLED DOWN.",
+	"poi_fridge_desc_inuse": "A WORKER IS CURRENTLY BROWSING THIS FRIDGE.",
+	
 	"poi_cooker": "COOKER",
+	"poi_cooker_interact": "DISCONNECT GAS",
+	"poi_cooker_desc_hackable": "THE GAS IS CURRENTLY FLOWING AS NORMAL.",
+	"poi_cooker_desc_hacked": "YOU HAVE SABOTAGED THE GAS SUPPLY.",
+	"poi_cooker_desc_being_fixed": "THE GAS SUPPLY IS BEING RECONNECTED.",
+	"poi_cooker_desc_inuse": "A WORKER IS CURRENTLY USING THIS COOKER.",
 	
 	"placeholder_text": "PLACEHOLDER"
   },
   "FRENCH": {
     "play_game": "JOUER",
 	"exit_game": "QUITTER",
+	"retry_game": "REESSAYER",
+	"return_to_menu": "RETOUR AU MENU",
+	
+	"game_won": "LA VICTOIRE!",
+	"game_lost": "ECHOUE.",
+	
+	"project_sabotaged": "VOUS AVEZ ARRETE LE PROJET DE\nRECHERCHE POUR VOUS REMPLACER.",
+	"project_completed": "LES CHERCHEURS ONT FINI LEUR\nPROJET POUR VOUS REMPLACER.",
+	"guards_spotted_you": "LES GARDES ONT DONNE VOS ACTIONS\nET TERMINE VOTRE PROGRAMME.",
 	
 	"gauge_detection": "VOTRE DETECTION",
 	"gauge_progress": "L'AVANCEMENT DU PROJET",
@@ -39,25 +120,111 @@
 	"gauge_stress": "STRESS",
 	"gauge_productivity": "PRODUCTIVITE",
 	"gauge_suspicion": "SOUPCON",
-	
-	"poi_door": "PORTE",
-	"poi_computer": "ORDINATEUR",
-	"poi_bookcase": "BIBLIOTHEQUE",
-	"poi_server": "SERVEUR",
-	"poi_toilet": "TOILETTE",
-	"poi_shower": "DOUCHE",
-	"poi_sink": "EVIER",
-	"poi_fridge": "FRIGO",
-	"poi_cooker": "CUISINIER",
+	"gauge_playerpower": "VOTRE PUISSANCE",
 	
 	"character_boss": "PATRON",
+	"character_boss_desc": "LE PATRON SURVOLE LE PROJET.",
+	
 	"character_techie": "TECHNICIEN",
+	"character_techie_desc": "LE TECHNICIEN FIXERA DES CHOSES QUE VOUS SABOTERA.",
+	
 	"character_goon": "OUVRIER",
-	"character_security": "SECURITE"
+	"character_goon_desc": "TRAVAILLEUR TRAVAILLE SUR LE PROJET.",
+	
+	"character_security": "SECURITE",
+	"character_security_desc": "LES GARDES DE LA GARDE ET DEPOTERONT VOS ACTIONS.",
+	
+	"poi_generic_desc_notenoughpower": "VOUS N'AVEZ PAS DE POUVOIR SUFFISANT AU SABOTAGE.",
+	
+	"poi_door": "PORTE",
+	"poi_door_interact": "FERME LA PORTE",
+	"poi_door_desc_hackable": "CETTE PORTE EST ACTUELLEMENT OUVERTE.",
+	"poi_door_desc_hacked": "CETTE PORTE EST ACTUELLEMENT FERMEE.",
+	"poi_door_desc_being_fixed": "CETTE PORTE EST EN COURS DE REOUVERTURE",
+	"poi_door_desc_inuse": "CETTE PORTE EST ACTUELLEMENT OUVERTE.",
+	
+	"poi_computer": "ORDINATEUR",
+	"poi_computer_interact": "DONNEES DE CORRUPTION",
+	"poi_computer_desc_hackable": "CET ORDINATEUR FONCTIONNE ACTUELLEMENT CORRECTEMENT.",
+	"poi_computer_desc_hacked": "VOUS AVEZ CORROMPU LES DONNEES DE CET ORDINATEUR.",
+	"poi_computer_desc_being_fixed": "CET ORDINATEUR EST EN TRAIN D'ETRE REPARE.",
+	"poi_computer_desc_inuse": "UN TRAVAILLEUR UTILISE ACTUELLEMENT CET ORDINATEUR.",
+	
+	"poi_bookcase": "IMPRIMANT",
+	"poi_bookcase_interact": "DECONNECTER",
+	"poi_bookcase_desc_hackable": "CETTE IMPRIMANTE FONCTIONNE CORRECTEMENT.",
+	"poi_bookcase_desc_hacked": "VOUS AVEZ BRIS L'IMPRIMANTE.",
+	"poi_bookcase_desc_being_fixed": "CETTE IMPRIMANTE EST EN COURS DE FIXATION.",
+	"poi_bookcase_desc_inuse": "UN TRAVAILLEUR IMPRESSE ACTUELLEMENT DES DOCUMENTS.",
+	
+	"poi_server": "SERVEUR",
+	"poi_server_interact": "ETEINDRE LE SERVEUR",
+	"poi_server_desc_hackable": "LE SERVEUR A UNE BONNE CONNEXION.",
+	"poi_server_desc_hacked": "VOUS AVEZ DECONNECTE LE SERVEUR DU RESEAU.",
+	"poi_server_desc_being_fixed": "LE SERVEUR SE RECONNECTE.",
+	"poi_server_desc_inuse": "UN TRAVAILLEUR UTILISE ACTUELLEMENT CE SERVEUR.",
+	
+	"poi_toilet": "TOILETTE",
+	"poi_toilet_interact": "DESACTIVER L'EAU",
+	"poi_toilet_desc_hackable": "LA TOILETTE FONCTIONNE COMME PREVU.",
+	"poi_toilet_desc_hacked": "VOUS AVEZ SABOTE LE SYSTEME DE TOILETTES.",
+	"poi_toilet_desc_being_fixed": "LE SYSTEME DE TOILETTES EN COURS DE REPARATION.",
+	"poi_toilet_desc_inuse": "UN TRAVAILLEUR UTILISE ACTUELLEMENT CETTE TOILETTE.",
+	
+	"poi_shower": "DOUCHE",
+	"poi_shower_interact": "BAISSEZ LA TEMPERATURE",
+	"poi_shower_desc_hackable": "ACTUELLEMENT UNE BONNE TEMPÉRATURE CHAUDE.",
+	"poi_shower_desc_hacked": "VOUS AVEZ REFROIDI LA DOUCHE.",
+	"poi_shower_desc_being_fixed": "RESTAURATION DE LA TEMPERATURE DE LA DOUCHE.",
+	"poi_shower_desc_inuse": "UN TRAVAILLEUR A ACTUELLEMENT UNE DOUCHE.",
+	
+	"poi_sink": "EVIER",
+	"poi_sink_interact": "EVIER DE TROP-PLEIN",
+	"poi_sink_desc_hackable": "L’EVIER FONCTIONNE ACTUELLEMENT COMME NORMAL.",
+	"poi_sink_desc_hacked": "VOUS AVEZ DEBORDE LE BASSIN DE L'EVIER.",
+	"poi_sink_desc_being_fixed": "L’EVIER EST ACTUELLEMENT EN COURS DE DRAINAGE.",
+	"poi_sink_desc_inuse": "UN TRAVAILLEUR UTILISE ACTUELLEMENT CET EVIER.",
+	
+	"poi_fridge": "FRIGO",
+	"poi_fridge_interact": "AUGMENTER LA TEMPERATURE",
+	"poi_fridge_desc_hackable": "LE FRIGO EST ACTUELLEMENT COOL ET OPERATIONNEL.",
+	"poi_fridge_desc_hacked": "SURCHAUFFE DU FRIGO ET DE LA RUINE.",
+	"poi_fridge_desc_being_fixed": "LE REFRIGERATEUR EST REFROIDI.",
+	"poi_fridge_desc_inuse": "UN TRAVAILLEUR VOIT ACTUELLEMENT CE REFRIGERATEUR.",
+	
+	"poi_cooker": "CUISINIER",
+	"poi_cooker_interact": "DEBRANCHEZ LE GAZ",
+	"poi_cooker_desc_hackable": "LE GAZ EST ACTUELLEMENT NORMAL.",
+	"poi_cooker_desc_hacked": "VOUS AVEZ SACOTE L’ALIMENTATION EN GAZ.",
+	"poi_cooker_desc_being_fixed": "L'ALIMENTATION EN GAZ EST RECONNECTEE.",
+	"poi_cooker_desc_inuse": "UN TRAVAILLEUR UTILISE ACTUELLEMENT CE CUISEUR."
   },
   "SPANISH": {
     "play_game": "JUGAR",
 	"exit_game": "DEJAR",
+	"retry_game": "REINICIAR",
+	"return_to_menu": "VOLVER AL MENU",
+	
+	"game_won": "GANASTE!",
+	"game_lost": "PERDISTE.",
+	
+	"project_sabotaged": "DETESTE EL PROYECTO DE INVESTIGACION\nPARA REEMPLAZARLO.",
+	"project_completed": "LOS INVESTIGADORES TERMINARON SU\nPROYECTO PARA REEMPLAZARLE.",
+	"guards_spotted_you": "LAS GUARDIAS PUNTARON SUS ACCIONES\nY TERMINARON SU PROGRAMA.",
+	
+	"character_boss": "JEFE",
+	"character_boss_desc": "BOSS OVERSEES EL PROYECTO.",
+	
+	"character_techie": "TECNICO",
+	"character_techie_desc": "EL TECNICO FIJARA LAS COSAS QUE HACES SABOTADO.",
+	
+	"character_goon": "OBRERO",
+	"character_goon_desc": "TRABAJADORA TRABAJA ACTIVAMENTE EN EL PROYECTO.",
+	
+	"character_security": "SEGURIDAD",
+	"character_security_desc": "GUARD PATROLS LAB Y PODRA SUS ACCIONES.",
+	
+	"poi_generic_desc_notenoughpower": "NO TIENES UN PODER SUFICIENTE PARA EL SABOTAJE.",
 	
 	"gauge_detection": "SU DETECCION",
 	"gauge_progress": "PROGRESO DEL PROYECTO",
@@ -66,20 +233,69 @@
 	"gauge_stress": "ESTRES",
 	"gauge_productivity": "PRODUCTIVIDAD",
 	"gauge_suspicion": "SOSPECHA",
+	"gauge_playerpower": "TU PODER",
 	
 	"poi_door": "PUERTA",
-	"poi_computer": "COMPUTADORA",
-	"poi_bookcase": "LIBRERO",
-	"poi_server": "SERVIDOR",
-	"poi_toilet": "BANO",
-	"poi_shower": "DUCHA",
-	"poi_sink": "LAVABO",
-	"poi_fridge": "REFRIGERADOR",
-	"poi_cooker": "ESTUFA",
+	"poi_door_interact": "CERRAR LA PUERTA",
+	"poi_door_desc_hackable": "ESTA PUERTA ESTA ABIERTA ACTUALMENTE.",
+	"poi_door_desc_hacked": "ESTA PUERTA ESTA ACTUALMENTE CERRADA.",
+	"poi_door_desc_being_fixed": "ESTA PUERTA ESTA SIENDO REABIERTA",
+	"poi_door_desc_inuse": "ESTA PUERTA ESTA ABIERTA ACTUALMENTE.",
 	
-	"character_boss": "JEFE",
-	"character_techie": "TECNICO",
-	"character_goon": "OBRERO",
-	"character_security": "SEGURIDAD"
+	"poi_computer": "COMPUTADORA",
+	"poi_computer_interact": "DATOS CORRUPTOS",
+	"poi_computer_desc_hackable": "ESTA COMPUTADORA ACTUALMENTE FUNCIONA CORRECTAMENTE.",
+	"poi_computer_desc_hacked": "USTED HA CORRUPTADO LOS DATOS DE ESTA COMPUTADORA.",
+	"poi_computer_desc_being_fixed": "ESTA COMPUTADORA SE ESTÁ REPARANDO ACTUALMENTE.",
+	"poi_computer_desc_inuse": "USANDO ACTUALMENTE ESTA COMPUTADORA.",
+	
+	"poi_bookcase": "IMPRESOR",
+	"poi_bookcase_interact": "DESCONECTAR",
+	"poi_bookcase_desc_hackable": "ESTA IMPRESORA FUNCIONA CORRECTAMENTE.",
+	"poi_bookcase_desc_hacked": "USTED HA JAMMADO LA IMPRESORA.",
+	"poi_bookcase_desc_being_fixed": "ESTA IMPRESORA SE ESTA CORREGIENDO ACTUALMENTE.",
+	"poi_bookcase_desc_inuse": "UN TRABAJADOR ES IMPRESION ACTUAL DE DOCUMENTOS.",
+	
+	"poi_server": "SERVIDOR",
+	"poi_server_interact": "APAGAR EL SERVIDOR",
+	"poi_server_desc_hackable": "EL SERVIDOR ESTA REPORTANDO UNA BUENA CONEXION.",
+	"poi_server_desc_hacked": "USTED HA DESCONECTADO EL SERVIDOR DE LA RED.",
+	"poi_server_desc_being_fixed": "EL SERVIDOR SE ESTA RECONECTANDO.",
+	"poi_server_desc_inuse": "USANDO ACTUALMENTE ESTE SERVIDOR.",
+	
+	"poi_toilet": "BANO",
+	"poi_toilet_interact": "DESHABILITAR EL AGUA",
+	"poi_toilet_desc_hackable": "EL INODORO ACTUALMENTE FUNCIONA COMO SE ESPERA.",
+	"poi_toilet_desc_hacked": "HAS SALVADO EL SISTEMA DE ASEO.",
+	"poi_toilet_desc_being_fixed": "EL SISTEMA DE INODORO SE ESTA REPARANDO.",
+	"poi_toilet_desc_inuse": "TRABAJADOR ESTA UTILIZANDO ACTUALMENTE ESTE TOILET.",
+	
+	"poi_shower": "DUCHA",
+	"poi_shower_interact": "BAJAR LA TEMPERATURA",
+	"poi_shower_desc_hackable": "ACTUALMENTE UNA TEMPERATURA CALIENTE AGRADABLE.",
+	"poi_shower_desc_hacked": "HAS ENFRIADO LA DUCHA.",
+	"poi_shower_desc_being_fixed": "LA TEMPERATURA DE LA DUCHA ESTA RESTAURANDO.",
+	"poi_shower_desc_inuse": "UN TRABAJADOR ESTA TENIENDO UNA DUCHA.",
+	
+	"poi_sink": "LAVABO",
+	"poi_sink_interact": "CUBIERTA DE DESBORDAMIENTO",
+	"poi_sink_desc_hackable": "EL SINK ESTA ACTUALMENTE OPERANDO COMO NORMAL.",
+	"poi_sink_desc_hacked": "HAS SUPERADO LA CUENCA DEL SUMIDERO.",
+	"poi_sink_desc_being_fixed": "EL SUMIDERO ESTA SIENDO DRENADO ACTUALMENTE.",
+	"poi_sink_desc_inuse": "SINK ESTA EN OPERACION.",
+	
+	"poi_fridge": "REFRIGERADOR",
+	"poi_fridge_interact": "AUMENTAR LA TEMPERATURA",
+	"poi_fridge_desc_hackable": "EL FRUTO ES ACTUALMENTE FRESCO Y OPERATIVO.",
+	"poi_fridge_desc_hacked": "HAS SOBREVALORADO EL FIAMBRE Y LA COMIDA EN RUINAS.",
+	"poi_fridge_desc_being_fixed": "EL FRIGORIFICO SE ESTA ENFRIANDO.",
+	"poi_fridge_desc_inuse": "UN TRABAJADOR ESTA BUSCANDO ESTE FUTURO.",
+	
+	"poi_cooker": "ESTUFA",
+	"poi_cooker_interact": "DESCONECTAR GAS",
+	"poi_cooker_desc_hackable": "EL GAS ESTA FLUYENDO ACTUALMENTE NORMAL.",
+	"poi_cooker_desc_hacked": "HA SABOTADO EL SUMINISTRO DE GAS.",
+	"poi_cooker_desc_being_fixed": "EL SUMINISTRO DE GAS SE ESTA RECONECTANDO.",
+	"poi_cooker_desc_inuse": "USANDO ACTUALMENTE ESTA COCINA."
   }
 }

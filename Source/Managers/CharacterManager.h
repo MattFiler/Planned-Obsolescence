@@ -1,3 +1,6 @@
+#ifndef PO_CHARACTER_MANAGER
+#define PO_CHARACTER_MANAGER
+
 #include "../Characters/Boss.h"
 #include "../Characters/Goon.h"
 #include "../Characters/LabTechnician.h"
@@ -18,6 +21,7 @@ class CharacterManager
   bool spawnCharacter(Security* new_security);
 
   float getTotalGaugeValue(character_type character);
+  float getHighestGaugeValue(character_type character);
 
   bool checkForClick(Point click, bool act_on_click = true);
 
@@ -28,6 +32,8 @@ class CharacterManager
   void setCamera(Camera* scene_camera);
   void setUIManager(UIManager* manager) { ui_manager = manager; };
 
+  void sabotageAtPoint(Point point);
+
  private:
   template<class CharacterArray>
   void renderCharacter(CharacterArray character, int& character_count, double& delta_time);
@@ -37,6 +43,7 @@ class CharacterManager
                        int& char_c,
                        int& char_visible_c,
                        float& char_gauge,
+                       float& char_gauge_h,
                        double& delta_time);
 
   template<class CharacterArray>
@@ -44,6 +51,8 @@ class CharacterManager
                              int& character_count,
                              Point click,
                              bool act_on_click = true);
+
+  void registerRepairRequest(Tile* tile);
 
   GameMap* game_map = nullptr;
   Camera* camera = nullptr;
@@ -56,19 +65,25 @@ class CharacterManager
   int boss_count = 0;
   int boss_visible_count = 0;
   float boss_gauge_sum = 0;
+  float boss_gauge_highest = 0;
 
   Goon** goon_instances = nullptr;
   int goon_count = 0;
   int goon_visible_count = 0;
   float goon_gauge_sum = 0;
+  float goon_gauge_highest = 0;
 
   LabTechnician** technician_instances = nullptr;
   int technician_count = 0;
   int technician_visible_count = 0;
   float technician_gauge_sum = 0;
+  float technician_gauge_highest = 0;
 
   Security** security_instances = nullptr;
   int security_count = 0;
   int security_visible_count = 0;
   float security_gauge_sum = 0;
+  float security_gauge_highest = 0;
 };
+
+#endif

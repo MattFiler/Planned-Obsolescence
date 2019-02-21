@@ -24,28 +24,27 @@ class UIManager
   void addTextBox(TextBox* new_textbox);
   void addProgressBar(ProgressBar* new_progressbar);
 
-  void createMainHUD();
+  void createMainHUD(CharacterManager* character_manager);
 
   void updateAndShowCharacterInfo(const std::string& character_type,
                                   float character_gauge,
                                   const std::string& gauge_name);
-  void updateAndShowPointInfo(const std::string& point_name);
+  void updateAndShowTileData(Tile& clicked_tile);
 
   void setRenderer(ASGE::Renderer* rend) { renderer = rend; }; // must be called first!
   void setCamera(Camera* cam) { camera = cam; };
   void setInputData(ASGE::Input* inp) { input = inp; }
-  void update(double delta_time);
+  void update();
   void render(double delta_time);
   bool checkForClick(Point click, bool act_on_click = true);
   void releaseClick();
 
-  Cursor* getCursor();
+  Cursor* getCursor() { return game_cursor; };
+  MainHUD* getMainHUD() { return main_hud_element; };
 
  private:
   void initCharacterPopup();
-  void initPointOfInterestPopup();
-
-  void keepUIWithinScreen(UI* ui_object);
+  void initPointOfInterestPopup(CharacterManager* character_manager);
 
   std::vector<Button*> buttons;
   std::vector<TextBox*> text_boxes;

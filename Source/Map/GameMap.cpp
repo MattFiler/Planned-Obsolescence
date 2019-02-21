@@ -80,11 +80,17 @@ void GameMap::render(double delta_time)
     {
       for (Tile& tile_to_render : *room_to_render.getTiles())
       {
-        if (tile_to_render.hasAnyPointOfInterest() && tile_to_render.getSprite()->isVisible())
+        if (tile_to_render.hasAnyPointOfInterest() && tile_to_render.getTileSprite()->isVisible())
         {
           // Render POI
           game_camera->renderSprite(
-            tile_to_render.getSprite().get(), delta_time, render_index::TILE_LAYER);
+            tile_to_render.getTileSprite().get(), delta_time, render_index::TILE_LAYER);
+        }
+        if (tile_to_render.hasAnyPointOfInterest() && tile_to_render.getRepairSprite()->isVisible())
+        {
+          // Render POI repair status
+          game_camera->renderSprite(
+            tile_to_render.getRepairSprite().get(), delta_time, render_index::TILE_LAYER, false);
         }
       }
     }
@@ -115,8 +121,7 @@ int GameMap::getTileCount()
   return map_data.tile_count;
 }
 
-/* Checks to see if there is a tile at the passed position that is in the passed state */
-bool GameMap::isPOIStateAtPoint(poi_state poi_state, Point point)
+Tile* GameMap::getTileAtPoint(Point point)
 {
   for (Room& room : map_data.rooms)
   {
@@ -124,11 +129,11 @@ bool GameMap::isPOIStateAtPoint(poi_state poi_state, Point point)
     {
       if (tile.getPositionX() == point.x_pos && tile.getPositionY() == point.y_pos)
       {
-        return (tile.getPointOfInterestState() == poi_state);
+        return &tile;
       }
     }
   }
-  return false;
+  return nullptr;
 }
 
 /* Check to see if we clicked a POI */
@@ -138,17 +143,14 @@ bool GameMap::clickedPointCheck(Point click, bool act_on_click)
   {
     for (Tile& tile : *room.getTiles())
     {
-      if (tile.hasAnyPointOfInterest())
+      if (tile.hasAnyPointOfInterest() && tile.isPointOnTile(click))
       {
-        if (tile.isPointOnTile(click))
+        if (act_on_click)
         {
-          if (act_on_click)
-          {
-            // do stuff
-            ui_manager->updateAndShowPointInfo(tile.getTileDescription());
-          }
-          return true;
+          // do stuff
+          ui_manager->updateAndShowTileData(tile);
         }
+        return true;
       }
     }
   }

@@ -1,3 +1,6 @@
+#ifndef PO_PAUSEMENU
+#define PO_PAUSEMENU
+
 #include "../Sprites/ScaledSpriteArray.h"
 #include "Scene.h"
 
@@ -20,3 +23,5 @@ class PauseMenu : public Scene
   void keyHandler(const ASGE::SharedEventData data) override;
   void mouseHandler(const ASGE::SharedEventData data, Point mouse_position) override;
 };
+
+#endif

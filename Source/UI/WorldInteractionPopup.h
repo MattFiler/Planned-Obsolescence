@@ -1,16 +1,20 @@
 #ifndef PLANNEDOBSOLESCENCE_WORLDINTERACTIONPOPUP_H
 #define PLANNEDOBSOLESCENCE_WORLDINTERACTIONPOPUP_H
 
+#include "../Managers/Gauges.h"
+#include "../Map/Tile.h"
 #include "Button.h"
 #include "GetLocalisedString.h"
 #include "HudGaugeData.h"
 #include "ProgressBar.h"
 #include "UI.h"
 
+class CharacterManager;
+
 class WorldInteractionPopup : public UI
 {
  public:
-  explicit WorldInteractionPopup(ASGE::Renderer* rend);
+  explicit WorldInteractionPopup(ASGE::Renderer* rend, CharacterManager* character_manager);
   ~WorldInteractionPopup() override;
 
   WorldInteractionPopup(const WorldInteractionPopup&) = delete;
@@ -18,7 +22,8 @@ class WorldInteractionPopup : public UI
 
   void render(double delta_time) override;
 
-  void setClickedPointName(const std::string& char_name);
+  void getClickedTileReference(Tile& clicked_tile);
+  void updateTileDynamicData();
 
   void setActive(bool is_active);
   bool isActive() { return active; };
@@ -29,11 +34,16 @@ class WorldInteractionPopup : public UI
 
   ScaledSpriteArray* background_sprite = nullptr;
   Button* close_button = nullptr;
-  HudGaugeData* progress_bar = nullptr;
+  Button* poi_interaction_button = nullptr;
+
+  Tile* referenced_tile = nullptr;
+
+  PO_Gauges gauge_data = PO_Gauges();
 
   GetLocalisedString localiser;
 
   std::string poi_name = "";
+  std::string poi_desc = "";
 };
 
 #endif // PLANNEDOBSOLESCENCE_WORLDINTERACTIONPOPUP_H

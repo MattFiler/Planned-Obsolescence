@@ -75,7 +75,7 @@ void ProgressBar::addFillSprite(const std::string& sprite_texture_path)
   }
 }
 
-void ProgressBar::setProgress(float new_progress)
+float ProgressBar::setProgress(float new_progress)
 {
   bar_progress = new_progress;
   if (bar_progress > 1)
@@ -94,4 +94,5 @@ void ProgressBar::setProgress(float new_progress)
   {
     fill_sprite->setHeight((height - fill_padding.y_pos) * bar_progress);
   }
+  return bar_progress;
 }

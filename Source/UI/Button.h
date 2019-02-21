@@ -3,6 +3,7 @@
 
 #include "../Debug/DebugText.h"
 #include "../Viewport/ClickArea.h"
+#include "GetLocalisedString.h"
 #include "UI.h"
 #include <functional>
 
@@ -15,13 +16,19 @@ class Button : public UI
          const std::string& texture_path_1,
          const std::string& texture_path_2,
          float _width = 100,
-         float _height = 50);
+         float _height = 50,
+         const std::string& button_text = "",
+         float text_size = 1.0f,
+         Point text_offset = Point(0, 0),
+         ASGE::Colour text_colour = ASGE::COLOURS::WHITE);
   ~Button() override;
 
   void render(double delta_time) override;
   void moveTo(Point point) override;
   bool checkForClick(Point click_location);
   void releaseClick();
+
+  void updateText(const std::string& new_text) { my_b_text = localiser.getString(new_text); };
 
   void setActive(bool active) { is_active = active; };
   bool isActive() { return is_active; };
@@ -31,7 +38,13 @@ class Button : public UI
  private:
   ScaledSpriteArray* sprite = nullptr;
   ClickArea click_area;
+  GetLocalisedString localiser;
   bool is_active = true;
+
+  std::string my_b_text = "";
+  float my_b_text_size = 0.0f;
+  Point my_b_text_offset; // For reference, offset is (PADDING FROM LEFT, PADDING FROM BOTTOM)
+  ASGE::Colour my_b_text_colour = ASGE::COLOURS::WHITE;
 };
 
 #endif // PLANNEDOBSOLESCENCE_BUTTON_H

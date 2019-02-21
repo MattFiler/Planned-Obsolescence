@@ -27,17 +27,24 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input)
   spawnCharacters(renderer);
 
   // Create UI
-  ui_manager.createMainHUD();
+  ui_manager.createMainHUD(&character_manager);
 
   Button* quit_button = new Button(Point(SCREEN_WIDTH - 148, 0),
                                    renderer,
                                    "data/UI/IN_GAME_UI/TOP_RIGHT_QUIT.png",
-                                   "data/UI/IN_GAME_UI/TOP_RIGHT_QUIT.png",
+                                   "data/UI/IN_GAME_UI/TOP_RIGHT_QUIT_HOVER.png",
                                    148,
-                                   53);
+                                   53,
+                                   "exit_game",
+                                   0.7f,
+                                   Point(45, 17));
   scenes* next = &next_scene;
   quit_button->click_function = [next] { *next = scenes::MAIN_MENU; };
   ui_manager.addButton(quit_button);
+
+  // Reset game over config for new load
+  game_over_instance.setGameOverType(game_over_type::NOT_YET_DECIDED);
+  project_gauge.resetAll();
 
   return true;
 }
@@ -55,6 +62,9 @@ void GameCore::passReferences(ASGE::Input* input)
   character_manager.setCamera(&camera);
   character_manager.setUIManager(&ui_manager);
 
+  project_gauge.setUIManager(&ui_manager);
+  project_gauge.setCharacterManager(&character_manager);
+
   game_map.setUIManager(&ui_manager);
 }
 
@@ -65,6 +75,26 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   {
     Goon* new_goon = new Goon();
     character_manager.spawnCharacter(new_goon);
+    new_goon = new Goon();
+    character_manager.spawnCharacter(new_goon);
+    new_goon = new Goon();
+    character_manager.spawnCharacter(new_goon);
+  }
+  if (character_manager.canSpawn(character_type::SECURITY))
+  {
+    Security* new_guard = new Security();
+    character_manager.spawnCharacter(new_guard);
+    new_guard->setSpawnPosition(200, 200);
+    // std::vector<Point>* route = new_guard->getPatrolRoute();
+    // route->push_back(Point(game_map.getMapData()->rooms_x))
+  }
+
+  if (character_manager.canSpawn(character_type::TECHNICIAN))
+  {
+    LabTechnician* new_tech = new LabTechnician();
+    character_manager.spawnCharacter(new_tech);
+    new_tech = new LabTechnician();
+    character_manager.spawnCharacter(new_tech);
   }
 }
 
@@ -170,12 +200,16 @@ scenes GameCore::update(double delta_time)
   camera.moveCamera(x_axis_input * static_cast<float>(delta_time),
                     y_axis_input * static_cast<float>(delta_time));
 
-  // Update managers
-  ui_manager.update(delta_time);
-  character_manager.update(delta_time);
+  // Update gauges and check for ending conditions (end game if required)
+  game_over_type current_endstate = project_gauge.update(delta_time);
+  if (current_endstate != game_over_type::NOT_YET_DECIDED)
+  {
+    endGame(current_endstate);
+  }
 
-  // Update project gauge
-  project_gauge.update(delta_time);
+  // Update managers
+  ui_manager.update();
+  character_manager.update(delta_time);
 
   // Check for cursor hover
   Point click_position = ui_manager.getCursor()->getPosition();
@@ -208,4 +242,12 @@ void GameCore::render(double delta_time)
 
   // Render UI
   ui_manager.render(delta_time);
+}
+
+/* Trigger a game over */
+void GameCore::endGame(game_over_type type)
+{
+  game_over_instance.setGameOverType(type);
+  game_over_instance.setGameOverReason(project_gauge.whyDidGameEnd());
+  next_scene = scenes::GAME_OVER;
 }

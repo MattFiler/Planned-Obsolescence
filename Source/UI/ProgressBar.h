@@ -24,8 +24,11 @@ class ProgressBar : public UI
   void addBackgroundSprite(const std::string& sprite_texture_path);
   void addFillSprite(const std::string& sprite_texture_path);
 
-  void setProgress(float new_progress);
+  float setProgress(float new_progress);
   float getProgress() { return bar_progress; };
+
+  ScaledSpriteArray* getBackgroundSprite() { return background_sprite; }
+  ScaledSpriteArray* getFillSprite() { return fill_sprite; }
 
  private:
   float bar_progress = 0; // Represents a percentage between 0 and 1

@@ -73,11 +73,6 @@ add_executable(
         Source/Map/Room.cpp
         Source/Map/Room.h
         Source/Map/Tile.cpp
-        Source/EventSystem/Observer.cpp
-        Source/EventSystem/Observer.h
-        Source/EventSystem/Subject.cpp
-        Source/EventSystem/Subject.h
-        Source/EventSystem/Entity.h
         Source/Map/Tile.h
         Source/Characters/Pathfinding/PathfindingMap.cpp
         Source/Debug/DebugText.h
@@ -108,8 +103,8 @@ add_executable(
         Source/ConfigParsers/MapData.h
         Source/UI/GenericUI.cpp
         Source/UI/GenericUI.h
-        Source/Gauges/UniversalGauge.cpp
-        Source/Gauges/UniversalGauge.h
+        Source/Managers/GaugeManager.cpp
+        Source/Managers/GaugeManager.h
         Source/UI/CharacterInfoPopup.cpp
         Source/UI/CharacterInfoPopup.h
         Source/UI/MainHUD.cpp
@@ -120,7 +115,9 @@ add_executable(
         Source/UI/WorldInteractionPopup.cpp
         Source/UI/WorldInteractionPopup.h
         Source/UI/Cursor.cpp
-        Source/UI/Cursor.h)
+        Source/UI/Cursor.h
+        Source/Managers/Gauges.h
+        Source/Managers/Gauges.cpp)
 
 ## library includes
 target_include_directories(

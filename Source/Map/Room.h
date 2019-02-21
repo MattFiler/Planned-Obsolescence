@@ -22,6 +22,9 @@ class Room
   float getPositionX();
   float getPositionY();
 
+  int getTilesX() { return room_data.tiles_x; };
+  int getTilesY() { return room_data.tiles_y; };
+
  private:
   // Configs
   json* tile_config;

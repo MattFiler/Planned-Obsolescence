@@ -49,23 +49,37 @@ struct TileData
     if (tile_config["poi_door"] == true)
     {
       poi = point_of_interest::DOOR;
-      state_of_poi = poi_state::DOOR_IS_OPEN;
     }
     else if (tile_config["poi_computer"] == true)
     {
       poi = point_of_interest::COMPUTER;
-      state_of_poi = poi_state::POI_IS_FUNCTIONAL;
     }
 
     // If we have a POI, get alt sprite and description
     if (poi != point_of_interest::NONE_ON_THIS_TILE)
     {
+      // We start as a functional POI (not being used, not broken, not being fixed)
+      state_of_poi = poi_state::POI_IS_FUNCTIONAL;
+
       // Set tile sprite
       ASGE::Sprite* tile_sprite = renderer->createRawSprite();
       tile_sprite->loadTexture(tile_config["poi_sprite"]);
       sprite = std::make_shared<ScaledSpriteArray>(1);
       sprite->addSprite(*tile_sprite);
       sprite->hide();
+
+      // Assign repair sprites
+      repair_sprites = std::make_shared<ScaledSpriteArray>(3);
+      ASGE::Sprite* repair_sprite_1 = renderer->createRawSprite();
+      repair_sprite_1->loadTexture("data/UI/IN_GAME_UI/POI_BROKEN.png");
+      ASGE::Sprite* repair_sprite_2 = renderer->createRawSprite();
+      repair_sprite_2->loadTexture("data/UI/IN_GAME_UI/POI_REPAIR_REQUESTED.png");
+      ASGE::Sprite* repair_sprite_3 = renderer->createRawSprite();
+      repair_sprite_3->loadTexture("data/UI/IN_GAME_UI/POI_REPAIRING.png");
+      repair_sprites->addSprite(*repair_sprite_1);
+      repair_sprites->addSprite(*repair_sprite_2);
+      repair_sprites->addSprite(*repair_sprite_3);
+      repair_sprites->hide();
 
       // Set dimensions
       sprite->setWidth(width);
@@ -86,6 +100,8 @@ struct TileData
     {
       sprite->xPos(x_pos);
       sprite->yPos(y_pos);
+      repair_sprites->xPos(x_pos);
+      repair_sprites->yPos(y_pos);
     }
   }
 
@@ -117,7 +133,8 @@ struct TileData
   point_of_interest poi = point_of_interest::NONE_ON_THIS_TILE;
   poi_state state_of_poi = poi_state::UNINITIALISED_POI;
   std::string poi_desc = "";
-  std::shared_ptr<ScaledSpriteArray> sprite; // Only relevant if we have a POI.
+  std::shared_ptr<ScaledSpriteArray> sprite;
+  std::shared_ptr<ScaledSpriteArray> repair_sprites;
 };
 
 #endif // PLANNEDOBSOLESCENCE_TILEDATA_H

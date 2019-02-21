@@ -1,3 +1,6 @@
+#ifndef PO_SPLASHSCREEN
+#define PO_SPLASHSCREEN
+
 #include "../Sprites/ScaledSpriteArray.h"
 #include "Scene.h"
 
@@ -28,3 +31,5 @@ class Splashscreen : public Scene
   int switch_fade = 0;
   double time_waited = 0;
 };
+
+#endif

@@ -20,18 +20,6 @@ enum character_type
   TECHNICIAN,
 };
 
-// The character's currently active job
-enum character_job
-{
-  JUST_SPAWNED_IN,
-  IDLE,
-  LOOKING_BUSY,
-  SUSPICIOUS,
-  CHILLING_OUT,
-  GETTING_ANGRY,
-  REALLY_ANGRY
-};
-
 /* --- Map --- */
 
 // Potential movement directions from tile
@@ -54,11 +42,12 @@ enum point_of_interest
 // POI state (affected by interaction)
 enum poi_state
 {
-  DOOR_IS_OPEN,
-  DOOR_IS_CLOSED,
-  POI_IS_BROKEN,
-  POI_IS_FUNCTIONAL,
-  UNINITIALISED_POI
+  POI_IS_BROKEN,             // POI is broken and unused
+  POI_IS_FUNCTIONAL,         // POI is functional and unused
+  POI_IS_BEING_USED_BY_GOON, // POI is in use, can't interact
+  POI_REPAIR_PENDING,        // A repair is queued up
+  POI_IS_BEING_FIXED,        // POI is being repaired by technician
+  UNINITIALISED_POI          // Tile is not a POI
 };
 
 // Accessibility - can we traverse this tile?
@@ -66,11 +55,6 @@ enum tile_accessibility
 {
   TILE_IS_TRAVERSABLE,
   TILE_IS_NON_TRAVERSABLE
-};
-
-enum Event
-{
-  DEFAULTE
 };
 
 /* --- UI --- */
@@ -89,16 +73,25 @@ enum cursor_variant
   CURSOR_POINTER
 };
 
+// Repair sprites to display on tile
+enum repair_sprites
+{
+  JUST_PLAIN_BROKEN,
+  REPAIR_REQUESTED,
+  REPAIR_IN_PROGRESS
+};
+
 /* --- Game --- */
 
 // Scenes
 enum scenes
 {
-  NO_CHANGE = -1,
-  SPLASHSCREEN = 0,
-  MAIN_MENU = 1,
-  GAME_CORE = 2,
-  QUIT_GAME = 3
+  NO_CHANGE,
+  SPLASHSCREEN,
+  MAIN_MENU,
+  GAME_CORE,
+  QUIT_GAME,
+  GAME_OVER
 };
 
 // Render index
@@ -120,7 +113,48 @@ enum hud_gauge_types
 {
   YOUR_DETECTION,
   PROJECT_PROGRESS,
-  TIME_REMAINING
+  TIME_REMAINING,
+  PLAYER_POWER
+};
+
+// Gauge levels
+enum gauge_levels
+{
+  GAUGE_FULL = 100,
+  GAUGE_HALF = 50,
+  GAUGE_EMPTY = 0
+};
+
+// Gauge tick-rates
+enum gauge_rates
+{
+  PROJECT_TIMER = 1000,      // deltatime (ms) divided by THIS
+  POWER = 400,               // deltatime (ms) divided by THIS
+  TOTAL_PROGRESS = 700,      // deltatime (ms) divided by THIS multiplied by normalised productivity
+                             // average
+  GOON_PRODUCTIVTIY = 10000, // defines how often productivity is modified and by how much
+  SECURITY_AWARENESS = 50,   // bigger number increases the radius of detection
+  SECURITY_RESET_RATE = 1,   // amount per second suspicion naturally decays
+  TECHIE_STRESS_QUEUE_MULTIPLIER = 1, // How much having a long queue affects stress
+  TECHIE_STRESS_GAIN = 1,             // How much stress is gained by working
+  TECHIE_STRESS_RELEIF = 2,           // How much stress decays over time while not working
+  TECHIE_STRESS_SLOW = 2,             // How much being stressed slows work down
+  BOSS_FAITH = 1,                     // TO BE IMPLEMENTED
+};
+
+// Game over definitions
+enum game_over_type
+{
+  PLAYER_WON,
+  PLAYER_LOST,
+  NOT_YET_DECIDED
+};
+enum game_over_reason
+{
+  PLAYER_WAS_DETECTED,
+  PROJECT_WAS_COMPLETED,
+  PROJECT_TIME_RAN_OUT,
+  ISNT_OVER_YET
 };
 
 // Our native resolution which we will scale from to the resolution specified in the game config.
