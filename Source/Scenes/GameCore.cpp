@@ -86,20 +86,16 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   if (character_manager.canSpawn(character_type::GOON))
   {
     Goon* new_goon = new Goon();
-    character_manager.spawnCharacter(new_goon);
-    new_goon->setSpawnPosition(100, 150);
+    character_manager.spawnCharacter(new_goon, 100.0f, 150.0f);
     new_goon = new Goon();
-    character_manager.spawnCharacter(new_goon);
-    new_goon->setSpawnPosition(500, 150);
+    character_manager.spawnCharacter(new_goon, 100.0f, 150.0f);
     new_goon = new Goon();
-    character_manager.spawnCharacter(new_goon);
-    new_goon->setSpawnPosition(500, 500);
+    character_manager.spawnCharacter(new_goon, 100.0f, 150.0f);
   }
   if (character_manager.canSpawn(character_type::SECURITY))
   {
     Security* new_guard = new Security();
-    character_manager.spawnCharacter(new_guard);
-    new_guard->setSpawnPosition(150, 150);
+    character_manager.spawnCharacter(new_guard, 100.0f, 150.0f);
     // std::vector<Point>* route = new_guard->getPatrolRoute();
     // route->push_back(Point(game_map.getMapData()->rooms_x))
   }
@@ -107,11 +103,9 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
   if (character_manager.canSpawn(character_type::TECHNICIAN))
   {
     LabTechnician* new_tech = new LabTechnician();
-    character_manager.spawnCharacter(new_tech);
-    new_tech->setSpawnPosition(100, 100);
+    character_manager.spawnCharacter(new_tech, 550.0f, 550.0f);
     new_tech = new LabTechnician();
-    character_manager.spawnCharacter(new_tech);
-    new_tech->setSpawnPosition(100, 100);
+    character_manager.spawnCharacter(new_tech, 550.0f, 550.0f);
   }
 }
 
