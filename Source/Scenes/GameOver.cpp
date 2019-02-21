@@ -6,6 +6,7 @@
 #include <Engine/Renderer.h>
 
 game_over_type GameOver::game_over = game_over_type::NOT_YET_DECIDED;
+game_over_reason GameOver::game_over_v = game_over_reason::ISNT_OVER_YET;
 
 /**
  *   @brief   Loads all variables and sprites for this scene

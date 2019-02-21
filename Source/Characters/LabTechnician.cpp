@@ -5,7 +5,8 @@ void LabTechnician::update(double delta_time)
   if (position == idle_position)
   {
     // Decay stress while at idle position
-    config.internal_gauge -= gauge_rates ::TECHIE_STRESS_RELEIF * (static_cast<float>(delta_time)/1000);
+    config.internal_gauge -=
+      gauge_rates ::TECHIE_STRESS_RELEIF * (static_cast<float>(delta_time) / 1000);
     if (config.internal_gauge < 0)
     {
       config.internal_gauge = 0;
@@ -13,8 +14,10 @@ void LabTechnician::update(double delta_time)
   }
   else
   {
-    float multiplier = 1 + (gauge_rates ::TECHIE_STRESS_QUEUE_MULTIPLIER * static_cast<float>(broken_pois.size()));
-    config.internal_gauge += (gauge_rates ::TECHIE_STRESS_GAIN * multiplier) * (static_cast<float>(delta_time)/1000);
+    float multiplier =
+      1 + (gauge_rates ::TECHIE_STRESS_QUEUE_MULTIPLIER * static_cast<float>(broken_pois.size()));
+    config.internal_gauge +=
+      (gauge_rates ::TECHIE_STRESS_GAIN * multiplier) * (static_cast<float>(delta_time) / 1000);
     if (config.internal_gauge > 100)
     {
       config.internal_gauge = 100;
