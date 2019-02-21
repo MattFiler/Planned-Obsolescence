@@ -86,11 +86,19 @@ void GameCore::spawnCharacters(ASGE::Renderer* renderer)
 {
   if (character_manager.canSpawn(character_type::GOON))
   {
-    for(int i = 1; i < 7; i++)
+    for(int i = 1; i < 4; i++)
     {
       auto tile_count = static_cast<unsigned  long long int>(game_map.getRooms()->at(i).getTileCount() / 2);
       float x_pos = game_map.getRooms()->at(i).getTiles()->at(tile_count).getPositionX();
       float y_pos = game_map.getRooms()->at(i).getTiles()->at(tile_count).getPositionY();
+      Goon *new_goon = new Goon();
+      character_manager.spawnCharacter(new_goon, x_pos, y_pos);
+    }
+    for(int i = 1; i < 5; i++)
+    {
+      auto tile_count = static_cast<unsigned  long long int>(game_map.getRooms()->at(static_cast<unsigned long long int>(game_map.getRoomCount()-i)).getTileCount() / 2);
+      float x_pos = game_map.getRooms()->at(static_cast<unsigned long long int>(game_map.getRoomCount()-i)).getTiles()->at(tile_count).getPositionX();
+      float y_pos = game_map.getRooms()->at(static_cast<unsigned long long int>(game_map.getRoomCount()-i)).getTiles()->at(tile_count).getPositionY();
       Goon *new_goon = new Goon();
       character_manager.spawnCharacter(new_goon, x_pos, y_pos);
     }

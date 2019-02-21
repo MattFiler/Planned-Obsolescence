@@ -137,7 +137,7 @@ enum gauge_rates
   GOON_PRODUCTIVTIY = 5000, // defines how often productivity is modified and by how much
   GOON_MAX_ROOM_ITER = 7,   // the most times a goon will switch poi in a single room
   GOON_MIN_TIME_AT_POI = 5000,
-  GOON_MAX_TIME_AT_POI = 30000,
+  GOON_MAX_TIME_AT_POI = 15000,
   SECURITY_AWARENESS = 50,            // bigger number increases the radius of detection
   SECURITY_RESET_RATE = 1,            // amount per second suspicion naturally decays
   TECHIE_STRESS_QUEUE_MULTIPLIER = 1, // How much having a long queue affects stress
