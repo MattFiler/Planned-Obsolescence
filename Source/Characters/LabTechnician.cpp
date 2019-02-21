@@ -2,6 +2,7 @@
 
 void LabTechnician::update(double delta_time)
 {
+  updateTimeBetweenFrames(config.movement_speed * 10);
   float multiplier =
     1 + (gauge_rates ::TECHIE_STRESS_QUEUE_MULTIPLIER * static_cast<float>(broken_pois.size()));
   if (position == idle_position)
@@ -43,6 +44,7 @@ void LabTechnician::update(double delta_time)
   }
   else if (!updatePosition(delta_time))
   {
+    updateTimeBetweenFrames(1000000);
     if (broken_pois.empty())
     {
       calculateRouteToPoint(idle_position);

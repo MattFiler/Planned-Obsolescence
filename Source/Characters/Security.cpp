@@ -24,6 +24,7 @@ Point Security::getMiddleTilePosition(Room& this_room)
 
 void Security::update(double delta_time)
 {
+  updateTimeBetweenFrames(config.movement_speed * 10);
   if (config.internal_gauge > 0)
   {
     if (config.internal_gauge < gauge_levels::GAUGE_FULL)
@@ -43,6 +44,7 @@ void Security::update(double delta_time)
 
   if (!updatePosition(delta_time))
   {
+    updateTimeBetweenFrames(1000000);
     patrol_index++;
     if (patrol_index > patrol_route.size() - 1)
     {

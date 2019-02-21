@@ -36,6 +36,22 @@ bool Character::updatePosition(double delta_time)
   // Check if at the end of a route, if so there is no point checking for movement
   if (route_index != current_route.size() - 1)
   {
+    if(direction.x_mag > 0)
+    {
+      setDirection(direction::RIGHT);
+    }
+    else if(direction.x_mag < 0)
+    {
+      setDirection(direction::LEFT);
+    }
+    else if(direction.y_mag > 0)
+    {
+      setDirection(direction::DOWN);
+    }
+    else
+    {
+      setDirection(direction::UP);
+    }
     // Store the current distance to the next node
     float previous_distance = distance_to_next_node;
     // Add to the current position based on speed and delta_time
@@ -469,4 +485,12 @@ Point Character::findPositionForPOI(Point point)
     }
   }
   return Point(-1, -1);
+}
+
+void Character::updateTimeBetweenFrames(double new_time)
+{
+    for (int i = 0; i < direction::DIRECTION_COUNT; i++)
+    {
+        config.sprites[i]->timeBetweenFrames(new_time);
+    }
 }

@@ -44,6 +44,7 @@ class Character
   Point getPosition() { return position; };
 
   bool isPointInArea(Point point) { return click_area.isPointInArea(point); };
+  void updateTimeBetweenFrames(double new_time);
 
   direction getDirection() { return config.currently_facing; };
   void setDirection(direction new_direction) { config.currently_facing = new_direction; };

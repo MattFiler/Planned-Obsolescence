@@ -91,9 +91,8 @@ struct CharacterData
     for (int x = 0; x < character_sprite_index::SPRITE_COUNT - 1; x++)
     {
       ASGE::Sprite* new_sprite = renderer->createRawSprite();
-      std::string this_direction = "up";
-      new_sprite->loadTexture(sprite_folder + this_direction + "/" + sprite_prefix +
-                              this_direction + std::to_string(x + 1) + ".png");
+      new_sprite->loadTexture(sprite_folder + direction + "/" + sprite_prefix + direction +
+                              std::to_string(x + 1) + ".png");
       new_direction_sprites->addSprite(*new_sprite);
     }
     new_direction_sprites->timeBetweenFrames(movement_speed * 10);
