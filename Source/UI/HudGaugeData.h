@@ -64,6 +64,12 @@ struct HudGaugeData
                          static_cast<int>(text_location.y_pos),
                          0.5,
                          ASGE::COLOURS::BLACK);
+    renderer->renderText(std::to_string(static_cast<int>(progress_bar->getProgress() * 100)) + "%",
+                         static_cast<int>(text_location.x_pos + ((progress_bar->getWidth() - 70) *
+                                                                 ScaledSpriteArray::width_scale)),
+                         static_cast<int>(text_location.y_pos),
+                         0.5,
+                         ASGE::COLOURS::BLACK);
   }
 
   void update(float value)
