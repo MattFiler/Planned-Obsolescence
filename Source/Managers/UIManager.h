@@ -1,12 +1,11 @@
 #ifndef PLANNEDOBSOLESCENCE_UIMANAGER_H
 #define PLANNEDOBSOLESCENCE_UIMANAGER_H
 
-#include "../UI/CharacterInfoPopup.h"
 #include "../UI/Cursor.h"
 #include "../UI/GenericUI.h"
+#include "../UI/InteractionPopup.h"
 #include "../UI/MainHUD.h"
 #include "../UI/PopupWindow.h"
-#include "../UI/WorldInteractionPopup.h"
 #include "../Viewport/Camera.h"
 #include <Engine/Input.h>
 
@@ -57,8 +56,8 @@ class UIManager
   std::vector<GenericUI*> generic_spriteset;
   MainHUD* main_hud_element = nullptr;
 
-  CharacterInfoPopup* char_info_popup = nullptr;
-  WorldInteractionPopup* poi_interaction_popup = nullptr;
+  InteractionPopup* char_info_popup = nullptr;
+  InteractionPopup* poi_interaction_popup = nullptr;
 
   Cursor* game_cursor = nullptr;
   double cursor_x = 0;

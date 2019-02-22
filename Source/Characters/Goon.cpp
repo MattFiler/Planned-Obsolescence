@@ -16,7 +16,7 @@ void Goon::update(double delta_time)
   updateTimeBetweenFrames(static_cast<float>(config.movement_speed) * 10.0f / speed_multiplier);
   if (!updatePosition(delta_time))
   {
-      updateTimeBetweenFrames(1000000);
+    updateTimeBetweenFrames(1000000);
     // Check if the POI is valid the first time only
     if (!at_valid_poi && point_of_interest_tile != nullptr &&
         point_of_interest_tile->getPointOfInterestState() == poi_state::POI_IS_FUNCTIONAL &&

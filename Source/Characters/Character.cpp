@@ -36,15 +36,15 @@ bool Character::updatePosition(double delta_time)
   // Check if at the end of a route, if so there is no point checking for movement
   if (route_index != current_route.size() - 1)
   {
-    if(direction.x_mag > 0)
+    if (direction.x_mag > 0)
     {
       setDirection(direction::RIGHT);
     }
-    else if(direction.x_mag < 0)
+    else if (direction.x_mag < 0)
     {
       setDirection(direction::LEFT);
     }
-    else if(direction.y_mag > 0)
+    else if (direction.y_mag > 0)
     {
       setDirection(direction::DOWN);
     }
@@ -489,8 +489,8 @@ Point Character::findPositionForPOI(Point point)
 
 void Character::updateTimeBetweenFrames(double new_time)
 {
-    for (int i = 0; i < direction::DIRECTION_COUNT; i++)
-    {
-        config.sprites[i]->timeBetweenFrames(new_time);
-    }
+  for (int i = 0; i < direction::DIRECTION_COUNT; i++)
+  {
+    config.sprites[i]->timeBetweenFrames(new_time);
+  }
 }

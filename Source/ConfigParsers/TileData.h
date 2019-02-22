@@ -86,7 +86,7 @@ struct TileData
       sprite->setHeight(height);
 
       // Set description
-      poi_desc = tile_config["poi_desc"];
+      poi_desc = tile_config["popup_subtitle"];
     }
   }
 

@@ -84,7 +84,8 @@ void UIManager::createMainHUD(CharacterManager* character_manager)
 /* Initialise the character popup */
 void UIManager::initCharacterPopup()
 {
-  char_info_popup = new CharacterInfoPopup(renderer);
+  char_info_popup = new InteractionPopup(renderer);
+  char_info_popup->setPopupType(popup_type::CHARACTER_INFO_POPUP);
   char_info_popup->setSoundPlayer(sound_player);
   char_info_popup->setActive(false, false);
 }
@@ -92,7 +93,9 @@ void UIManager::initCharacterPopup()
 /* Initialise the poi interaction popup */
 void UIManager::initPointOfInterestPopup(CharacterManager* character_manager)
 {
-  poi_interaction_popup = new WorldInteractionPopup(renderer, character_manager);
+  poi_interaction_popup = new InteractionPopup(renderer);
+  poi_interaction_popup->setCharacterManager(character_manager);
+  poi_interaction_popup->setPopupType(popup_type::POI_INFO_POPUP);
   poi_interaction_popup->setSoundPlayer(sound_player);
   poi_interaction_popup->setActive(false, false);
 }

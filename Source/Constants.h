@@ -91,6 +91,13 @@ enum repair_sprites
   REPAIR_IN_PROGRESS
 };
 
+// Popup type
+enum popup_type
+{
+  CHARACTER_INFO_POPUP,
+  POI_INFO_POPUP
+};
+
 /* --- Game --- */
 
 // Scenes
