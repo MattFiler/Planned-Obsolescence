@@ -1,15 +1,5 @@
 #include "Camera.h"
 
-/* Get/set our renderer */
-void Camera::setRenderer(ASGE::Renderer* rend)
-{
-  renderer = rend;
-}
-ASGE::Renderer* Camera::getRenderer()
-{
-  return renderer;
-}
-
 /* Renders the passed sprite with the camera offset applied */
 void Camera::renderSprite(ScaledSpriteArray* sprite,
                           double delta_time,
@@ -33,12 +23,6 @@ void Camera::renderSprite(ScaledSpriteArray* sprite,
   sprite->addY(position.y_pos);
 }
 
-/* Returns the current position of the camera */
-Point Camera::getCameraPosition()
-{
-  return position / ScaledSpriteArray::width_scale;
-}
-
 /* Converts a point in screen space to simulated world space, applying both camera offset and
  * scaling */
 Point Camera::displayedToSimulatedWorld(Point point)
@@ -51,6 +35,15 @@ Point Camera::displayedToSimulatedWorld(Point point)
 /* Move the camera by the passed amount*/
 void Camera::moveCamera(float x_amount, float y_amount)
 {
-  position.x_pos += x_amount;
-  position.y_pos += y_amount;
+  float new_x = position.x_pos + x_amount;
+  float new_y = position.y_pos + y_amount;
+
+  if (new_x <= (map_dims.x_pos / 2) && new_x >= -(map_dims.x_pos / 2))
+  {
+    position.x_pos = new_x;
+  }
+  if (new_y <= (map_dims.y_pos / 2) && new_y >= -(map_dims.y_pos / 2))
+  {
+    position.y_pos = new_y;
+  }
 }

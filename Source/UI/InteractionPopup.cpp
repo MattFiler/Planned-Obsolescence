@@ -43,9 +43,6 @@ InteractionPopup::~InteractionPopup()
     {
       delete poi_interaction_button;
       poi_interaction_button = nullptr;
-
-      delete character_manager;
-      character_manager = nullptr;
     }
   }
 }

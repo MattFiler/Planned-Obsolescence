@@ -26,6 +26,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud
 
   // load map
   game_map.load(renderer, &camera);
+  camera.setMapDims(game_map.getMapSize());
 
   // Pass references out and spawn characters
   passReferences(input);

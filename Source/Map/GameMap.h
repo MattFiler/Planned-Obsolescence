@@ -28,6 +28,7 @@ class GameMap
 
   int getRoomsX() { return map_data.rooms_x; };
   int getRoomsY() { return map_data.rooms_y; };
+  Point getMapSize() { return Point(map_data.map_width, map_data.map_height); }
 
   bool isPOIStateAtPoint(poi_state poi_state, Point point);
   Tile* getTileAtPoint(Point point);
