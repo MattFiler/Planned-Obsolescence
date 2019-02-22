@@ -1,6 +1,6 @@
 <img align="right" src="https://i.imgur.com/Udt8hGy.jpg" width="100%" alt="Planned Obsolescence" style="padding-bottom:20px;">
 
-### Intro
+&nbsp;
 
 This was a group project to create a game with a tangential link to the film Ex Machina. 
 
