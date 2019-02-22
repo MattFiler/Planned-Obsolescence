@@ -1,12 +1,14 @@
 <img align="right" src="https://i.imgur.com/Udt8hGy.jpg" width="100%" alt="Planned Obsolescence">
 
+### Intro
+
 This was a group project to create a game with a tangential link to the film Ex Machina. 
 
 Using OpenGL and the engine framework ASGE we created Planned Obsolescence - a game where you play TIM, the Totally Intelligent Machine. TIM oversees a research lab which has just started working on a project to supersede TIM. The goal of the game is to disrupt their work on the project so that TIM can stay in control of the lab and not be replaced.
 
-<img align="right" src="https://i.imgur.com/Q0MhRLJ.png" width="50%">
-
 ### Gameplay
+
+<img align="right" src="https://i.imgur.com/Q0MhRLJ.png" width="50%">
 
 In order to disrupt project work you can interact with a number of locations around the map - for example, corrupting a computer system or closing a door. Doing so will decrease worker's productivity which will affect the progression speed of the project.
 
