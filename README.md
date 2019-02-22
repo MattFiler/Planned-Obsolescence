@@ -1,4 +1,4 @@
-<img align="right" src="https://i.imgur.com/Udt8hGy.jpg" width="100%" alt="Planned Obsolescence">
+<img align="right" src="https://i.imgur.com/Udt8hGy.jpg" width="100%" alt="Planned Obsolescence" style="padding-bottom:20px;">
 
 ### Intro
 
