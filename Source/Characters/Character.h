@@ -43,6 +43,9 @@ class Character
   int getSpawnCapAsInt();
   Point getPosition() { return position; };
 
+  float getWidth();
+  float getHeight();
+
   bool isPointInArea(Point point) { return click_area.isPointInArea(point); };
   void updateTimeBetweenFrames(double new_time);
 

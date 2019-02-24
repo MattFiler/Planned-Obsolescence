@@ -352,6 +352,15 @@ bool ScaledSpriteArray::fadeOut(double time_to_fade, double delta_time)
   return false;
 }
 
+// Set opacity to set amount
+void ScaledSpriteArray::setOpacity(float new_opacity)
+{
+  for (int i = 0; i < number_of_sprites; i++)
+  {
+    my_sprites[i]->opacity(new_opacity);
+  }
+}
+
 /**
  *   @brief   Sets the speed at which the sprite is animated
  *   @details Sets the time between animation frames used in returnNextSprite

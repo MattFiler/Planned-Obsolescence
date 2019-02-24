@@ -1,6 +1,7 @@
 #ifndef PLANNEDOBSOLESCENCE_UIMANAGER_H
 #define PLANNEDOBSOLESCENCE_UIMANAGER_H
 
+#include "../UI/ActiveSelectionHighlight.h"
 #include "../UI/Cursor.h"
 #include "../UI/GenericUI.h"
 #include "../UI/InteractionPopup.h"
@@ -8,6 +9,8 @@
 #include "../UI/PopupWindow.h"
 #include "../Viewport/Camera.h"
 #include <Engine/Input.h>
+
+class Character;
 
 class UIManager
 {
@@ -25,9 +28,7 @@ class UIManager
 
   void createMainHUD(CharacterManager* character_manager);
 
-  void updateAndShowCharacterInfo(const std::string& character_type,
-                                  float character_gauge,
-                                  const std::string& gauge_name);
+  void updateAndShowCharacterInfo(Character& clicked_character);
   void updateAndShowTileData(Tile& clicked_tile);
 
   void setRenderer(ASGE::Renderer* rend) { renderer = rend; }; // must be called first!
@@ -58,6 +59,7 @@ class UIManager
 
   InteractionPopup* char_info_popup = nullptr;
   InteractionPopup* poi_interaction_popup = nullptr;
+  ActiveSelectionHighlight* active_highlight = nullptr;
 
   Cursor* game_cursor = nullptr;
   double cursor_x = 0;

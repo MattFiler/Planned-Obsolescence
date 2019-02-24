@@ -1,4 +1,5 @@
 #include "UIManager.h"
+#include "../Characters/Character.h"
 
 /* Load all sounds */
 UIManager::UIManager()
@@ -98,25 +99,29 @@ void UIManager::initPointOfInterestPopup(CharacterManager* character_manager)
   poi_interaction_popup->setPopupType(popup_type::POI_INFO_POPUP);
   poi_interaction_popup->setSoundPlayer(sound_player);
   poi_interaction_popup->setActive(false, false);
+
+  active_highlight = new ActiveSelectionHighlight(renderer);
 }
 
 /* Creates all the UI */
-void UIManager::updateAndShowCharacterInfo(const std::string& character_type,
-                                           float character_gauge,
-                                           const std::string& gauge_name)
+void UIManager::updateAndShowCharacterInfo(Character& clicked_character)
 {
   poi_interaction_popup->setActive(false, false);
 
+  active_highlight->highlightCharacter(clicked_character);
+
   char_info_popup->setActive(true);
-  char_info_popup->setCharacterName(character_type);
-  char_info_popup->setGaugeAmount(character_gauge);
-  char_info_popup->setGaugeDescription(gauge_name);
+  char_info_popup->setCharacterName(clicked_character.getDisplayName());
+  char_info_popup->setGaugeAmount(clicked_character.getInternalGauge());
+  char_info_popup->setGaugeDescription(clicked_character.getInternalGaugeDesc());
 }
 
 /* Creates all the UI */
 void UIManager::updateAndShowTileData(Tile& clicked_tile)
 {
   char_info_popup->setActive(false, false);
+
+  active_highlight->highlightTile(clicked_tile);
 
   poi_interaction_popup->setActive(true);
   poi_interaction_popup->getClickedTileReference(clicked_tile);
@@ -145,10 +150,12 @@ void UIManager::render(double delta_time)
   if (char_info_popup != nullptr && char_info_popup->isActive())
   {
     char_info_popup->render(delta_time);
+    active_highlight->render();
   }
   if (poi_interaction_popup != nullptr && poi_interaction_popup->isActive())
   {
     poi_interaction_popup->render(delta_time);
+    active_highlight->render();
   }
   if (main_hud_element != nullptr)
   {
@@ -213,4 +220,9 @@ void UIManager::update()
 {
   input->getCursorPos(cursor_x, cursor_y);
   game_cursor->updatePosition(cursor_x, cursor_y);
+
+  if (char_info_popup != nullptr && char_info_popup->isActive())
+  {
+    active_highlight->update();
+  }
 }

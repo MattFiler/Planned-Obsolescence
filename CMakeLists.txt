@@ -113,7 +113,7 @@ add_executable(
         Source/UI/Cursor.cpp
         Source/UI/Cursor.h
         Source/Managers/Gauges.h
-        Source/Managers/Gauges.cpp Source/UI/InteractionPopup.cpp Source/UI/InteractionPopup.h)
+        Source/Managers/Gauges.cpp Source/UI/InteractionPopup.cpp Source/UI/InteractionPopup.h Source/UI/ActiveSelectionHighlight.cpp Source/UI/ActiveSelectionHighlight.h)
 
 ## library includes
 target_include_directories(

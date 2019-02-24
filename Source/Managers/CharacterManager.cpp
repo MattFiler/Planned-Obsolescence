@@ -337,9 +337,7 @@ bool CharacterManager::clickedCharacterCheck(CharacterArray character,
     {
       if (act_on_click)
       {
-        ui_manager->updateAndShowCharacterInfo(character[i]->getDisplayName(),
-                                               character[i]->getInternalGauge(),
-                                               character[i]->getInternalGaugeDesc());
+        ui_manager->updateAndShowCharacterInfo(*dynamic_cast<Character*>(character[i]));
       }
       return true;
     }

@@ -350,6 +350,18 @@ void Character::setSpawnPosition(float x_pos, float y_pos)
   click_area.setPosition(position);
 }
 
+/* Return character height */
+float Character::getHeight()
+{
+  return config.height;
+}
+
+/* Return character width */
+float Character::getWidth()
+{
+  return config.width;
+}
+
 /* Toggle visibility */
 void Character::setVisible(bool is_visible)
 {
