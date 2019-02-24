@@ -25,7 +25,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud
   file_handler.loadSound(exit_sound, "Interactive_Terminal_End", 0.5f);
 
   // load map
-  game_map.load(renderer, &camera);
+  game_map.load(renderer, camera);
   camera.setMapDims(game_map.getMapSize());
 
   // Pass references out and spawn characters

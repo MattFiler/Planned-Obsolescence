@@ -5,6 +5,7 @@ void LabTechnician::update(double delta_time)
   updateTimeBetweenFrames(config.movement_speed * 10);
   float multiplier =
     1 + (gauge_rates ::TECHIE_STRESS_QUEUE_MULTIPLIER * static_cast<float>(broken_pois.size()));
+
   if (position == idle_position)
   {
     // Decay stress while at idle position
@@ -20,6 +21,7 @@ void LabTechnician::update(double delta_time)
     config.internal_gauge +=
       ((static_cast<float>(gauge_rates ::TECHIE_STRESS_GAIN) / 40) * multiplier) *
       (static_cast<float>(delta_time) / 1000);
+
     if (config.internal_gauge > 100)
     {
       config.internal_gauge = 100;
@@ -28,11 +30,14 @@ void LabTechnician::update(double delta_time)
   if (repairing)
   {
     updateTimeBetweenFrames(1000000);
+
     config.internal_gauge +=
       ((static_cast<float>(gauge_rates ::TECHIE_STRESS_GAIN) / 20) * multiplier) *
       (static_cast<float>(delta_time) / 1000);
+
     time_elapsed += delta_time;
     broken_pois.front()->setPointOfInterestState(poi_state::POI_IS_BEING_FIXED);
+
     auto adjusted_time = static_cast<float>(gauge_rates::TECHIE_REPAIR_TIME);
     adjusted_time *= 1 + ((config.internal_gauge / 100) * gauge_rates::TECHIE_STRESS_SLOW);
     if (time_elapsed > adjusted_time)
@@ -50,6 +55,7 @@ void LabTechnician::update(double delta_time)
     {
       calculateRouteToPoint(idle_position);
     }
+
     // If after pathing has stopped, we are next to the broken POI at the front of the queue
     else if (Point::distanceBetween(
                Point(broken_pois.front()->getPositionX(), broken_pois.front()->getPositionY()),
@@ -88,8 +94,10 @@ void LabTechnician::lockedDoorFound()
     calculateRouteToPoint(findPositionForPOI(
       Point(broken_pois.front()->getPositionX(), broken_pois.front()->getPositionY())));
   }
+
   float x_diff = current_route[route_index + 1]->position.x_pos - position.x_pos;
   float y_diff = current_route[route_index + 1]->position.y_pos - position.y_pos;
+
   direction.set(x_diff, y_diff);
   direction.normalise();
   distance_to_next_node =

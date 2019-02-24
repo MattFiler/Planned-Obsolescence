@@ -15,7 +15,7 @@ class GameMap
   GameMap();
   ~GameMap() = default;
 
-  void load(ASGE::Renderer* renderer_instance, Camera* camera);
+  void load(ASGE::Renderer* renderer_instance, Camera& camera);
   void render(double delta_time);
 
   void setUIManager(UIManager* manager) { ui_manager = manager; };
@@ -38,18 +38,16 @@ class GameMap
  private:
   void importJSON();
 
-  // JSON configs
   json map_config;
   json room_config;
   json tile_config;
 
-  // Map data
   MapData map_data;
 
-  // Engine features
   FileHandler file_handler;
   DebugText debug_text;
-  Camera* game_camera = nullptr;
+  Camera game_camera;
+
   ASGE::Renderer* renderer = nullptr;
   UIManager* ui_manager = nullptr;
 };
