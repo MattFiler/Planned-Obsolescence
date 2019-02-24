@@ -117,7 +117,9 @@ add_executable(
         Source/UI/InteractionPopup.cpp
         Source/UI/InteractionPopup.h
         Source/UI/ActiveSelectionHighlight.cpp
-        Source/UI/ActiveSelectionHighlight.h Source/Scenes/TutorialCore.cpp Source/Scenes/TutorialCore.h)
+        Source/UI/ActiveSelectionHighlight.h
+        Source/Scenes/TutorialCore.cpp
+        Source/Scenes/TutorialCore.h)
 
 ## library includes
 target_include_directories(
