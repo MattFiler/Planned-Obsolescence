@@ -19,8 +19,8 @@ struct GetLocalisedString
     {
       return language_config[id];
     }
-    debug_text.print("COULDN'T FIND A LOCALISATION FOR '" + id + "'");
-    return id;
+    debug_text.print("COULDN'T FIND A LOCALISATION FOR '#" + id + "'");
+    return "#" + id;
   }
   std::string getLanguage() { return language_definition; }
 

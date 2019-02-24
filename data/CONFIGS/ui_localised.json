@@ -7,6 +7,7 @@
 	"tutorial": "TUTORIAL",
 	"back": "BACK",
 	"continue": "CONTINUE",
+	"tutorial_next": "PRESS 'ACTIVATE' KEY TO CONTINUE...",
 	
 	"game_won": "YOU WON!",
 	"game_lost": "YOU LOST.",
@@ -115,6 +116,7 @@
 	"tutorial": "DIDACTICIEL",
 	"back": "RETOUR",
 	"continue": "CONTINUER",
+	"tutorial_next": "APPUYEZ SUR LA TOUCHE 'ACTIVATE' POUR CONTINUER ...",
 	
 	"game_won": "LA VICTOIRE!",
 	"game_lost": "ECHOUE.",
@@ -221,6 +223,7 @@
 	"tutorial": "TUTORIAL",
 	"back": "ATRAS",
 	"continue": "CONTINUAR",
+	"tutorial_next": "PULSE 'ACTIVAR' CLAVE PARA CONTINUAR ...",
 	
 	"game_won": "GANASTE!",
 	"game_lost": "PERDISTE.",
