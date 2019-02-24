@@ -12,7 +12,7 @@ Tile::Tile(std::string tile_type, json* tile_big_config, ASGE::Renderer* rendere
 }
 
 /* Work out if we have the requested exit on this tile */
-bool Tile::exitIsValid(direction exit)
+bool Tile::exitIsValid(tile_exit exit)
 {
   return tile_data.getCanExit(exit);
 }

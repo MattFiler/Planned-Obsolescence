@@ -38,19 +38,19 @@ bool Character::updatePosition(double delta_time)
   {
     if (direction.x_mag > 0)
     {
-      setDirection(direction::RIGHT);
+      setDirection(tile_exit::RIGHT);
     }
     else if (direction.x_mag < 0)
     {
-      setDirection(direction::LEFT);
+      setDirection(tile_exit::LEFT);
     }
     else if (direction.y_mag > 0)
     {
-      setDirection(direction::DOWN);
+      setDirection(tile_exit::DOWN);
     }
     else
     {
-      setDirection(direction::UP);
+      setDirection(tile_exit::UP);
     }
     // Store the current distance to the next node
     float previous_distance = distance_to_next_node;
@@ -60,7 +60,7 @@ bool Character::updatePosition(double delta_time)
     position.y_pos += direction.y_mag * static_cast<float>(delta_time) * 0.01f *
                       static_cast<float>(config.movement_speed) * speed_multiplier;
 
-    for (int i = 0; i < direction::DIRECTION_COUNT; i++)
+    for (int i = 0; i < tile_exit::DIRECTION_COUNT; i++)
     {
       config.sprites.at(i)->xPos(position.x_pos);
       config.sprites.at(i)->yPos(position.y_pos);
@@ -94,7 +94,7 @@ bool Character::updatePosition(double delta_time)
         }
         else
         {
-          // Calculate the new direction
+          // Calculate the new tile_exit
           float x_diff = current_route[route_index + 1]->position.x_pos - position.x_pos;
           float y_diff = current_route[route_index + 1]->position.y_pos - position.y_pos;
           direction.set(x_diff, y_diff);
@@ -208,7 +208,7 @@ float Character::calculateScoresOfNextDepth(PathNode* node,
   // Check each connection of the node
   for (int i = 0; i < 4; i++)
   {
-    // If the node already has a shorter path, block this direction
+    // If the node already has a shorter path, block this tile_exit
     if (node->connections[i].node != nullptr && node->connections[i].node->pathable &&
         depth > node->connections[i].node->shortest_path_to_here)
     {
@@ -321,7 +321,7 @@ void Character::setSpawnPositionX(float x_pos)
 {
   config.spawn_pos.x_pos = x_pos;
   position.x_pos = x_pos;
-  for (int i = 0; i < direction::DIRECTION_COUNT; i++)
+  for (int i = 0; i < tile_exit::DIRECTION_COUNT; i++)
   {
     config.sprites.at(i)->xPos(position.x_pos);
   }
@@ -331,7 +331,7 @@ void Character::setSpawnPositionY(float y_pos)
 {
   config.spawn_pos.y_pos = y_pos;
   position.y_pos = y_pos;
-  for (int i = 0; i < direction::DIRECTION_COUNT; i++)
+  for (int i = 0; i < tile_exit::DIRECTION_COUNT; i++)
   {
     config.sprites.at(i)->yPos(position.y_pos);
   }
@@ -342,7 +342,7 @@ void Character::setSpawnPosition(float x_pos, float y_pos)
   config.spawn_pos = Point(x_pos, y_pos);
   position.x_pos = x_pos;
   position.y_pos = y_pos;
-  for (int i = 0; i < direction::DIRECTION_COUNT; i++)
+  for (int i = 0; i < tile_exit::DIRECTION_COUNT; i++)
   {
     config.sprites.at(i)->xPos(position.x_pos);
     config.sprites.at(i)->yPos(position.y_pos);
@@ -489,7 +489,7 @@ Point Character::findPositionForPOI(Point point)
 
 void Character::updateTimeBetweenFrames(double new_time)
 {
-  for (int i = 0; i < direction::DIRECTION_COUNT; i++)
+  for (int i = 0; i < tile_exit::DIRECTION_COUNT; i++)
   {
     config.sprites[i]->timeBetweenFrames(new_time);
   }

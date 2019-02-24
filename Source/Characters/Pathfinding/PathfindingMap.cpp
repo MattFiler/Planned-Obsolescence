@@ -35,22 +35,22 @@ void PathfindingMap::linkNodes()
     for (Tile& this_tile : *(*game_map->getRooms())[i].getTiles())
     {
       // Check all 4 exits on each tile, and if there is one find the node
-      if (this_tile.exitIsValid(direction::LEFT))
+      if (this_tile.exitIsValid(tile_exit::LEFT))
       {
         nodes[tile_count].connections[0].node =
           findNodeAtPoint(nodes[tile_count].position - Point(tile_size, 0));
       }
-      if (this_tile.exitIsValid(direction::RIGHT))
+      if (this_tile.exitIsValid(tile_exit::RIGHT))
       {
         nodes[tile_count].connections[1].node =
           findNodeAtPoint(nodes[tile_count].position + Point(tile_size, 0));
       }
-      if (this_tile.exitIsValid(direction::UP))
+      if (this_tile.exitIsValid(tile_exit::UP))
       {
         nodes[tile_count].connections[2].node =
           findNodeAtPoint(nodes[tile_count].position - Point(0, tile_size));
       }
-      if (this_tile.exitIsValid(direction::DOWN))
+      if (this_tile.exitIsValid(tile_exit::DOWN))
       {
         nodes[tile_count].connections[3].node =
           findNodeAtPoint(nodes[tile_count].position + Point(0, tile_size));

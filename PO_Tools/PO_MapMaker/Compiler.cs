@@ -82,9 +82,9 @@ namespace PO_MapMaker
 
                     string available_exits = "";
                     string[] directions = { "left", "right", "up", "down" };
-                    foreach (string direction in directions)
+                    foreach (string tile_exit in directions)
                     {
-                        available_exits += addElementIfNotDefault(direction, default_tile.Element("valid_exits").Attribute(direction), tile.Element("valid_exits").Attribute(direction), false);
+                        available_exits += addElementIfNotDefault(tile_exit, default_tile.Element("valid_exits").Attribute(tile_exit), tile.Element("valid_exits").Attribute(tile_exit), false);
                     }
                     if (available_exits != "")
                     {

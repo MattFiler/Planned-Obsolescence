@@ -53,10 +53,10 @@ struct CharacterData
 
   void configureSprites(ASGE::Renderer* renderer)
   {
-    loadSpriteForDirection("left", renderer);  // enum direction::LEFT (0)
-    loadSpriteForDirection("right", renderer); // enum direction::RIGHT (1)
-    loadSpriteForDirection("up", renderer);    // enum direction::UP (2)
-    loadSpriteForDirection("down", renderer);  // enum direction::DOWN (3)
+    loadSpriteForDirection("left", renderer);  // enum tile_exit::LEFT (0)
+    loadSpriteForDirection("right", renderer); // enum tile_exit::RIGHT (1)
+    loadSpriteForDirection("up", renderer);    // enum tile_exit::UP (2)
+    loadSpriteForDirection("down", renderer);  // enum tile_exit::DOWN (3)
   }
 
   character_type variant = character_type::DEFAULT;
@@ -78,7 +78,7 @@ struct CharacterData
   std::string internal_gauge_name = "";
   float internal_gauge = 0.0f;
 
-  direction currently_facing = direction::DOWN;
+  tile_exit currently_facing = tile_exit::DOWN;
 
   std::vector<ScaledSpriteArray*> sprites;
 

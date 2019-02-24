@@ -29,19 +29,19 @@ struct TileData
     {
       if (tile_data.key() == "left" && tile_data.value() == true)
       {
-        setCanExit(direction::LEFT);
+        setCanExit(tile_exit::LEFT);
       }
       else if (tile_data.key() == "right" && tile_data.value() == true)
       {
-        setCanExit(direction::RIGHT);
+        setCanExit(tile_exit::RIGHT);
       }
       else if (tile_data.key() == "up" && tile_data.value() == true)
       {
-        setCanExit(direction::UP);
+        setCanExit(tile_exit::UP);
       }
       else if (tile_data.key() == "down" && tile_data.value() == true)
       {
-        setCanExit(direction::DOWN);
+        setCanExit(tile_exit::DOWN);
       }
     }
 
@@ -122,12 +122,12 @@ struct TileData
 
   // Exit Ability (call with enum exit_direction - left/right/up/down)
   bool exits[4] = { false, false, false, false };
-  void setCanExit(direction exit_direction)
+  void setCanExit(tile_exit exit_direction)
   {
     exits[exit_direction] = true;
     traversal = tile_accessibility::TILE_IS_TRAVERSABLE;
   }
-  bool getCanExit(direction exit_direction) { return exits[exit_direction]; }
+  bool getCanExit(tile_exit exit_direction) { return exits[exit_direction]; }
 
   // POI Data
   point_of_interest poi = point_of_interest::NONE_ON_THIS_TILE;

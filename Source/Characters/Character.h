@@ -46,8 +46,8 @@ class Character
   bool isPointInArea(Point point) { return click_area.isPointInArea(point); };
   void updateTimeBetweenFrames(double new_time);
 
-  direction getDirection() { return config.currently_facing; };
-  void setDirection(direction new_direction) { config.currently_facing = new_direction; };
+  tile_exit getDirection() { return config.currently_facing; };
+  void setDirection(tile_exit new_direction) { config.currently_facing = new_direction; };
 
   void setCharacterID(int index);
   std::string getCharacterID();

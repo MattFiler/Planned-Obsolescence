@@ -32,7 +32,7 @@ enum character_sprite_index
 /* --- Map --- */
 
 // Potential movement directions from tile
-enum direction
+enum tile_exit
 {
   LEFT,
   RIGHT,
