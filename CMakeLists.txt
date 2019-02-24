@@ -105,19 +105,19 @@ add_executable(
         Source/UI/GenericUI.h
         Source/Managers/GaugeManager.cpp
         Source/Managers/GaugeManager.h
-        Source/UI/CharacterInfoPopup.cpp
-        Source/UI/CharacterInfoPopup.h
         Source/UI/MainHUD.cpp
         Source/UI/MainHUD.h
         Source/UI/HudGaugeData.h
         Source/UI/GetLocalisedString.h
         Source/UI/GetLocalisedString.cpp
-        Source/UI/WorldInteractionPopup.cpp
-        Source/UI/WorldInteractionPopup.h
         Source/UI/Cursor.cpp
         Source/UI/Cursor.h
         Source/Managers/Gauges.h
-        Source/Managers/Gauges.cpp)
+        Source/Managers/Gauges.cpp
+        Source/UI/InteractionPopup.cpp
+        Source/UI/InteractionPopup.h
+        Source/UI/ActiveSelectionHighlight.cpp
+        Source/UI/ActiveSelectionHighlight.h Source/Scenes/TutorialCore.cpp Source/Scenes/TutorialCore.h)
 
 ## library includes
 target_include_directories(

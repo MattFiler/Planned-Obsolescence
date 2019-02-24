@@ -28,6 +28,7 @@ class GameMap
 
   int getRoomsX() { return map_data.rooms_x; };
   int getRoomsY() { return map_data.rooms_y; };
+  Point getMapSize() { return Point(map_data.map_width, map_data.map_height); }
 
   bool isPOIStateAtPoint(poi_state poi_state, Point point);
   Tile* getTileAtPoint(Point point);
@@ -37,18 +38,16 @@ class GameMap
  private:
   void importJSON();
 
-  // JSON configs
   json map_config;
   json room_config;
   json tile_config;
 
-  // Map data
   MapData map_data;
 
-  // Engine features
   FileHandler file_handler;
   DebugText debug_text;
   Camera* game_camera = nullptr;
+
   ASGE::Renderer* renderer = nullptr;
   UIManager* ui_manager = nullptr;
 };

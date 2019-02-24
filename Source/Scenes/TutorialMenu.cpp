@@ -26,6 +26,7 @@ bool TutorialMenu::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::So
   main_menu.addMenuSprite("MAIN_MENU/BACKGROUND.jpg");
 
   // Add menu options
+  main_menu.addMenuItem("continue");
   main_menu.addMenuItem("back");
 
   x_offset = static_cast<int>(380 * ScaledSpriteArray::width_scale);
@@ -44,7 +45,12 @@ void TutorialMenu::keyHandler(const ASGE::SharedEventData data)
   user_input.registerEvent(static_cast<const ASGE::KeyEvent*>(data.get()));
   if (main_menu.itemWasSelected(user_input))
   {
-    if (main_menu.selectedItemWas("back"))
+    if (main_menu.selectedItemWas("continue"))
+    {
+      next_scene = scenes::TUTORIAL_CORE;
+      debug_text.print("ENTERING CORE OF TUTORIAL");
+    }
+    else if (main_menu.selectedItemWas("back"))
     {
       next_scene = scenes::MAIN_MENU;
       debug_text.print("BACK TO MAIN MENU");

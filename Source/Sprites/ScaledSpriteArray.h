@@ -40,6 +40,7 @@ class ScaledSpriteArray
   void setFadeColour(ASGE::Colour col);
   void setCurrentSprite(int new_sprite_index);
 
+  void setOpacity(float new_opacity);
   void setColour(ASGE::Colour col);
 
   void setSpriteSheet(float sprite_sheet_width,

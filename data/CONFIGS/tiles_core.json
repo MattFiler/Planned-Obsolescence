@@ -115,7 +115,7 @@
     },
     "poi_computer": true,
     "poi_sprite": "data/TILES/tile_black_placeholder.png",
-    "poi_desc": "poi_computer"
+    "popup_subtitle": "poi_computer"
   },
   "LAB_COMPUTER_L_R_D": {
     "sprite": "data/TILES/TEST/tile_pink_placeholder_poi_blocked_up101601.png",
@@ -126,7 +126,7 @@
     },
     "poi_computer": true,
     "poi_sprite": "data/TILES/tile_black_placeholder.png",
-    "poi_desc": "poi_toilet"
+    "popup_subtitle": "poi_toilet"
   },
   "LAB_BENCH": {
     "sprite": "data/TILES/TEST/tile_pink_placeholder_blocked101627.png"
@@ -141,7 +141,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/tile_black_placeholder.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "bottom_wall": {
     "sprite": "data/TILES/SECURITY/bottom_BLUE_102127.png"
@@ -255,7 +255,7 @@
     "poi_computer": false,
     "poi_door": false,
     "poi_sprite": "",
-    "poi_desc": "placeholder_text"
+    "popup_subtitle": "placeholder_text"
   },
   "bottom_green": {
     "sprite": "data/TILES/IT/TECH/bottom_Green_111256.png"
@@ -633,7 +633,7 @@
     "sprite": "data/TILES/SERVER/Computer_and_desk_122947.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/SERVER/Computer_and_desk_alt_122947.png",
-    "poi_desc": "poi_computer"
+    "popup_subtitle": "poi_computer"
   },
   "bottom_left_toilet": {
     "sprite": "data/TILES/TOILET/bottom_left_Light_Blue_123518.png"
@@ -825,103 +825,103 @@
     "sprite": "data/TILES/SECURITY/Computer_and_desk_090959.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/SECURITY/Broken_computer_up_alt_090959.png",
-    "poi_desc": "poi_computer"
+    "popup_subtitle": "poi_computer"
   },
   "Computer_tech": {
     "sprite": "data/TILES/IT/TECH/Computer_and_desk_091059.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/IT/TECH/Broken_computer_up_alt_091059.png",
-    "poi_desc": "poi_computer"
+    "popup_subtitle": "poi_computer"
   },
   "computer_boss": {
     "sprite": "data/TILES/BOSS/Computer_and_desk_091120.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/BOSS/Broken_computer_up_alt_091120.png",
-    "poi_desc": "poi_computer"
+    "popup_subtitle": "poi_computer"
   },
   "Computer_lab": {
     "sprite": "data/TILES/LAB/Computer_and_desk_091137.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/LAB/Broken_computer_up_alt_091137.png",
-    "poi_desc": "poi_computer"
+    "popup_subtitle": "poi_computer"
   },
   "computer_left_lab": {
     "sprite": "data/TILES/LAB/left_computer_091200.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/LAB/Broken_computer_left_alt_091200.png",
-    "poi_desc": "poi_computer"
+    "popup_subtitle": "poi_computer"
   },
   "computer_right_lab": {
     "sprite": "data/TILES/LAB/right_computer_091230.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/LAB/Broken_computer_right_alt_091230.png",
-    "poi_desc": "poi_computer"
+    "popup_subtitle": "poi_computer"
   },
   "computer_down_lab": {
     "sprite": "data/TILES/LAB/down_computer_091241.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/LAB/Broken_computer_down_alt_091241.png",
-    "poi_desc": "poi_computer"
+    "popup_subtitle": "poi_computer"
   },
   "computer_left_server": {
     "sprite": "data/TILES/SERVER/left_computer_091403.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/SERVER/Broken_computer_left_alt_091403.png",
-    "poi_desc": "poi_computer"
+    "popup_subtitle": "poi_computer"
   },
   "toilet_tile": {
     "sprite": "data/TILES/TOILET/toilet_091514.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/TOILET/Broken_toilet_alt_091514.png",
-    "poi_desc": "poi_toilet"
+    "popup_subtitle": "poi_toilet"
   },
   "shower_tile": {
     "sprite": "data/TILES/TOILET/Shower_091547.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/TOILET/Broken_shower_alt_091547.png",
-    "poi_desc": "poi_shower"
+    "popup_subtitle": "poi_shower"
   },
   "Toilet_sink": {
     "sprite": "data/TILES/TOILET/Toilet_sink_091646.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/TOILET/Broken_sink_toilet_alt_091646.png",
-    "poi_desc": "poi_sink"
+    "popup_subtitle": "poi_sink"
   },
   "cooker": {
     "sprite": "data/TILES/BREAK ROOM/kitchen_cooker_015121.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/BREAK ROOM/Broken_cooker.png",
-    "poi_desc": "poi_cooker"
+    "popup_subtitle": "poi_cooker"
   },
   "fridge": {
     "sprite": "data/TILES/BREAK ROOM/kitchen_fridge_015149.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/BREAK ROOM/Broken_fridge.png",
-    "poi_desc": "poi_fridge"
+    "popup_subtitle": "poi_fridge"
   },
   "kitchen_sink": {
     "sprite": "data/TILES/BREAK ROOM/Kitchen_sink_091755.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/BREAK ROOM/Broken_sink_kitchen_alt_091755.png",
-    "poi_desc": "poi_sink"
+    "popup_subtitle": "poi_sink"
   },
   "server_sprite": {
     "sprite": "data/TILES/SERVER/Server_091841.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/SERVER/Broken_Server_alt_091841.png",
-    "poi_desc": "poi_server"
+    "popup_subtitle": "poi_server"
   },
   "printer_boss": {
     "sprite": "data/TILES/BOSS/Printer_and_desk_091927.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/BOSS/Broken_printer_alt_091927.png",
-    "poi_desc": "poi_bookcase"
+    "popup_subtitle": "poi_bookcase"
   },
   "printer_lab": {
     "sprite": "data/TILES/LAB/Printer_and_desk_091959.png",
     "poi_computer": true,
     "poi_sprite": "data/TILES/LAB/Broken_printer_alt_091959.png",
-    "poi_desc": "poi_bookcase"
+    "popup_subtitle": "poi_bookcase"
   },
   "UD_red": {
     "sprite": "data/TILES/BOSS/Red_floor_092251.png",
@@ -982,7 +982,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/SECURITY/Door_alt_010527.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "door_side": {
     "sprite": "data/TILES/SECURITY/open_side_door_010543.png",
@@ -992,7 +992,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/SECURITY/Door_alt_010543.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "Door_up_tech": {
     "sprite": "data/TILES/IT/TECH/Opened_door_010621.png",
@@ -1002,7 +1002,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/IT/TECH/Door_alt_010621.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "Door_side_tech": {
     "sprite": "data/TILES/IT/TECH/open_side_door_010634.png",
@@ -1012,7 +1012,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/IT/TECH/Door_alt_010634.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "door_up_boss": {
     "sprite": "data/TILES/BOSS/Opened_door_010655.png",
@@ -1022,7 +1022,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/BOSS/Door_alt_010655.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "door_side_boss": {
     "sprite": "data/TILES/BOSS/open_side_door_010712.png",
@@ -1032,7 +1032,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/BOSS/Door_alt_010712.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "door_up_lab": {
     "sprite": "data/TILES/LAB/Opened_door_010724.png",
@@ -1042,7 +1042,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/LAB/Door_alt_010724.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "door_side_lab": {
     "sprite": "data/TILES/LAB/open_side_door_010740.png",
@@ -1052,7 +1052,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/LAB/Door_alt_010740.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "door_up_server": {
     "sprite": "data/TILES/SERVER/Opened_door_010823.png",
@@ -1062,7 +1062,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/SERVER/Door_alt_010823.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "door_side_server": {
     "sprite": "data/TILES/SERVER/open_side_door_010838.png",
@@ -1072,7 +1072,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/SERVER/Door_alt_010838.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "door_up_toilet": {
     "sprite": "data/TILES/TOILET/Opened_door_010906.png",
@@ -1082,7 +1082,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/TOILET/Door_alt_010906.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "door_side_toilet": {
     "sprite": "data/TILES/TOILET/open_side_door_010920.png",
@@ -1092,7 +1092,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/TOILET/Door_alt_010920.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "door_up_yellow": {
     "sprite": "data/TILES/BREAK ROOM/Opened_door_010939.png",
@@ -1102,7 +1102,7 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/BREAK ROOM/Door_alt_010939.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   },
   "door_side_yellow": {
     "sprite": "data/TILES/BREAK ROOM/open_side_door_010953.png",
@@ -1112,6 +1112,6 @@
     },
     "poi_door": true,
     "poi_sprite": "data/TILES/BREAK ROOM/Door_alt_010953.png",
-    "poi_desc": "poi_door"
+    "popup_subtitle": "poi_door"
   }
 }

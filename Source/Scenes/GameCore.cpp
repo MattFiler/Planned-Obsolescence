@@ -26,6 +26,7 @@ bool GameCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud
 
   // load map
   game_map.load(renderer, &camera);
+  camera.setMapDims(game_map.getMapSize());
 
   // Pass references out and spawn characters
   passReferences(input);
@@ -173,51 +174,37 @@ void GameCore::keyHandler(const ASGE::SharedEventData data)
     next_scene = scenes::MAIN_MENU;
     debug_text.print("RETURNING TO MAIN MENU");
   }
-
-  auto key = static_cast<const ASGE::KeyEvent*>(data.get());
-  if (key->key == ASGE::KEYS::KEY_W)
+  else if (user_input.keyPressed("Map Pan Up"))
   {
-    if (key->action == ASGE::KEYS::KEY_PRESSED)
-    {
-      y_axis_input = -1;
-    }
-    else if (key->action == ASGE::KEYS::KEY_RELEASED)
-    {
-      y_axis_input = 0;
-    }
+    y_axis_input = -1;
   }
-  if (key->key == ASGE::KEYS::KEY_S)
+  else if (user_input.keyReleased("Map Pan Up"))
   {
-    if (key->action == ASGE::KEYS::KEY_PRESSED)
-    {
-      y_axis_input = 1;
-    }
-    else if (key->action == ASGE::KEYS::KEY_RELEASED)
-    {
-      y_axis_input = 0;
-    }
+    y_axis_input = 0;
   }
-  if (key->key == ASGE::KEYS::KEY_A)
+  else if (user_input.keyPressed("Map Pan Down"))
   {
-    if (key->action == ASGE::KEYS::KEY_PRESSED)
-    {
-      x_axis_input = -1;
-    }
-    else if (key->action == ASGE::KEYS::KEY_RELEASED)
-    {
-      x_axis_input = 0;
-    }
+    y_axis_input = 1;
   }
-  if (key->key == ASGE::KEYS::KEY_D)
+  else if (user_input.keyReleased("Map Pan Down"))
   {
-    if (key->action == ASGE::KEYS::KEY_PRESSED)
-    {
-      x_axis_input = 1;
-    }
-    else if (key->action == ASGE::KEYS::KEY_RELEASED)
-    {
-      x_axis_input = 0;
-    }
+    y_axis_input = 0;
+  }
+  else if (user_input.keyPressed("Map Pan Left"))
+  {
+    x_axis_input = -1;
+  }
+  else if (user_input.keyReleased("Map Pan Left"))
+  {
+    x_axis_input = 0;
+  }
+  else if (user_input.keyPressed("Map Pan Right"))
+  {
+    x_axis_input = 1;
+  }
+  else if (user_input.keyReleased("Map Pan Right"))
+  {
+    x_axis_input = 0;
   }
 }
 

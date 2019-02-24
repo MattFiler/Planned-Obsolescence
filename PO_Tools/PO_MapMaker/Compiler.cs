@@ -70,7 +70,7 @@ namespace PO_MapMaker
                 if (tile.Attribute("set").Value == "DEFAULT")
                 {
                     //Default is an ugly mess. Apologies...
-                    tiles_coreJson += "\"DEFAULT\":{\"width\":" + tile.Element("dimensions").Attribute("width").Value + ",\"height\":" + tile.Element("dimensions").Attribute("height").Value + ",\"sprite\":\"" + tile.Attribute("sprite").Value + "\",\"available_exits\":{\"left\":" + tile.Element("valid_exits").Attribute("left").Value + ",\"right\":" + tile.Element("valid_exits").Attribute("right").Value + ",\"up\":" + tile.Element("valid_exits").Attribute("up").Value + ",\"down\":" + tile.Element("valid_exits").Attribute("down").Value + "},\"poi_computer\":false,\"poi_door\":false,\"poi_sprite\":\"\",\"poi_desc\":\"placeholder_text\"},";
+                    tiles_coreJson += "\"DEFAULT\":{\"width\":" + tile.Element("dimensions").Attribute("width").Value + ",\"height\":" + tile.Element("dimensions").Attribute("height").Value + ",\"sprite\":\"" + tile.Attribute("sprite").Value + "\",\"available_exits\":{\"left\":" + tile.Element("valid_exits").Attribute("left").Value + ",\"right\":" + tile.Element("valid_exits").Attribute("right").Value + ",\"up\":" + tile.Element("valid_exits").Attribute("up").Value + ",\"down\":" + tile.Element("valid_exits").Attribute("down").Value + "},\"poi_computer\":false,\"poi_door\":false,\"poi_sprite\":\"\",\"popup_subtitle\":\"placeholder_text\"},";
                     //...aaaand it's over. Back to neater code.
                 }
                 else
@@ -82,9 +82,9 @@ namespace PO_MapMaker
 
                     string available_exits = "";
                     string[] directions = { "left", "right", "up", "down" };
-                    foreach (string direction in directions)
+                    foreach (string tile_exit in directions)
                     {
-                        available_exits += addElementIfNotDefault(direction, default_tile.Element("valid_exits").Attribute(direction), tile.Element("valid_exits").Attribute(direction), false);
+                        available_exits += addElementIfNotDefault(tile_exit, default_tile.Element("valid_exits").Attribute(tile_exit), tile.Element("valid_exits").Attribute(tile_exit), false);
                     }
                     if (available_exits != "")
                     {
@@ -95,11 +95,11 @@ namespace PO_MapMaker
                     {
                         if (tile.Element("points_of_interest").Attribute("computer").Value == "true")
                         {
-                            tiles_coreJson += "\"poi_computer\":true,\"poi_sprite\": \"" + tile.Element("points_of_interest").Attribute("alt_sprite").Value + "\",\"poi_desc\":\"" + tile.Element("points_of_interest").Attribute("description").Value + "\",";
+                            tiles_coreJson += "\"poi_computer\":true,\"poi_sprite\": \"" + tile.Element("points_of_interest").Attribute("alt_sprite").Value + "\",\"popup_subtitle\":\"" + tile.Element("points_of_interest").Attribute("description").Value + "\",";
                         }
                         if (tile.Element("points_of_interest").Attribute("door").Value == "true")
                         {
-                            tiles_coreJson += "\"poi_door\":true,\"poi_sprite\": \"" + tile.Element("points_of_interest").Attribute("alt_sprite").Value + "\",\"poi_desc\":\"poi_door\",";
+                            tiles_coreJson += "\"poi_door\":true,\"poi_sprite\": \"" + tile.Element("points_of_interest").Attribute("alt_sprite").Value + "\",\"popup_subtitle\":\"poi_door\",";
                         }
                     }
                     catch

@@ -16,7 +16,7 @@ class Tile
   Tile(std::string tile_type, json* tile_big_config, ASGE::Renderer* renderer);
   ~Tile() = default;
 
-  bool exitIsValid(direction exit);
+  bool exitIsValid(tile_exit exit);
 
   bool hasSpecificPointOfInterest(point_of_interest poi);
   bool hasAnyPointOfInterest();

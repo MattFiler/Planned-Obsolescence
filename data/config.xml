@@ -2149,6 +2149,10 @@
       <bind key="KEY_ESCAPE" action="Back" />
       <bind key="KEY_UP" action="Menu Up" />
       <bind key="KEY_DOWN" action="Menu Down" />
+      <bind key="KEY_W" action="Map Pan Up" />
+      <bind key="KEY_S" action="Map Pan Down" />
+      <bind key="KEY_A" action="Map Pan Left" />
+      <bind key="KEY_D" action="Map Pan Right" />
     </keybinds>
   </game_config>
 </config>

@@ -16,18 +16,23 @@ class Camera
  public:
   Camera() = default;
 
-  void setRenderer(ASGE::Renderer* rend);
-  ASGE::Renderer* getRenderer();
+  void setRenderer(ASGE::Renderer* rend) { renderer = rend; };
+  void setMapDims(Point new_dims) { map_dims = new_dims * ScaledSpriteArray::width_scale; }
+
   void renderSprite(ScaledSpriteArray* sprite,
                     double delta_time,
                     render_index index,
                     bool should_flipbook = true);
-  Point getCameraPosition();
+
   Point displayedToSimulatedWorld(Point point);
   void moveCamera(float x_amount, float y_amount);
 
+  Point getCameraPosition() { return position / ScaledSpriteArray::width_scale; };
+  ASGE::Renderer* getRenderer() { return renderer; };
+
  private:
   Point position = Point(0, 0);
+  Point map_dims = Point(0, 0);
   ASGE::Renderer* renderer = nullptr;
 };
 

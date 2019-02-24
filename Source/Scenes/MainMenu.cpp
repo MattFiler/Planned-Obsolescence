@@ -56,7 +56,7 @@ void MainMenu::keyHandler(const ASGE::SharedEventData data)
     }
     else if (main_menu.selectedItemWas("tutorial"))
     {
-      next_scene = scenes::TUTORIAL;
+      next_scene = scenes::TUTORIAL_MENU;
       debug_text.print("OPENING TUTORIAL");
     }
     else if (main_menu.selectedItemWas("exit_game"))

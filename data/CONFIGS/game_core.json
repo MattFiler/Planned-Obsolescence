@@ -4,12 +4,16 @@
       "width": 1920,
       "height": 1080
     },
-    "debug_enabled": true,
+    "debug_enabled": false,
     "keybinds": {
       "Activate": 257,
       "Back": 256,
       "Menu Up": 265,
-      "Menu Down": 264
+      "Menu Down": 264,
+      "Map Pan Up": 87,
+      "Map Pan Down": 83,
+      "Map Pan Left": 65,
+      "Map Pan Right": 68
     },
     "language": "ENGLISH"
   }

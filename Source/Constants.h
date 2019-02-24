@@ -32,7 +32,7 @@ enum character_sprite_index
 /* --- Map --- */
 
 // Potential movement directions from tile
-enum direction
+enum tile_exit
 {
   LEFT,
   RIGHT,
@@ -91,6 +91,13 @@ enum repair_sprites
   REPAIR_IN_PROGRESS
 };
 
+// Popup type
+enum popup_type
+{
+  CHARACTER_INFO_POPUP,
+  POI_INFO_POPUP
+};
+
 /* --- Game --- */
 
 // Scenes
@@ -102,7 +109,8 @@ enum scenes
   GAME_CORE,
   QUIT_GAME,
   GAME_OVER,
-  TUTORIAL
+  TUTORIAL_MENU,
+  TUTORIAL_CORE
 };
 
 // Render index

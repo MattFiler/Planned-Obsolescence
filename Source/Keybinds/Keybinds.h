@@ -21,14 +21,34 @@ struct Keybinds
   // Check of specific key being released
   bool keyReleased(const std::string& keybind)
   {
-    if (config[keybind].is_null())
+    if (checkKeybind(keybind))
     {
-      debug_text.print("WARNING: ATTEMPTED TO ACCESS UNINITIALISED KEYBIND - " + keybind);
+      return (key_event->key == config[keybind] && key_event->action == ASGE::KEYS::KEY_RELEASED);
     }
-    return (key_event->key == config[keybind] && key_event->action == ASGE::KEYS::KEY_RELEASED);
+    return false;
+  }
+
+  // Check of specific key being pressed
+  bool keyPressed(const std::string& keybind)
+  {
+    if (checkKeybind(keybind))
+    {
+      return (key_event->key == config[keybind] && key_event->action == ASGE::KEYS::KEY_PRESSED);
+    }
+    return false;
   }
 
  private:
+  bool checkKeybind(const std::string& keybind)
+  {
+    if (config[keybind].is_null())
+    {
+      debug_text.print("WARNING: ATTEMPTED TO ACCESS UNINITIALISED KEYBIND - " + keybind);
+      return false;
+    }
+    return true;
+  }
+
   const ASGE::KeyEvent* key_event;
   static json config;
   DebugText debug_text;

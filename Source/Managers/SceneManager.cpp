@@ -3,6 +3,7 @@
 #include "../Scenes/GameOver.h"
 #include "../Scenes/MainMenu.h"
 #include "../Scenes/Splashscreen.h"
+#include "../Scenes/TutorialCore.h"
 #include "../Scenes/TutorialMenu.h"
 
 /**
@@ -75,8 +76,11 @@ int SceneManager::updateCurrentScene(double delta_time)
     case scenes::GAME_OVER:
       swapScene(new GameOver);
       break;
-    case scenes::TUTORIAL:
+    case scenes::TUTORIAL_MENU:
       swapScene(new TutorialMenu);
+      break;
+    case scenes::TUTORIAL_CORE:
+      swapScene(new TutorialCore);
       break;
     default:
       return -1; // Unhandled exception

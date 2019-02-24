@@ -7,11 +7,14 @@ void Security::setupPatrolRoute()
 
   // Top left
   patrol_route.push_back(getMiddleTilePosition(all_rooms->at(0)));
+
   // Top right
   patrol_route.push_back(getMiddleTilePosition(all_rooms->at(global_map->getRoomsX() - 1)));
+
   // Bottom left
   patrol_route.push_back(
     getMiddleTilePosition(all_rooms->at(global_map->getRoomCount() - (global_map->getRoomsX()))));
+
   // Bottom right
   patrol_route.push_back(getMiddleTilePosition(all_rooms->at(global_map->getRoomCount() - 1)));
 }
