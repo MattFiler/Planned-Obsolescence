@@ -2,7 +2,8 @@
 #include "../Characters/Character.h"
 
 // Load highlight sprite
-ActiveSelectionHighlight::ActiveSelectionHighlight(ASGE::Renderer* rend) : renderer(rend)
+ActiveSelectionHighlight::ActiveSelectionHighlight(ASGE::Renderer* rend, Camera* cam) :
+  renderer(rend), game_camera(cam)
 {
   ASGE::Sprite* new_highlight_sprite = renderer->createRawSprite();
   new_highlight_sprite->loadTexture("data/UI/WHITE.png");
@@ -38,7 +39,7 @@ void ActiveSelectionHighlight::highlightTile(Tile& clicked_tile)
 // Render
 void ActiveSelectionHighlight::render()
 {
-  renderer->renderSprite(highlight_sprite->returnCurrentSprite());
+  game_camera->renderSprite(highlight_sprite, 0, render_index::CHARACTER_LAYER, false);
 }
 
 // Update (if highlighting moving character)

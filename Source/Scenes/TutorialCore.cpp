@@ -1,4 +1,4 @@
-#include "MainMenu.h"
+#include "TutorialCore.h"
 #include "../Constants.h"
 #include "../Sprites/ScaledSpriteArray.h"
 #include <Engine/Input.h>
@@ -10,30 +10,26 @@
  *   @details Initialises all variables and creates all the new
                          sprites for the scene
  */
-bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud& player)
+bool TutorialCore::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud& player)
 {
   renderer->setClearColour(ASGE::COLOURS::BLACK);
 
   // Share the renderer
   rend = renderer;
-  main_menu.giveRenderer(renderer);
 
-  // Get sound player
-  sound_player = &player;
-  main_menu.setSoundPlayer(sound_player);
-
-  // Add menu sprites
-  main_menu.addMenuSprite("MAIN_MENU/BACKGROUND.jpg");
-  std::shared_ptr<ScaledSpriteArray> menu_logo = main_menu.addMenuSprite("SPLASHSCREEN/"
-                                                                         "FOREGROUND.png");
-  menu_logo->scale(0.6666f);
-  menu_logo->yPos(20);
-  menu_logo->xPos(500);
-
-  // Add menu options
-  main_menu.addMenuItem("play_game");
-  main_menu.addMenuItem("tutorial");
-  main_menu.addMenuItem("exit_game");
+  // Load tutorial slides
+  tutorial_slides = new ScaledSpriteArray(tutorial_slide_count);
+  for (int i = 0; i < tutorial_slide_count; i++)
+  {
+    ASGE::Sprite* slide = renderer->createRawSprite();
+    slide->loadTexture("data/UI/TUTORIAL/" + localiser.getLanguage() + "/" + std::to_string(i) +
+                       ".jpg");
+    tutorial_slides->addSprite(*slide);
+  }
+  tutorial_slides->scale(0.6666f);
+  tutorial_slides->xPos(1);
+  tutorial_slides->yPos(-17);
+  tutorial_slides->setCurrentSprite(tutorial_index);
 
   return true;
 }
@@ -44,25 +40,16 @@ bool MainMenu::load(ASGE::Renderer* renderer, ASGE::Input* input, SoLoud::Soloud
  *   @details the game state / variables etc depending
  *   @param   data is the event
  */
-void MainMenu::keyHandler(const ASGE::SharedEventData data)
+void TutorialCore::keyHandler(const ASGE::SharedEventData data)
 {
   user_input.registerEvent(static_cast<const ASGE::KeyEvent*>(data.get()));
-  if (main_menu.itemWasSelected(user_input))
+  if (user_input.keyReleased("Activate"))
   {
-    if (main_menu.selectedItemWas("play_game"))
+    // Increment tutorial slides
+    tutorial_index++;
+    if (tutorial_index <= tutorial_slide_count)
     {
-      next_scene = scenes::GAME_CORE;
-      debug_text.print("ENTERING GAME");
-    }
-    else if (main_menu.selectedItemWas("tutorial"))
-    {
-      next_scene = scenes::TUTORIAL_MENU;
-      debug_text.print("OPENING TUTORIAL");
-    }
-    else if (main_menu.selectedItemWas("exit_game"))
-    {
-      next_scene = scenes::QUIT_GAME;
-      debug_text.print("EXITING GAME");
+      tutorial_slides->setCurrentSprite(tutorial_index);
     }
   }
 }
@@ -73,7 +60,7 @@ void MainMenu::keyHandler(const ASGE::SharedEventData data)
  *            the game state / variables etc depending
  *   @param   data is the event, mouse_position the position of the cursor
  */
-void MainMenu::mouseHandler(const ASGE::SharedEventData data, Point mouse_position) {}
+void TutorialCore::mouseHandler(const ASGE::SharedEventData data, Point mouse_position) {}
 
 /**
  *   @brief   Updates all variables for this scene
@@ -82,8 +69,13 @@ void MainMenu::mouseHandler(const ASGE::SharedEventData data, Point mouse_positi
  *   @param  delta_time is time since last update
  *   @return  number of the scene to switch to, -1 no change, -2 exit game
  */
-scenes MainMenu::update(double delta_time)
+scenes TutorialCore::update(double delta_time)
 {
+  // Return to main menu when tutorial is over
+  if (tutorial_index >= tutorial_slide_count)
+  {
+    next_scene = scenes::TUTORIAL_MENU;
+  }
   return next_scene;
 }
 
@@ -92,7 +84,8 @@ scenes MainMenu::update(double delta_time)
  *   @details Runs every frame and draws all the sprites in
  * 			 order
  */
-void MainMenu::render(double delta_time)
+void TutorialCore::render(double delta_time)
 {
-  main_menu.render(delta_time);
+  // Render current tutorial slide
+  rend->renderSprite(tutorial_slides->returnCurrentSprite());
 }

@@ -100,7 +100,7 @@ void UIManager::initPointOfInterestPopup(CharacterManager* character_manager)
   poi_interaction_popup->setSoundPlayer(sound_player);
   poi_interaction_popup->setActive(false, false);
 
-  active_highlight = new ActiveSelectionHighlight(renderer);
+  active_highlight = new ActiveSelectionHighlight(renderer, camera);
 }
 
 /* Creates all the UI */

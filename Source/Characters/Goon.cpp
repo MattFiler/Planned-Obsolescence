@@ -148,7 +148,7 @@ void Goon::findNewPOI()
     our_room = &(*global_map->getRooms())[random_room];
     all_pois.clear();
     getAllPOIInRoom(&all_pois, our_room, true);
-    
+
     auto random_index =
       static_cast<unsigned long long>((rand() % (static_cast<int>(all_pois.size()))));
     Point tile_point =

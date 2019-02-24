@@ -19,7 +19,7 @@ void GameMap::importJSON()
 }
 
 /* Load our map */
-void GameMap::load(ASGE::Renderer* renderer_instance, Camera& camera)
+void GameMap::load(ASGE::Renderer* renderer_instance, Camera* camera)
 {
   // Load map and its initial data
   map_data.load(map_config);
@@ -71,7 +71,7 @@ void GameMap::load(ASGE::Renderer* renderer_instance, Camera& camera)
 void GameMap::render(double delta_time)
 {
   // Render map
-  game_camera.renderSprite(map_data.sprite.get(), delta_time, render_index::MAP_LAYER);
+  game_camera->renderSprite(map_data.sprite.get(), delta_time, render_index::MAP_LAYER);
 
   for (Room& room_to_render : map_data.rooms)
   {
@@ -83,13 +83,13 @@ void GameMap::render(double delta_time)
         if (tile_to_render.hasAnyPointOfInterest() && tile_to_render.getTileSprite()->isVisible())
         {
           // Render POI
-          game_camera.renderSprite(
+          game_camera->renderSprite(
             tile_to_render.getTileSprite().get(), delta_time, render_index::TILE_LAYER);
         }
         if (tile_to_render.hasAnyPointOfInterest() && tile_to_render.getRepairSprite()->isVisible())
         {
           // Render POI repair status
-          game_camera.renderSprite(
+          game_camera->renderSprite(
             tile_to_render.getRepairSprite().get(), delta_time, render_index::TILE_LAYER, false);
         }
       }

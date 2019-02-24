@@ -109,7 +109,8 @@ enum scenes
   GAME_CORE,
   QUIT_GAME,
   GAME_OVER,
-  TUTORIAL
+  TUTORIAL_MENU,
+  TUTORIAL_CORE
 };
 
 // Render index
